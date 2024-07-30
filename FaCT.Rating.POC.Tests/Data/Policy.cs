@@ -6,6 +6,8 @@ internal class Policy<TResult>
 {
     public TResult ExpectedResult { get; set; }
 
+
+
     public string PolicyEffective { get; set; }
 
     public string PolicyExpiration { get; set; }
@@ -32,6 +34,8 @@ internal class Policy<TResult>
 
     public decimal ManualPremium { get; set; }
 
+
+
     public string State { get; set; } = Constants.FactorKeyWildcard;
 
     public string Lob { get; set; } = Constants.FactorKeyWildcard;
@@ -46,9 +50,10 @@ internal class Policy<TResult>
 
     public DateTime? NbEffectiveDate { get; set; }
 
-    public object[] ToObjectArray() =>
+    public object?[] ToObjectArray() =>
         [
             this.ExpectedResult,
+
             this.PolicyEffective,
             this.PolicyExpiration,
             this.CoverageItemLimit,
@@ -62,6 +67,7 @@ internal class Policy<TResult>
             this.CommissionReduction,
             this.BreakageExclusionIndicator,
             this.ManualPremium,
+
             this.State,
             this.Lob,
             this.InsuranceLine,

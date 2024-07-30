@@ -24,12 +24,13 @@ public class FactorCache<TFactorType>
         return factor.Value[searchKey.KeyValue];
     }
 
-    private bool MatchesKey(IFactorKey key, ISearchKey searchKey) => (key.State == searchKey.State || searchKey.State == "*") &&
-        (key.LineOfBusiness == searchKey.LineOfBusiness || searchKey.LineOfBusiness == "*") &&
-        (key.InsuranceLine == searchKey.InsuranceLine || searchKey.InsuranceLine == "*") &&
-        (key.Product == searchKey.Product || searchKey.Product == "*") &&
-        (key.Coverage == searchKey.Coverage || searchKey.Coverage == "*") &&
-        (key.RateBook == searchKey.RateBook || searchKey.RateBook == "*") &&
+    private bool MatchesKey(IFactorKey key, ISearchKey searchKey) =>
+        (key.State == Constants.FactorKeyWildcard || searchKey.State == Constants.FactorKeyWildcard || key.State == searchKey.State) &&
+        (key.LineOfBusiness == Constants.FactorKeyWildcard || searchKey.LineOfBusiness == Constants.FactorKeyWildcard || key.LineOfBusiness == searchKey.LineOfBusiness) &&
+        (key.InsuranceLine == Constants.FactorKeyWildcard || searchKey.InsuranceLine == Constants.FactorKeyWildcard || key.InsuranceLine == searchKey.InsuranceLine) &&
+        (key.Product == Constants.FactorKeyWildcard || searchKey.Product == Constants.FactorKeyWildcard || key.Product == searchKey.Product) &&
+        (key.Coverage == Constants.FactorKeyWildcard || searchKey.Coverage == Constants.FactorKeyWildcard || key.Coverage == searchKey.Coverage) &&
+        (key.RateBook == Constants.FactorKeyWildcard || searchKey.RateBook == Constants.FactorKeyWildcard || key.RateBook == searchKey.RateBook) &&
         (key.GetEffectiveDate(searchKey.IsNewBusiness) <= searchKey.GetEffectiveDate(searchKey.IsNewBusiness));
 
     private int GetSpecificityScore(IFactorKey key)

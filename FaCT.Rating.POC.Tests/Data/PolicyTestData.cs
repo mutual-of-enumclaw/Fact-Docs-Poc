@@ -5,11 +5,14 @@ namespace FaCT.Rating.POC.Tests.Data;
 internal class PolicyTestData
 {
     public static Policy<decimal> GetFinartTestPolicy(
-        string constructionCode)
+        decimal expectedResult,
+        string constructionCode,
+        decimal coverageItemLimit,
+        decimal manualPremium = 0)
     {
         return new Policy<decimal>
         {
-            ExpectedResult = 183m,
+            ExpectedResult = expectedResult,
 
             State = States.Arizona,
             Lob = LinesOfBusiness.Farm,
@@ -20,7 +23,7 @@ internal class PolicyTestData
 
             PolicyEffective = "20240506",
             PolicyExpiration = "20250506",
-            CoverageItemLimit = 90000m,
+            CoverageItemLimit = coverageItemLimit,
             ConstructionCode = constructionCode,
             ProtectionClassCode = ProtectionClassCodes.Code05,
             FarmTypeCode = FarmTypeCodes.TypeI,
@@ -30,7 +33,7 @@ internal class PolicyTestData
             IrpmFactor = 0.95m,
             CommissionReduction = Constants.DefaultCommissionReduction,
             BreakageExclusionIndicator = Constants.No,
-            ManualPremium = 0m
+            ManualPremium = manualPremium
         };
     }
 }

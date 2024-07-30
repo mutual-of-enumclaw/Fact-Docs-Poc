@@ -7,11 +7,13 @@ public class FinartSppCalculatorTestData : IEnumerable<object[]>
 {
     public IEnumerator<object[]> GetEnumerator()
     {
-        yield return PolicyTestData.GetFinartTestPolicy(ConstructionCodes.FireResistive).ToObjectArray();
-        yield return PolicyTestData.GetFinartTestPolicy(ConstructionCodes.NonCombustible).ToObjectArray();
-        yield return PolicyTestData.GetFinartTestPolicy(ConstructionCodes.Masonry).ToObjectArray();
-        yield return PolicyTestData.GetFinartTestPolicy(ConstructionCodes.MobileHome).ToObjectArray();
-        yield return PolicyTestData.GetFinartTestPolicy(ConstructionCodes.Frame).ToObjectArray();
+        yield return PolicyTestData.GetFinartTestPolicy(183, ConstructionCodes.FireResistive, 90000).ToObjectArray();
+        yield return PolicyTestData.GetFinartTestPolicy(183, ConstructionCodes.NonCombustible, 90000).ToObjectArray();
+        yield return PolicyTestData.GetFinartTestPolicy(214, ConstructionCodes.Masonry, 90000).ToObjectArray();
+        yield return PolicyTestData.GetFinartTestPolicy(294, ConstructionCodes.MobileHome, 90000).ToObjectArray();
+        yield return PolicyTestData.GetFinartTestPolicy(229, ConstructionCodes.Frame, 90000).ToObjectArray();
+        yield return PolicyTestData.GetFinartTestPolicy(163, ConstructionCodes.FireResistive, 80000).ToObjectArray();
+        yield return PolicyTestData.GetFinartTestPolicy(500, ConstructionCodes.FireResistive, 80000, 500).ToObjectArray();
     }
 
     IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();

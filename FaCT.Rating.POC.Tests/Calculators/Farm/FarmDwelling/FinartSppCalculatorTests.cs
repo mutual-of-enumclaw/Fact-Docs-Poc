@@ -17,45 +17,6 @@ public class FinartSppCalculatorTests
             {
                 Factors = new()
                 {
-                    Construction = new Dictionary<string, Dictionary<string, decimal>>
-                    {
-                        {
-                            "AZ|FRM|FD|*|*|A|20140425|*",
-                            new Dictionary<string, decimal>
-                            {
-                                { "L", 1 },
-                                { "M", 1m },
-                                { "1", 1 },
-                                { "2", 0.85m },
-                                { "3", 0.55m },
-                                { "6", 0.55m }
-                            }
-                        },
-                        {
-                            "AZ|FRM|FD|*|*|A|20230410|20230120",
-                            new Dictionary<string, decimal>
-                            {
-                                { "L", 1 },
-                                { "M", 1.5m },
-                                { "1", 1 },
-                                { "2", 0.85m },
-                                { "3", 0.55m },
-                                { "6", 0.55m }
-                            }
-                        },
-                        {
-                            "AZ|FRM|FD|*|*|A|20240506|*",
-                            new Dictionary<string, decimal>
-                            {
-                                { "L", 1 },
-                                { "M", 1.65m },
-                                { "1", 1 },
-                                { "2", 0.85m },
-                                { "3", 0.55m },
-                                { "6", 0.55m }
-                            }
-                        }
-                    },
                     ProtectionClass = new Dictionary<string, decimal>
                     {
                         { "01", 0.55m },
@@ -152,14 +113,9 @@ public class FinartSppCalculatorTests
 
     [Theory]
     [ClassData(typeof(FinartSppCalculatorTestData))]
-    [InlineData("20240506", "20250506", 90000, "6", "05", "1", "N", "N", "N", 0.95, 9.99999, "N", 0, 183)]
-    [InlineData("20240506", "20250506", 90000, "3", "05", "1", "N", "N", "N", 0.95, 9.99999, "N", 0, 183)]
-    [InlineData("20240506", "20250506", 90000, "2", "05", "1", "N", "N", "N", 0.95, 9.99999, "N", 0, 214)]
-    [InlineData("20240506", "20250506", 90000, "M", "05", "1", "N", "N", "N", 0.95, 9.99999, "N", 0, 294)]
-    [InlineData("20240506", "20250506", 90000, "1", "05", "1", "N", "N", "N", 0.95, 9.99999, "N", 0, 229)]
-    [InlineData("20240506", "20250506", 80000, "6", "05", "1", "N", "N", "N", 0.95, 9.99999, "N", 0, 163)]
-    [InlineData("20240506", "20250506", 80000, "6", "05", "1", "N", "N", "N", 0.95, 9.99999, "N", 500, 500)]
     public void Calculate(
+        decimal expectedResult,
+
         string policyEffective,
         string policyExpiration,
         decimal coverageItemLimit,
@@ -173,7 +129,7 @@ public class FinartSppCalculatorTests
         decimal commissionReduction,
         string breakageExclusionIndicator,
         decimal manualPremium,
-        decimal expectedResult,
+
         string state = Constants.FactorKeyWildcard,
         string lob = Constants.FactorKeyWildcard,
         string insuranceLine = Constants.FactorKeyWildcard,
