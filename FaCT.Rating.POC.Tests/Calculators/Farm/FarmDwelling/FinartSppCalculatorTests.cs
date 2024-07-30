@@ -140,13 +140,6 @@ public class FinartSppCalculatorTests
     {
         var request = new FinartSppCalculator.Request
         {
-            State = state,
-            LineOfBusiness = lob,
-            InsuranceLine = insuranceLine,
-            Product = product,
-            Coverage = coverage,
-            RateBook = rateBook,
-            NbEffectiveDate = nbEffectiveDate,
             PolicyEffective = policyEffective,
             PolicyExpiration = policyExpiration,
             CoverageItemLimit = coverageItemLimit,
@@ -159,7 +152,15 @@ public class FinartSppCalculatorTests
             IrpmFactor = irpmFactor,
             CommissionReduction = commissionReduction,
             BreakageExclusionIndicator = breakageExclusionIndicator,
-            ManualPremium = manualPremium
+            ManualPremium = manualPremium,
+
+            State = state,
+            LineOfBusiness = lob,
+            InsuranceLine = insuranceLine,
+            Product = product,
+            Coverage = coverage,
+            RateBook = rateBook,
+            NbEffectiveDate = nbEffectiveDate,
         };
 
         var result = sut.Calculate(request);
