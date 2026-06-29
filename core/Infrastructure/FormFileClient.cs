@@ -39,9 +39,12 @@ public record FapTextArea(
 
 // A single pre-positioned word from an M,TT record. The FAP fully lays out every
 // word, so each token carries its own absolute position and font.
+// IsFieldPlaceholder: token is an "X" placeholder for an A,T1 field reference;
+// it marks where the field value appears inline and should NOT be rendered as text.
 public record FapTextToken(
     string Text, bool IsBold, int FontId,
-    (int Row1, int Col1, int Row2, int Col2) Position);
+    (int Row1, int Col1, int Row2, int Col2) Position,
+    bool IsFieldPlaceholder = false);
 
 public record FapParseResult(
     string FileName, int PageCount,
@@ -52,6 +55,16 @@ public record FapParseResult(
 {
     /// <summary>Per-page dimensions parsed from each H-line. Index = page number (0-based).</summary>
     public IReadOnlyList<FapPageInfo> PageInfos { get; init; } = [];
+
+    /// <summary>
+    /// Inline field positions discovered from A,T1 anchors in M,TT text blocks.
+    /// Key = field name (case-insensitive). Value = (Row1, Col1, Row2, Col2) of the
+    /// "X" placeholder M,TT token that immediately precedes the A,T1 entry.
+    /// These positions should be preferred over the F, field's explicit position when
+    /// they are available, because the A,T1 anchor is the true visual position.
+    /// </summary>
+    public IReadOnlyDictionary<string, (int Row1, int Col1, int Row2, int Col2)> InlineFieldPositions { get; init; }
+        = new Dictionary<string, (int, int, int, int)>(StringComparer.OrdinalIgnoreCase);
 }
 
 public record DdtFieldRule(
@@ -181,6 +194,11 @@ public class FormFileClient
         (int Row1, int Col1, int Row2, int Col2)? currentTextAreaPos = null;
         int currentTextAreaLine = 0;
         var currentTokens = new List<FapTextToken>();
+        var inlineFieldPositions = new Dictionary<string, (int Row1, int Col1, int Row2, int Col2)>(StringComparer.OrdinalIgnoreCase);
+        // After a named A,T1 anchor, subsequent whitespace-only M,TT tokens are the blank
+        // space Documaker allocated for the field value. We extend the field's Col2 through
+        // them so the PDF form field widget fills the correct visual space.
+        string? inlineContinuationField = null;
 
         void FlushTextArea()
         {
@@ -189,6 +207,7 @@ public class FormFileClient
                 textAreas.Add(new FapTextArea(currentTextAreaPos.Value, currentTokens.ToList(), currentTextAreaLine, Math.Max(0, currentPage)));
             currentTextAreaPos = null;
             currentTokens.Clear();
+            inlineContinuationField = null;
         }
 
         foreach (var line in lines)
@@ -209,12 +228,61 @@ public class FormFileClient
             if (trimmed.StartsWith("T,", StringComparison.OrdinalIgnoreCase)) { var t = ParseFapTLine(trimmed, lineNum); if (t != null) staticTexts.Add(t with { PageIndex = pg }); continue; }
             if (trimmed.StartsWith("X,", StringComparison.OrdinalIgnoreCase)) { var x = ParseFapXLine(trimmed, lineNum); if (x != null) xLines.Add(x with { PageIndex = pg }); continue; }
             if (trimmed.StartsWith("M,H,", StringComparison.OrdinalIgnoreCase)) { FlushTextArea(); var mh = ParseMHLine(trimmed); if (mh != null) { currentTextAreaPos = mh.Value; currentTextAreaLine = lineNum; } continue; }
-            if (trimmed.StartsWith("M,TT,", StringComparison.OrdinalIgnoreCase)) { var tk = ParseMTTLine(trimmed); if (tk != null) currentTokens.Add(tk); continue; }
+            if (trimmed.StartsWith("M,TT,", StringComparison.OrdinalIgnoreCase))
+            {
+                var tk = ParseMTTLine(trimmed);
+                if (tk != null)
+                {
+                    // If we're in field-continuation mode and this token is blank/whitespace,
+                    // it represents the space Documaker allocated for the field value.
+                    // Extend the field's recorded Col2 and hide the token from rendering.
+                    if (inlineContinuationField != null && string.IsNullOrWhiteSpace(tk.Text))
+                    {
+                        var cur = inlineFieldPositions[inlineContinuationField];
+                        inlineFieldPositions[inlineContinuationField] = (cur.Row1, cur.Col1, cur.Row2, tk.Position.Col2);
+                        tk = tk with { IsFieldPlaceholder = true };
+                    }
+                    else
+                    {
+                        inlineContinuationField = null; // real text encountered — stop extending
+                    }
+                    currentTokens.Add(tk);
+                }
+                continue;
+            }
             if (trimmed.StartsWith("M,P,", StringComparison.OrdinalIgnoreCase)) { continue; }
             if (trimmed.StartsWith("M,E", StringComparison.OrdinalIgnoreCase)) { FlushTextArea(); continue; }
+
+            // A,T1,"FIELDNAME",... lines mark the inline position of a form field value.
+            // The M,TT token immediately preceding it is the visual placeholder (typically
+            // a single "X" character) — mark it as a field placeholder so it is NOT
+            // rendered as static text, and record its position as the field's inline position.
+            if (trimmed.StartsWith("A,T1,", StringComparison.OrdinalIgnoreCase))
+            {
+                var fieldName = ParseAT1FieldName(trimmed);
+                if (!string.IsNullOrEmpty(fieldName) && currentTokens.Count > 0)
+                {
+                    var lastIdx = currentTokens.Count - 1;
+                    var lastToken = currentTokens[lastIdx];
+                    // Record the inline position (first occurrence wins per field name)
+                    if (!inlineFieldPositions.ContainsKey(fieldName))
+                        inlineFieldPositions[fieldName] = lastToken.Position;
+                    // Mark the token as a field placeholder so it won't render as "X" text
+                    currentTokens[lastIdx] = lastToken with { IsFieldPlaceholder = true };
+                    // Enter continuation mode to extend Col2 through subsequent blank tokens
+                    inlineContinuationField = fieldName;
+                }
+                // Space-only A,T1 entries don't reset continuation — they're line-break hints
+                // that may appear between the named A,T1 and its blank continuation tokens.
+                continue;
+            }
         }
         FlushTextArea();
-        return new FapParseResult(fileName, pageCount, fields, staticTexts, xLines, textAreas) { PageInfos = pageInfos };
+        return new FapParseResult(fileName, pageCount, fields, staticTexts, xLines, textAreas)
+        {
+            PageInfos = pageInfos,
+            InlineFieldPositions = inlineFieldPositions,
+        };
     }
 
     // -----------------------------------------------------------------------
@@ -256,6 +324,39 @@ public class FormFileClient
     public string? FindFormFilePath(string fileName, string extension) =>
         FindFile(extension.Equals(".FAP", StringComparison.OrdinalIgnoreCase)
             ? _options.FormsDirectory : _options.DdtDirectory, fileName, extension);
+
+    /// <summary>
+    /// Classifies a form as Static, Variable, or WIP using the two-signal decision tree:
+    ///   1. FAP F-line count == 0  →  Static
+    ///   2. DDT contains ;powtype; →  WIP
+    ///   3. Otherwise              →  Variable
+    /// Edge case: a single F-line whose field name is POLNUM is still treated as Static.
+    /// </summary>
+    public async Task<string> ClassifyFormAsync(string fileName, CancellationToken ct = default)
+    {
+        var fapPath = FindFile(_options.FormsDirectory, fileName, ".FAP");
+        var fapLines = await ReadLinesAsync(fapPath, ct);
+        if (fapLines == null) return FapPdfTools.Server.Models.FormClassification.Unknown;
+
+        var fLines = fapLines
+            .Where(l => l.TrimStart().StartsWith("F,", StringComparison.OrdinalIgnoreCase))
+            .ToList();
+
+        if (fLines.Count == 0)
+            return FapPdfTools.Server.Models.FormClassification.Static;
+
+        // Edge case: sole F-line is the policy number stamp — still Static
+        if (fLines.Count == 1 && fLines[0].TrimEnd().EndsWith(",POLNUM", StringComparison.OrdinalIgnoreCase))
+            return FapPdfTools.Server.Models.FormClassification.Static;
+
+        var ddtPath = FindFile(_options.DdtDirectory, fileName, ".DDT");
+        var ddtLines = await ReadLinesAsync(ddtPath, ct);
+        if (ddtLines != null &&
+            ddtLines.Any(l => l.Contains(";powtype;", StringComparison.OrdinalIgnoreCase)))
+            return FapPdfTools.Server.Models.FormClassification.Wip;
+
+        return FapPdfTools.Server.Models.FormClassification.Variable;
+    }
 
     // -----------------------------------------------------------------------
     // Private parsing methods
@@ -357,8 +458,31 @@ public class FormFileClient
         catch { return null; }
     }
 
-    private static (int, int, int, int)? ParseMHLine(string line)
+    /// <summary>
+    /// Extracts the field name from an A,T1 line, e.g. A,T1,"POLICYNUM ",... → "POLICYNUM".
+    /// Returns null if the name is blank (space-only A,T1 lines are line-break hints, not field refs).
+    /// </summary>
+    private static string? ParseAT1FieldName(string line)
     {
+        try
+        {
+            // Format: A,T1,"FIELDNAME",<rest>
+            var rest = line[5..]; // skip "A,T1,"
+            if (rest.Length > 0 && rest[0] == '"')
+            {
+                var endQuote = rest.IndexOf('"', 1);
+                if (endQuote > 1)
+                {
+                    var name = rest[1..endQuote].Trim();
+                    return string.IsNullOrWhiteSpace(name) ? null : name;
+                }
+            }
+            return null;
+        }
+        catch { return null; }
+    }
+
+    private static (int, int, int, int)? ParseMHLine(string line)    {
         try
         {
             var pos = ExtractParenGroup(line[4..], 0);

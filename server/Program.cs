@@ -20,12 +20,24 @@ builder.Services.AddSingleton<FapToPdfGenerator>();
 builder.Services.AddSingleton<FormDefinitionStore>();
 builder.Services.AddSingleton<ScenarioStore>();
 
+// Pre-built fillable PDF template library (loaded at request time; no FAP parsing)
+builder.Services.AddSingleton<TemplateStore>();
+
 // Field-map registry (add more IFormFieldMap implementations here as they are written)
 builder.Services.AddSingleton<IFormFieldMap, Ca2146FieldMap>();
 builder.Services.AddSingleton<IFormFieldMap, BopDecPageFieldMap>();
+builder.Services.AddSingleton<IFormFieldMap, Mcs90aFieldMap>();
+builder.Services.AddSingleton<IFormFieldMap, Eb2410FieldMap>();
+builder.Services.AddSingleton<IFormFieldMap, GenericHeaderFieldMap>(); // fallback for forms w/o a specific map
 builder.Services.AddSingleton<FormFieldMapRegistry>();
 
-builder.Services.AddControllers();
+builder.Services
+    .AddControllers()
+    // Form population must tolerate partial policy data. The CDM model carries DataAnnotations
+    // (Required/Range) that would otherwise make [ApiController] auto-reject an incomplete
+    // CDMPolicyView with a 400 before the action runs. Controllers do their own validation
+    // (422/404/400) where it matters.
+    .ConfigureApiBehaviorOptions(options => options.SuppressModelStateInvalidFilter = true);
 builder.Services.AddOpenApi();
 
 // CORS for React dev server
@@ -33,7 +45,10 @@ builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(policy =>
     {
-        policy.WithOrigins("http://localhost:5173", "http://localhost:5174", "http://localhost:3000")
+        policy.WithOrigins(
+                  "http://localhost:5173", "http://localhost:5174", "http://localhost:3000",
+                  // fact-commercial-web dev server (vue.config.js devServer.port)
+                  "http://localhost:4200", "https://localhost:4200")
               .AllowAnyHeader()
               .AllowAnyMethod()
               .WithExposedHeaders("X-Field-Count", "X-Field-Names");

@@ -8,20 +8,26 @@ namespace FapPdfTools.Population;
 public class FormFieldMapRegistry
 {
 	private readonly Dictionary<string, IFormFieldMap> _maps;
+	private readonly IFormFieldMap? _fallback;
 
 	public FormFieldMapRegistry(IEnumerable<IFormFieldMap> maps)
 	{
-		_maps = maps.ToDictionary(
-			m => MakeKey(m.FormNumber, m.EditionDate),
-			m => m,
-			StringComparer.OrdinalIgnoreCase);
+		var all = maps.ToList();
+		// A map with the sentinel FormNumber "*" is the generic fallback (common header fields).
+		_fallback = all.FirstOrDefault(m => m.FormNumber == "*");
+		_maps = all
+			.Where(m => m.FormNumber != "*")
+			.ToDictionary(
+				m => MakeKey(m.FormNumber, m.EditionDate),
+				m => m,
+				StringComparer.OrdinalIgnoreCase);
 	}
 
-	/// <summary>Returns the map for the form, or <see langword="null"/> if none is registered.</summary>
+	/// <summary>Returns the form-specific map, else the generic fallback, else <see langword="null"/>.</summary>
 	public IFormFieldMap? Resolve(string formNumber, string editionDate)
 	{
 		string key = MakeKey(formNumber, editionDate);
-		return _maps.TryGetValue(key, out IFormFieldMap? map) ? map : null;
+		return _maps.TryGetValue(key, out IFormFieldMap? map) ? map : _fallback;
 	}
 
 	/// <summary>All registered form keys in the format <c>FormNumber|EditionDate</c>.</summary>

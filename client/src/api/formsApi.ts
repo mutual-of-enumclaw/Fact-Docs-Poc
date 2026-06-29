@@ -1,5 +1,7 @@
 const API_BASE = 'http://localhost:5035/api';
 
+export type FormClassification = 'Static' | 'Variable' | 'WIP' | 'Unknown';
+
 export interface FormCatalogEntry {
   formKey: string;
   fileName: string;
@@ -9,6 +11,7 @@ export interface FormCatalogEntry {
   sourceFormNumber?: string;
   sourceEditionDate?: string;
   description?: string;
+  classification?: FormClassification;
 }
 
 export interface FormSectionInfo {
@@ -27,6 +30,7 @@ export interface FormInfoResponse {
   pageCount: number;
   fieldNames: string[];
   sections: FormSectionInfo[];
+  classification: FormClassification;
 }
 
 export async function fetchForms(search?: string): Promise<FormCatalogEntry[]> {
@@ -93,4 +97,14 @@ export async function convertAndFill(
   });
   if (!res.ok) throw new Error(`Fill failed: ${res.statusText}`);
   return new Blob([await res.arrayBuffer()], { type: 'application/pdf' });
+}
+
+export async function exportGhostDraft(formNumber: string, editionDate: string): Promise<Blob> {
+  const res = await fetch(`${API_BASE}/convert/export-gd`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ formNumber, editionDate }),
+  });
+  if (!res.ok) throw new Error(`GhostDraft export failed: ${res.statusText}`);
+  return new Blob([await res.arrayBuffer()], { type: 'application/octet-stream' });
 }

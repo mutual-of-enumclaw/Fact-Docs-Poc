@@ -21,5 +21,10 @@ public class FormFileOptions
 
     /// <summary>Directory for saved test scenarios (JSON). Defaults to ./scenarios.</summary>
     public string ScenariosDirectory { get; set; } = string.Empty;
+
+    /// <summary>Directory for pre-built fillable PDF templates (one .pdf per form+edition).
+    /// Templates are produced offline (FAP -> fillable PDF) and loaded at request time
+    /// without any FAP parsing. Defaults to ./pdf-templates.</summary>
+    public string PdfTemplateDirectory { get; set; } = string.Empty;
 }
 

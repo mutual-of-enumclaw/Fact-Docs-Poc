@@ -7,6 +7,7 @@ import {
   convertAndFill,
   fetchFormInfo,
   fetchFormFields,
+  exportGhostDraft,
   type FormInfoResponse,
   type FieldDescriptor,
 } from '../api/formsApi';
@@ -38,6 +39,9 @@ export default function ConvertPage() {
 
   // Open in designer
   const [openingDesigner, setOpeningDesigner] = useState(false);
+
+  // Export to GhostDraft
+  const [exportingGd, setExportingGd] = useState(false);
 
   // Save as scenario
   const [scenarioModalOpen, setScenarioModalOpen] = useState(false);
@@ -185,6 +189,26 @@ export default function ConvertPage() {
     }
   };
 
+  const handleExportGhostDraft = async () => {
+    if (!formNumber) { message.warning('No form loaded'); return; }
+    setExportingGd(true);
+    try {
+      const blob = await exportGhostDraft(formNumber, editionDate ?? '');
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      const base = formInfo?.fileName ?? formNumber;
+      a.download = `${base}.gd`;
+      a.click();
+      URL.revokeObjectURL(url);
+      message.success('GhostDraft .gd file downloaded');
+    } catch (e: unknown) {
+      message.error(e instanceof Error ? e.message : 'Export failed');
+    } finally {
+      setExportingGd(false);
+    }
+  };
+
   const handleDownload = () => {
     if (!pdfUrl) return;
     const a = document.createElement('a');
@@ -240,6 +264,16 @@ export default function ConvertPage() {
                   onClick={handleOpenInDesigner}
                 >
                   Open in Designer
+                </Button>
+              </Tooltip>
+              <Tooltip title="Export as a GhostDraft .gd file (import into GhostDraft Designer)">
+                <Button
+                  icon={<DownloadOutlined />}
+                  disabled={!formNumber}
+                  loading={exportingGd}
+                  onClick={handleExportGhostDraft}
+                >
+                  Export .gd
                 </Button>
               </Tooltip>
             </Space>

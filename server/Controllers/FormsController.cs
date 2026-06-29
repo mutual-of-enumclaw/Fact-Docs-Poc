@@ -40,12 +40,19 @@ public class FormsController : ControllerBase
                 def.SourceEditionDate,
                 def.Description));
 
+        // Classify each legacy entry in parallel (FAP F-line + DDT powtype scan)
+        var classifyTasks = legacyEntries
+            .Select(e => _formClient.ClassifyFormAsync(e.FileName, ct))
+            .ToList();
+        var classifications = await Task.WhenAll(classifyTasks);
+
         var result = legacyEntries
-            .Select(e => new FormCatalogEntry(
+            .Select((e, i) => new FormCatalogEntry(
                 e.FormKey,
                 e.FileName,
                 e.Metadata,
-                e.Sections.Count))
+                e.Sections.Count,
+                Classification: classifications[i]))
             .Concat(authoredDefinitions)
             .ToList();
         return Ok(result);
@@ -85,11 +92,12 @@ public class FormsController : ControllerBase
         if (fap == null) return NotFound(new { error = $"FAP file {entry.FileName} not found" });
 
         var sections = entry.Sections.Select(s => new FormSectionInfo(s.FileName, s.SectionType, s.SectionMetadata)).ToList();
+        var classification = await _formClient.ClassifyFormAsync(entry.FileName, ct);
 
         return Ok(new FormInfoResponse(
             entry.FormKey, entry.FileName,
             fap.Fields.Count, fap.StaticTexts.Count, fap.Lines.Count, fap.TextAreas.Count,
-            fap.PageCount, fap.Fields.Select(f => f.Name).ToList(), sections));
+            fap.PageCount, fap.Fields.Select(f => f.Name).ToList(), sections, classification));
     }
 
     /// <summary>Get the fillable fields for a form with PDF-point bounds, FXR font, and DDT rule.</summary>

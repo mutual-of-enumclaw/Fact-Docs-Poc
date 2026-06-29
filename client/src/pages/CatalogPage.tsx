@@ -1,11 +1,25 @@
-import { useState } from 'react';
-import { Table, Input, Typography, Tag } from 'antd';
+import { useState, useMemo } from 'react';
+import { Table, Input, Typography, Tag, Select, Space } from 'antd';
 import { useQuery } from '@tanstack/react-query';
-import { fetchForms, type FormCatalogEntry } from '../api/formsApi';
+import { fetchForms, type FormCatalogEntry, type FormClassification } from '../api/formsApi';
 import { useNavigate } from 'react-router-dom';
 
 const { Search } = Input;
 const { Title } = Typography;
+
+const CLASSIFICATION_COLORS: Record<string, string> = {
+  Static:   'default',
+  Variable: 'blue',
+  WIP:      'green',
+  Unknown:  'default',
+};
+
+const CLASSIFICATION_FILTER_OPTIONS = [
+  { value: 'all',      label: 'All types' },
+  { value: 'Static',   label: 'Static' },
+  { value: 'Variable', label: 'Variable' },
+  { value: 'WIP',      label: 'WIP' },
+];
 
 const columns = [
   {
@@ -25,6 +39,18 @@ const columns = [
     render: (_: unknown, record: FormCatalogEntry) => record.displayName || record.description || '-',
   },
   {
+    title: 'Type',
+    dataIndex: 'classification',
+    key: 'classification',
+    width: 110,
+    render: (val: FormClassification | undefined) =>
+      val && val !== 'Unknown'
+        ? <Tag color={CLASSIFICATION_COLORS[val] ?? 'default'}>{val}</Tag>
+        : '-',
+    sorter: (a: FormCatalogEntry, b: FormCatalogEntry) =>
+      (a.classification ?? '').localeCompare(b.classification ?? ''),
+  },
+  {
     title: 'Section Type',
     dataIndex: 'sectionType',
     key: 'sectionType',
@@ -41,6 +67,7 @@ const columns = [
 
 export default function CatalogPage() {
   const [search, setSearch] = useState('');
+  const [classFilter, setClassFilter] = useState<string>('all');
   const navigate = useNavigate();
 
   const { data: forms = [], isLoading } = useQuery({
@@ -49,19 +76,33 @@ export default function CatalogPage() {
     staleTime: 60_000,
   });
 
+  const filtered = useMemo(
+    () => classFilter === 'all' ? forms : forms.filter(f => f.classification === classFilter),
+    [forms, classFilter],
+  );
+
   return (
     <div>
       <Title level={3}>Form Catalog</Title>
-      <Search
-        placeholder="Search by form number or name (e.g. CA0001, BOP, Split Bodily...)"
-        allowClear
-        enterButton="Search"
-        size="large"
-        style={{ maxWidth: 500, marginBottom: 24 }}
-        onSearch={setSearch}
-      />
+      <Space style={{ marginBottom: 24 }} wrap>
+        <Search
+          placeholder="Search by form number or name (e.g. CA0001, BOP, Split Bodily...)"
+          allowClear
+          enterButton="Search"
+          size="large"
+          style={{ width: 460 }}
+          onSearch={setSearch}
+        />
+        <Select
+          size="large"
+          style={{ width: 140 }}
+          value={classFilter}
+          onChange={setClassFilter}
+          options={CLASSIFICATION_FILTER_OPTIONS}
+        />
+      </Space>
       <Table
-        dataSource={forms}
+        dataSource={filtered}
         columns={columns}
         rowKey={(r) => `${r.formKey}-${r.fileName}`}
         loading={isLoading}
