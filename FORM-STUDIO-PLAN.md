@@ -545,3 +545,39 @@ two are currently confounded in every score.
 `parity.best_shift` searched ±3px and silently **clamped** — a 6.7px error reported as
 "dy=3", understating it by half and sending the first fix in the wrong direction. Default is
 now ±10. Any future metric with a bounded search must report saturation.
+
+---
+
+## 13. Defect 3 fixed, and the metric was wrong (2026-08-16)
+
+### Defect 3 (advance widths) — FIXED
+
+`emit-html` reads real glyph advances from the TTF (cmap fmt 4 + hmtx) and distributes the
+difference against the FXR width as per-run `letter-spacing`. **First change to improve every
+stratum** (mean IoU 0.292 → 0.318; prose 0.356 → 0.429, its unmatched ink 29.8% → 10.8%).
+
+### Ink IoU is the wrong acceptance metric — stop using it as the gate
+
+`A0238C` is **visually indistinguishable** from the legacy render side by side, and scores
+**0.247**. Binarized ink IoU at 150 DPI punishes sub-pixel offsets on every glyph edge, so it
+cannot separate "slightly offset but perfect" from "wrong".
+
+Replace it with a **text-run placement metric**: extract every text run from both PDFs and
+match on (page, text, x, y). It is semantic, human-meaningful ("is every string present, in the
+right place"), and far more diagnostic. Measured across the 50-form sweep:
+
+| | |
+|---|---|
+| Forms placing **88–100%** of runs within 1pt | ~40% — median offset **+0.07, −0.20pt**, i.e. essentially exact |
+| Forms placing **0.0%** within 1pt | ~60% |
+
+**The distribution is bimodal, not a gradient.** The second group is not "degraded" — it is
+uniformly offset by more than 1pt across the whole form. That is a solvable constant, not
+accumulated error, and it lines up with the font ids the calibration had to skip (notably
+16010, the most common body font, which measured bimodal at 60% core).
+
+**Next action:** resolve the per-form constant offset for the 0% group — most likely by keying
+the correction on something finer than FontId, since 16010's bimodality says FontId alone does
+not determine the offset. Expect a large fraction of the library to jump to ~95%+ once it lands.
+Adopt text-run match % as the P0 exit gate and set the threshold from a form Products accepts
+by eye; keep IoU only as a coarse smoke signal.
