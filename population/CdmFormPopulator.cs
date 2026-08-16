@@ -2,13 +2,13 @@ using FapPdfTools.Server.Configuration;
 using FapPdfTools.Server.Infrastructure;
 using Microsoft.Extensions.Logging.Abstractions;
 using Microsoft.Extensions.Options;
-using MoE.GhostDraftDataModel.SDK;
+using MoE.CommonDataModel;
 
 namespace FapPdfTools.Population;
 
 /// <summary>
 /// Converts a legacy FAP form into a fillable PDF and populates it directly from
-/// a <see cref="CDMPolicyView"/>, bypassing GhostDraft. The rendering/parsing work
+/// a <see cref="Policy"/>, bypassing GhostDraft. The rendering/parsing work
 /// is delegated to the FapPdfTools.Core services; this type only wires them up
 /// (without a DI container) and applies a per-form <see cref="IFormFieldMap"/>.
 /// </summary>
@@ -31,7 +31,7 @@ public sealed class CdmFormPopulator
 	/// </summary>
 	/// <param name="flatten">When true, fields are flattened (read-only) after filling.</param>
 	public async Task<byte[]> PopulateAsync(
-		IFormFieldMap map, CDMPolicyView policy, bool flatten = true, CancellationToken ct = default)
+		IFormFieldMap map, Policy policy, bool flatten = true, CancellationToken ct = default)
 	{
 		var entries = await _formClient.ResolveFormFileNameAsync(map.FormNumber, map.EditionDate, ct);
 		if (entries.Count == 0)

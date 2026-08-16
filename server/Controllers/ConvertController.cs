@@ -10,11 +10,13 @@ public class ConvertController : ControllerBase
 {
     private readonly FormFileClient _formClient;
     private readonly FapToPdfGenerator _pdfGenerator;
+    private readonly FxrFontLibrary _fonts;
 
-    public ConvertController(FormFileClient formClient, FapToPdfGenerator pdfGenerator)
+    public ConvertController(FormFileClient formClient, FapToPdfGenerator pdfGenerator, FxrFontLibrary fonts)
     {
         _formClient = formClient;
         _pdfGenerator = pdfGenerator;
+        _fonts = fonts;
     }
 
     /// <summary>Convert a FAP form to PDF and return the file.</summary>
@@ -147,7 +149,7 @@ public class ConvertController : ControllerBase
             backgroundEmf = emfStream.ToArray();
         }
 
-        var gdXml = FapToGhostDraftGenerator.Generate(fap, formTitle, isWip, backgroundEmf);
+        var gdXml = FapToGhostDraftGenerator.Generate(fap, formTitle, fileName, isWip, backgroundEmf, _fonts);
         var bytes = System.Text.Encoding.UTF8.GetBytes(gdXml);
         return File(bytes, "application/octet-stream", $"{fileName}.gd");
     }

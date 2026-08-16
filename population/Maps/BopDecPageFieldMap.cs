@@ -1,12 +1,12 @@
 using MoE.CommonDataModel;
-using MoE.GhostDraftDataModel.SDK;
+using MoE.CommonDataModel;
 
 namespace FapPdfTools.Population.Maps;
 
 /// <summary>
 /// Field map for <c>BOPDEC PAGE</c> (file <c>BOPDEC1</c>) — the Businessowners
 /// declarations page. Binds the policy-level declaration fields to the
-/// <see cref="CDMPolicyView"/>. The repeating premises / building / coverage
+/// <see cref="Policy"/>. The repeating premises / building / coverage
 /// sections (PREM #n, PREMISES #n, LIMIT #n, …) are intentionally deferred to a
 /// later phase since they require array projection over InsuredAssets/Coverages.
 /// </summary>
@@ -16,7 +16,7 @@ public sealed class BopDecPageFieldMap : IFormFieldMap
 
 	public string EditionDate => "PAGE";
 
-	public IReadOnlyDictionary<string, string> BuildValues(CDMPolicyView policy)
+	public IReadOnlyDictionary<string, string> BuildValues(Policy policy)
 	{
 		var values = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
 

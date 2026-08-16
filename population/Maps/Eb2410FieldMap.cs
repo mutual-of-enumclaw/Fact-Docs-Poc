@@ -1,4 +1,4 @@
-using MoE.GhostDraftDataModel.SDK;
+using MoE.CommonDataModel;
 
 namespace FapPdfTools.Population.Maps;
 
@@ -13,7 +13,7 @@ public sealed class Eb2410FieldMap : IFormFieldMap
 
 	public string EditionDate => "0815";
 
-	public IReadOnlyDictionary<string, string> BuildValues(CDMPolicyView policy)
+	public IReadOnlyDictionary<string, string> BuildValues(Policy policy)
 	{
 		var values = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
 

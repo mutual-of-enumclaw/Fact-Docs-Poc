@@ -44,7 +44,7 @@ public class PolicyController : ControllerBase
 		using CommercialApiPolicyClient client = new(baseUrl);
 		try
 		{
-			MoE.GhostDraftDataModel.SDK.CDMPolicyView policy = await client.GetPolicyAsync(policyNumber, ct);
+			MoE.CommonDataModel.Policy policy = await client.GetPolicyAsync(policyNumber, ct);
 			return Ok(policy);
 		}
 		catch (HttpRequestException ex)
@@ -77,7 +77,7 @@ public class PolicyController : ControllerBase
 			return StatusCode(503, new { error = "No Commercial API URL configured for this environment." });
 
 		using CommercialApiPolicyClient client = new(baseUrl);
-		MoE.GhostDraftDataModel.SDK.CDMPolicyView policy;
+		MoE.CommonDataModel.Policy policy;
 		try
 		{
 			policy = await client.GetPolicyAsync(request.PolicyNumber, ct);
@@ -89,15 +89,24 @@ public class PolicyController : ControllerBase
 
 		IReadOnlyList<FapPdfTools.Server.Infrastructure.FormDatEntry> entries =
 			await _formClient.ResolveFormFileNameAsync(request.FormNumber, request.EditionDate, ct);
-		if (entries.Count == 0)
-			return NotFound(new { error = $"Form '{request.FormNumber}' edition '{request.EditionDate}' not found in FORM.DAT." });
+		// Resolve via FORM.DAT, else fall back to treating the form number as a direct
+		// FAP filename (e.g. MCS90A, QTE_*) — same fallback the /convert endpoint uses.
+		string fileName;
+		if (entries.Count > 0)
+			fileName = entries[0].FileName;
+		else
+		{
+			fileName = request.FormNumber.Trim();
+			if (_formClient.FindFormFilePath(fileName, ".FAP") == null)
+				return NotFound(new { error = $"Form '{request.FormNumber}' edition '{request.EditionDate}' not found in FORM.DAT, and no FAP file named '{fileName}' exists." });
+		}
 
-		FapParseResult? fap = await _formClient.ParseFapFileAsync(entries[0].FileName, ct);
+		FapParseResult? fap = await _formClient.ParseFapFileAsync(fileName, ct);
 		if (fap == null)
-			return NotFound(new { error = $"FAP file '{entries[0].FileName}' not found." });
+			return NotFound(new { error = $"FAP file '{fileName}' not found." });
 
-		DdtParseResult? ddt = await _formClient.ParseDdtFileAsync(entries[0].FileName, ct);
-		string? fapPath = _formClient.FindFormFilePath(entries[0].FileName, ".FAP");
+		DdtParseResult? ddt = await _formClient.ParseDdtFileAsync(fileName, ct);
+		string? fapPath = _formClient.FindFormFilePath(fileName, ".FAP");
 		FapPageInfo? pageInfo = fapPath != null ? FapToPdfGenerator.ParseHLine(fapPath) : null;
 
 		(byte[] pdfBytes, _) = _pdfGenerator.GeneratePdfBytes(fap, ddt, pageInfo);
@@ -106,7 +115,7 @@ public class PolicyController : ControllerBase
 		pdfBytes = _pdfGenerator.FillFields(pdfBytes, values, request.Flatten);
 
 		string suffix = request.Flatten ? "_policy_flat" : "_policy";
-		return File(pdfBytes, "application/pdf", $"{entries[0].FileName}{suffix}.pdf");
+		return File(pdfBytes, "application/pdf", $"{fileName}{suffix}.pdf");
 	}
 
 	/// <summary>
@@ -135,7 +144,7 @@ public class PolicyController : ControllerBase
 		using CommercialApiPolicyClient client = new(baseUrl);
 		try
 		{
-			MoE.GhostDraftDataModel.SDK.CDMPolicyView policy = await client.GetPolicyAsync(request.PolicyNumber, ct);
+			MoE.CommonDataModel.Policy policy = await client.GetPolicyAsync(request.PolicyNumber, ct);
 			IReadOnlyDictionary<string, string> values = map.BuildValues(policy);
 			return Ok(values);
 		}

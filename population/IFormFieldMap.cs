@@ -1,10 +1,10 @@
-using MoE.GhostDraftDataModel.SDK;
+using MoE.CommonDataModel;
 
 namespace FapPdfTools.Population;
 
 /// <summary>
 /// Maps a single form's fillable fields to values drawn from a
-/// <see cref="CDMPolicyView"/> (the Commercial API's Common Data Model shape).
+/// <see cref="Policy"/> (the Commercial API's Common Data Model shape).
 /// One implementation exists per form.
 /// </summary>
 public interface IFormFieldMap
@@ -20,5 +20,5 @@ public interface IFormFieldMap
 	/// the AcroForm field names produced by the renderer (the FAP field names).
 	/// Only non-empty values should be returned.
 	/// </summary>
-	IReadOnlyDictionary<string, string> BuildValues(CDMPolicyView policy);
+	IReadOnlyDictionary<string, string> BuildValues(Policy policy);
 }

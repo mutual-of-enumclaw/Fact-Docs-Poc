@@ -198,7 +198,7 @@ public class TemplatesController : ControllerBase
 		}
 
 		if (request.Policy == null)
-			return BadRequest(new { error = "A policy (CDMPolicyView) is required in the request body." });
+			return BadRequest(new { error = "A policy (Policy) is required in the request body." });
 
 		byte[]? template = _templateStore.Get(request.FormNumber, request.EditionDate);
 		if (template == null)
@@ -232,7 +232,7 @@ public class TemplatesController : ControllerBase
 		}
 
 		if (request.Policy == null)
-			return BadRequest(new { error = "A policy (CDMPolicyView) is required in the request body." });
+			return BadRequest(new { error = "A policy (Policy) is required in the request body." });
 
 		byte[]? template = _templateStore.Get(request.FormNumber, request.EditionDate);
 		if (template == null)
@@ -284,10 +284,10 @@ public class TemplatesController : ControllerBase
 
 /// <summary>
 /// Request to populate a template from a policy supplied in the body. The policy is the same
-/// <see cref="MoE.GhostDraftDataModel.SDK.CDMPolicyView"/> shape DocGen builds in-process.
+/// <see cref="MoE.CommonDataModel.Policy"/> shape DocGen builds in-process.
 /// </summary>
 public record PopulateFromModelRequest(
 	string FormNumber,
 	string EditionDate,
-	MoE.GhostDraftDataModel.SDK.CDMPolicyView Policy,
+	MoE.CommonDataModel.Policy Policy,
 	bool Flatten = false);

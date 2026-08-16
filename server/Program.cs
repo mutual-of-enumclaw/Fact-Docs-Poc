@@ -35,7 +35,7 @@ builder.Services
     .AddControllers()
     // Form population must tolerate partial policy data. The CDM model carries DataAnnotations
     // (Required/Range) that would otherwise make [ApiController] auto-reject an incomplete
-    // CDMPolicyView with a 400 before the action runs. Controllers do their own validation
+    // Policy with a 400 before the action runs. Controllers do their own validation
     // (422/404/400) where it matters.
     .ConfigureApiBehaviorOptions(options => options.SuppressModelStateInvalidFilter = true);
 builder.Services.AddOpenApi();

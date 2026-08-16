@@ -3,7 +3,7 @@ namespace FapPdfTools.Population;
 /// <summary>
 /// Resolves the correct <see cref="IFormFieldMap"/> for a given form number and edition date.
 /// Register all <see cref="IFormFieldMap"/> implementations with DI and inject this registry
-/// into controllers that need to populate forms from a <see cref="MoE.GhostDraftDataModel.SDK.CDMPolicyView"/>.
+/// into controllers that need to populate forms from a <see cref="MoE.CommonDataModel.Policy"/>.
 /// </summary>
 public class FormFieldMapRegistry
 {

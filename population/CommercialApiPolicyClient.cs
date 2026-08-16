@@ -1,11 +1,11 @@
 using System.Text.Json;
-using MoE.GhostDraftDataModel.SDK;
+using MoE.CommonDataModel;
 
 namespace FapPdfTools.Population;
 
 /// <summary>
 /// Fetches a policy from the Commercial API in its Common Data Model shape and
-/// deserializes it into a <see cref="CDMPolicyView"/> ready for form population.
+/// deserializes it into a <see cref="Policy"/> ready for form population.
 /// Wraps <c>GET {baseUrl}/api/policy/{policyNumber}</c>.
 /// </summary>
 public sealed class CommercialApiPolicyClient : IDisposable
@@ -46,7 +46,7 @@ public sealed class CommercialApiPolicyClient : IDisposable
 	}
 
 	/// <summary>Fetch a single policy/quote by number and return it as a CDM view.</summary>
-	public async Task<CDMPolicyView> GetPolicyAsync(string policyNumber, CancellationToken ct = default)
+	public async Task<Policy> GetPolicyAsync(string policyNumber, CancellationToken ct = default)
 	{
 		if (string.IsNullOrWhiteSpace(policyNumber))
 			throw new ArgumentException("Policy number is required.", nameof(policyNumber));
@@ -56,7 +56,7 @@ public sealed class CommercialApiPolicyClient : IDisposable
 		response.EnsureSuccessStatusCode();
 
 		var json = await response.Content.ReadAsStringAsync(ct);
-		return JsonSerializer.Deserialize<CDMPolicyView>(json, JsonOptions)
+		return JsonSerializer.Deserialize<Policy>(json, JsonOptions)
 			?? throw new InvalidOperationException($"Policy '{policyNumber}' returned no data.");
 	}
 
