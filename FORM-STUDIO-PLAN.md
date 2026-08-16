@@ -415,3 +415,70 @@ FAP2PDF.EXE -I=EB2410A.FAP -X=REL103.FXR          # note: -I not /I under Git Ba
 chrome.exe --headless --disable-gpu --no-pdf-header-footer --print-to-pdf=ours.pdf file:///out.html
 python parity.py EB2410A.PDF ours.pdf diff
 ```
+
+---
+
+## 11. Fidelity sweep — 50 forms, 2026-08-16
+
+`tools/sweep.py` batches the whole pipeline (FAP2PDF → `emit-html` → Chromium → parity) across a
+deterministic stratified sample drawn from the existing coverage report, and writes
+`output/fidelity-sweep.{csv,md}`. This is the P0 fidelity-dashboard skeleton.
+
+**Result: 48 of 50 scored, mean page-1 IoU 0.286. Every page count matched — including a 15-page form.**
+The low mean is explained almost entirely by two mechanical defects, not by content loss.
+
+| stratum | n | mean IoU | median legacy-unmatched |
+|---|---:|---:|---:|
+| multipage | 9 | 0.431 | 3.1% |
+| prose | 9 | 0.297 | 37.0% |
+| images | 10 | 0.266 | 44.6% |
+| grid | 10 | 0.252 | 51.8% |
+| fields | 10 | 0.212 | 46.5% |
+
+### Defect 1 — residual baseline offset (25 of 48 forms)
+
+The `max_shift` column splits the sample almost perfectly:
+
+| | n | mean IoU | median legacy-unmatched |
+|---|---:|---:|---:|
+| shift = 0 | 18 | **0.497** | 6.8% |
+| shift ≥ 2 | 29 | **0.157** | 55.4% |
+
+Re-scoring each form after applying its own detected shift lifts **mean IoU 0.286 → 0.434**, with 25 forms
+improving by >0.05 and several by >0.5 (`PSBP-QPREMDT2A-A` +0.61, `CPQ2-GL2` +0.58). This confirms the §10
+finding at scale: the hard-coded 1.44pt correction is right only for the font sizes in EB2410A. Half-leading
+is proportional to line-height, so **no single constant can be correct** — the baseline must be computed
+from the TTF `hhea`/`OS/2` ascent. This is the single highest-value fix in the project.
+
+### Defect 2 — fragment forms get a sliver page (15 of 48 forms, 31%)
+
+15 forms declare a partial page height in their FAP `H,` record and we honour it literally, producing pages
+like **612×14pt** where the legacy renders 612×792. Every one of them scores 0.02–0.17; they *are* the
+bottom of the table. These are composable fragments (`QCPP_*`, `QFRM_*`, `BQ-*`, headers/footers/totals)
+that Documaker assembles onto a page.
+
+Fix: render a fragment onto a full page box rather than its own bounding height. **Wider consequence:** at
+~31% of the library, forms are not 1:1 with pages, which directly promotes the "packet assembly" item from
+§5 — a converted fragment is not a deliverable document on its own.
+
+### Defect 3 — bold advance drift
+
+Unchanged from §10 and still outstanding: treat the FXR width table as authoritative via
+`FxrFont.MeasureFap` rather than trusting the substituted face's advances.
+
+### Also found
+
+- `R2021C` and `FP0102A` produced **empty** legacy PDFs — FAP2PDF exits 0 but writes a 0-byte file. Cause
+  not yet investigated; the harness now reports them rather than crashing.
+- `sweep.py` requires an **absolute** output path (the work dir becomes a `file://` URI for Chromium).
+
+### Revised risk ranking
+
+The plan assumed images were the top fidelity blocker. **They are not** — the images stratum (0.266) scores
+mid-pack and its low scores are mostly defect 1 and 2, not missing artwork. Ranking by measured cost:
+baseline offset → fragment page size → bold advances → images. Images remain a real gap for quote covers
+but should not lead the work.
+
+```bash
+python tools/sweep.py 10 C:\src\fact-pdf-tools\output    # 10 per stratum; path must be absolute
+```
