@@ -628,3 +628,26 @@ band, not a rounded coordinate.**
 Products reviewed EB2410A, A0238C, EB22489Q and P0010G on 2026-08-16 and called them
 "pretty much spot on", flagging only missing spaces. A0238C scores IoU **0.247**. That single
 data point is why IoU is disqualified as a gate and why Tier 1 leads.
+
+### Missing-space class — measured, and mostly a FALSE POSITIVE
+
+Probing the actual glyph boxes settles it:
+
+| form | legacy | ours | verdict |
+|---|---|---|---|
+| `P1060A` `1983, 1987` | `1983,` ends x=432.66, `1987` starts x=432.00 — legacy's own runs **overlap by 0.66pt** | single run 403.68→456.39 vs legacy 403.60→457.30 | **positions match within 1pt — extraction artefact, not a visual defect** |
+| `IM20754O` `DISCLOSURE --` | `--` at x=251.96 | `--` ≈3pt left of legacy | **real, but a small placement error** |
+
+So the class is two different things wearing one symptom. Documaker emits each token as a
+separate text-showing operation, so extraction splits them even where the boxes touch; we emit
+one absolutely-positioned span per token, and PyMuPDF merges neighbours whose boxes abut. In
+`P1060A` the ink is in the right place and only the *extracted text* differs.
+
+**Consequence for the gate:** Tier 1 must not fail a form for a merge that is positionally
+correct. Before flagging a missing space, compare the merged run's start/end against the
+legacy pair; if both ends agree within tolerance, it is an extraction artefact and passes.
+Without that rule the content gate will reject renders Products has already accepted — which
+is precisely the failure mode that disqualified IoU.
+
+The genuinely visual merge the reviewer saw on EB2410A is a *different* instance (bold runs,
+Univers→Arial), and is covered by the placement error above rather than by this artefact.
