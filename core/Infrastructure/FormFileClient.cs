@@ -535,10 +535,30 @@ public class FormFileClient
         catch { return null; }
     }
 
+    // Documaker resources (FAP/DDT/FORM.DAT) are Windows-1252, not UTF-8: they carry
+    // curly quotes (0x93/0x94) and en dashes (0x96) that UTF-8 decoding turns into
+    // U+FFFD. Latin-1 is built in and correct for 0xA0-0xFF; only 0x80-0x9F differs,
+    // so remap that range explicitly rather than taking a CodePages dependency.
+    private static readonly char[] Cp1252HighRange =
+    [
+        '€', '', '‚', 'ƒ', '„', '…', '†', '‡',
+        'ˆ', '‰', 'Š', '‹', 'Œ', '', 'Ž', '',
+        '', '‘', '’', '“', '”', '•', '–', '—',
+        '˜', '™', 'š', '›', 'œ', '', 'ž', 'Ÿ',
+    ];
+
     private static async Task<string[]?> ReadLinesAsync(string? path, CancellationToken ct)
     {
-        if (path != null && File.Exists(path)) return await File.ReadAllLinesAsync(path, ct);
-        return null;
+        if (path == null || !File.Exists(path)) return null;
+
+        var bytes = await File.ReadAllBytesAsync(path, ct);
+        var chars = new char[bytes.Length];
+        for (int i = 0; i < bytes.Length; i++)
+        {
+            byte b = bytes[i];
+            chars[i] = b is >= 0x80 and <= 0x9F ? Cp1252HighRange[b - 0x80] : (char)b;
+        }
+        return new string(chars).Split(["\r\n", "\n", "\r"], StringSplitOptions.None);
     }
 
     private static string? FindFile(string directory, string baseName, string extension)
