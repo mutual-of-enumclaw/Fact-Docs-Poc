@@ -35,8 +35,12 @@ def dilate(b, r=1):
     return out
 
 
-def best_shift(rb, ob, rng=3):
-    """Whole-page (dy,dx) that maximizes ink overlap — detects systematic offset."""
+def best_shift(rb, ob, rng=10):
+    """Whole-page (dy,dx) that maximizes ink overlap — detects systematic offset.
+
+    rng must exceed the largest plausible offset: the default was 3, which silently
+    CLAMPED and made a 6.7px error read as "dy=3", understating it by half.
+    """
     best, bxy = -1, (0, 0)
     for dy in range(-rng, rng + 1):
         for dx in range(-rng, rng + 1):

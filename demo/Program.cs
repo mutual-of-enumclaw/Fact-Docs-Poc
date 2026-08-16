@@ -61,6 +61,22 @@ if (args.Length >= 2 && args[0] == "emit-html")
         return;
     }
 
+    // Per-FontId baseline correction, in points, measured by tools/calibrate.py.
+    // Chromium's baseline placement inside a line box depends on font metrics we
+    // cannot reliably predict from the TTF tables alone, and the FXR ascent varies
+    // per font id, so the residual is measured once per font id rather than derived.
+    // Deterministic: same calibration file in, same HTML out. Missing file = no
+    // correction (raw model), which is what the calibration pass itself needs.
+    var calibration = new Dictionary<int, float>();
+    var calPath = Path.Combine(@"C:\src\fact-pdf-tools\output", "font-calibration.json");
+    if (File.Exists(calPath))
+    {
+        using var doc = System.Text.Json.JsonDocument.Parse(File.ReadAllText(calPath));
+        foreach (var prop in doc.RootElement.EnumerateObject())
+            if (int.TryParse(prop.Name, out int fid))
+                calibration[fid] = prop.Value.GetSingle();
+    }
+
     const float S = 72f / 2400f; // FAP units (1/2400") -> PDF points
 
     // --- Resolve the TTF backing an FXR typeface -------------------------------
@@ -87,6 +103,41 @@ if (args.Length >= 2 && args[0] == "emit-html")
 
     static string N(float v) => v.ToString("0.###", CultureInfo.InvariantCulture);
 
+    // --- TrueType vertical metrics -------------------------------------------
+    // Chromium places the baseline inside the line box using the font's own
+    // ascent/descent, so a fixed offset can never be right across font sizes
+    // (half-leading scales with line-height). Read the real values instead.
+    // DirectWrite -- and therefore Blink on Windows -- reports OS/2
+    // usWinAscent/usWinDescent, so prefer those and fall back to hhea.
+    // Returned as em fractions.
+    static (float Ascent, float Descent) TtfMetrics(string path)
+    {
+        var b = File.ReadAllBytes(path);
+        ushort U16(int o) => (ushort)((b[o] << 8) | b[o + 1]);
+        short S16(int o) => (short)((b[o] << 8) | b[o + 1]);
+        int U32(int o) => (b[o] << 24) | (b[o + 1] << 16) | (b[o + 2] << 8) | b[o + 3];
+
+        int head = 0, os2 = 0, hhea = 0, numTables = U16(4);
+        for (int i = 0; i < numTables; i++)
+        {
+            int rec = 12 + i * 16;
+            var tag = System.Text.Encoding.ASCII.GetString(b, rec, 4);
+            int off = U32(rec + 8);
+            if (tag == "head") head = off;
+            else if (tag == "OS/2") os2 = off;
+            else if (tag == "hhea") hhea = off;
+        }
+
+        float upem = head != 0 ? U16(head + 18) : 2048f;
+        if (upem <= 0) upem = 2048f;
+
+        if (os2 != 0)
+            return (U16(os2 + 74) / upem, U16(os2 + 76) / upem);
+        if (hhea != 0)
+            return (S16(hhea + 4) / upem, -S16(hhea + 6) / upem);
+        return (0.905f, 0.212f); // Arial-ish fallback
+    }
+
     // --- Flatten every drawable into one ordered list --------------------------
     // (text tokens from both S,TT static texts and M,TT text areas)
     var texts = parsed.StaticTexts
@@ -109,10 +160,12 @@ if (args.Length >= 2 && args[0] == "emit-html")
         .ToList();
 
     var css = new System.Text.StringBuilder();
+    var faceMetrics = new Dictionary<string, (float Ascent, float Descent)>(StringComparer.Ordinal);
     foreach (var face in usedFaces)
     {
         var ttf = Path.Combine(fontDir, TtfFor(face.Typeface, face.Bold, face.Italic));
         if (!File.Exists(ttf)) { Console.Error.WriteLine($"  ! missing font {ttf}"); continue; }
+        faceMetrics[$"{CssFamily(face.Typeface)}|{face.Bold}|{face.Italic}"] = TtfMetrics(ttf);
         var b64 = Convert.ToBase64String(File.ReadAllBytes(ttf));
         css.Append($"@font-face{{font-family:'{CssFamily(face.Typeface)}';")
            .Append($"font-weight:{(face.Bold ? "bold" : "normal")};")
@@ -121,7 +174,17 @@ if (args.Length >= 2 && args[0] == "emit-html")
     }
 
     var pi0 = parsed.PageInfos.Count > 0 ? parsed.PageInfos[0] : new FapPageInfo(2400, 0, 0, 20400, 26400);
-    float pageW = pi0.PageWidth * S, pageH = pi0.PageHeight * S;
+
+    // A FAP's H, record declares the extent of the SECTION, not of the page. About a
+    // third of the library is composable fragments (headers, footers, totals, QCPP_*/
+    // QFRM_*) that declare e.g. 612x14pt; Documaker composes them onto the printer
+    // page. Honouring the declared height literally produced sliver pages -- see
+    // FORM-STUDIO-PLAN section 11, defect 2. A FAP that declares MORE than the page
+    // keeps its own extent.
+    float declW = pi0.PageWidth * S, declH = pi0.PageHeight * S;
+    bool landscape = declW > declH && declW > 612f;
+    float pageW = Math.Max(declW, landscape ? 792f : 612f);
+    float pageH = Math.Max(declH, landscape ? 612f : 792f);
 
     var sb = new System.Text.StringBuilder();
     sb.Append("<!doctype html>\n<html><head><meta charset=\"utf-8\">\n<style>\n")
@@ -129,10 +192,9 @@ if (args.Length >= 2 && args[0] == "emit-html")
       .Append($"@page{{size:{N(pageW)}pt {N(pageH)}pt;margin:0}}\n")
       .Append("html,body{margin:0;padding:0;background:#fff;-webkit-print-color-adjust:exact}\n")
       .Append($".form-page{{position:relative;width:{N(pageW)}pt;height:{N(pageH)}pt;overflow:hidden;page-break-after:always}}\n")
-      // Baseline calibration: Chromium's half-leading places the baseline 1.44pt
-      // higher than Documaker for these faces. Measured constant, pending exact
-      // ascent/descent parsing from the TTF (hhea/OS-2) — see FORM-STUDIO-PLAN §5.
-      .Append(".abs{position:absolute;white-space:pre;margin:0;padding:0;transform:translateY(1.44pt)}\n")
+      // No global baseline nudge: each run's top is solved from the real font
+      // metrics + the FXR ascent at emit time (see the text-run loop below).
+      .Append(".abs{position:absolute;white-space:pre;margin:0;padding:0}\n")
       .Append(".rule{position:absolute;background:#000}\n")
       .Append(".box{position:absolute;border:solid #000}\n")
       .Append("</style></head><body>\n");
@@ -149,13 +211,22 @@ if (args.Length >= 2 && args[0] == "emit-html")
         {
             var f = htmlFonts.Resolve(t.FontId);
             float size = f?.PointSize > 0 ? f.PointSize : 10f;
-            // Documaker's own line box, so Chromium's half-leading places the
-            // baseline the same way GENDAW32 does.
-            float lh = f != null && f.LineHeight > 0 ? f.LineHeight * S : size * 1.2f;
             var fam = CssFamily(f?.Typeface ?? "Arial");
             bool bold = (f?.Bold ?? false) || t.Bold;
+            bool italic = f?.Italic ?? false;
 
-            sb.Append($"<span class=\"abs\" style=\"left:{N(Px(t.Position.Col1))}pt;top:{N(Py(t.Position.Row1))}pt;")
+            // Reproduce Documaker's own line box: the FAP row is the top of the text
+            // cell and the FXR line height is the cell height. Deriving the baseline
+            // from TTF ascent/descent instead was tried and measured WORSE (see
+            // FORM-STUDIO-PLAN section 12) -- Chromium's in-box baseline placement does
+            // not follow the OS/2 metrics closely enough to predict. So: model the box
+            // the way Documaker does, and carry the residual as a measured per-FontId
+            // correction from tools/calibrate.py.
+            float lh = f != null && f.LineHeight > 0 ? f.LineHeight * S : size * 1.2f;
+            float top = Py(t.Position.Row1)
+                      + (calibration.TryGetValue(t.FontId, out float cal) ? cal : 0f);
+
+            sb.Append($"<span class=\"abs\" data-fid=\"{t.FontId}\" style=\"left:{N(Px(t.Position.Col1))}pt;top:{N(top)}pt;")
               .Append($"font-family:'{fam}';font-size:{N(size)}pt;line-height:{N(lh)}pt")
               .Append(bold ? ";font-weight:bold" : "")
               .Append((f?.Italic ?? false) ? ";font-style:italic" : "")

@@ -482,3 +482,66 @@ but should not lead the work.
 ```bash
 python tools/sweep.py 10 C:\src\fact-pdf-tools\output    # 10 per stratum; path must be absolute
 ```
+
+---
+
+## 12. Defect fixes — one confirmed, one NEGATIVE result (2026-08-16)
+
+### Defect 2 (fragment page box) — FIXED, confirmed
+
+`emit-html` now composes a fragment onto the printer page instead of honouring its
+declared section extent (landscape preserved). **Page-size mismatches went 15/48 → 0/48.**
+
+Caveat worth knowing: this did **not** move those forms' scores, because FAP2PDF renders
+most fragments nearly blank. Three references carry <1500 ink pixels (`QCPP_GL3_A` = 112px,
+`EF1001A_SCHF_DTL` = 134px, `QBOP_SE07` = 684px) and cannot be meaningfully compared at all.
+**A fragment's true appearance only exists inside an assembled packet, so FAP2PDF is not a
+valid oracle for it.** The harness should exclude near-blank references from scoring rather
+than reporting them as failures.
+
+### Defect 1 (baseline offset) — NOT FIXED. Three approaches, all a wash.
+
+| approach | result |
+|---|---|
+| Fixed 1.44pt constant (from the EB2410A spike) | mean IoU **0.292** |
+| Baseline solved from TTF OS/2 ascent + zero half-leading | **worse** — EB2410A fell 0.528 → 0.177 |
+| Documaker line box + measured per-FontId correction | **0.288–0.301** depending on gating |
+
+Net movement across four full sweeps: **none**. Each variant improved some strata and
+regressed others (prose/multipage up, fields/images down) — the signature of correcting the
+wrong axis.
+
+What was learned, so nobody repeats it:
+
+- **Chromium's in-box baseline placement does not follow the OS/2 `usWinAscent`/`usWinDescent`
+  metrics.** Measured k/size ≈ 0.83–0.85 em where OS/2 predicts 0.905. Deriving the baseline
+  from font tables is therefore not viable; it must be measured.
+- **Per-FontId correction is structurally insufficient for at least one font.** Font 16010 —
+  the most common body font, 933 samples — has a **bimodal** delta distribution (60% core).
+  A single scalar cannot describe it, and applying its median regressed `fields` 0.212 → 0.124.
+  It is now left uncorrected (`MIN_SHARE = 0.90` in `tools/calibrate.py`).
+- The corrections that *are* stable are physically sensible and agree with the spike: font
+  14010 → **1.50pt** vs the 1.44pt constant measured by hand on EB2410A.
+
+### The real conclusion: we have been optimising the wrong axis
+
+Perfectly aligning every page vertically (measured by re-scoring at each form's own detected
+shift) only reaches **mean IoU ≈ 0.44**. So even with the baseline solved, **~56% of the
+mismatch remains** — it is not vertical.
+
+The evidence points at **defect 3, horizontal advance widths**, which has never been addressed:
+non-zero `dx` on many forms, and the accumulating intra-run drift in bold text documented back
+in §10. At 8–12pt, an advance mismatch destroys glyph overlap exactly as effectively as a
+vertical offset does, and it compounds along a run rather than staying constant.
+
+**Next action: implement defect 3 before any further baseline work** — treat the FXR width
+table as authoritative (`FxrFont.MeasureFap`) and correct per-run advances, most likely by
+emitting per-run `letter-spacing` or explicit per-token positioning. Then re-measure; the
+baseline correction should be revisited only once horizontal error is removed, because the
+two are currently confounded in every score.
+
+### Harness fix
+
+`parity.best_shift` searched ±3px and silently **clamped** — a 6.7px error reported as
+"dy=3", understating it by half and sending the first fix in the wrong direction. Default is
+now ±10. Any future metric with a bounded search must report saturation.
