@@ -1,3 +1,4 @@
+using System.Globalization;
 using FapPdfTools.Population;
 using FapPdfTools.Population.Maps;
 using FapPdfTools.Server.Configuration;
@@ -28,6 +29,177 @@ if (args.Length >= 1 && args[0] == "render-preview")
         img.Save(previewOutPath);
         Console.WriteLine($"Saved {previewOutPath} ({img.Width}x{img.Height})");
     }
+    return;
+}
+
+// emit-html <FORM> [outPath]  -> Layer-A (absolute) MoE Form HTML for a single FAP.
+// Deterministic: no timestamps, all collections sorted, fonts embedded from the
+// Documaker TTFs so Chromium shapes text with the same faces GENDAW32/FAP2PDF use.
+if (args.Length >= 2 && args[0] == "emit-html")
+{
+    const string MstrRes = @"C:\src\FaCT-DocProd-Development\mstrres";
+    var formName = args[1];
+    var outHtml = args.Length >= 3
+        ? args[2]
+        : Path.Combine(@"C:\src\fact-pdf-tools\output", formName + ".html");
+    var fontDir = Path.Combine(MstrRes, "Fmres", "deflib");
+
+    var htmlOptions = Options.Create(new FormFileOptions
+    {
+        FormDatPath = Path.Combine(MstrRes, @"MOEC0\DEFLIB\FORM.DAT"),
+        FormsDirectory = Path.Combine(MstrRes, @"MOEC0\FORMS"),
+        DdtDirectory = Path.Combine(MstrRes, @"MOEC0\DDTLIB"),
+        FxrPath = Path.Combine(MstrRes, @"MOEC0\DEFLIB\REL103.FXR"),
+    });
+    var htmlClient = new FormFileClient(htmlOptions, NullLogger<FormFileClient>.Instance);
+    var htmlFonts = new FxrFontLibrary(htmlOptions, NullLogger<FxrFontLibrary>.Instance);
+
+    var parsed = await htmlClient.ParseFapFileAsync(formName);
+    if (parsed == null)
+    {
+        Console.Error.WriteLine($"Could not parse FAP '{formName}'.");
+        return;
+    }
+
+    const float S = 72f / 2400f; // FAP units (1/2400") -> PDF points
+
+    // --- Resolve the TTF backing an FXR typeface -------------------------------
+    // NOTE: the legacy PDF channel (FAP2PDF / the LPDF driver) substitutes the
+    // base-14 Helvetica for the sans faces rather than embedding the Documaker
+    // TTFs, so PDF-channel parity wants the Helvetica-metric face (Arial) for
+    // Univers ATT too. A print/AFP channel would use the real face. Which legacy
+    // channel we are matching is therefore an explicit parity setting.
+    static string TtfFor(string typeface, bool bold, bool italic)
+    {
+        var t = typeface.ToUpperInvariant();
+        string[] set =
+            t.Contains("COURIER") ? ["COURIE.TTF", "COURIEB.TTF", "COURIEI.TTF", "COURIEBI.TTF"]
+            : t.Contains("TIMES") ? ["TIMES.TTF", "TIMESB.TTF", "TIMESI.TTF", "TIMESBI.TTF"]
+            : ["arial.ttf", "arialbd.ttf", "ariali.ttf", "arialbi.ttf"];
+        return set[(bold ? 1 : 0) + (italic ? 2 : 0)];
+    }
+
+    static string CssFamily(string typeface) =>
+        "F_" + new string(typeface.Where(char.IsLetterOrDigit).ToArray());
+
+    static string Esc(string s) => s
+        .Replace("&", "&amp;").Replace("<", "&lt;").Replace(">", "&gt;");
+
+    static string N(float v) => v.ToString("0.###", CultureInfo.InvariantCulture);
+
+    // --- Flatten every drawable into one ordered list --------------------------
+    // (text tokens from both S,TT static texts and M,TT text areas)
+    var texts = parsed.StaticTexts
+        .Select(t => (t.Text, t.PageIndex, t.Position, t.FontAttributes.FontId, Bold: false))
+        .Concat(parsed.TextAreas.SelectMany(a => a.Tokens
+            .Where(tok => !tok.IsFieldPlaceholder)
+            .Select(tok => (tok.Text, a.PageIndex, tok.Position, FontId: tok.FontId, Bold: tok.IsBold))))
+        .Where(t => !string.IsNullOrWhiteSpace(t.Text))
+        .OrderBy(t => t.PageIndex).ThenBy(t => t.Position.Row1).ThenBy(t => t.Position.Col1)
+        .ThenBy(t => t.Text, StringComparer.Ordinal)
+        .ToList();
+
+    // --- Embed only the faces this form actually uses ---------------------------
+    var usedFaces = texts
+        .Select(t => htmlFonts.Resolve(t.FontId))
+        .Where(f => f != null)
+        .Select(f => (f!.Typeface, Bold: f.Bold, f.Italic))
+        .Distinct()
+        .OrderBy(f => f.Typeface, StringComparer.Ordinal).ThenBy(f => f.Bold).ThenBy(f => f.Italic)
+        .ToList();
+
+    var css = new System.Text.StringBuilder();
+    foreach (var face in usedFaces)
+    {
+        var ttf = Path.Combine(fontDir, TtfFor(face.Typeface, face.Bold, face.Italic));
+        if (!File.Exists(ttf)) { Console.Error.WriteLine($"  ! missing font {ttf}"); continue; }
+        var b64 = Convert.ToBase64String(File.ReadAllBytes(ttf));
+        css.Append($"@font-face{{font-family:'{CssFamily(face.Typeface)}';")
+           .Append($"font-weight:{(face.Bold ? "bold" : "normal")};")
+           .Append($"font-style:{(face.Italic ? "italic" : "normal")};")
+           .Append($"src:url(data:font/ttf;base64,{b64}) format('truetype');}}\n");
+    }
+
+    var pi0 = parsed.PageInfos.Count > 0 ? parsed.PageInfos[0] : new FapPageInfo(2400, 0, 0, 20400, 26400);
+    float pageW = pi0.PageWidth * S, pageH = pi0.PageHeight * S;
+
+    var sb = new System.Text.StringBuilder();
+    sb.Append("<!doctype html>\n<html><head><meta charset=\"utf-8\">\n<style>\n")
+      .Append(css)
+      .Append($"@page{{size:{N(pageW)}pt {N(pageH)}pt;margin:0}}\n")
+      .Append("html,body{margin:0;padding:0;background:#fff;-webkit-print-color-adjust:exact}\n")
+      .Append($".form-page{{position:relative;width:{N(pageW)}pt;height:{N(pageH)}pt;overflow:hidden;page-break-after:always}}\n")
+      // Baseline calibration: Chromium's half-leading places the baseline 1.44pt
+      // higher than Documaker for these faces. Measured constant, pending exact
+      // ascent/descent parsing from the TTF (hhea/OS-2) — see FORM-STUDIO-PLAN §5.
+      .Append(".abs{position:absolute;white-space:pre;margin:0;padding:0;transform:translateY(1.44pt)}\n")
+      .Append(".rule{position:absolute;background:#000}\n")
+      .Append(".box{position:absolute;border:solid #000}\n")
+      .Append("</style></head><body>\n");
+
+    for (int p = 0; p < Math.Max(1, parsed.PageCount); p++)
+    {
+        var pi = p < parsed.PageInfos.Count ? parsed.PageInfos[p] : pi0;
+        float Px(int col) => (col - pi.OriginCol) * S;
+        float Py(int row) => (row - pi.OriginRow) * S;
+
+        sb.Append($"<section class=\"form-page\" data-page=\"{p + 1}\">\n");
+
+        foreach (var t in texts.Where(t => t.PageIndex == p))
+        {
+            var f = htmlFonts.Resolve(t.FontId);
+            float size = f?.PointSize > 0 ? f.PointSize : 10f;
+            // Documaker's own line box, so Chromium's half-leading places the
+            // baseline the same way GENDAW32 does.
+            float lh = f != null && f.LineHeight > 0 ? f.LineHeight * S : size * 1.2f;
+            var fam = CssFamily(f?.Typeface ?? "Arial");
+            bool bold = (f?.Bold ?? false) || t.Bold;
+
+            sb.Append($"<span class=\"abs\" style=\"left:{N(Px(t.Position.Col1))}pt;top:{N(Py(t.Position.Row1))}pt;")
+              .Append($"font-family:'{fam}';font-size:{N(size)}pt;line-height:{N(lh)}pt")
+              .Append(bold ? ";font-weight:bold" : "")
+              .Append((f?.Italic ?? false) ? ";font-style:italic" : "")
+              .Append($"\">{Esc(t.Text)}</span>\n");
+        }
+
+        foreach (var l in parsed.Lines.Where(l => l.PageIndex == p)
+                     .OrderBy(l => l.Position.Row1).ThenBy(l => l.Position.Col1))
+        {
+            float x1 = Px(l.Position.Col1), y1 = Py(l.Position.Row1);
+            float x2 = Px(l.Position.Col2), y2 = Py(l.Position.Row2);
+            float thick = Math.Max(0.5f, l.Width * S);
+
+            if (Math.Abs(y2 - y1) < 0.01f)      // horizontal rule
+                sb.Append($"<div class=\"rule\" style=\"left:{N(x1)}pt;top:{N(y1)}pt;width:{N(x2 - x1)}pt;height:{N(thick)}pt\"></div>\n");
+            else if (Math.Abs(x2 - x1) < 0.01f) // vertical rule
+                sb.Append($"<div class=\"rule\" style=\"left:{N(x1)}pt;top:{N(y1)}pt;width:{N(thick)}pt;height:{N(y2 - y1)}pt\"></div>\n");
+            else                                 // rectangle
+                sb.Append($"<div class=\"box\" style=\"left:{N(x1)}pt;top:{N(y1)}pt;width:{N(x2 - x1)}pt;height:{N(y2 - y1)}pt;border-width:{N(thick)}pt\"></div>\n");
+        }
+
+        // Fields carry binding metadata but draw nothing when unfilled — matching
+        // an unfilled Documaker render.
+        foreach (var fld in parsed.Fields.Where(f => f.PageIndex == p)
+                     .OrderBy(f => f.Position.Row1).ThenBy(f => f.Position.Col1).ThenBy(f => f.Name, StringComparer.Ordinal))
+        {
+            sb.Append($"<span class=\"abs field\" data-field=\"{Esc(fld.Name)}\" data-maxlen=\"{fld.Length}\" ")
+              .Append($"style=\"left:{N(Px(fld.Position.Col1))}pt;top:{N(Py(fld.Position.Row1))}pt;")
+              .Append($"width:{N(Px(fld.Position.Col2) - Px(fld.Position.Col1))}pt;")
+              .Append($"height:{N(Py(fld.Position.Row2) - Py(fld.Position.Row1))}pt\"></span>\n");
+        }
+
+        sb.Append("</section>\n");
+    }
+    sb.Append("</body></html>\n");
+
+    Directory.CreateDirectory(Path.GetDirectoryName(outHtml)!);
+    File.WriteAllText(outHtml, sb.ToString());
+
+    Console.WriteLine($"{formName}: {parsed.PageCount} page(s), {texts.Count} text runs, "
+        + $"{parsed.Lines.Count} rules/boxes, {parsed.Fields.Count} fields, {usedFaces.Count} faces embedded");
+    foreach (var face in usedFaces)
+        Console.WriteLine($"  font: {face.Typeface}{(face.Bold ? " Bold" : "")}{(face.Italic ? " Italic" : "")} -> {TtfFor(face.Typeface, face.Bold, face.Italic)}");
+    Console.WriteLine($"Wrote {outHtml} ({new FileInfo(outHtml).Length:N0} bytes)");
     return;
 }
 

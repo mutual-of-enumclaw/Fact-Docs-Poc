@@ -1,0 +1,417 @@
+# Form Studio — Plan
+
+**Goal:** one app that converts legacy Documaker (FAP/DDT) forms into a modern, editable, schema-bound
+format; lets engineers and business authors edit them (text, columns, variable mapping); renders them to
+PDF; and eventually serves as the production render path in place of GhostDraft/Documaker.
+
+**Decisions taken from intake (2026-08-16):**
+
+| Question | Answer | Consequence |
+|---|---|---|
+| Purpose | Migration **and** runtime engine **and** new-form authoring | One codebase, phased rollout; runtime must be fast and deterministic |
+| Fidelity | Converted forms **indistinguishable** from legacy at first, **restyle allowed after** | Two-layer document model + automated pixel-parity gate |
+| Users | Engineers **and** business authors, different modes | Two editing surfaces over one document model |
+| Data source | CDM today, **"Golden Schema" possible later** | Bindings must be schema-neutral; adapters + mapping profiles, never hard-coded paths |
+| Ownership | **Engineering does all conversion.** Products does final sign-off, edits forms, and authors new ones | Explicit review/approval workflow with states; author mode is a first-class product surface, not a nicety |
+| Output formats | Multiple — HTML, PDF, GhostDraft `.gd`, extensible | Hub-and-spoke: one canonical model, pluggable emitters |
+| Implementation | **Fully programmatic and deterministic** | No AI/heuristic guessing in the conversion path; same input → byte-identical output; ambiguity fails loudly |
+
+---
+
+## 1. Build on `fact-pdf-tools`, don't greenfield
+
+Roughly 60% of the hard substrate already exists in this repo and is proven against real policies:
+
+| Capability | Where | State |
+|---|---|---|
+| FAP parser (fields, static text, text areas w/ per-word tokens, lines, rectangles, page info) | `core/Infrastructure/FormFileClient.cs` | Working, 2400-DPI integer coords |
+| FXR font resolution (exact pt size / bold / italic / face) | `core/Infrastructure/FxrFontLibrary.cs` | Working |
+| Absolute FAP → PDF renderer (Spire.PDF, AcroForm fields, box auto-fit fixes) | `core/Infrastructure/FapToPdfGenerator.cs` | Working, several fidelity bugs already solved (see `RENDERING_LEARNINGS.md`) |
+| **Semantic inference** — paragraph flow, N-column detection, grid/border detection from FAP `X,` rectangles | `core/Infrastructure/FapToGhostDraftGenerator.cs` (1048 lines) | Working, currently emits RTF/`.gd`. **This is the most valuable asset to retarget.** |
+| Editable form model + JSON store | `core/Models/FormDefinition.cs`, `FormDefinitionStore.cs` | Absolute-only |
+| Drag/select/edit designer UI | `client/src/pages/DesignPage.tsx` | Absolute-only, engineer-grade |
+| Catalog (FORM.DAT), convert, scenarios, policy fetch, template fill | `server/Controllers/*` | Working |
+| CDM variable population + per-field formats (money/date/percent) | `population/`, `core/Models/FieldValueFormatter.cs` | Working, 4 specific maps + generic header fallback |
+| Batch conversion over the whole library | `demo coverage` | 4462 forms parse without error |
+
+**Plan: extend this repo.** New projects to add: `render` (document model → HTML → PDF) and `binding`
+(schema-neutral data binding). Rename the product surface to **Form Studio**; keep the assembly names.
+
+---
+
+## 2. Core architecture — the two-layer document
+
+The central tension: **pixel parity demands absolute positioning; editing text and aligning columns demands
+semantic structure.** Trying to pick one loses half the requirement. So the document carries both.
+
+```
+FAP + DDT + FXR
+      │
+      ├─► PARSE ──► FapParseResult  (exact 2400-DPI geometry, per-word tokens, fonts)
+      │
+      ├─► LAYER A: ABSOLUTE   — every element placed at its exact legacy coordinate.
+      │                         Guarantees "indistinguishable". Produced 100% mechanically.
+      │
+      └─► PROMOTE ──► LAYER B: FLOW  — inferred paragraphs, tables, columns, rules.
+                                       Optional, per-region, reversible. Enables real editing
+                                       and restyling. Uses the existing inference engine.
+```
+
+- A converted form starts **100% Layer A** and is byte-for-byte reproducible from the FAP.
+- An author "promotes" a region (a block of text, a column group, a grid) to Layer B when they want to
+  edit or restyle it. Promotion is per-region and **reversible** — the absolute origin is retained as
+  `data-origin` back-references, so a bad promotion can be reverted without re-importing.
+- Forms never touched stay pixel-identical forever. Forms that get restyled do so deliberately, region by
+  region, with a visible parity score showing what drifted.
+
+### Canonical format: **MoE Form HTML** (a constrained HTML profile)
+
+HTML is the right canonical format — and it should be the *stored source of truth*, not just a view.
+Reasons: it renders to PDF through a first-class engine, it is directly editable by mature editor
+libraries, it diffs readably in git, and it carries arbitrary metadata on `data-*` attributes.
+
+The risk with raw HTML is metadata sprawl and unrenderable soup. Mitigate with a **strict, versioned
+profile** plus a validator that rejects anything outside it:
+
+```html
+<section class="form-page" data-page="1" style="width:612pt;height:792pt">
+
+  <!-- Layer A: absolute, exact legacy geometry -->
+  <span class="abs" style="left:72pt;top:96.4pt;font:8pt 'Documaker Sans'">POLICY NUMBER</span>
+
+  <!-- A bound field -->
+  <span class="abs field"
+        style="left:180pt;top:96.4pt;width:96pt;height:9.4pt"
+        data-field="POLICYNUM"
+        data-bind="policy.number"
+        data-provenance="system"
+        data-format="text"
+        data-maxlen="12"></span>
+
+  <!-- Layer B: promoted flow region, still traceable to its origin -->
+  <table class="flow grid" data-origin="rect:14,22" data-cols="left,right,right">
+    <tr><td>Bodily Injury</td><td data-bind="coverage.bi.limit" data-format="money:0">…</td></tr>
+  </table>
+
+</section>
+```
+
+Rules: page size and all Layer-A coordinates in **points**; CSS `@page { size: 8.5in 11in; margin: 0 }`;
+no external resources at render time (fonts and images inlined or served from the template store); a typed
+C# model round-trips the document (parse with AngleSharp) so server code never string-manipulates HTML.
+
+### Output formats — hub and spoke
+
+The app is not a FAP→PDF converter with a side door; it is a **hub-and-spoke converter**. One canonical
+document, an `IFormEmitter` registry, and any number of output formats — including formats we haven't
+thought of yet.
+
+```
+                    ┌─► HTML          (canonical + web preview)
+                    ├─► PDF           (Chromium; the deliverable)
+FAP/DDT ─► Document ├─► GhostDraft .gd (FapToGhostDraftGenerator — already built)
+   PDF  ─►  Model   ├─► AcroForm PDF  (Spire; fillable hand-off)
+   (new authoring)  ├─► DOCX / RTF    (future)
+                    └─► JSON          (machine interchange, diffs, tests)
+```
+
+Two consequences worth stating:
+
+- **HTML → GD is now a supported route.** Convert legacy → HTML, edit/restyle, *then* emit `.gd`. This
+  matters because it de-risks the GhostDraft question entirely: Form Studio can feed GhostDraft during a
+  transition period and replace it later, and the decision doesn't have to be made up front. The existing
+  1048-line `.gd` generator becomes an emitter behind the same interface rather than a parallel pipeline.
+- **Import is also pluggable.** FAP is the first importer; `import-pdf` already exists; new-form authoring
+  is just "start with an empty document." An `IFormImporter` interface keeps that symmetric.
+
+Every emitter is a pure function of the document model plus a versioned emitter ruleset — see §7.
+
+### PDF engine
+
+| Option | Verdict |
+|---|---|
+| **Headless Chromium (Playwright / PuppeteerSharp)** | **Recommended primary.** Correct CSS paged-media, real font shaping, handles both layers with one code path, embeds fonts. Cost: a browser in the container and a warm process pool. |
+| Existing Spire.PDF absolute renderer | **Keep as the parity oracle** during migration and as the fallback for AcroForm output. Verify the Spire license tier covers production volume before depending on it. |
+| QuestPDF / pure-.NET | Rejected as primary — it would mean re-implementing layout that Chromium already does correctly. |
+
+**AcroForm caveat:** Chromium does not emit fillable fields. Today's interactive/WIP forms (MCS90A, EB2410)
+rely on AcroForm editing in the browser. Under Form Studio the user edits in the app instead and the PDF is
+flat — which is simpler and removes a whole class of bugs (the box auto-fit / clipping / MaxLength issues
+documented in `RENDERING_LEARNINGS.md`). Keep the Spire path for any consumer that genuinely needs a
+fillable PDF handed off externally.
+
+---
+
+## 3. Data binding — surviving the Golden Schema
+
+This is the requirement most likely to be designed wrong, and the cheapest to get right up front.
+
+**Never store a CDM path in a form.** Store a **logical binding path** in a Form Studio namespace, and
+resolve it through an adapter:
+
+```
+Form HTML:      data-bind="policy.number"
+                              │
+Binding catalog │  logical path → type, label, sample value, format hint
+                              │
+IFormDataSource ├─► CdmDataSource          policy.number → CDMPolicyView.Policy.Number
+                └─► GoldenSchemaDataSource policy.number → <golden path>
+```
+
+- `IFormDataSource` resolves a logical path against a runtime payload; one implementation per schema.
+- A **mapping profile** (one versioned file per schema) maps logical paths → concrete schema paths.
+- Golden Schema migration then = write one adapter + one mapping profile + remap the few hundred distinct
+  logical paths. **Zero edits to 4,500 forms.** Unmapped paths are reported as a gap list, not a crash.
+- Seed the logical namespace from the DDT provenance work already built (`demo gap`): every field is
+  `system` (DAL/table computed), `manual` (WIP entry), or `constant` (mk_hard). Only `system` fields need
+  bindings; `manual` becomes author-entered; `constant` becomes literal text.
+- **DAL-sourced fields are the hard tail.** Many legacy values come from DAL script computation, not a
+  column. Classify them: some resolve to a plain path via `form_resolve_dal`; the rest need a named
+  server-side expression owned by engineers. Do not let authors write logic.
+
+---
+
+## 4. The editor
+
+One document model, two modes.
+
+**Shared**
+- Page canvas with real page bounds, zoom, rulers, multi-page navigation
+- Live PDF preview + **rasterized overlay diff against the legacy PDF** (parity score always visible)
+- Sample-data scenarios (extend the existing `ScenarioStore`) and "load from policy #" (already built)
+- Undo/redo, per-form version history, diff against the last saved version
+
+**Engineer mode**
+- Layer A geometry: exact X/Y/W/H in points, snap-to-grid, align/distribute, multi-select
+- **Column alignment tools:** select N elements → align left/right/center edges, equalize spacing, or
+  "convert to table" which promotes them into a Layer B `<table>` with real column widths
+- Field inspector: name, logical binding (searchable catalog picker), provenance, format
+  (`money`/`date`/`percent` — `FieldValueFormatter` exists), max length, overflow behavior
+- Raw HTML source view, JSON export, DAL/expression assignment, promotion/revert controls
+
+**Author mode**
+- WYSIWYG rich-text editing on promoted (Layer B) regions only — TipTap/ProseMirror over the HTML profile
+- Table editor for columns: add/remove column, set width, set per-column alignment
+- Variable insertion from a friendly catalog ("Insured name", not `policy.insured.name1`)
+- Guardrails: filed/ISO forms have locked regions; promotion of a locked region requires engineer approval;
+  a compliance banner when a form's parity score drops below threshold
+
+---
+
+## 5. Fidelity: how "indistinguishable" gets proven
+
+Manual eyeballing does not scale to 4,462 forms. Build the parity harness **in Phase 0**, before bulk
+conversion — it is the acceptance mechanism for the entire migration.
+
+**We can generate the reference renders ourselves — no dependency on archived output.** The real Documaker
+engine and its resources are on disk locally:
+
+| Asset | Path |
+|---|---|
+| Documaker generator | `C:\src\FaCT-DocProd-Development\Dll\GENDAW32.EXE` (+ a `DLL_Debug` build with symbols) |
+| Commercial resource set | `…\mstrres\MOEC0\` (FSISYS/FSIUSER/AFP INIs); agency set at `…\mstrres\AGCYLNK\` |
+| FXR font cross-reference | `…\mstrres\AGCYLNK\DEFLIB\REL103.FXR` |
+| **The actual TrueType faces Documaker renders with** | `…\mstrres\Fmres\deflib\` — Arial, Albany, Courier families (`arial.ttf`, `alb*.ttf`, `COURIE*.TTF`, …) |
+| Font family definitions | `…\Dll\Fonts.ini` |
+| Existing PDF comparison tooling | `C:\src\FaCT-DocProd-Tools\PDFCompareTools\` |
+
+So the harness is a closed loop we control end to end:
+
+1. Render the legacy reference by driving **GENDAW32** over the form's FAP with the MOEC0 resource set.
+2. Render the Form Studio HTML → PDF.
+3. Rasterize both at 170–300 DPI (**PyMuPDF/`fitz` is already installed and used for this**) and diff
+   per-pixel; emit a score, a diff image, and the worst-offending regions.
+4. Gate: score below threshold → the form is flagged, not shipped. Publish a **fidelity dashboard** across
+   the whole library so conversion progress and blockers are visible.
+
+**Known parity blockers to plan for:**
+- **Fonts — largely de-risked.** The real faces are already on disk (`mstrres/Fmres/deflib/`) and are
+  standard, embeddable families (Arial, Albany — the metric-compatible Arial clone — and Courier), not
+  exotic licensed faces. Work reduces to: convert TTF → woff2, build the FXR `FontId` → face/size/weight
+  map (the `FxrFontLibrary` already resolves this), embed via `@font-face`, and verify rendered advance
+  widths against the FXR's per-character advances. Confirm redistribution rights for the bundled faces
+  before shipping them in a container.
+- **Images/logos.** `G,` records point at Documaker `.LOG` files (ASCII header + hex pixels), still
+  undecoded. 548 forms carry images; 70 of 107 quote forms do. Options: decode `.LOG`, reuse GhostDraft's
+  branding assets (`Logo.gd` extracts cleanly), or capture from a legacy render. Blocks quote-cover parity.
+- **Multi-page and dense-grid forms.** 1045 forms are multi-page; the table builder is single-page today.
+- **Spire's flatten auto-fit behavior** — already solved for the Spire path; verify it does not recur under
+  Chromium (it should not; Chromium honors specified font sizes).
+
+---
+
+## 6. Ownership and the sign-off workflow
+
+Engineering owns conversion; Products owns approval, editing, and new forms. That maps to an explicit
+state machine on every form, with permissions attached — not an informal handoff.
+
+```
+  IMPORTED ──► CONVERTED ──► IN REVIEW ──► APPROVED ──► PUBLISHED
+   (auto)      (engineer)    (engineer     (Products)   (engineer)
+                             submits)          │
+                                               └──► CHANGES REQUESTED ──┐
+                                                                        │
+                                        (Products edits) ◄──────────────┘
+```
+
+- **Engineering** runs bulk conversion, resolves parity failures, owns bindings, DAL expressions, promotion
+  of regions to Layer B, and publishing to the runtime template store.
+- **Products** reviews the parity diff, edits copy and layout in author mode, authors new forms, and gives
+  the final approval. An approval is recorded against a specific document version hash.
+- **Any edit after approval returns the form to IN REVIEW.** Publishing requires an APPROVED state, so a
+  restyle can never reach production unreviewed.
+- Every state transition is logged with actor, timestamp, version hash, and the parity score at that moment
+  — which is also the audit trail for filed forms.
+
+## 7. Determinism contract
+
+The conversion path must be fully programmatic and reproducible. This is a hard constraint on the design,
+not an aspiration, so it gets stated as testable rules:
+
+1. **No AI, no ML, no randomized heuristics anywhere in conversion, binding, or emission.** Every rule is
+   declarative code with a documented basis in the FAP/DDT/FXR structure.
+2. **Same input → byte-identical output.** No timestamps, GUIDs, hostnames, paths, or hash-ordered
+   collections in emitted artifacts. IDs are derived deterministically from stable source facts (the
+   existing `ProjectConcepts` deterministic-GUID approach is the pattern to follow). Any unavoidable
+   volatile field goes in a sidecar manifest, never in the document.
+3. **Ordered everywhere.** Sort every collection by an explicit key before emission; never rely on
+   dictionary or filesystem enumeration order.
+4. **Ambiguity fails loudly.** When inference can't decide (is this a table or two paragraphs?), the
+   converter does *not* guess — it emits Layer A verbatim and records a `needs-review` marker for an
+   engineer. A wrong silent guess on a filed form is far worse than a flagged one.
+5. **Versioned rulesets.** Converter version, inference-ruleset version, emitter version, font-set version,
+   and renderer version are recorded in a per-form manifest. Re-running an old version reproduces the old
+   output exactly; a ruleset change shows up as an intentional, reviewable diff across the library.
+6. **Golden-file regression on every emitter.** Extend the existing `demo regress` harness (which already
+   normalizes volatile timestamps and exits non-zero on change) to cover the HTML and PDF emitters, and run
+   it in CI.
+7. **Pure functions.** Importers and emitters take a model and a ruleset and return bytes. No I/O, no
+   ambient config, no clock, no network inside them.
+
+8. **Normalize the PDF trailer.** Chromium's PDF output is pixel-identical run to run but not
+   byte-identical: `/CreationDate` and `/ModDate` are the *only* differing bytes (measured, §10). Strip or
+   fix them post-render to get byte-level reproducibility.
+
+**One honest caveat:** the final rasterization step is Chromium's, and font rasterization can shift between
+browser versions. Pin the Chromium build and the font set, record both in the manifest, and treat a
+renderer upgrade as a library-wide re-baseline gated by the parity harness. Everything upstream of
+rasterization — model, HTML, `.gd`, JSON — is fully deterministic and diffable.
+
+## 8. Phasing
+
+Estimates are rough and assume a small team; treat sequencing as firmer than duration.
+
+| Phase | Deliverable | Exit criteria |
+|---|---|---|
+| **P0 — Foundation** (2–3 wks) | Document model + MoE Form HTML profile v1 + validator; `IFormImporter`/`IFormEmitter` registry (FAP in; HTML + PDF out; existing `.gd` generator re-homed behind the interface); Chromium render service; **GENDAW32-driven parity harness** + dashboard skeleton; determinism rules enforced in CI | 10 pilot forms (1 prose, 1 columnar, 1 grid, 1 multi-page, 1 with images, 1 dec page, 4 assorted) convert and score ≥ threshold, or their blockers are named; two consecutive conversion runs produce byte-identical output |
+| **P1 — Font & image fidelity** (3–4 wks) | Font strategy resolved and embedded; `.LOG` decode or asset substitution | Pilot set at parity with no font/image caveats |
+| **P2 — Bulk conversion** (3–4 wks) | All 4462 forms converted; fidelity dashboard live; triage list by family | ≥90% of forms at parity; remainder categorized with named causes |
+| **P3 — Binding layer** (3–4 wks) | `IFormDataSource`, binding catalog, CDM adapter + mapping profile, DDT provenance import | A real policy renders a converted form with correct variable data end-to-end |
+| **P4 — Editor v1, engineer mode** (4–6 wks) | Promotion/revert, geometry + alignment tools, field inspector, source view, versioning | An engineer can restyle a form's columns and re-render without regressing untouched regions |
+| **P5 — Editor v2, author mode + sign-off** (5 wks) | WYSIWYG on flow regions, table/column editing, friendly variable picker, guardrails, scenarios; the §6 state machine, permissions, parity-diff review screen, and approval audit trail | A Products reviewer approves a converted form and edits another one unassisted; approval is recorded against a version hash |
+| **P6 — Runtime** (4–6 wks) | Template store keyed form+edition, warm Chromium pool, render API, DocGen integration via the existing `FormSystem.PdfTools` seam, packet assembly | A form family renders in the live pipeline behind a flag, with parity gate green |
+| **P7 — Authoring new forms** (3 wks) | Blank-page authoring, form templates, publish workflow | A net-new form ships without Documaker Studio |
+
+**Hard rule carried forward from the POC:** no FAP parsing at request time. Conversion is offline; runtime
+loads a stored template and binds data.
+
+---
+
+## 9. Risks and open questions
+
+| Risk | Impact | Mitigation |
+|---|---|---|
+| ~~Documaker font faces unavailable~~ — **resolved**, the TTFs are on disk | — | Confirm redistribution rights only |
+| `.LOG` image decode fails | Quote covers and 548 forms can't reach parity | Substitute GhostDraft branding assets; escalate the photographic banner to marketing |
+| Chromium in the deployment environment | Blocks runtime phase | Container-based (the repo already has an AKS path via `fact-acr-to-aks`); validate early with a spike |
+| Spire.PDF license tier | Legal/production risk on the fallback path | Confirm entitlement before P2 |
+| Filed/ISO forms require regulatory sign-off on any visual change | Restyle could create a compliance problem | Locked regions + parity gate + the §6 approval state machine (Products owns final sign-off) |
+| Chromium version drift changes rasterization | Silent parity regressions | Pin build + fonts in the manifest; renderer upgrade = gated library-wide re-baseline (§7) |
+| Inference "guesses" wrong on a filed form | Wrong document, silently | Determinism rule 4: ambiguity emits Layer A verbatim + `needs-review`, never a guess |
+| Golden Schema arrives mid-build | Rework | The adapter/profile design is precisely the insurance; keep zero CDM types in the document model |
+| DAL-computed fields | A long tail that isn't "data" | Classify in P3; engineer-owned named expressions, never author-authored logic |
+| Scope — this is four products (converter, editor, binder, renderer) | Timeline | Phase gates above; each phase is independently useful |
+
+**Resolved:** reference renders come from our own local GENDAW32 (§5). Fonts are on disk (§5). Products
+owns compliance sign-off; engineering owns conversion (§6). GhostDraft no longer needs an up-front
+decision — it is one emitter among several (§2), so Form Studio can feed it during a transition and
+replace it later.
+
+**Open — to measure, not to ask:** runtime volume and per-form latency budget, which size the Chromium
+pool. Derive these from the existing DocGen/DocProd batch statistics (documents per batch, batch window)
+rather than from an opinion. Task for P6.
+
+---
+
+## 10. P0 spike — executed 2026-08-16
+
+**Form:** `EB2410A` (2 pages, 304 text runs, 9 rules/boxes, 6 fields, bordered schedule table).
+**Verdict: the approach works. Page geometry matched exactly on the first attempt, and every residual
+traced to a specific, fixable cause — no unknowns.**
+
+### What was built and run
+
+| Step | Tool | Result |
+|---|---|---|
+| Legacy reference render | **`FAP2PDF.EXE`** (Documaker's own FAP→PDF, in `…\Dll\`) — better than driving GENDAW32: it renders a single FAP with no extract data or job setup | `EB2410A.PDF`, 2 pages |
+| FAP → MoE Form HTML | new `demo emit-html <FORM> [out]`, reusing `FormFileClient` + `FxrFontLibrary`; embeds the Documaker TTFs as base64 `@font-face` | 2.9 MB HTML |
+| HTML → PDF | headless Chrome `--print-to-pdf` | 154 KB PDF |
+| Parity scoring | new `parity.py` — PyMuPDF raster at 150 DPI, binarized ink IoU, 1px-tolerance unmatched %, best whole-page shift, overlay/unmatched PNGs | see below |
+
+### Measured progression
+
+| | mean IoU | legacy-unmatched (p1, 1px tol) | systematic shift |
+|---|---|---|---|
+| First run | 0.261 | 27.75% | **dy=3px, dx=0 (both pages)** |
+| + baseline correction | 0.491 | 8.07% | dy=0, dx=0 |
+| + encoding & font fixes | **0.528** | **5.18%** | dy=0, dx=0 |
+
+Page size matched exactly (612×792 pt) from the first run, on both pages.
+
+### Root causes found (all three fixed or named)
+
+1. **Baseline placement — fixed empirically, needs a principled fix.** Our text sat a constant 1.44pt
+   high on every page. Chromium's half-leading places the baseline differently from Documaker. A measured
+   `translateY(1.44pt)` removed the offset entirely (best-shift went to 0,0). **P0 work:** replace the
+   constant with exact ascent/descent parsed from the TTF (`hhea`/`OS/2`) so the baseline is computed, not
+   calibrated.
+2. **FAP files are Windows-1252, not UTF-8 — fixed.** Bytes `0x93`/`0x94` (curly quotes) and `0x96` (en
+   dash) were decoding to U+FFFD and rendering as `◆` throughout the body text. Fixed in
+   `FormFileClient.ReadLinesAsync` with a dependency-free CP1252 decode. **This was a real pre-existing bug
+   in the parser**, affecting the `.gd` path too, not just this spike.
+3. **The legacy PDF channel substitutes base-14 Helvetica — important, unresolved.** `FAP2PDF` embeds
+   `Helvetica`/`Helvetica-Bold` (Type1, WinAnsiEncoding) rather than the Documaker TTFs. Arial is
+   metric-compatible with Helvetica, which is exactly why Arial body text matched well and `Univers ATT`
+   headings drifted. Remapping Univers → Arial improved the score. **Two consequences:**
+   - *Which legacy channel we match is an explicit parity setting.* The PDF channel substitutes fonts; a
+     print/AFP channel would use the real faces. Pick and record it per comparison.
+   - *The remaining residue is concentrated in bold runs* as accumulating horizontal drift within a token
+     — an advance-width mismatch. The deterministic fix is to treat the **FXR width table as the
+     authority** (`FxrFont.MeasureFap` already exposes it) and correct per-run advances, rather than
+     trusting whichever face gets substituted. This confirms the §5 "verify advance widths against the
+     FXR" item is required work, not a nicety.
+
+### Determinism — verified
+
+- `emit-html` run twice → **byte-identical HTML** (`md5` match).
+- Same HTML rendered twice by Chromium → **pixel-identical** (`maxdiff = 0` on both pages), identical file
+  size, differing **only** in `/CreationDate` and `/ModDate`. Hence determinism rule 8.
+
+### What this does and does not prove
+
+Proven: FAP → HTML → Chromium PDF reproduces legacy page geometry, text placement, rules, and bordered
+tables; we can generate our own legacy references locally; the parity harness works and is diagnostic
+(it localized every defect); output is deterministic.
+
+Not yet proven: forms with images (`G,` records), dense multi-column grids, multi-page flow forms, filled
+(variable-data) renders, and whether the residual bold drift fully clears once FXR-width correction lands.
+`EB2410A` is a text-and-table form — a deliberately favourable but representative starting case.
+
+### Reproduce
+
+```bash
+dotnet run --project demo/FapPdfTools.Demo.csproj -- emit-html EB2410A out.html
+FAP2PDF.EXE -I=EB2410A.FAP -X=REL103.FXR          # note: -I not /I under Git Bash (MSYS path mangling)
+chrome.exe --headless --disable-gpu --no-pdf-header-footer --print-to-pdf=ours.pdf file:///out.html
+python parity.py EB2410A.PDF ours.pdf diff
+```
