@@ -138,6 +138,78 @@ if (args.Length >= 2 && args[0] == "emit-html")
         return (0.905f, 0.212f); // Arial-ish fallback
     }
 
+    // --- TrueType horizontal advances (cmap format 4 + hmtx) ------------------
+    // Documaker laid every form out using the FXR width table. Where the face we
+    // substitute has different advances, text drifts progressively along a run --
+    // defect 3. To correct it we need the substituted font's REAL advances, so read
+    // hmtx and map characters through cmap. Returns advance per char code, in em.
+    static float[] TtfAdvances(string path)
+    {
+        var b = File.ReadAllBytes(path);
+        ushort U16(int o) => (ushort)((b[o] << 8) | b[o + 1]);
+        int U32(int o) => (b[o] << 24) | (b[o + 1] << 16) | (b[o + 2] << 8) | b[o + 3];
+
+        int head = 0, hhea = 0, hmtx = 0, maxp = 0, cmap = 0, numTables = U16(4);
+        for (int i = 0; i < numTables; i++)
+        {
+            int rec = 12 + i * 16;
+            switch (System.Text.Encoding.ASCII.GetString(b, rec, 4))
+            {
+                case "head": head = U32(rec + 8); break;
+                case "hhea": hhea = U32(rec + 8); break;
+                case "hmtx": hmtx = U32(rec + 8); break;
+                case "maxp": maxp = U32(rec + 8); break;
+                case "cmap": cmap = U32(rec + 8); break;
+            }
+        }
+
+        var adv = new float[256];
+        if (head == 0 || hhea == 0 || hmtx == 0 || maxp == 0 || cmap == 0) return adv;
+
+        float upem = U16(head + 18);
+        if (upem <= 0) upem = 2048f;
+        int numH = U16(hhea + 34);
+        int numGlyphs = U16(maxp + 4);
+
+        // Locate a Windows Unicode BMP cmap subtable (3,1), else (3,0).
+        int sub = 0, nSub = U16(cmap + 2);
+        for (int i = 0; i < nSub; i++)
+        {
+            int rec = cmap + 4 + i * 8;
+            int plat = U16(rec), enc = U16(rec + 2);
+            if (plat == 3 && (enc == 1 || enc == 0)) { sub = cmap + U32(rec + 4); if (enc == 1) break; }
+        }
+        if (sub == 0 || U16(sub) != 4) return adv;
+
+        int segX2 = U16(sub + 6), seg = segX2 / 2;
+        int endO = sub + 14, startO = endO + segX2 + 2, deltaO = startO + segX2, rangeO = deltaO + segX2;
+
+        int GlyphFor(int ch)
+        {
+            for (int s = 0; s < seg; s++)
+            {
+                if (ch > U16(endO + s * 2)) continue;
+                int start = U16(startO + s * 2);
+                if (ch < start) return 0;
+                int ro = U16(rangeO + s * 2);
+                if (ro == 0) return (ch + (short)U16(deltaO + s * 2)) & 0xFFFF;
+                int gi = rangeO + s * 2 + ro + (ch - start) * 2;
+                int g = gi + 1 < b.Length ? U16(gi) : 0;
+                return g == 0 ? 0 : (g + (short)U16(deltaO + s * 2)) & 0xFFFF;
+            }
+            return 0;
+        }
+
+        for (int ch = 32; ch < 256; ch++)
+        {
+            int g = GlyphFor(ch);
+            if (g <= 0 || g >= numGlyphs) continue;
+            int idx = Math.Min(g, numH - 1);
+            adv[ch] = U16(hmtx + idx * 4) / upem;
+        }
+        return adv;
+    }
+
     // --- Flatten every drawable into one ordered list --------------------------
     // (text tokens from both S,TT static texts and M,TT text areas)
     var texts = parsed.StaticTexts
@@ -161,11 +233,13 @@ if (args.Length >= 2 && args[0] == "emit-html")
 
     var css = new System.Text.StringBuilder();
     var faceMetrics = new Dictionary<string, (float Ascent, float Descent)>(StringComparer.Ordinal);
+    var faceAdvances = new Dictionary<string, float[]>(StringComparer.Ordinal);
     foreach (var face in usedFaces)
     {
         var ttf = Path.Combine(fontDir, TtfFor(face.Typeface, face.Bold, face.Italic));
         if (!File.Exists(ttf)) { Console.Error.WriteLine($"  ! missing font {ttf}"); continue; }
         faceMetrics[$"{CssFamily(face.Typeface)}|{face.Bold}|{face.Italic}"] = TtfMetrics(ttf);
+        faceAdvances[$"{CssFamily(face.Typeface)}|{face.Bold}|{face.Italic}"] = TtfAdvances(ttf);
         var b64 = Convert.ToBase64String(File.ReadAllBytes(ttf));
         css.Append($"@font-face{{font-family:'{CssFamily(face.Typeface)}';")
            .Append($"font-weight:{(face.Bold ? "bold" : "normal")};")
@@ -226,8 +300,28 @@ if (args.Length >= 2 && args[0] == "emit-html")
             float top = Py(t.Position.Row1)
                       + (calibration.TryGetValue(t.FontId, out float cal) ? cal : 0f);
 
+            // Defect 3 -- advance widths. Documaker laid this form out with the FXR
+            // width table, which is therefore the authority on where a run ends. Where
+            // the face we substitute disagrees (notably Univers ATT -> Arial), the error
+            // COMPOUNDS along the run. Distribute the difference as letter-spacing so
+            // every run occupies exactly the width Documaker gave it.
+            string spacing = "";
+            var faceKey = $"{fam}|{bold}|{italic}";
+            if (f != null && t.Text.Length > 0 && faceAdvances.TryGetValue(faceKey, out var advTable))
+            {
+                float natural = 0f;
+                foreach (char c in t.Text) natural += (c < 256 ? advTable[c] : advTable['n']) * size;
+                float target = f.MeasureFap(t.Text) * S;
+                if (target > 0f && natural > 0f)
+                {
+                    // Chromium applies letter-spacing after every character, trailing included.
+                    float ls = (target - natural) / t.Text.Length;
+                    if (Math.Abs(ls) >= 0.005f) spacing = $";letter-spacing:{N(ls)}pt";
+                }
+            }
+
             sb.Append($"<span class=\"abs\" data-fid=\"{t.FontId}\" style=\"left:{N(Px(t.Position.Col1))}pt;top:{N(top)}pt;")
-              .Append($"font-family:'{fam}';font-size:{N(size)}pt;line-height:{N(lh)}pt")
+              .Append($"font-family:'{fam}';font-size:{N(size)}pt;line-height:{N(lh)}pt{spacing}")
               .Append(bold ? ";font-weight:bold" : "")
               .Append((f?.Italic ?? false) ? ";font-style:italic" : "")
               .Append($"\">{Esc(t.Text)}</span>\n");
