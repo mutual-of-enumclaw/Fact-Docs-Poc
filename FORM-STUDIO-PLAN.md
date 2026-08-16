@@ -581,3 +581,50 @@ the correction on something finer than FontId, since 16010's bimodality says Fon
 not determine the offset. Expect a large fraction of the library to jump to ~95%+ once it lands.
 Adopt text-run match % as the P0 exit gate and set the threshold from a form Products accepts
 by eye; keep IoU only as a coarse smoke signal.
+
+---
+
+## 14. Tier 1 content gate — built, and it works (2026-08-16)
+
+`tools/contentdiff.py` compares the text of both renders in reading order (whitespace runs
+collapsed to one space, which still exposes a *missing* space). It is the Tier 1 gate: a
+dropped space or glyph can change what a filed form states, whereas a 1pt offset cannot.
+
+**Result across the 50-form sweep: 21/48 forms are 100% content-identical, 7 at 99–100%.**
+
+### Harness bug found and fixed first
+
+Ordering words by a rounded baseline reported phantom moves (`insert '2. b.'` +
+`delete '2. b.'` — the same text, resequenced), because the two renders differ by fractions
+of a point and words on one visual line sorted differently. Words are now clustered into
+baseline bands (`LINE_TOL = 2.5pt`) and ordered left-to-right within the band. Several
+"worst" forms were this artefact, not real defects. **Any reading-order comparison needs a
+band, not a rounded coordinate.**
+
+### Real defect classes, in priority order
+
+1. **Missing inter-token space** — `1983, 1987` → `1983,1987`, `DISCLOSURE --` →
+   `DISCLOSURE--`, `following is` → `followingis`. The most common class and the one a
+   reviewer noticed by eye.
+   **Ruled out as causes** (both tested, neither changed the result): the advance-width
+   correction (disabled entirely → identical output) and dropped whitespace-only tokens
+   (now emitted → identical output). So it is the *gap between adjacent positioned tokens*
+   being narrow enough to merge. Next step is to separate the two sub-cases by measuring the
+   actual gap: extraction-only (harmless, PyMuPDF's space heuristic) versus visually merged
+   (real, and confirmed present on EB2410A). Do not assume they are the same bug.
+2. **Dropped quote glyphs** — `"fungi"` → `fungi`, `"MORTGAGEE"` → `MORTGAGEE`, `"you"` →
+   `you`. The quote characters vanish entirely while their space is still consumed. A real
+   content defect, cause not yet identified.
+3. **Dropped underscore rules** — `M7901A` legacy draws `______` fill-in lines we omit.
+
+### Metric policy (supersedes the IoU gate)
+
+| tier | measure | role |
+|---|---|---|
+| 1 | content diff (`contentdiff.py`) | **gate — must be 100%** |
+| 2 | text-run placement within tolerance | **gate — threshold set from forms Products accepted** |
+| 3 | ink IoU + side-by-side/overlay images | smoke signal and human review only, never pass/fail |
+
+Products reviewed EB2410A, A0238C, EB22489Q and P0010G on 2026-08-16 and called them
+"pretty much spot on", flagging only missing spaces. A0238C scores IoU **0.247**. That single
+data point is why IoU is disqualified as a gate and why Tier 1 leads.

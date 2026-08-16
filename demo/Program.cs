@@ -217,7 +217,10 @@ if (args.Length >= 2 && args[0] == "emit-html")
         .Concat(parsed.TextAreas.SelectMany(a => a.Tokens
             .Where(tok => !tok.IsFieldPlaceholder)
             .Select(tok => (tok.Text, a.PageIndex, tok.Position, FontId: tok.FontId, Bold: tok.IsBold))))
-        .Where(t => !string.IsNullOrWhiteSpace(t.Text))
+        // Keep whitespace-only tokens. Documaker emits the inter-word space as its own
+        // positioned token; dropping it merged adjacent words ("Agreement under" ->
+        // "Agreementunder") both visually where runs abut and in extracted text.
+        .Where(t => t.Text.Length > 0)
         .OrderBy(t => t.PageIndex).ThenBy(t => t.Position.Row1).ThenBy(t => t.Position.Col1)
         .ThenBy(t => t.Text, StringComparer.Ordinal)
         .ToList();
