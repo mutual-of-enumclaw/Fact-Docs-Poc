@@ -150,7 +150,7 @@ def main(forms):
             print(f"   DROPS {r['form']:<17} {r['dropped']}")
 
     ident = [r for r in results if r["chars_equal"]]
-    print(f"\nCHARACTER-IDENTICAL (Tier 1 gate): {len(ident)}/{len(results)} forms")
+    print(f"\n(diagnostic, NOT a gate) stream identical incl. order: {len(ident)}/{len(results)} forms")
     for r in results:
         if not r["chars_equal"]:
             print(f"   FAIL {r['form']:<17} legacy {r['chars']} chars vs ours {r['chars_ours']}")
