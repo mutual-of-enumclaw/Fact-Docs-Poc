@@ -709,3 +709,25 @@ pointed at the `.gd` output.
 
 Legacy draws long `______` fill-in rules; we emit nothing for them. One form in the sample,
 one character class, and the only outstanding entry on the Tier 1 backlog.
+
+### `M7901A`'s 452 underscores are NOT dropped content — they are field fill
+
+The FAP contains only two `___` runs in its text. The rest come from Documaker rendering each
+**unfilled field as underscore fill**: the form has 17 `F,` records whose declared lengths sum
+to 370 characters, plus the `From ____` / `To ____` labels. We deliberately emit fields as
+invisible metadata spans, so we draw nothing.
+
+**This exposes a structural flaw in comparing BLANK forms.** A blank legacy render contains
+artefacts — underscore fill, and any other placeholder chrome — that a *filled* production
+document never shows. Chasing them is chasing the wrong target.
+
+Two consequences for the harness:
+
+1. The Tier 1 content gate should **exclude field regions**, comparing only static content, OR
+2. Better: compare **filled** renders once variable-data population is wired in (§3), since a
+   populated document is the real deliverable. `populate-from-model` already exists.
+
+Until then, treat field-fill differences as expected and out of scope rather than as defects.
+With that exclusion the sample has **zero** outstanding real content defects: 43/44 forms drop
+nothing, the 1 exception is field fill, and the 3 non-identical forms are multi-column
+reading-order artefacts with identical character counts.
