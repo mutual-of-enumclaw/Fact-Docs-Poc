@@ -832,3 +832,26 @@ is newer than the binary** — and do not redirect stderr away in a verification
 `NR10otHD_B` 81.4%, `G2425B` 86.6%, `IEA4606` 88.6%. None are 0.0% any more — these are partial
 mismatches, i.e. a subset of runs on each page rather than a whole-form offset. That is a
 different and harder class than anything fixed so far.
+
+### Baseline calibration: coverage improved, but 16010 is not a per-font constant
+
+Splitting the calibration key by element kind (`S,TT` vs `M,TT`) qualified three more
+corrections (`14010|s`, `14110|s`, `16110|s`), giving 8 in total. **It produced no measurable
+gain**: Tier 2 stayed at 34/44, and Tier 1's order-sensitive metric moved 40→38 while
+"nothing dropped" held at 43/44 — i.e. reading-order sensitivity on multi-column pages, not lost
+content. The mechanism is kept because it is more principled, but it is not a win; recorded so
+nobody re-runs the experiment expecting one.
+
+Widening `CORE_TOL` 0.75→1.25 and `MIN_SHARE` 0.90→0.75 was also tested and **reverted** — it
+qualified no additional font and changed no gate.
+
+**The hard residual is font 16010**, the most common body font. Attributing every failing run to
+its font id shows it needs ≈1.3pt (`|m`, 258 samples) to 1.6pt (`|s`, 170 samples) — yet its
+calibration core is only 60% even at ±1.25pt across 983 samples. **Its offset genuinely varies
+by form, so no per-font scalar can correct it.** An earlier 4-form histogram showed ~0–0.5pt and
+was simply unrepresentative — a caution against calibrating from a small sample.
+
+Every remaining Tier 2 failure has this shape: `dx ≈ 0.00` (horizontal is exact) and `dy` between
+2.05 and 2.7pt — just over tolerance, on a *subset* of runs per page rather than the whole form.
+Finding what varies within 16010 is the next real question: candidates are the FXR ascent not
+being uniform for that id, or the run's origin record type differing in a way the parser flattens.
