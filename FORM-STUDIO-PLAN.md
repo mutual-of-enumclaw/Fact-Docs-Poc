@@ -926,3 +926,21 @@ calibration variants that change no content whatsoever. That spread is **reading
 in the metric**, not quality movement, and it is small enough that none of the last few
 calibration experiments can be called an improvement or a regression on that axis. Treat
 "nothing dropped" (stable at 43/44 throughout) as the trustworthy Tier 1 signal.
+
+### Sign-flip discriminator: two hypotheses eliminated
+
+Tested and rejected as the cause of the per-form sign flip:
+
+- **The H record.** `bp7618` (−1.62) and `P1060A` (+1.50) both declare `(600,400)`; `M9901C` (+1.55)
+  and `372nsN50` (−0.25) both declare `(0,0)`. It does not discriminate.
+- **The font mix.** 16010 is the dominant `M,TT` font in every form of both groups.
+
+So the flip is not explained by page setup or font selection. Remaining candidates, untested:
+Chromium's device-pixel snapping interacting with each form's particular row coordinates (bounded
+at ±0.375pt, so it cannot explain ~1.6pt on its own); a systematic off-by-one-row in the matcher
+for forms with many repeated short strings (line height at 10pt is ~11.7pt, so this too fails to
+explain 1.6pt); or a `M,TT` row-origin convention the parser flattens.
+
+Given two eliminations and no strong remaining lead, the pragmatic path is the per-form
+calibration already built — fix its *estimate* (more samples per form, reject the matcher's wild
+tails) rather than keep hunting the mechanism.
