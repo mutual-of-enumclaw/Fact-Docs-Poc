@@ -890,3 +890,39 @@ correct per-form constant should clear most of them at once.
 −405.8) contain a few grossly wrong pairs where repeated text matched the wrong instance. The
 medians are sound; the tails are matcher noise, and a per-form calibrator must use the median
 rather than the mean for exactly this reason.
+
+### Per-form calibration implemented — and it did NOT help
+
+`calibrate.py` now also emits `form-calibration.json` (per form, per font key, median), and
+`emit-html` prefers it over the per-font table. Given the root cause in the previous section this
+should have worked. **It measured worse: Tier 2 34/44 → 32/44.**
+
+Left **disabled by default** (no `form-calibration.json` shipped); the mechanism stays in the
+code because the root-cause analysis behind it is sound and the failure is more likely in the
+*estimate* than in the idea. Two concrete suspects, both untested:
+
+- The per-form medians are drawn from the same matcher whose tails are wild (`G2425B` stdev 9.06,
+  `P9905A` stdev 44.6 from repeated text matching the wrong instance). A per-form median over only
+  4+ samples is far more exposed to that than a per-font median over hundreds.
+- The calibration form set and the sweep form set are stratified differently, so many swept forms
+  had no per-form entry and silently fell back to the per-font value — a mixed model that is
+  neither one thing nor the other.
+
+**Bug found while investigating:** `calibrate.py` deleted only `font-calibration.json` before
+measuring, not `form-calibration.json`. So every run after the first measured a *partly corrected*
+model and produced corrections stacked on corrections. Fixed — both tables are now removed first.
+This class of bug is insidious because the output still looks plausible.
+
+### Where the numbers actually stand
+
+| gate | result |
+|---|---|
+| Tier 1 — nothing dropped | **43/44** |
+| Tier 1 — character-identical | 38/44 (the 5 gaps are multi-column reading order, not content) |
+| Tier 2 — ≥90% of runs within 2.0pt | **34/44** |
+
+Honest caveat: the Tier 1 character-identical figure has moved 40 → 38 → 39 → 38 across
+calibration variants that change no content whatsoever. That spread is **reading-order sensitivity
+in the metric**, not quality movement, and it is small enough that none of the last few
+calibration experiments can be called an improvement or a regression on that axis. Treat
+"nothing dropped" (stable at 43/44 throughout) as the trustworthy Tier 1 signal.

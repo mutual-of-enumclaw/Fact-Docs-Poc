@@ -76,6 +76,19 @@ if (args.Length >= 2 && args[0] == "emit-html")
             calibration[prop.Name] = prop.Value.GetSingle();
     }
 
+    // Per-FORM baseline correction, which supersedes the per-font table where present.
+    // The offset is a property of the FORM (tight within one, sign flips between), so a
+    // per-font scalar cannot describe it -- see FORM-STUDIO-PLAN section 15.
+    var formCalibration = new Dictionary<string, float>(StringComparer.Ordinal);
+    var formCalPath = Path.Combine(@"C:\src\fact-pdf-tools\output", "form-calibration.json");
+    if (File.Exists(formCalPath))
+    {
+        using var fdoc = System.Text.Json.JsonDocument.Parse(File.ReadAllText(formCalPath));
+        if (fdoc.RootElement.TryGetProperty(formName, out var entry))
+            foreach (var prop in entry.EnumerateObject())
+                formCalibration[prop.Name] = prop.Value.GetSingle();
+    }
+
     const float S = 72f / 2400f; // FAP units (1/2400") -> PDF points
 
     // --- Resolve the TTF backing an FXR typeface -------------------------------
@@ -306,7 +319,8 @@ if (args.Length >= 2 && args[0] == "emit-html")
             // correction from tools/calibrate.py.
             float lh = f != null && f.LineHeight > 0 ? f.LineHeight * S : size * 1.2f;
             float top = Py(t.Position.Row1)
-                      + (calibration.TryGetValue($"{t.FontId}|{t.Kind}", out float cal) ? cal : 0f);
+                      + (formCalibration.TryGetValue($"{t.FontId}|{t.Kind}", out float fcal) ? fcal
+                         : calibration.TryGetValue($"{t.FontId}|{t.Kind}", out float cal) ? cal : 0f);
 
             // Defect 3 -- advance widths. Documaker laid this form out with the FXR
             // width table, which is therefore the authority on where a run ends. Where

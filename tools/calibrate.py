@@ -63,14 +63,20 @@ def main(n_forms):
     (work / "FSISYS.INI").write_bytes((sweep.MSTRRES / "MOEC0" / "FSISYS.INI").read_bytes())
 
     cal_file = sweep.REPO / "output" / "font-calibration.json"
-    if cal_file.exists():
-        cal_file.unlink()  # calibrate against the RAW model, never a corrected one
+    form_file = sweep.REPO / "output" / "form-calibration.json"
+    # Calibrate against the RAW model, never a corrected one. BOTH tables must go:
+    # leaving form-calibration.json in place silently measured a partly-corrected model
+    # and produced corrections stacked on corrections.
+    for f in (cal_file, form_file):
+        if f.exists():
+            f.unlink()
 
     inv = sweep.load_inventory()
     forms = [f for f, _ in sweep.stratify(inv, max(2, n_forms // 4))][:n_forms]
     print(f"Calibrating over {len(forms)} forms (raw model, no correction applied)\n")
 
     deltas = collections.defaultdict(list)
+    per_form = collections.defaultdict(list)   # (form, fontKey) -> deltas
     for i, name in enumerate(forms, 1):
         try:
             fap = sweep.FORMS / f"{name}.FAP"
@@ -107,6 +113,7 @@ def main(n_forms):
                 if abs(lx - ox) > 0.5:      # different column -> not the same run
                     continue
                 deltas[fid].append(ly - oy)
+                per_form[(name, fid)].append(ly - oy)
                 hits += 1
             print(f"[{i}/{len(forms)}] {name:<17} matched {hits:>4} runs", flush=True)
         except Exception as exc:  # noqa: BLE001
