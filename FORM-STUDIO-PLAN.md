@@ -801,3 +801,34 @@ font work.
 
 **Process note:** this is the second time a font-id correlation suggested a cause that
 measurement then refuted. Correlate to generate a hypothesis; never to close one.
+
+### Fragment composition origin — FIXED
+
+The H record's second group is the section origin: full-page forms declare `(0,0)`, composable
+fragments declare `(98,0)`. We were subtracting it; Documaker does not (98 FAP = 2.94pt, which
+is essentially the whole measured offset). `Px`/`Py` now use the raw FAP coordinate.
+
+Because full-page forms declare `(0,0)`, the change is a **no-op for them** — zero regression risk,
+confirmed: `G2425B` and `A0238C` scores unchanged.
+
+| gate | before | after |
+|---|---|---|
+| Tier 2 (≥90% of runs within 2.0pt) | 25/44 | **34/44** |
+| Tier 1 nothing dropped | 43/44 | 43/44 (unchanged, as expected) |
+| Tier 1 character-identical | 40/44 | 40/44 (unchanged, as expected) |
+
+`DEXOTHA` before/after: `Company:` legacy 12.2 vs ours 9.0 → **12.0**; `Policy Number:` 38.2 vs
+35.25 → **38.25**. `NR10otHD_B` 0.0% → 81.4%.
+
+**Process failure worth recording:** the first attempt at this fix measured as a no-op and was
+nearly written up as a dead end. The re-render loop had silently failed (output redirected to
+`/dev/null`), so the measurement read PDFs from the previous build. Only comparing the artefact
+timestamp against the binary's caught it. **Never measure a fix without checking that the artefact
+is newer than the binary** — and do not redirect stderr away in a verification step.
+
+### Remaining Tier 2 failures (8 forms with ≥25 runs)
+
+`M7901A` 67.6% (field-fill form), `P9905A` 74.2%, `P1060A` 75.0%, `G2412B` 79.3%, `bp7618` 81.2%,
+`NR10otHD_B` 81.4%, `G2425B` 86.6%, `IEA4606` 88.6%. None are 0.0% any more — these are partial
+mismatches, i.e. a subset of runs on each page rather than a whole-form offset. That is a
+different and harder class than anything fixed so far.

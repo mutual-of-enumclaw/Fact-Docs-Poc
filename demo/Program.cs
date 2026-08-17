@@ -278,8 +278,14 @@ if (args.Length >= 2 && args[0] == "emit-html")
     for (int p = 0; p < Math.Max(1, parsed.PageCount); p++)
     {
         var pi = p < parsed.PageInfos.Count ? parsed.PageInfos[p] : pi0;
-        float Px(int col) => (col - pi.OriginCol) * S;
-        float Py(int row) => (row - pi.OriginRow) * S;
+        // Do NOT subtract the H-record origin. Full-page forms declare (0,0) so it never
+        // mattered, but composable fragments declare (98,0) -- and measuring the offset
+        // against the legacy render shows Documaker does not treat that 98 as a shift to
+        // remove (it is a print-margin descriptor). Subtracting it put every fragment
+        // ~2.94pt too high, which is the whole offset for DEXOTHA (96 FAP measured) and
+        // NR10otHD_B (92). See FORM-STUDIO-PLAN section 15.
+        float Px(int col) => col * S;
+        float Py(int row) => row * S;
 
         sb.Append($"<section class=\"form-page\" data-page=\"{p + 1}\">\n");
 
