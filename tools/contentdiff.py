@@ -138,8 +138,13 @@ def main(forms):
         for e in r["examples"]:
             print(f"      {e}")
 
+    # THE GATE. Order-insensitive, so it cannot be perturbed by how a multi-column page
+    # happens to linearise -- and it asks the question that actually matters: did any
+    # character of the legacy document fail to appear in ours. The order-sensitive figure
+    # below moved 40->38->39->38 across calibration changes that altered no content at
+    # all, so it is a diagnostic and must never be used as pass/fail.
     nod = [r for r in results if r["nothing_dropped"]]
-    print(f"\nNOTHING DROPPED (order-insensitive): {len(nod)}/{len(results)} forms")
+    print(f"\nTIER 1 GATE -- nothing dropped: {len(nod)}/{len(results)} forms")
     for r in results:
         if not r["nothing_dropped"]:
             print(f"   DROPS {r['form']:<17} {r['dropped']}")
