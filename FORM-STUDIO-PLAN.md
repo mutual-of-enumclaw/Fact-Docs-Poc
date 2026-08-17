@@ -774,3 +774,30 @@ is not a valid oracle for fragments, and packet assembly is where they get their
 
 **Highest-value next fixes, in order:** (1) the fragment composition origin, which unlocks ~11
 forms at once; (2) the font-16010 baseline offset, which lets the tolerance tighten from 2.0pt.
+
+### CORRECTION to §15: the fragment offset is NOT the baseline residual
+
+§15 asserted that the Tier 2 fragment failures and the font-16010 baseline residual were "the
+same bug". **That was wrong** — asserted from a font-id correlation without measuring. Measuring
+it shows two separate causes:
+
+**1. Font 16010 needs no correction at all.** Histogramming its 983 deltas shows the "bimodal
+60% core" is nothing but **pixel quantization**: the two modes sit at 0.0pt and 0.5pt, adjacent
+bins produced by Chromium snapping baselines to device pixels. The true value is ~0.25pt.
+Calibration correctly emits nothing for it, and the earlier −1.6 / −3.85 corrections were noise
+being fitted. Splitting the key by element kind (`S,TT` vs `M,TT`) was also tested and made no
+difference, so that hypothesis is dead too.
+
+**2. The fragment offset is page composition.** Fragments show a clean vertical offset of
+−2.8 to −4.8pt with **dx ≈ 0.00** and tight spread — and it varies per form, which a font
+constant cannot produce. These are exactly the forms whose page box we expand from a declared
+sliver to a full page (§12 defect 2). We keep content at its FAP origin; Documaker places the
+fragment somewhere else on the sheet. Full-page forms, which get no expansion, show ~0 offset.
+
+**So the composition origin is the single highest-value open defect** — it accounts for the
+0.0%-scoring Tier 2 group, and nothing about it is font-related. Finding the rule (top margin?
+centred? bottom-aligned?) needs the FSISYS/page setup Documaker composes with, not more
+font work.
+
+**Process note:** this is the second time a font-id correlation suggested a cause that
+measurement then refuted. Correlate to generate a hypothesis; never to close one.

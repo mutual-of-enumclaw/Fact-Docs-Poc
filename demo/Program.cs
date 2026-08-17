@@ -67,14 +67,13 @@ if (args.Length >= 2 && args[0] == "emit-html")
     // per font id, so the residual is measured once per font id rather than derived.
     // Deterministic: same calibration file in, same HTML out. Missing file = no
     // correction (raw model), which is what the calibration pass itself needs.
-    var calibration = new Dictionary<int, float>();
+    var calibration = new Dictionary<string, float>(StringComparer.Ordinal);
     var calPath = Path.Combine(@"C:\src\fact-pdf-tools\output", "font-calibration.json");
     if (File.Exists(calPath))
     {
         using var doc = System.Text.Json.JsonDocument.Parse(File.ReadAllText(calPath));
         foreach (var prop in doc.RootElement.EnumerateObject())
-            if (int.TryParse(prop.Name, out int fid))
-                calibration[fid] = prop.Value.GetSingle();
+            calibration[prop.Name] = prop.Value.GetSingle();
     }
 
     const float S = 72f / 2400f; // FAP units (1/2400") -> PDF points
@@ -213,10 +212,10 @@ if (args.Length >= 2 && args[0] == "emit-html")
     // --- Flatten every drawable into one ordered list --------------------------
     // (text tokens from both S,TT static texts and M,TT text areas)
     var texts = parsed.StaticTexts
-        .Select(t => (t.Text, t.PageIndex, t.Position, t.FontAttributes.FontId, Bold: false))
+        .Select(t => (t.Text, t.PageIndex, t.Position, t.FontAttributes.FontId, Bold: false, Kind: "s"))
         .Concat(parsed.TextAreas.SelectMany(a => a.Tokens
             .Where(tok => !tok.IsFieldPlaceholder)
-            .Select(tok => (tok.Text, a.PageIndex, tok.Position, FontId: tok.FontId, Bold: tok.IsBold))))
+            .Select(tok => (tok.Text, a.PageIndex, tok.Position, FontId: tok.FontId, Bold: tok.IsBold, Kind: "m"))))
         // Keep whitespace-only tokens. Documaker emits the inter-word space as its own
         // positioned token; dropping it merged adjacent words ("Agreement under" ->
         // "Agreementunder") both visually where runs abut and in extracted text.
@@ -301,7 +300,7 @@ if (args.Length >= 2 && args[0] == "emit-html")
             // correction from tools/calibrate.py.
             float lh = f != null && f.LineHeight > 0 ? f.LineHeight * S : size * 1.2f;
             float top = Py(t.Position.Row1)
-                      + (calibration.TryGetValue(t.FontId, out float cal) ? cal : 0f);
+                      + (calibration.TryGetValue($"{t.FontId}|{t.Kind}", out float cal) ? cal : 0f);
 
             // Defect 3 -- advance widths. Documaker laid this form out with the FXR
             // width table, which is therefore the authority on where a run ends. Where
@@ -323,7 +322,7 @@ if (args.Length >= 2 && args[0] == "emit-html")
                 }
             }
 
-            sb.Append($"<span class=\"abs\" data-fid=\"{t.FontId}\" style=\"left:{N(Px(t.Position.Col1))}pt;top:{N(top)}pt;")
+            sb.Append($"<span class=\"abs\" data-fid=\"{t.FontId}\" data-kind=\"{t.Kind}\" style=\"left:{N(Px(t.Position.Col1))}pt;top:{N(top)}pt;")
               .Append($"font-family:'{fam}';font-size:{N(size)}pt;line-height:{N(lh)}pt{spacing}")
               .Append(bold ? ";font-weight:bold" : "")
               .Append((f?.Italic ?? false) ? ";font-style:italic" : "")

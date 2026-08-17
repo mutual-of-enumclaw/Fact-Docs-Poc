@@ -27,7 +27,7 @@ sys.path.insert(0, str(pathlib.Path(__file__).parent))
 import sweep  # noqa: E402  (paths + runner helpers)
 
 SPAN = re.compile(
-    r'<span class="abs" data-fid="(\d+)" style="left:([\d.]+)pt;top:([-\d.]+)pt;'
+    r'<span class="abs" data-fid="(\d+)" data-kind="(\w)" style="left:([\d.]+)pt;top:([-\d.]+)pt;'
     r"font-family:'([^']+)';font-size:([\d.]+)pt")
 
 
@@ -39,8 +39,8 @@ def our_spans(html_path):
         # the run's text follows the style attribute
         end = txt.index(">", m.end()) + 1
         text = txt[end:txt.index("</span>", end)]
-        out.append((int(m.group(1)), float(m.group(2)), float(m.group(3)),
-                    float(m.group(5)), text.strip()))
+        out.append((f"{m.group(1)}|{m.group(2)}", float(m.group(3)), float(m.group(4)),
+                    float(m.group(6)), text.strip()))
     return out
 
 
@@ -136,7 +136,7 @@ def main(n_forms):
             verdict = "applied"
         else:
             corr, verdict = 0.0, f"SKIPPED (n={len(core)}, share={share:.0%})"
-        print(f"{fid:>7}{len(vals):>6}{len(core):>6}{share:>7.0%}{corr:>9.3f}{sd:>8.3f}  {verdict}")
+        print(f"{str(fid):>11}{len(vals):>6}{len(core):>6}{share:>7.0%}{corr:>9.3f}{sd:>8.3f}  {verdict}")
 
     cal_file.write_text(json.dumps(table, indent=1, sort_keys=True), encoding="utf-8")
     print(f"\nWrote {cal_file} ({len(table)} font ids)")
