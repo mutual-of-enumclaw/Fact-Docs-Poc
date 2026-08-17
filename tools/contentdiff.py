@@ -7,6 +7,7 @@ and wrong characters, and ignores sub-pixel placement entirely.
 
 Usage:  python tools/contentdiff.py [FORM ...]     (default: every form in the last sweep)
 """
+import collections
 import csv
 import difflib
 import pathlib
@@ -63,6 +64,11 @@ def compare(form):
     # equality cannot be fooled that way; word-level detail below is for locating things.
     chars_l = chars_o = 0
     chars_equal = True
+    # Multiset equality answers "did we DROP anything", independent of reading order.
+    # Stream equality also requires the same order -- but multi-column pages legitimately
+    # linearise differently in the two renders, so an order difference is usually the
+    # comparison's problem, not the render's. Report them separately.
+    bag_l, bag_o = collections.Counter(), collections.Counter()
     for p in range(npages):
         aw, bw = page_text(legacy, p), page_text(ours, p)
         if aw is None or bw is None:
@@ -71,6 +77,8 @@ def compare(form):
         cb = re.sub(r"\s+", "", "".join(w[0] for w in bw))
         chars_l += len(ca)
         chars_o += len(cb)
+        bag_l.update(ca)
+        bag_o.update(cb)
         if ca != cb:
             chars_equal = False
 
@@ -112,7 +120,10 @@ def compare(form):
                                 f"ours={' '.join(bt[j1:j2])[:40]!r}")
     if total_l == 0:
         return None
+    dropped = bag_l - bag_o
     return {"form": form, "words": total_l, "artefacts": artefacts,
+            "nothing_dropped": not dropped,
+            "dropped": "".join(f"{c}x{n} " for c, n in dropped.most_common(6)),
             "chars_equal": chars_equal, "chars": chars_l, "chars_ours": chars_o,
             "match_pct": round(100 * total_match / total_l, 1), "examples": examples}
 
@@ -126,6 +137,12 @@ def main(forms):
         print(f"{r['form']:<17}{r['words']:>7}{r['match_pct']:>14.1f}%")
         for e in r["examples"]:
             print(f"      {e}")
+
+    nod = [r for r in results if r["nothing_dropped"]]
+    print(f"\nNOTHING DROPPED (order-insensitive): {len(nod)}/{len(results)} forms")
+    for r in results:
+        if not r["nothing_dropped"]:
+            print(f"   DROPS {r['form']:<17} {r['dropped']}")
 
     ident = [r for r in results if r["chars_equal"]]
     print(f"\nCHARACTER-IDENTICAL (Tier 1 gate): {len(ident)}/{len(results)} forms")
@@ -141,7 +158,7 @@ def main(forms):
 
     out = pathlib.Path(r"C:\src\fact-pdf-tools\output\content-diff.csv")
     with out.open("w", newline="", encoding="utf-8") as fh:
-        w = csv.DictWriter(fh, fieldnames=["form", "words", "match_pct", "artefacts", "chars_equal", "chars", "chars_ours", "examples"])
+        w = csv.DictWriter(fh, fieldnames=["form", "words", "match_pct", "artefacts", "chars_equal", "nothing_dropped", "dropped", "chars", "chars_ours", "examples"])
         w.writeheader()
         for r in results:
             w.writerow({**r, "examples": " | ".join(r["examples"])})

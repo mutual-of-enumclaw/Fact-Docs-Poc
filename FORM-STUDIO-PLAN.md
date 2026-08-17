@@ -678,3 +678,34 @@ dropped characters and worth chasing individually; the count is small enough to 
 Note `A0238D` fails by 2 characters yet was accepted by eye — so **Tier 1 at 100% is stricter
 than Products' bar**, which is the right direction for a filed-forms gate but means the residue
 is a quality backlog, not a release blocker.
+
+### Parser bug #3 — enclosing-quote stripping (FIXED)
+
+`ParseMTTLine` stripped a leading+trailing `"` from every M,TT token, treating them as a
+quoting delimiter. The FAP stores that text **bare** (`M,TT,(...),(...),10,"Personal `), so a
+token that both begins and ends with a quote is a **defined term whose quotes are content** —
+`"fungi"`, `"we"`, `"you"`, `"wrongful acts"`. In a filed insurance form those quotes are
+legally meaningful.
+
+Confirmed by counting: `G2425B`'s FAP contains 34 quotes, the legacy render shows 34, our HTML
+emitted 24 — and our PDF also had exactly 24, proving the loss happened at **parse**, not render.
+
+| gate | before | after |
+|---|---|---|
+| Nothing dropped (order-insensitive) | 34/44 | **43/44** |
+| Character-identical (full Tier 1) | 33/44 | **40/44** |
+
+The 3 non-identical forms that remain (`EB9973A`, `EP9901D`, `P0010G`) have **identical
+character counts** — nothing is dropped, the two renders merely linearise a multi-column page
+differently. That is the comparison's tokenisation again, not a render defect. The golden `.gd`
+suite stayed green (8 OK), so the fix is safe for the existing GhostDraft path.
+
+**This is the third bug found in the shared FAP parser** (CP1252 decoding, reading-order bands,
+quote stripping). All three silently corrupted text in the existing `.gd` conversion path too,
+not just the new HTML one — worth a dedicated parser-hardening pass with the content gate
+pointed at the `.gd` output.
+
+### Sole remaining real defect: `M7901A` drops 452 `_` characters
+
+Legacy draws long `______` fill-in rules; we emit nothing for them. One form in the sample,
+one character class, and the only outstanding entry on the Tier 1 backlog.

@@ -506,7 +506,11 @@ public class FormFileClient
             var after = rest[(font.End)..].TrimStart(',');
             var ci = after.IndexOf(',');
             var text = after[(ci + 1)..].Trim();
-            if (text.Length >= 2 && text[0] == '"' && text[^1] == '"') text = text[1..^1];
+            // Do NOT strip enclosing double quotes. The M,TT text field is stored bare
+            // (e.g. `...,10,"Personal `), so a token that both starts and ends with a
+            // quote is a DEFINED TERM whose quotes are content -- "fungi", "we", "you",
+            // "wrongful acts". Stripping them silently deleted 122 quote characters
+            // across the sample and was the sole cause of 9 of 10 content-gate failures.
             return new FapTextToken(text, isBold, fontId, position);
         }
         catch { return null; }
