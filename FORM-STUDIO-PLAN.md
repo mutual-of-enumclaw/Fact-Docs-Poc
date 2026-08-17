@@ -855,3 +855,38 @@ Every remaining Tier 2 failure has this shape: `dx ≈ 0.00` (horizontal is exac
 2.05 and 2.7pt — just over tolerance, on a *subset* of runs per page rather than the whole form.
 Finding what varies within 16010 is the next real question: candidates are the FXR ascent not
 being uniform for that id, or the run's origin record type differing in a way the parser flattens.
+
+### ROOT CAUSE: the baseline offset is per-FORM, not per-font
+
+Measuring font 16010's offset **per form** resolves the puzzle that cost several sweeps:
+
+| form | n | median dy | stdev |
+|---|---:|---:|---:|
+| P1060A | 20 | **+1.50** | 0.21 |
+| M9901C | 103 | +1.55 | 0.22 |
+| G2425B | 130 | +1.62 | — |
+| P9905A | 158 | +1.60 | — |
+| G2412B | 55 | **−1.85** | 0.21 |
+| bp7618 | 64 | **−1.62** | 0.24 |
+| 372nsN50 | 124 | −0.25 | — |
+
+Within a form the offset is **tight** (stdev ≈ 0.21). Between forms the **sign flips** at a
+near-constant magnitude of ~1.6pt. That is why a global per-font median sits near zero with a 60%
+core — it is averaging two clusters at +1.6 and −1.6 — and why every attempt to fit one scalar
+per font failed while looking statistically reasonable.
+
+**Design consequence — calibrate per form, not per font.** Baseline correction should be computed
+**at conversion time, per (form, font id)**, and stored beside the template. This is legitimate
+within the determinism contract: conversion is offline, the legacy render is available then, the
+computation is a pure function of (FAP, legacy PDF), and the result is recorded in the form's
+manifest. It also sidesteps needing to explain the sign flip, which is a genuine open question —
+candidates are a per-form coordinate convention (`M,TT` row meaning top vs baseline) or a
+reference the parser currently flattens.
+
+Expected impact: every remaining Tier 2 failure has `dx ≈ 0.00` and `dy` of 2.05–2.7pt, so a
+correct per-form constant should clear most of them at once.
+
+**Caveat on the numbers above:** `G2425B` (stdev 9.06, min −101.9) and `P9905A` (stdev 44.6, min
+−405.8) contain a few grossly wrong pairs where repeated text matched the wrong instance. The
+medians are sound; the tails are matcher noise, and a per-form calibrator must use the median
+rather than the mean for exactly this reason.
