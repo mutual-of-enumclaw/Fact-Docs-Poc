@@ -961,3 +961,37 @@ from a 28-form calibration, no per-form table: **Tier 2 34/44, nothing-dropped 4
 
 The remaining ~2pt residual needs a *mechanism*, not a better estimate, and the two obvious
 mechanisms have been eliminated. That is the honest state.
+
+---
+
+## 16. Scale validation — 120 forms (2026-08-16)
+
+Re-ran the whole pipeline at 24 per stratum to test whether the fixes generalise or were fitted
+to the original 44-form sample. **They generalise.**
+
+| gate | 44-form sample | **120-form sample** |
+|---|---|---|
+| Tier 1 — nothing dropped | 43/44 (98%) | **106/109 (97%)** |
+| Tier 2 — ≥90% of runs within 2.0pt | 34/44 (77%) | **81/109 (74%)** |
+| (diagnostic) stream identical incl. order | 38/44 | 95/109 (87%) |
+
+Median Tier 2 score across all forms: **95.1%**.
+
+**The most important number: zero forms score 0.0% on Tier 2** — down from 11 in the 44-form run.
+The whole-form-offset class that the H-record origin fix targeted is **completely eliminated**,
+not merely reduced. Every remaining failure is partial.
+
+On forms with ≥25 text runs the pass rate is 53/79 (67%), lower than the headline because small
+forms pass more easily — worth quoting both figures rather than the flattering one.
+
+### The 3 remaining Tier 1 failures drop only DIGITS
+
+| form | dropped |
+|---|---|
+| `EP9907SCHEDB` | `1` ×2 |
+| `EB9907C` | `6` ×6 |
+| `EP9908B` | `6` ×6 |
+
+Not words, not punctuation — **specific digit glyphs, repeated**. That is a narrow, distinctive
+signature (a superscript/footnote marker, a page-number element, or a record type the parser
+skips) and should be quick to run down. It is the entire remaining Tier 1 backlog across 109 forms.
