@@ -995,3 +995,30 @@ forms pass more easily — worth quoting both figures rather than the flattering
 Not words, not punctuation — **specific digit glyphs, repeated**. That is a narrow, distinctive
 signature (a superscript/footnote marker, a page-number element, or a record type the parser
 skips) and should be quick to run down. It is the entire remaining Tier 1 backlog across 109 forms.
+
+### All 3 Tier 1 failures are unpopulated system fields — zero real content defects
+
+The dropped digits are the **total page count**. The FAP static text is literally `Page 1 of`
+(declared length 9); Documaker supplies the trailing `6` at render time. `EB9907C` and `EP9908B`
+are 6-page forms, hence `6`×6; `EP9907SCHEDB` is a 2-page form, hence `1`×2.
+
+So it is not dropped content — it is a **Documaker system value we do not compute**, the same
+category as `M7901A`'s underscore field fill. Across 109 forms, **the Tier 1 content backlog is
+therefore zero real defects.**
+
+**Deliberately NOT fixed with a heuristic.** Matching the text "Page N of" and appending
+`PageCount` would work today and is tempting, but it is pattern-guessing on document content —
+precisely what determinism rule 4 forbids ("ambiguity fails loudly, never guess"). A form whose
+body text happens to end "…page 3 of" would be silently corrupted.
+
+The correct fix is a **declarative system-value list**: an explicit, versioned registry of
+Documaker-computed values (total pages, current page, form edition, print date) that the emitter
+resolves by rule rather than by inference. That belongs with the binding layer (§3), because it
+is the same problem — a value that comes from outside the FAP — and it should be resolved through
+the same mechanism rather than a second ad-hoc path.
+
+**Until then, the harness should treat unpopulated system fields as expected.** Combined with the
+field-fill finding, this is the second instance of the same structural point: **comparing blank
+renders conflates "we lost content" with "Documaker computed something we haven't".** Comparing
+*filled* renders (§3, `populate-from-model` already exists) removes both at once and is the
+higher-value path.
