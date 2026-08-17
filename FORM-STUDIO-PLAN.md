@@ -731,3 +731,46 @@ Until then, treat field-fill differences as expected and out of scope rather tha
 With that exclusion the sample has **zero** outstanding real content defects: 43/44 forms drop
 nothing, the 1 exception is field fill, and the 3 non-identical forms are multi-column
 reading-order artefacts with identical character counts.
+
+---
+
+## 15. Tier 2 gate calibrated from Products' own acceptances (2026-08-16)
+
+Threshold derived, not guessed — measured against the four forms Products accepted by eye:
+
+| tolerance | worst accepted form |
+|---|---|
+| 1.0pt | 0.0% |
+| 1.5pt | 23.2% |
+| **2.0pt** | **90.0%** |
+| 3.0pt | 91.0% |
+
+**Gate: ≥ 90% of legacy text runs matched within 2.0pt** (`tools/tier2.py`). A gate must never
+fail work already accepted, so the worst accepted form defines the floor.
+
+**Read the cliff honestly.** Three of the four accepted forms jump from ~25% at 1.5pt to ~95%
+at 2.0pt. That is not a natural distribution — it is a **systematic ~1.5–2.0pt offset the
+tolerance is absorbing**, almost certainly the font-16010 baseline residual that calibration had
+to skip as bimodal (§12). So 2.0pt is a *workaround tolerance*, not a quality statement. Fix that
+offset and the cliff moves; the gate should then be tightened toward 1.0pt. Record the tolerance
+alongside the result so nobody later reads 2.0pt as the standard we aimed for.
+
+`EB2410A` behaves differently — 89% at 1.0pt and flat across tolerances — so its residual 11% is
+the bold-run width defect (§10), a separate cause.
+
+### Result
+
+| population | pass |
+|---|---|
+| All scored forms | 25/44 |
+| Forms with ≥25 text runs (a meaningful sample) | **23/31 = 74%** |
+
+Of the 19 failures, **11 score exactly 0.0%** and are overwhelmingly the composable fragments
+(`FRMQ-TTL`, `PSCP-LBZ`, `QCPP_*`, `BQ-*`, `QBOP_*`, `QFRM_*`) and image-heavy quote pages — 7 of
+them have fewer than 10 text runs, which is too little to judge. A uniform 0.0% means the whole
+fragment is offset by more than 2pt: **Documaker composes a fragment onto the page at an origin
+we do not reproduce.** That is one bug, not eleven, and it is the same finding as §12 — FAP2PDF
+is not a valid oracle for fragments, and packet assembly is where they get their real position.
+
+**Highest-value next fixes, in order:** (1) the fragment composition origin, which unlocks ~11
+forms at once; (2) the font-16010 baseline offset, which lets the tolerance tighten from 2.0pt.
