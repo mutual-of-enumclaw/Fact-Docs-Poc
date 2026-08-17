@@ -944,3 +944,20 @@ explain 1.6pt); or a `M,TT` row-origin convention the parser flattens.
 Given two eliminations and no strong remaining lead, the pragmatic path is the per-form
 calibration already built — fix its *estimate* (more samples per form, reject the matcher's wild
 tails) rather than keep hunting the mechanism.
+
+### Per-form estimate hardened — still no gain. Calibration is done.
+
+Applying the same core-clustering discipline to the per-form table (min 6 samples, ±0.75pt core,
+80% share) to reject the matcher's wild tails made **no difference: Tier 2 still 32/44** versus
+34/44 with per-font alone. Per-form calibration is therefore abandoned, not merely disabled —
+the root-cause analysis (§ per-FORM sign flip) is well evidenced, but three independent attempts
+to exploit it all measured worse.
+
+**Calibration as a whole has reached its limit.** Every variant tried — fixed constant, TTF-derived,
+per-font, per-font-per-kind, per-form, per-form-hardened, and two tolerance settings — lands
+between 32/44 and 34/44 on Tier 2. The differences are within the noise of which forms happen to
+sit in the calibration set. **Stop tuning it.** The shipped configuration is the per-font table
+from a 28-form calibration, no per-form table: **Tier 2 34/44, nothing-dropped 43/44.**
+
+The remaining ~2pt residual needs a *mechanism*, not a better estimate, and the two obvious
+mechanisms have been eliminated. That is the honest state.
