@@ -16,6 +16,7 @@ import sys
 import fitz
 
 WORK = pathlib.Path(r"C:\src\fact-pdf-tools\output\sweep-work")
+POS_TOL = 1.5   # pt; a spacing-only merge whose ends agree within this is an extraction artefact
 LINE_TOL = 2.5  # pt; a baseline band, wide enough to absorb sub-point render differences
 SWEEP = pathlib.Path(r"C:\src\fact-pdf-tools\output\fidelity-sweep.csv")
 
@@ -41,8 +42,9 @@ def page_text(pdf, page):
             band = (w[3], [])
             lines.append(band)
         band[1].append(w)
-    ordered = [w[4] for _, ws in lines for w in sorted(ws, key=lambda w: w[0])]
-    return re.sub(r"\s+", " ", " ".join(ordered)).strip()
+    return [(re.sub(r"\s+", " ", w[4]).strip(), w[0], w[2])
+            for _, ws in lines for w in sorted(ws, key=lambda w: w[0])
+            if w[4].strip()]
 
 
 def compare(form):
@@ -54,24 +56,64 @@ def compare(form):
     except Exception:
         return None
 
-    total_l = total_match = 0
+    # Headline test: does the page say the same thing? Compare the whole character
+    # stream with ALL whitespace removed. Word-level diffing mis-attributes characters
+    # across token boundaries -- a quote emitted at the end of one span and the start of
+    # the next reads as a dropped glyph when nothing was dropped at all. Character
+    # equality cannot be fooled that way; word-level detail below is for locating things.
+    chars_l = chars_o = 0
+    chars_equal = True
+    for p in range(npages):
+        aw, bw = page_text(legacy, p), page_text(ours, p)
+        if aw is None or bw is None:
+            continue
+        ca = re.sub(r"\s+", "", "".join(w[0] for w in aw))
+        cb = re.sub(r"\s+", "", "".join(w[0] for w in bw))
+        chars_l += len(ca)
+        chars_o += len(cb)
+        if ca != cb:
+            chars_equal = False
+
+    total_l = total_match = artefacts = 0
     examples = []
     for p in range(npages):
-        a, b = page_text(legacy, p), page_text(ours, p)
-        if a is None or b is None:
+        aw, bw = page_text(legacy, p), page_text(ours, p)
+        if aw is None or bw is None:
             continue
-        at, bt = a.split(" "), b.split(" ")
+        at, bt = [w[0] for w in aw], [w[0] for w in bw]
         total_l += len(at)
         sm = difflib.SequenceMatcher(None, at, bt, autojunk=False)
         for tag, i1, i2, j1, j2 in sm.get_opcodes():
             if tag == "equal":
                 total_match += i2 - i1
-            elif len(examples) < 3:
-                examples.append(f"p{p+1} {tag}: legacy={' '.join(at[i1:i2])[:44]!r} "
-                                f"ours={' '.join(bt[j1:j2])[:44]!r}")
+                continue
+
+            # Spacing-only difference? Then the SAME characters are present and the
+            # only question is whether the ink is in the right place. We emit one
+            # positioned span per token while Documaker emits a separate text-showing
+            # op per token, so PyMuPDF merges neighbours whose boxes abut even when
+            # the render is correct. Failing that would reject renders already
+            # accepted by eye -- the exact mistake that disqualified ink IoU.
+            la, lb = "".join(at[i1:i2]), "".join(bt[j1:j2])
+            if la and la == lb and i2 > i1 and j2 > j1:
+                lx0, lx1 = aw[i1][1], aw[i2 - 1][2]
+                ox0, ox1 = bw[j1][1], bw[j2 - 1][2]
+                if abs(lx0 - ox0) <= POS_TOL and abs(lx1 - ox1) <= POS_TOL:
+                    total_match += i2 - i1      # same glyphs, same place -> passes
+                    artefacts += i2 - i1
+                    continue
+                if len(examples) < 3:
+                    examples.append(f"p{p+1} SPACING+MOVED: {' '.join(at[i1:i2])[:34]!r} "
+                                    f"x {lx0:.1f}-{lx1:.1f} vs {ox0:.1f}-{ox1:.1f}")
+                continue
+
+            if len(examples) < 3:
+                examples.append(f"p{p+1} {tag}: legacy={' '.join(at[i1:i2])[:40]!r} "
+                                f"ours={' '.join(bt[j1:j2])[:40]!r}")
     if total_l == 0:
         return None
-    return {"form": form, "words": total_l,
+    return {"form": form, "words": total_l, "artefacts": artefacts,
+            "chars_equal": chars_equal, "chars": chars_l, "chars_ours": chars_o,
             "match_pct": round(100 * total_match / total_l, 1), "examples": examples}
 
 
@@ -85,6 +127,12 @@ def main(forms):
         for e in r["examples"]:
             print(f"      {e}")
 
+    ident = [r for r in results if r["chars_equal"]]
+    print(f"\nCHARACTER-IDENTICAL (Tier 1 gate): {len(ident)}/{len(results)} forms")
+    for r in results:
+        if not r["chars_equal"]:
+            print(f"   FAIL {r['form']:<17} legacy {r['chars']} chars vs ours {r['chars_ours']}")
+
     perfect = [r for r in results if r["match_pct"] == 100.0]
     near = [r for r in results if 99.0 <= r["match_pct"] < 100.0]
     print(f"\n{len(perfect)}/{len(results)} forms 100% content-identical; "
@@ -93,7 +141,7 @@ def main(forms):
 
     out = pathlib.Path(r"C:\src\fact-pdf-tools\output\content-diff.csv")
     with out.open("w", newline="", encoding="utf-8") as fh:
-        w = csv.DictWriter(fh, fieldnames=["form", "words", "match_pct", "examples"])
+        w = csv.DictWriter(fh, fieldnames=["form", "words", "match_pct", "artefacts", "chars_equal", "chars", "chars_ours", "examples"])
         w.writeheader()
         for r in results:
             w.writerow({**r, "examples": " | ".join(r["examples"])})

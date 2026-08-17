@@ -651,3 +651,30 @@ is precisely the failure mode that disqualified IoU.
 
 The genuinely visual merge the reviewer saw on EB2410A is a *different* instance (bold runs,
 Univers→Arial), and is covered by the placement error above rather than by this artefact.
+
+### Tier 1 refined twice — and both refinements were the same lesson
+
+**(a) Positional artefact rule.** A spacing-only difference whose merged run starts and ends
+within `POS_TOL = 1.5pt` of the legacy pair is an extraction artefact and passes.
+**Word-level match: 21/48 → 31/44 forms at 100%**, 9 more at 99–100%. 41 words reclassified.
+
+**(b) Character-stream equality is the actual gate.** Word-level diffing still mis-attributed
+characters across token boundaries: `G2425B` reported `"fungi"` → `fungi` as a dropped glyph,
+but the emitted HTML plainly contains `out of a "fungi or bacteria incident".` — the quote was
+emitted, just grouped into a neighbouring word by extraction. So the headline test is now the
+page's whole character stream with all whitespace removed. It cannot be fooled by tokenisation;
+the word-level detail is kept only for locating a defect once the gate fails.
+
+That is twice in one session that a metric reported a defect the render did not have. Both
+times the cause was the comparison imposing its own tokenisation on two PDFs that legitimately
+structure text differently. **Any future gate must be validated against a form Products has
+accepted before it is trusted** — otherwise it manufactures work.
+
+### What genuinely remains
+
+The character gate leaves a small, real residue — differences of 2–60 characters on a handful of
+forms (`A0238D` 983 vs 981, `IM20754O` 2254 vs 2250, `EP9901D` 40628 vs 40568). These are actual
+dropped characters and worth chasing individually; the count is small enough to diff by hand.
+Note `A0238D` fails by 2 characters yet was accepted by eye — so **Tier 1 at 100% is stricter
+than Products' bar**, which is the right direction for a filed-forms gate but means the residue
+is a quality backlog, not a release blocker.
