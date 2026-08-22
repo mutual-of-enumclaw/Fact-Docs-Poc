@@ -1,4 +1,4 @@
-using System.Globalization;
+﻿using System.Globalization;
 using FapPdfTools.Population;
 using FapPdfTools.Population.Maps;
 using FapPdfTools.Server.Configuration;
@@ -61,33 +61,21 @@ if (args.Length >= 2 && args[0] == "emit-html")
         return;
     }
 
-    // Per-FontId baseline correction, in points, measured by tools/calibrate.py.
-    // Chromium's baseline placement inside a line box depends on font metrics we
-    // cannot reliably predict from the TTF tables alone, and the FXR ascent varies
-    // per font id, so the residual is measured once per font id rather than derived.
-    // Deterministic: same calibration file in, same HTML out. Missing file = no
-    // correction (raw model), which is what the calibration pass itself needs.
-    var calibration = new Dictionary<string, float>(StringComparer.Ordinal);
-    var calPath = Path.Combine(@"C:\src\fact-pdf-tools\output", "font-calibration.json");
-    if (File.Exists(calPath))
-    {
-        using var doc = System.Text.Json.JsonDocument.Parse(File.ReadAllText(calPath));
-        foreach (var prop in doc.RootElement.EnumerateObject())
-            calibration[prop.Name] = prop.Value.GetSingle();
-    }
+    // NOTE: the per-FontId (font-calibration.json) and per-form (form-calibration.json)
+    // baseline tables that used to be loaded here are GONE, and tools/calibrate.py with
+    // them. They existed to absorb a residual we now know was the box height -- text is
+    // anchored to the bottom of its declared box, see the baseline comment in the text
+    // loop below. Those tables were measured against the old top-anchored model, so
+    // applying them now would actively corrupt the geometry rather than refine it.
 
-    // Per-FORM baseline correction, which supersedes the per-font table where present.
-    // The offset is a property of the FORM (tight within one, sign flips between), so a
-    // per-font scalar cannot describe it -- see FORM-STUDIO-PLAN section 15.
-    var formCalibration = new Dictionary<string, float>(StringComparer.Ordinal);
-    var formCalPath = Path.Combine(@"C:\src\fact-pdf-tools\output", "form-calibration.json");
-    if (File.Exists(formCalPath))
-    {
-        using var fdoc = System.Text.Json.JsonDocument.Parse(File.ReadAllText(formCalPath));
-        if (fdoc.RootElement.TryGetProperty(formName, out var entry))
-            foreach (var prop in entry.EnumerateObject())
-                formCalibration[prop.Name] = prop.Value.GetSingle();
-    }
+    // Which legacy channel we are matching is an explicit parity setting (section 10), so
+    // the FXR advance-width correction is switchable: FS_FXR_ADVANCES=0 turns it off.
+    // ON is correct for the PDF channel and it is not close -- measured 2026-08-22 at glyph
+    // level, turning it off doubled the horizontal error (A0238C 25.9% -> 52.1% of glyphs
+    // beyond 1pt, EB2410A 7.6% -> 16.8%). The tempting argument that it should be
+    // unnecessary -- FAP2PDF substitutes base-14 Helvetica, and Arial is metric-compatible
+    // with Helvetica, so our natural advances should already match -- is WRONG in practice.
+    bool FxrAdvanceCorrection = Environment.GetEnvironmentVariable("FS_FXR_ADVANCES") != "0";
 
     const float S = 72f / 2400f; // FAP units (1/2400") -> PDF points
 
@@ -309,27 +297,70 @@ if (args.Length >= 2 && args[0] == "emit-html")
             var fam = CssFamily(f?.Typeface ?? "Arial");
             bool bold = (f?.Bold ?? false) || t.Bold;
             bool italic = f?.Italic ?? false;
-
-            // Reproduce Documaker's own line box: the FAP row is the top of the text
-            // cell and the FXR line height is the cell height. Deriving the baseline
-            // from TTF ascent/descent instead was tried and measured WORSE (see
-            // FORM-STUDIO-PLAN section 12) -- Chromium's in-box baseline placement does
-            // not follow the OS/2 metrics closely enough to predict. So: model the box
-            // the way Documaker does, and carry the residual as a measured per-FontId
-            // correction from tools/calibrate.py.
-            float lh = f != null && f.LineHeight > 0 ? f.LineHeight * S : size * 1.2f;
-            float top = Py(t.Position.Row1)
-                      + (formCalibration.TryGetValue($"{t.FontId}|{t.Kind}", out float fcal) ? fcal
-                         : calibration.TryGetValue($"{t.FontId}|{t.Kind}", out float cal) ? cal : 0f);
-
-            // Defect 3 -- advance widths. Documaker laid this form out with the FXR
-            // width table, which is therefore the authority on where a run ends. Where
-            // the face we substitute disagrees (notably Univers ATT -> Arial), the error
-            // COMPOUNDS along the run. Distribute the difference as letter-spacing so
-            // every run occupies exactly the width Documaker gave it.
-            string spacing = "";
             var faceKey = $"{fam}|{bold}|{italic}";
-            if (f != null && t.Text.Length > 0 && faceAdvances.TryGetValue(faceKey, out var advTable))
+
+            // BASELINE ANCHOR: Documaker puts the baseline on the BOTTOM edge of the
+            // declared box, not the top. Measured over 17,193 legacy text records across
+            // 109 forms: baseline - Py(row2) is -0.09pt with a per-font stdev of 0.06,
+            // and 17,191 of them land within 0.5pt of it. The distance from row1, by
+            // contrast, swings 3.9-16.8pt because it absorbs the box height.
+            //
+            // This is what every earlier baseline experiment was missing. The offset
+            // looked per-form and bimodal (FORM-STUDIO-PLAN sections 12-15) only because
+            // a form tends to use one box height throughout, so "which form" stood in for
+            // "how tall is the box". It is not a font property, so no per-FontId or
+            // per-form scalar could ever have described it -- which is exactly why eight
+            // calibration variants all measured the same.
+            //
+            // Chromium places the baseline inside a line box at
+            //     top + halfLeading + ascent  ==  top + (lineHeight + ascent - descent)/2
+            // so solve that for top. Ascent/descent come from the substituted face's own
+            // tables; any residual is a constant per (face, size, line-height) and shows
+            // up as a uniform offset rather than the form-dependent scatter we had before.
+            // Chromium does not place the baseline exactly where the box model predicts
+            // from the face's hhea/OS-2 ascent: measured over 76,499 runs it sits 0.600pt
+            // HIGHER (pooled median; p5..p95 = -0.95..-0.20, i.e. systematically one-sided).
+            // The offset is a size-independent constant, not an em fraction -- consistent
+            // with the ascent being rounded to whole device pixels (1px = 0.75pt at 96dpi)
+            // rather than with a metrics error, which would scale with point size.
+            //
+            // This is a property of the RENDERER, not of the document, so it is pinned
+            // alongside the Chromium build (determinism rule 5) rather than calibrated per
+            // form or per font. Measured from our own output -- no legacy oracle involved.
+            // A per-face table and even a per-document one were both simulated and neither
+            // beat this single constant (107/109 either way), so there is nothing to gain
+            // from a finer key.
+            const float BaselineBelowRow2 = 0.09f;
+            const float ChromiumBaselineBias = 0.60f;
+            float lh = f != null && f.LineHeight > 0 ? f.LineHeight * S : size * 1.2f;
+            var (ascEm, descEm) = faceMetrics.TryGetValue(faceKey, out var fm)
+                ? fm : (0.905f, 0.212f);
+
+            // ADVANCE WIDTHS -- the run-level ADDITIVE correction below is the incumbent
+            // because it measures best, NOT because it is the truest model. Four mechanisms
+            // have been tried; see FORM-STUDIO-PLAN section 19 for the numbers.
+            //
+            // What is actually true about the legacy render, both measured directly:
+            //   * The correction is MULTIPLICATIVE. Per-character advances of two legacy
+            //     spans in one face are related by a pure ratio, cv = 0.0000 (exact); the
+            //     additive model's cv is 0.15-0.40.
+            //   * Documaker fits each token to ITS DECLARED BOX: legacy width / (col2-col1)
+            //     has median 0.9996-1.0057, 89-93% of records inside 2%.
+            //
+            // And yet BOTH faithful implementations measured worse at the gate than this
+            // additive approximation -- scaling the point size by the FXR ratio was a wash,
+            // and a box-fit scaleX was much worse (EB2410A 92.4 -> 71.8%, P0010G
+            // 98.7 -> 66.9% within 1pt). The likely reason is that a declared box is often
+            // padding rather than a tight fit, so box-fitting stretches text that legacy
+            // leaves alone, and we cannot yet tell the two cases apart. Reproducing this
+            // properly needs per-glyph positioning driven by the legacy TJ offsets, not a
+            // better whole-run scale factor.
+            //
+            // So: distribute the FXR/actual width difference as letter-spacing, which gets
+            // each run's total width right and leaves a residual drift in its interior.
+            string spacing = "";
+            if (FxrAdvanceCorrection && f != null && t.Text.Length > 0
+                && faceAdvances.TryGetValue(faceKey, out var advTable))
             {
                 float natural = 0f;
                 foreach (char c in t.Text) natural += (c < 256 ? advTable[c] : advTable['n']) * size;
@@ -342,6 +373,19 @@ if (args.Length >= 2 && args[0] == "emit-html")
                 }
             }
 
+            float baseline = Py(t.Position.Row2) - BaselineBelowRow2;
+            float top = baseline - (lh + ascEm * size - descEm * size) / 2f
+                      + ChromiumBaselineBias;
+
+            // One span per FAP text record, positioned at its col1. Splitting a run into
+            // per-word spans anchored at their FXR-measured offsets was TRIED and measured
+            // WORSE at the gate (2026-08-22): it does remove the intra-run accumulation
+            // (EB2410A's dx went from -0.01pt at the first glyph / -0.54pt at the fortieth
+            // to -0.01/+0.18) but it replaces it with a larger scatter, and every accepted
+            // form regressed -- EB2410A 92.4 -> 88.0%, EB22489Q 94.3 -> 87.5%, P0010G
+            // 98.7 -> 95.1%, A0238C 74.1 -> 70.5%. Chromium's own inter-word advances plus
+            // the run-level FXR correction track the legacy render better than FXR word
+            // offsets do. Do not re-try this without a different mechanism.
             sb.Append($"<span class=\"abs\" data-fid=\"{t.FontId}\" data-kind=\"{t.Kind}\" style=\"left:{N(Px(t.Position.Col1))}pt;top:{N(top)}pt;")
               .Append($"font-family:'{fam}';font-size:{N(size)}pt;line-height:{N(lh)}pt{spacing}")
               .Append(bold ? ";font-weight:bold" : "")
