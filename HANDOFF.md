@@ -30,7 +30,8 @@ what was measured, including the negative results. Sections are append-only; do 
 | (diagnostic only) stream identical incl. order | 95/109 |
 
 Tier 1 is closed: zero real content defects. **Vertical placement is closed too** — `|dy| > 1pt` is
-0.0% of glyphs on every accepted form. Everything still open is horizontal.
+0.0% of glyphs on every accepted form. Two axes remain open: **non-text ink** (§21, the weaker of the
+two) and **intra-run horizontal drift** (§19).
 
 The 3.0pt gate is set by the worst accepted form (`A0238C`, 90.6%) and is **not** a claim that 3pt is
 good — that form genuinely carries ~3pt of intra-run drift Products accepted by eye. Drive the 1.0pt
@@ -91,8 +92,11 @@ the layout rather than re-deriving it. Whole-run scale factors are exhausted.
   that invents work is worse than no gate.
 - **A metric that imposes its own tokenisation will lie to you.** Both Tier 1 and Tier 2 had to move to
   glyph/character level for exactly this reason. Compare marks and positions, not strings.
-- **Ask what a metric is blind to, not just what it reports.** Run-level Tier 2 only checked where each
-  run *started*, so it could not see drift inside a run at all — its good scores were meaningless.
+- **Ask what a check is blind to, not just what it reports.** This has now bitten three times in three
+  different places: run-level Tier 2 could not see drift *inside* a run; Tier 1 and Tier 2 are both
+  text-only and could not see a missing logo or a missing rule; and the golden `.gd` suite reported
+  "8 OK, no regressions" through a real parser change because none of its forms used the construct.
+  A suite that does not contain the construct cannot guard it.
 - **Ink IoU is never pass/fail.** Tier 1 (content) then Tier 2 (placement) are the gates; IoU and the
   overlay images are for human smoke-checking only.
 - **Any comparison that linearises a page needs a baseline band, not a rounded coordinate** — this has
