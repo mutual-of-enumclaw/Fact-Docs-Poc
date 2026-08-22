@@ -642,7 +642,10 @@ if (args.Length >= 1 && args[0] == "regress")
 {
     bool capture = args.Length >= 2 && args[1] == "capture";
     // Curated coverage: 2-col right-align, prose+fields, bordered grid, N-column, multi-col defs, multi-page.
-    string[] regressForms = { "QTE_EA9910E", "QTE_COVER_A", "QTE_BILLINFO", "QFRM_FGL", "QFRM_FPL", "QTE_COVAUTOSYM", "QTE_FORM", "MCS90A" };
+    // M7215A carries 20 M,PX records -- lines nested inside a text area. It is here
+    // because the M,PX parser fix was invisible to this suite: none of the other eight
+    // forms uses one, so the suite passed vacuously through a real change.
+    string[] regressForms = { "QTE_EA9910E", "QTE_COVER_A", "QTE_BILLINFO", "QFRM_FGL", "QFRM_FPL", "QTE_COVAUTOSYM", "QTE_FORM", "MCS90A", "M7215A" };
     var regOptions = Options.Create(new FormFileOptions
     {
         FormsDirectory = @"C:\src\FaCT-DocProd-Development\mstrres\MOEC0\FORMS",
