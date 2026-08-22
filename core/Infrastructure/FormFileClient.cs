@@ -1,4 +1,4 @@
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using FapPdfTools.Server.Configuration;
@@ -227,6 +227,14 @@ public class FormFileClient
             if (trimmed.StartsWith("F,", StringComparison.OrdinalIgnoreCase)) { var f = ParseFapFLine(trimmed, lineNum); if (f != null) fields.Add(f with { PageIndex = pg }); continue; }
             if (trimmed.StartsWith("T,", StringComparison.OrdinalIgnoreCase)) { var t = ParseFapTLine(trimmed, lineNum); if (t != null) staticTexts.Add(t with { PageIndex = pg }); continue; }
             if (trimmed.StartsWith("X,", StringComparison.OrdinalIgnoreCase)) { var x = ParseFapXLine(trimmed, lineNum); if (x != null) xLines.Add(x with { PageIndex = pg }); continue; }
+            // M,PX / M,X are line & rectangle records nested inside a text area. They were
+            // being dropped entirely, which is why forms whose rules come from a text area
+            // rather than a top-level X, record rendered with NO horizontal rules at all --
+            // invisible to the text-only Tier 1 and Tier 2 gates. 315 of 4210 forms use them.
+            if (trimmed.StartsWith("M,PX,", StringComparison.OrdinalIgnoreCase))
+            { var mx = ParseFapXLine(trimmed, lineNum, 5); if (mx != null) xLines.Add(mx with { PageIndex = pg }); continue; }
+            if (trimmed.StartsWith("M,X,", StringComparison.OrdinalIgnoreCase))
+            { var mx = ParseFapXLine(trimmed, lineNum, 4); if (mx != null) xLines.Add(mx with { PageIndex = pg }); continue; }
             if (trimmed.StartsWith("M,H,", StringComparison.OrdinalIgnoreCase)) { FlushTextArea(); var mh = ParseMHLine(trimmed); if (mh != null) { currentTextAreaPos = mh.Value; currentTextAreaLine = lineNum; } continue; }
             if (trimmed.StartsWith("M,TT,", StringComparison.OrdinalIgnoreCase))
             {
@@ -442,11 +450,16 @@ public class FormFileClient
         catch { return null; }
     }
 
-    private static FapLine? ParseFapXLine(string line, int lineNum)
+    /// <summary>
+    /// Parses a line/rectangle record. Used for both the top-level <c>X,</c> record and the
+    /// <c>M,PX,</c> / <c>M,X,</c> records nested inside a text area, which carry an identical
+    /// payload -- <c>(row1,col1,row2,col2),(w,h),width,style</c> -- and only differ in prefix.
+    /// </summary>
+    private static FapLine? ParseFapXLine(string line, int lineNum, int prefixLen = 2)
     {
         try
         {
-            var rest = line[2..];
+            var rest = line[prefixLen..];
             var pos = ExtractParenGroup(rest, 0);
             var pc = pos.Content.Split(',');
             var position = (int.Parse(pc[0]), int.Parse(pc[1]), int.Parse(pc[2]), int.Parse(pc[3]));
