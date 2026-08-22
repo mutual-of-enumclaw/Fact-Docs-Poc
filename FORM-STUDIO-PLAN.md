@@ -1022,3 +1022,289 @@ field-fill finding, this is the second instance of the same structural point: **
 renders conflates "we lost content" with "Documaker computed something we haven't".** Comparing
 *filled* renders (§3, `populate-from-model` already exists) removes both at once and is the
 higher-value path.
+
+---
+
+## 17. Tier 1 excludes field regions — the gate is now clean at 109/109 (2026-08-22)
+
+The two structural caveats above (field fill, unpopulated system values) are now handled in the
+harness rather than carried as prose disclaimers. `contentdiff.py` removes **declared `F,` field
+regions from both renders** before comparing, so a blank-render comparison measures only static
+content.
+
+**Filled renders are not available from our oracle.** `FAP2PDF.EXE` takes only `/I=fapfile
+/X=fxrfile` — there is no way to supply field data, so it can *only* produce a blank reference.
+A genuinely filled legacy render means driving `GENDAW32.EXE` through a full Documaker job (INI
+config plus extract data), which §5 deliberately avoided. Region exclusion gets the same practical
+result now; the filled-render route stays open as separate work.
+
+| gate (120-form sweep, 109 scored) | before | after |
+|---|---|---|
+| **Tier 1 — nothing dropped** | 106/109 | **109/109** |
+| (diagnostic) stream identical incl. order | 95/109 | 95/109 — unchanged, as required |
+
+All three former failures (`EP9907SCHEDB`, `EB9907C`, `EP9908B` — the "Page N of *6*" system value)
+now pass. 946 characters are excluded across 13 of 109 forms, and the count is **printed with the
+result** so the exclusion can never be silent.
+
+### Three mechanics this needed, each found by measurement
+
+**1. Exclusion must be per CHARACTER, not per word.** PyMuPDF merges a field's underscore fill
+together with the static label beside it into one "word", so a word-level test cannot separate
+them. Character bboxes can. Field rects are read from the emitted HTML (`span.abs.field`), which is
+already a deterministic product of the pipeline, and padded by 1.5pt / 4.0pt — a glyph's bbox is the
+font's *line* box, so it is taller than the field's declared height.
+
+**2. Reading order must be preserved.** Taking characters in PDF content-stream order collapsed the
+order-sensitive diagnostic 95 → 20, because the two renders emit drawing operations in different
+sequences. Re-applying the same `LINE_TOL` baseline banding that `page_text` uses restored it to
+exactly 95. **This is the third time the reading-order band has been load-bearing** (§14) — any
+comparison that linearises a page needs it.
+
+**3. Exclusion must never be able to MANUFACTURE a drop.** Deciding exclusion from each render's
+own glyph positions is asymmetric at a boundary. Measured on `DFP0014F`: its `Type of Farming`
+field rect sits directly on top of its own static label, and the `y` lands 0.1pt *inside* our box
+and *outside* legacy's — so we filtered a character legacy kept and the gate reported a dropped
+`y` on a correct render. Two new false failures appeared this way before it was fixed. The gate now
+discounts anything our own filter removed (`dropped = (bag_l - bag_o) - filtered_ours`), so the
+exclusion can only ever *miss* a drop, never invent one. **A filed-forms gate must fail safe in
+that direction** — inventing work is the mistake that disqualified ink IoU.
+
+Also filtered: control characters. `372nsN50`'s legacy PDF carries a stray U+001B that PyMuPDF's
+word extractor silently drops, so keeping it would have failed a form the previous gate passed.
+
+### Validation — against forms Products already accepted
+
+Per the §14 rule that any new gate must be validated against accepted work before it is trusted:
+`EB2410A`, `A0238C`, `EB22489Q` and `P0010G` all still pass (the first three at 100% word match),
+as does `G2425B`. No accepted form regressed. Two consecutive runs are byte-identical.
+
+### What the exclusion does not reach
+
+`M7901A` goes **452 → 20** dropped underscores rather than to zero. Documaker's fill can extend well
+beyond the declared rect — a ~100pt field filling ~250pt — and widening the padding far enough to
+catch it would start swallowing real static text. The residue is reported rather than tuned away.
+Confirmed against source: the FAP contains exactly 29 underscore characters, all of which we emit,
+so nothing is actually lost.
+
+**The Tier 1 content backlog across the sweep is now genuinely zero, and the gate says so without a
+footnote.** Tier 2 (81/109, §16) is untouched by this and remains the open fidelity axis.
+
+---
+
+## 18. ROOT CAUSE FOUND: text is anchored to the BOTTOM of its box (2026-08-22)
+
+**Documaker places the text baseline on the bottom edge of the declared box, not the top.** We
+anchored to `row1` and let Chromium's line box find the baseline, which is only ever right when the
+box height happens to equal the line height we assumed.
+
+Measured over **17,193 legacy text records across all 109 swept forms**:
+
+| anchor | median | stdev |
+|---|---|---|
+| `baseline − Py(row1)` (what we did) | +9.03 | **2.05** — swings 3.9→16.8 by font size and box height |
+| `baseline − Py(row2)` (what Documaker does) | **−0.09** | **0.06** |
+
+**17,191 of 17,193 records (100.0%)** land within 0.5pt of `Py(row2) − 0.09`. It holds for every font
+id, for both `T,` static text and `M,TT` tokens, and per-group stdev is 0.04–0.06 throughout.
+
+### Why this hid for so long
+
+The offset *looked* per-form and bimodal (§12–15) because **a form tends to use one box height
+throughout, so "which form" was standing in for "how tall is the box"**. `G2425B` is the tell: it uses
+both 6.0pt and 9.36pt boxes and was the form whose font-16010 samples looked "bimodal at 60% core".
+
+That fully explains the dead ends. The quantity is neither a font property nor a form property, so
+**no per-FontId or per-form scalar could ever have described it** — which is why all eight calibration
+variants landed in the same 32–34/44 band. The three-cluster pattern (+1.6 / ~0 / −1.6) was just the
+three common box heights (6.00 / 7.92 / 9.36pt) against one assumed line height.
+
+The fix is one line of geometry, and it needs **no calibration and no oracle**: Chromium puts the
+baseline at `top + (lineHeight + ascent − descent)/2`, so solve that for `top` given the target
+baseline `Py(row2) − 0.09`. `font-calibration.json`, `form-calibration.json` and `tools/calibrate.py`
+are **deleted** — they were fitted to the old anchor and would now actively corrupt the geometry.
+
+### Result
+
+| gate | before | after |
+|---|---|---|
+| **Tier 2 — ≥90% of runs within 2.0pt** | 81/109 (74%) | **95/109 (87%)** |
+| **Tier 2 — at the tightened 1.0pt** | — | **85/109 (78%)** |
+| Tier 1 — nothing dropped | 109/109 | 109/109 |
+| (diagnostic) stream identical incl. order | 95/109 | 96/109 |
+| median Tier 2 score | 95.1% | **99.2%** |
+
+**The tolerance is tightened 2.0pt → 1.0pt.** §15 called 2.0pt "a workaround tolerance absorbing a
+systematic offset, not a quality statement" and said to tighten it once that offset was fixed. Re-derived
+against the four accepted forms: they score 91.0 / 97.5 / 97.7 / 94.8% at 1.0pt, so 90% still clears the
+worst. Their scores are **flat from 1.0pt to 2.0pt**, so tightening costs no accepted-work headroom —
+what remains on `EB2410A` is the bold advance-width defect (§10), which no tolerance in this range
+reaches. `.gd` golden suite green (8 OK); `emit-html` still byte-identical across runs.
+
+### Process note — the staleness trap caught this work too
+
+The first tolerance table measured `EB2410A`, `EB22489Q` and `P0010G` as scoring **0.0% at 1.0pt** and
+nearly led to the conclusion that a per-face residual remained. They were simply **not in the current
+sweep sample**, so their `_ours.pdf` was stale from the previous build and I was measuring the old
+anchor. Re-rendered, they score 91.0 / 97.7 / 94.8%.
+
+§15 already records this exact failure and I built the newer-than-binary check into the re-render
+script — then applied it only to the sweep list, not to the extra forms measured alongside. **The check
+belongs at the point of measurement, not the point of rendering.** Any form named in a comparison must
+be proven fresh, whatever list it came from.
+
+---
+
+## 19. Vertical is finished; the remainder is horizontal (2026-08-22)
+
+### The renderer constant
+
+After §18 a uniform residual remained: **Chromium places the baseline 0.600pt higher than the CSS box
+model predicts** from the face's hhea/OS-2 ascent (pooled median over 76,499 runs; p5..p95 =
+−0.95..−0.20, entirely one-sided). It is **size-independent** — the same ~0.6pt at 8, 10 and 12pt —
+which rules out a metrics error (that would scale with point size) and fits the ascent being rounded to
+whole device pixels (1px = 0.75pt at 96dpi).
+
+It is a property of the **renderer**, so it is a named constant pinned with the Chromium build
+(determinism rule 5), measured from our own output with no oracle. A per-face table and even a
+per-document one were both simulated: **both give 107/109, identical to the single constant**, so there
+is nothing to gain from a finer key. There is an irreducible per-document scatter of ±0.35pt.
+
+**Vertical placement is now done:** `|dy| > 1pt` is **0.0% of glyphs** on every accepted form.
+
+### Tier 2 was measuring the wrong thing
+
+The run-level metric matched whole spans on their exact string, and **that made it report placement
+defects the render did not have** — the fourth metric in this project to do so. The two engines segment
+a line into runs differently, so a correctly-placed string either failed to look up at all or, for a
+repeated short word like `the`, matched the wrong instance. Every such miss had its text present on the
+page: **220/220 on `BP0564A`, 135/135 on `PRVNOTCB`, 9/9 on `A2303C`**.
+
+Worse, matching runs only checked where each run **started**, so it was structurally blind to drift
+*inside* a run. Its flattering 1.0pt scores were never a quality signal.
+
+Tier 2 is now measured at **glyph level** — same lesson, and same fix, as word-level diffing in §14.
+
+### Where that leaves the numbers
+
+| | |
+|---|---|
+| **Tier 1 — nothing dropped** | **109/109** |
+| **Tier 2 gate — ≥90% of glyphs within 3.0pt** | **106/109** |
+| Tier 2 at the 1.0pt quality bar (diagnostic) | 66/109 |
+| `.gd` golden suite / determinism | 8 OK / byte-identical |
+
+The 3.0pt gate is set, as always, by the worst accepted form (`A0238C`, 90.6%) — **it is not a claim
+that 3pt is good.** `A0238C` really does carry ~3pt of intra-run horizontal drift in its 18pt bold
+heading, and Products accepted it by eye. The 1.0pt column is the number to drive down.
+
+### Intra-run horizontal drift — the last named defect, and two failed attempts
+
+`dx` accumulates along a run: on `A0238C`, −0.08pt at the first glyph of a run to −2.70pt by the
+fortieth. It is worst on **bold and large sizes** (Arial-BoldMT 18pt: median −3.16pt, 75% of glyphs
+beyond 1pt), matching the §10 observation that the residue concentrates in bold runs.
+
+**Attempt 1 — drop the FXR advance correction. WORSE, and the reasoning behind it was wrong.**
+The legacy PDFs embed *only* base-14 `Helvetica`/`Helvetica-Bold` (verified), and Arial is
+metric-compatible with Helvetica, so our natural advances "should" already match and the correction
+should be unnecessary. Measured: turning it off **doubled** the error (`A0238C` 25.9% → 52.1% of glyphs
+beyond 1pt; `EB2410A` 7.6% → 16.8%). The conclusion is that Documaker emits explicit per-token
+positioning so the layout follows the **FXR width table** rather than whatever face is substituted — so
+the FXR really is the authority, and metric-compatibility of the substituted face is beside the point.
+
+**Attempt 2 — anchor every word at its own FXR-measured offset. WORSE at the gate.**
+It did exactly what it was designed to do: `EB2410A`'s accumulation vanished (−0.01pt at the first
+glyph → +0.18pt at the fortieth, versus −0.01 → −0.54). But it traded accumulation for a larger
+scatter, and **every accepted form regressed** — `EB2410A` 92.4 → 88.0%, `EB22489Q` 94.3 → 87.5%,
+`P0010G` 98.7 → 95.1%, `A0238C` 74.1 → 70.5%. Reverted. Chromium's own inter-word advances plus the
+run-level FXR correction track the legacy render better than FXR word offsets do.
+
+### Then the legacy render was measured directly — and the true model still lost
+
+Rather than infer further, the legacy PDFs were interrogated. **Two facts are now established, and both
+contradict what the emitter does:**
+
+**1. The correction is MULTIPLICATIVE, not additive.** Take the per-character advances of two legacy
+spans in the same face: they are related by a pure ratio with **coefficient of variation 0.0000** —
+exact, on every span pair tested — where the additive model's cv is 0.15–0.40. It surfaces as a
+fractional point size per span (`10.184`…`10.369` where the FXR declares 10). This matters because
+additive `letter-spacing` gets a run's *total* width right while leaving its *interior* wrong — a wide
+glyph needs more absolute correction than a narrow one — which is precisely the mechanism that makes
+`dx` accumulate along a run.
+
+**2. Documaker fits each token to ITS DECLARED FAP BOX**, not to the FXR width table. Legacy rendered
+token width ÷ `(col2 − col1)` has a median of **0.9996–1.0057**, with **89–93% of records inside 2%**.
+
+Also worth recording: legacy's text matrix is **non-uniform** — on one span the advance scale works out
+to ~10.61 while the reported vertical size is ~10.36. Horizontal and vertical are scaled independently.
+
+**Attempt 3 — multiplicative correction via point size (FXR target). A WASH.**
+`EB2410A` 92.4 → 91.2%, `A0238C` 74.1 → 74.4%, `EB22489Q` 94.3 → 94.5%, `P0010G` 98.7 → 98.8% within
+1pt, and the accumulation profile barely moved (`A0238C` −0.06 → −2.38pt across a run, versus
+−0.08 → −2.70 before). The ratio we compute is close to but not equal to legacy's: our 18pt bold
+heading renders at 17.6pt where legacy uses 17.93.
+
+**Attempt 4 — box-fit as a horizontal `scaleX`. MUCH WORSE.**
+`EB2410A` 92.4 → 71.8%, `EB22489Q` 94.3 → 64.4%, `P0010G` 98.7 → 66.9% within 1pt. (`A0238C` did reach
+100% at 3.0pt, the only bright spot.) The likely reason is the tail of that 89–93%: **a declared box is
+often padding rather than a tight fit** — a record whose declared length exceeds its text — so box-fitting
+stretches text that legacy leaves alone, and nothing in the FAP record distinguishes the two cases.
+
+### Where that leaves it
+
+Four mechanisms tried, all worse or a wash, so the run-level additive correction stays — **because it
+measures best, not because it is the truest model.** That is an uncomfortable but honest position, and
+the code says so.
+
+The two measured facts above are the durable result of this pass; they are exactly what a fifth attempt
+should build on, and they rule out a whole family of whole-run scale factors. **A correct fix needs
+per-glyph positioning driven by the legacy PDF's actual TJ offsets** — reproducing the layout rather than
+re-deriving it — and a way to tell a tight box from a padded one. Everything short of that has now been
+tried and measured.
+
+---
+
+## 20. Parser hardening: the `.gd` path now has a content gate too (2026-08-22)
+
+Three bugs found through the HTML pipeline -- CP1252 decoding, enclosing-quote stripping and
+reading-order banding -- all lived in the **shared** FAP parser in `core/`, so they silently corrupted
+the GhostDraft `.gd` output as well. That path had no content gate to notice. `tools/gdcontent.py` is
+now that gate.
+
+It is a **self-consistency** check rather than a parity check, because a `.gd` cannot be rendered
+locally: it asserts that every character the FAP declares as static text survives into the `.gd`'s RTF
+body. That is exactly the class of defect those three bugs were.
+
+### Result
+
+| corpus | result |
+|---|---|
+| Golden `.gd` suite | **8/8 exact**, surplus 0 |
+| All quote forms, regenerated | **427/427 exact**, surplus 0 -- but 126 are vacuous (no FAP static text), so **real coverage is 301/301 forms with content** |
+
+Every form matches **character for character**, with zero surplus. The three parser fixes did clean the
+`.gd` path, and there is now a gate to keep it clean.
+
+### The checked-in `.gd` corpus was three weeks stale
+
+`output/quote-forms-gd/` dated **2026-07-28**, before both parser fixes (2026-08-16). Measuring it
+would have scored the *old* parser and proved nothing about today's. Regenerated via `convert-quotes`
+first (427/427, brace-bad=0, failures=0). Same staleness discipline as sections 18-19 -- and note these
+artefacts are *generated output*, not renders, so the rule is broader than the PDF harness.
+
+### Building the gate reproduced this project's own recurring mistake, twice
+
+Both were caught by a negative control -- deliberately deleting characters and checking the gate fires:
+
+1. **Escapes resolved after control-word stripping.** RTF hex and unicode escapes were being eaten as
+   control words, so their characters vanished and the gate reported drops that did not exist. Order
+   matters: resolve escapes first. Replaced the regex stripper with a brace-aware single-pass extractor.
+2. **Surplus characters MASK drops.** With the RTF header (font table, colour table) included, deleting
+   three letters from a body word showed up as a shortfall of only **one**. Multiset comparison sees
+   only the net shortfall, so any non-content text in the bag buys silence. Skipping the header
+   destinations and the generated binding placeholders takes surplus to **0**, and the same negative
+   control then reports exactly 3 of 3.
+
+**A gate must be tested for sensitivity, not merely for passing.** A metric that cannot fail is worth
+nothing, and four of this project's metrics have already cried wolf in the other direction. `surplus` is
+printed on every row precisely because it is the number that can hide a defect.
