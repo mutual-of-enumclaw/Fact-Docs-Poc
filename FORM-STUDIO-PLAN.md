@@ -1308,3 +1308,67 @@ Both were caught by a negative control -- deliberately deleting characters and c
 **A gate must be tested for sensitivity, not merely for passing.** A metric that cannot fail is worth
 nothing, and four of this project's metrics have already cried wolf in the other direction. `surplus` is
 printed on every row precisely because it is the number that can hide a defect.
+
+---
+
+## 21. The gates were blind to everything that is not a glyph (2026-08-22)
+
+Tier 1 compares characters and Tier 2 compares glyph positions. Both are **text-only**, and
+`emit-html` does not emit FAP `G,` image records at all. So a form could be missing its entire logo,
+or every rule on the page, and still score ~100%. Every image-bearing form in the sweep was passing
+Tier 2, several above 99%.
+
+`tools/nontextink.py` closes that: rasterize both renders, mask out the text on **both** sides (the
+union -- masking only the legacy's text would let our own glyphs be scored as artwork), and measure how
+much of the legacy's remaining ink we reproduce. It covers logos and rules alike, which is the right
+scope: anything on the page that is not a glyph.
+
+**First run: 32/62 scored forms passed**, against Tier 2's 106/109. The blind spot was real.
+
+### It was not mainly about images
+
+Eight forms reproduced **0.0%** of the legacy's non-glyph ink -- thousands of pixels each -- and none of
+them declared an image. Dilating the text mask from 1px to 4px moved the numbers not at all, ruling out
+an antialiasing artefact, so the gate was not crying wolf. Cropping to the densest band found a filled
+rectangle at y=90.0-90.4pt spanning x=71.4-540.2: a horizontal rule.
+
+Its source is `M,PX,(2608,2386,3019,18014),(14,14),1,0` -- row2 3019 = 90.57pt, cols 2386-18014 =
+71.6-540.4pt. **`M,PX` is a line record nested inside a text area**, with a payload identical to a
+top-level `X,` record; only the prefix differs. The parser recognised `X,` and silently discarded the
+rest. **315 of 4210 forms use them, 2,448 records in total.**
+
+| form | before | after |
+|---|---:|---:|
+| M7056A | 0.0% | **100.0%** |
+| M7611A | 0.0% | **92.3%** |
+| M7115A | 45.6% | **91.7%** |
+| IM70176O | 0.0% | 82.5% |
+| M7215A | 0.0% | 58.7% |
+
+Overall 32/62 -> 35/62; Tier 1 and Tier 2 unchanged, as expected for a non-text fix.
+
+### Two things this says about the harness
+
+**1. This is the fourth bug in the shared FAP parser**, after CP1252 decoding, quote stripping and
+reading-order banding -- and like the others it silently corrupted the GhostDraft `.gd` path too, which
+now gains the rules.
+
+**2. The golden suite passed it vacuously.** None of its eight forms contained an `M,PX` record, so a
+real change to the shared parser reported "8 OK, 0 CHANGED, no regressions". A regression suite that
+does not contain the construct cannot guard it. `M7215A` (20 `M,PX` records) is now in the suite.
+
+That is the session's recurring lesson landing a third time, in a third place: **ask what the check is
+blind to, not just what it reports.** Tier 2 was blind to intra-run drift, both gates were blind to
+non-text ink, and the golden suite was blind to a construct none of its forms used.
+
+### Still open on this axis
+
+- `RESCBDY` 21.4%, `STF2471120` 21.6%, `N1STBA` 55.5% -- these DO declare `G,` images, which we still
+  do not emit at all. Decoding the Documaker `.LOG` format (86 assets on disk, e.g. `NEWEIG1.LOG`) or
+  substituting the GhostDraft branding assets is the remaining image work. Real scope is **191 forms
+  with `G,` records**, not the 548 quoted in section 5 -- that figure counted `N,` records too, and `N,`
+  is overwhelmingly developer notes (370 forms), not artwork.
+- `BOPSECT3` 16.2% and `A2015G` 57.5% declare no image and were unmoved by the `M,PX` fix, so they are
+  a third cause, not yet identified.
+- 54 of 116 forms are skipped for having under 200 non-text ink pixels. The gate reports that count
+  rather than folding them into a pass.

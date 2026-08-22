@@ -16,7 +16,7 @@ that branch and largely irrelevant to Form Studio.
 
 **Goal:** convert legacy Documaker FAP/DDT forms into a modern, editable, schema-bound format,
 deterministically, and prove the output is indistinguishable from the legacy render. Read
-`FORM-STUDIO-PLAN.md` end to end — it is the design *and* the running lab notebook, and §10–20 record
+`FORM-STUDIO-PLAN.md` end to end — it is the design *and* the running lab notebook, and §10–21 record
 what was measured, including the negative results. Sections are append-only; do not rewrite history.
 
 ### Where it stands (120-form stratified sweep, 109 scored)
@@ -25,6 +25,7 @@ what was measured, including the negative results. Sections are append-only; do 
 |---|---|
 | **Tier 1 — nothing dropped** (content) | **109/109** ✅ |
 | **Tier 2 — ≥90% of glyphs within 3.0pt** (placement) | **106/109** |
+| **Non-text ink — ≥90% of the legacy's non-glyph ink** (§21) | **35/62 scored** ⟵ the weak axis |
 | Tier 2 at the 1.0pt quality bar (diagnostic, not a gate) | 66/109 |
 | (diagnostic only) stream identical incl. order | 95/109 |
 
@@ -41,7 +42,24 @@ for every font id and both element kinds. The old "per-form sign flip" was just 
 form. All calibration is **deleted** (`tools/calibrate.py` and both JSON tables); it was fitted to the
 old anchor and would now corrupt the geometry. Do not reintroduce it.
 
-### What is left: intra-run horizontal drift (§19)
+### The weak axis is now non-text ink (§21)
+
+Tier 1 and Tier 2 are both **text-only**, so until §21 a form could be missing its entire logo — or
+every rule on the page — and still score ~100%. `tools/nontextink.py` measures what fraction of the
+legacy's non-glyph ink we reproduce, and only **35/62** scored forms pass.
+
+That gate immediately found the **fourth shared-parser bug**: `M,PX` (a line record nested in a text
+area, payload identical to `X,`) was being discarded, so 315 of 4210 forms rendered with no rules at
+all. Fixed; eight forms went from 0.0% to 42–100%.
+
+Still open on this axis:
+- **Images are still not emitted at all.** `G,` records → Documaker `.LOG` assets (86 on disk). Real
+  scope is **191 forms**, not the 548 in plan §5 — that figure also counted `N,` records, which are
+  overwhelmingly developer notes. `RESCBDY` 21.4%, `STF2471120` 21.6%, `N1STBA` 55.5%.
+- `BOPSECT3` 16.2% and `A2015G` 57.5% declare no image and were unmoved by the `M,PX` fix — a third
+  cause, unidentified.
+
+### Also open: intra-run horizontal drift (§19)
 
 `dx` accumulates along a run — `A0238C` goes from −0.08pt at a run's first glyph to −2.70pt by its
 fortieth — and is worst on bold and large sizes (Arial-BoldMT 18pt: median −3.16pt). This is the one
@@ -121,6 +139,7 @@ python tools/sweep.py 24 C:\src\fact-pdf-tools\output   # full pipeline; path MU
 python tools/contentdiff.py                             # Tier 1 gate (uses cached artefacts)
 python tools/tier2.py                                   # Tier 2 gate (3.0pt) + 1.0pt quality column
 python tools/parity.py legacy.pdf ours.pdf diff         # IoU + overlay images, diagnostics only
+python tools/nontextink.py                              # non-text ink gate (logos + rules)
 python tools/gdcontent.py                               # .gd content gate (goldens)
 python tools/gdcontent.py --dir output/quote-forms-gd   # ...or any dir of .gd files
 ```
@@ -143,8 +162,10 @@ or you will score whatever parser built it last (it was three weeks stale when �
 2. ~~A parser-hardening pass with the content gate pointed at `.gd` output~~ **DONE (§20)** --
    `tools/gdcontent.py` gates it: 8/8 goldens and 301/301 quote forms with content match the FAP
    character for character, surplus 0. Run it after any `core/` parser change.
-3. **P1 fidelity:** images/logos (`G,` → `.LOG`, undecoded; 548 forms) and dense multi-column grids.
-   Note the sweep *disproved* the assumption that images were the top blocker — they score mid-pack.
+3. **Emit images** (`G,` → `.LOG`, undecoded; **191 forms**, 86 `.LOG` assets on disk). Now measurable:
+   `tools/nontextink.py` will show the gain. Note the sweep *disproved* the old assumption that images
+   were the top fidelity blocker for text — but they are invisible to Tier 1/Tier 2 entirely, so that
+   conclusion was drawn from a metric that could not see them.
 4. **A declarative system-value registry** (total pages, current page, edition, print date) resolved by
    rule, belonging with the binding layer (§3) — not a heuristic.
 5. **Packet assembly** — ~31% of the library are fragments, so a converted form is not always a
