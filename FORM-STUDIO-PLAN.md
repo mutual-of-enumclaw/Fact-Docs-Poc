@@ -1432,3 +1432,62 @@ For the second time in a row a real change reported "OK, no regressions" because
 used the construct. `BOPSECT3` (style-8 shaded box) has joined it, as `M7215A` did for `M,PX`. Both
 were added the same day, which is the strongest evidence yet that **suite coverage should be checked
 against the construct inventory**, not assumed.
+
+---
+
+## 23. Non-text ink closed to 61/62 (2026-08-22)
+
+Two more defects, both found by chasing the residue from section 22.
+
+### `M,PX` is not a rectangle
+
+Measured over 67 records in 10 forms against the legacy renders:
+
+- **vertical edges are never drawn** -- zero, in every form checked;
+- the **bottom** edge is drawn 64/67 (96%);
+- the **top** edge splits cleanly on box height: **2/35 below 420 FAP units, 31/32 at or above**.
+
+We were drawing all four edges of a 12-15pt box where Documaker draws one or two thin rules. The
+mechanism behind the height split is unknown, so the rule is empirical -- but it is a wide split rather
+than a fitted curve, and it covers the library: of 2,448 `M,PX` records, 1,238 sit below the threshold
+and 1,207 above, with only **3** in the untested 412-426 gap.
+
+### Boxes were drawn ~1pt too large
+
+`.box` used the CSS default `content-box`, so the border was added **outside** the declared rectangle.
+Every box came out ~1pt oversized and its bottom edge landed ~1.4pt below the legacy rule -- past the
+match tolerance, so a correctly-placed box scored as a miss. The FAP rectangle is the outer edge, so
+`box-sizing: border-box` is what it actually means. This one line affected every rectangle in the
+library, not just the forms under investigation.
+
+### Result
+
+| | |
+|---|---|
+| Non-text ink | **40/62 -> 61/62**, median score **100.0%** |
+| Forms declaring a `G,` image | **6/6 pass** |
+| Tier 1 / Tier 2 / `.gd` gates | unchanged |
+
+**Nothing in the sample is currently blocked on image decoding.** Sections 5 and 21 both treated images
+as the major non-text blocker; every image-bearing form in the sample now passes without a single `.LOG`
+being decoded, because their failures were shading, `M,PX` and box sizing. Image work is still needed for
+real logo fidelity -- the gate measures ink coverage, and a logo's ink is largely absent -- but it is not
+what was holding these scores down.
+
+### The one remaining failure, and a rule NOT adopted
+
+`M7902Ba` (66.6%) renders its two top-level `X,` records as horizontal rules, exactly as `M,PX` does --
+and both carry the second parameter group `(14,14)`, which is what every `M,PX` record carries. That
+suggests the group, not the record prefix, is the real discriminator.
+
+**It was not adopted, because measuring it refuted the clean story.** Classifying every rectangle record
+in the sweep by its second group gives:
+
+| record | group | n | how the legacy draws it |
+|---|---|---:|---|
+| `M,PX` | (14,14) | 67 | rules only, never a rectangle |
+| `X,` | (14,14) | 12 | **mixed** -- 4 rectangles, 5 rules, 3 filled |
+| `X,` | (30,30) | 18 | rectangle, 18/18 |
+| `X,` | (15,15) | 9 | rectangle 7, filled 2 |
+
+Twelve samples split three ways is not a rule. `M7902Ba` stays failing rather than be fixed by a guess.
