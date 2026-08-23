@@ -1491,3 +1491,46 @@ in the sweep by its second group gives:
 | `X,` | (15,15) | 9 | rectangle 7, filled 2 |
 
 Twelve samples split three ways is not a rule. `M7902Ba` stays failing rather than be fixed by a guess.
+
+---
+
+## 24. Record-type audit, and M,I bullets (2026-08-22)
+
+Three defects in a row -- `M,PX`, `X,` shading, box sizing -- were all found the same way: something
+rendered wrong, a gate noticed, and the cause turned out to be a FAP construct the code ignored. That
+is a slow way to find them. So instead: **inventory every record type in the library and check it
+against what the parser actually dispatches on.**
+
+| record | count | handled? |
+|---|---:|---|
+| `M,` (all subtypes) | 2,651,520 | `M,TT` `M,H` `M,P` `M,E` `M,PX` `M,X` `M,I` yes; `M,O` `M,P1..3` `M,PE` ignored |
+| `A,` | 1,343,088 | only `A,T1` (field references); the rest are audit stamps |
+| `T,` | 72,615 | yes |
+| `F,` | 58,058 | yes |
+| `V,` | 30,537 | version history, correctly ignored |
+| `X,` | 23,559 | yes |
+| `H,` | 8,078 | yes |
+| `N,` | 399 | **no** -- overwhelmingly developer notes, not artwork |
+| `G,` | 241 | **no** -- images, the real remaining gap |
+| `C,` | 139 | **no** -- `"EDIT BACKGROUND"` colour definitions, design-time only |
+| `L,` | 10 | **no** |
+| `I,` | 3 | **no** |
+
+The audit immediately found `M,I`.
+
+### `M,I` is a bullet
+
+634 records across 60 forms, and we drew nothing for them. In the legacy render each one is a
+**filled+stroked path of four curves -- a solid black disc** about 3.9pt across, at exactly the declared
+coordinates. Both trailing parameter values present in the library (55 and 6) render identically, so
+the record needs no interpretation beyond its geometry. `A9905A` scores 99.4% on non-text ink.
+
+### What is left unhandled, and why that is fine
+
+`N,` is the interesting one: 399 records and it *sounds* like an image reference, which is how it got
+counted toward the "548 forms with images" figure in section 5. Sampling it shows developer commentary
+("Combine Mailer Page (BM9DMAIL) and BP1206 ... so that document will duplex"). It is not rendered.
+`C,` is a design-time colour palette, `V,` is audit history, and `L,`/`I,` are 13 records between them.
+
+**`G,` -- images -- is the only unhandled record type that represents real missing content.** 241
+records, 191 forms, 86 `.LOG` assets on disk.
