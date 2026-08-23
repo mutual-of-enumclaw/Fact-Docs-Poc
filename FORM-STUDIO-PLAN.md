@@ -1372,3 +1372,63 @@ non-text ink, and the golden suite was blind to a construct none of its forms us
   a third cause, not yet identified.
 - 54 of 116 forms are skipped for having under 200 non-text ink pixels. The gate reports that count
   rather than folding them into a pass.
+
+---
+
+## 22. Shaded boxes: the `X,` style field was never read (2026-08-22)
+
+A non-zero style on an `X,` record marks the rectangle as **filled**. We ignored the field and drew
+every such record as a hollow outline, so shaded header bands rendered as empty boxes.
+
+Closed **geometrically**, not by correlation: every non-zero-style record matches a filled rectangle in
+the legacy PDF at identical coordinates -- `BOPSECT3` 7,830pt2 and `STF2920214` 11,988pt2 exact.
+(The correlation was suggestive on its own -- median non-text ink 38.6% for forms with a non-zero style
+versus 94.9% without -- but this project's rule is that correlation opens a question and never closes
+one.)
+
+### The shade table is measured, and that mattered
+
+| style | measured grey | linear prediction |
+|---|---|---|
+| 7 | 0.85 | 0.85 |
+| 8 | 0.75 | 0.75 |
+| 9 | 0.65 | 0.65 |
+| 10 | **0.55** (confirmed) | 0.55 |
+| 12 | **0.788** | 0.35 ❌ |
+
+Styles 7-10 fit `grey = 1.55 - style/10` perfectly, and rendering a style-10 form on purpose confirmed
+it exactly. Style 12 then measured **0.788** where that formula predicts 0.35 -- presumably a hatch
+pattern rather than a grey level. **Extrapolating the formula would have shipped a wrong shade on 23
+records.** The emitter carries a lookup table of the five styles the library actually uses, and any
+unmeasured style falls through to the outline path rather than being guessed at (determinism rule 4).
+
+### Paint order is not cosmetic
+
+The first version emitted shading in the existing line loop, i.e. *after* the text. Because everything
+is absolutely positioned, the band painted **over** the text it belongs behind. `STF2920214` regressed
+**75.6% -> 25.7%** and that is what caught it; shading now has its own pass before the text loop, and
+the form is back to 75.6%.
+
+### Result
+
+| form | before | after |
+|---|---:|---:|
+| BOPSECT3 | 16.2% | **100.0%** |
+| RESCBDY | 21.4% | **100.0%** |
+| N1STBA | 55.5% | **99.8%** |
+| A2015G | 57.5% | **97.8%** |
+| STF2471120 | 21.6% | **95.6%** |
+
+Non-text ink **35/62 -> 40/62**; Tier 1, Tier 2 and the `.gd` gates all unchanged.
+
+**The image estimate in section 21 was wrong.** `RESCBDY`, `STF2471120` and `N1STBA` all declare `G,`
+images and were listed there as blocked on image decoding. They were blocked on **shading**. Forms
+declaring an image now pass 5/6 rather than 2/6, so the remaining image work is smaller than section 21
+implies -- `MCS90D` at 82.2% is the only image-declaring form still failing.
+
+### The golden suite was blind again
+
+For the second time in a row a real change reported "OK, no regressions" because no form in the suite
+used the construct. `BOPSECT3` (style-8 shaded box) has joined it, as `M7215A` did for `M,PX`. Both
+were added the same day, which is the strongest evidence yet that **suite coverage should be checked
+against the construct inventory**, not assumed.

@@ -16,7 +16,7 @@ that branch and largely irrelevant to Form Studio.
 
 **Goal:** convert legacy Documaker FAP/DDT forms into a modern, editable, schema-bound format,
 deterministically, and prove the output is indistinguishable from the legacy render. Read
-`FORM-STUDIO-PLAN.md` end to end — it is the design *and* the running lab notebook, and §10–21 record
+`FORM-STUDIO-PLAN.md` end to end — it is the design *and* the running lab notebook, and §10–22 record
 what was measured, including the negative results. Sections are append-only; do not rewrite history.
 
 ### Where it stands (120-form stratified sweep, 109 scored)
@@ -25,7 +25,7 @@ what was measured, including the negative results. Sections are append-only; do 
 |---|---|
 | **Tier 1 — nothing dropped** (content) | **109/109** ✅ |
 | **Tier 2 — ≥90% of glyphs within 3.0pt** (placement) | **106/109** |
-| **Non-text ink — ≥90% of the legacy's non-glyph ink** (§21) | **35/62 scored** ⟵ the weak axis |
+| **Non-text ink — ≥90% of the legacy's non-glyph ink** (§21–22) | **40/62 scored** ⟵ the weak axis |
 | Tier 2 at the 1.0pt quality bar (diagnostic, not a gate) | 66/109 |
 | (diagnostic only) stream identical incl. order | 95/109 |
 
@@ -49,16 +49,21 @@ Tier 1 and Tier 2 are both **text-only**, so until §21 a form could be missing 
 every rule on the page — and still score ~100%. `tools/nontextink.py` measures what fraction of the
 legacy's non-glyph ink we reproduce, and only **35/62** scored forms pass.
 
-That gate immediately found the **fourth shared-parser bug**: `M,PX` (a line record nested in a text
-area, payload identical to `X,`) was being discarded, so 315 of 4210 forms rendered with no rules at
-all. Fixed; eight forms went from 0.0% to 42–100%.
+It found two defects in a day, both invisible to Tier 1/Tier 2:
+- **`M,PX` (§21)** — a line record nested in a text area, payload identical to `X,`, silently
+  discarded. 315 of 4210 forms rendered with **no rules at all**. Eight forms went 0.0% → 42–100%.
+- **`X,` style (§22)** — a non-zero style means the box is **filled**, not outlined. We never read the
+  field. `BOPSECT3` 16.2% → 100%, `RESCBDY` → 100%, `N1STBA` → 99.8%, `A2015G` → 97.8%.
 
 Still open on this axis:
-- **Images are still not emitted at all.** `G,` records → Documaker `.LOG` assets (86 on disk). Real
-  scope is **191 forms**, not the 548 in plan §5 — that figure also counted `N,` records, which are
-  overwhelmingly developer notes. `RESCBDY` 21.4%, `STF2471120` 21.6%, `N1STBA` 55.5%.
-- `BOPSECT3` 16.2% and `A2015G` 57.5% declare no image and were unmoved by the `M,PX` fix — a third
-  cause, unidentified.
+- **Images are still not emitted at all** — `G,` → Documaker `.LOG` (86 assets on disk), **191 forms**.
+  But this is *smaller than it looked*: `RESCBDY`, `STF2471120` and `N1STBA` all declare images and were
+  assumed blocked on decoding — they were blocked on shading. Image-declaring forms now pass **5/6**;
+  `MCS90D` (82.2%) is the only one still failing.
+- `STF2920214` 75.6% — shading now renders correctly, so its remaining gap is a different, unidentified
+  cause.
+- 54 of 116 forms are skipped for having <200 non-text ink pixels, so this axis is measured on barely
+  half the sample.
 
 ### Also open: intra-run horizontal drift (§19)
 
@@ -96,7 +101,8 @@ the layout rather than re-deriving it. Whole-run scale factors are exhausted.
   different places: run-level Tier 2 could not see drift *inside* a run; Tier 1 and Tier 2 are both
   text-only and could not see a missing logo or a missing rule; and the golden `.gd` suite reported
   "8 OK, no regressions" through a real parser change because none of its forms used the construct.
-  A suite that does not contain the construct cannot guard it.
+  A suite that does not contain the construct cannot guard it. This happened TWICE in one day (M,PX and
+  X, shading), so check suite coverage against the construct inventory rather than assuming it.
 - **Ink IoU is never pass/fail.** Tier 1 (content) then Tier 2 (placement) are the gates; IoU and the
   overlay images are for human smoke-checking only.
 - **Any comparison that linearises a page needs a baseline band, not a rounded coordinate** — this has
@@ -166,10 +172,9 @@ or you will score whatever parser built it last (it was three weeks stale when �
 2. ~~A parser-hardening pass with the content gate pointed at `.gd` output~~ **DONE (§20)** --
    `tools/gdcontent.py` gates it: 8/8 goldens and 301/301 quote forms with content match the FAP
    character for character, surplus 0. Run it after any `core/` parser change.
-3. **Emit images** (`G,` → `.LOG`, undecoded; **191 forms**, 86 `.LOG` assets on disk). Now measurable:
-   `tools/nontextink.py` will show the gain. Note the sweep *disproved* the old assumption that images
-   were the top fidelity blocker for text — but they are invisible to Tier 1/Tier 2 entirely, so that
-   conclusion was drawn from a metric that could not see them.
+3. **Emit images** (`G,` → `.LOG`, undecoded; **191 forms**, 86 `.LOG` assets on disk). Now measurable
+   via `tools/nontextink.py`, and smaller than §21 estimated — most "image" failures turned out to be
+   shading (§22). Only `MCS90D` remains among image-declaring forms in the sample.
 4. **A declarative system-value registry** (total pages, current page, edition, print date) resolved by
    rule, belonging with the binding layer (§3) — not a heuristic.
 5. **Packet assembly** — ~31% of the library are fragments, so a converted form is not always a
