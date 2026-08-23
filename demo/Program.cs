@@ -613,6 +613,29 @@ if (args.Length >= 2 && args[0] == "emit-html")
             float x2 = Px(l.Position.Col2), y2 = Py(l.Position.Row2);
             float thick = Math.Max(0.5f, l.Width * S);
 
+            // A row of SIDE-BY-SIDE line records is an underline row, not a row of
+            // boxes. Products spotted this by eye on M7902AA: legacy underlines each
+            // column header ("Number", "Address", "Property", "of Loss Payee") and we drew
+            // a rectangle around each one.
+            //
+            // Measured over the 1,000-form sweep, an X, record in group (24,24) or (25,25)
+            // that shares its page, group and top row with at least one sibling renders as
+            // rules, not a rectangle, in 482 of the 506 cases legacy draws at all (95%):
+            //   (24,24) h<420  107 rules / 0 rect      (25,25) h<420   69 / 10
+            //   (24,24) h>=420 183 rules / 11 rect     (25,25) h>=420 123 / 3
+            // A LONE record in the same groups is a rectangle 58-80% of the time, so the
+            // sibling test -- not the group alone -- is what carries the signal. An earlier
+            // group-only rule was reverted (section 32) because it dropped real edges; this
+            // one is confined to the case the data actually supports.
+            // THREE or more, not merely two: at >=3 the rule is 97% accurate (324 rules
+            // against 9 rectangles), where exactly 2 siblings is only 91% (158/15). A
+            // header row has three or four columns; a pair of boxes side by side is
+            // often just two boxes. Requiring three keeps the case Products validated
+            // (M7902AA has four) and gives back the recall the looser rule cost.
+            bool siblingRow = (l.Group == "24,24" || l.Group == "25,25")
+                && parsed.Lines.Count(o => o.PageIndex == l.PageIndex && o.Group == l.Group
+                                           && o.Position.Row1 == l.Position.Row1) >= 3;
+
             // M,I is a bullet -- a solid disc, not a box. Legacy draws it as a filled
             // path of four curves, black, at exactly the declared coordinates.
             if (l.Source == "MI")
@@ -638,7 +661,7 @@ if (args.Length >= 2 && args[0] == "emit-html")
             // dropping real ink. Reverted -- see FORM-STUDIO-PLAN section 32.
             // FapLine.Group carries the second group for anyone continuing this; it is
             // deliberately not interpreted here.
-            if (l.Source == "MPX" && Math.Abs(y2 - y1) >= 0.01f)
+            if ((l.Source == "MPX" || siblingRow) && Math.Abs(y2 - y1) >= 0.01f)
             {
                 var barH = Math.Max(0.5f, l.Width * S);
                 if (l.Position.Row2 - l.Position.Row1 >= 420)

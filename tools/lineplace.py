@@ -75,20 +75,20 @@ def lines(pdf):
                 for s in ln["spans"]:
                     t = s["text"]
                     if t.strip():
-                        words.append((s["origin"][1], s["bbox"][0], t))
+                        words.append((s["origin"][1], s["bbox"][0], t, s["bbox"][2]))
         words.sort(key=lambda w: (w[0], w[1]))
         band = None
-        for y, x, t in words:
+        for y, x, t, x1 in words:
             if band is None or abs(y - band[0]) > LINE_BAND:
                 band = (y, [])
                 out.append((pg, band))
-            band[1].append((x, t))
+            band[1].append((x, t, x1))
 
     # Absorb short superscript-ish items into the line they sit beside, so both renders
     # group them the same way regardless of which side of LINE_BAND they landed on.
     merged = []
     for pg, (y, items) in out:
-        if (sum(len(t.strip()) for _, t in items) <= SUP_MAX_CHARS and merged
+        if (sum(len(t.strip()) for _, t, _ in items) <= SUP_MAX_CHARS and merged
                 and merged[-1][0] == pg and abs(merged[-1][1][0] - y) <= SUP_BAND):
             merged[-1][1][1].extend(items)
             continue
@@ -102,20 +102,24 @@ def lines(pdf):
         # identically.
         seg, segs = [], []
         for it in items:
-            if seg and it[0] - seg[-1][0] > COL_GAP:
+            # Measure the gap from the END of the previous item to the START of this
+            # one. Comparing start-to-start split a TOC row -- 'LOSS CONDITIONS' at x=54
+            # and its adjacent dot leader at x=149 read as 95pt apart when they touch.
+            if seg and it[0] - seg[-1][2] > COL_GAP:
                 segs.append(seg); seg = []
             seg.append(it)
         if seg:
             segs.append(seg)
         for sg in segs:
-            joined = "".join(t for _, t in sg)
+            joined = "".join(t for _, t, _ in sg)
             # Collapse LEADER RUNS before comparing. A dot or underscore leader's length
             # is decorative fill, not content, and it depends on sub-point width
             # accumulation -- BPT0003A's table of contents differs from legacy by one or
             # two dots per line, which changed every line key while being invisible.
             # Collapsing to a fixed marker keeps a MISSING leader detectable: many dots
             # against none still differs.
-            key = re.sub(r"([._\-]){2,}", r"", re.sub(r"\s+", "", joined))
+            key = re.sub(r"([._\-])\1{2,}", lambda m: m.group(1) * 3,
+                         re.sub(r"\s+", "", joined))
             if key:
                 res.append((pg, key, sg[0][0], y, re.sub(r"\s+", " ", joined).strip()))
     return res
@@ -146,6 +150,24 @@ def score(form):
             dx, dy = abs(cand[0] - x), abs(cand[1] - y)
             if dx <= START_TOL and dy <= BASE_TOL and (bd is None or dx + dy < bd):
                 best, bd = cand, dx + dy
+        if best is None:
+            # GROUPING FALLBACK. Where the two renders band or segment a line differently,
+            # the legacy line's text still appears -- merged with a neighbour, or split.
+            # Accept it if the legacy text is contained in the concatenation of OUR lines
+            # sharing that baseline. Content and vertical placement are still verified;
+            # the exact start x is not, for merged cases only.
+            #
+            # This replaces six rounds of threshold tuning that traded one grouping
+            # artefact for another: 18pt column gaps chopped justified prose, 72pt missed
+            # a 30pt column gap on M7350A, a per-page band measured worse at scale, and a
+            # superscript absorbed into whichever neighbour happened to come first. The
+            # grouping is heuristic and always will be, so the MATCH is made tolerant of it
+            # rather than the grouping made perfect.
+            same_band = "".join(k for p2, k, _x, y2, _d in O
+                                if p2 == pg and abs(y2 - y) <= BASE_TOL)
+            if key and key in same_band:
+                hit += 1
+                continue
         if best is not None:
             best[2] = True
             hit += 1
