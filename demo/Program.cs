@@ -103,6 +103,19 @@ if (args.Length >= 2 && args[0] == "emit-html")
 
     static string N(float v) => v.ToString("0.###", CultureInfo.InvariantCulture);
 
+    // Measured from the legacy renders one style at a time -- see the shaded-box comment
+    // in the line loop. Returns null for any style not measured, so it renders as an
+    // outline and shows up as a gap rather than as invented shading.
+    static float? ShadeFor(int style) => style switch
+    {
+        7 => 0.85f,
+        8 => 0.75f,
+        9 => 0.65f,
+        10 => 0.55f,
+        12 => 0.788f,
+        _ => null,
+    };
+
     // --- TrueType vertical metrics -------------------------------------------
     // Chromium places the baseline inside the line box using the font's own
     // ascent/descent, so a fixed offset can never be right across font sizes
@@ -274,6 +287,7 @@ if (args.Length >= 2 && args[0] == "emit-html")
       .Append(".abs{position:absolute;white-space:pre;margin:0;padding:0}\n")
       .Append(".rule{position:absolute;background:#000}\n")
       .Append(".box{position:absolute;border:solid #000}\n")
+      .Append(".shade{position:absolute}\n")
       .Append("</style></head><body>\n");
 
     for (int p = 0; p < Math.Max(1, parsed.PageCount); p++)
@@ -289,6 +303,34 @@ if (args.Length >= 2 && args[0] == "emit-html")
         float Py(int row) => row * S;
 
         sb.Append($"<section class=\"form-page\" data-page=\"{p + 1}\">\n");
+
+        // SHADED BOXES, emitted FIRST so they sit behind everything else. A non-zero
+        // style on an X, record means the rectangle is FILLED, not outlined -- confirmed
+        // geometrically: every non-zero-style record matches a filled rectangle in the
+        // legacy PDF at identical coordinates (BOPSECT3 7,830pt2 and STF2920214 11,988pt2
+        // both exact). We drew them as hollow outlines, which is why BOPSECT3 reproduced
+        // only 16.2% of the legacy's non-glyph ink.
+        //
+        // Order matters and is not cosmetic: these are absolutely positioned, so emitting
+        // them alongside the other lines (i.e. after the text) painted the shading OVER the
+        // text it is supposed to sit behind. Documaker lays the band down first.
+        //
+        // The shade is a MEASURED TABLE, deliberately not a formula. Styles 7-10 look
+        // perfectly linear (grey = 1.55 - style/10) and style 10 confirmed it exactly at
+        // 0.55 -- but style 12 measures 0.788 where that formula predicts 0.35, so it is
+        // presumably a hatch pattern rather than a grey level. Extrapolating would have
+        // been wrong. An unmeasured style falls through to the outline path rather than
+        // being guessed at (determinism rule 4).
+        foreach (var l in parsed.Lines.Where(l => l.PageIndex == p && l.Style != 0)
+                     .OrderBy(l => l.Position.Row1).ThenBy(l => l.Position.Col1))
+        {
+            if (ShadeFor(l.Style) is not float shade) continue;
+            var g = (int)Math.Round(shade * 255);
+            sb.Append($"<div class=\"shade\" style=\"left:{N(Px(l.Position.Col1))}pt;top:{N(Py(l.Position.Row1))}pt;")
+              .Append($"width:{N(Px(l.Position.Col2) - Px(l.Position.Col1))}pt;")
+              .Append($"height:{N(Py(l.Position.Row2) - Py(l.Position.Row1))}pt;")
+              .Append($"background:rgb({g},{g},{g})\"></div>\n");
+        }
 
         foreach (var t in texts.Where(t => t.PageIndex == p))
         {
@@ -393,7 +435,8 @@ if (args.Length >= 2 && args[0] == "emit-html")
               .Append($"\">{Esc(t.Text)}</span>\n");
         }
 
-        foreach (var l in parsed.Lines.Where(l => l.PageIndex == p)
+        foreach (var l in parsed.Lines.Where(l => l.PageIndex == p
+                         && !(l.Style != 0 && ShadeFor(l.Style) != null))
                      .OrderBy(l => l.Position.Row1).ThenBy(l => l.Position.Col1))
         {
             float x1 = Px(l.Position.Col1), y1 = Py(l.Position.Row1);
@@ -642,10 +685,12 @@ if (args.Length >= 1 && args[0] == "regress")
 {
     bool capture = args.Length >= 2 && args[1] == "capture";
     // Curated coverage: 2-col right-align, prose+fields, bordered grid, N-column, multi-col defs, multi-page.
-    // M7215A carries 20 M,PX records -- lines nested inside a text area. It is here
-    // because the M,PX parser fix was invisible to this suite: none of the other eight
-    // forms uses one, so the suite passed vacuously through a real change.
-    string[] regressForms = { "QTE_EA9910E", "QTE_COVER_A", "QTE_BILLINFO", "QFRM_FGL", "QFRM_FPL", "QTE_COVAUTOSYM", "QTE_FORM", "MCS90A", "M7215A" };
+    // M7215A carries 20 M,PX records (lines nested in a text area) and BOPSECT3 carries a
+    // style-8 shaded box. Both are here because the suite was BLIND to those constructs:
+    // it reported "OK, no regressions" through two real parser/emitter changes simply
+    // because none of the original eight forms used them. A suite cannot guard a construct
+    // it does not contain.
+    string[] regressForms = { "QTE_EA9910E", "QTE_COVER_A", "QTE_BILLINFO", "QFRM_FGL", "QFRM_FPL", "QTE_COVAUTOSYM", "QTE_FORM", "MCS90A", "M7215A", "BOPSECT3" };
     var regOptions = Options.Create(new FormFileOptions
     {
         FormsDirectory = @"C:\src\FaCT-DocProd-Development\mstrres\MOEC0\FORMS",
