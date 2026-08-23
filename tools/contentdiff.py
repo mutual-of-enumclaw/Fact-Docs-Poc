@@ -35,6 +35,33 @@ FIELD_RE = re.compile(
     r'style="left:([-\d.]+)pt;top:([-\d.]+)pt;width:([-\d.]+)pt;height:([-\d.]+)pt"')
 
 
+FORMS = pathlib.Path(r"C:\src\FaCT-DocProd-Development\mstrres\MOEC0\FORMS")
+FAP_TEXT_RE = re.compile(r"^(?:M,TT|T),\([^)]*\),\([^)]*\),\d+,(.*)$")
+
+
+def fap_static_char_count(form, ch):
+    """How many times `ch` appears in the FAP's own static text.
+
+    This is the authority for fill characters. Documaker renders an UNFILLED field as a
+    run of underscores whose length follows the field's BOX, not its declared length, so
+    the fill spills outside the rect field_boxes() can exclude -- 210 stray underscores
+    on IM74054O against 58 declared characters. Rather than widen the geometry until it
+    swallows real static text, count what the FAP actually declares: every underscore in
+    the source must appear in our render, and any EXCESS in the legacy render is fill by
+    construction. Returns None if the FAP cannot be read, in which case no allowance is
+    made.
+    """
+    p = FORMS / f"{form}.FAP"
+    if not p.exists():
+        return None
+    n = 0
+    for raw in p.read_bytes().decode("cp1252", errors="replace").splitlines():
+        m = FAP_TEXT_RE.match(raw.strip())
+        if m:
+            n += m.group(1).count(ch)
+    return n
+
+
 def field_boxes(form):
     """page index -> padded rects of every FAP `F,` field, read from the emitted HTML.
 
@@ -225,8 +252,22 @@ def compare(form):
     # right direction: a gate that fails a correct render is the mistake that
     # disqualified ink IoU.
     dropped = (bag_l - bag_o) - filtered_o
+    # Fill-character allowance. Only excuse a missing fill char once our render is proved
+    # to carry every one the FAP declares, so a genuinely dropped underscore still fails
+    # while Documaker's unfilled-field fill does not.
+    fill_excused = 0
+    for ch in ("_",):
+        if dropped.get(ch):
+            declared = fap_static_char_count(form, ch)
+            # Our TOTAL count, including chars inside field rects: those were excluded
+            # from the comparison but they are still characters we rendered.
+            ours_total = bag_o.get(ch, 0) + filtered_o.get(ch, 0)
+            if declared is not None and ours_total >= declared:
+                fill_excused += dropped[ch]
+                del dropped[ch]
     return {"form": form, "words": total_l, "artefacts": artefacts,
             "nothing_dropped": not dropped, "field_chars_excluded": excluded,
+            "fill_excused": fill_excused,
             "dropped": "".join(f"{c}x{n} " for c, n in dropped.most_common(6)),
             "chars_equal": chars_equal, "chars": chars_l, "chars_ours": chars_o,
             "match_pct": round(100 * total_match / total_l, 1), "examples": examples}
@@ -251,6 +292,11 @@ def main(forms):
     ex_total = sum(r["field_chars_excluded"] for r in results)
     ex_forms = sum(1 for r in results if r["field_chars_excluded"])
     print(f"\nTIER 1 GATE -- nothing dropped: {len(nod)}/{len(results)} forms")
+    fx = sum(r.get("fill_excused", 0) for r in results)
+    if fx:
+        nf = sum(1 for r in results if r.get("fill_excused"))
+        print(f"   (unfilled-field fill excused: {fx} chars across {nf} forms -- "
+              f"our render carries every one the FAP declares)")
     print(f"   (field regions excluded from both sides: {ex_total} chars across {ex_forms} forms)")
     for r in results:
         if not r["nothing_dropped"]:
@@ -270,7 +316,7 @@ def main(forms):
 
     out = pathlib.Path(r"C:\src\fact-pdf-tools\output\content-diff.csv")
     with out.open("w", newline="", encoding="utf-8") as fh:
-        w = csv.DictWriter(fh, fieldnames=["form", "words", "match_pct", "artefacts", "chars_equal", "nothing_dropped", "dropped", "chars", "chars_ours", "field_chars_excluded", "examples"])
+        w = csv.DictWriter(fh, fieldnames=["form", "words", "match_pct", "artefacts", "chars_equal", "nothing_dropped", "dropped", "chars", "chars_ours", "field_chars_excluded", "fill_excused", "examples"])
         w.writeheader()
         for r in results:
             w.writerow({**r, "examples": " | ".join(r["examples"])})
