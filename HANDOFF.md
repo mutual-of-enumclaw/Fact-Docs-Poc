@@ -16,7 +16,7 @@ that branch and largely irrelevant to Form Studio.
 
 **Goal:** convert legacy Documaker FAP/DDT forms into a modern, editable, schema-bound format,
 deterministically, and prove the output is indistinguishable from the legacy render. Read
-`FORM-STUDIO-PLAN.md` end to end — it is the design *and* the running lab notebook, and §10–26 record
+`FORM-STUDIO-PLAN.md` end to end — it is the design *and* the running lab notebook, and §10–27 record
 what was measured, including the negative results. Sections are append-only; do not rewrite history.
 
 ### Where it stands (300-form stratified sweep, 288 rendered, 271 scored)
@@ -26,16 +26,16 @@ Run `python tools/dashboard.py` for the live version — it writes
 
 | gate | result |
 |---|---|
-| **Green on every gate** | **258/271 (95%)** |
-| **Tier 1 — nothing dropped** (content) | **259/259** ✅ |
-| **Tier 2 — ≥90% of glyphs within 3.0pt** (placement) | **251/260**, median 99.5% |
-| **Non-text ink — ≥90% of the legacy's non-glyph ink** | **154/158**, median 100.0% |
-| Tier 2 at the 1.0pt quality bar (diagnostic, not a gate) | 156/260, median 93.0% |
+| **Green on every gate** | **270/283 (95%)** |
+| **Tier 1 — nothing dropped** (content) | **271/271** ✅ |
+| **Tier 2 — ≥90% of glyphs within 3.0pt** (placement) | **263/272**, median 99.5% |
+| **Non-text ink — ≥90% of the legacy's non-glyph ink** | **159/163**, median 100.0% |
+| Tier 2 at the 1.0pt quality bar (diagnostic, not a gate) | 167/272, median 93.2% |
 
 Every stratum is above 78% green; images is the best at 56/60. Two honest caveats the tools print
 rather than hide: non-text ink **skips 142 of 300 forms** for having under 200 non-text pixels (not
-counted as passes), and **12 forms cannot be scored at all** because FAP2PDF writes a 0-byte PDF while
-exiting 0.
+counted as passes), (the 12 forms that FAP2PDF used to fail on are fixed — see §27; `sweep.py` now copies the Documaker
+fonts into the work directory).
 
 **Content and vertical placement are closed.** Tier 1 is 259/259, and `|dy| > 1pt` is 0.0% of glyphs on
 every accepted form. Everything still open is horizontal placement or missing artwork.
@@ -106,8 +106,10 @@ the layout rather than re-deriving it. Whole-run scale factors are exhausted.
   that invents work is worse than no gate.
 - **A metric that imposes its own tokenisation will lie to you.** Both Tier 1 and Tier 2 had to move to
   glyph/character level for exactly this reason. Compare marks and positions, not strings.
-- **Ask what a check is blind to, not just what it reports.** This has now bitten three times in three
-  different places: run-level Tier 2 could not see drift *inside* a run; Tier 1 and Tier 2 are both
+- **Ask what a check is blind to, not just what it reports.** This has now bitten FOUR times:
+  **nothing measures glyph identity** — DocuDings symbols rendered as Latin letters and every gate
+  passed, because Tier 1 compares character codes, Tier 2 compares positions, and the ink gate masks
+  text out (§27). The other three: run-level Tier 2 could not see drift *inside* a run; Tier 1 and Tier 2 are both
   text-only and could not see a missing logo or a missing rule; and the golden `.gd` suite reported
   "8 OK, no regressions" through a real parser change because none of its forms used the construct.
   A suite that does not contain the construct cannot guard it. This happened TWICE in one day (M,PX and

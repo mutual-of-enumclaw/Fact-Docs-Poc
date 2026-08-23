@@ -1629,3 +1629,60 @@ decoded format.** It is confined to `M,PX` records, its errors are a single thin
 missing, and it is worth revisiting if the mechanism is ever found. Recorded here rather than quietly
 left at the flattering figure -- a small sample overstating a rule is the same trap as a small
 calibration set (section 15) and a construct-blind regression suite (sections 21-22).
+
+---
+
+## 27. The 0-byte oracle, and a font we were silently substituting (2026-08-23)
+
+### Why 12 forms could not be scored at all
+
+Section 11 recorded, in August, that some forms produce an empty legacy PDF and that the cause was
+uninvestigated. It is this: **FAP2PDF resolves embedded fonts relative to its working directory**, and
+these forms use `DocuDing.TTF`, the Documaker dingbat face. When it cannot find one it prints
+`Failed to read file DocuDing.TTF`, then prints `PDF file created successfully`, writes a **0-byte**
+file, and exits **0** -- three separate ways of not telling you it failed.
+
+The font is on disk at `mstrres/Fmres/deflib`. `sweep.py` now copies all 29 faces into the work
+directory alongside `FSISYS.INI`. All 12 forms render, and all 12 pass every gate:
+
+| | before | after |
+|---|---|---|
+| scored by at least one gate | 271/300 | **283/300** |
+| green on every gate | 258 | **270** |
+| Tier 1 | 259/259 | **271/271** |
+| Tier 2 within 3.0pt | 251/260 | **263/272** |
+| non-text ink | 154/158 | **159/163** |
+
+### The gates cannot see a wrong glyph SHAPE
+
+Chasing that dependency exposed a defect none of the three gates can detect. `TtfFor()` fell back to
+Arial for any face that was not Courier or Times, so **DocuDings symbols were rendering as Latin
+letters** -- 48 spans across 16 forms in the sweep.
+
+Every gate passed those forms:
+
+| gate | what it compares | why it missed this |
+|---|---|---|
+| Tier 1 | character codes | the code is identical; only the glyph differs |
+| Tier 2 | glyph positions | a wrong glyph sits in the right place |
+| non-text ink | ink outside text boxes | text is masked out by construction |
+
+This is the fourth distinct blind spot found by asking what a check cannot see, after intra-run drift,
+non-glyph ink, and the construct-blind regression suite. **Nothing currently measures glyph identity.**
+A future gate could compare rendered glyph bitmaps inside the text boxes that the ink gate masks -- the
+raster is already there.
+
+### The other substitutions are deliberate and correct
+
+Audited every typeface the sweep uses:
+
+| typeface | spans | maps to | verdict |
+|---|---:|---|---|
+| Arial | 157,721 | arial.ttf | correct |
+| UniversATT | 77,477 | arial.ttf | **correct for this channel** -- FAP2PDF substitutes base-14 Helvetica, and Arial is Helvetica-metric-compatible (section 10) |
+| AlbanyAMT | 266 | arial.ttf | correct -- Albany is a metric-compatible Arial clone |
+| ArialNarrow | 220 | arial.ttf | correct -- verified those forms embed plain `Helvetica` in the legacy PDF |
+| Times | 59 | TIMES.TTF | correct |
+| **DocuDings** | **48** | ~~arial.ttf~~ **DocuDing.TTF** | **was wrong, fixed** |
+| ArialBlack | 14 | arial.ttf | no TTF on disk; legacy substitutes Helvetica |
+| Courier | 2 | COURIE.TTF | correct |
