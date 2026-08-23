@@ -51,6 +51,12 @@ public record FapTextToken(
     (int Row1, int Col1, int Row2, int Col2) Position,
     bool IsFieldPlaceholder = false);
 
+/// <summary>A <c>G,</c> image placement: <c>G,(row1,col1,row2,col2),NAME</c>, where NAME
+/// resolves to a Documaker <c>NAME.LOG</c> raster beside the FAP files.</summary>
+public record FapImage(
+    (int Row1, int Col1, int Row2, int Col2) Position,
+    string Name, int LineNumber, int PageIndex = 0);
+
 public record FapParseResult(
     string FileName, int PageCount,
     IReadOnlyList<FapField> Fields,
@@ -58,6 +64,9 @@ public record FapParseResult(
     IReadOnlyList<FapLine> Lines,
     IReadOnlyList<FapTextArea> TextAreas)
 {
+    /// <summary>Image placements from <c>G,</c> records.</summary>
+    public IReadOnlyList<FapImage> Images { get; init; } = [];
+
     /// <summary>Per-page dimensions parsed from each H-line. Index = page number (0-based).</summary>
     public IReadOnlyList<FapPageInfo> PageInfos { get; init; } = [];
 
@@ -191,6 +200,7 @@ public class FormFileClient
         var fields = new List<FapField>();
         var staticTexts = new List<FapStaticText>();
         var xLines = new List<FapLine>();
+        var images = new List<FapImage>();
         var textAreas = new List<FapTextArea>();
         var pageInfos = new List<FapPageInfo>();
         int pageCount = 0, lineNum = 0;
@@ -241,6 +251,12 @@ public class FormFileClient
             // curves, solid black, ~3.9pt across, at exactly these coordinates. 634 records
             // across 60 forms, and we drew nothing for them. Both trailing parameter values
             // seen in the library (55 and 6) render identically.
+            if (trimmed.StartsWith("G,", StringComparison.OrdinalIgnoreCase))
+            {
+                var gi = ParseFapGLine(trimmed, lineNum);
+                if (gi != null) images.Add(gi with { PageIndex = pg });
+                continue;
+            }
             if (trimmed.StartsWith("M,I,", StringComparison.OrdinalIgnoreCase))
             {
                 var mi = ParseFapBulletLine(trimmed, lineNum);
@@ -306,6 +322,7 @@ public class FormFileClient
         {
             PageInfos = pageInfos,
             InlineFieldPositions = inlineFieldPositions,
+            Images = images,
         };
     }
 
@@ -475,6 +492,22 @@ public class FormFileClient
     /// Parses an M,I bullet record: <c>M,I,(row1,col1,row2,col2),n,n</c>. Unlike a line
     /// record it has no second parenthetical group, so it needs its own reader.
     /// </summary>
+    /// <summary>Parses <c>G,(row1,col1,row2,col2),NAME</c>.</summary>
+    private static FapImage? ParseFapGLine(string line, int lineNum)
+    {
+        try
+        {
+            var pos = ExtractParenGroup(line[2..], 0);
+            var pc = pos.Content.Split(',');
+            var name = line[2..][(pos.End)..].TrimStart(',').Trim().Trim('"').Trim();
+            if (name.Length == 0) return null;
+            return new FapImage(
+                (int.Parse(pc[0]), int.Parse(pc[1]), int.Parse(pc[2]), int.Parse(pc[3])),
+                name, lineNum);
+        }
+        catch { return null; }
+    }
+
     private static FapLine? ParseFapBulletLine(string line, int lineNum)
     {
         try

@@ -102,6 +102,130 @@ if (args.Length >= 2 && args[0] == "emit-html")
         return set[(bold ? 1 : 0) + (italic ? 2 : 0)];
     }
 
+    // --- Documaker .LOG raster -> PNG ----------------------------------------
+    // Format, worked out from the files themselves and verified by eye on all three
+    // depths present in the library:
+    //   header  " rows,cols,bytesPerRow,dpi,bpp,0,...,paletteSize"
+    //   palette paletteSize lines of "r,g,b"   (only when paletteSize is non-zero)
+    //   data    hex, a row split over several lines, continued lines ending in a
+    //           backslash
+    // bytesPerRow is the row STRIDE and is padded -- it runs a byte beyond
+    // ceil(cols*bpp/8) on many files -- so it is used as given, never recomputed.
+    // 24bpp is BGR in file order; 1bpp is INK-set, so a set bit is BLACK.
+    // All 76 assets on disk decode.
+    static (int W, int H, byte[] Rgb)? DecodeLog(string path)
+    {
+        try
+        {
+            var text = File.ReadAllText(path, System.Text.Encoding.ASCII);
+            var lines = text.Split('\n');
+            var hf = lines[0].Split(',');
+            int rows = int.Parse(hf[0].Trim()), cols = int.Parse(hf[1].Trim());
+            int bpr = int.Parse(hf[2].Trim()), bpp = int.Parse(hf[4].Trim());
+            int npal = int.TryParse(hf[^1].Trim().Trim('"').Trim(), out var np) ? np : 0;
+            if (cols <= 0 || rows <= 0 || bpr < (cols * bpp + 7) / 8) return null;
+
+            int li = 1;
+            var pal = new List<(byte R, byte G, byte B)>();
+            for (int i = 0; i < npal && li < lines.Length; i++, li++)
+            {
+                var pp = lines[li].Split(',');
+                if (pp.Length >= 3
+                    && byte.TryParse(pp[0].Trim(), out var pr)
+                    && byte.TryParse(pp[1].Trim(), out var pg2)
+                    && byte.TryParse(pp[2].Trim(), out var pb)) pal.Add((pr, pg2, pb));
+            }
+
+            var hex = new System.Text.StringBuilder();
+            for (; li < lines.Length; li++)
+                hex.Append(lines[li].Trim('\r').TrimEnd('\\'));
+            var hs = hex.ToString();
+            int nbytes = hs.Length / 2;
+            if (nbytes < rows * bpr) return null;
+            var data = new byte[nbytes];
+            for (int i = 0; i < nbytes; i++)
+                data[i] = Convert.ToByte(hs.Substring(i * 2, 2), 16);
+
+            var rgb = new byte[rows * cols * 3];
+            for (int y = 0; y < rows; y++)
+            {
+                int src = y * bpr;
+                for (int x = 0; x < cols; x++)
+                {
+                    int d = (y * cols + x) * 3;
+                    if (bpp == 24)
+                    {
+                        rgb[d] = data[src + x * 3 + 2];
+                        rgb[d + 1] = data[src + x * 3 + 1];
+                        rgb[d + 2] = data[src + x * 3];
+                    }
+                    else if (bpp == 8)
+                    {
+                        byte v = data[src + x];
+                        if (pal.Count > v) { rgb[d] = pal[v].R; rgb[d + 1] = pal[v].G; rgb[d + 2] = pal[v].B; }
+                        else rgb[d] = rgb[d + 1] = rgb[d + 2] = v;
+                    }
+                    else if (bpp == 1)
+                    {
+                        int bit = (data[src + (x >> 3)] >> (7 - (x & 7))) & 1;
+                        byte v = bit != 0 ? (byte)0 : (byte)255;
+                        rgb[d] = rgb[d + 1] = rgb[d + 2] = v;
+                    }
+                    else return null;
+                }
+            }
+            return (cols, rows, rgb);
+        }
+        catch { return null; }
+    }
+
+    static byte[] WritePng(int w, int h, byte[] rgb)
+    {
+        static uint Crc(byte[] b)
+        {
+            uint c = 0xFFFFFFFFu;
+            foreach (var x in b)
+            {
+                c ^= x;
+                for (int k = 0; k < 8; k++) c = (c >> 1) ^ (0xEDB88320u & (uint)(-(c & 1)));
+            }
+            return c ^ 0xFFFFFFFFu;
+        }
+        static byte[] Be(uint v) => [(byte)(v >> 24), (byte)(v >> 16), (byte)(v >> 8), (byte)v];
+        static byte[] Chunk(string tag, byte[] payload)
+        {
+            var t = System.Text.Encoding.ASCII.GetBytes(tag);
+            var body = t.Concat(payload).ToArray();
+            return Be((uint)payload.Length).Concat(body).Concat(Be(Crc(body))).ToArray();
+        }
+
+        var raw = new byte[h * (w * 3 + 1)];
+        for (int y = 0; y < h; y++)
+        {
+            raw[y * (w * 3 + 1)] = 0;                       // filter: none
+            Array.Copy(rgb, y * w * 3, raw, y * (w * 3 + 1) + 1, w * 3);
+        }
+        // zlib wrapper around raw deflate: 2-byte header + adler32 trailer.
+        byte[] deflated;
+        using (var ms = new MemoryStream())
+        {
+            using (var ds = new System.IO.Compression.DeflateStream(
+                       ms, System.IO.Compression.CompressionLevel.Optimal, true))
+                ds.Write(raw, 0, raw.Length);
+            deflated = ms.ToArray();
+        }
+        uint a = 1, b2 = 0;
+        foreach (var x in raw) { a = (a + x) % 65521; b2 = (b2 + a) % 65521; }
+        var z = new byte[] { 0x78, 0x9C }.Concat(deflated).Concat(Be((b2 << 16) | a)).ToArray();
+
+        var ihdr = Be((uint)w).Concat(Be((uint)h))
+            .Concat(new byte[] { 8, 2, 0, 0, 0 }).ToArray();
+        return new byte[] { 0x89, 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A }
+            .Concat(Chunk("IHDR", ihdr))
+            .Concat(Chunk("IDAT", z))
+            .Concat(Chunk("IEND", [])).ToArray();
+    }
+
     static string CssFamily(string typeface) =>
         "F_" + new string(typeface.Where(char.IsLetterOrDigit).ToArray());
 
@@ -246,6 +370,7 @@ if (args.Length >= 2 && args[0] == "emit-html")
         .ToList();
 
     // --- Embed only the faces this form actually uses ---------------------------
+    var missingImages = new List<string>();
     var usedFaces = texts
         .Select(t => htmlFonts.Resolve(t.FontId))
         .Where(f => f != null)
@@ -257,6 +382,9 @@ if (args.Length >= 2 && args[0] == "emit-html")
     var css = new System.Text.StringBuilder();
     var faceMetrics = new Dictionary<string, (float Ascent, float Descent)>(StringComparer.Ordinal);
     var faceAdvances = new Dictionary<string, float[]>(StringComparer.Ordinal);
+    if (missingImages.Count > 0)
+        Console.Error.WriteLine($"  WARNING: {missingImages.Count} image(s) not resolved: "
+            + string.Join(", ", missingImages.Distinct().OrderBy(x => x, StringComparer.Ordinal)));
     foreach (var face in usedFaces)
     {
         var ttf = Path.Combine(fontDir, TtfFor(face.Typeface, face.Bold, face.Italic));
@@ -299,6 +427,7 @@ if (args.Length >= 2 && args[0] == "emit-html")
       .Append(".box{position:absolute;border:solid #000;box-sizing:border-box}\n")
       .Append(".shade{position:absolute}\n")
       .Append(".bullet{position:absolute;background:#000;border-radius:50%}\n")
+      .Append(".img{position:absolute}\n")
       .Append("</style></head><body>\n");
 
     for (int p = 0; p < Math.Max(1, parsed.PageCount); p++)
@@ -314,6 +443,36 @@ if (args.Length >= 2 && args[0] == "emit-html")
         float Py(int row) => row * S;
 
         sb.Append($"<section class=\"form-page\" data-page=\"{p + 1}\">\n");
+
+        // IMAGES. A G, record names a Documaker .LOG raster that lives beside the FAP
+        // files; DecodeLog turns it into RGB and WritePng wraps it for the browser. They
+        // are emitted before the text so artwork sits behind it, as the shading does.
+        //
+        // Both resource trees are searched because they are meant to be identical copies
+        // and neither is complete on its own. An unresolved or undecodable image is
+        // reported on stderr rather than silently skipped -- a missing logo is invisible
+        // to every gate we have.
+        foreach (var im in parsed.Images.Where(i => i.PageIndex == p)
+                     .OrderBy(i => i.Position.Row1).ThenBy(i => i.Position.Col1)
+                     .ThenBy(i => i.Name, StringComparer.Ordinal))
+        {
+            string? logPath = null;
+            foreach (var dir in new[] { Path.Combine(MstrRes, "AGCYLNK", "FORMS"),
+                                        Path.Combine(MstrRes, "MOEC0", "FORMS") })
+            {
+                var cand = Path.Combine(dir, im.Name + ".LOG");
+                if (File.Exists(cand)) { logPath = cand; break; }
+            }
+            if (logPath == null) { missingImages.Add(im.Name); continue; }
+            var dec = DecodeLog(logPath);
+            if (dec == null) { missingImages.Add(im.Name + " (undecodable)"); continue; }
+
+            var png = WritePng(dec.Value.W, dec.Value.H, dec.Value.Rgb);
+            sb.Append($"<img class=\"img\" src=\"data:image/png;base64,{Convert.ToBase64String(png)}\" ")
+              .Append($"style=\"left:{N(Px(im.Position.Col1))}pt;top:{N(Py(im.Position.Row1))}pt;")
+              .Append($"width:{N(Px(im.Position.Col2) - Px(im.Position.Col1))}pt;")
+              .Append($"height:{N(Py(im.Position.Row2) - Py(im.Position.Row1))}pt\">\n");
+        }
 
         // SHADED BOXES, emitted FIRST so they sit behind everything else. A non-zero
         // style on an X, record means the rectangle is FILLED, not outlined -- confirmed
