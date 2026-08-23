@@ -16,7 +16,7 @@ that branch and largely irrelevant to Form Studio.
 
 **Goal:** convert legacy Documaker FAP/DDT forms into a modern, editable, schema-bound format,
 deterministically, and prove the output is indistinguishable from the legacy render. Read
-`FORM-STUDIO-PLAN.md` end to end — it is the design *and* the running lab notebook, and §10–33 record
+`FORM-STUDIO-PLAN.md` end to end — it is the design *and* the running lab notebook, and §10–34 record
 what was measured, including the negative results. Sections are append-only; do not rewrite history.
 
 ### Where it stands (1,000-form stratified sweep, all 1000 rendered, 946 scored)
@@ -198,7 +198,8 @@ or you will score whatever parser built it last (it was three weeks stale when �
 2. **`X,` edge semantics** (§31, §32) — the second parameter group decides whether a record draws a
    rectangle, one rule, two rules, or only the verticals, and it is only partly decoded. `(20,20)`,
    `(15,15)`, `(33,33)`, `(36,36)` are rectangles; `(24,24)` under 430 units is rules 92% of the time;
-   **`(25,25)` is genuinely mixed across four outcomes over 83 records.** `FapLine.Group` already
+   **`(25,25)` is genuinely mixed across four outcomes over 83 records.** The `M,PX` rule is 85%
+   accurate at 1,000-form scale (§34, up from the 80% in §26). `FapLine.Group` already
    carries the group through the parser. Note §32: a 92% rule here was reverted because being wrong
    drops real ink.
 3. **A declarative system-value registry** (total pages, current page, edition, print date) resolved by

@@ -1956,3 +1956,50 @@ is worth noting given that section 5 listed multi-page forms as a parity blocker
 
 So after everything: **no content defects anywhere in 913 scored forms**, and three quarters of the
 remaining failures are the one horizontal-drift defect that five separate attempts have failed to fix.
+
+---
+
+## 34. The M,PX edge rule at 1,000 forms, and one more refuted hypothesis (2026-08-23)
+
+Re-measured on **557 records across 87 forms** (was 164 across 23 in section 26):
+
+| | section 26 (n=164) | **1,000-form run (n=557)** |
+|---|---|---|
+| bottom edge drawn | 145/164 (88%) | **521/557 (94%)** |
+| top edge, height < 420 | 15/94 (16%) | 29/289 (**10%**) |
+| top edge, height >= 420 | 57/70 (81%) | 221/268 (**82%**) |
+| **both edges correct** | 132/164 (80%) | **473/557 (85%)** |
+| top edge alone correct | 136/164 (83%) | **481/557 (86%)** |
+
+So the rule is **better than section 26 concluded**, not worse -- 85% rather than 80%. The larger sample
+moved it up, which is the opposite of the usual direction and worth recording as such.
+
+### Height is a proxy, not the mechanism
+
+Globally the rule is non-monotonic: heights 427, 499, 827 and 971 draw a top; 360, 411, **507 and 575**
+do not. 499 draws one and 507 does not.
+
+But **within a form it is clean.** Of 59 forms with mixed behaviour, height fully explains the split in
+10 of the 12 examined -- e.g. `IM70124O` is 0/2 at height 360 and 3/3 at 427, and `IM7213OM` is 0/2 at
+411 and 1/1 at 499. The *threshold* moves between forms.
+
+### Hypothesis: the threshold is relative to the form's line height. REFUTED.
+
+If the boundary were "taller than about 1.3 line heights", it would explain a per-form threshold
+mechanically and be computable at conversion time with no oracle. Taking the line height from the
+enclosing `M,H` record's font tuple and testing height/lineheight:
+
+| rule | correct |
+|---|---|
+| top iff ratio >= 1.15 … 1.40 | **45%** |
+| top iff ratio >= 3.8 (where the data actually splits) | 84% |
+| **top iff absolute height >= 420 (shipped)** | **86%** |
+
+The ratio is worse than the crude absolute threshold at every cut. Either the `M,H` line height is not
+the right quantity or the last-seen `M,H` is not the enclosing one; either way the hypothesis is dead
+and the absolute rule stands.
+
+That is now the **seventh** mechanistic hypothesis on the geometry axes to be raised and then refuted by
+measurement -- after the H record, the font mix, per-form calibration, three whole-run width models, and
+this. The pattern is consistent enough to be worth planning around: on this codebase, expect a plausible
+mechanism to fail, and build the measurement before the fix.
