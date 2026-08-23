@@ -39,6 +39,26 @@ FORMS = pathlib.Path(r"C:\src\FaCT-DocProd-Development\mstrres\MOEC0\FORMS")
 FAP_TEXT_RE = re.compile(r"^(?:M,TT|T),\([^)]*\),\([^)]*\),\d+,(.*)$")
 
 
+def fap_declares_fields(form):
+    """Does the FAP declare any field at all -- an `F,` record or an `A,T1` reference?
+
+    The fill allowance only makes sense when there is something for Documaker to fill.
+    Without this check the allowance was VACUOUS on a form that declares no underscores
+    and no fields: `0 >= 0` is trivially true, so it excused all 808 underscores that
+    IM74561R's legacy render draws and we do not. A reviewer spotted the missing lines
+    by eye while the gate reported the form clean -- exactly the "gate that cannot fail"
+    this file warns about elsewhere.
+    """
+    p = FORMS / f"{form}.FAP"
+    if not p.exists():
+        return False
+    for raw in p.read_bytes().decode("cp1252", errors="replace").splitlines():
+        t = raw.lstrip()
+        if t.startswith("F,") or t.startswith("A,T1,"):
+            return True
+    return False
+
+
 def fap_static_char_count(form, ch):
     """How many times `ch` appears in the FAP's own static text.
 
@@ -262,7 +282,8 @@ def compare(form):
             # Our TOTAL count, including chars inside field rects: those were excluded
             # from the comparison but they are still characters we rendered.
             ours_total = bag_o.get(ch, 0) + filtered_o.get(ch, 0)
-            if declared is not None and ours_total >= declared:
+            if (declared is not None and ours_total >= declared
+                    and fap_declares_fields(form)):
                 fill_excused += dropped[ch]
                 del dropped[ch]
     return {"form": form, "words": total_l, "artefacts": artefacts,
