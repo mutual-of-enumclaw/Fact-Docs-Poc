@@ -16,7 +16,7 @@ that branch and largely irrelevant to Form Studio.
 
 **Goal:** convert legacy Documaker FAP/DDT forms into a modern, editable, schema-bound format,
 deterministically, and prove the output is indistinguishable from the legacy render. Read
-`FORM-STUDIO-PLAN.md` end to end — it is the design *and* the running lab notebook, and §10–27 record
+`FORM-STUDIO-PLAN.md` end to end — it is the design *and* the running lab notebook, and §10–28 record
 what was measured, including the negative results. Sections are append-only; do not rewrite history.
 
 ### Where it stands (300-form stratified sweep, 288 rendered, 271 scored)
@@ -63,9 +63,10 @@ Remaining on this axis: 4 ink failures of 158. `MC1690C` (70.7%) is the image ga
 and `M7450B` (76.8%) are `M,PX` edge-rule misses — **that rule is an 80%-accurate heuristic, not a
 decoded format (§26)**; read that section before trusting it. `EP04453R` is 85.5%.
 
-**Images remain genuinely unimplemented** — `G,` → Documaker `.LOG`, 191 forms, 86 assets on disk — but
-they are a smaller blocker than §5 and §21 assumed, because most "image" failures turned out to be
-shading and rules.
+**Images are now implemented (§28).** The `.LOG` format is decoded — all 76 assets on disk, and every
+reference in the library resolves (205 forms, 255 records, 0 unresolved). But **the harness cannot check
+them**: FAP2PDF embeds no images at all, so the PDF channel is not a valid oracle for artwork and image
+fidelity needs visual sign-off rather than a gate.
 
 ### Also open: intra-run horizontal drift (§19, §25)
 

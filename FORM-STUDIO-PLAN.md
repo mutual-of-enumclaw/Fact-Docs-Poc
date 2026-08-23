@@ -1686,3 +1686,53 @@ Audited every typeface the sweep uses:
 | **DocuDings** | **48** | ~~arial.ttf~~ **DocuDing.TTF** | **was wrong, fixed** |
 | ArialBlack | 14 | arial.ttf | no TTF on disk; legacy substitutes Helvetica |
 | Courier | 2 | COURIE.TTF | correct |
+
+---
+
+## 28. Images: the `.LOG` format is decoded (2026-08-23)
+
+The last unhandled FAP record type, open since section 5. `G,` names a Documaker `.LOG` raster sitting
+beside the FAP files, and we drew nothing for them.
+
+### The format
+
+```
+header    " rows,cols,bytesPerRow,dpi,bpp,0,...,paletteSize"
+palette   paletteSize lines of "r,g,b"   (only when paletteSize is non-zero)
+data      hex, a row split over several lines, continued lines ending in a backslash
+```
+
+Two details each cost a debugging round:
+
+- **`bytesPerRow` is a padded row STRIDE.** It runs a byte past `ceil(cols*bpp/8)` on many files, so it
+  must be used as given. Recomputing it rejects a third of the library.
+- **1bpp is ink-set, not luminance.** A set bit is BLACK. Taking it the other way renders a signature
+  as white-on-black -- which is exactly how the first decode came out.
+
+### Result
+
+**All 76 assets on disk decode**, and **every image reference in the library resolves**: 205 forms, 255
+records, 55 distinct names, zero unresolved. Verified by eye at all three depths -- the MoE logo
+(24bpp), the Western States logo (8bpp paletted) and an officer's signature (1bpp).
+
+Ported to C# so the pipeline stays self-contained and deterministic: `DecodeLog` plus a minimal PNG
+writer (deflate in a zlib wrapper, hand-rolled CRC32 and Adler32). Images are emitted **before** the
+text so artwork sits behind it, as shading does. An unresolved or undecodable image is reported on
+stderr rather than skipped silently, because a missing logo is invisible to every gate.
+`tools/logdecode.py` is the same decoder standalone, for inspecting assets.
+
+### The harness cannot check any of this
+
+**FAP2PDF embeds no images at all.** 22 swept forms declare `G,` records and their legacy PDFs contain
+**zero** embedded images. So the PDF channel is not a valid oracle for artwork -- the same limitation as
+fragments (section 12) -- and the gates are unchanged at 270/283 because they cannot see the difference
+either way.
+
+Two consequences worth stating plainly:
+
+1. **Image fidelity needs visual sign-off**, not a gate. `MC1690C` now renders its signature above
+   "Authorized Representative"; that was confirmed by rasterising our own output and looking at it.
+2. **Sections 5 and 21 ranked images as the top fidelity blocker on the strength of scores from a
+   harness that could not see them.** They were never affecting those numbers. The real non-text
+   blockers turned out to be shading, `M,PX` rules and box sizing -- all found only once a gate existed
+   that could see non-glyph ink.
