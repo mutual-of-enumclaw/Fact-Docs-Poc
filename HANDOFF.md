@@ -43,11 +43,11 @@ for every font id and both element kinds. The old "per-form sign flip" was just 
 form. All calibration is **deleted** (`tools/calibrate.py` and both JSON tables); it was fitted to the
 old anchor and would now corrupt the geometry. Do not reintroduce it.
 
-### The weak axis is now non-text ink (§21)
+### The weak axis is now non-text ink (§21–22)
 
 Tier 1 and Tier 2 are both **text-only**, so until §21 a form could be missing its entire logo — or
 every rule on the page — and still score ~100%. `tools/nontextink.py` measures what fraction of the
-legacy's non-glyph ink we reproduce, and only **35/62** scored forms pass.
+legacy's non-glyph ink we reproduce, and only **40/62** scored forms pass.
 
 It found two defects in a day, both invisible to Tier 1/Tier 2:
 - **`M,PX` (§21)** — a line record nested in a text area, payload identical to `X,`, silently
