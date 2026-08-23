@@ -42,7 +42,14 @@ OUTDIR = pathlib.Path(__file__).resolve().parent.parent / "output"
 
 START_TOL = 2.0     # pt; a line may start this far off
 BASE_TOL = 2.0      # pt; and sit this far off vertically
-LINE_BAND = 2.5     # pt; glyphs within this of each other are one line
+LINE_BAND = 2.5     # pt; glyphs within this of each other are one line.
+                    # Deriving it per page from that page's median baseline gap was TRIED
+                    # and measured WORSE at scale: 742/798 forms passed against 781/798
+                    # for this fixed value. It fixed a real artefact -- a 'TM' superscript
+                    # sits 2.6pt above its line in legacy and 2.2pt in ours, so one side
+                    # sees two lines -- but broke roughly forty other forms. The artefact
+                    # is left documented rather than traded for a worse metric; it costs
+                    # 2 of 17 failures (G3168B, G2292A).
 THRESHOLD_PCT = 90.0
 MIN_LINES = 5
 
