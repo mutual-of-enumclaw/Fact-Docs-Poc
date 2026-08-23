@@ -42,6 +42,16 @@ OUTDIR = pathlib.Path(__file__).resolve().parent.parent / "output"
 
 START_TOL = 2.0     # pt; a line may start this far off
 BASE_TOL = 2.0      # pt; and sit this far off vertically
+COL_GAP = 72.0      # pt (one inch); a horizontal gap this large inside a baseline band is a COLUMN
+                    # break, not a word space. Without it a two-column page merges a
+                    # left-column line with a right-column line whenever their baselines
+                    # land within LINE_BAND, and only on one side -- which read as a
+                    # changed line on M7350A and FL1012A when the renders are identical.
+SUP_MAX_CHARS = 3   # items this short sitting just off a line (a 'TM' superscript) are
+                    # absorbed into it on BOTH sides. Legacy separates G3168B's 'TM' from
+                    # its line by 2.6pt and we by 2.2pt, straddling LINE_BAND, so one side
+                    # saw two lines and the other one.
+SUP_BAND = 5.0
 LINE_BAND = 2.5     # pt; glyphs within this of each other are one line.
                     # Deriving it per page from that page's median baseline gap was TRIED
                     # and measured WORSE at scale: 742/798 forms passed against 781/798
@@ -73,19 +83,41 @@ def lines(pdf):
                 band = (y, [])
                 out.append((pg, band))
             band[1].append((x, t))
+
+    # Absorb short superscript-ish items into the line they sit beside, so both renders
+    # group them the same way regardless of which side of LINE_BAND they landed on.
+    merged = []
+    for pg, (y, items) in out:
+        if (sum(len(t.strip()) for _, t in items) <= SUP_MAX_CHARS and merged
+                and merged[-1][0] == pg and abs(merged[-1][1][0] - y) <= SUP_BAND):
+            merged[-1][1][1].extend(items)
+            continue
+        merged.append((pg, (y, list(items))))
+    out = merged
+
     res = []
     for pg, (y, items) in out:
         items.sort(key=lambda i: i[0])
-        # Compare with ALL whitespace removed. Joining span texts directly makes the
-        # result depend on how each engine split the line into spans -- legacy emits "A."
-        # and "Paragraph" separately where we emit one run, so a collapsed-whitespace key
-        # reads as "A.Paragraph" on one side only and every line looks different. This is
-        # the same tokenisation trap that forced Tier 1 to character level and Tier 2 to
-        # glyph level; it has now bitten in three separate metrics.
-        joined = "".join(t for _, t in items)
-        key = re.sub(r"\s+", "", joined)
-        if key:
-            res.append((pg, key, items[0][0], y, re.sub(r"\s+", " ", joined).strip()))
+        # Split the band at column breaks so both sides segment a multi-column line
+        # identically.
+        seg, segs = [], []
+        for it in items:
+            if seg and it[0] - seg[-1][0] > COL_GAP:
+                segs.append(seg); seg = []
+            seg.append(it)
+        if seg:
+            segs.append(seg)
+        for sg in segs:
+            joined = "".join(t for _, t in sg)
+            # Collapse LEADER RUNS before comparing. A dot or underscore leader's length
+            # is decorative fill, not content, and it depends on sub-point width
+            # accumulation -- BPT0003A's table of contents differs from legacy by one or
+            # two dots per line, which changed every line key while being invisible.
+            # Collapsing to a fixed marker keeps a MISSING leader detectable: many dots
+            # against none still differs.
+            key = re.sub(r"([._\-]){2,}", r"", re.sub(r"\s+", "", joined))
+            if key:
+                res.append((pg, key, sg[0][0], y, re.sub(r"\s+", " ", joined).strip()))
     return res
 
 
