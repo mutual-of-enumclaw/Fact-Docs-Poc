@@ -19,62 +19,71 @@ deterministically, and prove the output is indistinguishable from the legacy ren
 `FORM-STUDIO-PLAN.md` end to end — it is the design *and* the running lab notebook, and §10–26 record
 what was measured, including the negative results. Sections are append-only; do not rewrite history.
 
-### Where it stands (120-form stratified sweep, 109 scored)
+### Where it stands (300-form stratified sweep, 288 rendered, 271 scored)
+
+Run `python tools/dashboard.py` for the live version — it writes
+`output/fidelity-dashboard.{csv,md}` with a per-form and per-stratum breakdown.
 
 | gate | result |
 |---|---|
-| **Tier 1 — nothing dropped** (content) | **109/109** ✅ |
-| **Tier 2 — ≥90% of glyphs within 3.0pt** (placement) | **106/109** |
-| **Non-text ink — ≥90% of the legacy's non-glyph ink** (§21–22) | **40/62 scored** ⟵ the weak axis |
-| Tier 2 at the 1.0pt quality bar (diagnostic, not a gate) | 66/109 |
-| (diagnostic only) stream identical incl. order | 95/109 |
+| **Green on every gate** | **258/271 (95%)** |
+| **Tier 1 — nothing dropped** (content) | **259/259** ✅ |
+| **Tier 2 — ≥90% of glyphs within 3.0pt** (placement) | **251/260**, median 99.5% |
+| **Non-text ink — ≥90% of the legacy's non-glyph ink** | **154/158**, median 100.0% |
+| Tier 2 at the 1.0pt quality bar (diagnostic, not a gate) | 156/260, median 93.0% |
 
-Tier 1 is closed: zero real content defects. **Vertical placement is closed too** — `|dy| > 1pt` is
-0.0% of glyphs on every accepted form. Two axes remain open: **non-text ink** (§21, the weaker of the
-two) and **intra-run horizontal drift** (§19).
+Every stratum is above 78% green; images is the best at 56/60. Two honest caveats the tools print
+rather than hide: non-text ink **skips 142 of 300 forms** for having under 200 non-text pixels (not
+counted as passes), and **12 forms cannot be scored at all** because FAP2PDF writes a 0-byte PDF while
+exiting 0.
+
+**Content and vertical placement are closed.** Tier 1 is 259/259, and `|dy| > 1pt` is 0.0% of glyphs on
+every accepted form. Everything still open is horizontal placement or missing artwork.
 
 The 3.0pt gate is set by the worst accepted form (`A0238C`, 90.6%) and is **not** a claim that 3pt is
-good — that form genuinely carries ~3pt of intra-run drift Products accepted by eye. Drive the 1.0pt
-column down; do not loosen the gate.
+good. Drive the 1.0pt column down; do not loosen the gate.
 
 **The baseline mystery is solved (§18).** Documaker anchors the text baseline to the **bottom** of the
-declared box (`row2`), not the top — measured at −0.09pt with stdev 0.06 over 17,193 records, holding
-for every font id and both element kinds. The old "per-form sign flip" was just box height varying per
-form. All calibration is **deleted** (`tools/calibrate.py` and both JSON tables); it was fitted to the
-old anchor and would now corrupt the geometry. Do not reintroduce it.
+declared box (`row2`), not the top — measured at −0.09pt with stdev 0.06 over 17,193 records. The old
+"per-form sign flip" was just box height varying per form. All calibration is **deleted**; it was fitted
+to the old anchor and would now corrupt the geometry. Do not reintroduce it.
 
-### The weak axis is now non-text ink (§21–22)
+### Non-text ink (§21–23, 26)
 
-Tier 1 and Tier 2 are both **text-only**, so until §21 a form could be missing its entire logo — or
-every rule on the page — and still score ~100%. `tools/nontextink.py` measures what fraction of the
-legacy's non-glyph ink we reproduce, and only **40/62** scored forms pass.
+`tools/nontextink.py` exists because Tier 1 and Tier 2 are both text-only — a form could be missing its
+entire logo, or every rule on the page, and still score ~100%. It found four defects in two days:
 
-It found two defects in a day, both invisible to Tier 1/Tier 2:
-- **`M,PX` (§21)** — a line record nested in a text area, payload identical to `X,`, silently
-  discarded. 315 of 4210 forms rendered with **no rules at all**. Eight forms went 0.0% → 42–100%.
-- **`X,` style (§22)** — a non-zero style means the box is **filled**, not outlined. We never read the
-  field. `BOPSECT3` 16.2% → 100%, `RESCBDY` → 100%, `N1STBA` → 99.8%, `A2015G` → 97.8%.
+- **`M,PX`** — a line record nested in a text area, silently discarded; 315 of 4210 forms rendered with
+  no rules at all. It draws horizontal edges only, never a rectangle (§21, §23).
+- **`X,` style** — a non-zero style means the box is **filled**, from a measured shade table (§22).
+- **box sizing** — `.box` used content-box, so every rectangle was ~1pt oversized (§23).
+- **`M,I`** — bullets, 634 records across 60 forms, nothing drawn for them (§24).
 
-Still open on this axis:
-- **Images are still not emitted at all** — `G,` → Documaker `.LOG` (86 assets on disk), **191 forms**.
-  But this is *smaller than it looked*: `RESCBDY`, `STF2471120` and `N1STBA` all declare images and were
-  assumed blocked on decoding — they were blocked on shading. Image-declaring forms now pass **5/6**;
-  `MCS90D` (82.2%) is the only one still failing.
-- `STF2920214` 75.6% — shading now renders correctly, so its remaining gap is a different, unidentified
-  cause.
-- 54 of 116 forms are skipped for having <200 non-text ink pixels, so this axis is measured on barely
-  half the sample.
+Remaining on this axis: 4 ink failures of 158. `MC1690C` (70.7%) is the image gap. `EG0421D2` (56.4%)
+and `M7450B` (76.8%) are `M,PX` edge-rule misses — **that rule is an 80%-accurate heuristic, not a
+decoded format (§26)**; read that section before trusting it. `EP04453R` is 85.5%.
 
-### Also open: intra-run horizontal drift (§19)
+**Images remain genuinely unimplemented** — `G,` → Documaker `.LOG`, 191 forms, 86 assets on disk — but
+they are a smaller blocker than §5 and §21 assumed, because most "image" failures turned out to be
+shading and rules.
 
-`dx` accumulates along a run — `A0238C` goes from −0.08pt at a run's first glyph to −2.70pt by its
-fortieth — and is worst on bold and large sizes (Arial-BoldMT 18pt: median −3.16pt). This is the one
-remaining named defect.
+### Also open: intra-run horizontal drift (§19, §25)
 
-**Four mechanisms have been tried and all measured worse or a wash. §19 has the numbers — do not
-repeat them:** dropping the FXR correction (doubled the error), per-word FXR offsets, multiplicative
-correction via point size (a wash), and box-fit `scaleX` (much worse). The shipped additive
+
+
+`dx` accumulates along a run — run STARTS are exact, then drift reaches −7.4pt by the fortieth glyph on
+`BAN02INT`. This is the one remaining named text defect, and it is what holds the 1.0pt quality bar at
+156/260.
+
+**FIVE mechanisms have been tried and every one measured worse or a wash. §19 and §25 have the numbers
+— do not repeat them:** dropping the FXR correction, per-word FXR offsets, multiplicative correction via
+point size, box-fit `scaleX` (±15%), and box-fit with a ±5% tight-box guard. The shipped additive
 `letter-spacing` stays **because it measures best, not because it is the truest model.**
+
+The key lesson from attempt 5: **a better width model is not a better placement model.** That attempt
+cut the run-width error 5.4× (0.87% → 0.16% median over 1,512 runs) and still regressed every accepted
+form, because matching a run's total width says nothing about where glyphs land inside it. Anything that
+adjusts a single number per run is exhausted.
 
 Two things about the legacy render are now measured facts, and both are the foundation for a fifth
 attempt:
