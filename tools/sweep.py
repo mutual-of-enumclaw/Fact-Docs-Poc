@@ -112,6 +112,14 @@ def sweep(sample, work):
     # FAP2PDF resolves its PDF settings from fsisys.ini in the working directory.
     ini = MSTRRES / "MOEC0" / "FSISYS.INI"
     (work / "FSISYS.INI").write_bytes(ini.read_bytes())
+    # FAP2PDF resolves embedded fonts relative to the working directory, and silently
+    # writes a 0-BYTE PDF (while exiting 0 and printing "created successfully") when it
+    # cannot find one. That is what made 12 of 300 forms unscorable -- they use
+    # DocuDing.TTF, the Documaker dingbat face. Copy the faces in so the oracle works.
+    for ttf in sorted((MSTRRES / "Fmres" / "deflib").glob("*.TTF")):
+        dest = work / ttf.name
+        if not dest.exists():
+            dest.write_bytes(ttf.read_bytes())
     results = []
     for i, (name, category) in enumerate(sample, 1):
         row = {"form": name, "category": category, "status": "", "detail": ""}
