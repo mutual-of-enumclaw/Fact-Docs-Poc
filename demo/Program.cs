@@ -88,6 +88,13 @@ if (args.Length >= 2 && args[0] == "emit-html")
     static string TtfFor(string typeface, bool bold, bool italic)
     {
         var t = typeface.ToUpperInvariant();
+        // Documaker's dingbat face. It has no bold/italic variants, and it is the one
+        // typeface where substituting Arial is plainly wrong rather than a deliberate
+        // channel choice: the legacy PDF embeds DocuDings and we were rendering its
+        // symbols as Latin letters. All three gates missed it -- Tier 1 compares character
+        // CODES, Tier 2 compares positions, and non-text ink masks text out -- so nothing
+        // we measure can see a wrong glyph SHAPE.
+        if (t.Contains("DOCUDING")) return "DocuDing.TTF";
         string[] set =
             t.Contains("COURIER") ? ["COURIE.TTF", "COURIEB.TTF", "COURIEI.TTF", "COURIEBI.TTF"]
             : t.Contains("TIMES") ? ["TIMES.TTF", "TIMESB.TTF", "TIMESI.TTF", "TIMESBI.TTF"]
