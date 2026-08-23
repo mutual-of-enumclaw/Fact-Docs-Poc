@@ -16,7 +16,7 @@ that branch and largely irrelevant to Form Studio.
 
 **Goal:** convert legacy Documaker FAP/DDT forms into a modern, editable, schema-bound format,
 deterministically, and prove the output is indistinguishable from the legacy render. Read
-`FORM-STUDIO-PLAN.md` end to end — it is the design *and* the running lab notebook, and §10–28 record
+`FORM-STUDIO-PLAN.md` end to end — it is the design *and* the running lab notebook, and §10–29 record
 what was measured, including the negative results. Sections are append-only; do not rewrite history.
 
 ### Where it stands (300-form stratified sweep, 288 rendered, 271 scored)
@@ -162,6 +162,10 @@ python tools/contentdiff.py                             # Tier 1 gate (uses cach
 python tools/tier2.py                                   # Tier 2 gate (3.0pt) + 1.0pt quality column
 python tools/parity.py legacy.pdf ours.pdf diff         # IoU + overlay images, diagnostics only
 python tools/nontextink.py                              # non-text ink gate (logos + rules)
+python tools/dashboard.py                               # ALL gates, per form and stratum
+python tools/glyphshape.py                              # glyph-shape diagnostic (wrong-font check)
+python tools/glyphshape.py --selftest EB2410A           #   ...prove it reacts to shape
+python tools/logdecode.py --scan                        # decode every Documaker .LOG asset
 python tools/gdcontent.py                               # .gd content gate (goldens)
 python tools/gdcontent.py --dir output/quote-forms-gd   # ...or any dir of .gd files
 ```

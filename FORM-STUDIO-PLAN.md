@@ -1736,3 +1736,47 @@ Two consequences worth stating plainly:
    harness that could not see them.** They were never affecting those numbers. The real non-text
    blockers turned out to be shading, `M,PX` rules and box sizing -- all found only once a gate existed
    that could see non-glyph ink.
+
+---
+
+## 29. A diagnostic for the wrong-font blind spot (2026-08-23)
+
+Section 27 found that **nothing measures glyph identity**. `tools/glyphshape.py` closes that, with an
+important qualification about what it can and cannot be.
+
+### How it works
+
+For each glyph Tier 2 can match by (page, char, position), crop it from both rasters and reduce each to
+a 16x16 ink bitmap **normalised to its own ink bounding box**. That normalisation is the whole trick:
+comparing the rasters where they sit measures REGISTRATION, not shape, and at 200dpi half a point of
+drift destroys it -- measured, the accepted forms scored **6-10%** that way before normalising.
+
+### It is a diagnostic, not a gate
+
+Per-glyph agreement is genuinely noisy at small sizes: on `P0010G` only **72% of CORRECT glyphs** clear
+the per-glyph cut. A pass/fail built on that would fail work that is fine, which is the failure mode
+this project has disqualified metrics for four times. So it reports:
+
+- **per-form median** shape agreement -- accepted forms sit at **0.79-0.86**;
+- **suspect characters**, whose median agreement is below 0.50 over 3+ occurrences. That is the shape a
+  wrong *face* takes: every glyph of it disagrees at once, which survives the per-glyph noise.
+
+### Validated for sensitivity, not for passing
+
+Per the rule from section 20, the question for a new check is whether it CAN fail. Comparing each
+legacy glyph against a **different character's** crop drops `EB2410A` from **92.2% to 13.8%**, so it is
+reacting to shape rather than to whether a match was found. `--selftest` reproduces it.
+
+The first attempt failed this test outright -- 92.2% normal against 93.8% "swapped" -- because the
+remap made glyphs unmatchable rather than mismatched, so they were skipped instead of scored. **A
+sensitivity test can itself be wrong**, and a self-test that cannot fail is worth as little as a gate
+that cannot fail.
+
+### Two limitations, both measured
+
+1. **A suspect character is a lead, not a defect.** `G2425B` flags `'w'` at 0.27 over 12 occurrences and
+   it is an artefact: legacy's character bbox is 2.7pt taller than ours, so the crop catches ink from
+   neighbouring lines.
+2. **It cannot see a face used for only one or two glyphs per form** (`MIN_CHAR = 3`). The DocuDings
+   defect that motivated the tool sat right at that edge -- roughly three glyphs per form. Honest
+   conclusion: this would probably have caught it, but not comfortably.
