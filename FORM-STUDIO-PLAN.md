@@ -1534,3 +1534,60 @@ counted toward the "548 forms with images" figure in section 5. Sampling it show
 
 **`G,` -- images -- is the only unhandled record type that represents real missing content.** 241
 records, 191 forms, 86 `.LOG` assets on disk.
+
+---
+
+## 25. Attempt 5 at horizontal drift, and why a better width model still lost (2026-08-23)
+
+The 300-form run left the `BAN*` cluster failing placement -- `BAN02INT` 56.0%, `BANAFPCERT` 68.8%,
+`BAN_ERR` 78.6%. They are **Times** forms rather than the Arial ones everything else was measured on,
+which made them a useful independent test of the section 19 conclusions.
+
+What they showed:
+
+- Vertical is fine: `|dy| > 1pt` is **0.0%** of glyphs.
+- Run START positions are essentially exact (dx +/-0.2pt on matched runs).
+- `dx` accumulates monotonically **inside** a run: -0.20pt at the first glyph, **-7.43pt by the
+  fortieth**. Pure advance drift.
+- Our absolute advances are uniformly **2.3-2.7% narrower** than legacy (stdev 0.006 -- very tight).
+- Turning the FXR correction off changed almost nothing (56.0 -> 54.9%), so it is not the culprit.
+
+### A measurement that looked conclusive
+
+Section 22 established that Documaker fits a token to its declared box, and section 22's attempt 4
+failed only because a box is often padding. So: use the box **only when it is already within 5% of our
+natural width**, i.e. when the text evidently fills it. Measured over 1,512 matched runs in 80 forms:
+
+| | |
+|---|---|
+| runs where the box is tight by that test | 1,147 / 1,512 (76%) |
+| current width error on those, median | 0.87% |
+| **box-fit width error on those, median** | **0.16%** -- a 5.4x reduction |
+| the other 24% | box is 7.7% wider than the text (what sank attempt 4) |
+
+### It still measured worse, and that is the finding
+
+| form | @3.0pt | @1.0pt |
+|---|---|---|
+| EB2410A | 99.6 -> **96.3** | 92.4 -> **83.2** |
+| A0238C | 100.0 -> **93.9** | 74.4 -> **72.4** |
+| BAN02INT | 56.0 -> 61.0 | -- |
+
+Reverted: it fails accepted work, which is disqualifying regardless of how good the width numbers look.
+
+**A better width model is not a better placement model.** Matching a run's total width more accurately
+says nothing about where the glyphs land *inside* it -- letter-spacing redistributes them uniformly,
+and legacy's internal distribution is not uniform. Five attempts have now each improved some measure of
+width or scale and failed on placement:
+
+| # | attempt | result |
+|---|---|---|
+| 1 | drop the FXR advance correction | doubled the error |
+| 2 | per-word FXR offsets | removed accumulation, larger scatter, all accepted forms regressed |
+| 3 | multiplicative correction via point size | a wash |
+| 4 | box-fit `scaleX`, +/-15% guard | much worse |
+| 5 | box-fit target, +/-5% tight guard | width error 5.4x better, placement worse |
+
+**Stop optimising run width.** The remaining error is the distribution of glyphs within a run, and the
+only thing that reproduces that is per-glyph positioning. Anything that adjusts a single number per run
+-- spacing, scale, size, target width -- has now been tried.
