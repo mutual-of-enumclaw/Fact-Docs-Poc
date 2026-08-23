@@ -28,9 +28,14 @@ public record FapStaticText(
     (int FontId, int S1, int S2, int S3) FontAttributes,
     int LineNumber, int PageIndex = 0);
 
+/// <param name="Source">
+/// Which record produced this line. "X" is a top-level X, record and draws as a real
+/// rectangle. "MPX" is an M,PX / M,X record nested in a text area and does NOT: Documaker
+/// draws only its horizontal edges (see the renderer for the measured rule).
+/// </param>
 public record FapLine(
     (int Row1, int Col1, int Row2, int Col2) Position,
-    int Width, int Style, int LineNumber, int PageIndex = 0);
+    int Width, int Style, int LineNumber, int PageIndex = 0, string Source = "X");
 
 public record FapTextArea(
     (int Row1, int Col1, int Row2, int Col2) Position,
@@ -232,9 +237,9 @@ public class FormFileClient
             // rather than a top-level X, record rendered with NO horizontal rules at all --
             // invisible to the text-only Tier 1 and Tier 2 gates. 315 of 4210 forms use them.
             if (trimmed.StartsWith("M,PX,", StringComparison.OrdinalIgnoreCase))
-            { var mx = ParseFapXLine(trimmed, lineNum, 5); if (mx != null) xLines.Add(mx with { PageIndex = pg }); continue; }
+            { var mx = ParseFapXLine(trimmed, lineNum, 5); if (mx != null) xLines.Add(mx with { PageIndex = pg, Source = "MPX" }); continue; }
             if (trimmed.StartsWith("M,X,", StringComparison.OrdinalIgnoreCase))
-            { var mx = ParseFapXLine(trimmed, lineNum, 4); if (mx != null) xLines.Add(mx with { PageIndex = pg }); continue; }
+            { var mx = ParseFapXLine(trimmed, lineNum, 4); if (mx != null) xLines.Add(mx with { PageIndex = pg, Source = "MPX" }); continue; }
             if (trimmed.StartsWith("M,H,", StringComparison.OrdinalIgnoreCase)) { FlushTextArea(); var mh = ParseMHLine(trimmed); if (mh != null) { currentTextAreaPos = mh.Value; currentTextAreaLine = lineNum; } continue; }
             if (trimmed.StartsWith("M,TT,", StringComparison.OrdinalIgnoreCase))
             {

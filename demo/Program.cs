@@ -286,7 +286,10 @@ if (args.Length >= 2 && args[0] == "emit-html")
       // metrics + the FXR ascent at emit time (see the text-run loop below).
       .Append(".abs{position:absolute;white-space:pre;margin:0;padding:0}\n")
       .Append(".rule{position:absolute;background:#000}\n")
-      .Append(".box{position:absolute;border:solid #000}\n")
+      // border-box: the FAP rectangle IS the outer edge, so the border must sit inside it.
+      // With the default content-box the border was added OUTSIDE, drawing every box ~1pt
+      // too large and putting its bottom edge ~1.4pt below the legacy rule.
+      .Append(".box{position:absolute;border:solid #000;box-sizing:border-box}\n")
       .Append(".shade{position:absolute}\n")
       .Append("</style></head><body>\n");
 
@@ -442,6 +445,24 @@ if (args.Length >= 2 && args[0] == "emit-html")
             float x1 = Px(l.Position.Col1), y1 = Py(l.Position.Row1);
             float x2 = Px(l.Position.Col2), y2 = Py(l.Position.Row2);
             float thick = Math.Max(0.5f, l.Width * S);
+
+            // M,PX (a line record nested in a text area) is NOT a rectangle. Measured over
+            // 67 records in 10 forms against the legacy renders:
+            //   * vertical edges are NEVER drawn -- zero in every form checked;
+            //   * the BOTTOM edge is drawn 64/67 (96%);
+            //   * the TOP edge splits cleanly on the box height: 2/35 below 420 FAP units,
+            //     31/32 at or above it.
+            // The mechanism is unknown, so this is an empirical rule, but it is a wide split
+            // rather than a fitted curve and it covers the library: of 2,448 M,PX records,
+            // 1,238 are under the threshold and 1,207 over, with just 3 in between.
+            if (l.Source == "MPX" && Math.Abs(y2 - y1) >= 0.01f)
+            {
+                var barH = Math.Max(0.5f, l.Width * S);
+                if (l.Position.Row2 - l.Position.Row1 >= 420)
+                    sb.Append($"<div class=\"rule\" style=\"left:{N(x1)}pt;top:{N(y1)}pt;width:{N(x2 - x1)}pt;height:{N(barH)}pt\"></div>\n");
+                sb.Append($"<div class=\"rule\" style=\"left:{N(x1)}pt;top:{N(y2)}pt;width:{N(x2 - x1)}pt;height:{N(barH)}pt\"></div>\n");
+                continue;
+            }
 
             if (Math.Abs(y2 - y1) < 0.01f)      // horizontal rule
                 sb.Append($"<div class=\"rule\" style=\"left:{N(x1)}pt;top:{N(y1)}pt;width:{N(x2 - x1)}pt;height:{N(thick)}pt\"></div>\n");
