@@ -10,8 +10,11 @@ The three gates, and what each is blind to (which is the point of running all of
   Tier 1  contentdiff  - does our render SAY the same thing?   Blind to placement.
   Tier 2  tier2        - is every glyph in the right PLACE?    Blind to non-glyph ink.
   Ink     nontextink   - are the rules, shading and artwork there?  Blind to text.
+  Shape   glyphshape   - are they the RIGHT glyphs? DIAGNOSTIC only, not a gate.
 
-A form is "green" only if it passes all three.
+A form is "green" only if it passes all three GATES. The shape column is reported
+alongside because a wrong font is invisible to every gate (section 27), but it is too
+noisy per-glyph to gate on -- see its module docstring.
 
 Usage:  python tools/dashboard.py [FORM ...]
 """
@@ -24,6 +27,7 @@ sys.path.insert(0, str(pathlib.Path(__file__).parent))
 import contentdiff  # noqa: E402
 import nontextink   # noqa: E402
 import tier2        # noqa: E402
+import glyphshape   # noqa: E402
 
 OUT = pathlib.Path(r"C:\src\fact-pdf-tools\output")
 SWEEP = OUT / "fidelity-sweep.csv"
@@ -36,6 +40,7 @@ def collect(forms, strata):
         t2 = tier2.score(f)
         t2t = tier2.score(f, tier2.DIAG_TOL_PT)
         ink = nontextink.score(f)
+        gs = glyphshape.score(f)
         rows.append({
             "form": f,
             "stratum": strata.get(f, "?"),
@@ -45,6 +50,7 @@ def collect(forms, strata):
             "ink_pct": None if ink is None else ink["pct"],
             "ink_px": None if ink is None else ink["ink"],
             "has_image": None if ink is None else ink["img"],
+            "shape_median": None if gs is None else gs["median"],
         })
     return rows
 
@@ -97,6 +103,9 @@ def main(forms, strata):
         f"{statistics.median(tiv):.1f}% |" if tiv else "| Tier 2 tight | — | — |",
         f"| Non-text ink | **{inkok}/{inkn}** | {statistics.median(inkv):.1f}% |"
         if inkv else "| Non-text ink | — | — |",
+        (lambda v: f"| Glyph shape (diagnostic, not a gate) | — | {statistics.median(v):.2f} |"
+         if v else "| Glyph shape | — | — |")(
+            [r["shape_median"] for r in rows if r["shape_median"] is not None]),
         "",
         f"Non-text ink skips forms under {nontextink.MIN_INK} non-text pixels — "
         f"{sum(1 for r in rows if r['ink_pct'] is None)} of {len(rows)} here — because "
