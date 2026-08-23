@@ -2003,3 +2003,38 @@ That is now the **seventh** mechanistic hypothesis on the geometry axes to be ra
 measurement -- after the H record, the font mix, per-form calibration, three whole-run width models, and
 this. The pattern is consistent enough to be worth planning around: on this codebase, expect a plausible
 mechanism to fail, and build the measurement before the fix.
+
+---
+
+## 35. A sub-point rectangle is a rule (2026-08-23)
+
+The renderer treated a record as a horizontal rule only when its height was under **0.01pt**. Anything
+thicker became a bordered box -- so a 15-unit (0.45pt) `X,` record was drawn as a box whose 0.5pt
+borders collapse into **two hairlines with a gap**, where Documaker draws **one solid bar**.
+
+Measured on `F9950B`: legacy emits `f (53,80)-(307,80.4)`, a single filled 254x0.4pt bar. We emitted a
+0.45pt-tall box. The threshold is now **1.0pt**, comfortably below any real box in the library and
+above every bar.
+
+### Result, and an explicit trade
+
+| | before | after |
+|---|---|---|
+| **non-text ink PRECISION** (median, 571 forms) | 97.3% | **100.0%** |
+| non-text ink recall (the gate) | 557/571 | 553/571 |
+| green on every gate | 896/946 (95%) | 893/946 (94%) |
+| Tier 1 / Tier 2 / `.gd` suite | unchanged | unchanged |
+
+**The gate went down and the change was kept anyway.** That deserves justification, because two earlier
+changes were reverted on exactly this signal (sections 25 and 32).
+
+The difference is that those were *guesses* about undecoded semantics that happened to hurt the gate.
+This one is **demonstrably correct**: the legacy drawing list shows a single filled bar, and we were
+drawing two hairlines. And every one of the five regressions is a `PSCP-*` / `PSUM-*` **composable
+fragment** -- precisely the class section 12 established FAP2PDF is not a valid oracle for. On those,
+total non-text ink is tiny (a 13pt-tall page), so a sub-point edge offset moves the percentage by 18
+points without anything being missing: `PSCP-GLT`'s four drawings match legacy's four to within 0.2pt.
+
+So: a broad, real improvement across 571 forms, against five scores from an oracle that cannot validly
+judge those forms. Recorded here rather than presented as a clean win, and easy to revert (the constant
+is `RuleMaxThickness`) if that trade is judged wrong.

@@ -647,9 +647,16 @@ if (args.Length >= 2 && args[0] == "emit-html")
                 continue;
             }
 
-            if (Math.Abs(y2 - y1) < 0.01f)      // horizontal rule
+            // A "rectangle" thinner than a point is a RULE, not a box. The threshold used
+            // to be 0.01pt, so a 0.45pt-tall X, record became a bordered box -- two
+            // hairlines with a gap, where Documaker draws one solid bar (measured on
+            // F9950B: legacy emits a filled 254x0.4pt bar; we emitted a 0.45pt box whose
+            // 0.5pt borders collapse). 1pt is comfortably below any real box in the
+            // library and comfortably above every bar.
+            const float RuleMaxThickness = 1.0f;
+            if (Math.Abs(y2 - y1) < RuleMaxThickness)   // horizontal rule
                 sb.Append($"<div class=\"rule\" style=\"left:{N(x1)}pt;top:{N(y1)}pt;width:{N(x2 - x1)}pt;height:{N(thick)}pt\"></div>\n");
-            else if (Math.Abs(x2 - x1) < 0.01f) // vertical rule
+            else if (Math.Abs(x2 - x1) < RuleMaxThickness) // vertical rule
                 sb.Append($"<div class=\"rule\" style=\"left:{N(x1)}pt;top:{N(y1)}pt;width:{N(thick)}pt;height:{N(y2 - y1)}pt\"></div>\n");
             else                                 // rectangle
                 sb.Append($"<div class=\"box\" style=\"left:{N(x1)}pt;top:{N(y1)}pt;width:{N(x2 - x1)}pt;height:{N(y2 - y1)}pt;border-width:{N(thick)}pt\"></div>\n");
