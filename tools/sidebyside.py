@@ -54,14 +54,17 @@ def build(form, legacy_pdf, our_pdf, page, dpi):
 
 
 if __name__ == "__main__":
-    args = [a for a in sys.argv[1:] if not a.startswith("--")]
-    dpi = 150
-    page = 0
-    for i, a in enumerate(sys.argv):
-        if a == "--dpi":
-            dpi = int(sys.argv[i + 1])
-        if a == "--page":
-            page = int(sys.argv[i + 1]) - 1
+    # Parse flags first and skip their VALUES -- taking every non "--" token as a form
+    # name meant `--dpi 150` also queued a form called "150".
+    argv, args, dpi, page = sys.argv[1:], [], 150, 0
+    i = 0
+    while i < len(argv):
+        if argv[i] == "--dpi":
+            dpi = int(argv[i + 1]); i += 2
+        elif argv[i] == "--page":
+            page = int(argv[i + 1]) - 1; i += 2
+        else:
+            args.append(argv[i]); i += 1
     for form in args:
         legacy = WORK / f"{form}.PDF"
         ours = WORK / f"{form}_ours.pdf"
