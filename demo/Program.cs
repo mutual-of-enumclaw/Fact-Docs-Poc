@@ -631,6 +631,13 @@ if (args.Length >= 2 && args[0] == "emit-html")
             // The mechanism is unknown, so this is an empirical rule, but it is a wide split
             // rather than a fitted curve and it covers the library: of 2,448 M,PX records,
             // 1,238 are under the threshold and 1,207 over, with just 3 in between.
+            // An X,(24,24) record no taller than one text line renders as horizontal
+            // rules 73/79 (92%) of the time, and adopting that measured WORSE: the ink
+            // recall gate went 159/163 -> 156/163 because the other 8% lose the vertical
+            // edges legacy does draw. 92% is not enough when the failure mode is
+            // dropping real ink. Reverted -- see FORM-STUDIO-PLAN section 32.
+            // FapLine.Group carries the second group for anyone continuing this; it is
+            // deliberately not interpreted here.
             if (l.Source == "MPX" && Math.Abs(y2 - y1) >= 0.01f)
             {
                 var barH = Math.Max(0.5f, l.Width * S);

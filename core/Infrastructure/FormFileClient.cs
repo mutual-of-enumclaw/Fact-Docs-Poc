@@ -35,7 +35,8 @@ public record FapStaticText(
 /// </param>
 public record FapLine(
     (int Row1, int Col1, int Row2, int Col2) Position,
-    int Width, int Style, int LineNumber, int PageIndex = 0, string Source = "X");
+    int Width, int Style, int LineNumber, int PageIndex = 0, string Source = "X",
+    string Group = "");
 
 public record FapTextArea(
     (int Row1, int Col1, int Row2, int Col2) Position,
@@ -532,7 +533,11 @@ public class FormFileClient
             var second = ExtractParenGroup(rest, pos.End);
             var after = rest[(second.End)..].TrimStart(',');
             var parts = after.Split(',');
-            return new FapLine(position, int.Parse(parts[0]), int.Parse(parts[1]), lineNum);
+            // The second group carries the record's draw style. It is only partly
+            // decoded -- see FORM-STUDIO-PLAN section 31 -- so it is carried through
+            // rather than interpreted here.
+            return new FapLine(position, int.Parse(parts[0]), int.Parse(parts[1]), lineNum,
+                Group: second.Content.Trim());
         }
         catch { return null; }
     }

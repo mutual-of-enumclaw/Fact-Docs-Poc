@@ -1874,3 +1874,36 @@ literally unverifiable. It is verifiable now, and is the obvious next thing to t
 
 `(25,25)` should be left alone until its mechanism is known; four different outcomes over 83 records is
 not something to threshold.
+
+---
+
+## 32. A 92% rule was not good enough (2026-08-23)
+
+Section 31 measured `X,(24,24)` records no taller than one text line rendering as horizontal rules
+**73 of 79 times (92%)** -- the same accuracy as the shipped `M,PX` rule, on a comparable sample. With
+precision now measured, the change was finally verifiable, so it was implemented.
+
+**It measured worse and was reverted:**
+
+| | before | after |
+|---|---|---|
+| non-text ink RECALL (the gate) | **159/163** | 156/163 |
+| green on every gate | **270** | 267 |
+| ink precision (diagnostic) | 96.3% | 96.8% |
+
+Three forms fell below the recall threshold to buy half a point of precision.
+
+### Why 92% is fine for `M,PX` and not for `X,(24,24)`
+
+**The failure modes are not symmetric.** The `M,PX` rule replaced a full rectangle -- 4 edges where
+legacy draws 1 or 2 -- so being wrong meant drawing a spurious rule, which costs precision but never
+recall. This rule replaces a rectangle with rules, so being wrong means **dropping vertical edges the
+legacy does draw**, which costs recall directly, and recall is what gates.
+
+The lesson is not "92% is too low". It is that **the accuracy a heuristic needs depends on which way it
+fails.** A rule that errs toward drawing too much is cheap; one that errs toward drawing too little is
+not, when the gate measures what is missing. Ask what the wrong answer costs before deciding whether
+the hit rate is good enough.
+
+`FapLine.Group` is kept, carrying the second group through the parser without interpreting it, so
+whoever finds the real mechanism does not have to re-plumb it.

@@ -16,7 +16,7 @@ that branch and largely irrelevant to Form Studio.
 
 **Goal:** convert legacy Documaker FAP/DDT forms into a modern, editable, schema-bound format,
 deterministically, and prove the output is indistinguishable from the legacy render. Read
-`FORM-STUDIO-PLAN.md` end to end — it is the design *and* the running lab notebook, and §10–30 record
+`FORM-STUDIO-PLAN.md` end to end — it is the design *and* the running lab notebook, and §10–32 record
 what was measured, including the negative results. Sections are append-only; do not rewrite history.
 
 ### Where it stands (300-form stratified sweep, 288 rendered, 271 scored)
@@ -126,6 +126,10 @@ the layout rather than re-deriving it. Whole-run scale factors are exhausted.
   accepted-form set is not a subset of the sweep sample.
 - **Correlation generates a hypothesis; it never closes one.** Twice a font-id correlation suggested a
   cause that measurement refuted.
+- **How accurate a heuristic must be depends on which way it FAILS.** The `M,PX` edge rule ships at 80%
+  because being wrong there draws a spurious rule (costs precision, never recall). The identical-accuracy
+  `X,(24,24)` rule was reverted because being wrong there drops real edges — and recall is what gates
+  (§32). Ask what the wrong answer costs before judging the hit rate.
 - **A new measurement's first surprising result is more likely a bug in the measurement.** Six metrics
   here have now reported defects the render did not have. The glyph diagnostic (§30) put five forms at
   wrong-font levels; their fonts were fine and the crop was wrong. Check the accused before filing it.
