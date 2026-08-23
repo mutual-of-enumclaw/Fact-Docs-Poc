@@ -1825,3 +1825,52 @@ word-level diffing, reading-order comparison, run-level Tier 2, the field-region
 The difference is only that this one was caught before it became a work item, by checking the fonts of
 the accused forms rather than trusting a striking number. A new measurement's first surprising result
 is more likely to be a bug in the measurement than a discovery.
+
+---
+
+## 31. Measuring the ink we INVENT (2026-08-23)
+
+The non-text ink gate scored **recall** only -- how much of the legacy's non-glyph ink we reproduce.
+That is half the question. Ink we draw and Documaker does not cannot move a recall score at all, so
+spurious box edges were unmeasurable, and any change that draws *less* could only ever look like a
+regression.
+
+`nontextink.py` now reports **precision** alongside: how much of OUR non-text ink the legacy also has.
+Recall still gates; precision is a diagnostic.
+
+### Image regions are excluded from precision
+
+They had to be. FAP2PDF embeds no images (section 28), so every pixel of correctly-rendered artwork
+counted against us -- the first run's lowest-precision forms were almost entirely image-bearing ones
+being penalised for drawing the logo. Excluding the `G,` rects moves the median from 92.3% to **96.3%**
+and makes the tail meaningful. Same reasoning that makes FAP2PDF an invalid oracle for fragments.
+
+### What it found
+
+| | |
+|---|---|
+| precision median over 158 scored forms | **96.3%** |
+| forms notably over-drawing | ~5 |
+
+`QCPP_CP6_A` is the clearest, at 10%. Its `X,(0,600,458,19800),(25,25)` record is a wide 13.7pt box, and
+**legacy draws only the two VERTICAL edges** -- no top or bottom. We draw all four, so two 575pt
+horizontal rules are pure invention, and they dominate the page's non-text ink.
+
+### The `X,` second group is only partly decoded
+
+Across the sweep, `X,` rectangle records render as:
+
+| group | n | outcome |
+|---|---:|---|
+| `(24,24)`, height <= 430 | 79 | rules, 73/79 (92%) |
+| `(20,20)` | 24 | rectangle, 23/24 |
+| `(15,15)` / `(33,33)` / `(36,36)` | 46 | rectangle |
+| `(25,25)` | 83 | **genuinely mixed** -- rectangle, top rule, bottom rule, or verticals-only |
+
+`(24,24)` at 92% would be a defensible rule on the same footing as the `M,PX` one. **It was not adopted**
+for a reason worth recording: the recall gate cannot reward it -- removing spurious edges leaves recall
+unchanged at best and slightly worse if the rule is wrong -- so before precision existed the change was
+literally unverifiable. It is verifiable now, and is the obvious next thing to try on this axis.
+
+`(25,25)` should be left alone until its mechanism is known; four different outcomes over 83 records is
+not something to threshold.

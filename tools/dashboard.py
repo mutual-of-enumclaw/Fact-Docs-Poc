@@ -10,6 +10,8 @@ The three gates, and what each is blind to (which is the point of running all of
   Tier 1  contentdiff  - does our render SAY the same thing?   Blind to placement.
   Tier 2  tier2        - is every glyph in the right PLACE?    Blind to non-glyph ink.
   Ink     nontextink   - are the rules, shading and artwork there?  Blind to text.
+                         Gates on RECALL; also reports PRECISION, because recall alone
+                         cannot see ink we INVENT (spurious box edges).
   Shape   glyphshape   - are they the RIGHT glyphs? DIAGNOSTIC only, not a gate.
 
 A form is "green" only if it passes all three GATES. The shape column is reported
@@ -51,6 +53,7 @@ def collect(forms, strata):
             "ink_px": None if ink is None else ink["ink"],
             "has_image": None if ink is None else ink["img"],
             "shape_median": None if gs is None else gs["median"],
+            "ink_precision": None if ink is None else ink["precision"],
         })
     return rows
 
@@ -103,6 +106,9 @@ def main(forms, strata):
         f"{statistics.median(tiv):.1f}% |" if tiv else "| Tier 2 tight | — | — |",
         f"| Non-text ink | **{inkok}/{inkn}** | {statistics.median(inkv):.1f}% |"
         if inkv else "| Non-text ink | — | — |",
+        (lambda v: f"| Non-text ink PRECISION (diagnostic) | — | {statistics.median(v):.1f}% |"
+         if v else "| Ink precision | — | — |")(
+            [r["ink_precision"] for r in rows if r["ink_precision"] is not None]),
         (lambda v: f"| Glyph shape (diagnostic, not a gate) | — | {statistics.median(v):.2f} |"
          if v else "| Glyph shape | — | — |")(
             [r["shape_median"] for r in rows if r["shape_median"] is not None]),

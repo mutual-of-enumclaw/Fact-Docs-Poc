@@ -18,6 +18,11 @@ Recall is deliberately measured with a tolerance dilation, because artwork that 
 present but a pixel or two off is a placement issue for Tier 2 to talk about, not a
 missing-image defect.
 
+BOTH DIRECTIONS ARE REPORTED. Recall gates; precision -- how much of OUR non-text ink
+the legacy also has -- is reported alongside because recall alone is blind to ink we
+INVENT. Spurious box edges, or artwork FAP2PDF omits, cannot move a recall score at all,
+so without precision a change that draws more than Documaker is unmeasurable.
+
 Usage:  python tools/nontextink.py [FORM ...]     (default: every form in the last sweep)
 """
 import collections
@@ -56,6 +61,33 @@ def text_mask(pdf, page, shape, dpi=parity.DPI):
     return m
 
 
+def image_boxes(form, page):
+    """Rects of the FAP's G, image placements, in points.
+
+    Excluded from the PRECISION side only. FAP2PDF embeds no images at all (section 28),
+    so every pixel of correctly-rendered artwork would otherwise count against us -- the
+    lowest-precision forms were almost entirely image-bearing ones being penalised for
+    drawing the logo. Legacy provably has nothing there to compare with, the same reason
+    it is not a valid oracle for fragments.
+    """
+    p = FORMS / f"{form}.FAP"
+    if not p.exists():
+        return []
+    S = 72.0 / 2400.0
+    out, pg = [], -1
+    for raw in p.read_bytes().decode("cp1252", errors="replace").splitlines():
+        t = raw.strip()
+        if t.startswith("H,"):
+            pg += 1
+        elif t.startswith("G,") and pg == page:
+            try:
+                n = [int(x) for x in t.split("(")[1].split(")")[0].split(",")[:4]]
+                out.append((n[1] * S, n[0] * S, n[3] * S, n[2] * S))
+            except Exception:
+                pass
+    return out
+
+
 def has_images(form):
     """Does the FAP declare a G, image record? N, records are developer notes."""
     p = FORMS / f"{form}.FAP"
@@ -76,7 +108,7 @@ def score(form):
     except Exception:
         return None
 
-    tot = hit = 0
+    tot = hit = otot = ohit = 0
     for p in range(npages):
         ra, _ = parity.raster(str(legacy), p)
         oa, _ = parity.raster(str(ours), p)
@@ -92,11 +124,23 @@ def score(form):
         ob = (oa <= parity.INK) & ~mask          # ours non-text ink
         tot += int(rb.sum())
         hit += int(np.logical_and(rb, parity.dilate(ob, TOL_PX)).sum())
+        # PRECISION: how much of OUR non-text ink the legacy also has. Recall alone is
+        # blind to ink we invent -- spurious box edges, artwork legacy omits -- so a
+        # change that draws MORE than Documaker cannot be detected by it at all.
+        ob_p = ob.copy()
+        for x0, y0, x1, y1 in image_boxes(form, p):
+            k = parity.DPI / 72.0
+            ob_p[max(0, int(y0 * k)):int(y1 * k) + 1,
+                 max(0, int(x0 * k)):int(x1 * k) + 1] = False
+        otot += int(ob_p.sum())
+        ohit += int(np.logical_and(ob_p, parity.dilate(rb, TOL_PX)).sum())
 
+    prec = round(100 * ohit / otot, 1) if otot else None
     if tot < MIN_INK:
-        return {"form": form, "ink": tot, "pct": None, "img": has_images(form)}
+        return {"form": form, "ink": tot, "pct": None, "precision": prec,
+                "img": has_images(form)}
     return {"form": form, "ink": tot, "pct": round(100 * hit / tot, 1),
-            "img": has_images(form)}
+            "precision": prec, "img": has_images(form)}
 
 
 def main(forms):
@@ -107,14 +151,23 @@ def main(forms):
 
     print(f"Non-text ink: >= {THRESHOLD_PCT}% of the legacy's non-glyph ink present "
           f"(+-{TOL_PX}px)\n")
-    print(f"{'form':<18}{'ink px':>9}{'present':>10}  {'G,':>3}  gate")
+    print(f"{'form':<18}{'ink px':>9}{'recall':>9}{'precis':>9}  {'G,':>3}  gate")
     for r in scored:
-        print(f"{r['form']:<18}{r['ink']:>9}{r['pct']:>9.1f}%  "
+        pr = "-" if r["precision"] is None else f"{r['precision']:.1f}%"
+        print(f"{r['form']:<18}{r['ink']:>9}{r['pct']:>8.1f}%{pr:>9}  "
               f"{'img' if r['img'] else '-':>3}  "
               f"{'PASS' if r['pct'] >= THRESHOLD_PCT else 'FAIL'}")
 
     ok = [r for r in scored if r["pct"] >= THRESHOLD_PCT]
-    print(f"\n{len(ok)}/{len(scored)} forms pass")
+    print(f"\n{len(ok)}/{len(scored)} forms pass on RECALL (the gate)")
+    pv = [r["precision"] for r in scored if r["precision"] is not None]
+    if pv:
+        import statistics as _st
+        low = sorted((r for r in scored if r["precision"] is not None),
+                     key=lambda r: r["precision"])[:5]
+        print(f"   precision (our non-text ink that legacy also has): median "
+              f"{_st.median(pv):.1f}%, NOT gated -- lowest: "
+              + ", ".join(f"{r['form']}={r['precision']:.0f}%" for r in low))
     # Never hide what was excluded: a silently-skipped page reads as a pass.
     print(f"   {len(skipped)} form(s) skipped: under {MIN_INK} non-text ink pixels, "
           f"too little to judge")
@@ -128,7 +181,7 @@ def main(forms):
 
     out = pathlib.Path(r"C:\src\fact-pdf-tools\output\nontextink.csv")
     with out.open("w", newline="", encoding="utf-8") as fh:
-        w = csv.DictWriter(fh, fieldnames=["form", "ink", "pct", "img"])
+        w = csv.DictWriter(fh, fieldnames=["form", "ink", "pct", "precision", "img"])
         w.writeheader()
         w.writerows(rows)
     print(f"Wrote {out}")
