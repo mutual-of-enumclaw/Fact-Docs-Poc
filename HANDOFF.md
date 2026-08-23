@@ -190,15 +190,30 @@ or you will score whatever parser built it last (it was three weeks stale when �
 
 ### Open threads, roughly by value
 
-1. **Intra-run horizontal drift** (§19) — the only named fidelity defect left, and what keeps the Tier 2
-   gate at 3.0pt instead of 1.0pt. Read §19's two failed attempts before starting.
-2. ~~A parser-hardening pass with the content gate pointed at `.gd` output~~ **DONE (§20)** --
-   `tools/gdcontent.py` gates it: 8/8 goldens and 301/301 quote forms with content match the FAP
-   character for character, surplus 0. Run it after any `core/` parser change.
-3. **Emit images** (`G,` → `.LOG`, undecoded; **191 forms**, 86 `.LOG` assets on disk). Now measurable
-   via `tools/nontextink.py`, and smaller than §21 estimated — most "image" failures turned out to be
-   shading (§22). Only `MCS90D` remains among image-declaring forms in the sample.
-4. **A declarative system-value registry** (total pages, current page, edition, print date) resolved by
-   rule, belonging with the binding layer (§3) — not a heuristic.
-5. **Packet assembly** — ~31% of the library are fragments, so a converted form is not always a
-   deliverable document.
+1. **Intra-run horizontal drift** (§19, §25) — the last named text defect, and what holds the Tier 2
+   quality bar at 167/272. **Five mechanisms have been tried and every one measured worse or a wash.**
+   Read §19 and §25 before touching it; anything that adjusts a single number per run is exhausted. The
+   only untried approach is per-glyph positioning.
+2. **`X,` edge semantics** (§31, §32) — the second parameter group decides whether a record draws a
+   rectangle, one rule, two rules, or only the verticals, and it is only partly decoded. `(20,20)`,
+   `(15,15)`, `(33,33)`, `(36,36)` are rectangles; `(24,24)` under 430 units is rules 92% of the time;
+   **`(25,25)` is genuinely mixed across four outcomes over 83 records.** `FapLine.Group` already
+   carries the group through the parser. Note §32: a 92% rule here was reverted because being wrong
+   drops real ink.
+3. **A declarative system-value registry** (total pages, current page, edition, print date) resolved by
+   rule, belonging with the binding layer (§3) — not a heuristic. This is the last known *content* gap,
+   currently papered over by the fill allowance in the Tier 1 gate.
+4. **Packet assembly** — ~31% of the library are fragments, so a converted form is not always a
+   deliverable document, and FAP2PDF is not a valid oracle for one.
+5. **Image sign-off.** Images render (§28) but **no gate can check them** — FAP2PDF embeds none. Someone
+   needs to look at a sample of image-bearing forms.
+6. **P3 onward** — the binding layer, editor and runtime from §8 are all still ahead. Everything so far
+   is P0/P1 fidelity work.
+
+### Done, so nobody redoes them
+
+- Parser hardening with a content gate on `.gd` output (§20) — `tools/gdcontent.py`, 10/10 goldens and
+  301/301 quote forms with content, character for character.
+- Images: the `.LOG` format is decoded (§28) — all 76 assets, every reference in the library resolves.
+- The baseline mystery (§18), shading (§22), `M,PX` rules and box sizing (§21, §23), `M,I` bullets
+  (§24), the DocuDings substitution (§27) and the 0-byte oracle (§27).
