@@ -16,21 +16,22 @@ that branch and largely irrelevant to Form Studio.
 
 **Goal:** convert legacy Documaker FAP/DDT forms into a modern, editable, schema-bound format,
 deterministically, and prove the output is indistinguishable from the legacy render. Read
-`FORM-STUDIO-PLAN.md` end to end — it is the design *and* the running lab notebook, and §10–32 record
+`FORM-STUDIO-PLAN.md` end to end — it is the design *and* the running lab notebook, and §10–33 record
 what was measured, including the negative results. Sections are append-only; do not rewrite history.
 
-### Where it stands (300-form stratified sweep, 288 rendered, 271 scored)
+### Where it stands (1,000-form stratified sweep, all 1000 rendered, 946 scored)
 
 Run `python tools/dashboard.py` for the live version — it writes
 `output/fidelity-dashboard.{csv,md}` with a per-form and per-stratum breakdown.
 
 | gate | result |
 |---|---|
-| **Green on every gate** | **270/283 (95%)** |
-| **Tier 1 — nothing dropped** (content) | **271/271** ✅ |
-| **Tier 2 — ≥90% of glyphs within 3.0pt** (placement) | **263/272**, median 99.5% |
-| **Non-text ink — ≥90% of the legacy's non-glyph ink** | **159/163**, median 100.0% |
-| Tier 2 at the 1.0pt quality bar (diagnostic, not a gate) | 167/272, median 93.2% |
+| **Green on every gate** | **896/946 (95%)** |
+| **Tier 1 — nothing dropped** (content) | **913/913** ✅ |
+| **Tier 2 — ≥90% of glyphs within 3.0pt** (placement) | **878/914**, median 99.6% |
+| **Non-text ink — ≥90% of the legacy's non-glyph ink** | **557/571**, median 100.0% |
+| Tier 2 at the 1.0pt quality bar (diagnostic, not a gate) | 552/914, median 92.6% |
+| Non-text ink precision, and glyph shape (diagnostics) | 97.3% · 0.85 |
 
 Every stratum is above 78% green; images is the best at 56/60. Two honest caveats the tools print
 rather than hide: non-text ink **skips 142 of 300 forms** for having under 200 non-text pixels (not

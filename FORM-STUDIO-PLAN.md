@@ -1907,3 +1907,52 @@ the hit rate is good enough.
 
 `FapLine.Group` is kept, carrying the second group through the parser without interpreting it, so
 whoever finds the real mechanism does not have to re-plumb it.
+
+---
+
+## 33. Scale validation at 1,000 forms (2026-08-23)
+
+Everything in sections 18-32 was measured on 44, then 120, then 300 forms. Re-run at **200 per stratum
+= 1,000 forms**, a fifth of the parseable library:
+
+| | 300-form run | **1,000-form run** |
+|---|---|---|
+| rendered without error | 288/300 | **1000/1000** |
+| green on every gate | 270/283 (95%) | **896/946 (95%)** |
+| Tier 1 — nothing dropped | 271/271 | **913/913** |
+| Tier 2 — within 3.0pt | 263/272 | **878/914**, median 99.6% |
+| Tier 2 at the 1.0pt quality bar | 167/272 | 552/914, median 92.6% |
+| non-text ink recall | 159/163 | **557/571**, median 100.0% |
+| non-text ink precision | 95.3% | **97.3%** |
+| glyph shape median | 0.85 | **0.85** |
+
+**The results hold at 3.3x the sample.** Green stays at exactly 95%, Tier 1 stays perfect, and every
+median is equal or better. Nothing here was fitted to the smaller samples.
+
+**Zero render failures**, down from 12 of 300, because the harness now copies the Documaker fonts
+(section 27).
+
+### By stratum
+
+| stratum | n | green | Tier 1 | Tier 2 | ink |
+|---|---:|---|---|---|---|
+| multipage | 200 | **194** | 200/200 | 199/200 | 118/123 |
+| prose | 200 | 186 | 200/200 | 190/200 | 34/38 |
+| images | 200 | 183 | 192/192 | 186/192 | 154/157 |
+| grid | 200 | 168 | 179/179 | 168/179 | 131/132 |
+| fields | 200 | 165 | 142/142 | 135/143 | 120/121 |
+
+`grid` and `fields` are the weakest, which is consistent: grids carry the undecoded `X,` edge semantics
+(section 31) and field-heavy forms carry the most unpopulated-field chrome. `multipage` being strongest
+is worth noting given that section 5 listed multi-page forms as a parity blocker -- they are not.
+
+### The 50 failures
+
+| cause | n |
+|---|---:|
+| placement (intra-run drift, section 25) | **36** |
+| non-text ink | 14 |
+| content | **0** |
+
+So after everything: **no content defects anywhere in 913 scored forms**, and three quarters of the
+remaining failures are the one horizontal-drift defect that five separate attempts have failed to fix.
