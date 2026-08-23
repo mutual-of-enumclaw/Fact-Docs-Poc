@@ -19,9 +19,11 @@ before. What is reported instead:
 
   median   per-form median shape agreement. Accepted forms sit at 0.79-0.86; a form
            rendered in the wrong face would sit near the wrong-glyph level, ~0.35.
-  suspect  characters whose MEDIAN agreement is below 0.50 over 3+ occurrences. A wrong
-           face makes every glyph of that face disagree, so it shows up here even though
-           individual comparisons are noisy.
+  weakest  the three lowest-scoring characters (5+ occurrences). UNRANKED LEADS, with
+           no claim attached. Three attempts to threshold this automatically all
+           over-flagged on 243 forms -- an absolute floor caught 101, a fixed distance
+           below the form median 48, a MAD outlier test 91 -- because per-character
+           agreement varies with glyph size and the form median often saturates at 1.0.
 
 VALIDATED for sensitivity, which is the thing that matters for a shape metric: comparing
 each legacy glyph against a DIFFERENT character's crop drops EB2410A from 92.2% to 13.8%.
@@ -55,11 +57,23 @@ POS_TOL = 2.0        # pt; must be loose enough to survive the residual drift (s
 SHAPE_IOU = 0.55     # a matched glyph counts as the same shape at or above this
 THRESHOLD_PCT = 90.0
 MIN_GLYPHS = 20      # below this a form says nothing useful
-MIN_INK_PX = 5       # ignore glyphs whose ink is smaller than this; a 4px mark
-                     # normalised to 16x16 is mostly noise
-CHAR_FLOOR = 0.50    # a character whose MEDIAN shape agreement is below this, over at
-                     # least MIN_CHAR occurrences, is reported as suspect
-MIN_CHAR = 3
+MIN_INK_PX = 9       # ignore glyphs smaller than this in either axis. Below it the
+                     # 16x16 normalisation is degenerate -- a 4px mark upscales to a
+                     # nearly solid block and scores 1.0 against anything, which is why
+                     # some forms reported a median of exactly 1.00 and then flagged
+                     # every normal-sized letter as an outlier.
+# A character is suspect when its median agreement sits well BELOW ITS OWN FORM's
+# median, not below an absolute floor. An absolute floor flagged 101 of 245 forms --
+# 41%, overwhelmingly common letters with small counts -- because per-glyph agreement
+# varies with glyph size and the crop can catch ink from neighbouring lines. A wrong
+# FACE is an outlier *within* its form, which is what this actually tests for.
+# THREE attempts at an automatic "suspect character" rule all over-flagged badly on
+# 243 forms: an absolute floor caught 101, a fixed distance below the form median 48,
+# and a MAD outlier test 91 (a saturated median makes the MAD tiny). Per-character
+# agreement simply is not clean enough to threshold. So the tool lists the weakest
+# characters as unranked LEADS and makes no claim about them; the per-form median is
+# the signal to trust.
+MIN_CHAR = 5         # occurrences needed before a character is listed at all
 INK = 200
 
 
@@ -70,10 +84,20 @@ def glyphs(pdf):
         for b in d[pg].get_text("rawdict")["blocks"]:
             for line in b.get("lines", []):
                 for s in line["spans"]:
+                    base, size = s["origin"][1], s["size"]
                     for ch in s.get("chars", []):
                         c = ch["c"]
                         if c.strip() and c >= " ":
-                            out.append((pg, c, ch["bbox"]))
+                            # Crop from the BASELINE, not the reported bbox. The two
+                            # renders disagree about line-box height -- legacy puts some
+                            # text in an 11pt box where we use 10pt -- so a bbox crop
+                            # reaches into the neighbouring line and poisons the ink
+                            # bounding box. Measured: five forms scored 0.31-0.37 that
+                            # way, looking exactly like a wrong face when the fonts were
+                            # in fact correct.
+                            x0, x1 = ch["bbox"][0], ch["bbox"][2]
+                            out.append((pg, c, (x0, base - 0.80 * size,
+                                                x1, base + 0.25 * size)))
     return out
 
 
@@ -191,12 +215,11 @@ def score(form, shuffle=False):
     # Per-CHARACTER medians are the real signal. A wrong face makes every glyph of that
     # face disagree, which stands out as a low median even though individual glyph
     # comparisons are noisy at small sizes; a single mis-hinted 'e' does not.
-    suspect = sorted(
-        ((ch, round(statistics.median(v), 2), len(v))
-         for ch, v in per_char.items()
-         if len(v) >= MIN_CHAR and statistics.median(v) < CHAR_FLOOR),
-        key=lambda t: t[1])
     allv = [v for vals in per_char.values() for v in vals]
+    form_median = statistics.median(allv)
+    cm = {ch: statistics.median(v) for ch, v in per_char.items() if len(v) >= MIN_CHAR}
+    suspect = sorted(((ch, round(m, 2), len(per_char[ch])) for ch, m in cm.items()),
+                     key=lambda t: t[1])[:3]
     return {"form": form, "glyphs": matched,
             "pct": round(100 * same / matched, 1),
             "median": round(statistics.median(allv), 2),
@@ -223,16 +246,14 @@ def main(forms):
     scored = [r for r in rows if r["pct"] is not None]
     scored.sort(key=lambda r: (r["median"] if r["median"] is not None else 9, r["pct"]))
     print("Glyph shape DIAGNOSTIC (not a pass/fail gate -- see the module docstring)\n")
-    print(f"{'form':<18}{'glyphs':>8}{'median':>8}{'>=cut':>8}   suspect characters")
-    flagged = 0
+    print(f"{'form':<18}{'glyphs':>8}{'median':>8}{'>=cut':>8}   weakest characters")
     for r in scored:
-        if r["suspect"]:
-            flagged += 1
         print(f"{r['form']:<18}{r['glyphs']:>8}{r['median']:>8.2f}{r['pct']:>7.1f}%   {r['suspect']}")
     print(f"\n{len(scored)} forms scored, {len(rows) - len(scored)} skipped "
           f"(under {MIN_GLYPHS} comparable glyphs)")
-    print(f"{flagged} form(s) have at least one suspect character "
-          f"(median shape agreement below {CHAR_FLOOR} over {MIN_CHAR}+ occurrences)")
+    print("The 'weakest characters' column is UNRANKED LEADS, not defects -- see the "
+          "module docstring;\n   three attempts at thresholding it automatically all "
+          "over-flagged. Trust the median column.")
     out = pathlib.Path(OUTDIR) / "glyphshape.csv"
     with out.open("w", newline="", encoding="utf-8") as fh:
         w = csv.DictWriter(fh, fieldnames=["form", "glyphs", "pct", "median", "suspect"])

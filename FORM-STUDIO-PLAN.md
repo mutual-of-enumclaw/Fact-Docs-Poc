@@ -1780,3 +1780,48 @@ that cannot fail.
 2. **It cannot see a face used for only one or two glyphs per form** (`MIN_CHAR = 3`). The DocuDings
    defect that motivated the tool sat right at that edge -- roughly three glyphs per form. Honest
    conclusion: this would probably have caught it, but not comfortably.
+
+---
+
+## 30. The glyph diagnostic nearly reported five wrong-font defects that were not there (2026-08-23)
+
+Section 29's first working version put five forms at a per-form median of **0.31-0.37** -- `CL0164a`,
+`M7450B`, `IM74004O`, `IM75506O`, `M7013A` -- against a population median of 0.84. That is exactly the
+level a wrong FACE produces, and with thousands of glyphs each it looked conclusive.
+
+**Their fonts were correct.** Checking before writing it up: legacy Helvetica against our Arial, the
+deliberate and correct channel substitution, on every one.
+
+The cause was the crop. Glyphs were being cut out at the character bbox PyMuPDF reports, and the two
+renders disagree about line-box height -- legacy puts a lot of text in an 11pt box where we use 10pt.
+The taller crop reaches into the neighbouring line, so the ink bounding box it normalises to is not the
+glyph's. Cropping from the **baseline** instead -- `base - 0.80*size` to `base + 0.25*size` -- fixes it:
+
+| form | bbox crop | baseline crop |
+|---|---|---|
+| M7450B | 0.31 | **0.83** |
+| CL0164a | 0.31 | **0.83** |
+| IM74004O | 0.32 | **0.83** |
+| EB2410A (accepted) | 91.5% | **98.3%** |
+| P0010G (accepted) | 69.9% | **99.5%** |
+
+Sensitivity is unchanged -- comparing against the wrong glyph still scores 15.1% -- so the fix removed
+noise, not discrimination. It also explains the `'w'` artefact recorded in section 29.
+
+### Final distribution over 249 forms
+
+| | |
+|---|---|
+| per-form median shape agreement | **0.85** (p5 0.80, max 1.00) |
+| forms below 0.60 | **2**, and both have only ~20 comparable glyphs |
+
+So glyph identity is in good shape across the library, and DocuDings (section 27) was the only real
+wrong-face defect.
+
+### Why this is written down
+
+**Six times now a metric in this project has reported a defect the render did not have** -- ink IoU,
+word-level diffing, reading-order comparison, run-level Tier 2, the field-region filter, and now this.
+The difference is only that this one was caught before it became a work item, by checking the fonts of
+the accused forms rather than trusting a striking number. A new measurement's first surprising result
+is more likely to be a bug in the measurement than a discovery.

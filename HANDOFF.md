@@ -16,7 +16,7 @@ that branch and largely irrelevant to Form Studio.
 
 **Goal:** convert legacy Documaker FAP/DDT forms into a modern, editable, schema-bound format,
 deterministically, and prove the output is indistinguishable from the legacy render. Read
-`FORM-STUDIO-PLAN.md` end to end — it is the design *and* the running lab notebook, and §10–29 record
+`FORM-STUDIO-PLAN.md` end to end — it is the design *and* the running lab notebook, and §10–30 record
 what was measured, including the negative results. Sections are append-only; do not rewrite history.
 
 ### Where it stands (300-form stratified sweep, 288 rendered, 271 scored)
@@ -126,6 +126,9 @@ the layout rather than re-deriving it. Whole-run scale factors are exhausted.
   accepted-form set is not a subset of the sweep sample.
 - **Correlation generates a hypothesis; it never closes one.** Twice a font-id correlation suggested a
   cause that measurement refuted.
+- **A new measurement's first surprising result is more likely a bug in the measurement.** Six metrics
+  here have now reported defects the render did not have. The glyph diagnostic (§30) put five forms at
+  wrong-font levels; their fonts were fine and the crop was wrong. Check the accused before filing it.
 - **Test a new gate for SENSITIVITY, not just for passing.** Delete characters deliberately and confirm
   it fires. Building the .gd gate (§20) caught two ways it could have stayed silent -- escapes eaten as
   control words, and surplus non-content text absorbing real drops (3 deleted letters showed as 1).
