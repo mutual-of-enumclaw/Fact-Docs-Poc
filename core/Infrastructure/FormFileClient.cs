@@ -236,6 +236,17 @@ public class FormFileClient
             // being dropped entirely, which is why forms whose rules come from a text area
             // rather than a top-level X, record rendered with NO horizontal rules at all --
             // invisible to the text-only Tier 1 and Tier 2 gates. 315 of 4210 forms use them.
+            // M,I is a bullet: a small filled disc drawn at the declared box. Verified
+            // against the legacy renders -- it comes out as a filled+stroked path of four
+            // curves, solid black, ~3.9pt across, at exactly these coordinates. 634 records
+            // across 60 forms, and we drew nothing for them. Both trailing parameter values
+            // seen in the library (55 and 6) render identically.
+            if (trimmed.StartsWith("M,I,", StringComparison.OrdinalIgnoreCase))
+            {
+                var mi = ParseFapBulletLine(trimmed, lineNum);
+                if (mi != null) xLines.Add(mi with { PageIndex = pg, Source = "MI" });
+                continue;
+            }
             if (trimmed.StartsWith("M,PX,", StringComparison.OrdinalIgnoreCase))
             { var mx = ParseFapXLine(trimmed, lineNum, 5); if (mx != null) xLines.Add(mx with { PageIndex = pg, Source = "MPX" }); continue; }
             if (trimmed.StartsWith("M,X,", StringComparison.OrdinalIgnoreCase))
@@ -460,6 +471,23 @@ public class FormFileClient
     /// <c>M,PX,</c> / <c>M,X,</c> records nested inside a text area, which carry an identical
     /// payload -- <c>(row1,col1,row2,col2),(w,h),width,style</c> -- and only differ in prefix.
     /// </summary>
+    /// <summary>
+    /// Parses an M,I bullet record: <c>M,I,(row1,col1,row2,col2),n,n</c>. Unlike a line
+    /// record it has no second parenthetical group, so it needs its own reader.
+    /// </summary>
+    private static FapLine? ParseFapBulletLine(string line, int lineNum)
+    {
+        try
+        {
+            var pos = ExtractParenGroup(line[4..], 0);
+            var pc = pos.Content.Split(',');
+            return new FapLine(
+                (int.Parse(pc[0]), int.Parse(pc[1]), int.Parse(pc[2]), int.Parse(pc[3])),
+                1, 0, lineNum);
+        }
+        catch { return null; }
+    }
+
     private static FapLine? ParseFapXLine(string line, int lineNum, int prefixLen = 2)
     {
         try

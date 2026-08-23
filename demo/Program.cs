@@ -291,6 +291,7 @@ if (args.Length >= 2 && args[0] == "emit-html")
       // too large and putting its bottom edge ~1.4pt below the legacy rule.
       .Append(".box{position:absolute;border:solid #000;box-sizing:border-box}\n")
       .Append(".shade{position:absolute}\n")
+      .Append(".bullet{position:absolute;background:#000;border-radius:50%}\n")
       .Append("</style></head><body>\n");
 
     for (int p = 0; p < Math.Max(1, parsed.PageCount); p++)
@@ -445,6 +446,15 @@ if (args.Length >= 2 && args[0] == "emit-html")
             float x1 = Px(l.Position.Col1), y1 = Py(l.Position.Row1);
             float x2 = Px(l.Position.Col2), y2 = Py(l.Position.Row2);
             float thick = Math.Max(0.5f, l.Width * S);
+
+            // M,I is a bullet -- a solid disc, not a box. Legacy draws it as a filled
+            // path of four curves, black, at exactly the declared coordinates.
+            if (l.Source == "MI")
+            {
+                sb.Append($"<div class=\"bullet\" style=\"left:{N(x1)}pt;top:{N(y1)}pt;")
+                  .Append($"width:{N(x2 - x1)}pt;height:{N(y2 - y1)}pt\"></div>\n");
+                continue;
+            }
 
             // M,PX (a line record nested in a text area) is NOT a rectangle. Measured over
             // 67 records in 10 forms against the legacy renders:
