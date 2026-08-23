@@ -1591,3 +1591,41 @@ width or scale and failed on placement:
 **Stop optimising run width.** The remaining error is the distribution of glyphs within a run, and the
 only thing that reproduces that is per-glyph positioning. Anything that adjusts a single number per run
 -- spacing, scale, size, target width -- has now been tried.
+
+---
+
+## 26. CORRECTION to section 23: the M,PX edge rule is 80% accurate, not 97% (2026-08-23)
+
+Section 23 shipped the `M,PX` edge rule on 67 records from 10 forms and reported the top-edge split as
+2/35 below the height threshold and 31/32 above. **Re-measured on the 300-form sweep -- 164 records
+across 23 forms -- it is materially weaker:**
+
+| | section 23 (n=67) | 300-form sweep (n=164) |
+|---|---|---|
+| bottom edge drawn | 64/67 (96%) | 145/164 (88%) |
+| top edge, height < 420 | 2/35 (6%) | 15/94 (16%) |
+| top edge, height >= 420 | 31/32 (97%) | 57/70 (81%) |
+| **both edges correct** | -- | **132/164 (80%)** |
+
+The original sample was dominated by one form family (`M7xxx`), which is exactly the bias that makes a
+small sample flatter a rule. `EG0421D2` is a clean counter-example: a 360-unit box where legacy draws
+the **top** edge, which the rule predicts it will not.
+
+### The rule stays, because the alternatives are worse
+
+Measured on the same 164 records, for the top edge alone:
+
+| policy | top edge correct |
+|---|---|
+| **height threshold (shipped)** | **136/164 (83%)** |
+| always draw both edges | 72/164 (44%) |
+| never draw the top | 92/164 (56%) |
+
+And all three beat what was there before, which drew a full rectangle: 0% on the edges plus two
+spurious vertical rules per record.
+
+**The honest position is that this is a useful 80% heuristic for a construct with an unknown rule, not a
+decoded format.** It is confined to `M,PX` records, its errors are a single thin rule either drawn or
+missing, and it is worth revisiting if the mechanism is ever found. Recorded here rather than quietly
+left at the flattering figure -- a small sample overstating a rule is the same trap as a small
+calibration set (section 15) and a construct-blind regression suite (sections 21-22).
