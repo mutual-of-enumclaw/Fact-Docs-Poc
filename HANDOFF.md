@@ -5,217 +5,170 @@ Two separate initiatives live in this repo. **Which one you are continuing depen
 | branch | initiative | plan doc |
 |---|---|---|
 | `main` | FAP → **GhostDraft `.gd`** export (Quote concept model, 419 quote forms) | `PROGRESS.md` §6 |
-| `features/form-studio-p0` ← **you are here** | **Form Studio**: FAP → HTML → Chromium PDF, with a measured fidelity gate | `FORM-STUDIO-PLAN.md` |
+| `features/form-studio-p0` ← **you are here** | **Form Studio**: FAP → HTML → Chromium PDF, with measured fidelity gates | `FORM-STUDIO-PLAN.md` |
 
-The six auto-loaded memory files describe the **`main`** GhostDraft work. They are still accurate for
-that branch and largely irrelevant to Form Studio.
+The six auto-loaded memory files describe the **`main`** GhostDraft work. Still accurate for that
+branch, largely irrelevant here.
 
 ---
 
 ## Form Studio (`features/form-studio-p0`)
 
 **Goal:** convert legacy Documaker FAP/DDT forms into a modern, editable, schema-bound format,
-deterministically, and prove the output is indistinguishable from the legacy render. Read
-`FORM-STUDIO-PLAN.md` end to end — it is the design *and* the running lab notebook, and §10–35 record
-what was measured, including the negative results. Sections are append-only; do not rewrite history.
+deterministically, and prove the output is indistinguishable from the legacy render.
 
-### Where it stands (1,000-form stratified sweep, all 1000 rendered, 946 scored)
+`FORM-STUDIO-PLAN.md` is the design *and* the running lab notebook. §10–36 record what was measured,
+**including the negative results** — read §19, §25, §32 and §34 before attempting anything on the
+geometry axes, because they document five failed fixes and seven refuted hypotheses. Sections are
+append-only; do not rewrite history.
 
-Run `python tools/dashboard.py` for the live version — it writes
-`output/fidelity-dashboard.{csv,md}` with a per-form and per-stratum breakdown.
+### Where it stands — 1,000-form stratified sweep
 
-| gate | result |
-|---|---|
-| **Green on every gate** | **893/946 (94%)** |
-| **Tier 1 — nothing dropped** (content) | **913/913** ✅ |
-| **Tier 2 — ≥90% of glyphs within 3.0pt** (placement) | **878/914**, median 99.6% |
-| **Non-text ink — ≥90% of the legacy's non-glyph ink** | **553/571**, median 100.0% |
-| Tier 2 at the 1.0pt quality bar (diagnostic, not a gate) | 552/914, median 92.6% |
-| Non-text ink precision, and glyph shape (diagnostics) | **100.0%** · 0.85 |
+| measure | result | gates? |
+|---|---|---|
+| **Tier 1 — nothing dropped** (content) | **912/913** | yes |
+| **Line placement** (§36) | **794/807**, median 100% | candidate |
+| Tier 2 — glyphs within 3.0pt | 878/914 | yes (superseded?) |
+| Tier 2 at the 1.0pt quality bar | 552/914 | no, diagnostic |
+| **Non-text ink** — recall / precision | **538/571** / median **100%** | recall gates |
+| Glyph shape | median 0.85 | no, diagnostic |
+| `.gd` content gate | 10/10 goldens, 301/301 quote forms | yes |
 
-Every stratum is above 78% green; images is the best at 56/60. Two honest caveats the tools print
-rather than hide: non-text ink **skips 142 of 300 forms** for having under 200 non-text pixels (not
-counted as passes), (the 12 forms that FAP2PDF used to fail on are fixed — see §27; `sweep.py` now copies the Documaker
-fonts into the work directory).
+All 1000 render without error. `.gd` golden suite green. `emit-html` byte-identical across runs.
 
-**Content and vertical placement are closed.** Tier 1 is 259/259, and `|dy| > 1pt` is 0.0% of glyphs on
-every accepted form. Everything still open is horizontal placement or missing artwork.
+### THE OPEN DECISION — read this first
 
-The 3.0pt gate is set by the worst accepted form (`A0238C`, 90.6%) and is **not** a claim that 3pt is
-good. Drive the 1.0pt column down; do not loosen the gate.
+**Does line placement replace Tier 2 as the placement gate?** It is the one thing blocking a clean
+statement of what is left, and it is Products' call, not an engineering one.
 
-**The baseline mystery is solved (§18).** Documaker anchors the text baseline to the **bottom** of the
-declared box (`row2`), not the top — measured at −0.09pt with stdev 0.06 over 17,193 records. The old
-"per-form sign flip" was just box height varying per form. All calibration is **deleted**; it was fitted
-to the old anchor and would now corrupt the geometry. Do not reintroduce it.
+Products reviewed a sample (2026-08-23) and gave three verdicts that are now the project's ground truth:
 
-### Non-text ink (§21–23, 26)
+| form | verdict | Tier 2 | line placement |
+|---|---|---|---|
+| `BAN01` | "looks identical" | 45.5% | **100%** |
+| `BANSPECH` | "looks identical" | 42.2% | **100%** |
+| `IM74561R` | "missing lines in various places" | 48.2% | **51%** (correctly fails) |
+| `M7902AA` | boxes where legacy underlines | passes | 89.5% |
 
-`tools/nontextink.py` exists because Tier 1 and Tier 2 are both text-only — a form could be missing its
-entire logo, or every rule on the page, and still score ~100%. It found four defects in two days:
+Tier 2 disagrees with the human on two of four; line placement agrees on all four, and on the four
+forms accepted in August. **No Tier 2 tolerance fixes this** — BAN01/BANSPECH do not reach 90% even at
+8pt, more than a line height. The quantity is wrong, not the threshold.
 
-- **`M,PX`** — a line record nested in a text area, silently discarded; 315 of 4210 forms rendered with
-  no rules at all. It draws horizontal edges only, never a rectangle (§21, §23).
-- **`X,` style** — a non-zero style means the box is **filled**, from a measured shade table (§22).
-- **box sizing** — `.box` used content-box, so every rectangle was ~1pt oversized (§23).
-- **`M,I`** — bullets, 634 records across 60 forms, nothing drawn for them (§24).
+If line placement is adopted: most of the 36 Tier 2 failures resolve and the real remaining list is 13.
 
-Remaining on this axis: 4 ink failures of 158. `MC1690C` (70.7%) is the image gap. `EG0421D2` (56.4%)
-and `M7450B` (76.8%) are `M,PX` edge-rule misses — **that rule is an 80%-accurate heuristic, not a
-decoded format (§26)**; read that section before trusting it. `EP04453R` is 85.5%.
+### The 13 remaining line-placement failures, all classified
 
-**Images are now implemented (§28).** The `.LOG` format is decoded — all 76 assets on disk, and every
-reference in the library resolves (205 forms, 255 records, 0 unresolved). But **the harness cannot check
-them**: FAP2PDF embeds no images at all, so the PDF channel is not a valid oracle for artwork and image
-fidelity needs visual sign-off rather than a gate.
+| class | n | forms |
+|---|---:|---|
+| **Missing tab-leader fill lines** (REAL) | 4 | `IM74561R` `IM79014O` `M7208A` `IM74054O` |
+| **Missing space at a run boundary** (REAL) | 6 | `IM7213OM`, `EB9909SCHEDA`, `EP990{7,8,9}SCHED*`, `EP9910SCHEDC` |
+| Two-line header cell 2.55pt high (small) | 3 | `M7902AA` `FM7902AB` `M7902ABa` |
 
-### Also open: intra-run horizontal drift (§19, §25)
+**Missing space** is the best next fix: clearest mechanism, affects legibility (`Replaced-- The`,
+`EB 99 09 06 16Includes copyrighted material`). Note **Tier 1 cannot see it** — it strips all
+whitespace before comparing, so a lost space can never fail it. Only line placement catches it.
 
+**Tab leaders** are decoded but deferred: `M,P1` is a tab stop whose third field is a leader character
+(95 = `_`, 46 = `.`). Documaker fills from the current position to the stop with it; the FAP contains
+no underscores at all. Only **24 of 4210 forms** use one, and reproducing it needs the text-flow model
+this design deliberately avoids.
 
+### Other open work
 
-`dx` accumulates along a run — run STARTS are exact, then drift reaches −7.4pt by the fortieth glyph on
-`BAN02INT`. This is the one remaining named text defect, and it is what holds the 1.0pt quality bar at
-156/260.
+- **`X,` edge semantics are only partly decoded** (§31, §32, §36). `(20,20)`, `(50,50)`, `(15,15)`,
+  `(33,33)`, `(30,30)`, `(36,36)`, `(40,40)` are rectangles. A `(24,24)`/`(25,25)` record sharing its
+  row with **≥3 siblings** is an underline row (97%, now implemented). A **lone** record in those
+  groups is a rectangle only 58–80% of the time — genuinely undecoded. `FapLine.Group` carries the
+  group through the parser.
+- **Intra-run horizontal drift** (§19, §25). Five mechanisms tried, all worse or a wash. Anything that
+  adjusts a single number per run is exhausted; only per-glyph positioning is untried. Products says
+  it is invisible, so this may not be worth fixing at all.
+- **A declarative system-value registry** (total pages, current page, edition, print date). The last
+  known content gap, currently papered over by the Tier 1 fill allowance.
+- **Packet assembly** — ~31% of the library are fragments, so a converted form is not always a
+  deliverable document, and FAP2PDF is not a valid oracle for one.
+- **Image sign-off.** Images render (§28) but **no gate can check them** — FAP2PDF embeds none.
+- **P3 onward** — binding layer, editor, runtime (§8) are all still ahead.
 
-**FIVE mechanisms have been tried and every one measured worse or a wash. §19 and §25 have the numbers
-— do not repeat them:** dropping the FXR correction, per-word FXR offsets, multiplicative correction via
-point size, box-fit `scaleX` (±15%), and box-fit with a ±5% tight-box guard. The shipped additive
-`letter-spacing` stays **because it measures best, not because it is the truest model.**
+### Done, so nobody redoes it
 
-The key lesson from attempt 5: **a better width model is not a better placement model.** That attempt
-cut the run-width error 5.4× (0.87% → 0.16% median over 1,512 runs) and still regressed every accepted
-form, because matching a run's total width says nothing about where glyphs land inside it. Anything that
-adjusts a single number per run is exhausted.
+The baseline anchor (§18), shading (§22), `M,PX` rules and box sizing (§21, §23), `M,I` bullets (§24),
+the DocuDings font substitution and the 0-byte oracle (§27), `.LOG` image decoding (§28 — all 76
+assets, every library reference resolves), the `.gd` content gate (§20), sub-point rectangles (§35),
+sibling-row underlines (§36).
 
-Two things about the legacy render are now measured facts, and both are the foundation for a fifth
-attempt:
-- The correction is **multiplicative** — per-character advances between two legacy spans of one face
-  relate by a pure ratio with cv **0.0000**, versus 0.15–0.40 for the additive model.
-- Documaker **fits each token to its declared FAP box** (`col2 − col1`), not to the FXR width table:
-  median ratio 0.9996–1.0057, 89–93% of records inside 2%. The catch is the tail — a declared box is
-  often padding rather than a tight fit, and nothing in the record distinguishes the two, which is why
-  box-fitting everything backfires.
+---
 
-A correct fix needs **per-glyph positioning driven by the legacy PDF's actual TJ offsets** — reproducing
-the layout rather than re-deriving it. Whole-run scale factors are exhausted.
+## Hard-won rules — do not relearn these
 
-### Hard-won rules — do not relearn these
-
-- **Validate any new gate against a form Products accepted** (`EB2410A`, `A0238C`, `EB22489Q`,
-  `P0010G`) *before* trusting it. **Four** separate metrics have now reported defects the render did
-  not have — ink IoU (scores an eyeball-perfect form at 0.247), word-level diffing, reading-order
-  comparison, and run-level Tier 2 (220/220 of its "missing" strings were present on the page). A gate
-  that invents work is worse than no gate.
-- **A metric that imposes its own tokenisation will lie to you.** Both Tier 1 and Tier 2 had to move to
-  glyph/character level for exactly this reason. Compare marks and positions, not strings.
-- **Ask what a check is blind to, not just what it reports.** This has now bitten FOUR times:
-  **nothing measures glyph identity** — DocuDings symbols rendered as Latin letters and every gate
-  passed, because Tier 1 compares character codes, Tier 2 compares positions, and the ink gate masks
-  text out (§27). The other three: run-level Tier 2 could not see drift *inside* a run; Tier 1 and Tier 2 are both
-  text-only and could not see a missing logo or a missing rule; and the golden `.gd` suite reported
-  "8 OK, no regressions" through a real parser change because none of its forms used the construct.
-  A suite that does not contain the construct cannot guard it. This happened TWICE in one day (M,PX and
-  X, shading), so check suite coverage against the construct inventory rather than assuming it.
-- **Ink IoU is never pass/fail.** Tier 1 (content) then Tier 2 (placement) are the gates; IoU and the
-  overlay images are for human smoke-checking only.
-- **Any comparison that linearises a page needs a baseline band, not a rounded coordinate** — this has
-  bitten three times.
-- **Never measure a fix without checking the artefact is newer than the binary.** This has now bitten
-  twice. The second time, the re-render script *had* the check but only covered the sweep list, while
-  the forms being compared came from a different list and were stale. **Put the check at the point of
-  measurement, not the point of rendering** — `output/sweep-work/` caches artefacts per form, and the
-  accepted-form set is not a subset of the sweep sample.
-- **Correlation generates a hypothesis; it never closes one.** Twice a font-id correlation suggested a
-  cause that measurement refuted.
-- **How accurate a heuristic must be depends on which way it FAILS.** The `M,PX` edge rule ships at 80%
-  because being wrong there draws a spurious rule (costs precision, never recall). The identical-accuracy
-  `X,(24,24)` rule was reverted because being wrong there drops real edges — and recall is what gates
-  (§32). Ask what the wrong answer costs before judging the hit rate.
-- **A new measurement's first surprising result is more likely a bug in the measurement.** Six metrics
-  here have now reported defects the render did not have. The glyph diagnostic (§30) put five forms at
-  wrong-font levels; their fonts were fine and the crop was wrong. Check the accused before filing it.
-- **Test a new gate for SENSITIVITY, not just for passing.** Delete characters deliberately and confirm
-  it fires. Building the .gd gate (§20) caught two ways it could have stayed silent -- escapes eaten as
-  control words, and surplus non-content text absorbing real drops (3 deleted letters showed as 1).
-- **A measured fact does not guarantee an exploitable fix.** Section 19 established two true things
-  about Documaker's layout, and both faithful implementations still measured worse than the crude
-  approximation they replaced. Keep whichever measures best, and say plainly that it is not the truest
-  model.
+- **Validate any new gate against the forms Products accepted** (`EB2410A`, `A0238C`, `EB22489Q`,
+  `P0010G`, and now `BAN01`, `BANSPECH`) *before* trusting it. **Seven** metrics here have reported
+  defects the render did not have. A gate that invents work is worse than no gate.
+- **A gate that cannot FAIL is worse still.** Two shipped that way: the Tier 1 fill allowance was
+  vacuous on forms declaring no fields (`0 >= 0`), hiding 808 missing characters until a human noticed;
+  and a leader-collapse regex deleted leader runs instead of collapsing them, which would have hidden
+  the same defect. Test sensitivity deliberately — delete characters and confirm the gate fires.
+- **Ask what a check is BLIND to.** Five blind spots so far: Tier 2 could not see drift inside a run;
+  Tier 1 and Tier 2 are text-only and could not see a missing logo or rule; **Tier 1 strips whitespace
+  so it cannot see a missing space**; nothing measured glyph identity (a wrong font passed everything);
+  and the `.gd` golden suite passed real parser changes because no form in it used the construct.
+- **Measure both directions.** A recall-only ink gate cannot see ink you INVENT — and it actively
+  *rewards* over-drawing, which is why boxes-instead-of-underlines survived until a human looked.
+- **How accurate a heuristic must be depends on WHICH WAY it fails.** An 80% rule ships where being
+  wrong draws a spurious rule; a 92% rule was reverted where being wrong drops real edges.
+- **A better model of one quantity is not a better model of another.** A change that cut run-width
+  error 5.4× still regressed glyph placement on every accepted form.
+- **Never let a metric impose its own tokenisation.** Tier 1 had to go to character level, Tier 2 to
+  glyph level, and line placement needed a grouping-tolerant match after **six** rounds of threshold
+  tuning traded one artefact for another.
+- **Correlation generates a hypothesis; it never closes one.** Prefer finding the mechanism over
+  fitting a correction — eight calibration variants failed before the real cause (box-bottom anchoring)
+  turned out to be a one-line geometry fix.
+- **Never measure a fix without confirming the artefact is newer than the binary**, at the point of
+  MEASUREMENT rather than of rendering. `output/sweep-work/` caches per form, and the set you compare
+  is usually not the set you re-rendered. This has bitten twice.
 - Determinism rule 4 is binding: when inference cannot decide, emit Layer A verbatim and flag
-  `needs-review`. Never pattern-guess on document content (this is why "Page N of" is *not* special-cased).
+  `needs-review`. Never pattern-guess on document content (hence "Page N of" is *not* special-cased).
 
-### Environment gotchas
+## Environment gotchas
 
-- **`FAP2PDF.EXE` (the legacy oracle) cannot render filled forms** — it takes only `/I=` and `/X=`.
-  Filled references would need a full `GENDAW32.EXE` Documaker job (INI + extract data).
-- It also needs `FSISYS.INI` **in the working directory** (`sweep.py` copies it in), and under Git Bash
-  use `-I=` not `/I=` (MSYS mangles the path).
-- `FAP2PDF` renders most composable fragments (`QCPP_*`, `QFRM_*`, `BQ-*`) nearly blank, so **it is not
-  a valid oracle for a fragment** — a fragment's real appearance only exists in an assembled packet.
-- `sweep.py` needs an **absolute** output path (the work dir becomes a `file://` URI for Chromium).
-- `R2021C` and `FP0102A` produce 0-byte legacy PDFs; `FAP2PDF` still exits 0. Cause uninvestigated.
+- **`FAP2PDF.EXE` is a deficient oracle in three known ways**: it embeds **no images**, renders
+  composable fragments (`PSUM-*`, `PSCP-*`, `QCPP*`, `QFRM*`, `BQ-*`) nearly blank, and substitutes
+  **base-14 fonts without embedding them** — so the legacy column's typeface comes from the
+  rasterizer, not Documaker. Do not treat a difference in any of those three as our defect.
+- It needs `FSISYS.INI` **and the Documaker TTFs** in the working directory (`sweep.py` copies both).
+  Without the fonts it prints "created successfully", writes a **0-byte** PDF and exits 0.
+- Under Git Bash use `-I=` not `/I=` (MSYS mangles the path).
+- `sweep.py` needs an **absolute** output path with **forward slashes** — a `C:\\...` argument gets
+  mangled by bash into a bogus directory.
+- **Bash heredocs eat backslashes.** Writing Python or C# with `\n`, `\"` or `\\` through a heredoc
+  silently corrupts it; this cost several rounds. Use the Write tool, or build strings from `chr(92)`.
 - Stale `dotnet run` processes lock DLLs. Kill the listener on :5035 before rebuilding the server.
-- Bash heredocs mangle backslashes — write scripts with the Write tool.
 
-### Tooling
+## Tooling
 
 Sweep artefacts are cached in `output/sweep-work/` (FAP, legacy `.PDF`, `.html`, `_ours.pdf` per form),
-so the gates can be re-measured **without re-rendering**. Re-run `sweep.py` only after changing
-`emit-html`.
+so the gates re-measure **without re-rendering**. Re-run `sweep.py` only after changing `emit-html`.
 
 ```bash
 dotnet run --project demo/FapPdfTools.Demo.csproj -- emit-html EB2410A out.html
-python tools/sweep.py 24 C:\src\fact-pdf-tools\output   # full pipeline; path MUST be absolute
-python tools/contentdiff.py                             # Tier 1 gate (uses cached artefacts)
-python tools/tier2.py                                   # Tier 2 gate (3.0pt) + 1.0pt quality column
-python tools/parity.py legacy.pdf ours.pdf diff         # IoU + overlay images, diagnostics only
-python tools/nontextink.py                              # non-text ink gate (logos + rules)
-python tools/dashboard.py                               # ALL gates, per form and stratum
-python tools/glyphshape.py                              # glyph-shape diagnostic (wrong-font check)
-python tools/glyphshape.py --selftest EB2410A           #   ...prove it reacts to shape
-python tools/logdecode.py --scan                        # decode every Documaker .LOG asset
-python tools/gdcontent.py                               # .gd content gate (goldens)
-python tools/gdcontent.py --dir output/quote-forms-gd   # ...or any dir of .gd files
+python tools/sweep.py 200 "C:/src/fact-pdf-tools/output"   # full pipeline; absolute, forward slashes
+python tools/dashboard.py                                  # ALL measures, per form and stratum
+python tools/contentdiff.py                                # Tier 1 gate
+python tools/lineplace.py                                  # line placement (candidate gate)
+python tools/tier2.py                                      # Tier 2 (3.0pt gate + 1.0pt diagnostic)
+python tools/nontextink.py                                 # rules/shading/artwork, recall + precision
+python tools/glyphshape.py --selftest EB2410A              # glyph identity; prove it reacts to shape
+python tools/gdcontent.py                                  # .gd content gate
+python tools/defectzoom.py FORM --reason line|ink          # zoom to the disagreeing region
+python tools/reviewpack.py                                 # build a Products review pack
+python tools/logdecode.py --scan                           # decode every Documaker .LOG
 ```
 
-There is no calibration step any more — it was deleted in §18. If you change `emit-html`, re-render
-**every form you intend to measure** (not just the sweep sample) and confirm each `_ours.pdf` is newer
-than the demo binary before reading any score.
+After changing `emit-html`, re-render **every form you intend to measure** and confirm each
+`_ours.pdf` is newer than the demo binary before reading any score. A full 1,000-form re-render takes
+roughly 40 minutes; use a background task.
 
 `dotnet run -- regress` is the golden-file suite for the **`.gd`** generator — run it after any change
-to the shared FAP parser in `core/`, since Form Studio and GhostDraft share it. Three parser bugs found
-via Form Studio (CP1252 decoding, quote stripping, reading-order bands) had silently corrupted the
-`.gd` path too; `tools/gdcontent.py` (§20) is the content gate that would now catch a fourth. Note that
-`output/quote-forms-gd/` is a **cached artefact** — regenerate with `convert-quotes` before measuring it,
-or you will score whatever parser built it last (it was three weeks stale when §20 was written).
-
-### Open threads, roughly by value
-
-1. **Intra-run horizontal drift** (§19, §25) — the last named text defect, and what holds the Tier 2
-   quality bar at 167/272. **Five mechanisms have been tried and every one measured worse or a wash.**
-   Read §19 and §25 before touching it; anything that adjusts a single number per run is exhausted. The
-   only untried approach is per-glyph positioning.
-2. **`X,` edge semantics** (§31, §32) — the second parameter group decides whether a record draws a
-   rectangle, one rule, two rules, or only the verticals, and it is only partly decoded. `(20,20)`,
-   `(15,15)`, `(33,33)`, `(36,36)` are rectangles; `(24,24)` under 430 units is rules 92% of the time;
-   **`(25,25)` is genuinely mixed across four outcomes over 83 records.** The `M,PX` rule is 85%
-   accurate at 1,000-form scale (§34, up from the 80% in §26). `FapLine.Group` already
-   carries the group through the parser. Note §32: a 92% rule here was reverted because being wrong
-   drops real ink.
-3. **A declarative system-value registry** (total pages, current page, edition, print date) resolved by
-   rule, belonging with the binding layer (§3) — not a heuristic. This is the last known *content* gap,
-   currently papered over by the fill allowance in the Tier 1 gate.
-4. **Packet assembly** — ~31% of the library are fragments, so a converted form is not always a
-   deliverable document, and FAP2PDF is not a valid oracle for one.
-5. **Image sign-off.** Images render (§28) but **no gate can check them** — FAP2PDF embeds none. Someone
-   needs to look at a sample of image-bearing forms.
-6. **P3 onward** — the binding layer, editor and runtime from §8 are all still ahead. Everything so far
-   is P0/P1 fidelity work.
-
-### Done, so nobody redoes them
-
-- Parser hardening with a content gate on `.gd` output (§20) — `tools/gdcontent.py`, 10/10 goldens and
-  301/301 quote forms with content, character for character.
-- Images: the `.LOG` format is decoded (§28) — all 76 assets, every reference in the library resolves.
-- The baseline mystery (§18), shading (§22), `M,PX` rules and box sizing (§21, §23), `M,I` bullets
-  (§24), the DocuDings substitution (§27) and the 0-byte oracle (§27).
+to the shared FAP parser in `core/`, since Form Studio and GhostDraft share it. Four parser bugs were
+found via Form Studio that had silently corrupted the `.gd` path too.

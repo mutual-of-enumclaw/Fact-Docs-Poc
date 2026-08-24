@@ -2038,3 +2038,77 @@ points without anything being missing: `PSCP-GLT`'s four drawings match legacy's
 So: a broad, real improvement across 571 forms, against five scores from an oracle that cannot validly
 judge those forms. Recorded here rather than presented as a clean win, and easy to revert (the constant
 is `RuleMaxThickness`) if that trade is judged wrong.
+
+---
+
+## 36. Products reviewed the failures, and it changed the gate (2026-08-23)
+
+A review pack of 21 forms went to Products. Three verdicts came back, and they are now the project's
+ground truth -- worth more than any further metric tuning.
+
+| form | verdict |
+|---|---|
+| `BAN01`, `BANSPECH` | "look identical to my eyes" -- Tier 2 rates them 45.5% and 42.2% |
+| `IM74561R` | "missing lines in various places" -- Tier 2 rates it 48.2%, and Tier 1 called it CLEAN |
+| `M7902AA` (follow-up) | boxes drawn where legacy underlines column headers |
+
+### 1. Tier 2 measures the wrong quantity
+
+No tolerance reconciles Tier 2 with the human: `BAN01` and `BANSPECH` do not reach 90% even at **8pt**,
+more than a line height. The drift accumulates *across* a line -- correct baseline, correct text,
+correct breaks, but a word late in a long line sits several points right. A reader does not see it.
+
+`tools/lineplace.py` scores per line instead: same text (so line BREAKS are checked), same start x,
+same baseline; blind by construction to drift inside a line. It agrees with **all six** human verdicts
+and passes all four August acceptances. 794/807 at scale, median 100%. **Offered as a replacement for
+Tier 2 as the placement gate; not swapped in unilaterally, because that changes what we claim.**
+
+Building it took six rounds of threshold tuning that each traded one grouping artefact for another --
+an 18pt column gap chopped justified prose, 72pt missed a 30pt column gap, a per-page band measured
+worse, a superscript attached to the wrong neighbour. The fix was to stop tuning the grouping and make
+the MATCH tolerant of it: if a legacy line's text is contained in our lines sharing that baseline, it
+counts. Failures went 33 -> 13.
+
+One real bug found in the grouping: the column-gap test compared item **starts**, not end-to-start, so
+a table-of-contents row split because `LOSS CONDITIONS` at x=54 and its adjacent dot leader at x=149
+read as 95pt apart when they touch.
+
+### 2. Tier 1 had a gate that could not fail
+
+`IM74561R` drops **808 underscores** and Tier 1 reported it clean. The fill allowance excuses missing
+fill once our render carries every one the FAP declares -- and this form declares **zero** underscores
+and **zero** field records, so `0 >= 0` was trivially true and excused all of them. Fixed by requiring
+a reason for fill to exist: the form must declare at least one field.
+
+An hour later the same class of bug appeared again in a leader-collapse regex that **deleted** leader
+runs instead of collapsing them -- which would have re-hidden this exact defect, while the comment
+claimed the opposite. Both were found by asking what the check could not fail on.
+
+Mechanism decoded: **`M,P1` is a tab stop whose third field is a leader character** (95 = `_`, 46 =
+`.`). Documaker fills to the stop with it; the FAP contains no underscores at all. `A,X1` turned out to
+be an audit label ("BOX #N") that follows every `M,PX`, not content. Only 24 of 4210 forms use a
+leader, and reproducing it needs the text-flow model this design avoids, so it is scoped and deferred.
+
+### 3. The ink gate rewards over-drawing
+
+`M7902AA` draws a rectangle around each column header where legacy underlines it. **Clearly visible,
+and no gate objected** -- four edges are guaranteed to cover legacy's one, so over-drawing scores
+perfect recall. Section 32 had reverted a similar rule purely on that signal, which was optimising the
+wrong thing.
+
+Re-measured properly: an `X,` record in group `(24,24)` or `(25,25)` sharing its page, group and top
+row with **three or more siblings** renders as rules, not a rectangle, in **324 of 333 drawn cases
+(97%)**. At exactly two siblings it is only 91%, and a **lone** record in those groups is a rectangle
+58-80% of the time -- so the sibling test, not the group, carries the signal. Implemented at >=3.
+Ink recall 553 -> 538/571, precision median 100%, and the header underlines now match legacy exactly.
+
+### What this says about the whole exercise
+
+Twenty-plus emitter changes were validated against 1,000 forms by machine before a human looked at any
+of them. That review found **one gate that could not fail, one gate biased toward the wrong answer, and
+six "failures" that were my own metric's bugs** -- and it cost one person a few minutes of looking.
+
+The lesson is not that the metrics are bad; they found every one of the real defects fixed in sections
+18-35. It is that **a measurement system calibrated against four forms cannot be trusted to tell you
+when it is wrong about the fifth.** Widen the human-validated set before trusting a threshold, not
+after.
