@@ -251,7 +251,8 @@ public static class FapToGhostDraftGenerator
     // Public entry point
     // -----------------------------------------------------------------------
 
-    private record TextItem(int Row, int Col, int ColRight, int HalfPts, bool Bold, bool Italic, int FontIdx, int WidthTw, string Text, bool IsField);
+    private record TextItem(int Row, int Col, int ColRight, int HalfPts, bool Bold, bool Italic, int FontIdx, int WidthTw, string Text, bool IsField,
+        bool Underline = false);
     private record FieldSlot(int Id, string RawName, ConceptBinding? Binding);
 
     // Legacy guess used only when the FXR font library is unavailable.
@@ -362,7 +363,7 @@ public static class FapToGhostDraftGenerator
             {
                 var (hp, bold, italic, fi) = ResolveFont(t.FontAttributes.FontId, fonts);
                 items.Add(new TextItem(t.Position.Row1, t.Position.Col1, t.Position.Col2, hp, bold, italic, fi,
-                    MeasureTw(t.FontAttributes.FontId, t.Text), EscapeRtf(t.Text), false));
+                    MeasureTw(t.FontAttributes.FontId, t.Text), EscapeRtf(t.Text), false, t.Underline));
             }
 
             foreach (var area in fap.TextAreas.Where(x => x.PageIndex == page))
@@ -371,7 +372,7 @@ public static class FapToGhostDraftGenerator
                     if (string.IsNullOrWhiteSpace(tok.Text)) continue;
                     var (hp, bold, italic, fi) = ResolveFont(tok.FontId, fonts);
                     items.Add(new TextItem(tok.Position.Row1, tok.Position.Col1, tok.Position.Col2, hp, bold || tok.IsBold, italic, fi,
-                        MeasureTw(tok.FontId, tok.Text), EscapeRtf(tok.Text), false));
+                        MeasureTw(tok.FontId, tok.Text), EscapeRtf(tok.Text), false, tok.Underline));
                 }
 
             foreach (var f in fap.Fields.Where(x => x.PageIndex == page))
@@ -539,7 +540,13 @@ public static class FapToGhostDraftGenerator
         {
             string style = (item.Bold ? @"\b" : @"\b0") + (item.Italic ? @"\i" : @"\i0");
             string off = (item.Bold ? @"\b0" : "") + (item.Italic ? @"\i0" : "");
-            sb.Append($@"{{{style}\cf0\f{item.FontIdx}\fs{item.HalfPts}\ulnone\ulc0 {item.Text}{off}}}");
+            // Underline from bit 0 of the run's A,T1 flag. Every run here used to be
+            // written \ulnone unconditionally, so all 911 underlined runs across 186 forms
+            // were lost on the .gd path as well as the HTML one -- and the .gd content gate
+            // could not see it, because it compares characters and an underline is not a
+            // character. See FORM-STUDIO-PLAN sections 38-39.
+            string ul = item.Underline ? @"\ul" : @"\ulnone";
+            sb.Append($@"{{{style}\cf0\f{item.FontIdx}\fs{item.HalfPts}{ul}\ulc0 {item.Text}{off}}}");
         }
     }
 
