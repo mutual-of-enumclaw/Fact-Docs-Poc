@@ -2112,3 +2112,626 @@ The lesson is not that the metrics are bad; they found every one of the real def
 18-35. It is that **a measurement system calibrated against four forms cannot be trusted to tell you
 when it is wrong about the fifth.** Widen the human-validated set before trusting a threshold, not
 after.
+
+## 37. The thirteen failures were three things, and only one of them was a defect (2026-08-23)
+
+Section 36 left a list of thirteen line-placement failures in three classes. Re-derived from
+the artefacts, the list was wrong in every class, and the one real defect it was pointing at
+was somewhere else entirely -- in the shared FAP parser, affecting 1,340 of 4,478 forms.
+
+### 1. "Missing space at a run boundary" was a misreading of the metric's own output
+
+`lineplace.py` prints the LEGACY line in its `misses` string. `EB 99 09 06 16Includes
+copyrighted material` is what LEGACY says, not what we say -- FAP2PDF sets the ISO copyright
+notice hard against the edition date. Nothing was missing there.
+
+And line placement **cannot** fail on a lost space: `collapse()` strips all whitespace before
+comparing. Deleting one space glyph from our render and closing the gap (scratch:
+`spacetest.py`) leaves it at 100% on EB2410A, EB22489Q, P0010G and A0238C. The handoff's claim
+that line placement is the only gate that catches a lost space was exactly backwards.
+
+### 2. Five of those six forms fail for a decoded and different reason: the page number
+
+`EB9909SCHEDA` and the four `EP99xxSCHED*` forms declare, verbatim,
+
+```
+T,(24950,17235,25262,18915),(14110,392,225,312),12,Page      of
+```
+
+and legacy renders that literal **plus two separately positioned digit runs overlaid on it** --
+on `EB9909SCHEDA` the current-page `1` at x=545.6, inside the six-space run, and the total at
+x=570.0, which is 2.55pt PAST the declared box's right edge. It is the printer driver, not the
+form: `FSISYS.INI` declares `PageNumbers = Yes` under `< PRTTYPE:PDF >`, and the FAP contains
+no digits at all. 16 of 4,210 forms use the construct.
+
+Two things follow. First, x-ordered extraction reads legacy as `Page      of` + `1` + `1` =
+`Pageof11`, so **supplying the value would not fix the gate**: emitting "Page 1 of 1" as one
+run keys as `Page1of1`. Matching legacy means reproducing the overlay, not the semantics.
+Second, the geometry is only half decoded. The current-page digit sits a constant 28.6pt from
+the text start on all seven renders measured; the total-pages digit sits 53.0pt out on the six
+forms whose box starts at col 17235 and 55.4pt on `EF0450SCHEDA` at col 16310, and neither
+col1, col2 nor the H-record margin accounts for the 2.4pt.
+
+So it stays deferred, with the same shape as the tab leaders: a Documaker feature covering
+~0.4% of the library that needs a model this design does not have. What changes is that it is
+now deferred for a stated reason instead of mislabelled.
+
+### 3. The grouping fallback was reading its own grouping, twice over
+
+The remaining four failures -- `IM7213OM` and the whole three-form `M7902AA` / `FM7902AB` /
+`M7902ABa` "two-line header cell" class -- were artefacts of the fallback added in section 36.
+Two bugs, same root: it compared against our already-grouped LINES.
+
+* **The band anchor.** A band is keyed by the y of whichever span opened it. Legacy bands
+  `Location` (y 287.2) apart from `Covered` (289.8) because they are 2.6pt apart, over
+  `LINE_BAND`; we band them together at 2.25pt, under it. So our band's key y was 287.25 and
+  legacy's line was 2.55pt away -- outside `BASE_TOL` -- while the span it actually corresponds
+  to sat 0.3pt away. Three forms failed on a 0.3pt difference.
+* **Band order is not reading order.** `1. Partial Loss -- If a loss is a partial loss,` puts
+  the bold `Partial Loss` 0.75pt off its neighbours' baseline in our render (Chromium rounds
+  the baseline to whole device pixels and the two faces round opposite ways). Joining segment
+  keys in band order gave `1. -- If a loss...` + `Partial Loss`, so the legacy text was not a
+  substring of it and the line read as changed.
+
+Fixed by not grouping at all in the fallback: `lines()` now also returns the raw spans, and the
+fallback sorts the spans on that baseline by x, which reconstructs the line as it reads.
+
+### 4. ...and the fallback had quietly thrown away the start-x check
+
+Found by asking what it could not fail on -- the third time that question has found something.
+"Is the legacy text contained in this band" verifies content and baseline and nothing else, so
+**shifting every glyph on page 1 three points right scored 100%** on EB2410A, IM7213OM and
+M7902AA. The primary match checks start x; the fallback was rescuing everything the primary
+match rejected for having the wrong x.
+
+Fixed by anchoring: the match must BEGIN at one of our spans sitting within `START_TOL` of the
+legacy line's start, and the legacy key must be a prefix of the concatenation from there on.
+Only where the line ENDS is given up. The same 3pt shift now scores 13% / 0% / 0%.
+
+Sensitivity, measured rather than assumed (scratch: `sensitivity.py`):
+
+| damage to our render | EB2410A | P0010G | M7902AA | IM7213OM |
+|---|---|---|---|---|
+| baseline | 100% | 100% | 100% | 100% |
+| one glyph removed | 98.1 | 99.9 | **89.5** | 98.2 |
+| one space removed | 100 | 100 | 89.5 | 100 |
+| 10 spans removed | **81.5** | 99.7 | **52.6** | **84.2** |
+| 60 spans removed | **55.6** | 99.2 | **0** | **17.5** |
+| page shifted 3pt right | **13.0** | 94.3 | **0** | **0** |
+| page shifted 3pt down | **13.0** | 95.1 | **0** | **0** |
+
+P0010G is 1,542 lines, so a percentage gate is inherently insensitive on it -- 60 lost spans
+cost 0.8 points. That is a property of the threshold, not of this change, and it argues for a
+per-form absolute floor alongside the percentage.
+
+`tools/defectzoom.py` had its own copy of the match and was therefore zooming to regions the
+gate had already forgiven. Both now call `lineplace.unmatched`.
+
+### 5. The real defect: the parser was deleting leading whitespace from every text token
+
+`FormFileClient.ParseMTTLine` did `after[(ci + 1)..].Trim()`. A FAP token's leading whitespace
+is **layout**: Documaker positions the run at col1 and lets the spaces push the first glyph
+right. `EF9975A` declares
+
+```
+M,TT,(18085,3317,18389,4285),(14010,376,225,304),6,  From
+```
+
+-- box starting at col 3317 = 99.51pt -- and legacy sets `F` at 105.045pt after two space
+glyphs. We set it at 99.504pt: the whole word 5.5pt, more than half a character, to the left of
+where it belongs, immediately after `Period:`.
+
+**11,599 records across 1,340 of 4,478 forms**, plus 427 `T,` statics across 223. And no gate
+could see it. Tier 1 strips whitespace for its headline test; line placement collapses it and
+only checks the line's start x, which is the box edge and therefore correct; the token still
+carries the right characters; and the ink gates measure recall of rules and shading, not glyphs.
+
+It surfaced from a *diagnostic*, not a gate. Tier 1 reports a same-characters-different-extent
+difference as `SPACING+MOVED`, and 181 of 913 forms had one, which is why the class had been
+dismissed as drift. Splitting that population by whether our token COUNT dropped separates the
+two cleanly:
+
+| SPACING+MOVED opcodes | n | min | p5 | median | p95 |
+|---|---:|---:|---:|---:|---:|
+| our token count FEWER (a merge) | 483 | -14.72 | -4.30 | **-3.00pt** | -0.73 |
+| token count equal | 653 | -1.73 | -0.71 | **-0.20pt** | +1.33 |
+
+A median of exactly -3.00pt with a mode at -3.0 (221 of 483) is one space at 10pt. The
+equal-count population, median -0.20pt, is the intra-run drift Products calls invisible. Two
+different phenomena had been pooled into one dismissed class.
+
+Trailing whitespace is deliberately NOT restored: the caller trims the whole record before
+parsing so it is already gone, and rebuilding it from the declared length would pad the 313,323
+of 2,038,456 records that sit one character short. It carries no ink and every token is
+absolutely positioned, so it changes only extracted text.
+
+The `.gd` golden suite caught the change on three of ten forms and the deltas account for it
+exactly -- `QTE_COVER_A` +1 char against 1 leading space in the FAP, `MCS90A` +24 against 24,
+`M7215A` +56 against 56. Goldens recaptured. This is the fifth parser bug Form Studio has found
+that was silently corrupting the `.gd` path too.
+
+### 6. Result, against a prediction registered before the re-render
+
+The full 1,000-form sweep was re-run so every `_ours.pdf` post-dates the binary (1000/1000 fresh,
+checked at measurement time). The prediction written down first was: the merge population's
+-3.0pt mode should collapse, and the equal-token-count population should NOT move -- if the
+drift population moved too, the diagnosis was wrong about what it had separated.
+
+| measure (913 forms both sides) | before | after |
+|---|---|---|
+| **Tier 1 gate -- nothing dropped** | 912/913 | **912/913** |
+| forms reporting `SPACING+MOVED` | 181 | **4** |
+| forms at 100% word match | 654 | **788** |
+| character stream identical incl. order | 768 | **778** |
+| **Tier 2 gate (3.0pt)** | 878/914 | **898/914** |
+| Tier 2 at the 1.0pt quality bar | 552/914 | **619/914** |
+| mean word match | 99.66% | 99.85% |
+| lost-whitespace merges, n / median / min | 483 / **-3.00pt** / -14.72 | 34 / **-0.83pt** / -1.40 |
+| forms with a merge >= 1.4pt short | 181 | **0** |
+| drift population (token counts equal), n / median | 653 / -0.20pt | **647 / -0.22pt** |
+
+The merge population lost its -3.0pt mode entirely -- the worst residual is now -1.40pt, under
+half a space -- and the drift population did not move, which is the half of the prediction that
+could have refuted the split.
+
+**Tier 2 is the independent confirmation.** It scores absolute glyph positions, so it had no way
+to distinguish this defect from the drift it already tolerated -- and it gained 20 forms at the
+gate and 67 at the 1.0pt bar from a change it could not have named. That is the difference
+between a metric that cannot see a defect and one that cannot ATTRIBUTE it: Tier 2 was measuring
+the error all along, pooled into a quantity Products had told us to ignore.
+
+The four forms still reporting `SPACING+MOVED` are all under 2pt:
+`BPT0003A` differs by one or two dots of a leader, `MCS90B`/`MCS90D` and `FP00909N` by 1.5-1.7pt
+of ordinary drift.
+
+Line placement is **798/807, median 100%**, up from 794 -- entirely from the metric fixes above;
+the emitter change cannot move it, because it is blind to whitespace by construction. The nine
+remaining failures are two classes, both real, both deferred with a decoded mechanism:
+
+| class | n | forms |
+|---|---:|---|
+| Missing tab-leader fill (`M,P1` leader char) | 4 | `IM74561R` `IM79014O` `M7208A` `IM74054O` |
+| Page-number overlay (`PageNumbers = Yes`) | 5 | `EB9909SCHEDA` `EP990{7,8,9}SCHED*` `EP9910SCHEDC` |
+
+`.gd` content gate 10/10 with no vacuous passes. `.gd` golden suite green on all ten.
+
+One process note worth keeping. The first subset reading of this reported `1/1 forms pass` and
+`merged: none`, which looked like a flawless result. Passing 303 form names through Git Bash had
+silently delivered only the last one, and neither tool said how many forms it had been ASKED
+for -- the same shape of defect as a gate that cannot fail, arriving as a false positive instead
+of a false negative. Both tools now accept `@file-of-form-names` and print the requested count
+alongside the scored one. And an intermediate subset reading suggested the drift population had
+dropped six-fold; the full sweep shows it unchanged. **A subset of a stratified sweep taken in
+sweep order is not a sample of it.**
+
+### 7. The validation set was not in the sample it was validating
+
+Checking the accepted forms against the fresh sweep turned up something worse than any of the
+above: **`EB2410A` and `EB22489Q` are not in the stratified sample at all.** The strata are drawn
+from construct counts and have no reason to include any particular form, so two of the four
+forms Products accepted in August had `_ours.pdf` files rendered by the PREVIOUS build -- and
+every gate reported on them from that stale artefact, including the sensitivity table in part 4
+above.
+
+This is the rule in the handoff ("never measure a fix without confirming the artefact is newer
+than the binary, at the point of MEASUREMENT") firing on the one set of forms where it matters
+most. The freshness check itself was being run against `fidelity-sweep.csv`, which lists what
+the sweep covered -- so it reported 1000/1000 fresh and was right, and still missed this,
+because the question "is everything I measured fresh" is not the question "is everything I must
+measure covered".
+
+Fixed structurally rather than noted: `sweep.py` now carries an `ACCEPTED` list -- every form a
+human has given a verdict on -- and pins any of them the strata did not pick into the sample.
+On the current inventory that adds exactly `EB2410A` and `EB22489Q`.
+
+Re-rendered and re-measured, the accepted set after the leading-space fix:
+
+| form | line placement | Tier 2 @3pt | Tier 2 @1pt (was) | Tier 1 |
+|---|---|---|---|---|
+| `EB2410A` | 100% | 100.0% | 94.3% (92.4) | clean |
+| `EB22489Q` | 100% | 99.2% | 94.3% (94.3) | clean |
+| `A0238C` | 100% | 90.6% | 74.1% (74.1) | clean |
+| `P0010G` | 100% | 100.0% | 98.8% (98.7) | clean |
+| `BAN01` | 100% | 45.5% | 23.0% | clean |
+| `BANSPECH` | 100% | 42.2% | 20.5% | clean |
+
+No regressions, and **`BAN01`/`BANSPECH` are unmoved at 45.5% and 42.2%** -- so the open decision
+in the handoff still rests on exactly the disagreement it did before. Nothing about the
+leading-space fix reconciles Tier 2 with the human verdict on those two.
+
+### What this says about the whole exercise, again
+
+Section 36's lesson was that a metric calibrated on four forms cannot tell you when it is wrong
+about the fifth. This is the next one: **a classification of failures is itself a measurement,
+and nobody had asked it to prove itself.** Three of the thirteen classes were wrong -- one from
+misreading which side of the comparison a string came from, one from a mechanism nobody had
+looked up, one from the metric's own grouping. The work queue was wrong for a day.
+
+And the defect that mattered was never in the failure list at all. It was in a diagnostic that
+181 forms reported and that had been written off as drift, because nobody had split the
+population. **Look at what your dismissed classes are made of.**
+
+The last one is the sharpest. Every gate here is validated against six forms a human has looked
+at, and **two of those six were not in the sample being measured** -- so for one build the
+validation set was being read off renders from the build before. The freshness rule was followed
+and reported 1000/1000. It answered the question it was asked. **A coverage check and a freshness
+check are different checks, and this project had only ever written the second one.**
+
+## 38. A vector gate, a dead end closed for good, and 911 missing underlines (2026-08-24)
+
+Section 37 left the ink question open: 57 forms below 90% precision on the non-text ink gate, and
+the lone `X,` record still undecoded at "58-80%". Chasing the first led to a new instrument, the
+instrument closed the second permanently, and on the way it found a defect nobody had looked for.
+
+### 1. The ink precision tail is mostly the text mask, not the render
+
+`G2032C` scores **4.6%** precision. It is not drawing twenty times the ink. `nontextink.py`
+rasterizes both renders and subtracts a dilated text mask, and on that form the mask removes
+**98.9% of LEGACY's rule ink and only 72.9% of ours** -- legacy's rules sit within a pixel of the
+text boxes and ours land 0.3pt clear of them. The number is measuring which side of a text-bbox
+edge each render happened to fall on. Gating on that tail would have been gating on the mask.
+
+That is the fourth measurement artefact in three sections, and the common cause is now clear
+enough to name: **every gate so far has compared RASTERS, and a raster forces a threshold and a
+mask.** So `tools/vectorrules.py` compares the PDF vectors instead. Both renders are reduced to
+canonical axis-aligned edges and coverage is measured as LENGTH in both directions -- recall
+catches dropped rules, precision catches invented ones. No raster, no threshold, no mask.
+
+Length rather than edge COUNT, because the two renders legitimately segment the same rule
+differently: Documaker draws one filled bar per edge, Chromium emits a whole bordered box as a
+single stroked path, and a grid's shared horizontal is one long rect on one side and per-cell
+tops on the other. Coverage by length is blind to all of that and still exact about what exists.
+
+Validated against the human-reviewed set before being trusted, as the rules require:
+
+| form | recall | precision |
+|---|---|---|
+| `EB2410A` | 99.9% | 100.0% |
+| `P0010G` | 99.6% | 99.2% |
+| `BAN01` / `BANSPECH` | 93.1% / 93.5% | 99.3% / 99.8% |
+| `M7902AA` (the form Products objected to, since fixed) | 100.0% | 98.6% |
+
+and shown able to fail, in both directions: removing rules takes recall to 0%, and inventing 10
+or 40 rules takes precision to 37.3%, 13.8%, 30.5%, 10.3%, 2.7%, 0.7% on three forms. That second
+direction is the one the raster gate never had.
+
+At scale: **614 forms scorable, recall median 100.0% with 54 below 90%, precision median 99.9%
+with 71 below 90%.**
+
+### 2. The lone `X,` record is not undecoded -- it is undecidable from the record
+
+`G2032C` declares fourteen `X,` records identical in every field the parser can see: same page,
+same group `(25,25)`, same height 400, same columns 1800-18633, same line width, same style,
+stacked contiguously. Legacy draws a horizontal edge for four of them and not for the other ten.
+
+Generalised: bucketing lone records by their COMPLETE declared signature within a form, **19.3% of
+signature groups with two or more records are drawn differently from each other** (11 of 57,
+covering 53 records). No function of a single `FapLine` can ever separate those. Every threshold
+fitted to the record's own fields -- height, width, group, line width -- was fitting noise, which
+is why five attempts landed between 58% and 80% and none improved on the next.
+
+The disagreements are not random, though. Every one is positional within a contiguous run:
+
+    CU21556Q  TLR x1, LR x3, BLR x1
+    G2032C    TBLR x1, TLR x1, LR x10, BLR x1
+    FP04089N  TLR x2, LR x6, BLR x1
+
+top on the first, sides on all, bottom on the last. So the unit Documaker draws is the STACK, not
+the record. Measured directly, over runs of >=3 lone records sharing page, group and both columns
+and abutting vertically:
+
+| | |
+|---|---|
+| stacks found in the 1,000-form sweep | **13** (sizes 3,3,3,3,3,3,3,4,4,4,4,8,13) |
+| left / right verticals drawn | 13/13 (100%) |
+| outer top / bottom drawn | 9/13 (69%) |
+| **internal** horizontals drawn | **7 of 45 (15.6%)** |
+
+So the hypothesis is directionally right -- Documaker usually does not divide the cells, and we
+draw every division. But 84.4% is **below the 92% rule section 32 already reverted**, with the
+same failure direction (being wrong DROPS real edges), on 45 observations against that rule's
+larger sample. And the outer horizontals cannot even be closed reliably at 69%.
+
+**Not implemented, and it should not be attempted from the record again.** Deciding it needs the
+enclosing table -- which records form one grid, and where its header and footer are -- and that is
+document structure this design does not build. Recorded here so the next person spends the
+afternoon somewhere else.
+
+> **THIS CONCLUSION IS WRONG -- see section 39.** The records are not identical in every field;
+> they are identical in every field THIS PARSER WAS READING. The `A,X1` annotation that follows
+> each one carries an edge suppression mask, and honouring it takes rule precision from 65.1% to
+> 99.8%. The evidence above is sound and the inference from it was backwards: the right reading of
+> "identical inputs, different outputs" is that an input is being dropped.
+
+### 3. What the vector gate actually found: 911 underlines we never drew
+
+Sorting the sweep by recall turned up forms drawing **zero** rules where legacy draws hundreds of
+points: `MPNIL01A` 604pt, `EB0116T` 530pt, `Certhdr` 303pt, `COM126C` 113pt, `AZPRIVNOT` 417pt.
+None of them declares a single `X,` record.
+
+On `Certhdr`, legacy draws four filled bars at y 98.2-98.8 whose x-extents are `65.2-143.8`,
+`177.8-302.0`, `594.6-668.0`, `28.8-55.8` -- matching, to a tenth of a point, four text spans on
+baseline 96.8: `Policy Number(s)`, `Recipient Name & Address`, `Document Type`, `Seq #`. It is
+**underlined text**, and we rendered nothing.
+
+The FAP declares it, on the `A,T1` annotation that follows the text record:
+
+```
+T,(2919,5933,3231,10077),(16010,392,352,312),24,Recipient Name & Address
+A,T1," ",0,(0,0,0,0),1,0," "                     <- flag 1     underlined
+A,T1," ",0,(0,0,0,0),1025,0," ",0                <- flag 1025 = 1024|1, underlined
+A,T1," ",0,(0,0,0,0),1024,0," ",0                <- flag 1024, not
+```
+
+Bit 0 is the underline. Measured over 320,169 text records in the sweep:
+
+| | n | legacy draws a bar under it |
+|---|---:|---|
+| bit 0 SET (excluding 1-character field placeholders, which never render) | 233 | **231 (99.1%)** |
+| bit 0 CLEAR | 319,885 | 286 (**0.1%**) |
+
+Both directions clear of the bar, and it is a **decoded flag rather than a fitted threshold** --
+the first construct in this project settled by reading what the format declares instead of
+correlating against the oracle. The 0.1% false positives are text that happens to sit just above
+a real table rule; the two misses are one construct on two sibling forms.
+
+**911 runs across 186 of 4,478 forms.**
+
+### 4. Why nothing could see it
+
+An underline sits *directly under the glyphs it belongs to*. So:
+
+* `nontextink.py` dilates a text mask over both renders and subtracts it -- which removes the
+  underline from legacy's side along with the text, exactly as it removed 98.9% of `G2032C`'s
+  rules in part 1. The one gate that measures non-glyph ink is blind to ink that touches glyphs.
+* Tier 1, Tier 2, line placement and glyph shape are all glyph-only. An underline is not a glyph.
+* The `.gd` content gate compares characters, not formatting.
+
+It took an instrument that reads vectors rather than pixels, and even then it surfaced as *recall*
+-- ink legacy has that we do not -- rather than as anything anyone had gone looking for.
+
+Emitted as `text-decoration:underline` on the run, not as a positioned bar: the underline belongs
+to the text, so it must follow the run when the run is edited or rebound. Documaker draws its bar
+across the run's own x-extent, which is what a CSS underline covers.
+
+### 5. Result
+
+Rather than a 100-minute sweep, `emit-html` was re-run over all 1,292 cached forms (seconds) and
+only the 271 whose HTML actually changed were re-rendered through Chromium. That also PROVES the
+blast radius instead of assuming it: **51 of the changed forms are in the 1,000-form sample --
+exactly the 51 the FAP-side analysis predicted** -- and the other 220 were stale leftovers from
+sweeps predating section 37.
+
+| measure | before | after |
+|---|---|---|
+| **vector rules -- recall below 90%** | 54 | **22** |
+| forms drawing ZERO rules where legacy draws some | 10 | **0** |
+| forms at >= 90% both ways | 504/614 | **536/614** |
+| recall improved / regressed | -- | **51 / 0** |
+| Tier 1 gate -- nothing dropped | 912/913 | 912/913 |
+| line placement | 798/807 | 798/807 |
+| Tier 2 (3.0pt / 1.0pt) | 898 / 619 | 898 / 619 |
+| lost token whitespace | 0 forms | 0 forms |
+| **non-text ink recall (the raster gate)** | **538/571** | **538/571** |
+
+`Certhdr` goes 0 -> 302pt against legacy's 303; `EF9933A` 0 -> 413 against 412. Every text gate is
+unchanged, which is the correct answer: an underline adds ink and moves no glyphs.
+
+**And the raster ink gate did not move by a single form.** Fifty-one forms gained real ink that
+legacy has, and the one gate whose job is non-glyph ink scored exactly the same 538/571, with zero
+forms improved and zero regressed. That is not an argument that the text mask eats underlines --
+it is a measurement of it.
+
+The accepted set was re-rendered and re-checked in full: `EB2410A` 100% line placement / 100.0%
+Tier 2 / 99.9-100.0 vector, `EB22489Q` 100 / 99.2, `A0238C` 100 / 90.6, `P0010G` 100 / 100 /
+99.6-99.2, `BAN01` 100 / 45.5 / 93.1-99.3, `BANSPECH` 100 / 42.2 / 93.5-99.8. Nothing dropped on
+any of them.
+
+**A sharper form of the freshness rule.** Three accepted forms came up "stale" by mtime after the
+change, yet their HTML was byte-identical under the new build, so their PDFs were still correct.
+The rule is really *does this artefact match what the current build emits*, and mtime is only a
+proxy for that. Re-emitting is cheap and answers the real question directly; Chromium is what
+costs the hour. Diff first, then re-render what differs.
+
+### 6. The `.gd` path has the same gap, and it is now specified
+
+`FapToGhostDraftGenerator` writes `\ulnone` on every run unconditionally, so all 911 underlines are
+missing from the GhostDraft output too -- the `main` branch's deliverable. The `.gd` content gate
+cannot see it, because it compares characters and an underline is not a character. Left alone here
+rather than folded into a Form Studio change, but the flag is decoded and `FapStaticText.Underline`
+and `FapTextToken.Underline` already carry it, so the fix is switching `\ulnone` to `\ul` on those
+runs and recapturing the goldens. **Sixth** parser finding that crosses into the `.gd` path.
+
+### 7. The underline fix was 87% right, and only looking at it showed the other 13%
+
+Building a review pack meant opening the comparisons, and `MPNIL04A` showed the fix half-done:
+legacy draws **two continuous bars** under the underlined sentence, we drew **ten, with a 7.4pt
+hole at every word boundary**. Documaker underlines a RUN; our tokenisation splits a run into one
+absolutely-positioned span per word, so a CSS `text-decoration` on each span underlines the words
+and not the spaces between them.
+
+Measured at the edge level:
+
+```
+legacy y=362:  141.6-293.6                     301.0-556.0
+ours   y=362:  141.6-150.5  157.9-191.7  199.1-208.7  216.1-236.7  244.1-293.8
+               301.1-350.6  357.9-377.9  385.3-422.0  429.4-450.5  457.9-480.6
+```
+
+Fixed by reassembling the run: consecutive underlined tokens sharing a baseline merge into one
+bar when the gap between them is no wider than a word space at that size. The flag stays on the
+span as `data-underline` so Layer B keeps the semantics; only the ink moves.
+
+| form | recall before | after |
+|---|---|---|
+| `MPNIL04A` | 87.2% | **99.9%** |
+| `EP9908D` | 92.0% | **99.9%** |
+| `MPNIL01A` | 95.1% | **99.9%** |
+| `Certhdr` | 99.6% | **100.0%** |
+
+Nine forms improved, one moved 1.2pt the other way on sub-point endpoint noise (and gained
+precision), and seven paid 1-3 points of precision. That cost is a **deliberate** trade and worth
+naming: legacy leaves one gap on `MPNIL04A` open -- it breaks between "CONFLICT" and "BETWEEN"
+across a 7.4pt gap while closing 7.4pt gaps on either side -- so gap width cannot be the whole
+rule and merging draws one segment Documaker does not. One spurious segment against eight missing
+ones is the right side of that trade, but it is a trade, not a clean win.
+
+**This is the second thing today that no metric would have surfaced.** The vector gate scored
+`MPNIL04A` at 87.2% and `EP9908D` at 92.0% -- numbers that read as "close enough" in a table of
+614 forms, and both would have shipped. What found it was rendering the comparison and looking at
+it. The gates are good at *ranking* and hopeless at telling you when 87% means "nearly right" and
+when it means "visibly broken", because they have no model of what a reader notices.
+
+The same pass caught the review pack itself about to ask a bad question: `PSUM_RVPD_DTL` was
+selected into the sample on a 2.3% rule precision, but its legacy render has **0 characters and 2
+drawings** -- FAP2PDF renders that fragment blank, so the score was entirely the oracle and a
+reviewer would have been shown a blank page. The fragment filter matched the prefix `PSUM-` and
+the form is `PSUM_RVPD_DTL`. A name-prefix list was the wrong instrument for that question and
+always would have been: it encodes a guess about which forms render blank and is one naming
+convention away from being wrong. Replaced with a check of the artefact -- if the reference has
+almost no text on it, there is nothing to judge, whatever the form is called.
+
+**Look at the output before shipping a fix, and before asking anyone else to look at it.**
+
+### The lesson this time
+
+Section 36 said a metric calibrated on four forms cannot tell you when it is wrong about the
+fifth. Section 37 said a classification of failures is itself a measurement. This one is about
+instruments: **four of the artefacts found in three sections trace to the same root -- comparing
+rasters, which forces a threshold and a mask, and then attributing what the mask ate to the
+render.** The underlines had been invisible for the entire project not because anyone reasoned
+badly about them, but because every instrument in the kit destroyed the evidence before anyone
+looked. A new KIND of measurement found in one afternoon what better tuning of the old kind had
+not found in five sections.
+
+And the dead end is worth as much as the find. "58-80%, genuinely undecoded" invited another
+fitting attempt. "19.3% of identical records are drawn differently, so no per-record rule exists"
+closes it.
+
+The counterweight is part 7. A new instrument is still an instrument, and this one rated a
+visibly broken underline at 87% and a worse one at 92%. Every gate here ranks; none of them knows
+what a reader notices. **Opening the render caught two things in one afternoon that the whole kit
+scored as nearly right** -- which is the same lesson section 36 learned from Products, arriving
+this time from the other direction: not "the humans disagreed with the metric" but "the metric
+would never have raised it at all".
+
+## 39. CORRECTION to section 38: the edge choice was never undecidable (2026-08-24)
+
+Section 38 concluded that which edges an `X,` record draws is **undecidable from the record**, on
+the evidence that fourteen records on `G2032C` are identical in every field the parser reads while
+Documaker draws a horizontal for four of them. That evidence was correct. The conclusion was
+wrong, and the right inference from it was the opposite one: *then we are not reading every
+field.*
+
+Products supplied the correction. Shown the review pack, they reported "there are lines on our
+copy where we would expect them to not be there", named five forms, and asked directly: **is
+there a bit that determines where the line is visible that we have not identified?**
+
+There is.
+
+### The mechanism
+
+Every `X,` record is followed by an annotation:
+
+```
+X,(7025,1800,7425,18633),(25,25),1,0
+A,X1,"BOX ",0,(0,0,0,1),2,0
+                        ^ 1 = hide TOP, 2 = hide BOTTOM, 4 = hide LEFT, 8 = hide RIGHT
+```
+
+It is a **suppression** mask: a bit SET means Documaker does not draw that edge. On `G2032C` the
+fourteen masks run `2,2,3,3,3,3,3,3,3,3,3,3,1,1` -- the first two hide their bottom, the middle
+ten hide both horizontals, the last two hide their top -- and legacy draws exactly the edges
+those masks leave alone. That is why the SCHEDULE box is one open box and ours was thirteen ruled
+lines.
+
+Validated by simulating whole forms and comparing to the legacy vectors:
+
+| | mask honoured | all four edges (the old behaviour) |
+|---|---|---|
+| rule precision, median | **99.8%** | 65.1% |
+| forms below 90% precision | **1** | 65 |
+| rule recall, median | 100.0% | 100.0% |
+
+At the gates, after re-rendering the 150 forms it changed:
+
+| measure | before | after |
+|---|---|---|
+| **vector rules -- forms below 90% PRECISION** | **71** | **0** |
+| vector rules -- forms below 90% recall | 22 | **2** |
+| vector rules -- passing both ways | 536/614 | **585/587** |
+| non-text ink recall (the raster gate) | 538/571 | **562/571** |
+| non-text ink precision below 90% | 57 | **13** |
+| Tier 1 / line placement / Tier 2 | unchanged | unchanged |
+
+Zero regressions over 1pt in either direction. Every form Products named went from 15-52%
+precision to 99.5-100%, and the two whose *recall* was also broken -- `CR 35 21` at 79.3% and
+`CA 21 34` at 81.6% -- came back at 99.9%. `CA 21 34`'s "strikethrough" was the same cause: we
+drew the bottom edge where the mask says hide it and draw the top, 12pt higher.
+
+### Three heuristics retired
+
+The mask supersedes, and explains, all of these:
+
+* **Section 23's height threshold** (`M,PX`: bottom always, top when >=420 units). It was fitting
+  the average of the masks that happen to occur at each height.
+* **Section 32's group rule**, reverted at 92% for dropping real edges.
+* **Section 36's sibling-row rule** (>=3 side-by-side records are underlines, 97%). This one was
+  *nearly* right for a reason: a row of side-by-side records **is** a row whose masks each hide
+  three edges. It was reading the shadow of the mask in the layout.
+
+Five attempts across four sections landed between 58% and 80% because they were fitting noise
+around a field nobody had read.
+
+### Two ways I got this wrong, both instructive
+
+**Dismissing the line.** Section 36 looked at `A,X1`, saw `"BOX #NNN"`, and recorded it as an
+audit label. The label *is* an audit label. The number beside it is not, and the record was
+written off on the strength of the part that was.
+
+**Testing the right hypothesis with the wrong polarity.** Asked whether a bit governed
+visibility, I tested `bit set <-> edge drawn`, got 13-48% agreement across 901 records, and
+reported it refuted. The same measurement read as `bit set <-> edge HIDDEN` gives 87%, 73%, 82%,
+84% -- and every single mismatch was one-directional (legacy drew an edge the mask called hidden,
+never the reverse), which is the signature of a shared edge drawn by the neighbouring box. A
+one-sided error distribution is evidence about the model, not noise to average over. Whole-form
+simulation then gave 99.8%.
+
+The second mistake is the worse one. An inverted-sign refutation looks exactly like a real
+refutation, and it closed a line of enquiry that a domain expert had opened correctly.
+
+### What this says about the whole exercise
+
+Sections 36-38 each landed on a version of "the metric was wrong". This one is different and
+sharper: **the FILE was more informative than the model of the file, and no amount of measuring
+the render would have revealed that.** Every instrument built here compares our output to
+Documaker's output. None of them can tell you that the input contains a field you never parsed.
+Nine sections of geometry work -- and a stated conclusion of "undecidable" -- rested on a parser
+that silently dropped a per-record field, and the thing that broke it open was a person who knows
+the forms asking whether a visibility bit existed.
+
+Two concrete practices follow:
+
+1. **Audit the parser against the format, not against the output.** Section 24 did a record-type
+   audit and found `M,I` bullets. Nobody ever audited the FIELDS of the record types we do parse.
+   `A,X1`'s number was in every one of 7,055 annotations in the library.
+2. **When a heuristic stalls in the 60-80% band across several attempts, stop tuning and go
+   looking for an unread input.** That band is what fitting an average of a hidden discriminator
+   looks like.
+
+### Still open
+
+* `MC1690a` / `MC1690C` -- one missing 444pt horizontal, the only two vector-rule failures left.
+* The `A,X1` COLOUR (the `(0,0,0,1)` group) is decoded as far as it needs to be: every non-black
+  value sits on a shaded record, and the declared colour is NOT what Documaker paints. Section
+  22's measured per-style table matches legacy exactly on all 25 records where both can be
+  compared (0.75, 0.55, 0.85) and the declared colour would have regressed 21 of them, including
+  painting a box white that Documaker paints at 0.85 grey. Investigated because it looked like a
+  defect; it is not one. What the colour means is unknown -- plausibly an authoring-tool value the
+  print driver ignores.
+* The raster ink gate lost a little recall on four forms (`R2014B` -8.3, `A0431A` -4.3,
+  `EP04453R` -4.2, `G3115A` -3.2). Not a regression: `R2014B` now draws exactly 13 edges against
+  legacy's 13, median offset 0.38pt and max 1.12pt, and the raster gate's tolerance is ~0.96pt at
+  150dpi. The over-drawing had been padding its recall, exactly as section 38 part 1 said it
+  would. Worth remembering that removing an over-draw can look like a regression on a
+  recall-biased instrument.
