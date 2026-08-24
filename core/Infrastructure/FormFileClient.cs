@@ -22,21 +22,40 @@ public record FapField(
     (int FontId, int S1, int S2, int S3) FontAttributes,
     int LineNumber, int PageIndex = 0);
 
+/// <param name="Underline">
+/// Set from bit 0 of the flag on the <c>A,T1</c> annotation that follows the text record.
+/// Documaker underlines the text; measured over the 1,000-form sweep, bit 0 set means legacy
+/// draws a bar under the run in 231 of 233 cases (99.1%), and bit 0 clear means it draws one in
+/// 286 of 319,885 (0.1%). See FORM-STUDIO-PLAN section 38.
+/// </param>
 public record FapStaticText(
     string Text, int Length,
     (int Row1, int Col1, int Row2, int Col2) Position,
     (int FontId, int S1, int S2, int S3) FontAttributes,
-    int LineNumber, int PageIndex = 0);
+    int LineNumber, int PageIndex = 0, bool Underline = false);
 
 /// <param name="Source">
 /// Which record produced this line. "X" is a top-level X, record and draws as a real
 /// rectangle. "MPX" is an M,PX / M,X record nested in a text area and does NOT: Documaker
 /// draws only its horizontal edges (see the renderer for the measured rule).
 /// </param>
+/// <param name="EdgeMask">
+/// Which edges Documaker SUPPRESSES, from the number on the <c>A,X1</c> annotation that follows
+/// the record: bit 1 hides the top, 2 the bottom, 4 the left, 8 the right. Null when the record
+/// carries no annotation, in which case all four edges are drawn.
+///
+/// This is the real mechanism behind two days of failed heuristics. Section 36 read A,X1, saw
+/// "BOX #NNN", and filed it as an audit label; section 38 then concluded from the record's other
+/// fields that the edge choice was UNDECIDABLE, because fourteen records on G2032C are identical
+/// in every field the parser was reading. They are not identical here -- their masks run
+/// 2,2,3,3,3,3,3,3,3,3,3,1,1 and legacy draws exactly the edges those masks leave alone.
+/// Simulated over the 1,000-form sweep, honouring the mask takes rule precision from a median of
+/// 65.1% to 99.8% and the count of forms below 90% from 65 to 1, at no cost to recall.
+/// </param>
 public record FapLine(
     (int Row1, int Col1, int Row2, int Col2) Position,
     int Width, int Style, int LineNumber, int PageIndex = 0, string Source = "X",
-    string Group = "");
+    string Group = "", int? EdgeMask = null);
 
 public record FapTextArea(
     (int Row1, int Col1, int Row2, int Col2) Position,
@@ -50,7 +69,7 @@ public record FapTextArea(
 public record FapTextToken(
     string Text, bool IsBold, int FontId,
     (int Row1, int Col1, int Row2, int Col2) Position,
-    bool IsFieldPlaceholder = false);
+    bool IsFieldPlaceholder = false, bool Underline = false);
 
 /// <summary>A <c>G,</c> image placement: <c>G,(row1,col1,row2,col2),NAME</c>, where NAME
 /// resolves to a Documaker <c>NAME.LOG</c> raster beside the FAP files.</summary>
@@ -200,6 +219,7 @@ public class FormFileClient
 
         var fields = new List<FapField>();
         var staticTexts = new List<FapStaticText>();
+        bool lastTextWasToken = false;   // which record an A,T1 flag belongs to
         var xLines = new List<FapLine>();
         var images = new List<FapImage>();
         var textAreas = new List<FapTextArea>();
@@ -241,7 +261,7 @@ public class FormFileClient
             }
             int pg = Math.Max(0, currentPage);
             if (trimmed.StartsWith("F,", StringComparison.OrdinalIgnoreCase)) { var f = ParseFapFLine(trimmed, lineNum); if (f != null) fields.Add(f with { PageIndex = pg }); continue; }
-            if (trimmed.StartsWith("T,", StringComparison.OrdinalIgnoreCase)) { var t = ParseFapTLine(trimmed, lineNum); if (t != null) staticTexts.Add(t with { PageIndex = pg }); continue; }
+            if (trimmed.StartsWith("T,", StringComparison.OrdinalIgnoreCase)) { var t = ParseFapTLine(trimmed, lineNum); if (t != null) { staticTexts.Add(t with { PageIndex = pg }); lastTextWasToken = false; } continue; }
             if (trimmed.StartsWith("X,", StringComparison.OrdinalIgnoreCase)) { var x = ParseFapXLine(trimmed, lineNum); if (x != null) xLines.Add(x with { PageIndex = pg }); continue; }
             // M,PX / M,X are line & rectangle records nested inside a text area. They were
             // being dropped entirely, which is why forms whose rules come from a text area
@@ -288,6 +308,7 @@ public class FormFileClient
                         inlineContinuationField = null; // real text encountered — stop extending
                     }
                     currentTokens.Add(tk);
+                    lastTextWasToken = true;
                 }
                 continue;
             }
@@ -298,8 +319,36 @@ public class FormFileClient
             // The M,TT token immediately preceding it is the visual placeholder (typically
             // a single "X" character) — mark it as a field placeholder so it is NOT
             // rendered as static text, and record its position as the field's inline position.
+            // A,X1 follows an X, / M,PX record and carries its edge suppression mask.
+            if (trimmed.StartsWith("A,X1,", StringComparison.OrdinalIgnoreCase))
+            {
+                if (ParseAT1Flag(trimmed) is int mask && xLines.Count > 0)
+                    xLines[^1] = xLines[^1] with { EdgeMask = mask };
+                continue;
+            }
+
             if (trimmed.StartsWith("A,T1,", StringComparison.OrdinalIgnoreCase))
             {
+                // UNDERLINE. The A,T1 that follows a text record carries a flag whose bit 0
+                // means "underline this run" -- 1024 is the ordinary value, 1025 = 1024|1 is
+                // the underlined one, and bare 1 and 1033/1041/1049 appear too. Legacy draws
+                // the bar as a filled rect matching the run's x-extent, so nothing in the
+                // text records themselves reveals it; the only visible trace is a rule that
+                // sits directly under the glyphs, where the ink gate's dilated text mask
+                // removes it. That is why 911 underlines across 186 forms went unrendered and
+                // unmeasured until the vector rule gate looked at edges instead of pixels.
+                if (ParseAT1Flag(trimmed) is int at1Flag && (at1Flag & 1) != 0)
+                {
+                    // Attach to whichever kind of text record was parsed last, rather than
+                    // preferring one: a T, outside a text area and an M,TT inside one both
+                    // take an A,T1, and picking by "are there tokens" would underline a
+                    // stale token from an earlier area.
+                    if (lastTextWasToken && currentTokens.Count > 0)
+                        currentTokens[^1] = currentTokens[^1] with { Underline = true };
+                    else if (!lastTextWasToken && staticTexts.Count > 0)
+                        staticTexts[^1] = staticTexts[^1] with { Underline = true };
+                }
+
                 var fieldName = ParseAT1FieldName(trimmed);
                 if (!string.IsNullOrEmpty(fieldName) && currentTokens.Count > 0)
                 {
@@ -466,6 +515,22 @@ public class FormFileClient
         catch { return null; }
     }
 
+    /// <summary>The flag field of an <c>A,T1</c> annotation: the integer that follows the
+    /// coordinate group in <c>A,T1," ",0,(0,0,0,0),1025,0," ",0</c>. Null if unparseable.</summary>
+    private static int? ParseAT1Flag(string line)
+    {
+        try
+        {
+            int close = line.IndexOf(')');
+            if (close < 0) return null;
+            var after = line[(close + 1)..].TrimStart(',');
+            int comma = after.IndexOf(',');
+            var token = (comma < 0 ? after : after[..comma]).Trim();
+            return int.TryParse(token, out int flag) ? flag : null;
+        }
+        catch { return null; }
+    }
+
     private static FapStaticText? ParseFapTLine(string line, int lineNum)
     {
         try
@@ -479,7 +544,8 @@ public class FormFileClient
             var fontAttr = (int.Parse(fp[0]), int.Parse(fp[1]), int.Parse(fp[2]), int.Parse(fp[3]));
             var after = rest[(font.End)..].TrimStart(',');
             var ci = after.IndexOf(',');
-            return new FapStaticText(after[(ci + 1)..].Trim(), int.Parse(after[..ci]), position, fontAttr, lineNum);
+            // Leading whitespace preserved -- see the note in ParseMTTLine.
+            return new FapStaticText(after[(ci + 1)..], int.Parse(after[..ci]), position, fontAttr, lineNum);
         }
         catch { return null; }
     }
@@ -589,7 +655,27 @@ public class FormFileClient
             var isBold = fontId == 14110 || fontId == 14112 || fontId == 14116;
             var after = rest[(font.End)..].TrimStart(',');
             var ci = after.IndexOf(',');
-            var text = after[(ci + 1)..].Trim();
+            // Do NOT Trim the text. A FAP token's LEADING whitespace is layout: Documaker
+            // positions the run at col1 and lets the spaces push the first glyph right, so
+            // trimming them slid the visible text left by the width of the space run.
+            // EF9975A declares `6,  From` at col 3317 and legacy sets 'F' at 105.0pt; we set
+            // it at 99.5pt, 5.5pt (half a character) left. It affects 11,599 M,TT records
+            // across 1,340 of 4,478 forms and 427 T, records across 223, and NO gate could
+            // see it: Tier 1 strips whitespace, line placement collapses it and checks only
+            // the line's start x, and the token still holds the right characters. It surfaced
+            // only from Tier 1's SPACING+MOVED diagnostic, where a token-count merge is short
+            // by a median of exactly 3.00pt -- one space -- against -0.20pt when the counts
+            // agree.
+            //
+            // TRAILING whitespace is a separate question and deliberately NOT restored.
+            // 313,323 of the library's 2,038,456 M,TT records declare one character more than
+            // they store -- `8,Various` for the token "Various " -- so a flowed text area's
+            // inter-word space lives in the DECLARED LENGTH, not in the file. Rebuilding it
+            // would be legitimate, but it buys nothing: the space carries no ink, every token
+            // is positioned at its own col1, and the width correction measures our own text
+            // rather than the declared box. It changes extracted text only. Restore it if a
+            // gate ever needs word separation to match legacy exactly.
+            var text = after[(ci + 1)..];
             // Do NOT strip enclosing double quotes. The M,TT text field is stored bare
             // (e.g. `...,10,"Personal `), so a token that both starts and ends with a
             // quote is a DEFINED TERM whose quotes are content -- "fungi", "we", "you",

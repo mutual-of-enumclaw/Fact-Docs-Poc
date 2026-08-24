@@ -357,10 +357,12 @@ if (args.Length >= 2 && args[0] == "emit-html")
     // --- Flatten every drawable into one ordered list --------------------------
     // (text tokens from both S,TT static texts and M,TT text areas)
     var texts = parsed.StaticTexts
-        .Select(t => (t.Text, t.PageIndex, t.Position, t.FontAttributes.FontId, Bold: false, Kind: "s"))
+        .Select(t => (t.Text, t.PageIndex, t.Position, t.FontAttributes.FontId, Bold: false,
+                      Kind: "s", t.Underline))
         .Concat(parsed.TextAreas.SelectMany(a => a.Tokens
             .Where(tok => !tok.IsFieldPlaceholder)
-            .Select(tok => (tok.Text, a.PageIndex, tok.Position, FontId: tok.FontId, Bold: tok.IsBold, Kind: "m"))))
+            .Select(tok => (tok.Text, a.PageIndex, tok.Position, FontId: tok.FontId,
+                            Bold: tok.IsBold, Kind: "m", tok.Underline))))
         // Keep whitespace-only tokens. Documaker emits the inter-word space as its own
         // positioned token; dropping it merged adjacent words ("Agreement under" ->
         // "Agreementunder") both visually where runs abut and in extracted text.
@@ -598,10 +600,19 @@ if (args.Length >= 2 && args[0] == "emit-html")
             // 98.7 -> 95.1%, A0238C 74.1 -> 70.5%. Chromium's own inter-word advances plus
             // the run-level FXR correction track the legacy render better than FXR word
             // offsets do. Do not re-try this without a different mechanism.
-            sb.Append($"<span class=\"abs\" data-fid=\"{t.FontId}\" data-kind=\"{t.Kind}\" style=\"left:{N(Px(t.Position.Col1))}pt;top:{N(top)}pt;")
+            sb.Append($"<span class=\"abs\" data-fid=\"{t.FontId}\" data-kind=\"{t.Kind}\"")
+              .Append(t.Underline ? " data-underline=\"1\"" : "")
+              .Append($" style=\"left:{N(Px(t.Position.Col1))}pt;top:{N(top)}pt;")
               .Append($"font-family:'{fam}';font-size:{N(size)}pt;line-height:{N(lh)}pt{spacing}")
               .Append(bold ? ";font-weight:bold" : "")
               .Append((f?.Italic ?? false) ? ";font-style:italic" : "")
+              // UNDERLINE: the flag is carried as a data attribute for Layer B, and the ink
+              // is drawn as a bar in the pass below rather than as a CSS text-decoration on
+              // this span. Documaker underlines a RUN; our tokenisation splits a run into one
+              // positioned span per word, so a decoration per span leaves the inter-word gaps
+              // blank -- on MPNIL04A legacy draws two continuous bars where that produced TEN,
+              // with 7.4pt holes at every word boundary. Visible, and caught only by looking at
+              // the render.
               .Append($"\">{Esc(t.Text)}</span>\n");
         }
 
@@ -635,6 +646,30 @@ if (args.Length >= 2 && args[0] == "emit-html")
             bool siblingRow = (l.Group == "24,24" || l.Group == "25,25")
                 && parsed.Lines.Count(o => o.PageIndex == l.PageIndex && o.Group == l.Group
                                            && o.Position.Row1 == l.Position.Row1) >= 3;
+
+            // EDGE SUPPRESSION MASK. When the record carries an A,X1 annotation, that number says
+            // which edges Documaker HIDES -- 1 top, 2 bottom, 4 left, 8 right -- and it is exact
+            // where every heuristic above it was a guess. It takes precedence over the sibling-row
+            // and M,PX rules for records that have one, because those rules were approximating
+            // this: a "row of side-by-side records is underlines" IS a row whose masks hide three
+            // edges each. Records with no annotation keep the old path.
+            //
+            // Products reported the symptom this fixes: "there are lines on our copy where we
+            // would expect them to not be there". On G2032C the SCHEDULE box is one open box in
+            // Documaker and was thirteen ruled lines in ours.
+            if (l.EdgeMask is int mask && Math.Abs(y2 - y1) >= 0.01f && Math.Abs(x2 - x1) >= 0.01f)
+            {
+                float bar = Math.Max(0.5f, l.Width * S);
+                if ((mask & 1) == 0)
+                    sb.Append($"<div class=\"rule\" style=\"left:{N(x1)}pt;top:{N(y1)}pt;width:{N(x2 - x1)}pt;height:{N(bar)}pt\"></div>\n");
+                if ((mask & 2) == 0)
+                    sb.Append($"<div class=\"rule\" style=\"left:{N(x1)}pt;top:{N(y2)}pt;width:{N(x2 - x1)}pt;height:{N(bar)}pt\"></div>\n");
+                if ((mask & 4) == 0)
+                    sb.Append($"<div class=\"rule\" style=\"left:{N(x1)}pt;top:{N(y1)}pt;width:{N(bar)}pt;height:{N(y2 - y1)}pt\"></div>\n");
+                if ((mask & 8) == 0)
+                    sb.Append($"<div class=\"rule\" style=\"left:{N(x2)}pt;top:{N(y1)}pt;width:{N(bar)}pt;height:{N(y2 - y1)}pt\"></div>\n");
+                continue;
+            }
 
             // M,I is a bullet -- a solid disc, not a box. Legacy draws it as a filled
             // path of four curves, black, at exactly the declared coordinates.
@@ -683,6 +718,44 @@ if (args.Length >= 2 && args[0] == "emit-html")
                 sb.Append($"<div class=\"rule\" style=\"left:{N(x1)}pt;top:{N(y1)}pt;width:{N(thick)}pt;height:{N(y2 - y1)}pt\"></div>\n");
             else                                 // rectangle
                 sb.Append($"<div class=\"box\" style=\"left:{N(x1)}pt;top:{N(y1)}pt;width:{N(x2 - x1)}pt;height:{N(y2 - y1)}pt;border-width:{N(thick)}pt\"></div>\n");
+        }
+
+        // UNDERLINE BARS. Reassemble the runs our tokenisation split: consecutive underlined
+        // tokens sharing a baseline become ONE bar when the gap between them is no wider than
+        // a word space at that size. Legacy leaves some gaps unfilled too -- on MPNIL04A it
+        // breaks between "CONFLICT" and "BETWEEN" across a 7.4pt gap while closing 7.4pt gaps
+        // either side of it -- so the gap width cannot be the whole rule and this deliberately
+        // does not try to reproduce that break. Merging is still much closer than not merging:
+        // one spurious segment against eight missing ones.
+        //
+        // The bar is 0.6pt, which is what Documaker emits (measured: a filled rect 0.6pt tall
+        // on every underlined run examined), and it sits at the text box's bottom edge, where
+        // the baseline anchor already puts the glyphs.
+        {
+            var ul = texts.Where(t => t.Underline && t.PageIndex == p)
+                .Select(t => (t.Position, Size: htmlFonts.Resolve(t.FontId)?.PointSize is float ps
+                                                && ps > 0 ? ps : 10f))
+                .OrderBy(t => t.Position.Row2).ThenBy(t => t.Position.Col1)
+                .ToList();
+            int i = 0;
+            while (i < ul.Count)
+            {
+                var (pos, size) = ul[i];
+                float x0 = Px(pos.Col1), x1 = Px(pos.Col2);
+                int row2 = pos.Row2;
+                int j = i + 1;
+                while (j < ul.Count
+                       && Math.Abs(Py(ul[j].Position.Row2) - Py(row2)) <= 1.0f
+                       && Px(ul[j].Position.Col1) - x1 <= ul[j].Size
+                       && Px(ul[j].Position.Col1) >= x1 - 1.0f)
+                {
+                    x1 = Math.Max(x1, Px(ul[j].Position.Col2));
+                    j++;
+                }
+                sb.Append($"<div class=\"rule\" style=\"left:{N(x0)}pt;top:{N(Py(row2))}pt;")
+                  .Append($"width:{N(x1 - x0)}pt;height:0.6pt\"></div>\n");
+                i = j;
+            }
         }
 
         // Fields carry binding metadata but draw nothing when unfilled — matching
