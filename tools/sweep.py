@@ -29,6 +29,21 @@ CHROME = pathlib.Path(r"C:\Program Files\Google\Chrome\Application\chrome.exe")
 DEMO = REPO / "demo" / "bin" / "Debug" / "net9.0" / "FapPdfTools.Demo.exe"
 COVERAGE = REPO / "output" / "coverage-report.csv"
 
+# Every form a human has actually looked at and given a verdict on. The stratified sample is
+# drawn from construct counts and has no reason to contain any of them -- EB2410A and EB22489Q
+# were NOT in the 1,000-form sample, so a full sweep left their `_ours.pdf` rendered by the
+# PREVIOUS build while every gate reported on them from that stale artefact. The project's
+# first rule is to validate against this set, which cannot be done from a stale render, so the
+# set is pinned into every sweep regardless of what the strata pick.
+ACCEPTED = [
+    # accepted by Products, August 2026
+    "EB2410A", "A0238C", "EB22489Q", "P0010G",
+    # reviewed 2026-08-23: "look identical" despite Tier 2 rating them 42-45%
+    "BAN01", "BANSPECH",
+    # reviewed 2026-08-23 with a defect named, so they must stay measurable
+    "IM74561R", "M7902AA",
+]
+
 
 def load_inventory():
     """form -> construct counts, from the existing coverage report."""
@@ -216,6 +231,11 @@ if __name__ == "__main__":
     outdir.mkdir(parents=True, exist_ok=True)
     inv = load_inventory()
     sample = stratify(inv, n)
+    picked = {f for f, _ in sample}
+    pinned = [(f, "accepted") for f in ACCEPTED if f not in picked]
+    sample += pinned
     print(f"Inventory: {len(inv)} forms. Sample: {len(sample)} across "
-          f"{len(set(c for _, c in sample))} strata.\n")
+          f"{len(set(c for _, c in sample))} strata "
+          f"(+{len(pinned)} pinned from the accepted set: "
+          f"{', '.join(f for f, _ in pinned) or 'none needed'}).\n")
     report(sweep(sample, outdir / "sweep-work"), outdir)

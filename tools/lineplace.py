@@ -25,7 +25,7 @@ as always -- and note what it is blind to by construction: drift inside a line. 
 deliberate trade, not an oversight, and it is only defensible while Products says that drift
 is invisible.
 
-Usage:  python tools/lineplace.py [FORM ...]
+Usage:  python tools/lineplace.py [FORM ... | @file-of-form-names]
 """
 import collections
 import csv
@@ -64,10 +64,50 @@ THRESHOLD_PCT = 90.0
 MIN_LINES = 5
 
 
+def form_args(argv, fallback_csv):
+    """Form names from the command line, an @file, or the sweep CSV.
+
+    @file exists because passing a few hundred names through Git Bash silently delivers
+    only the last one -- a subset run reported "1/1 forms pass" and read as a clean sweep.
+    """
+    names = []
+    for a in argv:
+        if a.startswith("@"):
+            names += pathlib.Path(a[1:]).read_text(encoding="utf-8").split()
+        else:
+            names.append(a)
+    if names:
+        return names
+    if fallback_csv.exists():
+        return [r["form"] for r in csv.DictReader(fallback_csv.open(encoding="utf-8"))
+                if r["status"] == "ok"]
+    return []
+
+
+def collapse(joined):
+    """Comparison key: whitespace removed, leader runs shortened to a fixed marker.
+
+    A dot or underscore leader's LENGTH is decorative fill, not content, and it depends
+    on sub-point width accumulation -- BPT0003A's table of contents differs from legacy
+    by one or two dots per line, which changed every line key while being invisible.
+    Collapsing to a fixed marker keeps a MISSING leader detectable: many dots against
+    none still differs.
+    """
+    return re.sub(r"([._\-])\1{2,}", lambda m: m.group(1) * 3,
+                  re.sub(r"\s+", "", joined))
+
+
 def lines(pdf):
-    """-> list of (page, collapsed_text, start_x, baseline_y), one per visual line."""
+    """-> (lines, spans).
+
+    lines: (page, collapsed_text, start_x, baseline_y, display_text) per visual line.
+    spans: (page, baseline_y, start_x, raw_text) per SPAN, UNGROUPED -- the grouping
+    fallback in score() needs the spans themselves rather than this function's guess at
+    how they band together, because that guess is exactly what it is compensating for.
+    """
     d = fitz.open(str(pdf))
     out = []
+    spans = []
     for pg in range(d.page_count):
         words = []
         for b in d[pg].get_text("dict")["blocks"]:
@@ -83,6 +123,7 @@ def lines(pdf):
                 band = (y, [])
                 out.append((pg, band))
             band[1].append((x, t, x1))
+            spans.append((pg, y, x, t))
 
     # Absorb short superscript-ish items into the line they sit beside, so both renders
     # group them the same way regardless of which side of LINE_BAND they landed on.
@@ -112,36 +153,24 @@ def lines(pdf):
             segs.append(seg)
         for sg in segs:
             joined = "".join(t for _, t, _ in sg)
-            # Collapse LEADER RUNS before comparing. A dot or underscore leader's length
-            # is decorative fill, not content, and it depends on sub-point width
-            # accumulation -- BPT0003A's table of contents differs from legacy by one or
-            # two dots per line, which changed every line key while being invisible.
-            # Collapsing to a fixed marker keeps a MISSING leader detectable: many dots
-            # against none still differs.
-            key = re.sub(r"([._\-])\1{2,}", lambda m: m.group(1) * 3,
-                         re.sub(r"\s+", "", joined))
+            key = collapse(joined)
             if key:
-                res.append((pg, key, sg[0][0], y, re.sub(r"\s+", " ", joined).strip()))
-    return res
+                res.append((pg, key, sg[0][0], y,
+                            re.sub(r"\s+", " ", joined).strip()))
+    return res, spans
 
 
-def score(form):
-    legacy, ours = WORK / f"{form}.PDF", WORK / f"{form}_ours.pdf"
-    if not legacy.exists() or not ours.exists():
-        return None
-    try:
-        L, O = lines(legacy), lines(ours)
-    except Exception:
-        return None
-    if len(L) < MIN_LINES:
-        return None
+def unmatched(L, O, ospans):
+    """Yield the legacy lines that have no counterpart in ours.
 
+    Shared with tools/defectzoom.py so the region it zooms to is by construction the
+    region the gate objected to. They were separate before, and the zoom pointed at
+    grouping artefacts the gate had already forgiven.
+    """
     idx = collections.defaultdict(list)
     for pg, key, x, y, _disp in O:
         idx[(pg, key)].append([x, y, False])
 
-    hit = 0
-    misses = []
     for pg, key, x, y, disp in L:
         best, bd = None, None
         for cand in idx.get((pg, key), []):
@@ -150,32 +179,77 @@ def score(form):
             dx, dy = abs(cand[0] - x), abs(cand[1] - y)
             if dx <= START_TOL and dy <= BASE_TOL and (bd is None or dx + dy < bd):
                 best, bd = cand, dx + dy
-        if best is None:
-            # GROUPING FALLBACK. Where the two renders band or segment a line differently,
-            # the legacy line's text still appears -- merged with a neighbour, or split.
-            # Accept it if the legacy text is contained in the concatenation of OUR lines
-            # sharing that baseline. Content and vertical placement are still verified;
-            # the exact start x is not, for merged cases only.
-            #
-            # This replaces six rounds of threshold tuning that traded one grouping
-            # artefact for another: 18pt column gaps chopped justified prose, 72pt missed
-            # a 30pt column gap on M7350A, a per-page band measured worse at scale, and a
-            # superscript absorbed into whichever neighbour happened to come first. The
-            # grouping is heuristic and always will be, so the MATCH is made tolerant of it
-            # rather than the grouping made perfect.
-            same_band = "".join(k for p2, k, _x, y2, _d in O
-                                if p2 == pg and abs(y2 - y) <= BASE_TOL)
-            if key and key in same_band:
-                hit += 1
-                continue
         if best is not None:
             best[2] = True
-            hit += 1
-        elif len(misses) < 3:
+            continue
+        if _band_match(key, x, y, pg, ospans):
+            continue
+        yield pg, key, x, y, disp
+
+
+def _band_match(key, x, y, pg, ospans):
+    # GROUPING FALLBACK. Where the two renders band or segment a line differently,
+    # the legacy line's text still appears -- merged with a neighbour, or split.
+    # Accept it if the legacy text starts at one of OUR spans on that baseline and
+    # runs on from there. Content, vertical placement AND start x are all still
+    # verified; only our own guess at where the line ENDS is given up.
+    #
+    # This replaces six rounds of threshold tuning that traded one grouping
+    # artefact for another: 18pt column gaps chopped justified prose, 72pt missed
+    # a 30pt column gap on M7350A, a per-page band measured worse at scale, and a
+    # superscript absorbed into whichever neighbour happened to come first. The
+    # grouping is heuristic and always will be, so the MATCH is made tolerant of it
+    # rather than the grouping made perfect.
+    #
+    # It reads the band as SPANS, not as our own already-grouped lines, because
+    # grouping first was wrong twice over. A band was keyed by the y of whichever
+    # span opened it, so a legacy line 2.55pt from that anchor was rejected even
+    # though the span it corresponds to sat 2.25pt away -- that alone accounted for
+    # four of the thirteen failures (IM7213OM, M7902AA, FM7902AB, M7902ABa) and the
+    # renders are 0.3pt apart. And joining segment keys in band order reverses
+    # reading order whenever a run bands away from its neighbours, so a bold word
+    # mid-sentence 0.75pt off the baseline made the text look changed
+    # ("1. Partial Loss -- If a loss" arrived as "1. -- If a loss" + "Partial
+    # Loss"). Sorting the raw spans by x reconstructs the line as it reads.
+    #
+    # ANCHORING IT AT A SPAN whose x matches is what keeps the fallback honest. An
+    # earlier version asked only whether the text appeared anywhere in the band,
+    # which threw the start-x check away -- shifting every glyph on a page 3pt
+    # right still scored 100% on EB2410A, IM7213OM and M7902AA. Requiring the match
+    # to BEGIN at a span sitting within START_TOL of the legacy line's start makes
+    # that same shift score 0-2%.
+    band = sorted((sp for sp in ospans
+                   if sp[0] == pg and abs(sp[1] - y) <= BASE_TOL),
+                  key=lambda sp: sp[2])
+    for n, sp in enumerate(band):
+        if abs(sp[2] - x) > START_TOL:
+            continue
+        if collapse("".join(t for _p, _y, _x, t in band[n:])).startswith(key):
+            return True
+    return False
+
+
+def score(form):
+    legacy, ours = WORK / f"{form}.PDF", WORK / f"{form}_ours.pdf"
+    if not legacy.exists() or not ours.exists():
+        return None
+    try:
+        L, _lspans = lines(legacy)
+        O, ospans = lines(ours)
+    except Exception:
+        return None
+    if len(L) < MIN_LINES:
+        return None
+
+    misses = []
+    lost = 0
+    for _pg, key, _x, _y, disp in unmatched(L, O, ospans):
+        lost += 1
+        if len(misses) < 3:
             present = any(key == k for _, k, _, _, _ in O)
             misses.append(f"{'moved' if present else 'text differs'}: {disp[:44]!r}")
     return {"form": form, "lines": len(L),
-            "pct": round(100 * hit / len(L), 1), "misses": misses}
+            "pct": round(100 * (len(L) - lost) / len(L), 1), "misses": misses}
 
 
 def main(forms):
@@ -189,7 +263,10 @@ def main(forms):
         print(f"{r['form']:<18}{r['lines']:>7}{r['pct']:>9.1f}%  {flag}"
               + ("   " + "; ".join(r["misses"]) if flag == "FAIL" else ""))
     ok = [r for r in rows if r["pct"] >= THRESHOLD_PCT]
-    print(f"\n{len(ok)}/{len(rows)} forms pass")
+    # Report the DENOMINATOR of what was asked for, not only of what scored. A run that
+    # silently received one form printed "1/1 forms pass".
+    print(f"\n{len(ok)}/{len(rows)} forms pass  "
+          f"(asked for {len(forms)}; {len(forms) - len(rows)} unscorable)")
     if rows:
         print(f"   median {statistics.median([r['pct'] for r in rows]):.1f}%")
     out = OUTDIR / "lineplace.csv"
@@ -203,8 +280,4 @@ def main(forms):
 
 
 if __name__ == "__main__":
-    args = sys.argv[1:]
-    if not args and SWEEP.exists():
-        args = [r["form"] for r in csv.DictReader(SWEEP.open(encoding="utf-8"))
-                if r["status"] == "ok"]
-    sys.exit(1 if main(args) else 0)
+    sys.exit(1 if main(form_args(sys.argv[1:], SWEEP)) else 0)

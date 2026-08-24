@@ -31,17 +31,16 @@ OUT = pathlib.Path(r"C:\src\fact-pdf-tools\output\zoom")
 
 
 def line_region(form):
-    """(page, y) of the first legacy line we failed to match, or None."""
-    L = lineplace.lines(WORK / f"{form}.PDF")
-    O = lineplace.lines(WORK / f"{form}_ours.pdf")
-    ours = {}
-    for pg, key, x, y, _d in O:
-        ours.setdefault((pg, key), []).append((x, y))
-    for pg, key, x, y, _d in L:
-        hits = ours.get((pg, key), [])
-        if not any(abs(ox - x) <= lineplace.START_TOL and abs(oy - y) <= lineplace.BASE_TOL
-                   for ox, oy in hits):
-            return pg, y
+    """(page, y) of the first legacy line the GATE failed to match, or None.
+
+    Delegates to lineplace.unmatched so the region shown is the region scored. A private
+    reimplementation here pointed at lines the gate's grouping fallback had already
+    accepted, which sent a reviewer to look at a difference that was not one.
+    """
+    L, _ = lineplace.lines(WORK / f"{form}.PDF")
+    O, ospans = lineplace.lines(WORK / f"{form}_ours.pdf")
+    for pg, _key, _x, y, _disp in lineplace.unmatched(L, O, ospans):
+        return pg, y
     return None
 
 
