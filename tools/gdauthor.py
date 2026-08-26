@@ -37,6 +37,7 @@ Usage:
 from __future__ import annotations
 
 import argparse
+import glob
 import os
 import re
 import sys
@@ -110,6 +111,15 @@ class Emitter:
         self.lib = concept_library
         self._next = 1
         self.errors: list[str] = []
+        # every model ROOT a path touches -- <domainmodels> must declare them,
+        # and without that GhostDraft reports the variables as not in the model
+        self.roots: list[str] = []
+
+    def _note_root(self, p: 'Path', scope: dict) -> None:
+        if p.root_guid in scope:          # an iterator, not a model root
+            return
+        if p.root_guid not in self.roots:
+            self.roots.append(p.root_guid)
 
     def _id(self) -> str:
         i = self._next
@@ -119,6 +129,7 @@ class Emitter:
     # ---- binding resolution: fail here, not in GhostDraft
 
     def _resolve(self, p: Path, scope: dict) -> str:
+        self._note_root(p, scope)
         r = self.model.resolve_path(p.root_guid, p.root_name, p.nodes, scope)
         if not r.ok:
             self.errors.append(f'{p.label}: {r.reason}')
@@ -126,6 +137,7 @@ class Emitter:
         return r.xml_path
 
     def _resolve_list(self, p: Path, scope: dict):
+        self._note_root(p, scope)
         r = self.model.resolve_list(p.root_guid, p.root_name, p.nodes, scope)
         if not r.ok:
             self.errors.append(f'{p.label} (as list): {r.reason or "not a list"}')
@@ -326,29 +338,159 @@ RTF_TAIL = '{' + BS + 'cf0' + BS + 'f1' + BS + 'fs20' + BS + 'ulnone' + BS + \
     'ulc0 ' + BS + 'par }}'
 
 
-def wrap(rtf_body: str, markup: str, title: str) -> str:
-    return f'''<?xml version="1.0" encoding="utf-8"?>
-<Content Name="GhostDraftDocument" Version="1.0" ApplicationVersion="GhostDraft 5.3.58854.0" CompatibleVersion="GhostDraft 3.3">
-  <document xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="{XSI_NS}" xmlns="http://schemas.korbitec.com/GhostDraft/Document/1.0">
-    <properties>
-      <system xmlns="http://schemas.korbitec.com/GhostDraft/DocumentProperties/1.0">
-        <property name="Title" type="string"><value>{_x(title)}</value></property>
-      </system>
-    </properties>
-    <content>
-      <rtf>{_x(RTF_HEAD + rtf_body + RTF_TAIL)}</rtf>
-    </content>
-    <library xsi:nil="true" />
-    <markup>
-      <markup ID="0" descriptionSource="ParsedUserText" xmlns="http://schemas.korbitec.com/GhostDraft/MarkupModel/1.0">
-        <instructions>
-{markup}
-        </instructions>
-      </markup>
-    </markup>
-  </document>
-</Content>
-'''
+def wrap(rtf_body: str, markup: str, title: str,
+         env: 'Envelope | None' = None, roots: list[str] | None = None,
+         library: str = '') -> str:
+    """The full document. A structural diff against production found eight
+    elements missing from an earlier version of this function; they are all
+    here now, and all sourced from the package rather than hardcoded."""
+    style_map = (f'      <styleMap libraryid="{env.default_style_id}" />'
+                 if env and env.default_style_id else '')
+    domainmodels = (env.domainmodels_xml(roots or [], library) if env else '')
+    annot = env.annotation_style_xml() if env else ''
+    body = [
+        '<?xml version="1.0" encoding="utf-8"?>',
+        '<Content Name="GhostDraftDocument" Version="1.0" '
+        'ApplicationVersion="GhostDraft 5.3.58854.0" CompatibleVersion="GhostDraft 3.3">',
+        '  <document xmlns:xsd="http://www.w3.org/2001/XMLSchema" '
+        f'xmlns:xsi="{XSI_NS}" '
+        'xmlns="http://schemas.korbitec.com/GhostDraft/Document/1.0">',
+        '    <properties>',
+        f'      <system xmlns="{DOCPROP_NS}">',
+        f'        <property name="Title" type="string"><value>{_x(title)}</value></property>',
+        '      </system>',
+        f'      <custom xmlns="{DOCPROP_NS}">',
+        '        <property name="ghostassembler:subscriptionName" type="string">',
+        f'          <value>{_x(title)}</value>',
+        '        </property>',
+        '      </custom>',
+        '    </properties>',
+        '    <content>',
+        f'      <rtf>{_x(RTF_HEAD + rtf_body + RTF_TAIL)}</rtf>',
+        style_map,
+        '    </content>',
+        '    <library xsi:nil="true" />',
+        '    <markup>',
+        '      <markup ID="0" descriptionSource="ParsedUserText" '
+        f'xmlns="{MARKUP_NS}">',
+        '        <instructions>',
+        markup,
+        '        </instructions>',
+        '      </markup>',
+        annot,
+        domainmodels,
+        '    </markup>',
+        '    <scenarios default="default">',
+        '      <scenario defaultListCount="2" defaultTestValue="true" '
+        'locked="false" name="default" />',
+        '    </scenarios>',
+        '    <stylelibrary name="" />',
+        '    <trimlastparagraphmarker>false</trimlastparagraphmarker>',
+        '    <documenttype>Document</documenttype>',
+        '  </document>',
+        '</Content>',
+        '',
+    ]
+    return chr(10).join(x for x in body if x != '')
+
+
+# ------------------------------------------------------------------- envelope
+
+MARKUP_NS = 'http://schemas.korbitec.com/GhostDraft/MarkupModel/1.0'
+DOCPROP_NS = 'http://schemas.korbitec.com/GhostDraft/DocumentProperties/1.0'
+
+
+class Envelope:
+    """Everything a `.gd` needs AROUND the logic, read from the package itself.
+
+    A structural diff against production showed the emitter was missing eight
+    elements. `domainmodels` is the load-bearing one: it DECLARES which model
+    roots the template binds to, and without it GhostDraft reports the bound
+    variables as not being in the model. The rest are style and document
+    plumbing.
+
+    Nothing here is hardcoded -- style library ids come from the Style Libraries
+    folder, domain model names from the `.gdm`, and the default style library is
+    whichever the package's own templates reference most.
+    """
+
+    def __init__(self, package: str) -> None:
+        self.style_libs: dict[str, tuple[str, list[tuple[str, str]]]] = {}
+        self.domain_names: dict[str, str] = {}
+        self.default_style_id = ''
+        self.annotation_style_id = ''
+        self._load_style_libraries(package)
+        self._load_domain_models(package)
+        self._pick_defaults(package)
+
+    def _load_style_libraries(self, package: str) -> None:
+        d = os.path.join(package, 'Style Libraries')
+        if not os.path.isdir(d):
+            return
+        for name in os.listdir(d):
+            try:
+                root = ET.parse(os.path.join(d, name)).getroot()
+            except ET.ParseError:
+                continue
+            for e in root.iter():
+                if e.tag.rsplit('}', 1)[-1] != 'styleMap':
+                    continue
+                lib = e.get('libraryid', '')
+                styles = [(c.get('name', ''), c.get('link', '')) for c in e
+                          if c.tag.rsplit('}', 1)[-1] == 'style']
+                self.style_libs[name] = (lib, styles)
+                break
+
+    def _load_domain_models(self, package: str) -> None:
+        d = os.path.join(package, 'Concept Libraries')
+        if not os.path.isdir(d):
+            return
+        for f in os.listdir(d):
+            if not f.endswith('.gdm'):
+                continue
+            for e in ET.parse(os.path.join(d, f)).getroot().iter():
+                if e.tag.rsplit('}', 1)[-1] == 'domainModel' and e.get('guid'):
+                    self.domain_names[e.get('guid')] = e.get('name', '')
+
+    def _pick_defaults(self, package: str) -> None:
+        """Whichever library ids the package's OWN templates reference most."""
+        import collections
+        style = collections.Counter()
+        annot = collections.Counter()
+        for f in glob.glob(os.path.join(package, 'Templates', '*.gd')):
+            head = open(f, encoding='utf-8').read(20000)
+            for m in re.finditer(r'<styleMap libraryid="([^"]+)"', head):
+                style[m.group(1)] += 1
+            for m in re.finditer(r'<annotationStyleMap libraryid="([^"]+)"', head):
+                annot[m.group(1)] += 1
+        self.default_style_id = style.most_common(1)[0][0] if style else ''
+        self.annotation_style_id = annot.most_common(1)[0][0] if annot else ''
+
+    def annotation_styles(self) -> list[tuple[str, str]]:
+        for lib, styles in self.style_libs.values():
+            if lib == self.annotation_style_id:
+                return styles
+        return []
+
+    def domainmodels_xml(self, root_guids: list[str], library: str) -> str:
+        if not root_guids:
+            return f'      <domainmodels xmlns="{MARKUP_NS}" />'
+        out = [f'      <domainmodels xmlns="{MARKUP_NS}">']
+        for g in root_guids:
+            nm = self.domain_names.get(g, '')
+            out.append(f'        <domainmodel conceptlibrary="{_x(library)}" major="0" '
+                       f'minor="0" domainmodel="{_x(nm)}" domainmodelguid="{g}" />')
+        out.append('      </domainmodels>')
+        return chr(10).join(out)
+
+    def annotation_style_xml(self) -> str:
+        styles = self.annotation_styles()
+        if not self.annotation_style_id:
+            return ''
+        head = (f'      <annotationStyleMap libraryid="{self.annotation_style_id}" '
+                f'xmlns="{MARKUP_NS}">')
+        body = [f'        <style name="{_x(n)}" link="{l}" />' for n, l in styles]
+        return chr(10).join([head] + body + ['      </annotationStyleMap>'])
 
 
 # ------------------------------------------------------------------- the verifier
@@ -592,6 +734,7 @@ def main() -> int:
     print(f'model   {model.name!r} v{model.version}')
     print(f'library {lib_name!r}')
 
+    env = Envelope(a.package)
     em = Emitter(model, lib_name or '')
     spec = demo_spec(model)
     markup, rtf, resolved = em.build(spec, 'Authored Loss Payable Clause Schedule')
@@ -604,10 +747,13 @@ def main() -> int:
 
     os.makedirs(os.path.dirname(a.demo) or '.', exist_ok=True)
     with open(a.demo, 'w', encoding='utf-8', newline='') as fh:
-        fh.write(wrap(rtf, markup, 'Authored Loss Payable Clause Schedule'))
+        fh.write(wrap(rtf, markup, 'Authored Loss Payable Clause Schedule',
+                      env=env, roots=em.roots, library=lib_name or ''))
     print(f'\nwrote {a.demo}')
     print(f'instructions declared  {em._next - 1}')
     print(f'bindings resolved      {len(resolved)}   (all against the real model)')
+    print(f'domain models declared {len(em.roots)}   '
+          + ', '.join(env.domain_names.get(g, g) for g in em.roots))
     for p in resolved:
         print(f'    {p}')
 

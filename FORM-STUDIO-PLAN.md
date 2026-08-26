@@ -3510,3 +3510,75 @@ python tools/xmlsupply.py out.csv "<pkg>/Test Cases" --kind "*"  # paths vs real
 `--templates` points `gdbindings.py` at any directory of `.gd` files, so OUR output can be resolved
 against a REAL model. That is the check that turned "the generator has a concept catalogue" into
 "3.4% of its fill points resolve".
+
+## 45. Why GhostDraft rejected the authored file: `<domainmodels>` (2026-08-26)
+
+Products opened section 44's `authored-lpc.gd` in GhostDraft and got an error that the bound
+variables **are not in the model**. Every one of them resolved against `model.xml`, so the paths
+were not the problem. A structural diff against the production template of the same name found the
+cause immediately, and it is the envelope §44.6 flagged as untested.
+
+### The eight missing elements
+
+Diffing element-and-attribute paths to depth 4, ours against
+`Loss Payable Clause- Vehicle Schedule Overflow`:
+
+```
+content/styleMap  @libraryid          markup/domainmodels
+markup/annotationStyleMap @libraryid  properties/custom
+scenarios  @default                   scenarios/scenario  @name @locked @defaultListCount @defaultTestValue
+stylelibrary @name                    trimlastparagraphmarker      documenttype
+```
+
+**`<domainmodels>` is the load-bearing one.** It DECLARES which model roots a template binds to:
+
+```xml
+<domainmodels xmlns="http://schemas.korbitec.com/GhostDraft/MarkupModel/1.0">
+  <domainmodel conceptlibrary="Model Library" major="0" minor="0"
+               domainmodel="Policy" domainmodelguid="ee97488b-…" />
+  <domainmodel … domainmodel="MOECAAutoLevelCoverages" domainmodelguid="49cf39a0-…" />
+</domainmodels>
+```
+
+Declare no domain models and every path is out of scope — which is exactly the reported error. The
+`domainmodelguid` values are the model ROOT ATTRIBUTE guids from `model.xml`.
+
+Note what was NOT wrong, because it is worth not re-investigating: every content guid we emitted is
+byte-identical to production's (`49cf39a0` for the list root, `0a9e75d5` for VehicleNumber,
+`64cf1084` for `AutosWithLossPayableClause`, `conceptLibrary="Model Library"`), and production binds
+`Policy Number` with the same spaced node name we used. The paths were right; the declaration was
+absent. An earlier hypothesis that `domainmodels` was absent from proprietary templates was a bad
+regex — it is present on every one that binds anything.
+
+### The name is a stale label; the GUID is the identity
+
+Worth knowing before hand-editing one: **the same guid carries different names across production
+templates.** `49cf39a0` is `Vehicles` on 8 templates and `MOECAAutoLevelCoverages` on 3;
+`b58de484` is `MOECAPolicyLevelCoverages` on 18 and `CAPolicyLevelCoverages` on 1. The concept
+library's current name for both is the longer form. So GhostDraft matches on the guid and the name
+is display text left over from a rename — which means emitting the CURRENT `.gdm` name is safe, and
+matching an old template's name is unnecessary.
+
+### The fix
+
+`Envelope` in `tools/gdauthor.py` now reads all of it from the package rather than hardcoding:
+style library ids and their style lists from `Style Libraries/`, domain model names from the
+`.gdm`, and the default style library is whichever the package's own 79 templates reference most
+(`02546597…`, 35 uses, against `2c49b85a…` at 1). Root guids are collected during emission —
+`_note_root` skips iterator guids, since an iterator is not a model root.
+
+`output/authored-lpc-v2.gd` is now **structurally identical to production: zero differences in
+either direction** at depth 4. All four §44.5 checks still pass — grammar verified from the written
+bytes, all 5 mutations caught, the reader reconstructs the tree with 13 bindings resolved, and all
+7 data paths present with values in the package's 32 test cases.
+
+**Still not proven: whether GhostDraft now opens it.** That is one more round trip, and the error
+message — if there is one — again names the next element.
+
+### The lesson
+
+§44.6 listed the envelope as untested and ranked it below the logic. That was the right call about
+IMPORTANCE and the wrong call about RISK: the logic was correct on the first attempt and the
+envelope was what failed. **When something is listed as untested, the cheapest test is a structural
+diff against a working example** — it took one command and named the element outright, where
+reasoning about the error message produced a wrong hypothesis first.
