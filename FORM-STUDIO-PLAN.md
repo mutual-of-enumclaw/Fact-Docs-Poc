@@ -3138,6 +3138,23 @@ The 9 excess rows are a bare `Policy` on 9 templates that the spec does not list
 agrees exactly. The XSD check still passes at **100.00%** over 19,112 paths, now including the 140
 sort keys.
 
+Section 40's instruction totals are superseded, and this is the current count — §40's numbers stand
+as what §40 measured, per the append-only rule, so do not read them as live:
+
+```
+bindings extracted   27678   (was 26145 in §40)
+  fillpoint          14107   unresolved 0
+  condition          10300   unresolved 0
+  subscription         885
+  adornment           1393   NEW -- formatting, no path
+  list                 691
+  orderby              140   NEW -- real demand
+  condition-not        128
+  condition-composite   24
+  annotation            10
+unresolved               2   (one list-level test reached from item scope, on 2 templates)
+```
+
 Note the sample fact this exposed: **the `.gdsp` ships 491 templates and the spec documents 1,110,
 with the 491 a strict subset.** Comparing against all 1,110 would have scored 619 templates we
 have no `.gd` for as total misses -- a measurement of the package export, not the extraction. The
