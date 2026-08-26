@@ -170,6 +170,123 @@ forms)**. The lone `X,` record is CLOSED as undecidable from the record (§38), 
 
 ---
 
+## P3 / BINDING — where it actually stands (investigated 2026-08-24, nothing built)
+
+### The model already exists. Do not invent one.
+
+Three layers are in production. FORM-STUDIO-PLAN section 3 ("never store a CDM path in a form")
+is already satisfied by them:
+
+```
+DB2  --(fact-commercial-api: 148 classes in Data.Provider/Mapping/Db2)-->  CDM
+CDM  --(fact-docgen: 58 ISectionBuilders, e.g. agency.FullName -> <Agency><Name>)-->  Server XML
+Server XML --(GhostDraft templates)-->  Form
+```
+
+**The GhostDraft Server XML element paths ARE the logical binding namespace. The section builders
+ARE the CdmDataSource adapter.** A Form Studio field should carry a Server XML path in
+`data-bind`, nothing else. Two plans were proposed and both were wrong in the same direction --
+binding fields to CDM paths (violates section 3), then deriving a NEW namespace from the DDT
+(would have created a fourth vocabulary parallel to one that works). Read the existing layers
+before designing anything.
+
+Key files: `fact-docgen/src/MoE.Commercial.Documents.Generation.GhostDraft/Components/
+Serialization/` (ISectionBuilder, SectionBuilderAttribute, Sections/), and
+`fact-commercial-api/MoE.Commercial.Data.Provider/Mapping/Db2/` (the 148 `target.X = source.Y`
+mappers -- the authoritative DB2->CDM map, NOT the SQL `AS` aliases).
+
+### What the numbers say
+
+`tools/bindgap.py` joins FAP demand to that model. **Read its docstring before quoting any
+coverage number -- it is a FLOOR, not a measurement**, and it moved 1% -> 5% -> 20% as the join
+was corrected three times. The DEMAND side is exact and so is the BACKLOG RANKING; the coverage
+percentage is a lower bound.
+
+| | |
+|---|---|
+| Forms with data-bound fields | 2,489 |
+| Distinct attributes needed | **678** over 62 entities |
+| On a CDM-hydrated table | 438 (65%) |
+| DDT rules declaring a source | **99.7%** of 61,096 field records |
+| `powtype` = WIP manual entry, NO data source exists | **11.7%** -- a hard ceiling, never bindable |
+
+Backlog is ranked in `output/bindgap-attributes.csv`. `PMSP0200.SYMBOL` and `PMSP0200.POLICY0NUM`
+each block **1,276 forms**; both are on hydrated tables, so the data is there and the model just
+does not expose it yet.
+
+### The .gd path: converts, does NOT populate
+
+Be precise about this -- "converts" and "populates" are different claims and only one is true.
+
+| | |
+|---|---|
+| FAP -> `.gd` template | works, 427/427 quote forms, brace-balanced, 0 failures |
+| Renders in GhostDraft | confirmed by eye on several forms |
+| Fields have `%[N]` fill points | yes, all of them |
+| Bound to a GhostDraft concept | **58%** (855/1467) -- via ~7 hand-written name->concept maps |
+| **Populated with real policy data** | **NEVER DEMONSTRATED** |
+
+The binding is `FapToGhostDraftGenerator.LookupBinding`: ~2 form-prefix maps, ~5 generic entries,
+then a `ProjectConcepts` fallback, else null. It matches on FIELD NAME -- which the DDT analysis
+shows is the unreliable key (13,813 distinct names, 6,033 used on exactly one form). The DDT
+declares the real provenance and this path does not read it.
+
+Converted `.gd` files (regenerable, gitignored, current as of 2026-08-24):
+
+```
+output/quote-forms-gd/     427 forms + CONVERSION-REPORT.md + conversion-report.csv
+output/farm-packet-gd/     24 forms (curated Farm quote packet) + MANIFEST.md
+demo/regression/golden/    10 goldens (versioned, the .gd regression suite)
+dotnet run --project demo/FapPdfTools.Demo.csproj -- convert-quotes   # regenerate
+```
+
+### NEXT STEP -- learn the logic from a matched pair
+
+The most efficient way to learn how GhostDraft binding is really written is not to design it: it
+is to take a form that exists BOTH as a FAP we convert AND as a production GhostDraft template in
+an ISO package, and compare them.
+
+**Matched pairs are available and already validated by Products this session:**
+
+| form | ISO package | our status |
+|---|---|---|
+| `A2134FN` = **CA 21 34** | ISO Commercial Auto Project | renders 99.9%/99.9% on the vector gate |
+| `G2032C` = **CG 20 32** | ISO General Liability Project | renders 100%/99.9%, Products-reviewed |
+| `CU21556Q` = CU 21 55 | Commercial Umbrella | 99.9%/99.9% |
+
+The eight package names are in `PackageNames.cs`; builders exist for three of them. The templates
+themselves live in GhostDraft, not in the repo -- use the commercial MCP `form_list_templates` /
+`form_parse_ghostdraft_template` to pull one.
+
+What to extract from the comparison, in order:
+
+1. **How a field becomes a binding.** Our `.gd` emits `%[N]` fill points; the ISO template binds
+   to concepts. Compare the same field on both to see the real binding syntax and what the
+   template expects the Server XML to look like.
+2. **How the Server XML for that form is assembled** -- find the ISectionBuilder(s) that feed it
+   and read them alongside the DDT rules for the same FAP fields. That is the Rosetta stone:
+   legacy provenance and modern binding for identical data.
+3. **Then, and only then**, write the rule that turns a DDT rule into a Server XML path.
+
+And the honest end-to-end test that has never been run: take one converted form, fetch a real
+policy through the API (`GET /api/policy/{num}?env=tst`), render it populated in GhostDraft. It
+either works -- in which case the remaining 42% of unbound fields is the whole job -- or it fails
+somewhere specific and names the gap.
+
+### Also open, from this session
+
+- **`FormDefinition` is not the shared document model it should be.** `emit-html` and
+  `FapToGhostDraftGenerator` both read `FapParseResult` directly and are siblings, not a chain,
+  so an EDITED form cannot reach GhostDraft -- the .gd regenerates from the original FAP and
+  discards the edit. `FapToPdfGenerator` already accepts either. This gap already bit once: the
+  underline fix had to be made twice (sections 38 and 39). Fix before the P3 editor work starts;
+  `FormDefinition` needs extending to carry images, shading, underline and edge masks first.
+- **`MC1690a`/`MC1690C`** -- the only two vector-rule failures left in the library, one missing
+  444pt horizontal each. `M,O` was investigated as the cause and REFUTED (0.4% of wide `M,O`
+  records have a rule under them, 80 of 18,886); they are tab-leader forms, the known class.
+
+---
+
 ## Hard-won rules — do not relearn these
 
 - **Validate any new gate against the forms Products accepted** (`EB2410A`, `A0238C`, `EB22489Q`,
@@ -217,6 +334,12 @@ forms)**. The lone `X,` record is CLOSED as undecidable from the record (§38), 
   the right way round the same numbers are 87/73/82/84%, and every mismatch pointed the same
   direction, which was the shared-edge signature. An inverted-sign refutation looks exactly like a
   real one — and this one closed a line of enquiry a domain expert had opened correctly.
+- **Read the authority, do not infer from a proxy.** Five artefacts in one day traced to this:
+  `CPL1`/`CPP` false-missings (fixed by DB2 schema), selector-vs-value columns (fixed by DB2
+  schema), CDM properties scraped from builder expressions instead of the CDM types, DB2->CDM
+  read from SQL `AS` aliases instead of the 148 mapper classes, and the `A,X1` mask itself.
+  Every one moved the answer substantially. If a number comes from a regex over source text,
+  assume it is a floor.
 - **Measure both directions.** A recall-only ink gate cannot see ink you INVENT — and it actively
   *rewards* over-drawing, which is why boxes-instead-of-underlines survived until a human looked.
 - **How accurate a heuristic must be depends on WHICH WAY it fails.** An 80% rule ships where being
