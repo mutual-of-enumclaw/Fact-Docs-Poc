@@ -67,14 +67,21 @@ def main() -> int:
     ap.add_argument('bindings_csv')
     ap.add_argument('xml_dir')
     ap.add_argument('--kind', default='Builder',
-                    help='artefact file name without extension (Builder | Service)')
+                    help='artefact file name without extension (Builder | Service), '
+                         'or a glob such as "*" for a package Test Cases folder')
     ap.add_argument('--out', default=None)
     ap.add_argument('--top', type=int, default=30)
     a = ap.parse_args()
 
-    files = sorted(glob.glob(os.path.join(a.xml_dir, '**', a.kind + '.xml'), recursive=True))
+    # `--kind Builder` matches BuilderRenderOutput's fixed file names; a package's
+    # `Test Cases/` folder names each instance after the scenario, so accept a
+    # glob too ('*' takes every .xml in the tree).
+    pat = a.kind if any(c in a.kind for c in '*?[') else a.kind + '.xml'
+    if not pat.endswith('.xml'):
+        pat += '.xml'
+    files = sorted(glob.glob(os.path.join(a.xml_dir, '**', pat), recursive=True))
     if not files:
-        print(f'no {a.kind}.xml under {a.xml_dir}')
+        print(f'no {pat} under {a.xml_dir}')
         return 1
 
     # ---- supply

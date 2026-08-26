@@ -3373,3 +3373,140 @@ Named so they are not mistaken for solved:
   they must be contiguous or ordered; our generator's sequential allocation may or may not matter.
 * **The `<explanation>` blob** on `<markup ID="0">` is a second RTF document (the reviewer-facing
   narrative). Production always has one. Whether it is required is untested.
+
+## 44. The proprietary package, and a `.gd` with logic authored against it (2026-08-26)
+
+Products supplied **MoE Proprietary Commercial Auto 2607.0** — the blocker §43.6 named. It is a
+smaller package than the ISO one and carries something the ISO package did not: **32 Test Cases,
+which are real Server XML instances.** They substitute for the GDXSD this export does not include.
+
+```
+79 Templates   1 Concept Library   model.xml   32 Test Cases   3 Style Libraries
+CompositionServerVersion 5.3.1771   PackageVersion 2607.0
+6 root elements: Policy, Insured, Agent,
+                 MOECAAutoLevelCoverages, MOECAPolicyLevelCoverages, MOEPolicyDecInfo
+93 types, 353 members  (against the ISO package's 2,678 and 12,486)
+```
+
+### 44.1 The toolchain transferred with no changes
+
+`gdbindings.py`, pointed at the new package: **1,761 bindings, 0 unresolved.** 863 fill points, 590
+conditions, 241 adornments, 36 subscriptions, 31 lists, over 273 distinct Server XML paths.
+
+The §43 authoring grammar **replicates exactly on an independent package** — 79 templates, zero
+violations: containers never placed (0 of 621), every other instruction and part placed exactly
+once, part markers in declaration order, endPart last, all spans nested. Two packages, 570
+templates, one grammar.
+
+`is provided` carries **the same guid in both packages** (`50b7af4a-…`, 5,742 uses in ISO and 431
+here), confirming §42's reading that the built-ins are GhostDraft constants rather than model values.
+
+### 44.2 The Test Cases are an authority, and they discriminate
+
+All **221** demanded data paths appear, with values, in the 32 instances — 100.0%. A gate that
+cannot fail would report the same thing, so it was crossed against the wrong model: ISO demand
+against these test cases scores **1 of 2,140** (the single hit is `Policy/PolicyNumber`, which both
+models happen to name identically). The instrument discriminates.
+
+### 44.3 The live proprietary gap in fact-docgen
+
+Proprietary demand against the 65 real `Builder.xml` artefacts:
+
+| | paths | template-weighted |
+|---|---:|---:|
+| supplied | 140 (63.3%) | 599 (71.2%) |
+| empty-only | 64 (29.0%) | 214 (25.4%) |
+| missing | 17 (7.7%) | 28 (3.3%) |
+
+**63.3%, against 30.1% for ISO** — as expected, since MoE built this model for its own forms. All
+five demanded roots are emitted, so there is no builder-less section here; the 17 misses cluster in
+`AutosWithFarmAutoSeasonalLayUp`, `MCS-90` dates and `ItemSixScheduleOfDriversForPersonalUseAutos`,
+and only 10 of the 65 policies are proprietary, so most of that is sample limitation rather than a
+gap. Ranked list in `output/xmlsupply-propca.csv`.
+
+### 44.4 Our existing `.gd` generator is bound to three different models at once
+
+With the real model in hand, `FapToGhostDraftGenerator`'s hand-written catalogue can be CHECKED
+rather than trusted. Its `Policy` root guid `ee97488b-…` and `Policy Number` guid `16ed3972-…` are
+byte-identical to this package's, so it was always aiming here. Resolving all 428 generated `.gd`
+files against the authority:
+
+| | |
+|---|---|
+| files carrying fill points | 284 of 428 |
+| fill points emitted | 1,480 |
+| **resolve in MoE Proprietary CA** | **51 (3.4%), on 13 paths, across 11 forms** |
+| root `Quote` (guid `bffb5190-…`) | 812 — **in neither package we hold** |
+| unbound (`<path xsi:nil="true"/>`) | 617 |
+
+So the catalogue is a three-way mixture: correct proprietary GUIDs for `Policy`, `Insured`, `Agent`
+and — the standout — eight genuinely correct `MOECAPolicyLevelCoverages/MCS-90/*` paths, plus a
+`Quote` model that does not exist in either export, plus 42% simply unbound. A `.gd` whose fill
+points cite GUIDs from two models cannot resolve in either package. This is §40 finding (d) —
+field-NAME matching — showing up as a measurable number.
+
+### 44.5 A `.gd` WITH LOGIC, authored and checked
+
+`tools/gdauthor.py` emits a template from a declarative spec (`Repeat` / `Cond` / `Fill` /
+`Static`), building markup and RTF in one recursive pass so rules 4 and 5 hold by construction. It
+resolves every binding through `gdmodel` first, so a path that would not resolve in the real package
+fails at author time rather than in GhostDraft.
+
+The demo reproduces a Loss Payable Clause vehicle schedule: iterate the autos, print each field only
+when provided, with an else branch on VIN. Output: **26 instructions, 13 bindings, all resolved.**
+
+Four checks, three of them by tools that know nothing about the emitter:
+
+1. **`verify()` re-derives all five grammar rules from the written bytes** — not from the emitter's
+   intent. Passed.
+2. **`--selftest` mutates the file five ways and requires every rule to fire.** All 5 caught: place
+   a container (rule 1), delete a leaf marker and duplicate a marker (rule 2), add an undeclared
+   marker (rule 3), move an endPart before its siblings (rule 4).
+3. **`gdbindings.py` reads it back** and reconstructs the intended tree exactly, resolving all 13
+   bindings — a genuine round trip through a separately written reader.
+4. **`xmlsupply.py` validates the 7 distinct data paths against the package's own 32 test-case
+   instances**: 7/7 present with values.
+
+And the structure it produced is **the same shape as the production
+`Loss Payable Clause- Vehicle Schedule Overflow` template** — list over `AutosWithLossPayableClause`,
+`is provided` conditionals on VehicleNumber / Description / VIN / ComprehensiveDeductible /
+CollisionDeductible, then `LossPayee/FullName`. That was not copied; it fell out of writing the
+schedule the model's shape implies.
+
+### 44.6 What is STILL not proven — read this before claiming the capability
+
+**GhostDraft has not opened the file.** Everything above is checked by tools in this repo plus the
+package's own data. That is a materially stronger claim than §43 could make, and it is not the same
+claim as "GhostDraft renders it".
+
+Specifically untested, and all of it in the envelope rather than the logic:
+
+* `styleMap` / `stylelibrary` — production carries a `libraryid` and per-style `link` GUIDs into a
+  style library. The emitter writes none, so it has no named styles: every run is inline
+  `\f1\fs20`. Whether GhostDraft requires the map is unknown.
+* `annotationStyleMap`, `domainmodels`, `scenarios`, `trimlastparagraphmarker`, `documenttype` —
+  present on all 570 production templates, absent from ours.
+* The `<explanation>` blob on `<markup ID="0">` — a second RTF document carrying the
+  reviewer-facing narrative. Always present in production.
+* **ID allocation.** Ours are sequential from 1 and unique. Production ids are unique but this
+  analysis never established whether contiguity or ordering matters.
+* Layout fidelity is not addressed at all here. The demo's RTF is deliberately plain text; the
+  geometry work of §10–39 is a separate axis and none of it is wired into `gdauthor.py`.
+
+The next step is small and decisive: **open `output/authored-lpc.gd` in GhostDraft Designer and
+render it against one of the 32 shipped test cases.** It either opens — in which case the envelope
+gaps above are cosmetic and generation at scale is an engineering exercise — or it names exactly
+which envelope element is required, which is a day's work to add.
+
+### 44.7 Tooling
+
+```bash
+python tools/gdauthor.py <pkg> --demo output/authored-lpc.gd     # author + verify
+python tools/gdauthor.py <pkg> --selftest output/authored-lpc.gd # prove verify() fails
+python tools/gdbindings.py <pkg> --templates output/authored --out out.csv   # read ours back
+python tools/xmlsupply.py out.csv "<pkg>/Test Cases" --kind "*"  # paths vs real Server XML
+```
+
+`--templates` points `gdbindings.py` at any directory of `.gd` files, so OUR output can be resolved
+against a REAL model. That is the check that turned "the generator has a concept catalogue" into
+"3.4% of its fill points resolve".

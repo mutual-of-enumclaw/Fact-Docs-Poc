@@ -295,12 +295,15 @@ def main() -> int:
     ap.add_argument('package', help='extracted .gdsp directory (contains model.xml)')
     ap.add_argument('--out', default='output/gdbindings.csv')
     ap.add_argument('--form', default=None, help='one template name; prints it instead of CSV')
+    ap.add_argument('--templates', default=None,
+                    help='read .gd files from HERE instead of <package>/Templates -- '
+                         'use it to resolve OUR generated .gd against a real model')
     args = ap.parse_args()
 
     libs = sorted(glob.glob(os.path.join(args.package, 'Concept Libraries', '*.gdm')))
     model = Model.load(os.path.join(args.package, 'model.xml'), concept_libs=libs)
     reader = TemplateReader(model)
-    tdir = os.path.join(args.package, 'Templates')
+    tdir = args.templates or os.path.join(args.package, 'Templates')
 
     if args.form:
         p = os.path.join(tdir, args.form + '.gd')
