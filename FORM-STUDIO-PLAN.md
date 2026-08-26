@@ -2918,3 +2918,133 @@ the check -- `GDXSD.xsd` copied in beside them.
 
 **Do not trust a single-form validation of a path resolver.** The `elementId` bug passed the
 matched pair and failed 698 paths in the library.
+
+## 41. Demand meets supply: what fact-docgen actually emits (2026-08-26)
+
+Section 40 answered *how* a field becomes a binding. This is the second question of the
+matched-pair route: *how the Server XML for that form is assembled*, and how much of the
+demand the existing builders already meet.
+
+### 41.1 Do not scrape the builders -- read what they produced
+
+The section builders are 35 files of `new XElement("VehicleDescription", ...)`, which is exactly
+the proxy this project has been burned by five times in one day (section 39's list). The
+authority is the XML that was really generated: the fact-docgen integration tests write
+`Builder.xml` and `Service.xml` per policy under `BuilderRenderOutput/BulkPdfComparison/`, and
+there are **65 of each** from real policies.
+
+`tools/xmlsupply.py` joins them to the demand CSV. It reports three states, because "present" is
+not one thing:
+
+| state | meaning |
+|---|---|
+| `supplied` | the element appears somewhere with a non-empty value |
+| `empty-only` | the element appears, always empty |
+| `missing` | never appears in the sample |
+
+**Supply is a FLOOR, and for a sharper reason than bindgap's.** A policy's XML contains only the
+sections its own coverages trigger; 65 policies cannot exercise 2,139 paths. So `missing` is
+partly a statement about the sample. What is sound: the `supplied` set is exact (if it appears
+with a value, the builder can produce it), and the *ranking* of unmet paths, because demand comes
+from the package and does not depend on the sample.
+
+The artefacts also confirmed section 40 independently, which was not the point of looking:
+`<TransactionType>isRenewal</TransactionType>` is in every Builder.xml. The mutex-group-as-enum
+decode was made from the XSD and is now witnessed in real output.
+
+### 41.2 The measurement
+
+```
+DEMAND: 2139 distinct fill-point paths over 474 templates
+
+state            paths            template-weighted
+supplied           238   11.1%      2538   30.3%
+empty-only         142    6.6%       594    7.1%
+missing           1759   82.2%      5254   62.7%
+```
+
+The weighted column matters more than the path column: the paths that many templates need are
+much likelier to be supplied than an average path, which is what you would hope -- 30% of demand
+by template-usage against 11% of distinct paths.
+
+### 41.3 Five root sections have no builder at all -- and that part is not about the sample
+
+Separating the sample-independent claim from the sample-dependent one is the whole value of this
+join. A root element absent from **all 65** artefacts cannot be explained by policy mix:
+
+| demanded paths | root section | builder registered? |
+|---:|---|---|
+| 284 | `CommonState-SpecificPolicyLevelCoverage` | no |
+| 245 | `CALocationLevelCoverages` | no |
+| 54 | `CommonPolicyLevelCoverages` | no |
+| 38 | `SingleInterestAutoPhysicalDamageInsurance` | no |
+| 2 | `RetrospectivePremiumPlan` | no |
+| **623** | **29.1% of all demanded paths** | |
+
+Two independent sources agree exactly on this list. The artefacts say these five never appear at
+top level; the `[SectionBuilder]` attribute registry -- a declarative registration, not scraped
+source -- registers 13 root sections and these five are not among them. The other 13 demanded
+roots map one-to-one onto the 13 registered ones (`CAStateSpecific` ->
+`CAState-specificPolicyLevelCoverages`, `PolicySection` -> `Policy`).
+
+`CALocationLevelCoverages` is the one to note: 38 templates each need all five of
+`Location/Address/{AddressLine1,AddressLine2,City,State,ZIP}`, and location-level coverage is a
+whole axis of the model with no builder.
+
+### 41.4 One precise defect inside a section that DOES work
+
+`CAAutoLevelCoverages` supplies 124 paths, so it is not a stub. Yet the single most-demanded
+unmet path in the entire library sits inside it:
+
+```
+43 templates bind  CAAutoLevelCoverages/Items/Auto/VehicleNumber
+```
+
+`CAAutoLevelCoveragesSection.cs:340` emits `VehicleNumberWording` and never `VehicleNumber`.
+Counted exactly over the 65 artefacts: `<VehicleNumberWording>` appears **201** times,
+`<VehicleNumber>` **0**.
+
+This is section 40's finding (a) turning into a bug class. The model pairs every value with its
+rendering -- 3,191 `*Wording` twins against 6 exceptions -- so a builder that emits only the
+`Wording` half satisfies half the demand and leaves the other half blank. Searching for that
+shape across all demand finds a short, complete list:
+
+| templates | value element supplied only as `...Wording` |
+|---:|---|
+| 43 | `CAAutoLevelCoverages/Items/Auto/VehicleNumber` |
+| 4 | `CAState-specificPolicyLevelCoverages/BusinessInterruptionCoverage-Washington/ScheduledPropertywithSameLimit/Limit` |
+| 2 | `CAPolicyLevelCoverages/BusinessInterruptionCoverage/ScheduledPropertywithSameLimit/Limit` |
+| 2 | `CAAutoLevelCoverages/Items/Auto/Snowmobiles2/OtherAutoCoverages/Items/Coverage/CoveredVehicleNumbers` |
+| 2 | `CAAutoLevelCoverages/Items/Auto/Snowmobiles2/AdditionalPremiums/Exclusion4Premium` |
+| 2 | `CAAutoLevelCoverages/Items/Auto/Snowmobiles2/AdditionalPremiums/Exclusion3Premium` |
+| 1 | `CAState-specificPolicyLevelCoverages/PersonalInjuryProtection-Oregon/MedicalExpenseDeductible` |
+
+Seven, and only seven -- so the convention is otherwise respected. Be careful what this claims:
+43 production templates *bind an element the builder never emits*. It does not follow that 43
+forms render wrong today, because which templates are selected for which policy is a separate
+question this join does not answer. It is a lead with a file and a line number, not a verdict.
+
+### 41.5 What this is good for
+
+A new measure of the same kind as the fidelity gates, but on the binding axis: it ranks work by
+how many production templates a fix unblocks, from a demand side that is exact. `PolicyNumber`
+and `PrimaryNamedInsured` lead demand and are already supplied; `CALocationLevelCoverages` leads
+the gap and has no builder.
+
+What it cannot see -- state it before someone quotes the number:
+
+* **It cannot fail on a wrong value.** It checks that an element is emitted with *something*, not
+  that the something is right. A builder emitting the wrong policy number scores as supplied.
+* **`missing` conflates two things** everywhere except the five root sections: a real gap and a
+  path this policy mix never reaches. Only the NEVER column is sample-independent.
+* **It says nothing about templates it was not given.** This is one package of eight.
+* **`empty-only` is ambiguous by construction** -- correctly empty for these policies, or wired
+  to nothing at all. 142 paths sit there and the join cannot tell which.
+
+The fix for the first three is the same and is already the named next step: render one converted
+form against one real policy end to end.
+
+```bash
+python tools/xmlsupply.py output/gdbindings-ca2607.csv <BuilderRenderOutput-dir> \
+       --kind Builder --out output/xmlsupply-builder.csv
+```
