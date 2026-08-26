@@ -11,7 +11,7 @@ and "CDM properties scraped from builder expressions" was one of them.
 
 READ THIS BEFORE QUOTING A COVERAGE NUMBER. Supply is a FLOOR, for one specific
 reason: a policy's XML contains only the sections its own coverages trigger. 65
-policies do not exercise 2,139 paths. So a path reported MISSING is missing
+policies do not exercise 2,140 paths. So a path reported MISSING is missing
 *from this sample*, which is evidence about the sample as much as about the
 builder. What IS sound:
 
@@ -98,7 +98,10 @@ def main() -> int:
 
     # ---- demand
     rows = list(csv.DictReader(open(a.bindings_csv, encoding='utf-8')))
-    fp = [r for r in rows if r['kind'] == 'fillpoint' and r['xml_path']]
+    # A list SORT KEY is demand too: the list cannot be ordered without it, and
+    # 81 templates sort autos by Auto/VehicleNumber. Adornment rows are excluded
+    # -- they are formatting, and carry no path.
+    fp = [r for r in rows if r['kind'] in ('fillpoint', 'orderby') and r['xml_path']]
     demand: dict[str, set[str]] = collections.defaultdict(set)
     for r in fp:
         demand[r['xml_path']].add(r['form'])
@@ -122,15 +125,15 @@ def main() -> int:
     print(f'artefacts            {len(files)} x {a.kind}.xml   roots {dict(roots)}')
     print(f'distinct paths seen  {len(present)}   with a value {len(supplied)}')
     print()
-    print(f'DEMAND: {total} distinct fill-point paths over {len({r["form"] for r in fp})} templates')
+    print(f'DEMAND: {total} distinct data paths (fill points + sort keys) over {len({r["form"] for r in fp})} templates')
     print(f'{"state":<14}{"paths":>8}{"":>4}{"template-weighted":>20}')
     for s in ('supplied', 'empty-only', 'missing'):
         print(f'{s:<14}{buckets[s]:>8}  {100.0*buckets[s]/total:>5.1f}%'
               f'{weighted[s]:>12}  {100.0*weighted[s]/tw:>5.1f}%')
     print()
-    print('  ^ MISSING is missing FROM THIS SAMPLE. 65 policies cannot exercise')
-    print('    2,139 paths, so this is a floor on supply. The ranking below does')
-    print('    not depend on the sample -- demand comes from the package.')
+    print(f'  ^ MISSING is missing FROM THIS SAMPLE. {len(files)} policies cannot')
+    print(f'    exercise {total} paths, so this is a floor on supply. The ranking')
+    print('    below does not depend on the sample -- demand comes from the package.')
 
     gaps = sorted(((len(f), p) for p, f in demand.items() if state(p) == 'missing'),
                   reverse=True)

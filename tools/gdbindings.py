@@ -17,6 +17,17 @@ keyed by the same IDs. Five types exist in the Commercial Auto package:
     listInstructionType         691   iterate               -> has <pathToList>
     annotationType               10   reviewer note
 
+Path-bearing elements, audited exhaustively by PARENT rather than assumed from
+the instruction types (the mistake section 39 records, repeated here once):
+
+    instruction:fillPointType          path            14107
+    instruction:fillPointType          adornmentPath    1393  (+12714 empty)
+                                       -- FORMATTING, not data
+    part:conditionalPartType           path            10428
+    instruction:listInstructionType    pathToList         691
+    orderBy                            path               140
+    part:compositeConditionalPartType  path                24
+
 Every `<path>` is a GUID tuple against a concept library, never a string path.
 `gdmodel.Model` turns it into the Server XML path -- that projection is the
 package's own, so this is a reading of the authority, not an inference.
@@ -93,6 +104,7 @@ class Binding:
     depth: int
     resolved: bool
     reason: str
+    spec_path: str = ''
 
 
 @dataclass
@@ -165,6 +177,20 @@ class TemplateReader:
                 r, cp = self._resolve(_child(instr, 'path'), scope)
                 res.bindings.append(self._row(res.form, iid, 'fillpoint', desc, cp, r,
                                               filters, depth))
+                # An adornment is the FORMATTING applied to the value, not a
+                # second binding: 1,393 of the 14,107 adornmentPaths name one
+                # (`with comma grouping`, `as MM/dd/yyyy`, `without cents`) and
+                # the other 12,714 are empty. It is the modern counterpart of a
+                # legacy DDT picture clause, so it is recorded with no Server
+                # XML path. Resolving it as a path is what produced 1,393 bogus
+                # "unresolved root" rows before the adornment index existed.
+                ap = _child(instr, 'adornmentPath')
+                if ap is not None and ap.get('conceptLibrary'):
+                    an, ag, _nodes, _lib = _path_tuple(ap)
+                    named = self.model.concepts.adornments.get(ag, an)
+                    res.bindings.append(Binding(
+                        res.form, iid, 'adornment', desc, named, '', '',
+                        'formatting', '|'.join(filters), depth, True, ''))
 
             elif itype == 'listInstructionType':
                 pe = _child(instr, 'pathToList')
@@ -176,8 +202,19 @@ class TemplateReader:
                 inner_scope = dict(scope)
                 itg = _text(instr, 'iteratorGuid')
                 if itg and r.ok:
-                    inner_scope[itg] = (r.xml_path, r.type_id or '')
+                    inner_scope[itg] = (r.xml_path, r.type_id or '', r.spec_path)
                 inner_filters = filters + [f'{r.xml_path}[{f}]' for f in r.filters]
+                # A list may declare a SORT, and the sort key is a data path
+                # (140 of them). The list cannot be ordered without it, so it is
+                # demand like any other.
+                obl = _child(instr, 'orderByList')
+                for ob in (list(obl) if obl is not None else []):
+                    if _local(ob.tag) != 'orderBy':
+                        continue
+                    ro, cpo = self._resolve(_child(ob, 'path'), inner_scope)
+                    res.bindings.append(self._row(res.form, iid, 'orderby',
+                                                  _text(ob, 'description'), cpo, ro,
+                                                  inner_filters, depth + 1))
                 self._walk_parts(instr, res, inner_scope, inner_filters, depth + 1)
 
             elif itype == 'conditionalInstructionType':
@@ -242,13 +279,14 @@ class TemplateReader:
             # owner's path is NOT what this instruction binds to.
             return Binding(form, iid, kind, desc, concept_path, '', '',
                            'builtin-test', '|'.join(filters), depth, True,
-                           'list-position builtin, no data required')
+                           'list-position builtin, no data required',
+                           spec_path=r.spec_path)
         return Binding(
             form=form, instr_id=iid, kind=kind, description=desc,
             concept_path=concept_path, xml_path=r.xml_path,
             xml_type=r.type_id or '', leaf_kind=r.leaf_kind,
             filters='|'.join(filters + [f'[{f}]' for f in r.filters]),
-            depth=depth, resolved=r.ok, reason=r.reason,
+            depth=depth, resolved=r.ok, reason=r.reason, spec_path=r.spec_path,
         )
 
 
@@ -300,11 +338,11 @@ def main() -> int:
         w = csv.writer(fh)
         w.writerow(['form', 'instr_id', 'kind', 'description', 'concept_path',
                     'xml_path', 'xml_type', 'leaf_kind', 'filters', 'depth',
-                    'resolved', 'reason'])
+                    'resolved', 'reason', 'spec_path'])
         for b in rows:
             w.writerow([b.form, b.instr_id, b.kind, b.description, b.concept_path,
                         b.xml_path, b.xml_type, b.leaf_kind, b.filters, b.depth,
-                        int(b.resolved), b.reason])
+                        int(b.resolved), b.reason, b.spec_path])
 
     kinds = Counter(b.kind for b in rows)
     unres = [b for b in rows if not b.resolved]

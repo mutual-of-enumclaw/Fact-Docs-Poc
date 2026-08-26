@@ -93,6 +93,11 @@ class Resolved:
     filters: list[str] = field(default_factory=list)   # selector predicates applied
     steps: list[Step] = field(default_factory=list)
     reason: str = ''         # why not ok
+    # The same path in the notation GhostDraft's own Integration Specification
+    # uses: dots, `Items[]` for a list hop, and predicates as trailing segments.
+    # Kept so the extraction can be diffed against that spec, which is a third
+    # authority independent of both model.xml and the XSD.
+    spec_path: str = ''
 
 
 # A path node may name something the model does not declare. Three shapes exist
@@ -135,6 +140,13 @@ class ConceptLibraryIndex:
     def __init__(self) -> None:
         self.test_selector: dict[str, tuple[str, str]] = {}   # test guid -> (name, selector guid)
         self.test_group: dict[str, tuple[str, str]] = {}      # test guid -> (name, group guid)
+        # Adornments are FORMATTING, not data: `with comma grouping`,
+        # `as MM/dd/yyyy`, `without cents`. A fill point's `adornmentPath` names
+        # one, which makes it the modern counterpart of a legacy DDT picture
+        # clause (`movenum;9.0,9.0,C`) -- and NOT a binding. 91 are declared per
+        # concept library.
+        self.adornments: dict[str, str] = {}                  # guid -> name
+        self.test_names: dict[str, str] = {}                  # guid -> name, all tests
 
     @classmethod
     def load(cls, paths: list[str]) -> 'ConceptLibraryIndex':
@@ -142,15 +154,18 @@ class ConceptLibraryIndex:
         for path in paths:
             root = ET.parse(path).getroot()
             for e in root.iter():
-                if _local(e.tag) != 'test':
-                    continue
+                tag = _local(e.tag)
                 g = e.get('guid')
                 if not g:
                     continue
-                if e.get('selector'):
-                    self.test_selector[g] = (e.get('name', ''), e.get('selector', ''))
-                elif e.get('group'):
-                    self.test_group[g] = (e.get('name', ''), e.get('group', ''))
+                if tag == 'adornment':
+                    self.adornments[g] = e.get('name', '')
+                elif tag == 'test':
+                    self.test_names[g] = e.get('name', '')
+                    if e.get('selector'):
+                        self.test_selector[g] = (e.get('name', ''), e.get('selector', ''))
+                    elif e.get('group'):
+                        self.test_group[g] = (e.get('name', ''), e.get('group', ''))
         return self
 
 
@@ -272,7 +287,8 @@ class Model:
         """
         scope = scope or {}
         if root_guid in scope:
-            p, t = scope[root_guid]
+            entry = scope[root_guid]
+            p, t = entry[0], entry[1]
             return p, t, 'iterator'
         assert self.root is not None
         m = self.root.members_by_guid.get(root_guid) or self.root.members_by_name.get(root_name)
@@ -283,6 +299,19 @@ class Model:
             if t.name == root_name:
                 return '', t.id, 'type-by-name'
         return '', None, 'unresolved-root'
+
+    def spec_base(self, root_guid: str, xml_base: str,
+                  scope: dict[str, tuple] | None = None) -> str:
+        """The spec-notation prefix for a path root.
+
+        An iterator root inherits the enclosing list instruction's spec path, so
+        a nested fill point reads `CAAutoLevelCoverages.Items[].VehicleDescription`
+        rather than restarting at the item.
+        """
+        entry = (scope or {}).get(root_guid)
+        if entry is not None and len(entry) > 2 and entry[2]:
+            return entry[2]
+        return xml_base.replace('/', '.')
 
     def resolve_path(self, root_guid: str, root_name: str,
                      path_nodes: list[tuple[str, str]],
@@ -295,6 +324,8 @@ class Model:
         steps: list[Step] = []
         filters: list[str] = []
         path = base
+        sb = self.spec_base(root_guid, base, scope)
+        spec = [sb] if sb else []
         leaf_kind = 'list' if (self.type_of(type_id) and self.type_of(type_id).is_list) else 'class'
 
         for name, guid in path_nodes:
@@ -308,12 +339,14 @@ class Model:
                 m, via_item = self._lookup(type_id, sel_guid, '')
                 if m is None:
                     steps.append(Step('derived-test', name, None, 'xs:boolean'))
+                    spec.append(name)
                     leaf_kind = 'derived-test'
                     continue
 
             if m is None:
                 if is_builtin_test(name):
                     steps.append(Step('builtin-test', name, None, None))
+                    spec.append(name)
                     leaf_kind = 'builtin-test'
                     continue
                 g = self.member_by_guid.get(guid)
@@ -330,11 +363,13 @@ class Model:
                 lt = self.type_of(type_id)
                 assert lt is not None
                 path = self.list_items_path(path, lt)
+                spec.append('Items[]')
                 type_id = lt.element_type
 
             if m.kind == 'selector':
                 filters.append(_xml_name(m.id))
                 steps.append(Step('selector', m.name, _xml_name(m.id), 'xs:boolean'))
+                spec.append(_xml_name(m.id))
                 leaf_kind = 'selector'
                 continue   # a selector filters; it does not advance the path
 
@@ -351,6 +386,7 @@ class Model:
                     gpath = f'{path}/{_xml_name(gm.id)}' if path else _xml_name(gm.id)
                     steps.append(Step('mutex-value', m.name, _xml_name(m.id), 'enum'))
                     filters.append(f'{_xml_name(gm.id)}=="{_xml_name(m.id)}"')
+                    spec.append(_xml_name(gm.id))
                     path = gpath
                     leaf_kind = 'mutex-value'
                     continue
@@ -358,18 +394,21 @@ class Model:
             if m.kind in ('test', 'mutexTestGroup'):
                 steps.append(Step(m.kind, m.name, _xml_name(m.id), 'xs:boolean'))
                 path = f'{path}/{_xml_name(m.id)}' if path else _xml_name(m.id)
+                spec.append(_xml_name(m.id))
                 leaf_kind = m.kind
                 continue
 
             # attribute or string: a real step down the XML tree
             path = f'{path}/{_xml_name(m.id)}' if path else _xml_name(m.id)
             steps.append(Step(m.kind, m.name, _xml_name(m.id), m.type_id))
+            spec.append(_xml_name(m.id))
             type_id = m.type_id
             t = self.type_of(type_id)
             leaf_kind = ('list' if (t and t.is_list) else
                          'class' if t else 'attribute')
 
-        return Resolved(True, path, type_id, leaf_kind, filters, steps)
+        return Resolved(True, path, type_id, leaf_kind, filters, steps,
+                        spec_path='.'.join(spec))
 
     def resolve_list(self, root_guid: str, root_name: str,
                      path_nodes: list[tuple[str, str]],
@@ -384,7 +423,8 @@ class Model:
             r.reason = f'pathToList leaf {r.type_id} is not a m:list'
             return r
         return Resolved(True, self.list_items_path(r.xml_path, t), t.element_type,
-                        'list-item', r.filters, r.steps)
+                        'list-item', r.filters, r.steps,
+                        spec_path='.'.join(filter(None, [r.spec_path, 'Items[]'])))
 
 
 def _xml_name(s: str | None) -> str:

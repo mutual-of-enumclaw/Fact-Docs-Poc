@@ -3048,3 +3048,139 @@ form against one real policy end to end.
 python tools/xmlsupply.py output/gdbindings-ca2607.csv <BuilderRenderOutput-dir> \
        --kind Builder --out output/xmlsupply-builder.csv
 ```
+
+## 42. A third authority, and two format fields the extractor never read (2026-08-26)
+
+The `.gdsp` was not the only thing Products supplied. The same folder holds an **Integration
+Specification** zip: one `.txt` per template listing its "Used Domain Paths" -- GhostDraft
+stating, in its own words, which domain nodes each template touches. 1,110 of them.
+
+That is a third authority, and a categorically better one than the XSD. `gdxsdcheck.py` can only
+prove a path we produced EXISTS. It is structurally blind to a path we never produced. The spec
+lists the expected SET per template, so it can fail on an omission -- which is the failure mode
+the XSD check cannot see, and the one that mattered.
+
+### 42.1 It failed, twice, and both were real
+
+First run, restricted to the 491 templates the package actually ships: **89.62% recall**. The
+misses were concentrated, not scattered, which is what a systematic omission looks like:
+
+* **`CAAutoLevelCoverages.VehicleNumber`, on 63 templates we produced nothing for.** Tracing one
+  (`CA 04 41 11 20 Replacement Cost Coverage`) found the path in an `<orderByList><orderBy>` on a
+  list instruction. **A list can declare a SORT, and the sort key is a data path.** 140 of them,
+  never parsed.
+* **`...containstheComprehensiveCoverage` and friends.** Not a defect: the spec keeps
+  `contains the X` as a path segment where `gdmodel` follows the concept-library indirection to
+  the selector it stands for. Both are right; the comparison had to treat both as predicates.
+
+So the parser audit was done again, this time exhaustively and by PARENT rather than by
+instruction type:
+
+```
+instruction:fillPointType          path            14107
+instruction:fillPointType          adornmentPath    1393   (+ 12714 empty)
+part:conditionalPartType           path            10428
+instruction:listInstructionType    pathToList         691
+orderBy                            path               140
+part:compositeConditionalPartType  path                24
+```
+
+**This is section 39 repeating, in a session that had section 39 in front of it.** Section 39's
+lesson was written as "audit the parser against the FORMAT, not against the output -- section 24
+audited record TYPES; nobody had audited the FIELDS of the types we already parse." Section 40
+enumerated the five instruction types and treated that as the audit. It was not: `orderByList`
+and `adornmentPath` are fields of a type already parsed. The rule was correct and got applied one
+level too shallow.
+
+Worth noting *why* it was caught: not by re-reading the format, but because a third authority
+disagreed. Two authorities had both said 100%.
+
+### 42.2 The second field is formatting, and the resolver was right to refuse it
+
+`adornmentPath` looked like 1,393 more bindings. Resolving it as a path produced 1,393
+`unresolved root` rows -- with roots named `with comma grouping`, `as MM/dd/yyyy`,
+`without cents`, `as yyyy`. An **adornment is the FORMATTING applied to the value**, declared in
+the concept library (91 per library), not a second data path.
+
+| uses | adornment |
+|---:|---|
+| 1320 | `with comma grouping` |
+| 65 | `as MM/dd/yyyy` |
+| 2 | `without cents` |
+| 2 | `as MM/dd/yy` |
+| 2 | `as yyyy` |
+| 1 | `as Dollars with comma grouping` |
+| 1 | `with 2 decimal places and comma grouping` |
+
+That is the direct modern counterpart of a legacy DDT picture clause -- `movenum;9.0,9.0,C` on
+`BIINJA` in section 40's matched pair is `with comma grouping` here. It completes the
+value/rendering story: the model offers *three* mechanisms for the same job, a raw value, a
+pre-formatted `*Wording` twin, and an adornment on the fill point.
+
+The resolver refusing to invent a path is the reason this was legible in ten seconds rather than
+becoming 1,393 plausible-looking wrong bindings. A resolver that guesses is worse than one that
+reports.
+
+### 42.3 After both fixes
+
+```
+templates compared                          491   (of the spec's 1110)
+spec paths (canonical)                     8995
+our paths  (canonical)                     9004
+in both                                    8995
+  spec recall                            100.00%
+  our precision                           99.90%
+templates where we found EVERY spec path  491/491
+templates matching the spec set EXACTLY   482/491
+```
+
+The 9 excess rows are a bare `Policy` on 9 templates that the spec does not list. Everything else
+agrees exactly. The XSD check still passes at **100.00%** over 19,112 paths, now including the 140
+sort keys.
+
+Note the sample fact this exposed: **the `.gdsp` ships 491 templates and the spec documents 1,110,
+with the 491 a strict subset.** Comparing against all 1,110 would have scored 619 templates we
+have no `.gd` for as total misses -- a measurement of the package export, not the extraction. The
+first run did exactly that and reported 47%.
+
+### 42.4 The corrected demand, and what it does to section 41's lead
+
+Sort keys are demand: a list cannot be ordered without its key. Folding them in:
+
+| | |
+|---|---|
+| distinct data paths (fill points + sort keys) | **2,140** |
+| demand rows | 14,247 |
+
+And the element this moves is the one section 41 had already singled out:
+
+```
+        counted straight from the templates, three independent ways:
+  43 templates use CAAutoLevelCoverages/Items/Auto/VehicleNumber as a FILL POINT
+  81 templates use it as a list SORT KEY
+  41 templates use it in a CONDITION
+ 106 templates in union   <- and the Integration Specification independently says 106
+```
+
+`Auto/VehicleNumber` is the **fifth most-demanded element in the library**, ahead of
+`VehicleDescription`, and `CAAutoLevelCoveragesSection.cs:340` emits only `VehicleNumberWording`
+(201 occurrences against 0 across the 65 artefacts). Section 41 filed this at 43 templates. The
+number is 106, and the consequence is worse than a blank field: on 81 templates it is what the
+auto list is SORTED BY.
+
+The ranked gap list is otherwise unchanged -- `CALocationLevelCoverages` and the other four
+builder-less root sections still account for 623 paths, 29.1% of demand.
+
+### 42.5 Tooling
+
+```bash
+python tools/gdspeccheck.py output/gdbindings-ca2607.csv <pkg> "<IntegrationSpec.zip>"
+python tools/gdspeccheck.py ... --form "CA 21 34 10 13 Schedule"
+```
+
+The spec zip is read in place -- do not extract it. Several template names exceed the Windows
+260-character path limit and extraction fails partway through.
+
+**Three authorities, and each caught something the others could not.** `model.xml` gave the
+projection; the XSD caught `elementId`-vs-`elementName` and the mutex-group enum; the
+Integration Specification caught two unread fields. Any two of them agreeing was not enough.
