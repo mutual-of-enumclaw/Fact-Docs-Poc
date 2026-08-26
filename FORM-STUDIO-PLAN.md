@@ -2735,3 +2735,186 @@ Two concrete practices follow:
   150dpi. The over-drawing had been padding its recall, exactly as section 38 part 1 said it
   would. Worth remembering that removing an over-draw can look like a regression on a
   recall-biased instrument.
+
+## 40. The binding format, read from 491 production templates (2026-08-26)
+
+Products supplied the **ISO Commercial Auto Project (2607.0)** package: 491 production `.gd`
+templates, the two concept libraries, `model.xml`, and the generated `GDXSD.xsd`. That is the
+matched-pair input the section-39 handoff asked for, and it settles P3's first question --
+*how does a field become a binding* -- from evidence rather than from a design proposal.
+
+Two plans had previously been written for this and both were wrong in the same direction: they
+invented a namespace. There was no need. The answer was in the package.
+
+### 40.1 What a production template actually is
+
+Three parts, stitched by integer IDs:
+
+| part | content |
+|---|---|
+| `<content><rtf>` | the LAYOUT, carrying `%[ID]` markers |
+| `<markup>...<instructions>` | the LOGIC, a tree of typed instructions keyed by those IDs |
+| `model.xml` | the projection of concept GUIDs onto **Server XML element names** |
+
+The whole instruction vocabulary, across all 491 templates, is five types and five part types:
+
+```
+fillPointType              14107   emit a value            <path>
+conditionalInstructionType 10362   if / else               parts carry <path>
+subscriptionType             885   include another .gd     document NAME
+listInstructionType         691    iterate                 <pathToList> + <iterator>
+annotationType               10    reviewer note
+```
+
+**A path is never a string.** It is `(rootNode + rootguid, pathNodes[name + guid])` against a
+concept library. `model.xml` is what turns it into Server XML: every attribute carries the `id`
+that becomes the element name, and every list carries the `elementId` that becomes the repeated
+child under `Items`. So the resolution rule is
+
+```
+CA Auto Level Coverages > Autos with UIM Coverage - Washington    (list, guid path)
+  Auto > Vehicle Description                                      (fill point, guid path)
+      -> CAAutoLevelCoverages/Items/Auto/VehicleDescription
+```
+
+`tools/gdmodel.py` implements it; `tools/gdbindings.py` walks the templates.
+
+### 40.2 It resolves, and an independent authority says so
+
+**26,141 of 26,145 instructions resolve. 14,107 of 14,107 fill points resolve.** The four
+holdouts are two list-position built-ins and two templates applying a list-level test from item
+scope; they are reported, not swallowed.
+
+Resolving is not the same as being right, and this is exactly the trap section 37 documents -- a
+gate that cannot fail. So every resolved path is walked through `GDXSD.xsd`, which the package
+generates from the same model by a **different code path** that `gdmodel.py` never reads:
+
+| | |
+|---|---|
+| paths checked | 18,972 |
+| present in the schema | **18,972 (100.00%)** |
+| sensitivity selftest | 200 baselines accepted, **1,000 mutations all rejected** |
+
+The mutations are drop-a-middle-step, rename-leaf, drop-the-`Items`-hop, reverse-path, and
+extra-step-past-leaf. `tools/gdxsdcheck.py --selftest` runs them.
+
+**The XSD found two real bugs before it agreed.** The first pass scored 96.32%, and both classes
+of failure were mine:
+
+1. **`elementId`, not `elementName`.** A list declares both, and they differ on **117 of 296**
+   lists (`elementName="Additional Insured"` / `elementId="AdditionalInsured"`). Reading the
+   display name produced 698 paths the schema rejects. On `Auto` the two coincide, which is why
+   the matched pair passed while the library did not -- a single-form check would have shipped it.
+2. **A mutex-group member test is an enum VALUE, not an element.** 75 of 1,905 tests belong to a
+   `mutexTestGroup`. The GROUP is the element -- an enumerated string -- so `Policy > is Renewal`
+   is `Policy/TransactionType == "isRenewal"`, and there is no element named `isRenewal`. The XSD
+   states it as a `simpleType` restriction with seven enumerations.
+
+Neither was findable from the templates or from `model.xml` alone. Both came from reading a
+second authority, which is section 39's lesson applied on purpose rather than in hindsight.
+
+Two shapes also needed the concept library, because `model.xml` does not project them:
+
+* **`is provided`** -- 5,742 uses, ONE stable guid, declared in no file. A built-in predicate over
+  the path resolved so far. Same family as `is First` and `has N or more elements`.
+* **`contains the X`** -- a `<test>` in the `.gdm` carrying `selector="<guid>"`. Not a fourth
+  shape: it is "any item matching selector X", and it resolves to that selector's boolean.
+
+### 40.3 The matched pair: 13 legacy fields, 9 modern bindings
+
+`A2134FN.DDT` against `CA 21 34 10 13` (which is **two** templates plus three subscriptions):
+
+| legacy DDT field | rule and DB2 source | modern Server XML |
+|---|---|---|
+| `POLNUM` | `concat` PMSP0200 SYMBOL(3)+POLICY0NUM(7)+MODULE(2) | `Policy/PolicyNumber` |
+| `INSNAME1` | `DAL CALL("Insured_Address_LongName")` | `Insured/PrimaryNamedInsured` |
+| `EFFDATE` | `movedate` PMSP0000 TYPE0ACT=EN | `Policy/TransactionEffectiveDate` |
+| `EFFDATE #002` | `movedate` PMSP0200 / PMSP0000 (NB,RB) | `Policy/EffectiveDate` |
+| `AUTOSDSC` | `concat` ASB5CPL1 B5ANCD(6)+B5DCNB(30)+B5DDNB(30) | `CAAutoLevelCoverages/Items/Auto/VehicleDescription` |
+| `BIINJ` `BIINJA` `BIINJB` | `noopfunc` / `movenum` / value->text table | `.../BodilyInjuryLimit` + `.../BodilyInjuryLimitWording` |
+| `BIINJ2` `BIINJ2A` `BIINJ2B` | same, split limits | `.../BodilyInjuryandPropertyDamageLimit` + `...Wording` |
+| `>XUnit1` | `move_it @GETRECSUSED` (unit iterator) | the `listInstructionType` |
+| `BODINJ` | `hardexst` BYCZST=Y (presence test) | the selector + `is provided` |
+| DDT filter `BYAGTX in (CA,FA), BYAOTX=UN, BYBCCD=WA` | the WHERE chain | the selector `AutoswithUnderinsuredMotoristsCoverage-Washington` |
+
+Five things follow, and only the first is about syntax.
+
+**(a) A value and its rendering are two separate elements, and this is a rule of the model, not a
+quirk.** `X` and `XWording`. Measured across `model.xml`: **3,191** `*Wording` attributes have a
+bare twin and only **6** do not, out of 10,229 attribute declarations -- and **36.2% of all
+14,107 fill points bind the `Wording` half**. Legacy encoded the same distinction as *separate
+FAP fields with different rules*: `movenum` with a `9.0,9.0,C` picture for the number, `noopfunc`
+with a twelve-way `CSL 100 =100,000:...` table for the words. Three legacy fields collapse to two
+modern elements because the *third* was a state variant, not a rendering.
+
+**(b) Selection is a selector, not a field.** A DDT's DB2 filter chain becomes one named boolean
+per list item. 422 selectors exist; each is an `xs:boolean` on the item class.
+
+**(c) Concatenation and DAL functions move upstream.** Three DB2 columns become one attribute.
+`CALL("Insured_Address_LongName")` becomes `Insured/PrimaryNamedInsured`. The transform does not
+disappear -- it moves out of the form and into the section builder, which is precisely what
+"never store a CDM path in a form" is for.
+
+**(d) The map is many-to-one, and the DDT RULE is the unit of provenance, not the field.** 13
+fields to 9 bindings. Any design that maps FAP field -> binding one-for-one is wrong before it
+starts.
+
+**(e) A form is not one template.** `CA 21 34` is `...Washington Underinsured Motorists
+Coverage` + `...Schedule`, plus subscriptions to a header/footer and a schedule-overflow wording.
+Across the package, **346 of 491** templates subscribe to another, 885 edges over 172 distinct
+targets, and **all 172 resolve** -- 168 exactly and 4 only case-insensitively
+(`wording for schedule overflow` / `WOrding for schedule overflow`), so GhostDraft's subscription
+lookup is case-insensitive. This is the packet-assembly model the plan lists as open, already
+specified: composition is by document NAME, not by path.
+
+### 40.4 What the demand ranking says, and one cross-check that landed
+
+Fill-point demand over 491 templates, by how many templates need the element:
+
+```
+305  Policy/PolicyNumber                              4006  PolicyDeclarations
+297  Insured/PrimaryNamedInsured                      3031  CAAutoLevelCoverages
+241  Policy/TransactionEffectiveDate                  2611  CALocationLevelCoverages
+153  Policy/TransactionEffectiveDateWording           1189  CAPolicyLevelCoverages
+ 73  CAAutoLevelCoverages/Items/Auto/VehicleDescription  1159  Policy
+ 64  InsuranceCompany/Name                             472  Insured
+```
+
+`tools/bindgap.py` ranked the LEGACY demand independently, off the DDT, and put
+`PMSP0200.SYMBOL` and `PMSP0200.POLICY0NUM` at the top, each blocking 1,276 forms. The modern
+ranking puts `Policy/PolicyNumber` first at 305 of 491 templates. **Two rankings from disjoint
+sources agree at the top.** That is the first external evidence that bindgap's backlog ordering
+is sound -- its docstring warns the coverage *percentage* is a floor, and this does not change
+that, but the ORDERING was the part it claimed was trustworthy and it now has a witness.
+
+### 40.5 What this does and does not settle
+
+Settled: the binding format, the resolution rule, the composition model, the value/rendering
+convention, and a 2,139-path vocabulary of real Server XML paths with usage counts
+(`output/gdbindings-ca2607.csv`).
+
+Not settled, and not touched: **populating** one. The handoff is precise that "converts" and
+"populates" are different claims and only the first is true. Nothing here renders a real policy.
+The honest next test is still the one named in the handoff -- fetch a policy through the API,
+build the Server XML, render a converted form -- and it is now much better specified, because the
+target XML shape is no longer a guess.
+
+Also unchanged: `FapToGhostDraftGenerator.LookupBinding` still matches on FIELD NAME, which the
+DDT analysis showed is the unreliable key. Finding (d) says why that can never reach 100%: the
+relation is many-to-one and the field is the wrong unit. The DDT rule is the right one.
+
+### 40.6 Tooling
+
+```bash
+python tools/gdbindings.py <pkg> --form "CA 21 34 10 13 Schedule"   # one template, resolved
+python tools/gdbindings.py <pkg> --out output/gdbindings-ca2607.csv # all 491
+python tools/gdxsdcheck.py output/gdbindings-ca2607.csv <pkg>/GDXSD.xsd
+python tools/gdxsdcheck.py output/gdbindings-ca2607.csv <pkg>/GDXSD.xsd --selftest
+```
+
+A `.gdsp` is a zip. Extract it under `output/iso-packages/<name>/` (gitignored) and point the
+tools at that directory; they expect `model.xml`, `Templates/`, `Concept Libraries/` and -- for
+the check -- `GDXSD.xsd` copied in beside them.
+
+**Do not trust a single-form validation of a path resolver.** The `elementId` bug passed the
+matched pair and failed 698 paths in the library.
