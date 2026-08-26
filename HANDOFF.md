@@ -170,125 +170,165 @@ forms)**. The lone `X,` record is CLOSED as undecidable from the record (§38), 
 
 ---
 
-## P3 / BINDING — where it actually stands (investigated 2026-08-24, nothing built)
+## P3 / BINDING — the format is DECODED (2026-08-26). Read this before designing anything.
 
-### The model already exists. Do not invent one.
+Products supplied the **ISO Commercial Auto Project (2607.0)** package. It answered the matched-pair
+question outright. **Sections 40, 41 and 42 of `FORM-STUDIO-PLAN.md` are the record; the summary
+below is not a substitute for §42, which contains the one mistake worth not repeating.**
 
-Three layers are in production. FORM-STUDIO-PLAN section 3 ("never store a CDM path in a form")
-is already satisfied by them:
+### The three layers, now with the middle one read rather than assumed
 
 ```
-DB2  --(fact-commercial-api: 148 classes in Data.Provider/Mapping/Db2)-->  CDM
-CDM  --(fact-docgen: 58 ISectionBuilders, e.g. agency.FullName -> <Agency><Name>)-->  Server XML
-Server XML --(GhostDraft templates)-->  Form
+DB2  --(fact-commercial-api: 148 mappers in Data.Provider/Mapping/Db2)-->  CDM
+CDM  --(fact-docgen: ISectionBuilders, 13 registered root sections)------>  Server XML
+Server XML  --(model.xml projects concept GUIDs onto element names)------>  GhostDraft template
 ```
 
-**The GhostDraft Server XML element paths ARE the logical binding namespace. The section builders
-ARE the CdmDataSource adapter.** A Form Studio field should carry a Server XML path in
-`data-bind`, nothing else. Two plans were proposed and both were wrong in the same direction --
-binding fields to CDM paths (violates section 3), then deriving a NEW namespace from the DDT
-(would have created a fourth vocabulary parallel to one that works). Read the existing layers
-before designing anything.
+**A template does not store a data path as a string.** It stores a typed instruction tree whose
+paths are `(rootguid, pathNodes[guid])` tuples against a concept library, and `model.xml` — shipped
+in the package — is the projection onto Server XML element names. That is the whole binding
+mechanism, and a Form Studio field's `data-bind` should carry the resolved Server XML path.
 
-Key files: `fact-docgen/src/MoE.Commercial.Documents.Generation.GhostDraft/Components/
-Serialization/` (ISectionBuilder, SectionBuilderAttribute, Sections/), and
-`fact-commercial-api/MoE.Commercial.Data.Provider/Mapping/Db2/` (the 148 `target.X = source.Y`
-mappers -- the authoritative DB2->CDM map, NOT the SQL `AS` aliases).
+Instruction vocabulary, complete across all 491 templates: `fillPointType` (14,107),
+`conditionalInstructionType` (10,362), `subscriptionType` (885), `listInstructionType` (691),
+`annotationType` (10). RTF carries `%[ID]` markers keyed to the instruction IDs.
 
-### What the numbers say
-
-`tools/bindgap.py` joins FAP demand to that model. **Read its docstring before quoting any
-coverage number -- it is a FLOOR, not a measurement**, and it moved 1% -> 5% -> 20% as the join
-was corrected three times. The DEMAND side is exact and so is the BACKLOG RANKING; the coverage
-percentage is a lower bound.
+### Where it stands — verified against three authorities, each of which caught something
 
 | | |
 |---|---|
-| Forms with data-bound fields | 2,489 |
-| Distinct attributes needed | **678** over 62 entities |
-| On a CDM-hydrated table | 438 (65%) |
-| DDT rules declaring a source | **99.7%** of 61,096 field records |
-| `powtype` = WIP manual entry, NO data source exists | **11.7%** -- a hard ceiling, never bindable |
+| instructions resolved | **26,141 / 26,145** (the 4 are list-position built-ins, reported) |
+| fill points resolved | **14,107 / 14,107** |
+| paths present in the package XSD | **19,112 / 19,112 = 100.00%** |
+| XSD-check sensitivity selftest | 200 baselines accepted, **1,000 mutations all rejected** |
+| GhostDraft Integration Spec recall | **100.00%** over the 491 packaged templates |
+| ...precision / exact-set match | 99.90% / **482 of 491** templates |
 
-Backlog is ranked in `output/bindgap-attributes.csv`. `PMSP0200.SYMBOL` and `PMSP0200.POLICY0NUM`
-each block **1,276 forms**; both are on hydrated tables, so the data is there and the model just
-does not expose it yet.
+**Each authority caught what the others could not.** The XSD found `elementId`-vs-`elementName`
+(117 of 296 lists differ; 698 wrong paths, and the matched pair passed anyway) and the
+mutex-group-as-enum rule. The Integration Specification found two unread FORMAT FIELDS — read §42.
 
-### The .gd path: converts, does NOT populate
+### The five findings that constrain any design
 
-Be precise about this -- "converts" and "populates" are different claims and only one is true.
+1. **A value and its rendering are separate elements.** `X` and `XWording`: **3,191** paired
+   attributes against **6** unpaired, and **36%** of all fill-point demand is on the `Wording`
+   half. There is a third mechanism too — `adornmentPath` (`with comma grouping`, `as MM/dd/yyyy`)
+   — which is the modern counterpart of a legacy DDT picture clause and is **formatting, not a
+   binding**.
+2. **Selection is a selector, not a field.** A DDT's DB2 filter chain becomes one named boolean per
+   list item. 422 selectors, each an `xs:boolean` on the item class.
+3. **Concatenation and DAL functions move upstream** into the section builder. Three DB2 columns
+   become one attribute; `CALL("Insured_Address_LongName")` becomes `Insured/PrimaryNamedInsured`.
+4. **The map is many-to-one, and the DDT RULE — not the FAP field — is the unit of provenance.**
+   `A2134FN`'s 13 fields become 9 bindings. Any design mapping FAP field → binding one-for-one is
+   wrong before it starts, which is exactly why `FapToGhostDraftGenerator.LookupBinding`'s
+   field-NAME matching can never reach 100%.
+5. **A form is not one template.** 346 of 491 subscribe to another; 885 edges, 172 distinct
+   targets, all resolving (4 only case-insensitively). Composition is by document NAME. This is the
+   packet-assembly model the plan lists as open, already specified.
 
-| | |
-|---|---|
-| FAP -> `.gd` template | works, 427/427 quote forms, brace-balanced, 0 failures |
-| Renders in GhostDraft | confirmed by eye on several forms |
-| Fields have `%[N]` fill points | yes, all of them |
-| Bound to a GhostDraft concept | **58%** (855/1467) -- via ~7 hand-written name->concept maps |
-| **Populated with real policy data** | **NEVER DEMONSTRATED** |
+### Supply: what fact-docgen actually emits
 
-The binding is `FapToGhostDraftGenerator.LookupBinding`: ~2 form-prefix maps, ~5 generic entries,
-then a `ProjectConcepts` fallback, else null. It matches on FIELD NAME -- which the DDT analysis
-shows is the unreliable key (13,813 distinct names, 6,033 used on exactly one form). The DDT
-declares the real provenance and this path does not read it.
+`tools/xmlsupply.py` joins demand to the **65 `Builder.xml` artefacts** the fact-docgen integration
+tests write for real policies — the authority, not a grep over the 35 section builders. Of 2,140
+demanded data paths: 238 supplied, 142 emitted-always-empty, 1,760 absent from the sample. Weighted
+by template usage, **30.1% supplied**, which is the number to quote.
 
-Converted `.gd` files (regenerable, gitignored, current as of 2026-08-24):
+**Supply is a FLOOR** — 65 policies cannot exercise 2,140 paths. The one sample-independent part:
 
+| paths | root section with NO builder at all |
+|---:|---|
+| 284 | `CommonState-SpecificPolicyLevelCoverage` |
+| 245 | `CALocationLevelCoverages` |
+| 54 | `CommonPolicyLevelCoverages` |
+| 38 | `SingleInterestAutoPhysicalDamageInsurance` |
+| 2 | `RetrospectivePremiumPlan` |
+| **623** | **29.1% of demand.** The `[SectionBuilder]` registry agrees independently. |
+
+And one lead with a line number: **`Auto/VehicleNumber` is the 5th most-demanded element in the
+library** (106 templates: 43 fill point, 81 list SORT KEY, 41 condition — the spec independently
+says 106) and `CAAutoLevelCoveragesSection.cs:340` emits only `VehicleNumberWording`, 201
+occurrences against 0. On 81 templates that is what the auto list is ORDERED BY, so it renders as
+plausible-but-wrong rather than blank. Six smaller value-half-missing pairs share the shape; the
+list is in §41.4.
+
+### NEXT STEP — the end-to-end test, now properly specified
+
+Unchanged in principle and much better specified in practice: **take one converted form, fetch a
+real policy (`GET /api/policy/{num}?env=tst`), build the Server XML, render it populated.** The
+target XML shape is no longer a guess — `output/gdbindings-ca2607.csv` gives every path a template
+needs and `output/xmlsupply-builder.csv` says which are already supplied.
+
+Be precise about what is and is not true: the `.gd` path **converts** (427/427 quote forms,
+brace-balanced) and has **never been demonstrated to populate**. Nothing in this session changed
+that. What changed is that the gap is now enumerated rather than estimated.
+
+Two things the join structurally cannot see, so do not quote it as coverage:
+
+* **It cannot fail on a wrong VALUE** — only on a missing element. A builder emitting the wrong
+  policy number scores as supplied.
+* Outside the five NEVER rows, `missing` conflates a real gap with a path this policy mix does not
+  reach, and `empty-only` (142 paths) is ambiguous by construction.
+
+The end-to-end render is the fix for all three.
+
+### Tooling
+
+```bash
+python tools/gdbindings.py <pkg> --form "CA 21 34 10 13 Schedule"   # one template, resolved
+python tools/gdbindings.py <pkg> --out output/gdbindings-ca2607.csv # all 491
+python tools/gdxsdcheck.py <bindings.csv> <pkg>/GDXSD.xsd [--selftest]
+python tools/gdspeccheck.py <bindings.csv> <pkg> "<IntegrationSpec.zip>"
+python tools/xmlsupply.py <bindings.csv> <BuilderRenderOutput-dir> --kind Builder
 ```
-output/quote-forms-gd/     427 forms + CONVERSION-REPORT.md + conversion-report.csv
-output/farm-packet-gd/     24 forms (curated Farm quote packet) + MANIFEST.md
-demo/regression/golden/    10 goldens (versioned, the .gd regression suite)
-dotnet run --project demo/FapPdfTools.Demo.csproj -- convert-quotes   # regenerate
-```
 
-### NEXT STEP -- learn the logic from a matched pair
+A `.gdsp` is a zip; extract under `output/iso-packages/<name>/` (gitignored) and copy the package's
+`GDXSD.xsd` in beside `model.xml`. **Read the Integration Spec zip in place** — several template
+names exceed the Windows 260-character path limit and extraction fails partway through. Note the
+`.gdsp` ships **491** templates while the spec documents **1,110**, the 491 a strict subset;
+comparing against all 1,110 measures the package export, not the extraction.
 
-The most efficient way to learn how GhostDraft binding is really written is not to design it: it
-is to take a form that exists BOTH as a FAP we convert AND as a production GhostDraft template in
-an ISO package, and compare them.
+`tools/bindgap.py` still ranks the LEGACY demand off the DDT and its docstring is still right that
+the coverage percentage is a floor. Its **ordering** now has an outside witness: it put
+`PMSP0200.SYMBOL`/`POLICY0NUM` first, and the modern ranking puts `Policy/PolicyNumber` first at
+305 of 491 templates.
 
-**Matched pairs are available and already validated by Products this session:**
+### Still open on this axis
 
-| form | ISO package | our status |
-|---|---|---|
-| `A2134FN` = **CA 21 34** | ISO Commercial Auto Project | renders 99.9%/99.9% on the vector gate |
-| `G2032C` = **CG 20 32** | ISO General Liability Project | renders 100%/99.9%, Products-reviewed |
-| `CU21556Q` = CU 21 55 | Commercial Umbrella | 99.9%/99.9% |
-
-The eight package names are in `PackageNames.cs`; builders exist for three of them. The templates
-themselves live in GhostDraft, not in the repo -- use the commercial MCP `form_list_templates` /
-`form_parse_ghostdraft_template` to pull one.
-
-What to extract from the comparison, in order:
-
-1. **How a field becomes a binding.** Our `.gd` emits `%[N]` fill points; the ISO template binds
-   to concepts. Compare the same field on both to see the real binding syntax and what the
-   template expects the Server XML to look like.
-2. **How the Server XML for that form is assembled** -- find the ISectionBuilder(s) that feed it
-   and read them alongside the DDT rules for the same FAP fields. That is the Rosetta stone:
-   legacy provenance and modern binding for identical data.
-3. **Then, and only then**, write the rule that turns a DDT rule into a Server XML path.
-
-And the honest end-to-end test that has never been run: take one converted form, fetch a real
-policy through the API (`GET /api/policy/{num}?env=tst`), render it populated in GhostDraft. It
-either works -- in which case the remaining 42% of unbound fields is the whole job -- or it fails
-somewhere specific and names the gap.
-
-### Also open, from this session
-
+- **Seven more packages.** `PackageNames.cs` names eight; this is one. Everything above is
+  Commercial Auto only.
 - **`FormDefinition` is not the shared document model it should be.** `emit-html` and
-  `FapToGhostDraftGenerator` both read `FapParseResult` directly and are siblings, not a chain,
-  so an EDITED form cannot reach GhostDraft -- the .gd regenerates from the original FAP and
-  discards the edit. `FapToPdfGenerator` already accepts either. This gap already bit once: the
-  underline fix had to be made twice (sections 38 and 39). Fix before the P3 editor work starts;
-  `FormDefinition` needs extending to carry images, shading, underline and edge masks first.
-- **`MC1690a`/`MC1690C`** -- the only two vector-rule failures left in the library, one missing
-  444pt horizontal each. `M,O` was investigated as the cause and REFUTED (0.4% of wide `M,O`
-  records have a rule under them, 80 of 18,886); they are tab-leader forms, the known class.
-
----
+  `FapToGhostDraftGenerator` both read `FapParseResult` and are siblings, not a chain, so an EDITED
+  form cannot reach GhostDraft. This bit twice already (the underline fix in §38 and §39). Fix
+  before the P3 editor work; `FormDefinition` needs to carry images, shading, underline and edge
+  masks first.
+- **`MC1690a`/`MC1690C`** — the only two vector-rule failures left, one missing 444pt horizontal
+  each; `M,O` was investigated as the cause and REFUTED. They are tab-leader forms, the known class.
+- The **Fillpoint Usage List** xlsx in the package folder is unread. It may be a fourth authority
+  or may just restate the spec.
 
 ## Hard-won rules — do not relearn these
 
+- **Two authorities agreeing is not enough, and a check that can only VALIDATE cannot find an
+  OMISSION.** (§42.) The binding extractor was verified against `model.xml` and the package XSD and
+  scored 100% on both — while silently never reading two path-bearing fields. The XSD is
+  structurally blind to a path you never produced: it can only confirm that what you produced
+  exists. GhostDraft's own Integration Specification states the expected SET per template, so it
+  could fail, and did, at 89.6%. When you add an instrument, ask which DIRECTION of error it can
+  catch, not just whether it agrees.
+- **A resolver that reports "unresolved" beats one that guesses.** `adornmentPath` produced 1,393
+  rows with roots named `with comma grouping` — legible as formatting in ten seconds. A
+  name-matching resolver would have turned the same input into 1,393 plausible wrong bindings.
+- **"Audit the parser against the FORMAT" means the FIELDS, and it is easy to apply one level too
+  shallow.** §39 wrote that rule; §40 then enumerated the five instruction TYPES and called that
+  the audit; §42 found `orderByList` and `adornmentPath`, which are fields of types already parsed.
+  Enumerate by PARENT, exhaustively, and count what you consume against what exists.
+- **Validate a path resolver on the LIBRARY, never on one form.** Reading `elementName` where the
+  XSD uses `elementId` was wrong on 117 of 296 lists and 698 paths — and passed the matched pair
+  perfectly, because on `Auto` the two strings coincide.
+- **Check the denominator belongs to you.** The first spec comparison scored 47% recall; 619 of the
+  1,110 templates it graded simply are not in the package. That measured the package export, not
+  the extraction.
 - **Validate any new gate against the forms Products accepted** (`EB2410A`, `A0238C`, `EB22489Q`,
   `P0010G`, and now `BAN01`, `BANSPECH`) *before* trusting it. **Seven** metrics here have reported
   defects the render did not have. A gate that invents work is worse than no gate.
@@ -394,6 +434,10 @@ Sweep artefacts are cached in `output/sweep-work/` (FAP, legacy `.PDF`, `.html`,
 so the gates re-measure **without re-rendering**. Re-run `sweep.py` only after changing `emit-html`.
 
 ```bash
+python tools/gdbindings.py <iso-pkg> --out output/gdbindings-ca2607.csv  # binding extraction
+python tools/gdxsdcheck.py <bindings.csv> <iso-pkg>/GDXSD.xsd [--selftest]
+python tools/gdspeccheck.py <bindings.csv> <iso-pkg> "<IntegrationSpec.zip>"
+python tools/xmlsupply.py <bindings.csv> <BuilderRenderOutput-dir> --kind Builder
 dotnet run --project demo/FapPdfTools.Demo.csproj -- emit-html EB2410A out.html
 python tools/sweep.py 200 "C:/src/fact-pdf-tools/output"   # full pipeline; absolute, forward slashes
 python tools/dashboard.py                                  # ALL measures, per form and stratum
