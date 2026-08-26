@@ -3201,3 +3201,175 @@ The spec zip is read in place -- do not extract it. Several template names excee
 **Three authorities, and each caught something the others could not.** `model.xml` gave the
 projection; the XSD caught `elementId`-vs-`elementName` and the mutex-group enum; the
 Integration Specification caught two unread fields. Any two of them agreeing was not enough.
+
+## 43. The WRITE side: what it takes to author a `.gd`, and what is still unproven (2026-08-26)
+
+Sections 40–42 decoded the format by READING it. Authoring MoE's proprietary forms as GhostDraft
+templates is the write direction, and it needs three things the read side did not: the grammar that
+relates markup to RTF, the rule that names an XML element, and a target model. Two are now
+established mechanically. The third is missing and is the real blocker.
+
+**Nothing here has been round-tripped.** No `.gd` with logic has been written by this repo and
+rendered by GhostDraft. The invariants below are verified against 491 production templates, which is
+strong evidence about the format and no evidence at all about our output.
+
+### 43.1 The logic grammar — verified, zero violations over 491 templates
+
+`%[ID]` markers in the RTF are what place a markup node. The correspondence is exact and total:
+
+| node kind | placed in RTF | not placed |
+|---|---:|---:|
+| `instruction:fillPointType` | 14,107 | **0** |
+| `instruction:subscriptionType` | 885 | **0** |
+| `instruction:annotationType` | 10 | **0** |
+| `part:conditionalPartType` | 10,428 | **0** |
+| `part:elsePartType` | 5,813 | **0** |
+| `part:endPartType` | 11,053 | **0** |
+| `part:listPartType` | 697 | **0** |
+| `part:compositeConditionalPartType` | 12 | **0** |
+| `instruction:conditionalInstructionType` | **0** | 10,362 |
+| `instruction:listInstructionType` | **0** | 691 |
+
+Five rules, all of which held universally:
+
+1. **A container is never placed.** `conditionalInstructionType` and `listInstructionType` carry no
+   marker — 0 of 11,053. Their PARTS carry the markers, and that is how the logic gets its extent.
+2. **Everything else is placed exactly once.** 43,005 markers = 54,058 declared ids − 11,053
+   containers. Exact, no remainder.
+3. **No marker exists without a declaration.** 0 dangling markers.
+4. **A container's part markers appear in declaration order, and its `endPartType` marker is last.**
+   11,053 / 11,053 both ways.
+5. **Every child's marker span nests strictly inside its parent's.** 9,689 nested containers and
+   14,144 leaf instructions, no exceptions.
+
+That is a complete, checkable grammar: to emit a conditional, declare the instruction with its
+parts, then place `%[part]`…content…`%[elsePart]`…content…`%[endPart]` in that order inside the
+parent's span. A generator can assert all five rules on its own output before writing the file.
+
+**One trap, and it bit this analysis first.** `%[N]` is a marker in the RENDERED character stream,
+not necessarily contiguous in the RTF source. Production splits it across runs —
+`{\cf0\f3\fs20\ulnone\ulc0 %}{\cf0\f0\fs20\ulnone\ulc0 [70]}` — on **854 markers across 119
+templates**. A naive scan of the raw RTF reports those nodes as unplaced, which is exactly the
+"orphaned markup" conclusion this section nearly recorded. Destyle before scanning. (Our own
+`FapToGhostDraftGenerator` already emits the split form, so whoever wrote it had seen this.)
+
+### 43.2 The element-naming rule — 100.00%
+
+To add an attribute to a concept library you must be able to predict the Server XML element name
+fact-docgen will have to emit. The rule is "make the name a valid XML NCName":
+
+```
+id = drop every character except [0-9 A-Za-z _ . -]
+     prefix '_' if the result starts with a digit
+     append an integer if that id is already taken in scope
+```
+
+| | |
+|---|---|
+| exact | 12,169 / 12,486 (97.46%) |
+| exact + collision suffix | 317 (2.54%) |
+| **rule accounts for** | **12,486 / 12,486 = 100.00%** |
+
+Worked examples: `Vehicle Number (Wording)` → `VehicleNumberWording`;
+`CA State-specific Policy Level Coverages` → `CAState-specificPolicyLevelCoverages` (hyphen KEPT);
+`is Organization (incl. Corporation)` → `isOrganizationincl.Corporation` (dot KEPT);
+`51 - 200 Miles Premium` → `_51-200MilesPremium` (leading digit); `Snowmobiles` → `Snowmobiles1`
+(collision).
+
+### 43.3 `model.xml` is DERIVED — so authoring a model means authoring the `.gdm`
+
+All **12,486** model.xml members appear in a concept library `.gdm`; **none** is absent. The `.gdm`
+files carry 4,723 further guids that model.xml does not project (the concepts themselves,
+adornments, domainModels, hidden nodes).
+
+So `model.xml` and `GDXSD.xsd` are projections the GhostDraft Packager regenerates (5.3.1971.0 per
+the spec's `Information.txt`). **Do not hand-author them.** A new concept is authored in the `.gdm`;
+the ids, the XSD and the server model follow from §43.2's rule.
+
+### 43.4 What our generator emits today, and the gap
+
+`FapToGhostDraftGenerator` writes a valid `.gd` envelope and **fill points only**:
+
+| element | ours | production |
+|---|---|---|
+| `properties`, `content/rtf`, `library` nil | yes | yes |
+| `markup/instructions` with `fillPointType` | yes | yes |
+| `listInstructionType` / `conditionalInstructionType` / `subscriptionType` | **none** | 11,938 |
+| `parts` / `endPartType` structure | **none** | 28,003 |
+| `orderByList` sort keys | **none** | 140 |
+| `adornmentPath` (formatting) | emitted empty | 1,393 populated |
+| `styleMap` + `stylelibrary` | **none** | every template |
+| `annotationStyleMap`, `domainmodels`, `scenarios` | **none** | every template |
+| `trimlastparagraphmarker`, `documenttype` | **none** | every template |
+
+So it produces flat, logic-free forms. It also binds via `LookupBinding`, a hand-written catalogue
+of ~7 name maps with hardcoded GUIDs against a different model than the ISO packages (its `Policy`
+root guid is `ee97488b-…`; ISO Commercial Auto's is `48653e4d-…`), which is §40 finding (d) in
+practice: field-NAME matching cannot get there.
+
+### 43.5 The translation table is the real content, not the syntax
+
+The syntax above is mechanical. What makes generated logic CORRECT is §40's matched-pair mapping,
+which says what legacy machinery becomes:
+
+| legacy DDT / FAP | GhostDraft |
+|---|---|
+| `>XUnit1` `move_it @GETRECSUSED` (unit iterator) | `listInstructionType` over the list, iterator bound to the item |
+| DDT filter chain (`BYAGTX in (CA,FA), BYAOTX=UN, BYBCCD=WA`) | a named **selector** — one `xs:boolean` per list item |
+| `hardexst` presence test | the `is provided` built-in on the resolved path |
+| `printif` | `conditionalInstructionType` + parts |
+| `concat` of N DB2 columns / `CALL("…")` DAL | ONE attribute; the transform moves upstream into the section builder |
+| `movenum;9.0,9.0,C` picture | an **adornment** (`with comma grouping`) |
+| a value→text table (`noopfunc` with `CSL 100 =100,000:…`) | the `*Wording` twin element |
+| sort order implied by the extract | `orderByList` |
+
+Six legacy fields collapsing to two elements is the normal case, not an exception.
+
+### 43.6 The blocker: we have no proprietary package
+
+`PackageNames.cs` names **ten** packages. We have the `.gdsp` for **one**, and it is an ISO package,
+not a proprietary one.
+
+This matters because **a fill point path is `(rootguid, pathNodes[guid])` and GUIDs are per-model.**
+Without the proprietary model there is no way to emit a resolvable proprietary binding — and no way
+to check one, since every instrument built in §40–42 keys off `model.xml`, the package XSD, and the
+Integration Specification.
+
+The good news is that the proprietary models **already exist and are already fed**:
+
+* `MoE Proprietary Commercial Auto` has **25 registered section builders** at version 2601.0, over
+  roots `MOECAAutoLevelCoverages`, `MOECAPolicyLevelCoverages`, `MOEPolicyDecInfo`, plus shared
+  `Agent`/`Insured`.
+* 10 of the 65 integration-test `Builder.xml` artefacts carry those roots, so real policies already
+  produce proprietary Server XML.
+
+So this is **adding templates to an existing proprietary model**, not building a model from scratch
+— much the easier job, and the one the §40–42 decode maps onto directly.
+
+What is needed, in order:
+
+1. **The `MoE Proprietary Commercial Auto` package export** (`.gdsp` + its GDXSD, ideally the
+   Integration Specification too). Every tool in §40–42 then works on it unchanged — point them at
+   the extracted directory.
+2. **A round trip on ONE form.** Author a `.gd` with a list, a conditional and a bound fill point;
+   open it in GhostDraft; render it. Until that has happened, §43.1's grammar is a well-evidenced
+   hypothesis about our output, not a demonstrated capability.
+3. Only then generate at scale.
+
+The MCP is not a route to (1): `form_list_templates` / `form_parse_ghostdraft_template` read the
+Integration Specification `.txt` files, not `.gd` templates or concept models, and the template
+directory is unconfigured in this environment.
+
+### 43.7 Unknowns that a round trip would settle
+
+Named so they are not mistaken for solved:
+
+* **Will GhostDraft open a machine-authored `.gd`?** `styleMap` carries a `libraryid` and per-style
+  `link` GUIDs into a style library; `annotationStyleMap`, `domainmodels` and `scenarios` are absent
+  from our output entirely. Which are required and which are optional is untested.
+* **Who mints GUIDs for new concepts,** and whether the Packager accepts hand-edited `.gdm` files
+  or insists on Designer.
+* **ID allocation.** Production ids are unique per template but this analysis never checked whether
+  they must be contiguous or ordered; our generator's sequential allocation may or may not matter.
+* **The `<explanation>` blob** on `<markup ID="0">` is a second RTF document (the reviewer-facing
+  narrative). Production always has one. Whether it is required is untested.
