@@ -193,15 +193,53 @@ python tools/htmlpacket.py --lob CPP --form "QUOTE CPPSUM.2" --form "QUOTE CPPCA
 4 pages, 216 CDM values spliced and verified by re-reading the output. Artefacts:
 `output/quote-poc/wy-quote.{html,pdf}` and `wy_p1..4.png`.
 
-### What is still wrong or missing on the HTML half
+### The oracle that settled all of this
+
+*Added 2026-08-27, second pass.* Products supplied **a legacy DocProd render of the same
+quote** — `CPQ 0509752`, which is `BAP000080307` — and it is a far better oracle than the
+generic reference document. Compare against it page by page; almost every answer below was
+already on disk once the render said where to look.
+
+```bash
+demo/bin/Release/net9.0/FapPdfTools.Demo.exe quote-data BAP000080307 tst Pending output/quote-poc/BAP000080307.json
+python tools/htmlpacket.py --lob CPP \
+    --form "QUOTE COVER.4" --form "QUOTE CPPSUM.2" --form "QUOTE CPPCA.3" \
+    --data output/quote-poc/BAP000080307.json --out output/quote-poc/wy-quote.html --pdf
+```
+
+**The packet the reference actually prints is `QUOTE COVER.4` + `QUOTE CPPSUM.2` +
+`QUOTE CPPCA.3`** — the `_A`/`_B` image variants, not the plain ones.
+
+Three sources that were not being read, and each fixed a visible defect:
+
+| source | what it settles |
+|---|---|
+| `TABLE/MOE_ASAH.TBL`, keyed `"CPPCA CA    " + code` | the coverage WORDING. Products asked where our descriptions came from — they were `Coverage.Description` off the CDM; legacy's are this table, which `QUOTE.DAL` looks up |
+| `DAL/QUOTE.DAL`, `CPPQ_CAA_*` / `CPPQ_CAV1_*` | the three computed columns: RENTAL names the physical-damage coverage it reimburses and prints `days/perDay` ("30/75"); UM/UN name their limit basis ("Single Limit (BI)"); LOANCM/LEASCM take the unit's comprehensive deductible and LOANCO/LEASCO its collision deductible |
+| the DDT's `<Image Field Rules Override>` | `MODE=R` — **right justify**. It marks exactly the Limit / Deductible / Premium columns, so the alignment is now read from the DDT for every image rather than styled by hand |
+
+Two of our own rendering bugs the comparison exposed:
+
+* **Every page went bold** once the EA9911 schedule was in the packet. `@font-face` rules
+  were deduplicated by family name alone, so `QCPP_CAV_B` — which declares only the bold cut
+  of `F_UniversATT` — claimed the name document-wide. Keyed on family+weight+style now.
+* **An over-wide value only ever shrank.** Right when something sits to its right, wrong when
+  nothing does: `VEH1 STATE` reserves one glyph for a 15-character value, so "WYOMING"
+  rendered at 5pt in a header line with nothing after it. It grows into free space now.
+
+### What the oracle still shows as different
 
 | | |
 |---|---|
-| the vehicle box's second `State:` label is blank | the FAP has one `VEH1 STATE` field and two labels; legacy fills both, we fill the first |
-| the footer prints `Page` with no number | `QTE_FTR`'s page fields are not mapped — the assembler knows the page count, the data builder does not |
-| the payment-plan table draws horizontal rules where the reference draws full cell borders | `emit-html`'s sibling-row heuristic on `QTE_BILLINFO` (`FORM-STUDIO-PLAN` §32); a fidelity item, not an assembly one |
-| pages 1–2 (cover, disclaimer) and 11–14 (forms schedule, terrorism notices) are unmapped | `QUOTE COVER.1` and `QUOTE CPP FORMS.1` assemble but have no field values yet |
-| `QCPPSUMDTLS_CA` ("Scheduled Autos") now renders after the endorsement rows | a consequence of the reversal rule; not separately confirmed against the reference, which has no CA line |
+| **vehicle 2 is missing a coverage** — legacy prints "Amusement Devices 500,000 434", we print six rows summing 495 against a stated `totalPremium` of 929 | a **CDM gap, not ours**: `InsuredAssets[1].Coverages` has six entries and none is AMUSE. Legacy reads it from the AUTCOV extract. Worth raising — a quote proposal that silently drops a $434 coverage is a correctness problem for any consumer of this CDM, not just us |
+| the header's second line, `WYAUTO03`, is blank for us | no CDM property carries it. `InsuredParty` has only `FullName`; `Policy.Code` is `MONO` |
+| we print `BAP000080307` where legacy prints `Quote # CPQ 0509752` | the CPQ number is Point-side and is not in the CDM (see Q6/Q7) |
+| three limit cells differ in the line table — NonOwned Donors and NonOwned Volunteers show 500,000 for us and blank in legacy, POLLPP the reverse | `CPPQ_CAA_LIMIT` has per-coverage branches we have not ported; the pattern is known, the work is mechanical |
+| DOC Comprehensive / DOC Collision show no deductible where legacy shows 500 | same DAL, same shape as the LOANCM/LOANCO inheritance already ported |
+| coverage ORDER is empirical | legacy orders by the extract's `BYC0NB`, which the CDM does not carry. Two hand-written orders in `LegacyCoverageText` reproduce the reference's line table and both vehicle tables exactly — but they are fitted to one document |
+| picking between two editions of one form code is inferred | EA9911 is on the line at both 2018-03 (seq 32) and 2024-12 (seq 38), both `actionCode` "A". Legacy prints 03 18, so lowest sequence wins. If a future quote prints the later edition, this rule is wrong |
+| the payment-plan table draws horizontal rules where legacy draws full cell borders | `emit-html`'s sibling-row heuristic on `QTE_BILLINFO` (`FORM-STUDIO-PLAN` §32); a fidelity item, not an assembly one |
+| pages 11–14 (forms schedule, terrorism notices) are unmapped | `QUOTE CPP FORMS.1` assembles but has no field values yet |
 | `quote-data` and `fill-html`'s `IFormFieldMap` registry are two population paths | the packet builder covers repeating images, the maps cover single forms; they should converge |
 
 ---
@@ -334,7 +372,9 @@ borders. None of them are structural; all are one mapping or one fidelity rule e
 | Q4 | Two renderers currently format a policy number differently: fact-docgen's `FormatPolicyNumber` gives `BAP 0123456 00` (14 chars) while `Mcs90aFieldMap` uses the raw 12. Which is correct? It is visible on any dec/quote page. |
 | Q5 | `CONVERSION-PLAN.md` D7 — does the HTML field name mirror CDM exactly, or is there a curated form-facing vocabulary? |
 | Q6 | *(new)* Is `BAP000080307` an acceptable demo quote, or is a specific one wanted? It is a WY Commercial Auto test quote with 6 rated vehicles. Most pending quotes in tst are unrated and render blank premium columns. |
-| Q7 | *(new)* The reference document prints **`QUOTE CPPSUM.2`**, the TRIA three-column summary. Is `.1` (single Premium column) ever the right page, and if so what selects between them? Right now the choice is ours, not the data's. |
+| Q7 | *(new)* The reference document prints **`QUOTE CPPSUM.2`**, the TRIA three-column summary, and **`QUOTE CPPCA.3`** for the auto detail. Is `.1` ever the right page, and if so what selects between the variants? Right now the choice is ours, not the data's. |
+| Q8 | *(new)* **The CDM drops a coverage.** On `BAP000080307` vehicle 2 the legacy render prints "Amusement Devices 500,000 434"; the CDM's `InsuredAssets[1].Coverages` does not contain it, so the rows sum to 495 against a `totalPremium` of 929. Is this a known gap in the auto coverage projection? It affects anything reading the CDM, not just the quote proposal. |
+| Q9 | *(new)* The legacy header's second line is `WYAUTO03` and nothing in the CDM carries it. What is it — a DBA, an account/unit reference, an agency's own label? |
 
 ---
 
