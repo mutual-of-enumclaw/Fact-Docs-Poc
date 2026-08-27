@@ -239,8 +239,80 @@ Two of our own rendering bugs the comparison exposed:
 | coverage ORDER is empirical | legacy orders by the extract's `BYC0NB`, which the CDM does not carry. Two hand-written orders in `LegacyCoverageText` reproduce the reference's line table and both vehicle tables exactly — but they are fitted to one document |
 | picking between two editions of one form code is inferred | EA9911 is on the line at both 2018-03 (seq 32) and 2024-12 (seq 38), both `actionCode` "A". Legacy prints 03 18, so lowest sequence wins. If a future quote prints the later edition, this rule is wrong |
 | the payment-plan table draws horizontal rules where legacy draws full cell borders | `emit-html`'s sibling-row heuristic on `QTE_BILLINFO` (`FORM-STUDIO-PLAN` §32); a fidelity item, not an assembly one |
-| pages 11–14 (forms schedule, terrorism notices) are unmapped | `QUOTE CPP FORMS.1` assembles but has no field values yet |
+| the terrorism notices (COM126/COM127, reference pages 13–14) are unmapped | the FORMS AND ENDORSEMENT SCHEDULE and the Auto Summary are done — see below |
 | `quote-data` and `fill-html`'s `IFormFieldMap` registry are two population paths | the packet builder covers repeating images, the maps cover single forms; they should converge |
+
+---
+
+## 4c. Rendering the quote packet in GhostDraft — what is actually needed
+
+*Added 2026-08-27, third pass, in answer to "what do you need to render this in GhostDraft?"*
+
+Measured today, not recalled. The CA quote packet needs **44 distinct images, and all 44
+already have a `.gd`** in `output/quote-forms-gd`. That sounds finished and is not:
+
+```
+python tools/gdbindings.py output/iso-packages/proprietary-ca-2607 \
+       --templates output/quote-forms-gd
+  templates read      428/428      bindings extracted  1480
+  unresolved  1429 -- 812 cite root 'Quote' (bffb5190-0d36-e2ce-68e2-79a723e733b8),
+                      617 are <path xsi:nil="true"/>
+```
+
+and
+
+```
+grep -l listInstruction output/quote-forms-gd/*.gd   ->  0 of 428
+grep -l conditionType   output/quote-forms-gd/*.gd   ->  0 of 428
+```
+
+So the 428 are **layout conversions with no logic and no resolvable bindings**. Every
+repeat and every condition in the packet — one row per vehicle, one per coverage, suppress
+the lines the quote does not carry, pick the right endorsement edition — is absent from
+them. That logic is exactly what §4b now derives from the DDTs for the HTML side, so we
+know what to author; it is authoring work, not discovery work.
+
+### One hard blocker, and it is not ours to clear
+
+> **The GhostDraft Quote package export.** 812 of 1,480 fill points cite concept root
+> `Quote`, guid `bffb5190-0d36-e2ce-68e2-79a723e733b8`, and that guid is in **neither**
+> package we hold (`commercial-auto-2607`, `proprietary-ca-2607`). Concept GUIDs are
+> per-package (§43.6), so without it not one quote binding can be resolved, validated or
+> rendered. We need the `.gdsp`, plus its GDXSD and Integration Specification if they exist.
+>
+> **If no such package exists**, say so plainly rather than absorbing it: the GhostDraft
+> half then becomes "design and build a Quote concept model", which is a modelling project
+> needing Products and GhostDraft sign-off on the concept names — those names become the
+> integration contract. We can build one (`make-concept-library` already emits an extended
+> `.gdm` with our own Quote concepts), but it is not a conversion and should not be
+> estimated as one.
+
+### Two decisions needed alongside it
+
+| | |
+|---|---|
+| **Who owns the Server XML** | GhostDraft renders from Server XML, which fact-docgen's section builders produce — and there is no builder for a quote root. The POC does not have to wait for one: `quote-data` already assembles exactly this content from the CDM (628 field values on `BAP000080307`) and could emit Server XML directly. That is the fast path; a fact-docgen builder is the production path. Pick one for the POC. `xmlsupply.py` measures the gap the moment we have the package. |
+| **Which GhostDraft environment renders it** | the sandbox Studio project Products provided (`Cody's World.gdproj`) is what we have proven against, end to end — a machine-authored `.gd` with a list, five conditionals and eight bindings rendered a populated PDF. Confirm that is the target for the POC, or name the real one. |
+
+### What we already have and do not need to be given
+
+* **The packet graph and its order** — 277 placements over 160 images, from FORM.DAT and
+  the DDTs (§4b). This is the same input GhostDraft's `subscriptionType` graph needs, so
+  the two renderers can be driven from one source rather than two hand-kept lists.
+* **The data** — `quote-data`, mapping the DDT's extract-table filters onto CDM collections.
+* **Authoring with logic** — `gdauthor.py` emits `Repeat`/`Cond`/`Fill`/`Static`/`Break` and
+  verifies the grammar from the written bytes; `--selftest` mutates five ways.
+* **Registering, validating, packaging** — `gdproject.py` (text splice, never re-serialise
+  the manifest), `gdvalidate.py` (GhostDraft's own `CreateSnapshot.exe`), `gdpackage.py`.
+* **The legacy vocabulary and presentation rules** — `MOE_ASAH.TBL`, the `CPPQ_*` DAL subs
+  and the DDT's `MODE=R`, all now read rather than guessed. A GhostDraft template needs the
+  same wording and the same alignment, so this work carries over unchanged.
+
+**Order of operations once the package lands:** point `gdbindings.py` at it and re-measure
+(the 3.4% figure was against the wrong model); `gdxsdcheck` / `gdspeccheck` for a baseline;
+register the 44 into a Studio project and let `gdvalidate.py` compile them; then author the
+list and conditional logic per §4b, one image at a time, against the HTML render as the
+oracle for values and the Products render as the oracle for layout.
 
 ---
 
