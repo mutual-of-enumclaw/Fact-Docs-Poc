@@ -140,6 +140,25 @@ class Table:
 
 
 @dataclass
+class PageBreak:
+    """A hard page break."""
+    pass
+
+
+@dataclass
+class Image:
+    """A picture, embedded in the RTF as a hex blob.
+
+    That is how the ISO templates carry one -- `shppict` / `pict` / `pngblip`, no
+    external resource reference -- so a `.gd` stays self-contained. `width` and
+    `height` are in POINTS; RTF wants twips, which is 20 to the point.
+    """
+    png: bytes
+    width: float
+    height: float
+
+
+@dataclass
 class PageNumber:
     """`Page 3` -- an RTF field, evaluated by the renderer at print time. The page
     number is a property of the LAYOUT and no data source can supply it, which is
@@ -428,6 +447,14 @@ class Emitter:
                 rtf_parts.append(_marker(end_id))
                 continue
 
+            if isinstance(node, PageBreak):
+                rtf_parts.append(BS + 'page ' + _par())
+                continue
+
+            if isinstance(node, Image):
+                rtf_parts.append(_pict(node.png, node.width, node.height))
+                continue
+
             if isinstance(node, PageNumber):
                 rtf_parts.append(_field('NUMPAGES' if node.total else 'PAGE', '1'))
                 continue
@@ -593,6 +620,26 @@ def _after_table() -> str:
     return (BS + 'pard' + BS + 'plain' + BS + 'ql' + BS + 'li0' + BS + 'ri0'
             + BS + 'fi0' + BS + 'sb0' + BS + 'sa0' + BS + 'sl240' + BS + 'slmult1'
             + BS + 'widctlpar ')
+
+
+def _pict(png: bytes, width_pt: float, height_pt: float) -> str:
+    """The embedded-picture wrapper, transcribed from the ISO package.
+
+    `picwgoal`/`pichgoal` are the DISPLAYED size in twips and are what actually
+    governs; `picw`/`pich` are the source dimensions and production writes 0 for
+    both, letting the goal sizes decide.
+    """
+    hexdata = png.hex()
+    return ('{' + BS + 'cf0' + BS + 'f1' + BS + 'fs20' + BS + 'ulnone' + BS + 'ulc0 '
+            '{' + BS + '*' + BS + 'shppict{{' + BS + 'pict'
+            '{' + BS + '*' + BS + 'picprop'
+            '{' + BS + 'sp{' + BS + 'sn fPreferRelativeResize}{{' + BS + 'sv 1}}}'
+            '{' + BS + 'sp{' + BS + 'sn fLockAspectRatio}{{' + BS + 'sv 1}}}}'
+            + BS + 'picwgoal' + str(int(round(width_pt * 20)))
+            + BS + 'pichgoal' + str(int(round(height_pt * 20)))
+            + BS + 'picw0' + BS + 'pich0'
+            + BS + 'picscalex100' + BS + 'picscaley100' + BS + 'pngblip\n'
+            + hexdata + '}}}}')
 
 
 def _field(name: str, sample: str, in_table: bool = True) -> str:

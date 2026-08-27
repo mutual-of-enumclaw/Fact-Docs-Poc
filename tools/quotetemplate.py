@@ -25,15 +25,17 @@ Usage
 from __future__ import annotations
 
 import argparse
+import base64
 import os
+import re
 import sys
 from typing import Sequence
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import quotemodel as qm                                     # noqa: E402
 from gdauthor import (Break, Cell, Cond, Emitter, Envelope, Fill,  # noqa: E402
-                      Furniture, IS_PROVIDED, PageNumber, Path, Repeat, Row,
-                      Static, Table, _stable_guid, verify, wrap)
+                      Furniture, IS_PROVIDED, Image, PageBreak, PageNumber, Path,
+                      Repeat, Row, Static, Table, _stable_guid, verify, wrap)
 from gdmodel import Model                                    # noqa: E402
 
 # Usable width between the margins RTF_HEAD declares: 12240 - 1440 - 1440.
@@ -131,20 +133,107 @@ def money(body: list, width: int) -> Cell:
 # ------------------------------------------------------------------- the sections
 
 
+FRAG = os.path.join(REPO, "output", "quote-poc", "frag")
+
+
+def from_fragment(image: str, fields: dict) -> list:
+    """Build a section's STATIC content from the FAP, not by hand.
+
+    An earlier version of `cover()` was typed out from the field list, so the page
+    came out as three labels and three values: the banner image, the green footer
+    bar and every line of marketing copy -- 76 `M,` records and 11 `T,` records in
+    QTE_COVER_A -- were simply absent. Products asked where the text went, and the
+    answer was that I never carried it over.
+
+    So the content comes from `emit-html`'s own output for the image, which is the
+    parser the HTML render is built on: text runs, images already decoded from the
+    Documaker `.LOG` rasters, and field spans keyed by FAP field name. Reading order
+    is top then left, and a change of line becomes a Break.
+
+    `fields` maps a FAP field name to a concept Path; a field not in it is skipped
+    rather than guessed at.
+    """
+    path = os.path.join(FRAG, image + ".html")
+    if not os.path.exists(path):
+        raise SystemExit(f"no emit-html fragment for {image} -- run tools/htmlpacket.py "
+                         f"first, it caches them in {FRAG}")
+    html = open(path, encoding="utf-8").read()
+    # ONE SECTION PER PAGE. QTE_COVER_A is a two-page image -- the cover and then a
+    # page of disclaimer -- and reading the file as one stream sorted the two pages'
+    # text together by vertical position, which spliced "This Mutual of Enumclaw
+    # Quote is personally prepared for" into the middle of the disclaimer.
+    pages = re.findall(r'<section class="form-page".*?</section>', html, re.S)
+    out: list = []
+    for n, body in enumerate(pages):
+        if n:
+            out.append(PageBreak())
+        out.extend(_page_nodes(body, fields))
+    return out
+
+
+def _page_nodes(body: str, fields: dict) -> list:
+    items: list[tuple[float, float, str, object]] = []
+    for m in re.finditer(r'<span class="abs"[^>]*style="([^"]*)"[^>]*>([^<]*)</span>',
+                         body):
+        st, text = m.group(1), m.group(2)
+        if not text.strip():
+            continue
+        items.append((_pt(st, "top"), _pt(st, "left"), "text", _unescape(text)))
+    for m in re.finditer(r'<span class="abs field"[^>]*data-field="([^"]+)"'
+                         r'[^>]*style="([^"]*)"', body):
+        name, st = m.group(1), m.group(2)
+        if name in fields:
+            items.append((_pt(st, "top"), _pt(st, "left"), "fill", fields[name]))
+    # `src` comes BEFORE `style` on emit-html's img tags, so match the tag and then
+    # pick the attributes out of it rather than assuming an order.
+    for m in re.finditer(r'<img\b[^>]*>', body):
+        tag = m.group(0)
+        src = re.search(r'src="data:image/png;base64,([^"]+)"', tag)
+        st = re.search(r'style="([^"]*)"', tag)
+        if not (src and st):
+            continue
+        style = st.group(1)
+        items.append((_pt(style, "top"), _pt(style, "left"), "image",
+                      (base64.b64decode(src.group(1)),
+                       _pt(style, "width"), _pt(style, "height"))))
+
+    items.sort(key=lambda i: (round(i[0], 1), i[1]))
+    out: list = []
+    line: float | None = None
+    for top, _left, kind, payload in items:
+        if line is not None and abs(top - line) > 1.5:
+            out.append(Break())
+        line = top
+        if kind == "text":
+            out.append(Static(payload + " "))
+        elif kind == "fill":
+            out.append(Fill(payload))
+        else:
+            png, w, h = payload
+            out.append(Image(png, w, h))
+    out.append(Break())
+    return out
+
+
+def _pt(style: str, prop: str) -> float:
+    m = re.search(prop + r":(-?[\d.]+)pt", style)
+    return float(m.group(1)) if m else 0.0
+
+
+def _unescape(s: str) -> str:
+    return (s.replace("&amp;", "&").replace("&lt;", "<")
+             .replace("&gt;", ">").replace("&quot;", '"'))
+
+
 def cover() -> list:
-    return [
-        Static("This Mutual of Enumclaw Quote is personally prepared for"), Break(),
-        Fill(scalar("Insured Name")), Break(),
-        *labelled("", scalar("Insured Name 2")),
-        Break(),
-        Static("Presented by"), Break(),
-        Fill(scalar("Agent Name")), Break(),
-        *labelled("", scalar("Agent Phone")),
-        Break(),
-        Static("Proposed Policy Period"), Break(),
-        Fill(scalar("Proposal Period")), Break(),
-        Break(),
-    ]
+    """`QTE_COVER_A` in full -- banner, marketing copy, green footer bar and the
+    four fields -- taken from the form rather than retyped."""
+    return from_fragment("QTE_COVER_A", {
+        "INSURED NAME1": scalar("Insured Name"),
+        "AGENT NAME": scalar("Agent Name"),
+        "AGENT PHONE": scalar("Agent Phone"),
+        "PROPOSAL PERIOD": scalar("Proposal Period"),
+    })
 
 def premium_summary() -> list:
     lines = list_path("Insurance Lines")
