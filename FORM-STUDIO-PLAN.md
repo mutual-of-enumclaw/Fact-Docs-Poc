@@ -3796,3 +3796,74 @@ Studio -> resolves the bindings             <- open the project and look
 nesting. What was unresolved there was the library, and the library is present in this project. If a
 red underline survives, the model panel is the thing to photograph: it named the cause correctly
 both previous times, where the tooltip did not.
+
+## 49. CORRECTION to section 48: the manifest edit was wrong three ways (2026-08-26)
+
+Section 48 reported the template registered and verified. Products opened the project and it **was
+not in the list**. Section 48's verification was real but measured the wrong things: it counted
+elements and compared section sizes, and every one of those checks passed while the file was broken.
+
+Three defects, in descending order of how badly they broke it.
+
+### 1. ElementTree destroyed the namespaces (fatal)
+
+The `.gdproj` declares its default namespace **per element**:
+
+```xml
+<Content Name="GhostBridge" ...>                          <!-- NO namespace -->
+  <Project xmlns:xsd="..." xmlns:xsi="..." name="...">    <!-- NO namespace -->
+    <temporaryStorageIdentifier xmlns="http://schemas.korbitec.com/GhostBridge/1.0">
+```
+
+Parsing and re-serialising with ElementTree hoisted that into a prefixed form, rewriting **every
+element in the file** as `ns0:…`. And because the ROOT carries no namespace, `register()` derived
+`ns = ''` from it and created the new `<document>` in **no namespace at all** — while its 83
+siblings had just become `ns0:`. Studio was correct to ignore it.
+
+The lesson is narrow and worth keeping: **do not round-trip a hand-maintained XML file through a
+parser to make a local edit.** Splice the text. The rewrite is now a text insertion that copies an
+existing sibling's exact shape.
+
+### 2. The entry was missing `<artifactStatusGuid>`
+
+A real entry has ten fields; the emitted one had eight:
+
+```xml
+<lockable>false</lockable>                                    <!-- ours said true -->
+<artifactStatusGuid>3632343c-…</artifactStatusGuid>           <!-- ours had none -->
+```
+
+That guid is the status column visible in Studio's document list. The project defines eight statuses
+(`Done`, `New`, `Ready for Testing`, `GD Support Needed`, `Blocked`, and three reviewer names); a
+newly authored form takes **`New`**. This was findable by diffing the emitted block against a
+sibling, which §48 never did — it compared *counts*, not *shapes*.
+
+### 3. CRLF silently became LF across the whole file
+
+Caught while re-verifying rather than by Products. The manifest is 61,933 bytes but 60,578
+characters: it is CRLF, and reading in text mode then writing with `newline=''` converted **1,355
+line endings**. Harmless to XML, and it made §48's claim of "nothing else changed" false. Reading
+and writing now both use `newline=''`, and the inserted block adopts the file's own EOL.
+
+### The verification that would have caught all three
+
+Not element counts — **bytes**:
+
+```
+BYTES 61,933 -> 62,467  (+534)
+identical prefix 44,187 + identical suffix 17,746 = 61,933 = the whole original
+old middle 0 bytes  =>  pure insertion, nothing removed or altered
+CRLF 1355 -> 1366 (+11, the new lines);  LF-only 0 -> 0
+parses OK; documents 84; the new entry IS in the GhostBridge namespace
+```
+
+`register()` now asserts the prefix/suffix invariant *before* writing, so a future edit that
+disturbs anything else fails instead of shipping.
+
+### The rule
+
+**A verification that counts is weaker than one that compares.** §48 checked that eight sections had
+the same number of children and that the document count went 83 -> 84 — all true of a file Studio
+could not use. The defect was in the SHAPE of one element and the ENCODING of every line, and only a
+byte comparison against the original and a field-by-field diff against a working sibling could see
+it. This is the same failure mode as §37's vacuous gates, in a new place.
