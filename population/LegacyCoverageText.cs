@@ -120,18 +120,62 @@ public static class LegacyCoverageText
 	}
 
 	/// <summary>
-	/// The Limit Amount column. Straight from the coverage's own limit property, except
-	/// RENTAL, which <c>CPPQ_CAV1_LIMIT</c> prints as <c>days/perDay</c> — "30/75".
+	/// Coverages whose Limit column the INSURANCE-LINE table leaves blank.
+	/// <c>CPPQ_CAA_LIMIT</c>'s final branch prints the line's own limit only for a code
+	/// that is NOT in its <c>SearchData</c> list, and this is that list verbatim. It is
+	/// why the reference document shows a limit against "NonOwned Automobile" and none
+	/// against "NonOwned Social Service Volunteer Donors" or "NonOwned Volunteers", even
+	/// though the CDM carries one for all three.
 	/// </summary>
-	public static string Limit(Coverage coverage)
+	private static readonly HashSet<string> LineTableNoLimit = new(StringComparer.OrdinalIgnoreCase)
 	{
-		if ((coverage.Code ?? "").Trim().Equals("RENTAL", StringComparison.OrdinalIgnoreCase))
+		"EA9910", "EA9911", "COMP", "COLL", "REINS", "FINRES", "HLDHRM",
+		"DOC-CM", "DOC-CO", "HIRECO", "HIRECM", "HIRESP", "REPO",
+		"NONDON", "NONEMP", "NONPAR", "NONVOL", "MANCA",
+	};
+
+	/// <summary>
+	/// The Limit Amount column.
+	/// </summary>
+	/// <param name="siblings">
+	/// The other rows of the same table — needed because two of the legacy branches read
+	/// a LINE-level value rather than the coverage's own.
+	/// </param>
+	/// <param name="lineTable">
+	/// True for the insurance-line table (<c>CPPQ_CAA_LIMIT</c>), false for the per-vehicle
+	/// table (<c>CPPQ_CAV1_LIMIT</c>). The two DALs do not agree, so the caller has to say
+	/// which one it is.
+	/// </param>
+	public static string Limit(Coverage coverage, IEnumerable<Coverage>? siblings = null,
+		bool lineTable = false)
+	{
+		var code = (coverage.Code ?? "").Trim();
+
+		// CPPQ_CAV1_LIMIT: RENTAL prints days/perDay.
+		if (code.Equals("RENTAL", StringComparison.OrdinalIgnoreCase))
 		{
 			var days = Number(coverage, "NumberOfDays");
 			var perDay = Number(coverage, "MaxAmountPerDay");
 			if (days is > 0 && perDay is > 0)
 				return $"{days.Value:0}/{perDay.Value:0}";
 		}
+
+		if (lineTable)
+		{
+			// CPPQ_CAA_LIMIT: every POLL… coverage shows the SAME line-level pollution
+			// limit (BBALVXVAL), which is why the reference prints 100,000 against both
+			// Hired Auto and Private Passenger where the CDM carries it on only one.
+			if (code.StartsWith("POLL", StringComparison.OrdinalIgnoreCase))
+			{
+				var shared = (siblings ?? Enumerable.Empty<Coverage>())
+					.Where(c => (c.Code ?? "").StartsWith("POLL", StringComparison.OrdinalIgnoreCase))
+					.Select(c => FirstNumeric(c, LimitNames))
+					.FirstOrDefault(v => v is not null and not 0);
+				if (shared is not null) return Money(shared);
+			}
+			if (LineTableNoLimit.Contains(code)) return "";
+		}
+
 		return Money(FirstNumeric(coverage, LimitNames));
 	}
 
@@ -143,9 +187,18 @@ public static class LegacyCoverageText
 	/// against Auto Loan/Lease Gap Comprehensive and 2,000 against its Collision twin
 	/// where the CDM carries neither.
 	/// </summary>
-	public static string Deductible(Coverage coverage, IEnumerable<Coverage> siblings)
+	public static string Deductible(Coverage coverage, IEnumerable<Coverage> siblings,
+		bool lineTable = false)
 	{
 		var code = (coverage.Code ?? "").Trim().ToUpperInvariant();
+
+		// CPPQ_CAA_DEDUCTIBLE prints a LITERAL 500 against the drive-other-car physical
+		// damage coverages when the line carries them:
+		//     hardexst;TBLOFF,ASBBCPL1,BBAGTX,CA,BBI3TX,Y 500
+		// It is a constant in the form, not a value in the data, and the CDM carries no
+		// deductible on either coverage — so the reference shows 500 where we showed blank.
+		if (lineTable && code is "DOC-CM" or "DOC-CO") return "500";
+
 		string? inheritFrom = code switch
 		{
 			"LOANCM" or "LEASCM" => "COMP",

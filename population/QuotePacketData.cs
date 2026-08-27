@@ -259,7 +259,7 @@ public static class QuotePacketDataBuilder
 					Fields =
 					{
 						["COVERAGE"] = LegacyCoverageText.Describe(cov),
-						["LIMIT"] = LegacyCoverageText.Limit(cov),
+						["LIMIT"] = LegacyCoverageText.Limit(cov, own),
 						["DEDUCTIBLE"] = LegacyCoverageText.Deductible(cov, own),
 						["PREMIUM"] = Money(cov.Premium),
 					},
@@ -295,8 +295,10 @@ public static class QuotePacketDataBuilder
 				Fields =
 				{
 					["COVERAGE"] = LegacyCoverageText.Describe(cov),
-					["LIMIT"] = LegacyCoverageText.Limit(cov),
-					["DEDUCTIBLE"] = LegacyCoverageText.Deductible(cov, lineCoverages),
+					// lineTable: CPPQ_CAA_* and CPPQ_CAV1_* disagree about these two
+					// columns, so which table this is has to be said out loud.
+					["LIMIT"] = LegacyCoverageText.Limit(cov, lineCoverages, lineTable: true),
+					["DEDUCTIBLE"] = LegacyCoverageText.Deductible(cov, lineCoverages, lineTable: true),
 					["PREMIUM"] = Money(cov.Premium),
 				},
 			});
