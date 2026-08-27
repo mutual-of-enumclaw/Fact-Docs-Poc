@@ -69,7 +69,23 @@ CHROME = r"C:\Program Files\Google\Chrome\Application\chrome.exe"
 SECTION_RE = re.compile(
     r'<section class="form-page"[^>]*>(.*?)</section>', re.S)
 FONTFACE_RE = re.compile(r"@font-face\{.*?\}", re.S)
-FAMILY_RE = re.compile(r"font-family:'([^']+)'")
+# A face is identified by family AND weight AND style, not by family alone. Keying the
+# dedupe on the family name alone let a bold-only fragment (QCPP_CAV_B declares just
+# the bold cut of F_UniversATT) claim the name for the whole document, and every page
+# that used it rendered bold.
+FACE_KEY_RE = re.compile(
+    r"font-family:'([^']+)'|font-weight:\s*([\w]+)|font-style:\s*([\w]+)")
+
+
+def face_key(rule: str) -> Optional[str]:
+    family = weight = style = None
+    for m in FACE_KEY_RE.finditer(rule):
+        family = m.group(1) or family
+        weight = m.group(2) or weight
+        style = m.group(3) or style
+    if not family:
+        return None
+    return f"{family}|{weight or 'normal'}|{style or 'normal'}"
 
 
 # --------------------------------------------------------------- fragment emission
@@ -139,9 +155,9 @@ class FragmentCache:
         body = m.group(1).strip() if m else ""
         faces: Dict[str, str] = {}
         for face in FONTFACE_RE.findall(html):
-            fam = FAMILY_RE.search(face)
-            if fam:
-                faces.setdefault(fam.group(1), face)
+            key = face_key(face)
+            if key:
+                faces.setdefault(key, face)
         self._body[image] = body
         self._faces[image] = faces
         return body, faces
@@ -159,6 +175,10 @@ class Placement:
     instance: int      # 1-based, within its parent
     count: int
     fields: Dict[str, str]
+    # Placements that must not be split across a page break. A vehicle block is its
+    # header image plus that vehicle's coverage rows and total; legacy keeps them
+    # together and breaking between them left a stranded header at the foot of a page.
+    group: str = ""
 
 
 class PacketData:
@@ -202,7 +222,8 @@ class PacketData:
 def expand(image: str, repeats: Dict[str, int], data: PacketData,
            role: str = "body", depth: int = 0, driver: str = "",
            parent_index: int = -1,
-           seen: Optional[frozenset] = None) -> List[Placement]:
+           seen: Optional[frozenset] = None,
+           group: str = "") -> List[Placement]:
     """Depth-first expansion of an image and its PNTAddImgAfterCurImg children.
 
     The DDT says WHICH image repeats and over which extract table; the data
@@ -219,11 +240,14 @@ def expand(image: str, repeats: Dict[str, int], data: PacketData,
 
     out: List[Placement] = []
     for i, fields in enumerate(rows):
-        out.append(Placement(image, depth, role, driver, i + 1, len(rows), fields))
+        # One group per depth-1 subtree: the block a reader sees as a unit.
+        mine = group if depth > 1 else (f"{image}#{i}" if depth == 1 else "")
+        out.append(Placement(image, depth, role, driver, i + 1, len(rows), fields,
+                             mine))
         for child in rules.children:
             out.extend(expand(child.image, repeats, data, role, depth + 1,
                               str(child.driver) if child.driver else "",
-                              i, seen | {image}))
+                              i, seen | {image}, mine))
     return out
 
 
@@ -252,6 +276,8 @@ class Assembler:
         self._geom: Dict[str, dp.ImageRules] = {}
         self.filled = 0
         self.shrunk = 0
+        self.widened = 0
+        self._boxes: Dict[str, List[Tuple[float, float, float]]] = {}
         self.no_span: List[str] = []
         self.unverified: List[str] = []
 
@@ -342,7 +368,15 @@ class Assembler:
             if page:
                 self.pages.append(page)
 
+        # How tall each keep-together group is, so a break can be taken BEFORE it.
+        group_height: Dict[str, int] = {}
+        for p in body:
+            if p.group and self.geom(p.image).origin_y_mode.lower() != "abs":
+                group_height[p.group] = (group_height.get(p.group, 0)
+                                         + self.advance(p.image))
+
         open_page()
+        started: set = set()
         for p in body:
             g = self.geom(p.image)
             if g.origin_y_mode.lower() == "abs":
@@ -352,9 +386,17 @@ class Assembler:
                                    p.driver, p.fields))
                 continue
             h = self.advance(p.image)
+            # At the START of a group, reserve the whole group -- unless it is taller
+            # than a page on its own, in which case it has to split somewhere.
+            if p.group and p.group not in started:
+                started.add(p.group)
+                whole = group_height.get(p.group, h)
+                if whole <= footer_top:
+                    h = whole
             if y + h > footer_top and y > 0:
                 close_page()
                 open_page()
+            h = self.advance(p.image)
             top = y + g.y_offset
             page.append(Placed(p.image, len(self.pages), top, h,
                                p.role, p.instance, p.driver, p.fields))
@@ -372,6 +414,11 @@ class Assembler:
     FIELD_SPAN = (r'(<span class="abs field" data-field="%s"[^>]*>)</span>')
 
     def fill(self, frag: str, pl: Placed) -> str:
+        # `<Image Field Rules Override>` says which fields Documaker RIGHT justifies
+        # (`MODE=R`). Without it the Limit / Deductible / Premium values start at the
+        # left edge of boxes that are much wider than the numbers, so they sit well
+        # left of the column headings -- which is what Products saw.
+        align = self.geom(pl.image).field_rules
         for name, value in pl.fields.items():
             if value == "":
                 continue
@@ -380,7 +427,9 @@ class Assembler:
             if not m:
                 self.no_span.append(f"{pl.image}.{name}")
                 continue
-            opening = self._autosize(m.group(1), value)
+            opening = self._autosize(m.group(1), value, pl.image)
+            if align.get(name, {}).get("align") == "right":
+                opening = opening.replace('style="', 'style="text-align:right;', 1)
             esc = (value.replace("&", "&amp;").replace("<", "&lt;")
                         .replace(">", "&gt;"))
             frag = frag[:m.start()] + opening + esc + "</span>" + frag[m.end():]
@@ -390,14 +439,59 @@ class Assembler:
                 self.filled += 1
         return frag
 
-    # A value wider than its box shrinks to fit, which is what the accepted
-    # fillable-PDF path does: the AcroForm widget auto-sizes its text into the
-    # rectangle rather than spilling over the next label.
+    # A value wider than its box either GROWS THE BOX or shrinks to fit.
+    #
+    # Shrinking alone is what the accepted fillable-PDF path does -- an AcroForm widget
+    # auto-sizes its text into its rectangle rather than spilling over the next label --
+    # and it is right when something sits to the field's right. It is wrong when nothing
+    # does: `VEH1 STATE` is a flowed inline field whose F, record reserves ONE glyph
+    # (7.2pt) for a 15-character value, so shrink-only rendered "WYOMING" at 5pt in a
+    # header line that has nothing after it. Documaker's flowed line just grows.
+    #
+    # So: if no element in the same fragment sits to the right on the same line, widen
+    # to the right margin and keep the form's own point size. Otherwise shrink as before.
     _WIDTH = re.compile(r"width:([0-9.]+)pt")
     _SIZE = re.compile(r"font-size:([0-9.]+)pt")
+    _LEFT = re.compile(r"left:(-?[0-9.]+)pt")
+    _TOP = re.compile(r"top:(-?[0-9.]+)pt")
+    _HEIGHT_PT = re.compile(r"height:([0-9.]+)pt")
     ADVANCE_EM = 0.5
+    RIGHT_MARGIN_PT = 594.0
 
-    def _autosize(self, opening: str, value: str) -> str:
+    def _neighbours(self, image: str) -> List[Tuple[float, float, float]]:
+        """(left, top, bottom) of every positioned element in the fragment."""
+        if image in self._boxes:
+            return self._boxes[image]
+        body, _ = self.cache.get(image)
+        out: List[Tuple[float, float, float]] = []
+        for m in self._STYLE.finditer(body):
+            style = m.group(1)
+            left, top = self._LEFT.search(style), self._TOP.search(style)
+            if not (left and top):
+                continue
+            h = self._HEIGHT_PT.search(style)
+            size = self._SIZE.search(style)
+            extent = float(h.group(1)) if h else (
+                float(size.group(1)) if size else 0.0)
+            t = float(top.group(1))
+            out.append((float(left.group(1)), t, t + max(extent, 1.0)))
+        self._boxes[image] = out
+        return out
+
+    def _room_to_the_right(self, image: str, left: float, top: float,
+                           bottom: float) -> Optional[float]:
+        nearest = None
+        for nl, nt, nb in self._neighbours(image):
+            if nl <= left + 1.0:
+                continue
+            if nb <= top + 0.5 or nt >= bottom - 0.5:   # different line
+                continue
+            nearest = nl if nearest is None else min(nearest, nl)
+        limit = self.RIGHT_MARGIN_PT if nearest is None else nearest
+        room = limit - left
+        return room if room > 0 else None
+
+    def _autosize(self, opening: str, value: str, image: str) -> str:
         w = self._WIDTH.search(opening)
         s = self._SIZE.search(opening)
         if not (w and s):
@@ -408,10 +502,38 @@ class Assembler:
         need = len(value) * cur * self.ADVANCE_EM
         if need <= box:
             return opening
+
+        left, top = self._LEFT.search(opening), self._TOP.search(opening)
+        h = self._HEIGHT_PT.search(opening)
+        if left and top and h:
+            l, t = float(left.group(1)), float(top.group(1))
+            room = self._room_to_the_right(image, l, t, t + float(h.group(1)))
+            if room is not None and room >= need:
+                self.widened += 1
+                return opening.replace(f"width:{w.group(1)}pt", f"width:{need:.2f}pt")
+
         fitted = max(5.0, box / (len(value) * self.ADVANCE_EM))
         self.shrunk += 1
         return opening.replace(f"font-size:{s.group(1)}pt",
                                f"font-size:{fitted:.2f}pt")
+
+    # -------------------------------------------------------------- page numbers
+
+    # QTE_FTR's only field is `QUOTE.PAGE`, and the page number is the one value on
+    # the packet that no policy can supply -- it is a property of the LAYOUT. So it is
+    # filled here, once every form has been laid out and the total is known.
+    PAGE_FIELD = "QUOTE.PAGE"
+
+    def number_pages(self) -> None:
+        total = len(self.pages)
+        for n, placements in enumerate(self.pages, start=1):
+            for pl in placements:
+                if pl.role != "footer":
+                    continue
+                # Copy first: every page's footer was placed from the same Placement
+                # and they share one dict until now.
+                pl.fields = dict(pl.fields)
+                pl.fields[self.PAGE_FIELD] = f"{n} of {total}"
 
     # ------------------------------------------------------------------ rendering
 
@@ -560,6 +682,8 @@ def main(argv: Sequence[str]) -> int:
         print(f"{name:<22} {len(body):>4} placement(s) -> "
               f"page {first_page + 1}..{len(asm.pages)}")
 
+    asm.number_pages()
+
     os.makedirs(os.path.dirname(os.path.abspath(args.out)), exist_ok=True)
     html = asm.html(os.path.basename(args.out))
     open(args.out, "w", encoding="utf-8").write(html)
@@ -571,7 +695,8 @@ def main(argv: Sequence[str]) -> int:
              if cache.failed else ""))
     if args.data:
         print(f"filled   {asm.filled} value(s), verified in the output"
-              + (f", {asm.shrunk} auto-sized into their box" if asm.shrunk else ""))
+              + (f", {asm.shrunk} auto-sized into their box" if asm.shrunk else "")
+              + (f", {asm.widened} widened into free space" if asm.widened else ""))
         if asm.no_span:
             print(f"NO SPAN  {len(asm.no_span)}: "
                   + ", ".join(sorted(set(asm.no_span))[:12]))

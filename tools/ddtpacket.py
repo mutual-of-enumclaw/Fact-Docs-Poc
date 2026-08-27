@@ -187,6 +187,14 @@ class ImageRules:
     origin_y_mode: str = "Max"
     origin_y_val: int = 0
 
+    # <Image Field Rules Override>: FAP field name -> {"align": "right"|"left"}.
+    # A field rule line is semicolon-delimited; slot 6 is the field name, slot 10 the
+    # rule and slot 11 its data:
+    #   ;0;1;;0;0;LIMIT;0;19;;JustFld;CALL("CPPQ_CAA_LIMIT"),MODE=R,RULE=DAL,CLIP;N;…
+    # `MODE=R` is RIGHT JUSTIFY, and it is why the legacy Limit / Deductible / Premium
+    # columns line up under their headers where ours ran left out of the column.
+    field_rules: Dict[str, Dict[str, str]] = field(default_factory=dict)
+
     def _set_dimensions(self, args: str) -> None:
         toks = [t.strip() for t in args.split(",")]
         def num(i: int) -> int:
@@ -237,6 +245,25 @@ def _parse_tablespecs(blob: str) -> List[TableSpec]:
     return specs
 
 
+def _parse_field_rule(rules: ImageRules, line: str) -> None:
+    """One `<Image Field Rules Override>` row -> the presentation we can honour.
+
+    Only justification is read. The rest of the row is the legacy DATA rule
+    (`tbllook`, `move_it`, `CALL("…")` into a DAL sub) and is resolved on the CDM
+    side instead -- see population/LegacyCoverageText.cs.
+    """
+    parts = line.split(";")
+    if len(parts) < 12:
+        return
+    name = parts[6].strip()
+    if not name:
+        return
+    data = parts[11]
+    align = "right" if "MODE=R" in data.upper() else None
+    if align:
+        rules.field_rules.setdefault(name, {})["align"] = align
+
+
 def read_ddt(ddtdir: str, image: str) -> ImageRules:
     path = os.path.join(ddtdir, image + ".DDT")
     if not os.path.exists(path):
@@ -244,11 +271,17 @@ def read_ddt(ddtdir: str, image: str) -> ImageRules:
 
     rules = ImageRules(image)
     in_rules = False
+    in_fields = False
     with open(path, "r", encoding="latin-1") as fh:
         for line in fh:
             s = line.strip()
             if s.startswith("<"):
-                in_rules = s.lower().startswith("<image rules>")
+                low = s.lower()
+                in_rules = low.startswith("<image rules>")
+                in_fields = low.startswith("<image field rules override>")
+                continue
+            if in_fields and s.startswith(";"):
+                _parse_field_rule(rules, s)
                 continue
             if not in_rules or not s.startswith(";"):
                 continue

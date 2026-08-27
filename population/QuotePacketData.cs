@@ -98,7 +98,34 @@ public static class QuotePacketDataBuilder
 			["INSURED NAME2"] = SecondNameLine(insured),
 			["POLICYNBR"] = policy.Number ?? "",
 		});
+		// QTE_FTR's only field is QUOTE.PAGE and the page number is not a property of the
+		// policy -- the assembler fills it once the layout is known.
 		Root(data, "QTE_FTR", new());
+
+		// ---- page 1: the branded cover -------------------------------------------
+		// `QUOTE COVER.4` -> QTE_COVER_A, the page that opens "This Mutual of Enumclaw
+		// Quote is personally prepared for". COVER.1's QTE_COVER is a different, older
+		// cover; all four carry the same field names, so all are populated.
+		//
+		// EFFDATE and EXPDATE are deliberately NOT filled. On QTE_COVER_A they sit at
+		// columns 635 and 1035 -- outside the form's own 1600 left margin, in 7.2pt
+		// boxes -- because they are WORKING fields that feed PROPOSAL PERIOD, which is
+		// the one the reader sees. Filling them printed two dates on top of each other
+		// in the margin.
+		var agency = policy.Parties?.OfType<AgencyParty>().FirstOrDefault();
+		var cover = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
+		{
+			["INSURED NAME1"] = insured?.FullName ?? "",
+			["INSURED NAME2"] = SecondNameLine(insured),
+			["AGENT NAME"] = agency?.FullName ?? "",
+			["AGENT PHONE"] = agency?.Phone ?? "",
+			["PROPOSAL PERIOD"] =
+				$"{Date(policy.EffectiveDate)} to {Date(policy.ExpirationDate)}".Trim(),
+		};
+		foreach (var image in new[] { "QTE_COVER_A", "QTE_COVER_B", "QTE_COVER_C" })
+			Root(data, image, new(cover));
+		// The older QTE_COVER (QUOTE COVER.1) puts the insured in TITLE as well.
+		Root(data, "QTE_COVER", new(cover) { ["TITLE"] = insured?.FullName ?? "" });
 
 		// ---- page 3: premium summary by insurance line ---------------------------
 		// FORM.DAT has two variants of this page and the Products reference document
@@ -176,77 +203,137 @@ public static class QuotePacketDataBuilder
 			return data;
 		}
 
+		// The CA detail page has three FORM.DAT variants -- CPPCA.1/.2/.3, built from
+		// QCPP_CA / _A / _B. The Products reference document prints the .3 layout:
+		// Territory on its own line, no second State row inside the vehicle box, and
+		// the state as a NAME ("WYOMING") in the block header. All three are populated
+		// so any of the entries can be assembled.
 		Root(data, "QCPP_CA", new());
+		Root(data, "QCPP_CA_A", new());
+		Root(data, "QCPP_CA_B", new());
 
 		// One vehicle block per unit, each with its own coverage rows and total.
-		var veh = Child(data, "QCPP_CAV", "QCPP_CA");
-		var vehTotal = Child(data, "QCPP_CAV2", "QCPP_CAV");
+		var vehImages = new[] { "QCPP_CAV", "QCPP_CAV_A", "QCPP_CAV_B" }
+			.Select(v => Child(data, v, "QCPP_CA")).ToArray();
+		var vehTotals = new[] { "QCPP_CAV2", "QCPP_CAV2_A" }
+			.Select(v => Child(data, v, "QCPP_CAV")).ToArray();
 		var vehCov = Child(data, "QCPP_CAV1", "QCPP_CAV");
 		for (int i = 0; i < assets.Count; i++)
 		{
 			var a = assets[i];
-			veh.Instances.Add(new PacketInstance
+			var vehicle = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
 			{
-				ParentIndex = 0,
-				Fields =
+				["VEHICLE A"] = a.InsuredAssetNumber.ToString(CultureInfo.InvariantCulture),
+				["VEH1 YEAR"] = a.Year?.ToString(CultureInfo.InvariantCulture) ?? "",
+				["VEH1 MAKE"] = Join(a.Make, a.Model, a.VehicleDescription),
+				["VEH1 ID NO"] = a.Vin ?? "",
+				["VEH1 RATE CLASS"] = a.ClassCode ?? "",
+				["VEH1 TERRITORY"] = a.TerritoryCode ?? "",
+				// The field is 15 characters and the render says "WYOMING", not "WY".
+				["VEH1 STATE"] = StateName(a.RateState),
+				["VEH1 COSTNEW"] = Money(a.CostNew),
+				["VEH1STCOST"] = Money(a.StatedAmount),
+			};
+			foreach (var img in vehImages)
+				img.Instances.Add(new PacketInstance { ParentIndex = 0, Fields = new(vehicle) });
+			foreach (var img in vehTotals)
+				img.Instances.Add(new PacketInstance
 				{
-					["VEHICLE A"] = a.InsuredAssetNumber.ToString(CultureInfo.InvariantCulture),
-					["VEH1 YEAR"] = a.Year?.ToString(CultureInfo.InvariantCulture) ?? "",
-					["VEH1 MAKE"] = Join(a.Make, a.Model, a.VehicleDescription),
-					["VEH1 ID NO"] = a.Vin ?? "",
-					["VEH1 RATE CLASS"] = a.ClassCode ?? "",
-					["VEH1 TERRITORY"] = a.TerritoryCode ?? "",
-					["VEH1 STATE"] = a.RateState ?? "",
-					["VEH1 COSTNEW"] = Money(a.CostNew),
-					["VEH1STCOST"] = Money(a.StatedAmount),
-				},
-			});
-			vehTotal.Instances.Add(new PacketInstance
-			{
-				ParentIndex = i,
-				Fields = { ["PREMIUM"] = Money(a.TotalPremium) },
-			});
-			foreach (var cov in (a.Coverages ?? new List<Coverage>())
-					 .OrderBy(c => c.Code, StringComparer.Ordinal))
+					ParentIndex = i,
+					Fields =
+					{
+						// QCPP_CAV2_A carries the row LABEL as a field, not as static text.
+						// `ThisVehState` is a CONTROL field -- the DAL reads it to decide
+						// state-specific wording and legacy never prints it, so it stays
+						// blank here rather than putting a stray "WY" in the total row.
+						["TOTAL VERBIAGE"] = "Total Vehicle Premium",
+						["PREMIUM"] = Money(a.TotalPremium),
+					},
+				});
+
+			var own = a.Coverages ?? new List<Coverage>();
+			foreach (var cov in LegacyCoverageText.InVehicleOrder(own))
 				vehCov.Instances.Add(new PacketInstance
 				{
 					ParentIndex = i,
 					Fields =
 					{
-						["COVERAGE"] = cov.Description ?? cov.Code ?? "",
-						["LIMIT"] = Amount(LimitOf(cov)),
-						["DEDUCTIBLE"] = Amount(DeductibleOf(cov)),
+						["COVERAGE"] = LegacyCoverageText.Describe(cov),
+						["LIMIT"] = LegacyCoverageText.Limit(cov),
+						["DEDUCTIBLE"] = LegacyCoverageText.Deductible(cov, own),
 						["PREMIUM"] = Money(cov.Premium),
 					},
 				});
 		}
 
-		// The line-level (non-vehicle) coverage table and the insurance-line total.
+		// The line-level (non-vehicle) coverage table and ITS total.
+		//
+		// "Total Commercial Auto Insurance Line Premium" is NOT the insurance line's
+		// premium. Measured against the reference document, which prints 541 for this
+		// quote: it is the sum of the rows in THIS table -- the line-level coverages --
+		// where the line premium including every vehicle is 9,810. We printed 9,810 and
+		// Products caught it.
+		var lineCoverages = (autoLine.Coverages ?? new List<Coverage>()).ToList();
 		Root(data, "QCPP_CAH", new());
-		var lineTotal = Child(data, "QCPP_CAZ", "QCPP_CAH");
-		lineTotal.Instances.Add(new PacketInstance
-		{
-			ParentIndex = 0,
-			Fields = { ["CA PREM"] = Money(LinePremium(autoLine)) },
-		});
+		Root(data, "QCPP_CAH_A", new());
+		foreach (var img in new[] { "QCPP_CAZ", "QCPP_CAZ_A" }
+					 .Select(v => Child(data, v, "QCPP_CAH")))
+			img.Instances.Add(new PacketInstance
+			{
+				ParentIndex = 0,
+				Fields =
+				{
+					["TOTAL VERBIAGE"] = "Total Commercial Auto Insurance Line Premium",
+					["CA PREM"] = Money(lineCoverages.Sum(c => c.Premium)),
+				},
+			});
 		var lineCov = Child(data, "QCPP_CAA", "QCPP_CAH");
-		foreach (var cov in autoLine.Coverages ?? new List<Coverage>())
+		foreach (var cov in LegacyCoverageText.InLineOrder(lineCoverages))
 			lineCov.Instances.Add(new PacketInstance
 			{
 				ParentIndex = 0,
 				Fields =
 				{
-					["COVERAGE"] = cov.Description ?? cov.Code ?? "",
-					["LIMIT"] = Amount(LimitOf(cov)),
-					["DEDUCTIBLE"] = Amount(DeductibleOf(cov)),
+					["COVERAGE"] = LegacyCoverageText.Describe(cov),
+					["LIMIT"] = LegacyCoverageText.Limit(cov),
+					["DEDUCTIBLE"] = LegacyCoverageText.Deductible(cov, lineCoverages),
 					["PREMIUM"] = Money(cov.Premium),
 				},
 			});
 
+		// Covered auto symbols. The page renders blank without these -- the same
+		// symbol sets BaDecPageFieldMap spreads across the dec page's cells.
+		var symbols = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+		SpreadSymbols(symbols, "LIABCAS", autoLine.LiabilityAutoSymbols?
+			.Select(s => s.AutoSymbol), 4);
+		SpreadSymbols(symbols, "PIPCAS", SymbolsFor(autoLine, "PIP"), 2);
+		SpreadSymbols(symbols, "MPCAS", SymbolsFor(autoLine, "MEDPAY"), 2);
+		SpreadSymbols(symbols, "UMCAS", SymbolsFor(autoLine, "UM"), 3);
+		SpreadSymbols(symbols, "UNCAS", SymbolsFor(autoLine, "UN"), 2);
+		SpreadSymbols(symbols, "COMPCAS", SymbolsFor(autoLine, "COMP"), 2);
+		SpreadSymbols(symbols, "SCLCAS", SymbolsFor(autoLine, "SPEC"), 2);
+		SpreadSymbols(symbols, "COLCAS", SymbolsFor(autoLine, "COLL"), 2);
+		SpreadSymbols(symbols, "TLCAS", SymbolsFor(autoLine, "TOWING"), 2);
+
 		// Endorsement benefit schedules: one image per form AND edition, so the DDT
 		// filter is `ASBECPL1[BEB8NB=EA9911 and BEAMDT=12412]`. Keep only the edition
 		// the policy actually carries.
-		var onPolicy = ((policy.Forms ?? new List<Form>()).Cast<Form>())
+		//
+		// The forms live on the LINE, not on the policy: `Policy.Forms` on this quote
+		// holds a single ME0001 while `Line.Forms` holds 27 including EA9911/2018-03.
+		// Looking only at Policy.Forms is why the EA 99 11 03 18 schedule was missing.
+		//
+		// A form code can appear TWICE with different editions -- this quote carries
+		// EA9911 at both 2018-03 (sequence 32) and 2024-12 (sequence 38), and CA0001 the
+		// same way, both with actionCode "A" so nothing marks one as superseded. Only one
+		// schedule prints, and the reference document prints the 03 18 one. Legacy reads
+		// the extract with `move_it`/`tbllook`, which take the FIRST matching row, so the
+		// lowest form sequence wins here too. INFERRED from that one render -- if a
+		// future quote prints the later edition, this is the rule that is wrong.
+		var onPolicy = AllForms(policy)
+			.Where(f => !string.IsNullOrEmpty(f.FormCode))
+			.GroupBy(f => f.FormCode!, StringComparer.OrdinalIgnoreCase)
+			.Select(g => g.OrderBy(f => f.FormSequenceNumber).First())
 			.Select(f => (Code: f.FormCode ?? "", Edition: EditionKey(f.FormEditionDate)))
 			.ToHashSet();
 		foreach (var (image, code, edition) in EndorsementSchedules)
@@ -258,7 +345,16 @@ public static class QuotePacketDataBuilder
 
 		// Montana has its own auto schedule; every other state gets the symbol page.
 		bool mt = string.Equals(policy.State, "MT", StringComparison.OrdinalIgnoreCase);
-		Count(data, "QTE_COVAUTOSYM", mt ? 0 : 1);
+		foreach (var image in new[] { "QTE_COVAUTOSYM" })
+		{
+			if (mt) { Suppress(data, image); continue; }
+			Get(data, image, parent: null).Instances.Clear();
+			Get(data, image, parent: null).Instances.Add(new PacketInstance
+			{
+				ParentIndex = -1,
+				Fields = new Dictionary<string, string>(symbols, StringComparer.OrdinalIgnoreCase),
+			});
+		}
 		Count(data, "QTE_AUTOSCHED_MT", mt ? 1 : 0);
 		Count(data, "QTE_AUTOSCHED_MT_A", mt ? 1 : 0);
 
@@ -387,6 +483,62 @@ public static class QuotePacketDataBuilder
 		// BaDecPageFieldMap makes for the fields it does not own.
 		_ = insured;
 		return "";
+	}
+
+	/// <summary>Every form the transaction carries — policy, line and unit level.</summary>
+	private static IEnumerable<Form> AllForms(Policy policy)
+	{
+		foreach (var f in policy.Forms ?? new List<Form>()) yield return f;
+		foreach (var line in policy.Lines ?? new List<Line>())
+			foreach (var f in line.Forms ?? new List<Form>()) yield return f;
+		foreach (var asset in policy.InsuredAssets ?? new List<InsuredAsset>())
+			foreach (var f in asset.Forms ?? new List<Form>()) yield return f;
+	}
+
+	/// <summary>
+	/// `VEH1 STATE` is 15 characters wide and the reference render says "WYOMING", so the
+	/// field wants the state NAME. Only the states MoE writes are listed; anything else
+	/// falls through as the code, which is still better than blank.
+	/// </summary>
+	private static string StateName(string? code) => (code ?? "").Trim().ToUpperInvariant() switch
+	{
+		"WA" => "WASHINGTON",
+		"OR" => "OREGON",
+		"ID" => "IDAHO",
+		"AZ" => "ARIZONA",
+		"UT" => "UTAH",
+		"MT" => "MONTANA",
+		"WY" => "WYOMING",
+		var other => other,
+	};
+
+	private static string Date(DateTime? d) =>
+		d?.ToString("MM/dd/yyyy", CultureInfo.InvariantCulture) ?? "";
+
+	/// <summary>
+	/// The covered-auto symbols that apply to one coverage, matched on the coverage code
+	/// the CDM carries on the symbol — the same join
+	/// <see cref="Maps.BaDecPageFieldMap"/> uses for the dec page.
+	/// </summary>
+	private static IEnumerable<string>? SymbolsFor(CommonAutoLine? line, string coverageCode)
+		=> line?.OtherAutoSymbols?
+			.Where(s => string.Equals(s.CoverageCode, coverageCode,
+				StringComparison.OrdinalIgnoreCase))
+			.Select(s => s.AutoSymbol);
+
+	/// <summary>One symbol per numbered cell: LIABCAS1, LIABCAS2, …</summary>
+	private static void SpreadSymbols(IDictionary<string, string> into, string prefix,
+		IEnumerable<string?>? symbols, int cells)
+	{
+		var list = (symbols ?? Enumerable.Empty<string?>())
+			.Where(s => !string.IsNullOrWhiteSpace(s))
+			.Select(s => s!.Trim())
+			.Distinct(StringComparer.OrdinalIgnoreCase)
+			.OrderBy(s => s, StringComparer.Ordinal)
+			.Take(cells)
+			.ToList();
+		for (int i = 0; i < list.Count; i++)
+			into[$"{prefix}{i + 1}"] = list[i];
 	}
 
 	private static string Join(params string?[] parts) =>
