@@ -86,6 +86,14 @@ class Static:
 
 
 @dataclass
+class Break:
+    """End the paragraph. Without these every Static and Fill runs together into
+    one paragraph -- which rendered as a single wall of text on the first real
+    PDF, and is the whole difference between a schedule and a sentence."""
+    pass
+
+
+@dataclass
 class Cond:
     """if <path> then ... [else ...]. `path` is the test; a leaf built-in is fine."""
     path: Path
@@ -171,6 +179,10 @@ class Emitter:
         for node in nodes:
             if isinstance(node, Static):
                 rtf_parts.append(_run(node.text))
+                continue
+
+            if isinstance(node, Break):
+                rtf_parts.append(_par())
                 continue
 
             if isinstance(node, Fill):
@@ -296,6 +308,10 @@ class Emitter:
 def _run(text: str) -> str:
     return '{' + BS + 'cf0' + BS + 'f1' + BS + 'fs20' + BS + 'ulnone' + BS + \
         'ulc0 ' + _rtf(text) + '}'
+
+
+def _par() -> str:
+    return BS + 'par' + BS + 'pard' + BS + 'plain' + BS + 'ql' + BS + 'sb0' + BS +         'sa0' + BS + 'li0' + BS + 'ri0' + BS + 'fi0' + BS + 'sl240' + BS +         'slmult1' + BS + 'nowidctlpar' + BS + 'f1' + BS + 'fs20 '
 
 
 def _marker(iid: str) -> str:
@@ -606,24 +622,39 @@ def demo_spec(model: Model):
     payee = item.members_by_name['LossPayee']
     payee_t = model.types[payee.type_id]
 
+    def row(name, label):
+        """One label/value line, printed only when the value is provided.
+
+        The Break goes INSIDE the conditional: a suppressed field must not leave
+        a blank line behind, which is the difference between a schedule with
+        optional columns and one with holes in it.
+        """
+        return Cond(attr(name).then(*IS_PROVIDED),
+                    then=[Static(label), Fill(attr(name)), Break()])
+
     return [
         Static('LOSS PAYABLE CLAUSE - SCHEDULE OF COVERED AUTOS'),
-        Static('  Policy Number: '),
+        Break(),
+        Static('Policy Number: '),
         Fill(Path('Policy', pol.guid).then(
             policy.members_by_name['Policy Number'].name,
             policy.members_by_name['Policy Number'].guid)),
+        Break(),
+        Break(),
         Repeat(root_veh.then(lpc.name, lpc.guid), 'Auto', body=[
-            field_if_provided('VehicleNumber', '  Auto No. '),
-            field_if_provided('Description', '  Description: '),
+            row('VehicleNumber', 'Auto No.: '),
+            row('Description', 'Description: '),
             Cond(attr('VIN').then(*IS_PROVIDED),
-                 then=[Static('  VIN: '), Fill(attr('VIN'))],
-                 otherwise=[Static('  VIN: not supplied')]),
-            field_if_provided('ComprehensiveDeductible', '  Comp Ded: '),
-            field_if_provided('CollisionDeductible', '  Coll Ded: '),
-            Static('  Loss Payee: '),
+                 then=[Static('VIN: '), Fill(attr('VIN')), Break()],
+                 otherwise=[Static('VIN: not supplied'), Break()]),
+            row('ComprehensiveDeductible', 'Comprehensive Deductible: '),
+            row('CollisionDeductible', 'Collision Deductible: '),
+            Static('Loss Payee: '),
             Fill(auto.then(payee.name, payee.guid).then(
                 payee_t.members_by_name['FullName'].name,
                 payee_t.members_by_name['FullName'].guid)),
+            Break(),
+            Break(),
         ]),
     ]
 

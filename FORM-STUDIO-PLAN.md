@@ -3954,3 +3954,98 @@ had to be run.
 Layout. The snapshot validates markup against the model and says nothing about geometry, and the
 demo's RTF is deliberately plain text. The fidelity axis of §10–39 is not wired into `gdauthor.py`
 at all.
+
+## 51. It rendered — and Products reframed the goal (2026-08-26)
+
+### The chain is closed
+
+Products rendered the authored template from Studio. Extracted text of the PDF:
+
+```
+LOSS PAYABLE CLAUSE - SCHEDULE OF COVERED AUTOS  Policy Number: BAP 0123456 00
+Auto No. 1  Description: Description 1  VIN: VIN 1  Comp Ded: 1.10  Coll Ded: 1.10  Loss Payee: FullName 1
+Auto No. 1  Description: Description 2  VIN: VIN 2  Comp Ded: 1.10  Coll Ded: 1.10  Loss Payee: FullName 2
+Auto No. 1  Description: Description 3  VIN: VIN 3  Comp Ded: 1.10  Coll Ded: 1.10  Loss Payee: FullName 3
+```
+
+Everything the emitter is responsible for worked: the `Policy` binding populated, the **list iterated
+three autos**, the `is provided` conditionals took their TRUE branch (`VIN: VIN 1`, not the else
+text), and all eight fill points resolved to data. **A machine-authored `.gd` with logic renders
+populated PDF.** That was the last unproven link in §43.6, §44.6 and §46.
+
+`Auto No. 1` repeating is **the test data**, checked before blaming the emitter: `1 Auto.xml` carries
+`VehicleNumber='1'` on all three autos, because GhostDraft's data generator suffixes text fields with
+an index and cannot do that to a `WholeNumber`. `Comp Ded: 1.10` is the same artefact.
+
+### The one real defect, which only the render exposed
+
+Everything ran together into a single paragraph. The emitter had no paragraph break at all: `Static`
+and `Fill` appended runs and nothing ever closed the paragraph. Every gate passed it — the grammar
+check, the selftest, the reader round trip, the path validation, GhostDraft's own compiler. **None of
+them can see layout**, and a schedule rendered as one wall of text is useless whatever the bindings
+say.
+
+Fixed with a `Break` spec node emitting `\par`. It goes INSIDE the conditional —
+`Cond(then=[Static(label), Fill(x), Break()])` — so a suppressed field leaves no blank line, which is
+the difference between optional columns and holes.
+
+This is the project's own oldest rule, in a new place: **look at the render before shipping.** Six
+gates and a compiler agreed on a file no reader would accept.
+
+### Products' reframing, which changes the roadmap
+
+> "As far as existing GhostDraft forms not matching exactly what you have parsed it is fine. Products
+> was converting the forms by hand and making tweaks. The idea is mass convert with this tool and
+> then make tweaks from there."
+
+That is a scope decision and it retires work:
+
+* **Parity with existing GhostDraft templates is NOT the bar.** They are hand conversions carrying
+  human tweaks, so they are not an oracle. §46's and §48's "structurally identical to production"
+  results are reassurance, not gates. Do not spend more on matching them — and note GhostDraft
+  canonicalises descriptions and renumbers IDs anyway (§50), so some of that parity was never ours
+  to control.
+* **The bar is: good enough to tweak from.** Throughput and correct bindings, not byte-fidelity.
+
+So the metric that matters is **binding coverage**, because it is exactly the volume of hand-tweaking
+left. Measured in §44.4, the existing C# generator resolves **51 of 1,480 fill points (3.4%)** against
+the real proprietary model, with 812 citing a `Quote` root in no package we hold and 617 unbound. That
+number, not fidelity, is the one to move.
+
+### The gap that actually blocks mass conversion
+
+Everything needed exists except the join:
+
+| piece | state |
+|---|---|
+| FAP parse + geometry | §10–39, high fidelity, feeds `emit-html` |
+| binding resolution against a real model | §40–44, 14,107/14,107 and 0 unresolved |
+| `.gd` logic emission | §43–44, verified, renders |
+| project registration | §47–49 |
+| validation at project scale | §50, GhostDraft's own compiler |
+| **FAP + DDT -> a `gdauthor` spec** | **does not exist** |
+
+`gdauthor.py` takes a hand-written `Repeat`/`Cond`/`Fill` tree. Nothing yet derives one from a parsed
+FAP, and `FapToGhostDraftGenerator` emits fill points only — no lists, no conditionals, no
+subscriptions — bound by field NAME through a catalogue that resolves 3.4%.
+
+§43.5 is the design for that join, and it is the next real piece of work:
+
+```
+>XUnit1 / move_it @GETRECSUSED   ->  Repeat over the list, iterator bound to the item
+DDT filter chain                 ->  the selector on the list
+hardexst presence test           ->  Cond(path.then(*IS_PROVIDED))
+printif                          ->  Cond with parts
+concat of N columns / DAL CALL    ->  ONE attribute; transform moves to the section builder
+movenum picture                  ->  an adornment
+value->text table                ->  the *Wording twin
+sort order                       ->  orderByList
+```
+
+with the binding resolved through `gdmodel` against the target package so a wrong path fails at
+author time (§44.5), and `gdvalidate.py` run over the whole converted project as the batch gate.
+
+Layout is the other half: `gdauthor.py` currently emits plain text runs and uses **none** of the FAP
+geometry. For mass conversion the RTF has to come from the parsed FAP, which is where §10–39's work
+goes — and where the `FormDefinition`-is-not-a-shared-model problem (§44.7 / handoff) finally has to
+be fixed, because that is the model both paths need to read.
