@@ -186,6 +186,11 @@ def build(d: Data) -> str:
     for attr, field in VEHICLE_TYPES:
         x.leaf(eid(attr), vts.get(field, ""))
 
+    # The endorsement benefit schedules the packet selected. quote-data already
+    # decided which edition applies, so presence of the image is the flag.
+    if d.rows("QTE_EA9911E"):
+        x.leaf(eid("EA9911 Schedule"), "Yes")
+
     sym = d.one("QTE_COVAUTOSYM")
     for attr, prefix, cells in SYMBOLS:
         joined = " ".join(v for v in

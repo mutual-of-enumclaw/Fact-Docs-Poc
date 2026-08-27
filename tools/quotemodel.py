@@ -120,6 +120,10 @@ MODEL_ATTRS: Sequence[Attr] = (
     Attr("Specified Causes Of Loss Symbols"),
     Attr("Collision Symbols"),
     Attr("Towing And Labor Symbols"),
+    # Presence, not content: the benefit schedule for this endorsement is a page of
+    # static wording, and it prints only when the quote carries the form. The
+    # template tests it with `is provided`, so any value at all turns the page on.
+    Attr("EA9911 Schedule"),
 )
 
 MODEL_LISTS: Sequence[ListOf] = (

@@ -280,6 +280,11 @@ def premium_summary() -> list:
                 Break(),
             ]),
         ]),
+        # QCPPSUMDTLS_CA -- one static row under the Commercial Auto line, printed
+        # when the quote has units. The DDT drives it off ASB5CPL1 having rows; the
+        # vehicle count is the same fact.
+        Cond(scalar("Vehicle Count").then(*IS_PROVIDED),
+             then=[Static("      Scheduled Autos"), Break()]),
         Cond(scalar("Total Terrorism Premium").then(*IS_PROVIDED),
              then=[Static("*Terrorism Risk Insurance Act"), Break()]),
         Break(),
@@ -326,9 +331,20 @@ def auto_summary() -> list:
         *labelled("Total Vehicle Premium\t", scalar("Auto Total Premium")),
         *labelled("Total Vehicles On Policy\t", scalar("Vehicle Count")),
         Break(),
-        Static("VEHICLE TYPES SUMMARY"), Break(),
-        *[x for c in counts for x in labelled(c + "\t", scalar(c))],
-        Break(),
+        # From the form. My typed version said "Heavy Trucks" where QCPP_CAVS_VTS
+        # says "Heavy Trucks and Truck Tractors", and "Extra Heavy Trucks" for
+        # "Extra Heavy Trucks and Truck Tractors".
+        *from_fragment("QCPP_CAVS_VTS", {
+            "LIGHT": scalar("Light Trucks"),
+            "MEDIUM": scalar("Medium Trucks"),
+            "HEAVY": scalar("Heavy Trucks"),
+            "XHEAVY": scalar("Extra Heavy Trucks"),
+            "TRAILERS": scalar("Trailers"),
+            "BUSES": scalar("Buses"),
+            "PPTS": scalar("Private Passenger Autos"),
+            "ALLOTHERS": scalar("All Other Vehicles"),
+            "TOTSUMVEHS": scalar("Vehicle Count"),
+        }),
     ]
 
 
@@ -353,6 +369,21 @@ def coverage_table(rows_repeat: Repeat, total_label: str = "",
             money(value(total_path), w[3]),
         ]))
     return Table(rows=rows)
+
+
+# One string per coverage in the model, spread over the numbered cells the form
+# draws. The cell names are QTE_COVAUTOSYM's own fields.
+SYMBOL_CELLS = [
+    ("Liability Symbols", "LIABCAS", 4),
+    ("Personal Injury Protection Symbols", "PIPCAS", 2),
+    ("Medical Payments Symbols", "MPCAS", 2),
+    ("Uninsured Motorists Symbols", "UMCAS", 3),
+    ("Underinsured Motorists Symbols", "UNCAS", 2),
+    ("Comprehensive Symbols", "COMPCAS", 2),
+    ("Specified Causes Of Loss Symbols", "SCLCAS", 2),
+    ("Collision Symbols", "COLCAS", 2),
+    ("Towing And Labor Symbols", "TLCAS", 2),
+]
 
 
 def auto_detail() -> list:
@@ -391,9 +422,14 @@ def auto_detail() -> list:
 
     return [
         Static("Commercial Auto"), Break(),
-        Static("COVERED AUTO SYMBOLS"), Break(),
-        *[x for label, attr in symbols for x in labelled(label + "\t", scalar(attr))],
-        Break(),
+        # The whole image, not just the coverage labels: my hand-written version
+        # dropped the "Symbol Definitions" legend -- all ten of 1=ANY "AUTO." through
+        # 10=REFER TO CA 99 54 -- which is the half of the page that explains it.
+        *from_fragment("QTE_COVAUTOSYM", {
+            f"{prefix}{i}": scalar(attr)
+            for attr, prefix, cells in SYMBOL_CELLS
+            for i in range(1, cells + 1)
+        }),
         coverage_table(
             Repeat(line_covs, "Line Coverage", body=[
                 Row(cells=[
@@ -406,6 +442,12 @@ def auto_detail() -> list:
             "Total Commercial Auto Insurance Line Premium",
             scalar("Auto Line Premium")),
         Break(),
+        # The EA 99 11 03 18 benefit schedule -- a page of static wording that prints
+        # only when the quote carries the endorsement, which is what the packet's own
+        # ASBECPL1 filter decides. 54 strings, and the first version of this template
+        # had none of them.
+        Cond(scalar("EA9911 Schedule").then(*IS_PROVIDED),
+             then=[*from_fragment("QTE_EA9911E", {}), PageBreak()]),
         Repeat(vehicles, "Vehicle", body=[
             Static("Commercial Auto - Vehicle # "), Fill(veh("Number")),
             Static("   State: "), Fill(veh("State")), Break(),
@@ -502,12 +544,28 @@ def furniture() -> Furniture:
 
 
 def spec() -> list:
+    """The packet, in the order tools/ddtpacket.py recovers from FORM.DAT and the
+    DDTs -- QUOTE COVER.4, CPPSUM.2, CPPCAVS.3, CPPCA.3, CPP FORMS.1.
+
+    The purely static images go through `from_fragment` rather than being retyped.
+    An audit of the first version against the FAPs found 97 static strings absent
+    from a packet of 210 -- among them the whole EA 99 11 03 18 benefit schedule
+    (54 strings) and the whole Available Payment Plans table (25). They were missing
+    because I transcribed those sections from the rendered screenshots instead of
+    from the form, so whatever I did not happen to look at was never written.
+    """
     return [
-        *cover(),
-        *premium_summary(),
-        *auto_summary(),
-        *auto_detail(),
-        *forms_schedule(),
+        *cover(),                                   # QTE_COVER_A, two pages
+        PageBreak(),
+        *premium_summary(),                         # QCPPSUM_*_A
+        *from_fragment("QTE_DISCLAIMER", {}),
+        *from_fragment("QTE_BILLINFO_A", {}),       # Available Payment Plans
+        PageBreak(),
+        *auto_summary(),                            # QCPP_CAVS_*
+        PageBreak(),
+        *auto_detail(),                             # QTE_COVAUTOSYM, QCPP_CAH_A, CAV_B
+        PageBreak(),
+        *forms_schedule(),                          # QTE_FORM, QTE_CPP95*
     ]
 
 

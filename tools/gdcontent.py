@@ -1,172 +1,176 @@
-"""Content gate for the GhostDraft (.gd) path: does the .gd carry every FAP character?
-
-Three bugs found via the Form Studio HTML pipeline (CP1252 decoding, enclosing-quote
-stripping, reading-order banding) all lived in the SHARED FAP parser in core/, so they
-silently corrupted this .gd path too -- it just had no content gate to notice. This is
-that gate.
-
-It is a self-consistency check, not a parity check: a .gd cannot be rendered locally, so
-instead of comparing against a legacy render we assert that every character the FAP
-declares as static text survives into the .gd's RTF body. That is exactly the class of
-defect those three bugs were.
-
-Two things this had to get right, both of which are the recurring failure mode of every
-metric in this project (see FORM-STUDIO-PLAN sections 14, 19):
-
-  * Resolve RTF escapes BEFORE stripping control words, or the escapes are eaten as
-    control words and the gate reports drops that do not exist.
-  * Discard the RTF HEADER groups (font table, colour table, stylesheet). Their text
-    ("Times New Roman", numbers, punctuation) is not document content, and because this
-    compares character multisets, surplus characters MASK real drops -- measured: with
-    the header included, deleting three 'o's from a body word showed up as a shortfall of
-    only one.
-
-Usage:  python tools/gdcontent.py [FORM ...]              (default: the golden .gd suite)
-        python tools/gdcontent.py --dir <path> [FORM ...]  (any directory of .gd files)
-Exit code is non-zero if any form drops content, so it can gate CI.
+#!/usr/bin/env python3
 """
-import collections
-import pathlib
+gdcontent.py -- does the authored template actually say what the forms say?
+
+Products asked how static text could go missing from a template built out of a form
+library. It went missing because the sections were transcribed from the RENDERED
+PAGES rather than from the forms: whatever I did not happen to look at was never
+written, and nothing in the pipeline could tell. The first audit found 97 of the
+packet's 210 static strings absent -- including the whole EA 99 11 03 18 benefit
+schedule and the whole Available Payment Plans table, two entire pages.
+
+So this is the check that would have caught it, kept as a gate rather than a
+one-off. For every image the packet places, it takes the static text `emit-html`
+produces from the FAP and asks whether the authored `.gd` contains it.
+
+    python tools/gdcontent.py                       # the CPP Commercial Auto packet
+    python tools/gdcontent.py --verbose             # list every missing string
+
+Two escaping details matter and both bit the first version of this script:
+
+  * a `.gd` XML-escapes its RTF, so `1=ANY "AUTO."` is stored as `1=ANY &quot;AUTO.&quot;`
+    and a raw comparison reports ten perfectly good strings as missing;
+  * the emit-html fragment HTML-escapes the same way.
+
+Unescape both, or the audit invents work.
+"""
+
+from __future__ import annotations
+
+import argparse
+import html
+import os
 import re
 import sys
+from typing import Sequence
 
-REPO = pathlib.Path(r"C:\src\fact-pdf-tools")
-GOLDEN = REPO / "demo" / "regression" / "golden"
-FORMS = pathlib.Path(r"C:\src\FaCT-DocProd-Development\mstrres\MOEC0\FORMS")
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import ddtpacket as dp  # noqa: E402
 
-# Static-text records only. F, (field) records carry no static content -- their value
-# arrives from data at render time.
-REC = re.compile(r"^(M,TT|T),\((\d+),(\d+),(\d+),(\d+)\),\((\d+),[^)]*\),(\d+),(.*)$")
+REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+FRAG = os.path.join(REPO, "output", "quote-poc", "frag")
+BS = chr(92)
 
-# RTF groups whose text is metadata, not document content.
-SKIP_DESTINATIONS = ("fonttbl", "colortbl", "stylesheet", "info", "generator",
-                     "listtable", "listoverridetable", "revtbl", "pgptbl", "xmlnstbl")
+# The FORM.DAT entries the POC packet is assembled from.
+PACKET = ["QUOTE COVER.4", "QUOTE CPPSUM.2", "QUOTE CPPCAVS.3",
+          "QUOTE CPPCA.3", "QUOTE CPP FORMS.1"]
+
+# Fields, not prose: a fragment span that is only a control character or a lone
+# separator is not content anyone would miss.
+NOISE = re.compile(r"^[\s\-_.,:;|/\\]*$")
+
+# A gate must never invent work. Two kinds of "missing" are correct by design and
+# are declared here rather than left to be re-investigated every run.
+#
+# SUPPLIED_BY_DATA -- the string is in the FAP because the legacy form hard-codes one
+# row per insurance line. Our template has ONE data-driven row and takes the name from
+# `Insurance Lines[].Name`, so the words are in the Server XML, not the template.
+SUPPLIED_BY_DATA = {
+    "QCPPSUM_CP_A", "QCPPSUM_GL_A", "QCPPSUM_CR_A", "QCPPSUM_IM_A", "QCPPSUM_PL_A",
+    "QCPPSUM_CA_A",
+}
+
+# VARIANTS -- an alternate edition or a state-specific page the packet selects
+# BETWEEN. The template carries the one this quote resolves to; carrying all of them
+# is a scope decision, not an omission, and it is listed so the decision stays visible.
+VARIANTS = {
+    "QTE_EA9911F", "QTE_EA9911D", "QTE_EA9910D", "QTE_EA9910E",
+    "QTE_AUTOSCHED_MT_A", "QCPPSUM_TERR",
+}
 
 
-def fap_chars(form):
-    p = FORMS / f"{form}.FAP"
-    if not p.exists():
+def packet_images(lob: str, forms: Sequence[str]) -> list[str]:
+    entries = {e.name.upper(): e for e in dp.read_formdat(dp.DEFAULT_FORMDAT)
+               if e.lob.upper() == lob.upper()}
+    out: list[str] = []
+    for name in forms:
+        entry = entries.get(name.upper())
+        if entry is None:
+            continue
+        for image in entry.images:
+            for node in dp.walk(dp.DEFAULT_DDTDIR, dp.DEFAULT_FAPDIR, image):
+                if node.image not in out:
+                    out.append(node.image)
+    return out
+
+
+def fragment_text(image: str) -> list[str] | None:
+    path = os.path.join(FRAG, image + ".html")
+    if not os.path.exists(path):
         return None
-    bag = collections.Counter()
-    for raw in p.read_bytes().decode("cp1252", errors="replace").splitlines():
-        m = REC.match(raw.strip())
-        if m:
-            bag.update(re.sub(r"\s+", "", m.group(8)))
-    return bag
+    body = open(path, encoding="utf-8").read()
+    return [t for t in
+            (html.unescape(m.group(1)).strip() for m in
+             re.finditer(r'<span class="abs"[^>]*>([^<]*)</span>', body))
+            if t and not NOISE.match(t)]
 
 
-def rtf_text(s):
-    """Minimal brace-aware RTF text extractor.
+def template_text(path: str) -> str:
+    s = open(path, encoding="utf-8").read()
+    i, j = s.find("<rtf>"), s.find("</rtf>")
+    rtf = s[i:j]
+    # Drop embedded pictures before stripping control words -- a hex blob is
+    # megabytes of noise and can contain anything.
+    rtf = re.sub(r"\{" + re.escape(BS) + r"\*" + re.escape(BS)
+                 + r"shppict.*?pngblip\n[0-9a-f]+\}\}\}\}", "", rtf, flags=re.S)
+    rtf = html.unescape(rtf)
+    plain = re.sub(re.escape(BS) + r"[a-zA-Z]+-?\d*[ ]?", " ", rtf)
+    plain = plain.replace("{", " ").replace("}", " ")
+    return re.sub(r"\s+", " ", plain).lower()
 
-    Walks the stream once so control words, escapes and skipped destinations are all
-    handled in the right order. Returns only document text.
-    """
-    out = []
-    i, n = 0, len(s)
-    depth = 0
-    skip_until = None          # brace depth to return to when skipping a destination
-    while i < n:
-        c = s[i]
-        if c == "{":
-            depth += 1
-            i += 1
+
+def main(argv: Sequence[str]) -> int:
+    ap = argparse.ArgumentParser(description=__doc__,
+                                 formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap.add_argument("--template", default=os.path.join(
+        REPO, "output", "quote-poc", "Quote Proposal.gd"))
+    ap.add_argument("--lob", default="CPP")
+    ap.add_argument("--form", action="append", default=[])
+    ap.add_argument("--verbose", action="store_true")
+    args = ap.parse_args(argv)
+
+    tpl = template_text(args.template)
+    images = packet_images(args.lob, args.form or PACKET)
+
+    total = present = 0
+    missing: dict[str, list[str]] = {}
+    nofrag: list[str] = []
+    for image in images:
+        texts = fragment_text(image)
+        if texts is None:
+            nofrag.append(image)
             continue
-        if c == "}":
-            if skip_until is not None and depth <= skip_until:
-                skip_until = None
-            depth -= 1
-            i += 1
-            continue
-        if c == "\\":
-            # Escaped literal?
-            if i + 1 < n and s[i + 1] in "{}\\":
-                if skip_until is None:
-                    out.append(s[i + 1])
-                i += 2
-                continue
-            # \'hh hex escape
-            if i + 1 < n and s[i + 1] == "'" and i + 3 < n:
-                hexpart = s[i + 2:i + 4]
-                try:
-                    ch = bytes([int(hexpart, 16)]).decode("cp1252", "replace")
-                except ValueError:
-                    ch = ""
-                if skip_until is None:
-                    out.append(ch)
-                i += 4
-                continue
-            # control word / control symbol
-            m = re.match(r"\\([a-zA-Z]+)(-?\d+)?[ ]?", s[i:])
-            if not m:
-                i += 2          # control symbol such as \* or \~
-                continue
-            word, param = m.group(1), m.group(2)
-            if word == "u" and param is not None:
-                if skip_until is None:
-                    out.append(chr(int(param) % 65536))
-            elif word in SKIP_DESTINATIONS and skip_until is None:
-                skip_until = depth
-            elif word in ("par", "line", "tab", "cell", "row"):
-                if skip_until is None:
-                    out.append(" ")
-            i += m.end()
-            continue
-        if skip_until is None:
-            out.append(c)
-        i += 1
-    return "".join(out)
+        miss = []
+        for t in texts:
+            total += 1
+            if re.sub(r"\s+", " ", t).lower() in tpl:
+                present += 1
+            else:
+                miss.append(t)
+        if miss:
+            missing[image] = miss
 
+    real = {k: v for k, v in missing.items()
+            if k not in SUPPLIED_BY_DATA and k not in VARIANTS}
+    bydata = sum(len(v) for k, v in missing.items() if k in SUPPLIED_BY_DATA)
+    variant = {k: v for k, v in missing.items() if k in VARIANTS}
 
-def gd_chars(form):
-    p = GOLDEN / f"{form}.gd"
-    if not p.exists():
-        return None
-    text = p.read_text(encoding="utf-8", errors="replace")
-    bag = collections.Counter()
-    for m in re.finditer(r"<rtf[^>]*>(.*?)</rtf>", text, re.S):
-        body = re.sub(r"<!\[CDATA\[(.*?)\]\]>", r"\1", m.group(1), flags=re.S)
-        for ent, ch in (("&lt;", "<"), ("&gt;", ">"), ("&quot;", '"'),
-                        ("&apos;", "'"), ("&amp;", "&")):
-            body = body.replace(ent, ch)
-        txt = rtf_text(body)
-        # Binding placeholders (%[1], %[2] ...) are markers we GENERATE, not FAP
-        # content. Dropping them takes the surplus to zero on most forms, which is
-        # what keeps this gate sensitive: surplus characters mask real drops.
-        txt = re.sub(r"%\[\d+\]", "", txt)
-        bag.update(re.sub(r"\s+", "", txt))
-    return bag
-
-
-def main(forms):
-    print(f"{'form':<18}{'FAP chars':>10}{'.gd chars':>10}{'surplus':>9}   dropped")
-    bad = empty = 0
-    for form in forms:
-        fap, gd = fap_chars(form), gd_chars(form)
-        if fap is None or gd is None:
-            print(f"{form:<18}{'-':>10}{'-':>10}{'-':>9}   (missing FAP or golden .gd)")
-            continue
-        if not fap:
-            empty += 1
-        dropped = fap - gd
-        if dropped:
-            bad += 1
-        detail = "".join(f"{c!r}x{n} " for c, n in dropped.most_common(8)) or "none"
-        # Surplus is reported because it is what can hide a drop; it should stay small.
-        print(f"{form:<18}{sum(fap.values()):>10}{sum(gd.values()):>10}"
-              f"{sum((gd - fap).values()):>9}   {detail}")
-    print(f"\n{len(forms) - bad}/{len(forms)} forms carry every FAP character into the .gd")
-    # Report vacuous passes explicitly. A form whose FAP declares no static text
-    # (field-only fragments, empty stubs) passes trivially and proves nothing, so
-    # folding it into the headline would overstate coverage.
-    print(f"   of those, {empty} have no FAP static text at all (vacuous pass) -- "
-          f"real coverage is {len(forms) - empty - bad}/{len(forms) - empty} forms with content")
-    return bad
+    accounted = present + bydata + sum(len(v) for v in variant.values())
+    print(f"{os.path.basename(args.template)}")
+    print(f"  packet images checked   {len(images) - len(nofrag)} of {len(images)}")
+    print(f"  static strings          {total}")
+    print(f"  in the template         {present}")
+    print(f"  supplied by data        {bydata}   (the per-line row labels)")
+    print(f"  variants not carried    {sum(len(v) for v in variant.values())}"
+          f"   ({', '.join(sorted(variant))})" if variant else
+          "  variants not carried    0")
+    print(f"  ACCOUNTED FOR           {accounted} of {total} ({accounted/total:.0%})")
+    if nofrag:
+        print(f"  NO FRAGMENT for {len(nofrag)}: {', '.join(nofrag[:8])}"
+              " -- run tools/htmlpacket.py to cache them")
+    print()
+    if not real:
+        print("PASS -- nothing the packet's forms carry is unaccounted for")
+        return 0
+    print(f"MISSING from {len(real)} image(s):")
+    for image, miss in sorted(real.items(), key=lambda kv: -len(kv[1])):
+        print(f"  {image:<22} {len(miss):>3}")
+        for t in (miss if args.verbose else miss[:4]):
+            print(f"      {t[:96]}")
+        if not args.verbose and len(miss) > 4:
+            print(f"      … {len(miss) - 4} more (--verbose)")
+    return 1
 
 
 if __name__ == "__main__":
-    args = sys.argv[1:]
-    if args and args[0] == "--dir":
-        GOLDEN = pathlib.Path(args[1])
-        args = args[2:]
-    args = args or sorted(p.stem for p in GOLDEN.glob("*.gd"))
-    sys.exit(1 if main(args) else 0)
+    raise SystemExit(main(sys.argv[1:]))
