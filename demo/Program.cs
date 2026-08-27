@@ -643,7 +643,30 @@ if (args.Length >= 2 && args[0] == "emit-html")
             // header row has three or four columns; a pair of boxes side by side is
             // often just two boxes. Requiring three keeps the case Products validated
             // (M7902AA has four) and gives back the recall the looser rule cost.
+            //
+            // ...UNLESS THE COLUMN REPEATS DOWN THE PAGE. A row of side-by-side records is
+            // underlines when it happens ONCE and a table when it happens again beneath
+            // itself, and that is the difference the sibling count cannot see. Products
+            // caught this on the payment-plan table (QTE_BILLINFO_A): legacy draws a full
+            // grid, we drew four horizontal rules per row and no verticals.
+            //
+            // The two cases, measured:
+            //   QTE_BILLINFO_A  cell (1800,7200) recurs at row1 1680/2280/2880/3480/4080 --
+            //                   five rows sharing one column signature, each row's row2 the
+            //                   next row's row1. A grid.
+            //   M7902AA         cell (2325,3525) occurs at row1 9684 only, and its columns
+            //                   have gaps between them. Four underlined column headings --
+            //                   the case the sibling rule was built for, and still safe.
+            // So: a record whose own column span recurs at another row in the same group is
+            // a grid cell, and keeps its rectangle.
+            bool columnRecurs = parsed.Lines
+                .Where(o => o.PageIndex == l.PageIndex && o.Group == l.Group
+                            && o.Position.Col1 == l.Position.Col1
+                            && o.Position.Col2 == l.Position.Col2)
+                .Select(o => o.Position.Row1).Distinct().Count() >= 2;
+
             bool siblingRow = (l.Group == "24,24" || l.Group == "25,25")
+                && !columnRecurs
                 && parsed.Lines.Count(o => o.PageIndex == l.PageIndex && o.Group == l.Group
                                            && o.Position.Row1 == l.Position.Row1) >= 3;
 
