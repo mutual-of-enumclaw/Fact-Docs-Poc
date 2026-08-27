@@ -1006,6 +1006,82 @@ if (args.Length >= 5 && args[0] == "fill-html")
 }
 
 
+// quote-data <POLICY> [ENV] [SCOPE] [out.json]
+//   Emit the DATA half of a quote packet: how many times each image repeats and what
+//   goes in its fields, as a JSON document that tools/htmlpacket.py consumes.
+//
+//   The ORDER half -- which images, nested how -- comes from FORM.DAT and the DDT
+//   <Image Rules> and is read by tools/ddtpacket.py. Those two halves are what
+//   DocProd itself joins at print time; this command supplies ours from the CDM.
+//
+//   SCOPE is `Pending` for a QUOTE (the default here -- a quote proposal is by
+//   definition an in-progress transaction) or `Verified` for an issued policy.
+if (args.Length >= 2 && args[0] == "quote-data")
+{
+    var qdPolicy = args[1];
+    var qdEnv = args.Length >= 3 ? args[2] : "tst";
+    var qdScope = args.Length >= 4 ? args[3] : "Pending";
+    var qdOut = args.Length >= 5 ? args[4]
+        : Path.Combine(@"C:\src\fact-pdf-tools\output\quote-poc", qdPolicy + ".json");
+
+    string qdBase;
+    if (qdEnv.Contains("://", StringComparison.Ordinal)) qdBase = qdEnv;
+    else
+    {
+        var qdCfg = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory,
+            "..", "..", "..", "..", "server", "appsettings.json"));
+        string? qdResolved = null;
+        if (File.Exists(qdCfg))
+        {
+            using var qdDoc = System.Text.Json.JsonDocument.Parse(File.ReadAllText(qdCfg));
+            if (qdDoc.RootElement.TryGetProperty("CommercialApi", out var qdApi)
+                && qdApi.TryGetProperty("BaseUrls", out var qdUrls)
+                && qdUrls.TryGetProperty(qdEnv, out var qdU))
+                qdResolved = qdU.GetString();
+        }
+        if (qdResolved == null)
+        {
+            Console.Error.WriteLine($"No base URL for environment '{qdEnv}' in {qdCfg}.");
+            Environment.ExitCode = 1; return;
+        }
+        qdBase = qdResolved;
+    }
+
+    Console.WriteLine($"policy  {qdPolicy}  scope {qdScope}  from {qdBase}");
+    QuotePacketData qdData;
+    try
+    {
+        using var qdClient = new CommercialApiPolicyClient(qdBase);
+        var qdPol = await qdClient.GetPolicyAsync(qdPolicy, qdScope);
+        qdData = QuotePacketDataBuilder.Build(qdPol);
+    }
+    catch (Exception ex)
+    {
+        Console.Error.WriteLine($"Could not fetch {qdPolicy}: {ex.GetType().Name}: {ex.Message}");
+        Environment.ExitCode = 1; return;
+    }
+
+    Console.WriteLine($"packet  {qdData.LineOfBusinessCode} {qdData.State}  "
+        + $"{qdData.Images.Count} image(s) mapped");
+    int qdValues = 0;
+    foreach (var kv in qdData.Images.OrderBy(k => k.Key, StringComparer.Ordinal))
+    {
+        int n = kv.Value.Instances.Count;
+        qdValues += kv.Value.Instances.Sum(i => i.Fields.Count(f => f.Value.Length > 0));
+        Console.WriteLine($"  {kv.Key,-22}{n,3} instance(s)"
+            + (kv.Value.Parent != null ? $"  under {kv.Value.Parent}" : "")
+            + (n == 0 ? "   [suppressed]" : ""));
+    }
+    Console.WriteLine($"values  {qdValues} non-empty field value(s)");
+
+    Directory.CreateDirectory(Path.GetDirectoryName(qdOut)!);
+    await File.WriteAllTextAsync(qdOut, System.Text.Json.JsonSerializer.Serialize(qdData,
+        new System.Text.Json.JsonSerializerOptions { WriteIndented = true }));
+    Console.WriteLine($"wrote   {qdOut} ({new FileInfo(qdOut).Length:N0} bytes)");
+    return;
+}
+
+
 // coverage [formsDir]  -> convert every FAP form to .gd and report which convert
 // clean vs. which hit unsupported constructs. Writes output\coverage-report.{md,csv}.
 if (args.Length >= 1 && args[0] == "coverage")

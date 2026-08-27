@@ -19,20 +19,26 @@ What it implements, all read from the legacy metadata rather than hand-written:
                   HEADER, `OY` the one pinned as the FOOTER.  A body image that will
                   not fit above the footer starts a new page.
 
-Repetition counts are data (how many coverages, how many vehicles).  Until the CDM
-list sources are wired up, pass them with `--repeat IMAGE=N` or `--repeats file.json`;
-the default is one instance per image, which is enough to see the packet's shape.
+Repetition counts and field values are DATA -- how many coverages, how many vehicles,
+what each one costs.  `demo -- quote-data <POLICY>` emits them from a real CDM quote
+and `--data` consumes that here; an image the document does not mention falls back to
+`--repeat IMAGE=N`, default one, so unmapped boilerplate still renders.
 
 Usage
     # build the demo once so fragments emit fast
     dotnet build demo/FapPdfTools.Demo.csproj -c Release
 
+    # shape only, no data
     python tools/htmlpacket.py --lob CPP --form "QUOTE CPPSUM.1" \
         --out output/quote-poc/cppsum.html --pdf
 
-    python tools/htmlpacket.py --lob CPP --packet quote \
-        --repeats output/quote-poc/repeats.json \
-        --out output/quote-poc/cpp-quote.html --pdf
+    # populated from a real quote (scope=Pending)
+    demo/bin/Release/net9.0/FapPdfTools.Demo.exe quote-data BAP000080307 tst Pending \
+        output/quote-poc/BAP000080307.json
+    python tools/htmlpacket.py --lob CPP \
+        --form "QUOTE CPPSUM.2" --form "QUOTE CPPCA.1" \
+        --data output/quote-poc/BAP000080307.json \
+        --out output/quote-poc/wy-quote.html --pdf
 """
 
 from __future__ import annotations
@@ -89,7 +95,7 @@ class FragmentCache:
         self.exe = exe
         os.makedirs(cachedir, exist_ok=True)
         self._body: Dict[str, str] = {}
-        self._fonts: Dict[str, str] = {}
+        self._faces: Dict[str, Dict[str, str]] = {}
         self.emitted = 0
         self.reused = 0
         self.failed: List[str] = []
@@ -115,12 +121,18 @@ class FragmentCache:
         return out
 
     def get(self, image: str) -> Tuple[str, Dict[str, str]]:
-        """Return (body html, {family: @font-face rule}) for one image."""
+        """Return (body html, {family: @font-face rule}) for one image.
+
+        Both halves are cached and BOTH are returned every call: the measuring
+        pass calls this before the rendering pass does, and an earlier version
+        handed the faces out only once, which silently produced a font-less
+        document."""
         if image in self._body:
-            return self._body[image], {}
+            return self._body[image], self._faces[image]
         path = self._emit(image)
         if path is None:
             self._body[image] = ""
+            self._faces[image] = {}
             return "", {}
         html = open(path, encoding="utf-8").read()
         m = SECTION_RE.search(html)
@@ -131,6 +143,7 @@ class FragmentCache:
             if fam:
                 faces.setdefault(fam.group(1), face)
         self._body[image] = body
+        self._faces[image] = faces
         return body, faces
 
 
@@ -145,25 +158,72 @@ class Placement:
     driver: str        # the extract table + filter that drives repetition, for the log
     instance: int      # 1-based, within its parent
     count: int
+    fields: Dict[str, str]
 
 
-def expand(image: str, repeats: Dict[str, int], role: str = "body",
-           depth: int = 0, driver: str = "",
+class PacketData:
+    """The data half of the packet, as emitted by `demo -- quote-data`.
+
+    An image PRESENT in the document has an authoritative instance count -- zero
+    included, which is how the conditional variants get pruned. An image ABSENT
+    from it falls back to the `--repeat` override, default one, so unmapped
+    boilerplate still renders.
+    """
+
+    def __init__(self, doc: Optional[dict]) -> None:
+        self.images: Dict[str, dict] = {}
+        self.policy = ""
+        if not doc:
+            return
+        self.policy = doc.get("PolicyNumber") or doc.get("policyNumber") or ""
+        for name, entry in (doc.get("Images") or doc.get("images") or {}).items():
+            self.images[name.upper()] = {
+                "parent": entry.get("Parent") or entry.get("parent"),
+                "instances": entry.get("Instances") or entry.get("instances") or [],
+            }
+
+    def knows(self, image: str) -> bool:
+        return image.upper() in self.images
+
+    def instances(self, image: str, parent_index: int) -> List[Dict[str, str]]:
+        """Field maps for each instance of `image` under parent instance
+        `parent_index` (-1 at the root)."""
+        entry = self.images.get(image.upper())
+        if entry is None:
+            return []
+        rows = entry["instances"]
+        if entry["parent"]:
+            rows = [r for r in rows
+                    if int(r.get("ParentIndex", r.get("parentIndex", -1)))
+                    == parent_index]
+        return [dict(r.get("Fields") or r.get("fields") or {}) for r in rows]
+
+
+def expand(image: str, repeats: Dict[str, int], data: PacketData,
+           role: str = "body", depth: int = 0, driver: str = "",
+           parent_index: int = -1,
            seen: Optional[frozenset] = None) -> List[Placement]:
-    """Depth-first expansion of an image and its PNTAddImgAfterCurImg children,
-    each repeated `repeats[image]` times (default 1)."""
+    """Depth-first expansion of an image and its PNTAddImgAfterCurImg children.
+
+    The DDT says WHICH image repeats and over which extract table; the data
+    document says HOW MANY TIMES and with what values."""
     seen = frozenset() if seen is None else seen
     if image in seen:
         return []
     rules = dp.read_ddt(dp.DEFAULT_DDTDIR, image)
-    n = max(0, int(repeats.get(image, 1)))
+
+    if data.knows(image):
+        rows = data.instances(image, parent_index)
+    else:
+        rows = [{} for _ in range(max(0, int(repeats.get(image.upper(), 1))))]
+
     out: List[Placement] = []
-    for i in range(1, n + 1):
-        out.append(Placement(image, depth, role, driver, i, n))
+    for i, fields in enumerate(rows):
+        out.append(Placement(image, depth, role, driver, i + 1, len(rows), fields))
         for child in rules.children:
-            out.extend(expand(child.image, repeats, role, depth + 1,
+            out.extend(expand(child.image, repeats, data, role, depth + 1,
                               str(child.driver) if child.driver else "",
-                              seen | {image}))
+                              i, seen | {image}))
     return out
 
 
@@ -179,30 +239,82 @@ class Placed:
     role: str
     instance: int
     driver: str
+    fields: Dict[str, str]
 
 
 class Assembler:
-    def __init__(self, cache: FragmentCache) -> None:
+    def __init__(self, cache: FragmentCache, flow: str = "content") -> None:
         self.cache = cache
+        self.flow = flow
+        self._extent: Dict[str, Optional[int]] = {}
         self.pages: List[List[Placed]] = []
         self.fonts: Dict[str, str] = {}
         self._geom: Dict[str, dp.ImageRules] = {}
+        self.filled = 0
+        self.shrunk = 0
+        self.no_span: List[str] = []
+        self.unverified: List[str] = []
 
     def geom(self, image: str) -> dp.ImageRules:
         if image not in self._geom:
             self._geom[image] = dp.read_ddt(dp.DEFAULT_DDTDIR, image)
         return self._geom[image]
 
-    def assemble_form(self, headers: List[str], footers: List[str],
-                      body: List[Placement], start_new_page: bool = True) -> None:
+    # `;SetOrigin;Rel+0,Max+0;` places an image at the running MAXIMUM Y, and the
+    # question is what that maximum is measured against: the image's DECLARED box
+    # (SetImageDimensions) or the ink it actually puts down.
+    #
+    # It is the ink. The declared boxes are design-time allocations and they are
+    # consistently larger -- QTE_BILLINFO_A declares 10,500 units and draws 6,369.
+    # Measured against the Products reference document, page 3: with declared
+    # heights our WY quote's summary page runs to 25,500 units against a footer
+    # pinned at 25,200, so the payment-plan table spills to a second page. The
+    # reference fits MORE rows than we have (16 endorsements against 14) on the one
+    # page, which the declared-height model cannot do at any row count. By ink the
+    # same page measures 19,644 and fits, as it should.
+    _STYLE = re.compile(r'style="([^"]*)"')
+    _TOP = re.compile(r"top:(-?[\d.]+)pt")
+    _HEIGHT = re.compile(r"height:([\d.]+)pt")
+    _FONTSIZE = re.compile(r"font-size:([\d.]+)pt")
+
+    def advance(self, image: str) -> int:
+        """How far this image moves the flow, in FAP units."""
+        declared = self.geom(image).height
+        if self.flow != "content":
+            return declared
+        if image not in self._extent:
+            self._extent[image] = self._measure(image)
+        ink = self._extent[image]
+        return declared if ink is None else ink
+
+    def _measure(self, image: str) -> Optional[int]:
+        body, _ = self.cache.get(image)
+        if not body:
+            return None
+        bottom = None
+        for m in self._STYLE.finditer(body):
+            style = m.group(1)
+            top = self._TOP.search(style)
+            if not top:
+                continue
+            h = self._HEIGHT.search(style)
+            size = self._FONTSIZE.search(style)
+            extent = float(h.group(1)) if h else (
+                float(size.group(1)) if size else 0.0)
+            edge = float(top.group(1)) + extent
+            bottom = edge if bottom is None else max(bottom, edge)
+        return None if bottom is None else int(round(bottom * FAP_PER_PT))
+
+    def assemble_form(self, headers: List[Placement], footers: List[Placement],
+                      body: List[Placement]) -> None:
         """Lay one FORM.DAT entry out over as many pages as its body needs."""
         footer_top = PAGE_H_FAP
         for f in footers:
-            g = self.geom(f)
+            g = self.geom(f.image)
             if g.origin_y_mode.lower() == "abs":
                 footer_top = min(footer_top, g.origin_y_val)
             else:
-                footer_top = min(footer_top, PAGE_H_FAP - g.height)
+                footer_top = min(footer_top, PAGE_H_FAP - self.advance(f.image))
 
         page: List[Placed] = []
         y = 0
@@ -212,17 +324,19 @@ class Assembler:
             page = []
             y = 0
             for h in headers:
-                g = self.geom(h)
+                g = self.geom(h.image)
                 top = y + g.y_offset
-                page.append(Placed(h, len(self.pages), top, g.height,
-                                   "header", 1, ""))
-                y = top + g.height
+                page.append(Placed(h.image, len(self.pages), top,
+                                   self.advance(h.image), "header", 1, "",
+                                   h.fields))
+                y = top + self.advance(h.image)
             for f in footers:
-                g = self.geom(f)
+                g = self.geom(f.image)
                 top = g.origin_y_val if g.origin_y_mode.lower() == "abs" \
                     else PAGE_H_FAP - g.height
-                page.append(Placed(f, len(self.pages), top, g.height,
-                                   "footer", 1, ""))
+                page.append(Placed(f.image, len(self.pages), top,
+                                   self.advance(f.image), "footer", 1, "",
+                                   f.fields))
 
         def close_page() -> None:
             if page:
@@ -234,17 +348,70 @@ class Assembler:
             if g.origin_y_mode.lower() == "abs":
                 # Pinned: it does not participate in the flow.
                 page.append(Placed(p.image, len(self.pages), g.origin_y_val,
-                                   g.height, p.role, p.instance, p.driver))
+                                   self.advance(p.image), p.role, p.instance,
+                                   p.driver, p.fields))
                 continue
-            h = g.height
+            h = self.advance(p.image)
             if y + h > footer_top and y > 0:
                 close_page()
                 open_page()
             top = y + g.y_offset
             page.append(Placed(p.image, len(self.pages), top, h,
-                               p.role, p.instance, p.driver))
+                               p.role, p.instance, p.driver, p.fields))
             y = top + h
         close_page()
+
+    # ------------------------------------------------------------- populating
+
+    # Same contract as the C# `fill-html`: splice the value between an EMPTY field
+    # span's tags, then verify by re-reading the result rather than by counting
+    # replacements. Deliberately index-and-splice, not a regex replacement
+    # template -- `.NET Regex.Replace` with "$1" ate a span when the value started
+    # with a digit and still reported success (HANDOFF-QUOTE-POC.md section 7), and
+    # Python's `\1` has the same hazard.
+    FIELD_SPAN = (r'(<span class="abs field" data-field="%s"[^>]*>)</span>')
+
+    def fill(self, frag: str, pl: Placed) -> str:
+        for name, value in pl.fields.items():
+            if value == "":
+                continue
+            rx = re.compile(self.FIELD_SPAN % re.escape(name), re.I)
+            m = rx.search(frag)
+            if not m:
+                self.no_span.append(f"{pl.image}.{name}")
+                continue
+            opening = self._autosize(m.group(1), value)
+            esc = (value.replace("&", "&amp;").replace("<", "&lt;")
+                        .replace(">", "&gt;"))
+            frag = frag[:m.start()] + opening + esc + "</span>" + frag[m.end():]
+            if f">{esc}</span>" not in frag:
+                self.unverified.append(f"{pl.image}.{name}")
+            else:
+                self.filled += 1
+        return frag
+
+    # A value wider than its box shrinks to fit, which is what the accepted
+    # fillable-PDF path does: the AcroForm widget auto-sizes its text into the
+    # rectangle rather than spilling over the next label.
+    _WIDTH = re.compile(r"width:([0-9.]+)pt")
+    _SIZE = re.compile(r"font-size:([0-9.]+)pt")
+    ADVANCE_EM = 0.5
+
+    def _autosize(self, opening: str, value: str) -> str:
+        w = self._WIDTH.search(opening)
+        s = self._SIZE.search(opening)
+        if not (w and s):
+            return opening
+        box, cur = float(w.group(1)), float(s.group(1))
+        if box <= 1 or not value:
+            return opening
+        need = len(value) * cur * self.ADVANCE_EM
+        if need <= box:
+            return opening
+        fitted = max(5.0, box / (len(value) * self.ADVANCE_EM))
+        self.shrunk += 1
+        return opening.replace(f"font-size:{s.group(1)}pt",
+                               f"font-size:{fitted:.2f}pt")
 
     # ------------------------------------------------------------------ rendering
 
@@ -257,6 +424,8 @@ class Assembler:
                 frag, faces = self.cache.get(pl.image)
                 for fam, rule in faces.items():
                     self.fonts.setdefault(fam, rule)
+                if pl.fields:
+                    frag = self.fill(frag, pl)
                 top_pt = pl.top_fap / FAP_PER_PT
                 body_parts.append(
                     f'<div class="frag" data-image="{pl.image}" '
@@ -325,6 +494,13 @@ def main(argv: Sequence[str]) -> int:
     ap.add_argument("--repeat", action="append", default=[],
                     metavar="IMAGE=N")
     ap.add_argument("--repeats", help="JSON file of {image: count}")
+    ap.add_argument("--data",
+                    help="packet data document from `demo -- quote-data` -- "
+                         "instance counts and field values from a real quote")
+    ap.add_argument("--flow", choices=["content", "declared"], default="content",
+                    help="what `SetOrigin Max+0` advances by: the ink an image "
+                         "actually puts down (default, and what matches the "
+                         "reference document) or its declared box height")
     ap.add_argument("--pdf", action="store_true")
     args = ap.parse_args(argv)
 
@@ -350,23 +526,35 @@ def main(argv: Sequence[str]) -> int:
     entries = {e.name.upper(): e for e in dp.read_formdat(args.formdat)
                if e.lob.upper() == args.lob.upper()}
 
+    data = PacketData(json.load(open(args.data, encoding="utf-8"))
+                      if args.data else None)
+    if args.data:
+        print(f"packet data: {data.policy}  {len(data.images)} image(s) mapped")
+
     exe = find_demo_exe()
     print(f"fragment emitter: {exe or 'dotnet run (slow -- build Release first)'}")
     cache = FragmentCache(args.cache, exe)
-    asm = Assembler(cache)
+    asm = Assembler(cache, flow=args.flow)
+
+    def one(image: str, role: str) -> List[Placement]:
+        rows = data.instances(image, -1) if data.knows(image) else [{}]
+        return [Placement(image, 0, role, "", 1, 1, rows[0] if rows else {})]
 
     for name in wanted:
         entry = entries.get(name.upper())
         if entry is None:
             print(f"! '{name}' is not a FORM.DAT entry for {args.lob}")
             continue
-        headers = [i for i, f in entry.placements if "OX" in f]
-        footers = [i for i, f in entry.placements if "OY" in f]
-        body_images = [i for i, f in entry.placements
-                       if "OX" not in f and "OY" not in f]
+        headers: List[Placement] = []
+        footers: List[Placement] = []
         body: List[Placement] = []
-        for img in body_images:
-            body.extend(expand(img, repeats))
+        for img, flags in entry.placements:
+            if "OX" in flags:
+                headers.extend(one(img, "header"))
+            elif "OY" in flags:
+                footers.extend(one(img, "footer"))
+            else:
+                body.extend(expand(img, repeats, data))
         first_page = len(asm.pages)
         asm.assemble_form(headers, footers, body)
         print(f"{name:<22} {len(body):>4} placement(s) -> "
@@ -381,6 +569,15 @@ def main(argv: Sequence[str]) -> int:
     print(f"fragments: {cache.emitted} emitted, {cache.reused} reused"
           + (f", {len(cache.failed)} FAILED: {', '.join(cache.failed[:10])}"
              if cache.failed else ""))
+    if args.data:
+        print(f"filled   {asm.filled} value(s), verified in the output"
+              + (f", {asm.shrunk} auto-sized into their box" if asm.shrunk else ""))
+        if asm.no_span:
+            print(f"NO SPAN  {len(asm.no_span)}: "
+                  + ", ".join(sorted(set(asm.no_span))[:12]))
+        if asm.unverified:
+            print(f"NOT VERIFIED {len(asm.unverified)}: "
+                  + ", ".join(sorted(set(asm.unverified))[:12]))
     print(f"wrote {args.out} ({os.path.getsize(args.out):,} bytes)")
 
     if args.pdf:

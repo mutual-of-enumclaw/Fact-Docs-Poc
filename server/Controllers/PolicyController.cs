@@ -44,7 +44,7 @@ public class PolicyController : ControllerBase
 		using CommercialApiPolicyClient client = new(baseUrl);
 		try
 		{
-			MoE.CommonDataModel.Policy policy = await client.GetPolicyAsync(policyNumber, ct);
+			MoE.CommonDataModel.Policy policy = await client.GetPolicyAsync(policyNumber, ct: ct);
 			return Ok(policy);
 		}
 		catch (HttpRequestException ex)
@@ -80,7 +80,7 @@ public class PolicyController : ControllerBase
 		MoE.CommonDataModel.Policy policy;
 		try
 		{
-			policy = await client.GetPolicyAsync(request.PolicyNumber, ct);
+			policy = await client.GetPolicyAsync(request.PolicyNumber, ct: ct);
 		}
 		catch (HttpRequestException ex)
 		{
@@ -144,7 +144,7 @@ public class PolicyController : ControllerBase
 		using CommercialApiPolicyClient client = new(baseUrl);
 		try
 		{
-			MoE.CommonDataModel.Policy policy = await client.GetPolicyAsync(request.PolicyNumber, ct);
+			MoE.CommonDataModel.Policy policy = await client.GetPolicyAsync(request.PolicyNumber, ct: ct);
 			IReadOnlyDictionary<string, string> values = map.BuildValues(policy);
 			return Ok(values);
 		}

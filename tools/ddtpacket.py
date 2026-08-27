@@ -268,6 +268,8 @@ def read_ddt(ddtdir: str, image: str) -> ImageRules:
             elif low == "csccsetextrfile":
                 rules.extract_files = args
             elif low == "pntaddimgaftercurimg":
+                # NOTE: these are collected in file order here and REVERSED at the
+                # end of this function -- see the comment on the return.
                 # MOE,OVERFLOWS,OVFORMS,<IMAGE>,<count>,<tablespecs...>
                 toks = args.split(",")
                 if len(toks) < 5:
@@ -276,6 +278,20 @@ def read_ddt(ddtdir: str, image: str) -> ImageRules:
                 tail = ",".join(toks[5:])
                 rules.children.append(
                     ChildImage(child, count, _parse_tablespecs(tail)))
+
+    # THE RULES RUN BACKWARDS. The verb is "add image AFTER CURRENT image", and every
+    # rule in the section uses the same anchor -- the image being defined -- so each
+    # one lands immediately after it and pushes the previous insertions down. The last
+    # rule written is therefore the first image rendered.
+    #
+    # Two independent pieces of evidence, both from a render rather than from reading:
+    #   * QCPP_CAV lists QCPP_CAV2 (the "Total Vehicle Premium" row) before QCPP_CAV1
+    #     (the coverage rows). Rendered in file order the total sits ABOVE the
+    #     coverages it totals; reversed, it sits below them.
+    #   * QCPPSUM_HDR lists ...GL, CP, CA. The Products reference document
+    #     ("Example QUote Dec.pdf", page 3) prints Commercial Property ABOVE Commercial
+    #     General Liability, and Terrorism -- listed first -- last.
+    rules.children.reverse()
     return rules
 
 

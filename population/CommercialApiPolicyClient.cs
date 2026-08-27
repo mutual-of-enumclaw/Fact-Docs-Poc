@@ -46,13 +46,24 @@ public sealed class CommercialApiPolicyClient : IDisposable
 	}
 
 	/// <summary>Fetch a single policy/quote by number and return it as a CDM view.</summary>
-	public async Task<Policy> GetPolicyAsync(string policyNumber, CancellationToken ct = default)
+	/// <param name="scope">
+	/// <c>Verified</c> (the API's default) returns the issued policy; <c>Pending</c>
+	/// returns the in-progress transaction, which is how a QUOTE is retrieved — the
+	/// quote proposal's data source. Measured 2026-08-27 against tst: the same endpoint
+	/// serves both, and a pending CPP/CA transaction comes back with its units,
+	/// per-unit coverages and, once rated, per-coverage premium.
+	/// </param>
+	public async Task<Policy> GetPolicyAsync(string policyNumber, string? scope = null,
+		CancellationToken ct = default)
 	{
 		if (string.IsNullOrWhiteSpace(policyNumber))
 			throw new ArgumentException("Policy number is required.", nameof(policyNumber));
 
-		using var response = await _http.GetAsync(
-			$"api/policy/{Uri.EscapeDataString(policyNumber)}", ct);
+		var url = $"api/policy/{Uri.EscapeDataString(policyNumber)}";
+		if (!string.IsNullOrWhiteSpace(scope))
+			url += $"?scope={Uri.EscapeDataString(scope)}";
+
+		using var response = await _http.GetAsync(url, ct);
 		response.EnsureSuccessStatusCode();
 
 		var json = await response.Content.ReadAsStringAsync(ct);
