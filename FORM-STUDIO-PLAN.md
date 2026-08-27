@@ -3582,3 +3582,85 @@ IMPORTANCE and the wrong call about RISK: the logic was correct on the first att
 envelope was what failed. **When something is listed as untested, the cheapest test is a structural
 diff against a working example** — it took one command and named the element outright, where
 reasoning about the error message produced a wrong hypothesis first.
+
+## 46. `Model Library (missing)`: a `.gd` never carries its own model (2026-08-26)
+
+Products opened §45's file in Designer. The screenshot settles two things at once.
+
+### The logic is proven
+
+Designer renders the markup as structured logic, correctly nested:
+
+```
+LOSS PAYABLE CLAUSE - SCHEDULE OF COVERED AUTOS  Policy Number: [Policy > Policy Number]
+FOR EACH MOECAAutoLevelCoverages > AutosWithLossPayableClause:
+    IF Auto > VehicleNumber > is provided:      Auto No. [Auto > VehicleNumber]      END
+    IF Auto > Description > is provided:        Description: [Auto > Description]    END
+    IF Auto > VIN > is provided:                VIN: [Auto > VIN]
+    ELSE                                        VIN: not supplied                   END
+    IF Auto > ComprehensiveDeductible > is provided:  Comp Ded: [...]                END
+    IF Auto > CollisionDeductible > is provided:      Coll Ded: [...]                END
+    Loss Payee: [Auto > LossPayee > FullName]
+END
+```
+
+`FOR EACH`, five `IF`s, the `ELSE`, every `END`, the nesting, the iterator scope. **That is the
+§43.1 grammar accepted by GhostDraft itself** — the round trip §43.6 and §44.6 both listed as the
+one unproven step. It is proven. The emitter writes logic GhostDraft understands.
+
+### What is still wrong is the LIBRARY, not the paths
+
+The model panel reads:
+
+```
+Model Library (missing)
+MOECAAutoLevelCoverages
+Policy
+```
+
+and every fill point is red-underlined, with `'Policy > Policy Number' is not in the model.`
+
+**All** paths fail, not a subset — the signature of a library-level failure rather than a path
+problem. The two domain models §45 declared are listed, so the declaration works; the LIBRARY those
+declarations name is what Designer cannot find.
+
+The paths are not in question, and this is worth recording so it is not re-investigated:
+
+* the `<domainmodels>` block is byte-identical in form to `CA2162 1114.gd`, a production template
+  that binds the exact failing path `Policy > Policy Number` — same `conceptlibrary="Model Library"`,
+  same `major="0" minor="0"`, same `domainmodelguid="ee97488b-…"`;
+* the concept library declares itself `name="Model Library" versionIdentifier="Model Library|0|0"`,
+  which is what `major=0 minor=0` means;
+* every content guid we emit matches production byte-for-byte.
+
+### The finding: there is nothing to embed
+
+**All 570 templates across both packages carry `<library xsi:nil="true" />`. Zero
+counter-examples.** No production template embeds or links a concept library, so "put a mock model
+in the file" is not a shape GhostDraft has — the library always comes from the workspace, and a
+standalone `.gd` opened outside its package necessarily shows `(missing)`.
+
+So the fix is not in the template. It is to deliver the template INSIDE a package that carries the
+real library. `tools/gdpackage.py` does that: it copies an extracted `.gdsp`, drops the authored
+`.gd` into `Templates/`, and re-zips. The result differs from the original in exactly one way — one
+extra template — and `model.xml`, the concept library, the style libraries and the 32 test cases all
+come along.
+
+```bash
+python tools/gdpackage.py output/iso-packages/proprietary-ca-2607 \
+    "output/MoE Proprietary Commercial Auto 2607.0 + authored.gdsp" \
+    "output/Authored Loss Payable Clause Schedule.gd"
+# 122 entries, 3.0 MB, 80 templates; re-read from the zip, the template resolves
+# with domain models 'Model Library:Policy, Model Library:MOECAAutoLevelCoverages'
+```
+
+`--catalog "WIP Form Templates"` additionally registers it in a template catalog. Off by default,
+so the emitted package differs from the source in one respect only.
+
+### The lesson
+
+Two rounds of this now: §45's error and this one both looked like binding defects and neither was.
+The paths were correct on the first attempt in both cases. **When a tool reports a symptom, prefer
+its own diagnosis over the inferred one** — Designer printed `(missing)` next to the library name,
+which was the answer, while the tooltip named a path and pointed at nothing. §45 reached the right
+answer by structural diff; here the diff was already clean, and the panel had said why.
