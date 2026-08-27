@@ -244,7 +244,16 @@ def expand(image: str, repeats: Dict[str, int], data: PacketData,
         mine = group if depth > 1 else (f"{image}#{i}" if depth == 1 else "")
         out.append(Placement(image, depth, role, driver, i + 1, len(rows), fields,
                              mine))
+        # The SAME image can be named by two PNTAddImgAfterCurImg rules with
+        # different driving tables -- QCPP_CAVS_VEHHDR_B splices QCPP_CAVS_VEHDET_B
+        # once per ASB5CPL1 unit and once per PMSP0200. Those are ALTERNATIVES, not
+        # additions; expanding both against the data document rendered every vehicle
+        # row twice. The first rule that resolves wins.
+        done: set = set()
         for child in rules.children:
+            if child.image in done:
+                continue
+            done.add(child.image)
             out.extend(expand(child.image, repeats, data, role, depth + 1,
                               str(child.driver) if child.driver else "",
                               i, seen | {image}, mine))

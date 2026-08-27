@@ -358,8 +358,193 @@ public static class QuotePacketDataBuilder
 		Count(data, "QTE_AUTOSCHED_MT", mt ? 1 : 0);
 		Count(data, "QTE_AUTOSCHED_MT_A", mt ? 1 : 0);
 
+		AutoSummary(data, assets, lineCoverages);
+		FormsSchedule(data, policy, insured);
+
 		return data;
 	}
+
+	// ------------------------------------------------------------------ Auto Summary
+
+	/// <summary>
+	/// `QUOTE CPPCAVS.3` — one row per vehicle, the three premium totals, and the
+	/// VEHICLE TYPES SUMMARY. (`.1` is the same page without the types block.)
+	/// </summary>
+	private static void AutoSummary(QuotePacketData data, List<AutoInsuredAsset> assets,
+		List<Coverage> lineCoverages)
+	{
+		Root(data, "QCPP_CAVS_HDR", new());
+		foreach (var image in new[] { "QCPP_CAVS_VEHHDR", "QCPP_CAVS_VEHHDR_B" })
+			Root(data, image, new());
+
+		var rows = new[] { "QCPP_CAVS_VEHDET", "QCPP_CAVS_VEHDET_B" }
+			.Select(v => Child(data, v, "QCPP_CAVS_VEHHDR")).ToArray();
+		foreach (var a in assets)
+		{
+			var premium = Money(a.TotalPremium);
+			var row = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
+			{
+				["VEH NUM"] = a.InsuredAssetNumber.ToString("000", CultureInfo.InvariantCulture),
+				["VEH STATE"] = a.RateState ?? "",
+				["VEH YEAR"] = a.Year?.ToString(CultureInfo.InvariantCulture) ?? "",
+				["VEH MM"] = Join(a.Make, a.Model, a.VehicleDescription),
+				["VEH CLASS"] = a.ClassCode ?? "",
+				["VEH VIN"] = a.Vin ?? "",
+				["VEH TOT PREM"] = premium,
+				// The DDT prints these as literals conditioned on the value next to them:
+				//   VSDS  ->  If LEN(TRIM(@("VEH TOT PREM"))) > 0 :: Return("$")
+				//   LV    ->  printif  B5I4TX  Y=*      (the leased-vehicle asterisk)
+				["VSDS"] = premium.Length > 0 ? "$" : "",
+				["LV"] = string.Equals(a.LeasedVehicleCode, "Y",
+					StringComparison.OrdinalIgnoreCase) ? "*" : "",
+			};
+			foreach (var img in rows)
+				img.Instances.Add(new PacketInstance { ParentIndex = 0, Fields = new(row) });
+		}
+
+		decimal vehicles = assets.Sum(a => a.TotalPremium ?? 0);
+		decimal line = lineCoverages.Sum(c => c.Premium);
+		Root(data, "QCPP_CAVS_FTR", new()
+		{
+			["CA_VEHS_TOTAL_PREM"] = Money(vehicles),
+			["VSVTDS"] = vehicles != 0 ? "$" : "",
+			["CA_INSL_TOTAL_PREM"] = Money(line),
+			["VSILDS"] = line != 0 ? "$" : "",
+			["CA_TOTAL_PREM"] = Money(vehicles + line),
+			["VSDS"] = vehicles + line != 0 ? "$" : "",
+			["TOTVEHS"] = assets.Count.ToString(CultureInfo.InvariantCulture),
+		});
+
+		var counts = LegacyVehicleTypes.Count(assets.Select(a => a.ClassCode));
+		Root(data, "QCPP_CAVS_VTS", counts.ToDictionary(
+			kv => kv.Key,
+			kv => kv.Value.ToString(CultureInfo.InvariantCulture),
+			StringComparer.OrdinalIgnoreCase));
+	}
+
+	// -------------------------------------------------------------- Forms schedule
+
+	/// <summary>
+	/// `QUOTE CPP FORMS.1` — the FORMS AND ENDORSEMENT SCHEDULE. Each of the four
+	/// images is one ROW TYPE, and the DDTs say which forms belong to each:
+	/// <code>
+	///   QTE_CPP95DP    FORMREC1  FORMID in (DP, ME0001)          COVLINE "All Lines"
+	///   QTE_CPP95COM   FORMREC1  FORMID = COM                    COVLINE "All Lines"
+	///   QTE_CPP95IL    FORMREC1  FORMID in (IL, ME), not ME0001  COVLINE "Interline"
+	///   QTE_CPP95BD    FRMREC2   INSLINE != *AL                  COVLINE from INSLINE
+	/// </code>
+	/// The split is by FORM CODE PREFIX, not by the form's line — which is why every
+	/// IL… form prints under Interline while the EL… forms print under Commercial Auto.
+	/// </summary>
+	private static void FormsSchedule(QuotePacketData data, Policy policy,
+		InsuredParty? insured)
+	{
+		Root(data, "QTE_FORM", new()
+		{
+			["INSURED NAME1"] = insured?.FullName ?? "",
+			["INSURED NAME2"] = SecondNameLine(insured),
+			["POLICYNBR"] = policy.Number ?? "",
+		});
+
+		// One row per form code AND edition. A code legitimately appears twice at two
+		// editions (CA0001 10/13 and 11/20), and the same form is attached at more than
+		// one level, so dedupe on the pair rather than on the code.
+		var forms = AllForms(policy)
+			.Where(f => !string.IsNullOrWhiteSpace(f.FormCode))
+			.GroupBy(f => (Code: f.FormCode!.Trim().ToUpperInvariant(),
+						   Edition: EditionKey(f.FormEditionDate)))
+			.Select(g => g.First())
+			.ToList();
+
+		// These four are TOP-LEVEL images in the FORM.DAT entry, not children of
+		// QTE_FORM -- QTE_FORM is flagged OX, so it is the page header and the rows
+		// flow beneath it. Declaring them as children filed their instances under a
+		// parent index the assembler never asks for, and the page came out empty.
+		var dp = Get(data, "QTE_CPP95DP", parent: null);
+		var com = Get(data, "QTE_CPP95COM", parent: null);
+		var il = Get(data, "QTE_CPP95IL", parent: null);
+		var bd = Get(data, "QTE_CPP95BD", parent: null);
+		foreach (var img in new[] { dp, com, il, bd }) img.Instances.Clear();
+
+		foreach (var f in forms.OrderBy(f => f.FormCode, StringComparer.Ordinal)
+					 .ThenBy(f => f.FormEditionDate))
+		{
+			var code = f.FormCode!.Trim().ToUpperInvariant();
+			var edition = $"({EditionKey(f.FormEditionDate, "MM/yy")})";
+			var name = f.FormDescription ?? "";
+
+			if (code == "ME0001")
+			{
+				dp.Instances.Add(new PacketInstance
+				{
+					ParentIndex = -1,
+					Fields =
+					{
+						["dpCOVLINE"] = "All Lines",
+						["dpFORMNUM"] = code,
+						["dpEDATE"] = edition,
+						["dpFORMNAME"] = name,
+					},
+				});
+			}
+			else if (code.StartsWith("IL", StringComparison.Ordinal)
+					 || code.StartsWith("ME", StringComparison.Ordinal))
+			{
+				il.Instances.Add(new PacketInstance
+				{
+					ParentIndex = -1,
+					Fields =
+					{
+						["COVLINE"] = "Interline",
+						["FORMNUM"] = code,
+						["EDATE"] = edition,
+						["FORMNAME"] = name,
+					},
+				});
+			}
+			else
+			{
+				bd.Instances.Add(new PacketInstance
+				{
+					ParentIndex = -1,
+					Fields =
+					{
+						["COVLINE"] = CoverageLineName(f.InsuranceLineCode),
+						["FORMNUM"] = code,
+						["EDATE"] = edition,
+						["FORMNAME"] = name,
+					},
+				});
+			}
+		}
+	}
+
+	/// <summary>
+	/// The `Coverage line` column. Straight from the printif map in QTE_CPP95BD.DDT:
+	/// <c>GL =General Liability:CF =Commercial Fire:CR =Crime:IMC=Inland Marine:
+	/// CA =Commercial Auto:…</c>
+	/// </summary>
+	private static string CoverageLineName(string? insuranceLineCode) =>
+		(insuranceLineCode ?? "").Trim().ToUpperInvariant() switch
+		{
+			"GL" => "General Liability",
+			"CF" => "Commercial Fire",
+			"CR" => "Crime",
+			"IMC" => "Inland Marine",
+			"CA" => "Commercial Auto",
+			"PL" => "Professional Liability",
+			"EC" => "Emerald Series Church",
+			"FA" => "Farmowners Auto",
+			"AAA" => "Farm Lines",
+			"FD" => "Farm Dwellings",
+			"FP" => "Farm Property",
+			"FS" => "Farm Structures",
+			"FL" => "Farmowners Liability",
+			"FGL" => "Farmowners General Liability",
+			"FIM" => "Farmowners Inland Marine",
+			"*AL" => "All Lines",
+			var other => other,
+		};
 
 	// ---------------------------------------------------------------- packet tables
 
@@ -407,8 +592,8 @@ public static class QuotePacketDataBuilder
 	];
 
 	/// <summary>`BEAMDT` 12412 is century 1 + MMYY 2412; the CDM carries a real date.</summary>
-	private static string EditionKey(DateOnly? d) =>
-		d is null ? "" : d.Value.ToString("MMyy", CultureInfo.InvariantCulture);
+	private static string EditionKey(DateOnly? d, string format = "MMyy") =>
+		d is null ? "" : d.Value.ToString(format, CultureInfo.InvariantCulture);
 
 	// ---------------------------------------------------------------------- helpers
 
