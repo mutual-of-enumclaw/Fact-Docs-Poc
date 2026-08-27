@@ -348,55 +348,42 @@ element. Every conditional in the template turns on `is provided`, which is fals
 absent element and true for an empty one, so `<Limit/>` would print a label with nothing
 after it.
 
-### CORRECTION — the template has the LOGIC but not the LAYOUT
+### RESOLVED — the layout came out of the ISO project
 
-*Added 2026-08-27, after Products asked "do you understand how to make tables, line
-breaks, styles etc in GhostDraft? There is no way this looks anything near like what it
-should after rendering."*
+*Products: "you should be able to learn how to format everything from the ISO project as
+you have the code and the templates with the logic." Correct — 491 templates, 339 of them
+carrying both a table and a list. `CA 20 47 11 20 Schedule.gd` is the minimal one, one
+list over one repeating row, and it is now the pattern `tools/gdauthor.py` emits.*
 
-Correct, and the counts above (247 instructions, 7 lists, 47 conditionals) invited the
-wrong conclusion. They measure the LOGIC and say nothing about the page. Measured:
+Three parts of the grammar were not guessable and each came off that file:
+
+* the row **terminator repeats the entire `trowd…cellx` definition** and only then says
+  `row`. A bare `row` after the cells does not close a row.
+* a cell's content paragraph carries a **named style** from the stylesheet plus `intbl`,
+  and the cell ends with its own run containing only `cell`. The stylesheet is where
+  `s8` (Arial 10 right) lives — the GhostDraft equivalent of the DDT's `MODE=R`, and the
+  reason a premium column lines up under its heading.
+* for a repeating row the **listPart marker sits inside the first cell** and the endPart
+  **after the row terminator**. The list brackets the ROW, not the table — which is what
+  keeps a header row from repeating with the data. Markers are also **split across two
+  RTF runs** (`{…%}{…[2]}`), which is why a first pass reported them missing.
+
+`gdauthor.py` now has `Table` / `Row` / `Cell`, `Row.header` sets `trhdr` (repeat the
+heading on every page the table spills onto — the GhostDraft answer to FORM.DAT's OX) and
+every row gets `trkeep`. Measured on the authored template:
 
 ```
-Quote Proposal.gd     trowd 0   cellx 0   intbl 0   clbrdr 0
+32 rows · 152 cells · 608 cell borders · 10 repeating headings · 28 right-aligned cells
+8 lists · 53 conditionals · 64 fill points · 0 unbound
+GRAMMAR CHECK PASSED, and the five-way mutation selftest rejects all five
 ```
 
-It is paragraphs separated by `\par` with literal tab characters between columns. It
-will render as a wall of tab-separated text, not as the packet.
+against the previous version's `trowd 0, cellx 0, intbl 0`.
 
-**The capability exists in this repo — I used the wrong half of it.**
-
-| | table RTF from geometry | list / conditional logic |
-|---|---|---|
-| C# `FapToGhostDraftGenerator` | **yes** — real `	rowd` / `\cellx` / `\intbl` / `\clbrdr` / `\gdtrftsWidth2`, the same vocabulary production uses (MCS90A: 118 rows, 580 cells) | no — 0 across all 428 |
-| `tools/gdauthor.py` | no — its own docstring says it emits plain-text layout and uses none of the FAP geometry (`CONVERSION-PLAN` W3.2) | yes — verified against production |
-
-I composed them the wrong way round: gdauthor's logic over a layout-free spec. The right
-composition is the converter's per-image table RTF, in packet order, with the logic
-wrapped around the row images.
-
-### How production actually does a repeating table
-
-Read off `DA0193 0108.gd` (a vehicle schedule — one list, six rows):
-
-* the `listInstructionType` brackets the **whole table**: its `listPart` marker opens
-  before the first `	rowd` and its `endPart` marker closes after the last `ow`;
-* instructions **inside a cell** sit as `\pard\plain\qc…\intbl{…%[5]%[7]%[8]%[6]}{…\cell}`
-  — markers immediately before the `\cell`;
-* every instruction carries **`tableNesting`**: `0` on the list that wraps the table, `1`
-  on anything inside a cell. gdauthor emits the attribute but always as `0`.
-
-### What is genuinely not known yet
-
-| | |
-|---|---|
-| **column grids do not line up** | each row image derives `cellx` from its own FAP columns, so `QCPP_CAH` is `4375/7860/10604` where `QCPP_CAA` is `4753/8296/10609`. Concatenating them gives a ragged table. A shared grid per table has to be computed — the HTML side never hit this because it positions absolutely |
-| **styles** | production carries a `\stylesheet` and uses named styles (`\s1`, `\s6`) linked through `styleMap` to the Style Library's GUIDs. Ours emits inline `\pard\plain\ql…` and no stylesheet |
-| **page furniture** | the packet has a header on every page and a footer pinned to row 25200. In GhostDraft those are Stationery / Headers & Footers resources, not template body — Cody's World has the folder, we have not opened it |
-| **row properties** | `	rhdr` (repeat header row across a page break) and `	rkeep` (keep row whole) are what the HTML assembler reproduces with its own pagination rules; the mapping is obvious but untested |
-
-None of this is blocked — it is unfinished. The estimate for the GhostDraft half should be
-made against this list, not against the instruction counts.
+**Still open on the GhostDraft side:** the page header and footer are Stationery /
+Headers & Footers resources rather than template body, and the ISO templates draw them as
+positioned shapes carrying `{ield{\*ldinst{PAGE}}}` and `NUMPAGES` — so the page
+number is an RTF field code, not data. That is read but not yet built.
 
 ### The one step no tool here can take
 

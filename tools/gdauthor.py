@@ -102,6 +102,42 @@ class Cond:
 
 
 @dataclass
+class Cell:
+    """One table cell.
+
+    `width` is the CUMULATIVE right edge in twips, because RTF's `cellx` is an
+    absolute position rather than a width. `style` names a paragraph style from
+    STYLESHEET below -- s2 Arial 10 left, s8 Arial 10 right, s1 Arial 10 centre,
+    s6 Arial 9 -- which is how the ISO templates align a numeric column.
+    """
+    body: list
+    width: int
+    style: str = 's2'
+    bold: bool = False
+    borders: bool = True
+
+
+@dataclass
+class Row:
+    """One table row.
+
+    `header` sets the RTF `trhdr` flag, which repeats the row at the top of every
+    page the table spills onto -- the GhostDraft equivalent of what the packet
+    assembler does with FORM.DAT's OX flag.
+    """
+    cells: list
+    header: bool = False
+    height: int = 0          # `trrh`, twips; 0 lets the row size to its content
+
+
+@dataclass
+class Table:
+    """A table. Each element of `rows` is either a Row or a Repeat whose body is
+    Rows, which is exactly how production expresses a repeating schedule."""
+    rows: list = field(default_factory=list)
+
+
+@dataclass
 class Repeat:
     """Iterate a list. `iterator` names the item inside; its guid is TEMPLATE-LOCAL
     (production iterator guids are absent from model.xml -- they scope the
@@ -164,6 +200,99 @@ class Emitter:
         return '\n'.join(out)
 
     # ---- the single recursive pass: markup and RTF together
+
+    # ---- tables
+    #
+    # A table is emitted row by row. The only subtlety is a Repeat among the rows:
+    # its listPart marker has to land INSIDE the first cell of its first row and its
+    # endPart AFTER that row's terminator, because that is where GhostDraft's own
+    # templates put them (see the note on _row_def). Emitting the markers around the
+    # table instead would repeat the header with the data.
+
+    def _emit_row(self, row: 'Row', indent: str, scope: dict, resolved: list,
+                  lead: str = '', tail: str = '') -> tuple[str, str]:
+        """One row. `lead` is spliced into the first cell before its content and
+        `tail` after the row terminator -- that is how a list brackets a row."""
+        xml_parts: list[str] = []
+        rtf = [_row_def(row)]
+        for i, c in enumerate(row.cells):
+            cx, cr = self._emit(c.body, indent, scope, resolved)
+            if cx:
+                xml_parts.append(cx)
+            rtf.append(_cell_open(c))
+            if i == 0 and lead:
+                rtf.append(lead)
+            rtf.append(cr)
+            rtf.append(_cell_close())
+        rtf.append(_row_end(row))
+        if tail:
+            rtf.append(_after_table())
+            rtf.append(tail)
+        return '\n'.join(x for x in xml_parts if x), ''.join(rtf)
+
+    def _emit_table(self, table: 'Table', indent: str, scope: dict,
+                    resolved: list) -> tuple[str, str]:
+        xml_parts: list[str] = []
+        rtf_parts: list[str] = []
+
+        for entry in table.rows:
+            if isinstance(entry, Row):
+                x, r = self._emit_row(entry, indent, scope, resolved)
+                if x:
+                    xml_parts.append(x)
+                rtf_parts.append(r)
+                continue
+
+            if not isinstance(entry, Repeat):
+                raise TypeError(f'a Table row must be Row or Repeat, got {type(entry)}')
+
+            iid = self._id()
+            part_id = self._id()
+            r = self._resolve_list(entry.path, scope)
+            iter_guid = _stable_guid(f'{entry.path.label}|{entry.iterator}')
+            inner = dict(scope)
+            # Same scope entry the paragraph Repeat builds: the item's XML path, its
+            # type id and the spec path. Anything else and a nested Fill resolves
+            # against the wrong type.
+            inner[iter_guid] = (r.xml_path, r.type_id or '', r.spec_path)
+
+            body_xml: list[str] = []
+            body_rtf: list[str] = []
+            rows = [b for b in entry.body if isinstance(b, Row)]
+            for i, row in enumerate(rows):
+                x, rr = self._emit_row(
+                    row, indent + '        ', inner, resolved,
+                    lead=_marker(part_id) if i == 0 else '')
+                if x:
+                    body_xml.append(x)
+                body_rtf.append(rr)
+            end_id = self._id()
+
+            seg = [f'{indent}<instruction xsi:type="listInstructionType" ID="{iid}" '
+                   f'descriptionSource="ParsedUserText" folded="false" tableNesting="0">',
+                   f'{indent}  <description>{_x(entry.path.label)}</description>',
+                   self._path_xml(entry.path, indent + '  ').replace('<path ', '<pathToList ')
+                       .replace('</path>', '</pathToList>'),
+                   f'{indent}  <iterator>{_x(entry.iterator)}</iterator>',
+                   f'{indent}  <iteratorGuid>{iter_guid}</iteratorGuid>',
+                   f'{indent}  <parts>',
+                   f'{indent}    <part xsi:type="listPartType" ID="{part_id}" '
+                   f'descriptionSource="ParsedUserText">',
+                   f'{indent}      <description>{_x(entry.path.label)}</description>',
+                   f'{indent}      <instructions>',
+                   '\n'.join(body_xml),
+                   f'{indent}      </instructions>',
+                   f'{indent}    </part>',
+                   f'{indent}    <part xsi:type="endPartType" ID="{end_id}" />',
+                   f'{indent}  </parts>',
+                   f'{indent}</instruction>']
+            xml_parts.append('\n'.join(s for s in seg if s))
+            rtf_parts.append(''.join(body_rtf))
+            rtf_parts.append(_after_table())
+            rtf_parts.append(_marker(end_id))
+
+        rtf_parts.append(_after_table())
+        return '\n'.join(x for x in xml_parts if x), ''.join(rtf_parts)
 
     def build(self, body: list, title: str) -> tuple[str, str, list[str]]:
         """-> (markup xml, rtf body, resolved paths)"""
@@ -250,6 +379,12 @@ class Emitter:
                     rtf_parts.append(_marker(else_id))
                     rtf_parts.append(else_rtf)
                 rtf_parts.append(_marker(end_id))
+                continue
+
+            if isinstance(node, Table):
+                xp, rp = self._emit_table(node, indent, scope, resolved)
+                xml_parts.append(xp)
+                rtf_parts.append(rp)
                 continue
 
             if isinstance(node, Repeat):
@@ -340,10 +475,97 @@ def _stable_guid(seed: str) -> str:
     return f'{h[0:8]}-{h[8:12]}-{h[12:16]}-{h[16:20]}-{h[20:32]}'
 
 
+# ----------------------------------------------------------------- table RTF
+#
+# Transcribed from the ISO Commercial Auto package. It has 339 production templates
+# carrying both a table and a list; `CA 20 47 11 20 Schedule.gd` is the minimal one
+# -- one list, one repeating row -- and the pattern below is its bytes.
+#
+# Three parts of it are not guessable and were each read off that file:
+#
+#   * the row TERMINATOR repeats the ENTIRE row definition and only then says `row`.
+#     A bare `row` after the cells does not close a row.
+#   * a cell's content paragraph carries a NAMED STYLE from the stylesheet plus
+#     `intbl`, and the cell ends with its own run containing only `cell`.
+#   * for a repeating row the listPart marker sits INSIDE the first cell before the
+#     content, and the endPart marker sits AFTER the row terminator in an ordinary
+#     paragraph. The list brackets the ROW, not the whole table -- which is what
+#     keeps a header row from repeating with the data.
+
+
+def _row_def(row: 'Row') -> str:
+    """The row-and-cell definition. Emitted twice per row: once to open it, once
+    inside the terminator."""
+    out = [BS + 'trowd ' + BS + 'trleft0']
+    for edge in ('t', 'l', 'b', 'r', 'h', 'v'):
+        out.append(BS + 'trbrdr' + edge + BS + 'brdrw10' + BS + 'brdrs')
+    if row.height:
+        out.append(BS + 'trrh' + str(row.height))
+    if row.header:
+        out.append(BS + 'trhdr')
+    out.append(BS + 'trkeep')
+    out.append(BS + 'gdtrftsWidth0' + BS + 'trftsWidth0')
+    out.append(BS + 'trpaddfl3' + BS + 'trpaddft3' + BS + 'trpaddfr3' + BS + 'trpaddfb3'
+               + BS + 'trpaddt0' + BS + 'trpaddl108' + BS + 'trpaddr108' + BS + 'trpaddb0')
+    for c in row.cells:
+        out.append(BS + 'clvertalt' + BS + 'cltxlrtb')
+        out.append(BS + 'clpadfl3' + BS + 'clpadft3' + BS + 'clpadfr3' + BS + 'clpadfb3'
+                   + BS + 'clpadt115' + BS + 'clpadl72' + BS + 'clpadr115' + BS + 'clpadb0')
+        if c.borders:
+            for edge in ('t', 'l', 'b', 'r'):
+                out.append(BS + 'clbrdr' + edge + BS + 'brdrw10' + BS + 'brdrs')
+        out.append(BS + 'gdclftsWidth0' + BS + 'clftsWidth0' + BS + 'cellx' + str(c.width))
+    return ''.join(out)
+
+
+def _cell_open(c: 'Cell') -> str:
+    return (BS + 'pard' + BS + 'plain' + BS + c.style + BS + 'sb0' + BS + 'sa0'
+            + BS + 'li0' + BS + 'ri0' + BS + 'fi0' + BS + 'sl240' + BS + 'slmult1'
+            + BS + 'nowidctlpar' + BS + 'intbl' + BS + 'f1' + BS + 'fs20'
+            + (BS + 'b' if c.bold else BS + 'b0') + BS + 'i0 ')
+
+
+def _cell_close() -> str:
+    return ('{' + BS + 'cf0' + BS + 'f1' + BS + 'fs20' + BS + 'ulnone' + BS + 'ulc0 '
+            + BS + 'cell}')
+
+
+def _row_end(row: 'Row') -> str:
+    return BS + 'pard' + BS + 'plain' + BS + 'intbl{' + _row_def(row) + BS + 'row }'
+
+
+def _after_table() -> str:
+    """The ordinary paragraph a table drops back into, and where a list's endPart
+    marker goes."""
+    return (BS + 'pard' + BS + 'plain' + BS + 'ql' + BS + 'li0' + BS + 'ri0'
+            + BS + 'fi0' + BS + 'sb0' + BS + 'sa0' + BS + 'sl240' + BS + 'slmult1'
+            + BS + 'widctlpar ')
+
+
+def _style(n: str, align: str, size: int, name: str) -> str:
+    return ('{' + BS + n + BS + align + BS + 'sb0' + BS + 'sa0' + BS + 'li0'
+            + BS + 'ri0' + BS + 'fi0' + BS + 'sl240' + BS + 'slmult1'
+            + BS + 'nowidctlpar' + BS + 'f1' + BS + 'fs' + str(size)
+            + BS + 'b0' + BS + 'i0' + BS + 'snext' + n[1:] + ' ' + name + ';}')
+
+
+# The paragraph styles a cell can name, transcribed from the ISO package's own
+# stylesheet so s2/s8/s1/s6 mean the same thing here as they do there. A cell that
+# names a style the sheet does not declare inherits whatever the previous paragraph
+# left behind, which is how a right-aligned column silently comes out left.
+STYLESHEET = ('{' + BS + 'stylesheet'
+              + _style('s1', 'qc', 20, 'Arial 10 Centre')
+              + _style('s2', 'ql', 20, 'Arial 10')
+              + _style('s6', 'ql', 18, 'Arial 9')
+              + _style('s8', 'qr', 20, 'Arial 10 Right')
+              + '}')
+
+
 RTF_HEAD = (
     '{' + BS + 'rtf1 ' + BS + 'adeflang1025' + BS + 'uc1' + BS + 'deflang1033 '
     '{' + BS + 'fonttbl{' + BS + 'f0 Times New Roman;}{' + BS + 'f1 Arial;}}'
     '{' + BS + 'colortbl;}'
+    + STYLESHEET
     + BS + 'paperw12240' + BS + 'paperh15840' + BS + 'margl1440' + BS + 'margr1440'
     + BS + 'margt1080' + BS + 'margb1080'
     + BS + 'sectd' + BS + 'sbknone'

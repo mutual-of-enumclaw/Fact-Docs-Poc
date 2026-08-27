@@ -31,9 +31,32 @@ from typing import Sequence
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import quotemodel as qm                                     # noqa: E402
-from gdauthor import (Break, Cond, Emitter, Envelope, Fill,  # noqa: E402
-                      IS_PROVIDED, Path, Repeat, Static, _stable_guid, verify, wrap)
+from gdauthor import (Break, Cell, Cond, Emitter, Envelope, Fill,  # noqa: E402
+                      IS_PROVIDED, Path, Repeat, Row, Static, Table,
+                      _stable_guid, verify, wrap)
 from gdmodel import Model                                    # noqa: E402
+
+# Usable width between the margins RTF_HEAD declares: 12240 - 1440 - 1440.
+PAGE_TWIPS = 9360
+
+
+def cols(*widths: int) -> list[int]:
+    """Column widths -> the cumulative right edges RTF's `cellx` wants, scaled to
+    the page so a layout stays put if the widths are retuned."""
+    total = sum(widths)
+    edge, out = 0, []
+    for w in widths:
+        edge += w
+        out.append(round(edge * PAGE_TWIPS / total))
+    return out
+
+
+# One grid per table. These are proportions of the printable width, chosen to match
+# what the HTML render puts on the page -- which is itself the legacy FAP geometry.
+SUMMARY_COLS = cols(50, 17, 16, 17)          # line / premium / TRIA / total
+VEHICLE_COLS = cols(6, 7, 7, 28, 14, 24, 14)  # veh / state / year / make / class / vin / prem
+COVERAGE_COLS = cols(49, 18, 17, 16)         # description / limit / deductible / premium
+FORMS_COLS = cols(24, 16, 12, 48)            # line / number / edition / description
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PACKAGE = os.path.join(REPO, "output", "quote-poc", "quote-package")
@@ -87,12 +110,22 @@ def labelled(label: str, path: Path, end: bool = True) -> list:
     return [Cond(path.then(*IS_PROVIDED), then=body)]
 
 
-def cell(path: Path) -> list:
-    """A table cell: the value and a tab, or just a tab when it is absent, so the
-    columns still line up."""
-    return [Cond(path.then(*IS_PROVIDED),
-                 then=[Fill(path), Static("\t")],
-                 otherwise=[Static("\t")])]
+def value(path: Path) -> list:
+    """A cell's content: the value when it is there, nothing when it is not. In a
+    real table an absent value needs no placeholder -- the cell holds the column
+    open by itself, which is the whole reason to use a table instead of tabs."""
+    return [Cond(path.then(*IS_PROVIDED), then=[Fill(path)])]
+
+
+def head(text: str, width: int, style: str = "s2") -> Cell:
+    return Cell([Static(text)], width, style=style, bold=True)
+
+
+def money(body: list, width: int) -> Cell:
+    """A numeric cell. `s8` is the stylesheet's right-aligned Arial 10 -- the same
+    style the ISO templates use for a premium column, and the GhostDraft equivalent
+    of the `MODE=R` the DDT puts on these fields."""
+    return Cell(body, width, style="s8")
 
 
 # ------------------------------------------------------------------- the sections
@@ -113,36 +146,51 @@ def cover() -> list:
         Break(),
     ]
 
-
 def premium_summary() -> list:
     lines = list_path("Insurance Lines")
     it = iterator_for("Insurance Line", "Quote > Insurance Lines")
-    endorsements = it.then("Endorsements", qm.guid(qm.key("Insurance Lines", "Endorsements")))
+    endorsements = it.then("Endorsements",
+                           qm.guid(qm.key("Insurance Lines", "Endorsements")))
     end_it = iterator_for("Endorsement", "Insurance Line > Endorsements")
+    w = SUMMARY_COLS
 
     def line_attr(name: str) -> Path:
         return item(it, ["Insurance Lines"], name)
 
     return [
-        Static("Insurance Line\tPremium ($)\t*TRIA ($)\tTotal Premium ($)"), Break(),
+        Table(rows=[
+            Row(header=True, cells=[
+                head("Insurance Line", w[0]),
+                head("Premium ($)", w[1], "s8"),
+                head("*TRIA ($)", w[2], "s8"),
+                head("Total Premium ($)", w[3], "s8"),
+            ]),
+            Repeat(lines, "Insurance Line", body=[
+                Row(cells=[
+                    Cell([Fill(line_attr("Name"))], w[0], bold=True),
+                    money(value(line_attr("Premium")), w[1]),
+                    money(value(line_attr("Terrorism Premium")), w[2]),
+                    money(value(line_attr("Total Premium")), w[3]),
+                ]),
+            ]),
+            Row(cells=[
+                head("Total Premium", w[0]),
+                money(value(scalar("Total Premium")), w[1]),
+                money(value(scalar("Total Terrorism Premium")), w[2]),
+                money(value(scalar("Total Premium With Terrorism")), w[3]),
+            ]),
+        ]),
+        # The endorsement list is NOT a column of the summary table -- legacy prints
+        # it as indented lines under its insurance line, so it stays a paragraph
+        # list. Keeping it out of the table is also what lets the table's own rows
+        # stay one line tall.
         Repeat(lines, "Insurance Line", body=[
-            Fill(line_attr("Name")), Static("\t"),
-            *cell(line_attr("Premium")),
-            *cell(line_attr("Terrorism Premium")),
-            *cell(line_attr("Total Premium")),
-            Break(),
             Repeat(endorsements, "Endorsement", body=[
-                Static("    "),
+                Static("      "),
                 Fill(item(end_it, ["Insurance Lines", "Endorsements"], "Description")),
                 Break(),
             ]),
         ]),
-        Static("Total Premium\t"),
-        *cell(scalar("Total Premium")),
-        *cell(scalar("Total Terrorism Premium")),
-        *cell(scalar("Total Premium With Terrorism")),
-        Break(),
-        # The footnote belongs to the TRIA column, so it prints only when there is one.
         Cond(scalar("Total Terrorism Premium").then(*IS_PROVIDED),
              then=[Static("*Terrorism Risk Insurance Act"), Break()]),
         Break(),
@@ -152,6 +200,7 @@ def premium_summary() -> list:
 def auto_summary() -> list:
     vehicles = list_path("Vehicles")
     it = iterator_for("Vehicle", "Quote > Vehicles")
+    w = VEHICLE_COLS
 
     def veh(name: str) -> Path:
         return item(it, ["Vehicles"], name)
@@ -161,18 +210,27 @@ def auto_summary() -> list:
     return [
         Static("Auto Summary"), Break(),
         Static("* Leased Vehicle"), Break(),
-        Static("Veh\tState\tYear\tMake/Model\tClass Code\tVIN\tVeh Total Prem"), Break(),
-        Repeat(vehicles, "Vehicle", body=[
-            Fill(veh("Number")), Static("\t"),
-            # The asterisk is a marker, not a value: it prints only for a leased unit.
-            Cond(veh("Is Leased").then(*IS_PROVIDED), then=[Static("*")]),
-            *cell(veh("State")),
-            *cell(veh("Year")),
-            *cell(veh("Make And Model")),
-            *cell(veh("Class Code")),
-            *cell(veh("VIN")),
-            *cell(veh("Premium")),
-            Break(),
+        Table(rows=[
+            Row(header=True, cells=[
+                head("Veh", w[0]), head("State", w[1]), head("Year", w[2]),
+                head("Make/Model", w[3]), head("Class Code", w[4]),
+                head("VIN", w[5]), head("Veh Total Prem", w[6], "s8"),
+            ]),
+            Repeat(vehicles, "Vehicle", body=[
+                Row(cells=[
+                    # The asterisk is a marker, not a value: it prints only for a
+                    # leased unit, and it shares the cell with the vehicle number.
+                    Cell([Fill(veh("Number")),
+                          Cond(veh("Is Leased").then(*IS_PROVIDED),
+                               then=[Static(" *")])], w[0]),
+                    Cell(value(veh("State")), w[1]),
+                    Cell(value(veh("Year")), w[2]),
+                    Cell(value(veh("Make And Model")), w[3]),
+                    Cell(value(veh("Class Code")), w[4]),
+                    Cell(value(veh("VIN")), w[5]),
+                    money(value(veh("Premium")), w[6]),
+                ]),
+            ]),
         ]),
         *labelled("Total Auto Premium\t", scalar("Auto Vehicles Premium")),
         *labelled("Auto Insurance Line Premium\t", scalar("Auto Line Premium")),
@@ -183,6 +241,29 @@ def auto_summary() -> list:
         *[x for c in counts for x in labelled(c + "\t", scalar(c))],
         Break(),
     ]
+
+
+def coverage_table(rows_repeat: Repeat, total_label: str = "",
+                   total_path: Path | None = None) -> Table:
+    """The Coverage / Limit / Deductible / Premium table, which the packet draws
+    twice -- once for the insurance line and once per vehicle."""
+    w = COVERAGE_COLS
+    rows: list = [
+        Row(header=True, cells=[
+            head("Coverage / Description", w[0]),
+            head("Limit Amount ($)", w[1], "s8"),
+            head("Deductible ($)", w[2], "s8"),
+            head("Premium ($)", w[3], "s8"),
+        ]),
+        rows_repeat,
+    ]
+    if total_path is not None:
+        rows.append(Row(cells=[
+            head(total_label, w[0]),
+            Cell([], w[1]), Cell([], w[2]),
+            money(value(total_path), w[3]),
+        ]))
+    return Table(rows=rows)
 
 
 def auto_detail() -> list:
@@ -198,6 +279,7 @@ def auto_detail() -> list:
         ("PHYSICAL DAMAGE COLLISION COVERAGE", "Collision Symbols"),
         ("PHYSICAL DAMAGE TOWING AND LABOR COVERAGE", "Towing And Labor Symbols"),
     ]
+    w = COVERAGE_COLS
 
     line_covs = list_path("Line Coverages")
     lc_it = iterator_for("Line Coverage", "Quote > Line Coverages")
@@ -216,42 +298,61 @@ def auto_detail() -> list:
     def vc(name: str) -> Path:
         return item(vc_it, ["Vehicles", "Coverages"], name)
 
+    vw = cols(14, 30, 10, 20, 12, 14)   # the vehicle identification block
+
     return [
         Static("Commercial Auto"), Break(),
         Static("COVERED AUTO SYMBOLS"), Break(),
         *[x for label, attr in symbols for x in labelled(label + "\t", scalar(attr))],
         Break(),
-        Static("Coverage / Description\tLimit Amount ($)\tDeductible ($)\tPremium ($)"),
-        Break(),
-        Repeat(line_covs, "Line Coverage", body=[
-            Fill(lc("Description")), Static("\t"),
-            *cell(lc("Limit")), *cell(lc("Deductible")), *cell(lc("Premium")),
-            Break(),
-        ]),
-        *labelled("Total Commercial Auto Insurance Line Premium\t",
-                  scalar("Auto Line Premium")),
+        coverage_table(
+            Repeat(line_covs, "Line Coverage", body=[
+                Row(cells=[
+                    Cell([Fill(lc("Description"))], w[0]),
+                    money(value(lc("Limit")), w[1]),
+                    money(value(lc("Deductible")), w[2]),
+                    money(value(lc("Premium")), w[3]),
+                ]),
+            ]),
+            "Total Commercial Auto Insurance Line Premium",
+            scalar("Auto Line Premium")),
         Break(),
         Repeat(vehicles, "Vehicle", body=[
             Static("Commercial Auto - Vehicle # "), Fill(veh("Number")),
-            Static("  State: "), Fill(veh("State")), Break(),
-            Fill(veh("Year")), Static(" "), Fill(veh("Make And Model")),
-            Static("\tVIN: "), Fill(veh("VIN")), Break(),
-            Static("Class Code: "), Fill(veh("Class Code")),
-            Static("\tCost New ($): "),
-            *cell(veh("Cost New")),
-            Break(),
-            Static("Territory: "), Fill(veh("Territory")),
-            Static("\tStated Cost ($): "),
-            *cell(veh("Stated Cost")),
-            Break(),
-            Static("Coverage / Description\tLimit Amount ($)\tDeductible ($)\tPremium ($)"),
-            Break(),
-            Repeat(v_covs, "Coverage", body=[
-                Fill(vc("Description")), Static("\t"),
-                *cell(vc("Limit")), *cell(vc("Deductible")), *cell(vc("Premium")),
-                Break(),
+            Static("   State: "), Fill(veh("State")), Break(),
+            Table(rows=[
+                Row(cells=[
+                    Cell([Fill(veh("Year"))], vw[0]),
+                    Cell([Fill(veh("Make And Model"))], vw[1]),
+                    head("VIN:", vw[2]),
+                    Cell([Fill(veh("VIN"))], vw[3]),
+                    Cell([], vw[4]), Cell([], vw[5]),
+                ]),
+                Row(cells=[
+                    head("Class Code:", vw[0]),
+                    Cell(value(veh("Class Code")), vw[1]),
+                    Cell([], vw[2]), Cell([], vw[3]),
+                    head("Cost New ($):", vw[4]),
+                    money(value(veh("Cost New")), vw[5]),
+                ]),
+                Row(cells=[
+                    head("Territory:", vw[0]),
+                    Cell(value(veh("Territory")), vw[1]),
+                    Cell([], vw[2]), Cell([], vw[3]),
+                    head("Stated Cost ($):", vw[4]),
+                    money(value(veh("Stated Cost")), vw[5]),
+                ]),
             ]),
-            Static("Total Vehicle Premium\t"), Fill(veh("Premium")), Break(),
+            coverage_table(
+                Repeat(v_covs, "Coverage", body=[
+                    Row(cells=[
+                        Cell([Fill(vc("Description"))], w[0]),
+                        money(value(vc("Limit")), w[1]),
+                        money(value(vc("Deductible")), w[2]),
+                        money(value(vc("Premium")), w[3]),
+                    ]),
+                ]),
+                "Total Vehicle Premium", veh("Premium")),
             Break(),
         ]),
     ]
@@ -260,19 +361,26 @@ def auto_detail() -> list:
 def forms_schedule() -> list:
     forms = list_path("Forms")
     it = iterator_for("Form", "Quote > Forms")
+    w = FORMS_COLS
 
     def f(name: str) -> Path:
         return item(it, ["Forms"], name)
 
     return [
         Static("FORMS AND ENDORSEMENT SCHEDULE"), Break(),
-        Static("Coverage line\tForm Number\tEd. Date\tDescription"), Break(),
-        Repeat(forms, "Form", body=[
-            Fill(f("Coverage Line")), Static("\t"),
-            Fill(f("Form Number")), Static("\t"),
-            *cell(f("Edition Date")),
-            Fill(f("Description")),
-            Break(),
+        Table(rows=[
+            Row(header=True, cells=[
+                head("Coverage line", w[0]), head("Form Number", w[1]),
+                head("Ed. Date", w[2]), head("Description", w[3]),
+            ]),
+            Repeat(forms, "Form", body=[
+                Row(cells=[
+                    Cell(value(f("Coverage Line")), w[0]),
+                    Cell(value(f("Form Number")), w[1]),
+                    Cell(value(f("Edition Date")), w[2]),
+                    Cell(value(f("Description")), w[3]),
+                ]),
+            ]),
         ]),
     ]
 
