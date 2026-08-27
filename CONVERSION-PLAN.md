@@ -12,30 +12,40 @@ you do not need the rest.**
 
 ## 0. The one architectural decision everything else follows from
 
-`FORM-STUDIO-PLAN.md` §40 established this from 491 production GhostDraft templates, verified three
-ways (§42: model.xml, the package XSD, and GhostDraft's own Integration Specification — 100% on all
-three):
-
-> **The GhostDraft Server XML element paths ARE the logical binding namespace.**
-> A form field stores a Server XML path. It never stores a CDM path.
-
-That is already how production works, and it collapses requirement 1 into one pipeline rather than
-two:
+**DECIDED by Products, 2026-08-26.** A form field stores a **logical field name in CDM
+vocabulary** — legible, e.g. `InsuredAsset.VehicleDescription`. It stores **neither** a Server XML
+path **nor** a physical CDM path. Two endpoints resolve that one name into the two shapes:
 
 ```
-                        ┌──────────────► GhostDraft template  ──► PDF   (GhostDraft server)
-DB2 ──► CDM ──► Server XML
-        (148 mappers)   └──────────────► Form Studio HTML     ──► PDF   (Chromium)
-        (ISectionBuilders)
+                                  ┌─ /api/policy/{n}/cdm-values  ─► name → value ─► HTML       ─► PDF (Chromium)
+form field: logical CDM-ish name ─┤
+                                  └─ /api/policy/{n}/server-xml  ─► Server XML   ─► GhostDraft ─► PDF
 ```
 
-**Both renderers consume the same Server XML.** So "map CDM to HTML" and "map CDM to the GhostDraft
-model" are the *same* mapping — the section builders in `fact-docgen` — plus a small HTML-side
-runtime that reads Server XML. Do not build a second CDM→HTML mapping; §40's two earlier design
-attempts both did that and were wrong in the same direction.
+**Why this is right, and better than binding the HTML to Server XML** (which the first draft of this
+plan recommended): **Server XML paths and concept GUIDs are per-package** (§43.6). The same
+vehicle-number concept is `CAAutoLevelCoverages/Items/Auto/VehicleNumber` in the ISO package and
+`MOECAAutoLevelCoverages/AutosWithLossPayableClause/Items/Auto/VehicleNumber` in the proprietary one.
+`PackageNames.cs` lists **ten** packages. Binding a form to Server XML would couple it to one
+package's shape and force a re-bind for every other. A CDM-vocabulary name is **package-neutral**,
+and the per-package Server XML path becomes a resolver OUTPUT rather than form content.
 
-**Consequence for task ordering:** W1 (section builders) unblocks both renderers. W2 (HTML runtime)
-and W3 (GhostDraft emission) can then proceed in parallel.
+It also does not violate FORM-STUDIO-PLAN section 3 ("never store a CDM path in a form"): a stable
+logical NAME in CDM vocabulary is not a physical CDM path, and it is what both resolvers key off.
+
+**The honest cost:** one more mapping exists — logical name → Server XML path — where binding
+directly to Server XML would have had none. Mitigation is W2.4: generate both maps from a single
+join so they cannot drift.
+
+**And what the vocabulary choice does NOT buy: coverage.** Whichever vocabulary is used, something
+must decide which logical name each FAP field carries. Hand-write that and we stay at 5-of-4,478
+(W2.0). Coverage comes from **deriving** it from the DDT, which declares a DB2 source for **99.7% of
+61,096** field records. That derivation (W2.4 / W3.1) is the real work; the vocabulary is now a
+settled detail of it.
+
+**Consequence for task ordering:** W1 still gates real GhostDraft data, but the HTML path is no
+longer downstream of it — W2 can be built against CDM values directly, so W1, W2 and W3 proceed in
+parallel once W2.4 has defined the vocabulary.
 
 ### What is already proven, so nobody re-does it
 
@@ -130,11 +140,11 @@ not reach; `empty-only` (142 ISO paths) is ambiguous by construction.
 ## W2 — Populate the HTML form from Server XML
 
 **Repo:** `fact-pdf-tools` · `core/`, `server/`, `client/`
-**Depends on:** §0 and D6; W1 for real data (the package's 32 Test Cases unblock dev — see W2.3)
+**Depends on:** §0 (decided); W1 for real GhostDraft data (the package's 32 Test Cases unblock dev — see W2.3)
 
 ### W2.0 What already exists — read this before designing anything
 An earlier draft of this plan implied nothing populates today. That is wrong, and the existing path
-matters because it decides D6.
+matters: the five existing maps become per-form overrides, not the mechanism (§0).
 
 `population/` (`FapPdfTools.Population`) already pulls **real data** and fills a form:
 
@@ -166,17 +176,49 @@ So, precisely:
   the `.gd` generator's 3.4% (§44.4).
 
 `POST /api/policy/field-values` is nonetheless the **right seam** — it already separates data
-resolution from rendering. The question is only what its keys are (D6).
+resolution from rendering. Per §0 it splits into two endpoints — one returning CDM-shaped values, one returning Server XML.
 
-### W2.1 Put a Server XML path in every HTML field
-`emit-html` currently emits geometry and text. Fields need `data-bind="<server-xml-path>"`.
-**Never a CDM path** — FORM-STUDIO-PLAN section 3, and §40's rationale.
+### W2.1 Give every HTML field a logical CDM-vocabulary name
+`emit-html` currently emits geometry and text and **no field identity whatsoever** (W2.0). Fields
+need a stable logical name, e.g. `data-field="InsuredAsset.VehicleDescription"`.
 
-Where the path comes from is W3.1's output: the same FAP+DDT → binding resolution. Do not build a
-second resolver.
+Ground the vocabulary in the **real CDM**, not invented names. The authority is
+`C:\src\fact-commercial-api\MoE.Commercial.CommonDataModel` — the CDM's own type definitions, which
+is what `bindgap.py` reads (its docstring records that scraping builder expressions instead was one
+of the corrected artefacts). Names that actually exist there include `Policy`, `InsuredParty`,
+`InsuredAsset`, `InsuredAssetNumber`, `AgencyParty`, `AgencyCode`, `VehicleDescription`, `Location`,
+`LocationNumber`, `Coverages`, `CoverageCode`, `Address`, `AddressLine`.
 
-### W2.2 A Server XML → HTML population runtime
-Given a Server XML document and an emitted HTML form, fill the bound fields. Must handle what the
+Worked example — one concept, four vocabularies:
+
+| | |
+|---|---|
+| **logical name (stored in the form)** | `InsuredAsset.InsuredAssetNumber` |
+| CDM | `InsuredAsset.InsuredAssetNumber` |
+| Server XML, ISO package | `CAAutoLevelCoverages/Items/Auto/VehicleNumber` |
+| Server XML, proprietary package | `MOECAAutoLevelCoverages/AutosWithLossPayableClause/Items/Auto/VehicleNumber` |
+| legacy FAP/DDT | per form, e.g. `>XUnit1` + `AUTOSDSC` |
+
+### W2.4 One join, two generated maps
+The two endpoints must not be maintained by hand or they will drift. Generate both from a single
+join, per package:
+
+```
+FAP field ─► DDT rule (declares the DB2 source — 99.7% of 61,096 records)
+             ├─► CDM property   (via fact-commercial-api's 148 Db2 mapper classes — the
+             │                   authoritative DB2→CDM map, NOT the SQL `AS` aliases)
+             └─► logical name ─► Server XML path (via `gdmodel` against that package's model.xml)
+```
+
+`bindgap.py` already does the demand side and ranks the backlog — its coverage percentage is a
+**floor** and its docstring says why. `gdmodel.Model` already resolves the Server XML half, at
+14,107/14,107 verified three ways (§40, §42).
+
+**Acceptance:** for one form, both endpoints answer for the same field list, and the Server XML side
+resolves through `gdmodel` with zero unresolved paths.
+
+### W2.2 A population runtime for the HTML form
+Given values keyed by logical name and an emitted HTML form, fill the bound fields. Must handle what the
 model actually uses (§40, measured):
 
 * **lists** — `.../Items/<Element>` repeats a row group
@@ -350,7 +392,8 @@ value** — every gate built so far checks that an element is *present*, not tha
 | **D3** | W4.2: gate GhostDraft renders against **legacy FAP2PDF** or against **our Chromium HTML render**? | Determines whether a render pipeline must be automated (needs publish + credentials) or not. |
 | **D4** | Who owns concept-model additions (W5.3), and is hand-editing `.gdm` acceptable? | Blocks any form whose fields are not already in the model. |
 | **D5** | Priority order across the ten packages. | We have 2 of 10; each needs its own export before any of its forms can be bound. |
-| **D6** | The repo now holds **two binding vocabularies**: `IFormFieldMap` (CDM -> FAP field name, works today for 5 forms) and Server XML paths (§40, the production namespace, 14,107 verified, nothing in `fact-pdf-tools` emits it yet). Migrate the five onto Server XML, or keep both? | Recommendation: re-key `POST /api/policy/field-values` to **Server XML paths** so one endpoint feeds HTML and GhostDraft alike, and keep the five hand maps only as a per-form override for bindings W3.1 cannot derive. Keeping two vocabularies permanently means every future form is mapped twice. |
+| ~~D6~~ | **RESOLVED (Products, 2026-08-26).** Forms carry a **logical CDM-vocabulary name**; two endpoints resolve it, one to CDM values and one to Server XML. See §0. This plan's first-draft recommendation (Server XML in the form) was **wrong** — it would couple every form to one of ten packages. | The five existing `IFormFieldMap` classes become per-form **overrides** for bindings W2.4 cannot derive, not the mechanism. |
+| **D7** | Does the logical name mirror the CDM shape exactly (`InsuredAsset.InsuredAssetNumber`), or is it a curated form-facing vocabulary that may differ where CDM naming is awkward? | Exact mirroring is free to generate and self-documenting, but inherits CDM naming the business may not recognise. A curated layer reads better and costs a maintained alias table. |
 
 ---
 
