@@ -270,67 +270,99 @@ Two of our own rendering bugs the comparison exposed:
 
 ---
 
-## 4c. Rendering the quote packet in GhostDraft — the actual plan
+## 4c. GhostDraft — ONE template, built and verified
 
-*Rewritten 2026-08-27 after §3 was withdrawn. Products has settled both open decisions:*
+*Rewritten 2026-08-27 (third pass). Products settled the scope and both open decisions:*
 
+* **Scope:** *"for this POC we make one form that has all these elements on it; in the
+  future we can figure out how to split them out more intelligently."*
 * **Render target:** `…\Documents\GhostDraft Studio\Cody's World\Cody's World.gdproj`.
-* **Server XML:** the DocGen project (fact-docgen) will carry the builder.
+* **Server XML:** the DocGen project carries the builder.
 
-Both are now inputs, not questions. Cody's World's `Model Library.gdm` holds **588 guids**
-and is a strict superset of the proprietary CA package's model (359, all shared) — roots
-`Policy`, `Insured`, `Agent`, `PolicyDecInfo`, `CAPolicyLevelCoverages`. No `Quote` root,
-which is exactly what `make-concept-library` adds.
+A single template needs a single bindable root, so everything hangs off `Quote`.
 
-### The order of work
+### The model — declared once, three artefacts
 
-1. **Install the extended library in the Studio project.** `make-concept-library` now
-   defaults to Cody's World and writes `output/concept-library/Model Library (with Quote).gdm`
-   — the real library plus the `Quote` domainModel (29 attributes, deterministic guids).
-   Point the project's Model Library resource at it. Every binding in all 428 converted
-   templates then resolves (measured: 871/871).
-2. **Close the 617 unbound fill points** by extending `ProjectConcepts.FieldToAttr` and the
-   `Quote` attribute list, then re-running `convert-quotes`. The list is finite and printable;
-   127 of them are in the 44 templates the CA packet needs, and `QuotePacketData` already
-   knows the value for every one.
-3. **Register the 44 into the project** with `gdproject.py` (text splice — never
-   re-serialise the manifest, §49) and compile with `gdvalidate.py`, which runs GhostDraft's
-   own `CreateSnapshot.exe`.
-4. **Author the logic.** This is the real remaining work, and the honest measurement is:
+`tools/quotemodel.py` is the single declaration. Three things must agree exactly or
+nothing renders, and all three are generated from it:
 
-   ```
-   grep -l listInstruction output/quote-forms-gd/*.gd   ->  0 of 428
-   grep -l conditionType   output/quote-forms-gd/*.gd   ->  0 of 428
-   ```
+| artefact | who consumes it |
+|---|---|
+| `.gdm` concept library | GhostDraft Studio edits against it; `CreateSnapshot` validates markup against it |
+| `model.xml` | what a template's guid paths resolve through — `tools/gdmodel.py`, `tools/gdauthor.py` |
+| the Server XML element names | what the DocGen builder must emit |
 
-   The 428 are layout conversions. Every repeat and condition — one row per vehicle, one per
-   coverage, suppress the lines the quote does not carry, pick the endorsement edition — is
-   absent. What we *do* have is the specification for all of it: §4b derives exactly those
-   rules from the DDTs, and `gdauthor.py` emits `Repeat`/`Cond`/`Fill`/`Static`/`Break` and
-   verifies the grammar from the written bytes.
-5. **Hand fact-docgen the Server XML contract.** Once the extended library is compiled into a
-   package, its `model.xml` is the projection of `Quote/…` onto Server XML element names —
-   and `model.xml`, not the `.gdm`, is what an `ISectionBuilder` must satisfy
-   (`tools/gdmodel.py`). `xmlsupply.py` then joins template demand to builder supply and
-   prints the gap. Until that package exists, `quote-data` can emit the same content directly,
-   so the POC never has to block on the builder.
+GUIDs derive exactly as `ProjectConcepts.cs` derives them (MD5 of
+`fact-pdf-tools/QuoteLib/<key>`), so the C# and Python sides agree without a shared file.
 
-### What we already have and nobody needs to supply
+The `.gdm` grammar for a repeating table was **read off the real Model Library**, not
+guessed — there is no `isList` attribute, and the concept for a list is not where you
+would look for it:
 
-* the packet graph and its order — 277 placements over 160 images, from FORM.DAT and the
-  DDTs, which is also the input GhostDraft's `subscriptionType` graph needs, so both
-  renderers run off one source rather than two hand-kept lists;
-* the data — `quote-data`, 468 values on `BAP000080307`;
-* authoring, registering, validating, packaging — `gdauthor` / `gdproject` / `gdvalidate` /
-  `gdpackage`, proven end to end: a machine-authored `.gd` with a list, five conditionals and
-  eight bindings rendered a populated PDF from GhostDraft;
-* the legacy vocabulary and presentation rules — `MOE_ASAH.TBL`, the `CPPQ_*` DAL subs and
-  the DDT's `MODE=R`, all read rather than guessed, and all of it applies to a GhostDraft
-  template unchanged.
+```xml
+<concept xsi:type="ListConcept" name="Model Library_Quote_Vehicles"
+         elementName="Vehicle" hiddenConceptName="Model Library_Quote_Vehicles_Elements">
+  <selectors>… First / Last, singleton …</selectors>
+  <elementKinds><conceptName>…_Elements</conceptName></elementKinds>
+</concept>
+```
 
-**The oracle for values is the HTML render; the oracle for layout is the Products render.**
-Neither is the existing GhostDraft template library — Products: those are hand conversions
-with human tweaks and are **not** an oracle (§51).
+and the parent points at it with an `attributeState="AttributeWithKinds"` attribute.
+Six lists, thirteen concepts, one `domainModel`.
+
+```bash
+python tools/quotemodel.py --print          # the model
+python tools/quotemodel.py --gdm --model    # the library and the compiled model
+```
+
+### The template — authored, bound, grammar-checked
+
+```bash
+python tools/quotetemplate.py
+  247 instructions, 118 bindings, ALL resolved against the model
+  7 listInstructionType, 47 conditionalInstructionType, 64 fillPointType
+  0 <path xsi:nil="true"/>
+  GRAMMAR CHECK PASSED -- all five rules re-derived from the written file
+```
+
+Set that against the 428 mechanically converted quote templates: **0 lists, 0
+conditionals, 617 nil paths between them.** Those are layout; this is a form. Sections
+follow the packet order §4b recovers, and the wording is the wording the HTML render
+uses, so the two can be diffed value for value.
+
+### The data — one source, two renderers
+
+`tools/quotexml.py` turns the **same** `quote-data` document that feeds the HTML render
+into Server XML:
+
+```
+1 InsuranceLine · 14 Endorsement · 6 Vehicle · 33 Coverage · 14 LineCoverage · 37 Form
+```
+
+so a value that differs between the HTML and the GhostDraft render is a bug in a
+renderer, not a data question. It is also the **worked example for the DocGen builder** —
+whatever emits this in production has to emit this shape.
+
+One rule in it is load-bearing: an empty value is **omitted**, never written as an empty
+element. Every conditional in the template turns on `is provided`, which is false for an
+absent element and true for an empty one, so `<Limit/>` would print a label with nothing
+after it.
+
+### The one step no tool here can take
+
+**Rendering.** Every GhostDraft UI is a GUI (Studio, Server.TestClient, Data Workbench),
+so a PDF comes from `GhostDraftServer/RestAPI/AssembleDocument` against a **published**
+template, with credentials. `gdvalidate.py` gets us GhostDraft's own compiler and
+`CreateSnapshot`'s markup check without a GUI, and that is as far as a shell reaches.
+
+To finish the POC someone needs to: point the project's Model Library resource at
+`output/concept-library/Model Library (with Quote).gdm`, add
+`output/quote-poc/Quote Proposal.gd` to the project, publish, and assemble it against
+`output/quote-poc/BAP000080307.serverxml`.
+
+**The oracle for values is the HTML render; the oracle for layout is the Products render
+of the same quote.** Neither is the existing GhostDraft template library — Products:
+those are hand conversions with human tweaks and are **not** an oracle (§51).
 
 ---
 
