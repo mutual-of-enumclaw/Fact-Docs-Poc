@@ -817,15 +817,31 @@ if (args.Length >= 2 && args[0] == "emit-html")
             // the next label, which the PDF never does.
             float fw = Math.Max(Px(fpos.Col2) - Px(fpos.Col1),
                                 Px(fld.Position.Col2) - Px(fld.Position.Col1));
-            // Same baseline anchor as a text run: Documaker puts the baseline on the
-            // BOTTOM edge of the declared box, so align the value's box to row2.
+            // BASELINE ANCHOR -- the SAME arithmetic a text run gets, not an approximation
+            // of it. The old code claimed this anchor in its comment and then positioned the
+            // span by its box TOP with line-height set to the box height, which coincides
+            // with the text only when the declared box happens to be exactly one line tall.
+            // On the vehicle header it is not: "Commercial Auto - Vehicle #" sits at
+            // top 11.71pt and the value beside it at 10.11pt, so every inline value on that
+            // line rendered 1.6pt high -- reading as a superscript. Products saw it as the
+            // numbers sitting above their labels.
+            //
+            // Both are on one flowed line, so both are anchored to row2 and given the face's
+            // own line height. `height` stays the declared box because fill-html and
+            // htmlpacket measure the value against it when deciding to shrink or widen.
             float fh = Py(fpos.Row2) - Py(fpos.Row1);
+            var ffKey = $"{ffam}|{ff?.Bold ?? false}|{ff?.Italic ?? false}";
+            float flh = ff != null && ff.LineHeight > 0 ? ff.LineHeight * S : fsize * 1.2f;
+            var (fAsc, fDesc) = faceMetrics.TryGetValue(ffKey, out var ffm)
+                ? ffm : (0.905f, 0.212f);
+            float fTop = (Py(fpos.Row2) - 0.09f)
+                       - (flh + fAsc * fsize - fDesc * fsize) / 2f + 0.60f;
             sb.Append($"<span class=\"abs field\" data-field=\"{Esc(fld.Name)}\" data-maxlen=\"{fld.Length}\" ")
               .Append($"data-fid=\"{fld.FontAttributes.FontId}\" ")
-              .Append($"style=\"left:{N(Px(fpos.Col1))}pt;top:{N(Py(fpos.Row1))}pt;")
+              .Append($"style=\"left:{N(Px(fpos.Col1))}pt;top:{N(fTop)}pt;")
               .Append($"width:{N(fw)}pt;")
               .Append($"height:{N(fh)}pt;white-space:nowrap;")
-              .Append($"font-family:'{ffam}';font-size:{N(fsize)}pt;line-height:{N(fh)}pt")
+              .Append($"font-family:'{ffam}';font-size:{N(fsize)}pt;line-height:{N(flh)}pt")
               .Append((ff?.Bold ?? false) ? ";font-weight:bold" : "")
               .Append((ff?.Italic ?? false) ? ";font-style:italic" : "")
               .Append("\"></span>\n");
