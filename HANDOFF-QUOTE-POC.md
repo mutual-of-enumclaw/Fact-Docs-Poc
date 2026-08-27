@@ -64,29 +64,55 @@ packet is built from.
 
 ---
 
-## 3. The blocker for the GhostDraft half — read this before promising a date
+## 3. ~~The blocker for the GhostDraft half~~ — WITHDRAWN, there is no blocker
 
-Those 427 converted `.gd` files bind to a **Quote concept model**, root guid
-`bffb5190-0d36-e2ce-68e2-79a723e733b8`. Measured this session (§44.4):
+**This section was wrong, and it steered the plan for two sessions. Corrected 2026-08-27.**
 
-| | |
-|---|---|
-| fill points emitted across the 427 | 1,480 |
-| resolve against **MoE Proprietary Commercial Auto 2607.0** | **51 (3.4%)** |
-| cite root `Quote` (`bffb5190-…`) | **812** |
-| unbound (`<path xsi:nil="true"/>`) | 617 |
+What it said: the 427 converted `.gd` bind to a Quote concept model, root guid
+`bffb5190-0d36-e2ce-68e2-79a723e733b8`; that guid is in neither GhostDraft package we hold;
+therefore a **GhostDraft Quote package** exists somewhere that we do not have, and obtaining
+it (Action 1) gates the entire GhostDraft half.
 
-`bffb5190-…` is **in neither GhostDraft package we hold**. So there is a **GhostDraft Quote
-package** that we do not have, and without it a quote fragment's bindings cannot be resolved or
-verified — concept GUIDs are per-package (§43.6).
+What is true:
 
-> **Action 1, and it gates the GhostDraft half: obtain the GhostDraft Quote package export**
-> (`.gdsp`, plus its GDXSD and Integration Specification if available). Everything in §40–52 then
-> works on it unchanged — extract under `output/iso-packages/<name>/` and point the tools at it.
+```
+MD5("fact-pdf-tools/QuoteLib/Quote")  ->  bffb5190-0d36-e2ce-68e2-79a723e733b8
+```
 
-If it does not exist yet, the GhostDraft half becomes "author the quote fragments against a model
-that must first be built", which is a different and much larger project — say so rather than
-absorb it.
+That is `ProjectConcepts.RootGuid` — **a guid this repo derives for its own Quote concept
+model**, and the guid its own converter binds to (`core/Infrastructure/ProjectConcepts.cs`).
+It is absent from the ISO packages because it was never in them. `make-concept-library`
+splices it into the real Model Library; that step had simply never been run against the
+project we render in.
+
+Measured, not reasoned — every guid in all 428 converted templates checked against the
+library `make-concept-library` emits from Cody's World:
+
+| | guids in library | of 871 guid references in the templates |
+|---|---|---|
+| base `Model Library.gdm` | 588 | **51 resolve (5.9%)** |
+| extended (base + our Quote model) | 619 | **871 resolve (100%)** |
+
+The "3.4% resolve" figure that made this look hopeless was measured against a package that
+was never supposed to contain our concepts.
+
+**One real bug came out of the check**, and only a guid-level check could have found it:
+`Agent/Full Name` was being emitted as `9b7a6e43-…` where the library says `ed04ed36-…`.
+Eight references, all on the cover templates — the page we now render. A name-level
+comparison would have passed it; both are called "Full Name". Fixed.
+
+### What is actually left
+
+**617 `<path xsi:nil="true"/>`** — fill points the converter has no mapping for. In the 44
+templates the CA packet uses, 127 of them: the covered-auto symbol cells, `TOTAL VERBIAGE`,
+the TRIA columns (`CAPRM` / `CATERR`), the conditional `"$"` separators, `ME8802 DESC`.
+
+Every one of those is a FAP field `QuotePacketData` already fills for the HTML render
+(§4b). Closing them is extending `ProjectConcepts.FieldToAttr` against a list we can print,
+not waiting on anybody.
+
+> **Action 1 is withdrawn.** Do not ask Products for a GhostDraft Quote package. The two
+> things that *are* needed are in §4c.
 
 ---
 
@@ -244,75 +270,67 @@ Two of our own rendering bugs the comparison exposed:
 
 ---
 
-## 4c. Rendering the quote packet in GhostDraft — what is actually needed
+## 4c. Rendering the quote packet in GhostDraft — the actual plan
 
-*Added 2026-08-27, third pass, in answer to "what do you need to render this in GhostDraft?"*
+*Rewritten 2026-08-27 after §3 was withdrawn. Products has settled both open decisions:*
 
-Measured today, not recalled. The CA quote packet needs **44 distinct images, and all 44
-already have a `.gd`** in `output/quote-forms-gd`. That sounds finished and is not:
+* **Render target:** `…\Documents\GhostDraft Studio\Cody's World\Cody's World.gdproj`.
+* **Server XML:** the DocGen project (fact-docgen) will carry the builder.
 
-```
-python tools/gdbindings.py output/iso-packages/proprietary-ca-2607 \
-       --templates output/quote-forms-gd
-  templates read      428/428      bindings extracted  1480
-  unresolved  1429 -- 812 cite root 'Quote' (bffb5190-0d36-e2ce-68e2-79a723e733b8),
-                      617 are <path xsi:nil="true"/>
-```
+Both are now inputs, not questions. Cody's World's `Model Library.gdm` holds **588 guids**
+and is a strict superset of the proprietary CA package's model (359, all shared) — roots
+`Policy`, `Insured`, `Agent`, `PolicyDecInfo`, `CAPolicyLevelCoverages`. No `Quote` root,
+which is exactly what `make-concept-library` adds.
 
-and
+### The order of work
 
-```
-grep -l listInstruction output/quote-forms-gd/*.gd   ->  0 of 428
-grep -l conditionType   output/quote-forms-gd/*.gd   ->  0 of 428
-```
+1. **Install the extended library in the Studio project.** `make-concept-library` now
+   defaults to Cody's World and writes `output/concept-library/Model Library (with Quote).gdm`
+   — the real library plus the `Quote` domainModel (29 attributes, deterministic guids).
+   Point the project's Model Library resource at it. Every binding in all 428 converted
+   templates then resolves (measured: 871/871).
+2. **Close the 617 unbound fill points** by extending `ProjectConcepts.FieldToAttr` and the
+   `Quote` attribute list, then re-running `convert-quotes`. The list is finite and printable;
+   127 of them are in the 44 templates the CA packet needs, and `QuotePacketData` already
+   knows the value for every one.
+3. **Register the 44 into the project** with `gdproject.py` (text splice — never
+   re-serialise the manifest, §49) and compile with `gdvalidate.py`, which runs GhostDraft's
+   own `CreateSnapshot.exe`.
+4. **Author the logic.** This is the real remaining work, and the honest measurement is:
 
-So the 428 are **layout conversions with no logic and no resolvable bindings**. Every
-repeat and every condition in the packet — one row per vehicle, one per coverage, suppress
-the lines the quote does not carry, pick the right endorsement edition — is absent from
-them. That logic is exactly what §4b now derives from the DDTs for the HTML side, so we
-know what to author; it is authoring work, not discovery work.
+   ```
+   grep -l listInstruction output/quote-forms-gd/*.gd   ->  0 of 428
+   grep -l conditionType   output/quote-forms-gd/*.gd   ->  0 of 428
+   ```
 
-### One hard blocker, and it is not ours to clear
+   The 428 are layout conversions. Every repeat and condition — one row per vehicle, one per
+   coverage, suppress the lines the quote does not carry, pick the endorsement edition — is
+   absent. What we *do* have is the specification for all of it: §4b derives exactly those
+   rules from the DDTs, and `gdauthor.py` emits `Repeat`/`Cond`/`Fill`/`Static`/`Break` and
+   verifies the grammar from the written bytes.
+5. **Hand fact-docgen the Server XML contract.** Once the extended library is compiled into a
+   package, its `model.xml` is the projection of `Quote/…` onto Server XML element names —
+   and `model.xml`, not the `.gdm`, is what an `ISectionBuilder` must satisfy
+   (`tools/gdmodel.py`). `xmlsupply.py` then joins template demand to builder supply and
+   prints the gap. Until that package exists, `quote-data` can emit the same content directly,
+   so the POC never has to block on the builder.
 
-> **The GhostDraft Quote package export.** 812 of 1,480 fill points cite concept root
-> `Quote`, guid `bffb5190-0d36-e2ce-68e2-79a723e733b8`, and that guid is in **neither**
-> package we hold (`commercial-auto-2607`, `proprietary-ca-2607`). Concept GUIDs are
-> per-package (§43.6), so without it not one quote binding can be resolved, validated or
-> rendered. We need the `.gdsp`, plus its GDXSD and Integration Specification if they exist.
->
-> **If no such package exists**, say so plainly rather than absorbing it: the GhostDraft
-> half then becomes "design and build a Quote concept model", which is a modelling project
-> needing Products and GhostDraft sign-off on the concept names — those names become the
-> integration contract. We can build one (`make-concept-library` already emits an extended
-> `.gdm` with our own Quote concepts), but it is not a conversion and should not be
-> estimated as one.
+### What we already have and nobody needs to supply
 
-### Two decisions needed alongside it
+* the packet graph and its order — 277 placements over 160 images, from FORM.DAT and the
+  DDTs, which is also the input GhostDraft's `subscriptionType` graph needs, so both
+  renderers run off one source rather than two hand-kept lists;
+* the data — `quote-data`, 468 values on `BAP000080307`;
+* authoring, registering, validating, packaging — `gdauthor` / `gdproject` / `gdvalidate` /
+  `gdpackage`, proven end to end: a machine-authored `.gd` with a list, five conditionals and
+  eight bindings rendered a populated PDF from GhostDraft;
+* the legacy vocabulary and presentation rules — `MOE_ASAH.TBL`, the `CPPQ_*` DAL subs and
+  the DDT's `MODE=R`, all read rather than guessed, and all of it applies to a GhostDraft
+  template unchanged.
 
-| | |
-|---|---|
-| **Who owns the Server XML** | GhostDraft renders from Server XML, which fact-docgen's section builders produce — and there is no builder for a quote root. The POC does not have to wait for one: `quote-data` already assembles exactly this content from the CDM (628 field values on `BAP000080307`) and could emit Server XML directly. That is the fast path; a fact-docgen builder is the production path. Pick one for the POC. `xmlsupply.py` measures the gap the moment we have the package. |
-| **Which GhostDraft environment renders it** | the sandbox Studio project Products provided (`Cody's World.gdproj`) is what we have proven against, end to end — a machine-authored `.gd` with a list, five conditionals and eight bindings rendered a populated PDF. Confirm that is the target for the POC, or name the real one. |
-
-### What we already have and do not need to be given
-
-* **The packet graph and its order** — 277 placements over 160 images, from FORM.DAT and
-  the DDTs (§4b). This is the same input GhostDraft's `subscriptionType` graph needs, so
-  the two renderers can be driven from one source rather than two hand-kept lists.
-* **The data** — `quote-data`, mapping the DDT's extract-table filters onto CDM collections.
-* **Authoring with logic** — `gdauthor.py` emits `Repeat`/`Cond`/`Fill`/`Static`/`Break` and
-  verifies the grammar from the written bytes; `--selftest` mutates five ways.
-* **Registering, validating, packaging** — `gdproject.py` (text splice, never re-serialise
-  the manifest), `gdvalidate.py` (GhostDraft's own `CreateSnapshot.exe`), `gdpackage.py`.
-* **The legacy vocabulary and presentation rules** — `MOE_ASAH.TBL`, the `CPPQ_*` DAL subs
-  and the DDT's `MODE=R`, all now read rather than guessed. A GhostDraft template needs the
-  same wording and the same alignment, so this work carries over unchanged.
-
-**Order of operations once the package lands:** point `gdbindings.py` at it and re-measure
-(the 3.4% figure was against the wrong model); `gdxsdcheck` / `gdspeccheck` for a baseline;
-register the 44 into a Studio project and let `gdvalidate.py` compile them; then author the
-list and conditional logic per §4b, one image at a time, against the HTML render as the
-oracle for values and the Products render as the oracle for layout.
+**The oracle for values is the HTML render; the oracle for layout is the Products render.**
+Neither is the existing GhostDraft template library — Products: those are hand conversions
+with human tweaks and are **not** an oracle (§51).
 
 ---
 
@@ -369,7 +387,8 @@ guids in both), and the authored template is registered in it.
 ## 6. The POC plan
 
 ### Phase 0 — unblock (do first, in parallel)
-1. **Get the GhostDraft Quote package export.** Gates all GhostDraft work (§3). **STILL OPEN.**
+1. ~~Get the GhostDraft Quote package export.~~ **WITHDRAWN** — the concept root is ours, not a
+   missing package (§3). Nothing gates the GhostDraft work; the plan is §4c.
 2. ~~Confirm a quote is retrievable as CDM through the commercial API.~~ **DONE** — `?scope=Pending`,
    see §4.
 3. ~~Pick the exact target.~~ **DONE** — the CPP quote proposal for Commercial Auto, `QUOTE CPPSUM.2`
@@ -393,7 +412,7 @@ guids in both), and the authored template is registered in it.
 cover and disclaimer pages, the forms schedule and terrorism notices, and the `QTE_BILLINFO` cell
 borders. None of them are structural; all are one mapping or one fidelity rule each.
 
-### Phase 2 — GhostDraft (after Phase 0.1)
+### Phase 2 — GhostDraft — **superseded by §4c**, which is measured rather than assumed
 8. Point `gdbindings.py` at the Quote package; re-run `gdxsdcheck` / `gdspeccheck` to establish the
    baseline. Then `gdbindings.py --templates output/quote-forms-gd` to measure how many of the 427
    already-converted fragments resolve **against the right model** (the 3.4% figure was against the
@@ -438,7 +457,7 @@ borders. None of them are structural; all are one mapping or one fidelity rule e
 
 | # | question |
 |---|---|
-| Q1 | Does a **GhostDraft Quote package** exist? If not, the GhostDraft half of the quote POC is a model-building project, not a conversion. |
+| ~~Q1~~ | ~~Does a **GhostDraft Quote package** exist?~~ **Withdrawn — no such package is needed, see §3.** The concept root is ours; `make-concept-library` supplies it. |
 | Q2 | Commercial Auto **or** Farm first? The fragments are per-line (`QCPPSUM_CA` vs the Farm set), so it is a scoping choice, not extra architecture. |
 | Q3 | The **payment-plan table** (page 3) and the marketing copy (pages 1–2) — static boilerplate, or data-driven? Changes whether they need bindings at all. |
 | Q4 | Two renderers currently format a policy number differently: fact-docgen's `FormatPolicyNumber` gives `BAP 0123456 00` (14 chars) while `Mcs90aFieldMap` uses the raw 12. Which is correct? It is visible on any dec/quote page. |
