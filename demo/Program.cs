@@ -1413,8 +1413,15 @@ if (args.Length >= 1 && args[0] == "convert-quotes")
 // binds to). Import/use this library in GhostDraft so the quote fields we bind actually resolve.
 if (args.Length >= 1 && args[0] == "make-concept-library")
 {
-    var srcGdm = @"C:\Users\cmorehouse\Downloads\Moe Proprietary\Resources\Model Libraries\Model Library.gdm";
+    // Default to the Studio project Products nominated as the render target, so the
+    // extension is spliced into the library that project actually loads. Pass a path
+    // to use a different base.
+    var srcGdm = args.Length >= 2 ? args[1] : Path.Combine(
+        Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),
+        "OneDrive - Mutual of Enumclaw Insurance Company", "Documents", "GhostDraft Studio",
+        "Cody's World", "Resources", "Model Libraries", "Model Library.gdm");
     if (!File.Exists(srcGdm)) { Console.WriteLine($"Base Model Library not found: {srcGdm}"); return; }
+    Console.WriteLine($"base library  {srcGdm}");
     var xml = File.ReadAllText(srcGdm);
 
     string Esc(string s) => s.Replace("&", "&amp;").Replace("<", "&lt;").Replace(">", "&gt;").Replace("\"", "&quot;");

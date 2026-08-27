@@ -83,9 +83,13 @@ public static class FapToGhostDraftGenerator
             "Insured", "aade6b84-2f42-4d5a-8eb9-870e8a063187",
             [new("Zip", "3d327169-5851-424f-835f-f65dbe9d0f1b")]),
         // --- Agent ---
+        // Agent/Full Name is ed04ed36-…, not 9b7a6e43-… . The wrong guid was the ONLY
+        // attribute in the whole converted set that is absent from the Model Library --
+        // 8 references, all on the cover templates -- and it was invisible until the
+        // bindings were checked guid by guid against the library rather than by name.
         ["Agent.FullName"] = new("Full Name of Agent",
             "Agent", "fd9eebc5-e398-4c3a-8e10-d78c46900de0",
-            [new("Full Name", "9b7a6e43-7c6a-44bc-8a2b-aef9c5d03b55")]),
+            [new("Full Name", "ed04ed36-e1e7-4b0c-8fbc-62b030740f03")]),
         // --- MCS-90 (root: MOECAPolicyLevelCoverages) ---
         ["Mcs90.MotorCarrierName"] = new("MCS-90 Motor Carrier Name",
             "MOECAPolicyLevelCoverages", "b58de484-20b2-4d56-8752-0455438c8c74",
