@@ -130,7 +130,43 @@ not reach; `empty-only` (142 ISO paths) is ambiguous by construction.
 ## W2 — Populate the HTML form from Server XML
 
 **Repo:** `fact-pdf-tools` · `core/`, `server/`, `client/`
-**Depends on:** §0 decision; W1 for real data (a hand-written Server XML instance unblocks dev)
+**Depends on:** §0 and D6; W1 for real data (the package's 32 Test Cases unblock dev — see W2.3)
+
+### W2.0 What already exists — read this before designing anything
+An earlier draft of this plan implied nothing populates today. That is wrong, and the existing path
+matters because it decides D6.
+
+`population/` (`FapPdfTools.Population`) already pulls **real data** and fills a form:
+
+| endpoint | does |
+|---|---|
+| `GET /api/policy/{num}?env=…` | fetches the CDM `Policy` from the Commercial API (e.g. tst) |
+| `POST /api/policy/field-values` | returns the field -> value dictionary **without rendering** |
+| `POST /api/policy/populate` | FAP -> **fillable PDF**, filled from the policy, optionally flattened |
+
+`CdmFormPopulator` is explicit that it works "directly from a `Policy`, **bypassing GhostDraft**".
+Binding is `IFormFieldMap.BuildValues(Policy)` -> a dictionary keyed by **AcroForm field name, which
+is the FAP field name**. One hand-written C# class per form, and there are **five**, plus a `"*"`
+generic header fallback:
+
+```
+BopDecPageFieldMap  Ca2009FieldMap  Ca2146FieldMap  Eb2410FieldMap  Mcs90aFieldMap
+GenericHeaderFieldMap ("*")
+```
+
+So, precisely:
+
+* **Populating a fillable PDF from real policy data: WORKS**, for 5 of ~4,478 forms.
+* **Populating the HTML: does not exist, and cannot yet.** The emitted HTML carries **no field
+  identity at all** — measured on a sample: 0 `data-bind`, 0 `data-field`, 0 `name=`, 0 `<input`, 0
+  `contenteditable`; just 347 positioned `<span>`s with `id`/`class`. There is nothing for a runtime
+  to target, which is what W2.1 is for.
+* **It does not scale**, and it keys on the identifier this project has already shown to be
+  unreliable: 13,813 distinct FAP field names, 6,033 used on exactly one form. Same root cause as
+  the `.gd` generator's 3.4% (§44.4).
+
+`POST /api/policy/field-values` is nonetheless the **right seam** — it already separates data
+resolution from rendering. The question is only what its keys are (D6).
 
 ### W2.1 Put a Server XML path in every HTML field
 `emit-html` currently emits geometry and text. Fields need `data-bind="<server-xml-path>"`.
@@ -314,6 +350,7 @@ value** — every gate built so far checks that an element is *present*, not tha
 | **D3** | W4.2: gate GhostDraft renders against **legacy FAP2PDF** or against **our Chromium HTML render**? | Determines whether a render pipeline must be automated (needs publish + credentials) or not. |
 | **D4** | Who owns concept-model additions (W5.3), and is hand-editing `.gdm` acceptable? | Blocks any form whose fields are not already in the model. |
 | **D5** | Priority order across the ten packages. | We have 2 of 10; each needs its own export before any of its forms can be bound. |
+| **D6** | The repo now holds **two binding vocabularies**: `IFormFieldMap` (CDM -> FAP field name, works today for 5 forms) and Server XML paths (§40, the production namespace, 14,107 verified, nothing in `fact-pdf-tools` emits it yet). Migrate the five onto Server XML, or keep both? | Recommendation: re-key `POST /api/policy/field-values` to **Server XML paths** so one endpoint feeds HTML and GhostDraft alike, and keep the five hand maps only as a per-form override for bindings W3.1 cannot derive. Keeping two vocabularies permanently means every future form is mapped twice. |
 
 ---
 
