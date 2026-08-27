@@ -758,15 +758,48 @@ if (args.Length >= 2 && args[0] == "emit-html")
             }
         }
 
-        // Fields carry binding metadata but draw nothing when unfilled — matching
-        // an unfilled Documaker render.
+        // Fields carry binding metadata and draw nothing when unfilled — matching an
+        // unfilled Documaker render. The FONT is emitted too, resolved the same way a
+        // text run's is, so `fill-html` can drop a value in and have it render in the
+        // form's own typeface at the right size. Without it an injected value inherits
+        // the body font and lands visibly wrong.
         foreach (var fld in parsed.Fields.Where(f => f.PageIndex == p)
                      .OrderBy(f => f.Position.Row1).ThenBy(f => f.Position.Col1).ThenBy(f => f.Name, StringComparer.Ordinal))
         {
+            var ff = htmlFonts.Resolve(fld.FontAttributes.FontId);
+            float fsize = ff?.PointSize > 0 ? ff.PointSize : 10f;
+            var ffam = CssFamily(ff?.Typeface ?? "Arial");
+            // PREFER THE INLINE POSITION, exactly as FapToPdfGenerator.RenderFields does
+            // (line 271: "Prefer the inline position (from A,T1 anchor in M,TT flow) when
+            // available"). The F, record's own position is not the visual one: on MCS90A it
+            // puts POLICYNUM at the left margin, on top of the "Amending Policy Number:"
+            // label, and gives EFFDATE a 4.8pt box. The fillable PDF placed both correctly
+            // because it reads InlineFieldPositions; the HTML did not, and the difference was
+            // only visible once a populated form was rendered.
+            (int Row1, int Col1, int Row2, int Col2) inl = default;
+            bool hasInline = parsed.InlineFieldPositions != null
+                             && parsed.InlineFieldPositions.TryGetValue(fld.Name, out inl);
+            var fpos = hasInline ? inl : fld.Position;
+            // The anchor gives the right ORIGIN but not the field's extent: its Col2 comes
+            // from the one-glyph "X" placeholder, so MCS90A's POLICYNUM box measures 33.6pt
+            // for a 12-character value and EFFDATE 9.84pt for a date. Take the width from
+            // the F, record, which declares the field's real extent, and let the value not
+            // wrap. (Measured: without this the policy number overruns into the
+            // "Effective Date:" label.)
+            float fw = Math.Max(Px(fpos.Col2) - Px(fpos.Col1),
+                                Px(fld.Position.Col2) - Px(fld.Position.Col1));
+            // Same baseline anchor as a text run: Documaker puts the baseline on the
+            // BOTTOM edge of the declared box, so align the value's box to row2.
+            float fh = Py(fpos.Row2) - Py(fpos.Row1);
             sb.Append($"<span class=\"abs field\" data-field=\"{Esc(fld.Name)}\" data-maxlen=\"{fld.Length}\" ")
-              .Append($"style=\"left:{N(Px(fld.Position.Col1))}pt;top:{N(Py(fld.Position.Row1))}pt;")
-              .Append($"width:{N(Px(fld.Position.Col2) - Px(fld.Position.Col1))}pt;")
-              .Append($"height:{N(Py(fld.Position.Row2) - Py(fld.Position.Row1))}pt\"></span>\n");
+              .Append($"data-fid=\"{fld.FontAttributes.FontId}\" ")
+              .Append($"style=\"left:{N(Px(fpos.Col1))}pt;top:{N(Py(fpos.Row1))}pt;")
+              .Append($"width:{N(fw)}pt;")
+              .Append($"height:{N(fh)}pt;white-space:nowrap;")
+              .Append($"font-family:'{ffam}';font-size:{N(fsize)}pt;line-height:{N(fh)}pt")
+              .Append((ff?.Bold ?? false) ? ";font-weight:bold" : "")
+              .Append((ff?.Italic ?? false) ? ";font-style:italic" : "")
+              .Append("\"></span>\n");
         }
 
         sb.Append("</section>\n");
@@ -783,6 +816,156 @@ if (args.Length >= 2 && args[0] == "emit-html")
     Console.WriteLine($"Wrote {outHtml} ({new FileInfo(outHtml).Length:N0} bytes)");
     return;
 }
+
+// fill-html <FORM> <EDITION> <POLICYNUMBER> <in.html> [out.html] [baseUrl]
+//   Populate an emit-html form with REAL policy data, using the same CDM mapping
+//   the fillable-PDF path uses (IFormFieldMap). This is the HTML counterpart of
+//   POST /api/policy/populate, and it deliberately shares the mapping rather
+//   than introducing a second one: the field keys are the FAP field names, which
+//   emit-html already writes as data-field on every field span.
+if (args.Length >= 5 && args[0] == "fill-html")
+{
+    var fhForm = args[1];
+    var fhEdition = args[2];
+    var fhPolicy = args[3];
+    var fhIn = args[4];
+    var fhOut = args.Length >= 6 ? args[5]
+        : Path.Combine(Path.GetDirectoryName(fhIn) ?? ".",
+                       Path.GetFileNameWithoutExtension(fhIn) + "_populated.html");
+    // 7th arg is a URL, or an environment NAME resolved from the server's
+    // appsettings.json. The URLs in CommercialApiPolicyClient's docstring and in
+    // stale bin/ copies are azurewebsites hosts that no longer resolve; the live
+    // ones are internal, so read the config rather than hardcoding either.
+    var fhEnvArg = args.Length >= 7 ? args[6] : "tst";
+    string fhBase;
+    if (fhEnvArg.Contains("://", StringComparison.Ordinal))
+        fhBase = fhEnvArg;
+    else
+    {
+        var cfgPath = Path.Combine(AppContext.BaseDirectory, "..", "..", "..", "..",
+                                   "server", "appsettings.json");
+        cfgPath = Path.GetFullPath(cfgPath);
+        string? resolved = null;
+        if (File.Exists(cfgPath))
+        {
+            using var doc = System.Text.Json.JsonDocument.Parse(File.ReadAllText(cfgPath));
+            if (doc.RootElement.TryGetProperty("CommercialApi", out var api)
+                && api.TryGetProperty("BaseUrls", out var urls)
+                && urls.TryGetProperty(fhEnvArg, out var u))
+                resolved = u.GetString();
+        }
+        if (resolved == null)
+        {
+            Console.Error.WriteLine($"No base URL for environment '{fhEnvArg}' in {cfgPath}. "
+                + "Pass a full URL as the 7th argument instead.");
+            Environment.ExitCode = 1; return;
+        }
+        fhBase = resolved;
+    }
+
+    if (!File.Exists(fhIn))
+    {
+        Console.Error.WriteLine($"Input HTML not found: {fhIn}");
+        Environment.ExitCode = 1; return;
+    }
+
+    // The registry resolves a form+edition to its map, falling back to the "*"
+    // generic header map. Registered by hand here because the demo has no DI.
+    var fhRegistry = new FormFieldMapRegistry(new IFormFieldMap[]
+    {
+        new GenericHeaderFieldMap(),
+        new Mcs90aFieldMap(),
+        new Eb2410FieldMap(),
+        new Ca2009FieldMap(),
+        new Ca2146FieldMap(),
+        new BopDecPageFieldMap(),
+    });
+
+    var fhMap = fhRegistry.Resolve(fhForm, fhEdition);
+    if (fhMap == null)
+    {
+        Console.Error.WriteLine($"No field map for '{fhForm}' edition '{fhEdition}'. "
+            + $"Known: {string.Join(", ", fhRegistry.KnownForms)}");
+        Environment.ExitCode = 1; return;
+    }
+
+    Console.WriteLine($"form    {fhForm} {fhEdition}   map {fhMap.GetType().Name}");
+    Console.WriteLine($"policy  {fhPolicy}   from {fhBase}");
+
+    IReadOnlyDictionary<string, string> fhValues;
+    try
+    {
+        using var fhClient = new CommercialApiPolicyClient(fhBase);
+        var fhPol = await fhClient.GetPolicyAsync(fhPolicy);
+        fhValues = fhMap.BuildValues(fhPol);
+    }
+    catch (Exception ex)
+    {
+        Console.Error.WriteLine($"Could not fetch policy {fhPolicy}: {ex.GetType().Name}: {ex.Message}");
+        Environment.ExitCode = 1; return;
+    }
+
+    Console.WriteLine($"values  {fhValues.Count} field(s) resolved from CDM:");
+    foreach (var kv in fhValues.OrderBy(k => k.Key, StringComparer.Ordinal))
+        Console.WriteLine($"          {kv.Key,-14}{kv.Value}");
+
+    // Inject each value as the text content of its own field span. The span is
+    // already absolutely positioned and carries the form's font (emit-html), so
+    // the value lands where Documaker would have drawn it.
+    var fhHtml = await File.ReadAllTextAsync(fhIn);
+    int filled = 0;
+    var notInHtml = new List<string>();
+    foreach (var kv in fhValues)
+    {
+        // Locate the field's own empty span and splice the value between its tags.
+        // Deliberately NOT Regex.Replace with "$1": when the value starts with a
+        // digit, "$1" + "01/25/2026" is parsed as capture group 101, which silently
+        // ate the whole opening tag and left a literal "$101/25/2026" behind --
+        // while the fill counter still reported success. Index + splice has no
+        // replacement-token grammar to get wrong.
+        var rx = new System.Text.RegularExpressions.Regex(
+            "<span class=\"abs field\" data-field=\""
+            + System.Text.RegularExpressions.Regex.Escape(kv.Key)
+            + "\"[^>]*>(?=</span>)",
+            System.Text.RegularExpressions.RegexOptions.IgnoreCase);
+        var hit = rx.Match(fhHtml);
+        if (!hit.Success) { notInHtml.Add(kv.Key); continue; }
+        string esc = kv.Value
+            .Replace("&", "&amp;").Replace("<", "&lt;").Replace(">", "&gt;");
+        fhHtml = fhHtml[..hit.Index] + hit.Value + esc + fhHtml[(hit.Index + hit.Length)..];
+        filled++;
+    }
+
+    // VERIFY BY COMPARING, NOT BY COUNTING (see the bug above): re-read the result
+    // and confirm every value is now inside its own field span.
+    var bad = new List<string>();
+    foreach (var kv in fhValues)
+    {
+        var check = new System.Text.RegularExpressions.Regex(
+            "data-field=\"" + System.Text.RegularExpressions.Regex.Escape(kv.Key)
+            + "\"[^>]*>" + System.Text.RegularExpressions.Regex.Escape(
+                kv.Value.Replace("&", "&amp;").Replace("<", "&lt;").Replace(">", "&gt;"))
+            + "</span>",
+            System.Text.RegularExpressions.RegexOptions.IgnoreCase);
+        if (!check.IsMatch(fhHtml) && !notInHtml.Contains(kv.Key)) bad.Add(kv.Key);
+    }
+
+    await File.WriteAllTextAsync(fhOut, fhHtml);
+    Console.WriteLine();
+    Console.WriteLine($"filled  {filled} of {fhValues.Count} span(s), verified in the output");
+    if (notInHtml.Count > 0)
+        Console.WriteLine($"NO SPAN {notInHtml.Count} value(s) have no field on this form: "
+            + string.Join(", ", notInHtml));
+    if (bad.Count > 0)
+    {
+        Console.Error.WriteLine($"NOT VERIFIED {bad.Count}: " + string.Join(", ", bad));
+        Environment.ExitCode = 1;
+    }
+    Console.WriteLine($"wrote   {fhOut} ({new FileInfo(fhOut).Length:N0} bytes)");
+    if (filled == 0) Environment.ExitCode = 1;
+    return;
+}
+
 
 // coverage [formsDir]  -> convert every FAP form to .gd and report which convert
 // clean vs. which hit unsupported constructs. Writes output\coverage-report.{md,csv}.
