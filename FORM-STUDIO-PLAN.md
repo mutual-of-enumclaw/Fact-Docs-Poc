@@ -3867,3 +3867,90 @@ the same number of children and that the document count went 83 -> 84 — all tr
 could not use. The defect was in the SHAPE of one element and the ENCODING of every line, and only a
 byte comparison against the original and a field-by-field diff against a working sibling could see
 it. This is the same failure mode as §37's vacuous gates, in a new place.
+
+## 50. Rendering: what is reachable from a shell, and what is not (2026-08-26)
+
+Products asked whether forms can be rendered and their contents viewed. The install answers it.
+
+### No local render
+
+Every GhostDraft user interface is a **GUI** app, confirmed from the PE subsystem field:
+
+| exe | subsystem |
+|---|---|
+| `GhostDraftStudio.exe` | GUI |
+| `GhostDraft.Server.TestClient.exe` | GUI |
+| `GhostDraftDataWorkbench.exe` | GUI |
+| `GhostDraft.Server.Client.Install.Plugins.exe` | GUI |
+| **`GhostDraft.Server.Packager.exe`** | **console** |
+| **`CreateSnapshot.exe`** | **console** |
+| `GhostDraftReportUploadService.exe` | console |
+
+So no PDF can be produced locally from a shell. Rendering happens on the server:
+
+```
+GhostDraftApiConfig
+  baseUri      https://secure.ghostdraft.com
+  MappingUrl   GhostDraftDataMappingServer/RestApi/GetServerXml
+  AssembleUrl  GhostDraftServer/RestAPI/AssembleDocument
+  InstanceName MoEDev      DocumentService ITDevelopment (id 2)
+  auth         ghost-draft-credentials  (Key Vault)
+```
+
+`ITDevelopment` is the same `DocumentService` the `.gdsp` records, so that is the path a package
+takes. fact-docgen's integration tests already drive it — **37 rendered PDFs** sit in
+`BuilderRenderOutput/`, paired `… - Builder.pdf` / `… - MappingService.pdf`, and they read fine, so
+*viewing* a render is not the constraint. Rendering the AUTHORED template that way needs it
+**published** to MoEDev first, which is a deploy action requiring credentials and a decision, not
+something to do unasked.
+
+### But there IS a local validator, and it is GhostDraft's own
+
+`CreateSnapshot.exe "<project.gdproj>" "<destination>"` compiles a project and **checks every
+template's markup against the concept library**. Run against the sandbox project:
+
+```
+CreateSnapshot exit 4294967295
+templates compiled   82
+documents with complaints: 1
+  EA9940 0194
+      'FarmFamilyCorporationsorPartnerships of MOECAPolicyLevelCoverages
+       Has 8 or more' is not in the model.
+```
+
+**One complaint, and it is not ours.** `EA9940 0194.gd` contains that construct twice, it is
+pre-existing, and it is the document carrying a red icon in Products' own screenshot. The authored
+template compiled without comment. `tools/gdvalidate.py` wraps this, parses the per-document
+errors, and exits non-zero when any are reported.
+
+That is a materially better position than §44.6 described: an authored template can now be checked
+by GhostDraft's own compiler before anyone is asked to open Studio.
+
+### The snapshot canonicalises, which closes three open questions
+
+GhostDraft rewrites each template into what it wants, so diffing our input against the snapshot copy
+is GhostDraft stating its house style. Ours went 16,514 -> 23,186 chars, and the tree was preserved
+exactly — **26 instructions and parts in, 26 out**, same nesting, nothing dropped. What changed:
+
+1. **`<explanation>` is GENERATED.** GhostDraft added the 6.5 KB reviewer-narrative RTF itself.
+   §44.6 listed authoring one as an open risk; we never need to.
+2. **The ten `<system>` properties are filled in** (Author, Category, Company, Comments, Keywords,
+   Manager, Subject, Title, HyperlinkBase, WordTemplate). We wrote only Title; the rest are added
+   empty.
+3. **`<description>` is derived and rewritten.** `Policy > Policy Number` became
+   `Policy Number of Policy`; `Auto > VehicleNumber > is provided` became
+   `VehicleNumber of Auto is provided`; `Auto > LossPayee > FullName` became
+   `FullName of LossPayee of Auto`. So `descriptionSource="ParsedUserText"` means GhostDraft owns
+   that text — emitting our own phrasing is harmless but pointless.
+4. **IDs are RENUMBERED.** The list's `endPartType` went from ID 26 to ID 4 — GhostDraft allocates a
+   container's endPart adjacent to its opening part rather than by position. §43.7 asked whether ID
+   contiguity or ordering matters: **it does not.**
+
+None of that required a human, and none of it was guessable from the templates alone — the compiler
+had to be run.
+
+### What is still only checkable by eye
+
+Layout. The snapshot validates markup against the model and says nothing about geometry, and the
+demo's RTF is deliberately plain text. The fidelity axis of §10–39 is not wired into `gdauthor.py`
+at all.
