@@ -885,6 +885,7 @@ if (args.Length >= 5 && args[0] == "fill-html")
         new Ca2009FieldMap(),
         new Ca2146FieldMap(),
         new BopDecPageFieldMap(),
+        new BaDecPageFieldMap(),
     });
 
     var fhMap = fhRegistry.Resolve(fhForm, fhEdition);
