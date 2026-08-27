@@ -32,8 +32,8 @@ from typing import Sequence
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import quotemodel as qm                                     # noqa: E402
 from gdauthor import (Break, Cell, Cond, Emitter, Envelope, Fill,  # noqa: E402
-                      IS_PROVIDED, Path, Repeat, Row, Static, Table,
-                      _stable_guid, verify, wrap)
+                      Furniture, IS_PROVIDED, PageNumber, Path, Repeat, Row,
+                      Static, Table, _stable_guid, verify, wrap)
 from gdmodel import Model                                    # noqa: E402
 
 # Usable width between the margins RTF_HEAD declares: 12240 - 1440 - 1440.
@@ -385,6 +385,33 @@ def forms_schedule() -> list:
     ]
 
 
+def furniture() -> Furniture:
+    """The running header and footer -- the GhostDraft equivalent of FORM.DAT's OX
+    and OY flags, which the HTML assembler reproduces by repeating QTE_HDR on every
+    page and pinning QTE_FTR to row 25200.
+
+    The page number is an RTF field, not a value: `PAGE` and `NUMPAGES` are
+    evaluated by the renderer, which is why nothing has to supply them. That is how
+    the ISO templates print "Page 1 of 10" and it is what the HTML assembler has to
+    compute for itself after pagination.
+    """
+    hw = cols(60, 40)
+    fw = cols(70, 30)
+    return Furniture(
+        header=[
+            Cell([Fill(scalar("Insured Name")),
+                  Cond(scalar("Insured Name 2").then(*IS_PROVIDED),
+                       then=[Break(), Fill(scalar("Insured Name 2"))])], hw[0]),
+            Cell([Static("Quote #   "), Fill(scalar("Quote Number"))], hw[1],
+                 style="s8"),
+        ],
+        footer=[
+            Cell([], fw[0]),
+            Cell([Static("Page "), PageNumber(),
+                  Static(" of "), PageNumber(total=True)], fw[1], style="s8"),
+        ])
+
+
 def spec() -> list:
     return [
         *cover(),
@@ -420,7 +447,7 @@ def main(argv: Sequence[str]) -> int:
     env.annotation_style_id = env.annotation_style_id or ANNOTATION_LIB
 
     em = Emitter(model, qm.LIB)
-    markup, rtf, resolved = em.build(spec(), args.title)
+    markup, rtf, resolved = em.build(spec(), args.title, furniture=furniture())
 
     if em.errors:
         print(f"\nBINDINGS THAT DO NOT RESOLVE ({len(em.errors)}):")
@@ -431,7 +458,7 @@ def main(argv: Sequence[str]) -> int:
     os.makedirs(os.path.dirname(os.path.abspath(args.out)), exist_ok=True)
     with open(args.out, "w", encoding="utf-8", newline="") as fh:
         fh.write(wrap(rtf, markup, args.title, env=env, roots=em.roots,
-                      library=qm.LIB))
+                      library=qm.LIB, furniture=em.furniture))
 
     print(f"\nwrote {args.out} ({os.path.getsize(args.out):,} bytes)")
     print(f"instructions declared  {em._next - 1}")

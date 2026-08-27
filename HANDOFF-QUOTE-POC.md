@@ -380,10 +380,30 @@ GRAMMAR CHECK PASSED, and the five-way mutation selftest rejects all five
 
 against the previous version's `trowd 0, cellx 0, intbl 0`.
 
-**Still open on the GhostDraft side:** the page header and footer are Stationery /
-Headers & Footers resources rather than template body, and the ISO templates draw them as
-positioned shapes carrying `{ield{\*ldinst{PAGE}}}` and `NUMPAGES` — so the page
-number is an RTF field code, not data. That is read but not yet built.
+**The running header and footer are in too.** They are not Stationery resources and not
+positioned shapes -- I guessed both. They are the RTF section's own `header` / `footer`
+destinations, each holding a BORDERLESS table row so the columns line up without drawing a
+box. All 491 ISO templates do it that way and 159 put bound fields in there, so a bound
+header is ordinary.
+
+The page number is an **RTF field**, not a value: `{{ield{\*ldinst\intbl{PAGE}}
+{ldrslt\intbl{1}}}}` and `NUMPAGES`, evaluated by the renderer. Nothing has to supply
+it -- which is the one thing the HTML assembler cannot do and has to compute for itself
+after pagination.
+
+One departure from the ISO templates, deliberately: they write the `headerl`/`headerr` and
+`footerl`/`footerr` PAIR, which duplicates the content. A bound field in there would place
+its marker twice, and that is rule 2. The single `header`/`footer` destinations apply to
+every page and keep each marker unique.
+
+The measured state of the authored template:
+
+```
+36 rows · 160 cells · 10 repeating headings (trhdr) · 36 trkeep · 24 borderless edges
+8 lists · 53 conditionals · 68 fill points · 0 unbound
+253 instructions, 124 bindings, all resolved
+GRAMMAR CHECK PASSED, and the five-way mutation selftest rejects all five
+```
 
 ### The one step no tool here can take
 

@@ -128,6 +128,8 @@ class Row:
     cells: list
     header: bool = False
     height: int = 0          # `trrh`, twips; 0 lets the row size to its content
+    borders: bool = True     # False for a header/footer row, which lays out columns
+                             # without drawing a box around them
 
 
 @dataclass
@@ -135,6 +137,27 @@ class Table:
     """A table. Each element of `rows` is either a Row or a Repeat whose body is
     Rows, which is exactly how production expresses a repeating schedule."""
     rows: list = field(default_factory=list)
+
+
+@dataclass
+class PageNumber:
+    """`Page 3` -- an RTF field, evaluated by the renderer at print time. The page
+    number is a property of the LAYOUT and no data source can supply it, which is
+    why the HTML assembler fills QTE_FTR's QUOTE.PAGE itself."""
+    total: bool = False       # True emits NUMPAGES instead of PAGE
+
+
+@dataclass
+class Furniture:
+    """The running header and footer.
+
+    Section-level, not body content: they go in the RTF's `headerl`/`headerr` and
+    `footerl`/`footerr` destinations, each holding a BORDERLESS table row so the
+    columns line up without drawing a box. That is how every one of the 491 ISO
+    templates does it, and 159 of them put bound fields in there.
+    """
+    header: list = field(default_factory=list)    # list[Cell]
+    footer: list = field(default_factory=list)    # list[Cell]
 
 
 @dataclass
@@ -294,10 +317,34 @@ class Emitter:
         rtf_parts.append(_after_table())
         return '\n'.join(x for x in xml_parts if x), ''.join(rtf_parts)
 
-    def build(self, body: list, title: str) -> tuple[str, str, list[str]]:
-        """-> (markup xml, rtf body, resolved paths)"""
+    def build(self, body: list, title: str,
+              furniture: 'Furniture | None' = None) -> tuple[str, str, list[str]]:
+        """-> (markup xml, rtf body, resolved paths)
+
+        A `furniture` argument puts the running header and footer in the RTF's own
+        `header`/`footer` destinations and leaves the result on `self.furniture` for
+        `wrap()`. The SINGLE destinations are used rather than the `headerl`/`headerr`
+        pair the ISO templates carry: the pair duplicates its content, and a bound
+        field in there would place its marker twice, which is rule 2.
+        """
         resolved: list[str] = []
+        parts: list[str] = []
+        self.furniture = ''
+        if furniture is not None:
+            for dest, cells in (('header', furniture.header),
+                                ('footer', furniture.footer)):
+                if not cells:
+                    continue
+                def emit_cell(c, _r=resolved):
+                    x, rr = self._emit(c.body, '          ', {}, _r)
+                    if x:
+                        parts.append(x)
+                    return rr
+                self.furniture += ('{' + BS + dest + ' '
+                                   + _borderless_row_rtf(cells, emit_cell) + '}')
         markup, rtf = self._emit(body, indent='          ', scope={}, resolved=resolved)
+        if parts:
+            markup = '\n'.join(parts + [markup])
         return markup, rtf, resolved
 
     def _emit(self, nodes: list, indent: str, scope: dict,
@@ -379,6 +426,10 @@ class Emitter:
                     rtf_parts.append(_marker(else_id))
                     rtf_parts.append(else_rtf)
                 rtf_parts.append(_marker(end_id))
+                continue
+
+            if isinstance(node, PageNumber):
+                rtf_parts.append(_field('NUMPAGES' if node.total else 'PAGE', '1'))
                 continue
 
             if isinstance(node, Table):
@@ -498,7 +549,9 @@ def _row_def(row: 'Row') -> str:
     inside the terminator."""
     out = [BS + 'trowd ' + BS + 'trleft0']
     for edge in ('t', 'l', 'b', 'r', 'h', 'v'):
-        out.append(BS + 'trbrdr' + edge + BS + 'brdrw10' + BS + 'brdrs')
+        out.append(BS + 'trbrdr' + edge
+                   + (BS + 'brdrw10' + BS + 'brdrs' if row.borders
+                      else BS + 'brdrw0' + BS + 'brdrnone'))
     if row.height:
         out.append(BS + 'trrh' + str(row.height))
     if row.header:
@@ -542,6 +595,33 @@ def _after_table() -> str:
             + BS + 'widctlpar ')
 
 
+def _field(name: str, sample: str, in_table: bool = True) -> str:
+    """An RTF field. Inside a table cell the field and its result BOTH carry
+    `intbl`, which the ISO footer does and which is easy to leave off."""
+    t = BS + 'intbl' if in_table else ''
+    return ('{' + BS + 'cf0' + BS + 'f1' + BS + 'fs20' + BS + 'ulnone' + BS + 'ulc0 '
+            '{{' + BS + 'field{' + BS + '*' + BS + 'fldinst' + t + '{' + name + '}}'
+            '{' + BS + 'fldrslt' + t + '{' + sample + '}}}}}')
+
+
+def _borderless_row(cells: list) -> str:
+    """A header/footer row: same grammar as a body row, every border set to none."""
+    plain = [Cell(c.body, c.width, c.style, c.bold, borders=False) for c in cells]
+    return _row_def(Row(cells=plain))
+
+
+def _borderless_row_rtf(cells: list, emit_cell) -> str:
+    row = Row(cells=[Cell(c.body, c.width, c.style, c.bold, borders=False)
+                     for c in cells], borders=False)
+    out = [_row_def(row)]
+    for c in row.cells:
+        out.append(_cell_open(c))
+        out.append(emit_cell(c))
+        out.append(_cell_close())
+    out.append(_row_end(row))
+    return ''.join(out)
+
+
 def _style(n: str, align: str, size: int, name: str) -> str:
     return ('{' + BS + n + BS + align + BS + 'sb0' + BS + 'sa0' + BS + 'li0'
             + BS + 'ri0' + BS + 'fi0' + BS + 'sl240' + BS + 'slmult1'
@@ -568,8 +648,13 @@ RTF_HEAD = (
     + STYLESHEET
     + BS + 'paperw12240' + BS + 'paperh15840' + BS + 'margl1440' + BS + 'margr1440'
     + BS + 'margt1080' + BS + 'margb1080'
-    + BS + 'sectd' + BS + 'sbknone'
-    + BS + 'pard' + BS + 'plain' + BS + 'ql' + BS + 'sb0' + BS + 'sa0' + BS + 'li0'
+    + BS + 'sectd' + BS + 'sbknone' + BS + 'headery1080' + BS + 'footery245')
+
+# RTF_HEAD split at the point the section's header/footer destinations go: everything
+# up to `sbknone` is the section, everything after is the first body paragraph.
+RTF_SECT = RTF_HEAD
+RTF_BODY = (
+    BS + 'pard' + BS + 'plain' + BS + 'ql' + BS + 'sb0' + BS + 'sa0' + BS + 'li0'
     + BS + 'ri0' + BS + 'fi0' + BS + 'sl240' + BS + 'slmult1' + BS + 'nowidctlpar'
     + BS + 'f1' + BS + 'fs20 ')
 RTF_TAIL = '{' + BS + 'cf0' + BS + 'f1' + BS + 'fs20' + BS + 'ulnone' + BS + \
@@ -578,7 +663,7 @@ RTF_TAIL = '{' + BS + 'cf0' + BS + 'f1' + BS + 'fs20' + BS + 'ulnone' + BS + \
 
 def wrap(rtf_body: str, markup: str, title: str,
          env: 'Envelope | None' = None, roots: list[str] | None = None,
-         library: str = '') -> str:
+         library: str = '', furniture: str = '') -> str:
     """The full document. A structural diff against production found eight
     elements missing from an earlier version of this function; they are all
     here now, and all sourced from the package rather than hardcoded."""
@@ -604,7 +689,9 @@ def wrap(rtf_body: str, markup: str, title: str,
         '      </custom>',
         '    </properties>',
         '    <content>',
-        f'      <rtf>{_x(RTF_HEAD + rtf_body + RTF_TAIL)}</rtf>',
+        # The furniture belongs to the SECTION, so it goes between `sectd` and the
+        # first body paragraph -- which is where RTF_HEAD is split.
+        f'      <rtf>{_x(RTF_SECT + furniture + RTF_BODY + rtf_body + RTF_TAIL)}</rtf>',
         style_map,
         '    </content>',
         '    <library xsi:nil="true" />',
