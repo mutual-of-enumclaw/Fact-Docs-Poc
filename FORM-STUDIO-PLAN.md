@@ -3664,3 +3664,78 @@ The paths were correct on the first attempt in both cases. **When a tool reports
 its own diagnosis over the inferred one** — Designer printed `(missing)` next to the library name,
 which was the answer, while the tooltip named a path and pointed at nothing. §45 reached the right
 answer by structural diff; here the diff was already clean, and the panel had said why.
+
+## 47. Which file does GhostDraft Studio open? Not a `.gdsp` (2026-08-26)
+
+Products asked whether §46's `.gdsp` can be opened in GhostDraft Studio. It cannot, and the answer
+came from the installed product rather than from reasoning.
+
+### The extension list, read off the binary
+
+`GhostDraft Studio` is installed at `C:\Program Files (x86)\GhostDraft\GhostDraft Studio`. Scanning
+`GhostDraftStudio.exe` for GhostDraft extensions (ASCII and UTF-16LE, since it is .NET) gives:
+
+```
+.gd  .gdm  .gds  .gdproj  .gdbund  .gdp  .gdpk  .gdmpk  .gdspk  .gdrp  .gduser
+```
+
+**`.gdsp` is not among them.** It is a Packager artefact — `GhostDraft.Server.Packager.exe` lives in
+`GhostDraft Server Client Tools`, and a `.gdsp`'s `Info.txt` records a `CompositionServerVersion`
+and a `DocumentService`, not a project. A `.gdsp` goes to the composition server; Studio opens a
+**`.gdproj`**.
+
+### The Studio project layout
+
+```
+<Project>.gdproj                          the manifest (58 KB here, 77 documents)
+Documents/{Dec Pages,ISO,Policyholder Notices,Proprietary,WIP Forms}/*.gd
+Resources/Model Libraries/Model Library.gdm
+Resources/{Style Libraries,Scenarios,Stationery,Schedule Overflows}/
+WIP Form Templates.catalog
+```
+
+A project for this exact package already exists on the machine, under
+`Documents/GhostDraft Studio/Moe Proprietary Commercial Auto Package/`, and **its
+`Resources/Model Libraries/Model Library.gdm` declares `name="Model Library"` and contains every
+guid the authored template binds** — Policy root, Policy Number, MOECAAutoLevelCoverages,
+AutosWithLossPayableClause, VehicleNumber, LossPayee, all present. So §46's `Model Library (missing)`
+was exactly what it said: the library exists, just not in the scope the standalone `.gd` was opened
+in.
+
+### Registration is required; dropping the file in is not enough
+
+```xml
+<documentPaths><documentPath><autoDiscover>false</autoDiscover>
+```
+
+Studio does **not** scan `Documents/` — a template has to be listed in the manifest:
+
+```xml
+<document>
+  <path>Documents\Proprietary\Name.gd</path>   <name>Name</name>
+  <guid>…</guid>                               <included>true</included>
+  <projectFolder>Documents\Proprietary</projectFolder>
+  <documentPath />  <documentType>Document</documentType>  <lockable>true</lockable>
+</document>
+```
+
+`tools/gdproject.py` adds that entry and copies the file into place, with `--dry-run` to show the
+change first (77 -> 78 documents). GUIDs are derived from the project name plus the relative path,
+so re-running is idempotent rather than churning the manifest.
+
+### One thing deliberately not built
+
+A `--copy-to` that clones the whole project before modifying it. The deepest relative path in a real
+project is about 160 characters (`Resources/Stationery/Headers & Footers/Header Policy Number (R)
+LOB and Form Number (R) & Footer …gd`) and Windows caps paths at 260, so cloning under any
+non-trivial destination fails partway and leaves a project **silently missing its stationery** —
+which is worse than not cloning. Two attempts confirmed it. This is the third time the 260-char
+limit has cost time here, after the Integration Specification zip (§42.5); it is now noted in three
+places.
+
+### The lesson, again
+
+§46 ended with "prefer a tool's own diagnosis over the inferred one". This section is the same rule
+one step further out: the question "can Studio open this?" was answerable from the installed product
+in two commands. Reasoning about what a `.gdsp` "probably is" would have produced a confident guess,
+and the file-type list is a fact.
