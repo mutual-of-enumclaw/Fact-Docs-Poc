@@ -4049,3 +4049,62 @@ Layout is the other half: `gdauthor.py` currently emits plain text runs and uses
 geometry. For mass conversion the RTF has to come from the parsed FAP, which is where §10–39's work
 goes — and where the `FormDefinition`-is-not-a-shared-model problem (§44.7 / handoff) finally has to
 be fixed, because that is the model both paths need to read.
+
+## 52. A WIP field is a BOX, and the box is small (2026-08-26)
+
+Section 51's POC filled MCS90A from a real policy and the policy number overran into the next
+label. Products: that "obviously can't happen". Correct. The mechanism, read from the FAP and then
+confirmed against the accepted render:
+
+**DocProd does not shift fields at fill time.** The room is reserved at DESIGN time as blank
+continuation runs inside the flowed line. MCS90A's, verbatim:
+
+```
+M,TT ... 25,Amending Policy Number:     static label
+M,TT ...  1,X                           one-char placeholder
+A,T1,"POLICYNUM "                       the field anchor
+M,TT ... 12,                            EMPTY run, declared length 12   <- the reservation
+M,TT ... 18, Effective Date:            next static label
+```
+
+`FapToPdfGenerator` already encoded this: the parser extends the field's `Col2` through those blank
+runs, giving "the true visual width Documaker allocated". Nothing reflows.
+
+**And the reservation is genuinely too small for the value:**
+
+| field | declared len | reserved | per char | needed at ~9pt |
+|---|---:|---:|---:|---:|
+| `POLICYNUM` | 12 | 33.6pt | 2.80pt | ~4.5pt |
+| `EFFDATE` | 8 | 9.8pt | 1.23pt | ~4.5pt |
+
+The field font is not small — the F-record metrics are 10.32 / 7.44 / 8.16pt, a genuine ~9pt face.
+
+**What stops the overrun is that MCS90A is a WIP form.** The value lands in an AcroForm widget which
+(this repo's own comment) "auto-sizes its text to the box height", so it shrinks inside its
+rectangle and cannot spill. `output/MCS90A_p1.png` — the accepted render with widgets unflattened —
+shows it directly: the `Amending Policy Number` box is a small light-blue rectangle with
+`Effective Date:` immediately after it. **The narrow box is the form, not a parsing artefact.**
+
+So `fill-html` now auto-sizes into the box. Result: `POLICYNUM` 9 -> 5.6pt in 33.6pt, `EFFDATE`
+9 -> 5pt in 9.8pt. Small, and correctly placed with no collision.
+
+**Tried and wrong, recorded so it is not retried:** widening the field box to the field's DECLARED
+LENGTH (12 chars x font x advance = 54pt) instead of the reservation. It renders at full size and
+overruns the next label by ~20pt — which the accepted PDF never does, because `RenderFields` sizes
+its widget from the same reservation.
+
+### The open question this leaves, which is not a rendering question
+
+At 5–5.6pt these values are borderline legible, and the PDF path has the same constraint. If they
+need to be readable the answer is not a rendering trick — **MCS90A's field boxes are too small for a
+12-character policy number**, which is a form-design decision for Products. Note that the GhostDraft
+side formats the same value WIDER (`FormatPolicyNumber` -> `BAP 0123456 00`, 14 chars) while the
+fillable-PDF map uses the raw 12, so the two renderers do not even agree on the string. That
+inconsistency is worth settling before either is shown.
+
+### And the process note
+
+Section 51 ended by quoting "look at the render before shipping a fix". This section was reported
+once from the tool's stdout — the shrink figures — **without opening the PDF**. Products asked
+whether it had actually been re-rendered. It had; it had not been LOOKED at. Rendering is not
+inspecting, and the quotable rule is worthless if the quoting substitutes for the doing.
