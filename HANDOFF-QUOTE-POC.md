@@ -99,10 +99,20 @@ What is proven to work today (this session): `CommercialApiPolicyClient` →
 `GET {baseUrl}/api/policy/{number}` returns a CDM `Policy`, and real values came back from **tst**
 (`https://pointmoeapps-tst1.mutualofenumclaw.net/commercialapi`, policy `BAP000000516`).
 
-> **Action 2: confirm a quote (`CPQ…`) is retrievable through the same endpoint**, or find the quote
-> endpoint. The `moe-commercial` MCP has `policy_search` / `policy_get` and the policy-builder skill
-> notes `policyType="Q"` for quotes, so quotes are addressable — just confirm the shape the CDM
-> returns for one.
+> **Action 2 — RESOLVED 2026-08-27. A quote is retrievable, on the same endpoint.**
+> `GET {baseUrl}/api/policy/{number}?scope=Pending` returns the in-progress transaction, which is
+> the quote; `scope=Verified` (the API default) returns the issued policy.
+> `CommercialApiPolicyClient.GetPolicyAsync` takes a `scope` now.
+>
+> The `CPQ 0501406` in the reference document is a **Point-side quote number**, not a CDM key —
+> `CPQ050140600` is not addressable. The CDM key is the ordinary policy number, and
+> `policy_search --statusCodes P` lists the pending ones.
+>
+> **Most pending quotes in tst are UNRATED**: they carry the units and coverages but every
+> `totalPremium` and coverage `premium` is zero, and only the line-level `PremiumTotals` are
+> populated. Of 20 pending CA quotes sampled, 3 were rated. **`BAP000080307`** (WY, 6 vehicles,
+> all rated, `line.Premium` 9,810 reconciling exactly against the units and line coverages) is the
+> one the POC uses. Pick a rated quote or the per-vehicle columns render blank.
 >
 > **Careful:** the base URLs in `CommercialApiPolicyClient`'s docstring and in stale `bin/` copies
 > are `*.azurewebsites.net` hosts that no longer resolve. The live ones are in
@@ -116,6 +126,83 @@ equivalents exist: `AutoLinePremiums` / `PremiumTotals` with `LiabilityPremium`,
 `SpecifiedPerilsPremium`, `TowingPremium`, `UninsuredMotoristPremium`,
 `UnderinsuredMotoristPremium`, `EstimatedAdditionalPremiumForEndorsements`, and
 `CommonAutoLine.Premium`.
+
+---
+
+## 4b. The assembler exists — it was in FORM.DAT and the DDTs all along
+
+*Added 2026-08-27. This replaces "there is no assembler yet" in §6 phase 1 step 7.*
+
+DocProd's own packet-assembly instructions are on disk in two places nothing had read:
+
+| where | what it gives |
+|---|---|
+| **FORM.DAT** | the ordered top-level image list per entry, e.g. `;MOE;CPP;QUOTE CPPSUM.1;;RD;;QTE_HDR\|D3SOX…/QCPPSUM_HDR\|D3S…/…` — and the pagination role in the flags: `OX` = the image that repeats as the page **header**, `OY` = the one pinned as the **footer** |
+| **each image's DDT `<Image Rules>`** | `PNTAddImgAfterCurImg` — the data-driven children, with the extract table and column filter that decide how many; `SetOrigin` — `Rel+0,Max+0` flows underneath, `Abs+0,Abs+25200` pins; `SetImageDimensions` — the height |
+
+`tools/ddtpacket.py` reads them and expands the graph. `tools/htmlpacket.py` is the assembler:
+it emits each image through the existing `emit-html` (cached; the proven renderer is reused
+unchanged), stacks the fragments, paginates against the pinned footer and repeats the header.
+
+For the whole CPP quote packet that is **277 placements over 160 distinct images, and every one
+of the 160 has both a FAP and a DDT on disk.** Nothing is missing.
+
+**Two rules that are not obvious, both recovered from the reference document rather than guessed,
+and both of which were wrong first:**
+
+* **`PNTAddImgAfterCurImg` runs backwards.** Every rule in a section anchors on the same image, so
+  each insertion pushes the previous one down and the *last* rule written renders *first*.
+  Two independent confirmations: `QCPP_CAV` lists the "Total Vehicle Premium" row before the
+  coverage rows it totals, and `QCPPSUM_HDR` lists GL before CP where the reference prints
+  Commercial Property above Commercial General Liability.
+* **`SetOrigin Max+0` advances by INK, not by the declared box.** Declared heights are design-time
+  allocations and run large — `QTE_BILLINFO_A` declares 10,500 units and draws 6,369. Measured on
+  our WY quote's summary page: 25,500 units by declared height against a footer pinned at 25,200,
+  so it spilled to a second page; the reference document fits *more* rows than we have on that one
+  page, which the declared model cannot do at any row count. By ink the same page measures 19,644
+  and fits. `--flow declared` keeps the old model for comparison.
+
+**Also settled by comparing against the reference:** `QUOTE CPPSUM.2` — not `.1` — is the page the
+reference document prints. `.2` is the three-column `Premium ($) / *TRIA ($) / Total Premium ($)`
+layout built from the `_A` images (`QCPPSUM_HDR_A`, `QCPPSUM_CA_A`, `QCPPSUM_TOTAL_A`,
+`QTE_BILLINFO_A`). Both are populated by the builder.
+
+### The data half
+
+`population/QuotePacketData.cs` maps each driving extract table onto the CDM collection that
+stands in for it and emits instance counts plus field values:
+
+```
+QCOV[INSLINE=CA]      -> the auto Line's Coverages
+ASB5CPL1[B5AGTX=CA]   -> Policy.InsuredAssets (the vehicles)
+AUTCOV[BYAENB=<unit>] -> that asset's Coverages
+ASBECPL1[BEB8NB=…]    -> Policy.Forms   (form code + edition selects the schedule variant)
+PMSP0000 / PMSP0200   -> the policy header itself
+```
+
+A **zero** count is how the conditional variants get pruned. On `BAP000080307` (CA line only, WY)
+that suppresses the other five summary rows, the terrorism row, all five endorsement schedules and
+the Montana auto schedule, with no hand-maintained list.
+
+```bash
+demo/bin/Release/net9.0/FapPdfTools.Demo.exe quote-data BAP000080307 tst Pending output/quote-poc/BAP000080307.json
+python tools/htmlpacket.py --lob CPP --form "QUOTE CPPSUM.2" --form "QUOTE CPPCA.1" \
+    --data output/quote-poc/BAP000080307.json --out output/quote-poc/wy-quote.html --pdf
+```
+
+4 pages, 216 CDM values spliced and verified by re-reading the output. Artefacts:
+`output/quote-poc/wy-quote.{html,pdf}` and `wy_p1..4.png`.
+
+### What is still wrong or missing on the HTML half
+
+| | |
+|---|---|
+| the vehicle box's second `State:` label is blank | the FAP has one `VEH1 STATE` field and two labels; legacy fills both, we fill the first |
+| the footer prints `Page` with no number | `QTE_FTR`'s page fields are not mapped — the assembler knows the page count, the data builder does not |
+| the payment-plan table draws horizontal rules where the reference draws full cell borders | `emit-html`'s sibling-row heuristic on `QTE_BILLINFO` (`FORM-STUDIO-PLAN` §32); a fidelity item, not an assembly one |
+| pages 1–2 (cover, disclaimer) and 11–14 (forms schedule, terrorism notices) are unmapped | `QUOTE COVER.1` and `QUOTE CPP FORMS.1` assemble but have no field values yet |
+| `QCPPSUMDTLS_CA` ("Scheduled Autos") now renders after the endorsement rows | a consequence of the reversal rule; not separately confirmed against the reference, which has no CA line |
+| `quote-data` and `fill-html`'s `IFormFieldMap` registry are two population paths | the packet builder covers repeating images, the maps cover single forms; they should converge |
 
 ---
 
@@ -172,23 +259,29 @@ guids in both), and the authored template is registered in it.
 ## 6. The POC plan
 
 ### Phase 0 — unblock (do first, in parallel)
-1. **Get the GhostDraft Quote package export.** Gates all GhostDraft work (§3).
-2. **Confirm a `CPQ…` quote is retrievable** as CDM through the commercial API (§4).
-3. **Pick the exact target.** Recommendation: the **CPP quote proposal for Commercial Auto**, scoped
-   to pages 1, 3 and the CA line detail — a cover, a line summary with one repeating list, and one
-   per-location table. That exercises every construct (static, field, list, conditional, total)
-   without the 14-page surface.
+1. **Get the GhostDraft Quote package export.** Gates all GhostDraft work (§3). **STILL OPEN.**
+2. ~~Confirm a quote is retrievable as CDM through the commercial API.~~ **DONE** — `?scope=Pending`,
+   see §4.
+3. ~~Pick the exact target.~~ **DONE** — the CPP quote proposal for Commercial Auto, `QUOTE CPPSUM.2`
+   plus `QUOTE CPPCA.1`, against the rated WY quote `BAP000080307`.
 
-### Phase 1 — HTML (no external dependency; start here)
-4. `emit-html` each chosen fragment; confirm it renders. **Look at the PDF**, do not trust the log.
-   Note: FAP2PDF renders these fragments nearly blank so the legacy oracle is invalid for them
-   (`HANDOFF.md` → environment gotchas) — our renderer is the reference here.
-5. Write one `IFormFieldMap` per fragment, mirroring whatever fact-docgen builder covers the same
-   data. Register in `fill-html`'s registry.
-6. `fill-html` against a real quote, render, inspect.
-7. **Assembly:** concatenate the fragment HTMLs into one document in packet order. There is no
-   assembler yet — the simplest honest version is an ordered list of fragments per line of business,
-   which is also the input the GhostDraft `subscriptionType` graph will need.
+### Phase 1 — HTML (no external dependency) — **the vertical slice is closed**
+4. ~~`emit-html` each chosen fragment.~~ **DONE**, and cached by `htmlpacket.py`. Still true: FAP2PDF
+   renders these fragments nearly blank so the legacy oracle is invalid for them
+   (`HANDOFF.md` → environment gotchas). The oracle that *is* valid is the Products reference PDF,
+   and it settled two assembly rules this session (§4b) — compare against it, page by page.
+5. ~~One field map per fragment.~~ **DONE differently, and better**: a per-form `IFormFieldMap`
+   cannot express "one instance per vehicle". `population/QuotePacketData.cs` emits instance counts
+   *and* values for the whole packet in one pass. Extending it to a new line means adding that
+   line's CDM→image mapping there, not a new class per fragment.
+6. ~~`fill-html` against a real quote, render, inspect.~~ **DONE** — `htmlpacket.py --data`.
+7. ~~Assembly.~~ **DONE** — and it is not a hand-written ordered list; it is read from FORM.DAT and
+   the DDTs (§4b), so it will also feed the GhostDraft `subscriptionType` graph without a second
+   source of truth.
+
+**What Phase 1 still owes:** the gaps table at the end of §4b — page numbers in the footer, the
+cover and disclaimer pages, the forms schedule and terrorism notices, and the `QTE_BILLINFO` cell
+borders. None of them are structural; all are one mapping or one fidelity rule each.
 
 ### Phase 2 — GhostDraft (after Phase 0.1)
 8. Point `gdbindings.py` at the Quote package; re-run `gdxsdcheck` / `gdspeccheck` to establish the
@@ -240,12 +333,25 @@ guids in both), and the authored template is registered in it.
 | Q3 | The **payment-plan table** (page 3) and the marketing copy (pages 1–2) — static boilerplate, or data-driven? Changes whether they need bindings at all. |
 | Q4 | Two renderers currently format a policy number differently: fact-docgen's `FormatPolicyNumber` gives `BAP 0123456 00` (14 chars) while `Mcs90aFieldMap` uses the raw 12. Which is correct? It is visible on any dec/quote page. |
 | Q5 | `CONVERSION-PLAN.md` D7 — does the HTML field name mirror CDM exactly, or is there a curated form-facing vocabulary? |
+| Q6 | *(new)* Is `BAP000080307` an acceptable demo quote, or is a specific one wanted? It is a WY Commercial Auto test quote with 6 rated vehicles. Most pending quotes in tst are unrated and render blank premium columns. |
+| Q7 | *(new)* The reference document prints **`QUOTE CPPSUM.2`**, the TRIA three-column summary. Is `.1` (single Premium column) ever the right page, and if so what selects between them? Right now the choice is ours, not the data's. |
 
 ---
 
 ## 9. Session state
 
-Committed on `features/form-studio-p0`:
+**2026-08-27** added, on `features/form-studio-p0`:
+`tools/ddtpacket.py` (the packet graph, from FORM.DAT + DDT `<Image Rules>`),
+`tools/htmlpacket.py` (the assembler), `population/QuotePacketData.cs` (the CDM data half),
+the `quote-data` command in `demo/Program.cs`, and a `scope` parameter on
+`CommercialApiPolicyClient.GetPolicyAsync`.
+
+Artefacts: `output/quote-poc/wy-quote.{html,pdf}` — a populated 4-page CA quote proposal from
+`BAP000080307` — plus `wy_p1..4.png`, `packet-cpp-quote.csv` (277 placements),
+`cpp-quote.{html,pdf}` (the whole 14-page packet unpopulated), and `frag/` (the per-image
+`emit-html` cache).
+
+Earlier, committed on the same branch:
 `FORM-STUDIO-PLAN.md` §40–52, `CONVERSION-PLAN.md`, and `tools/{gdmodel,gdbindings,gdxsdcheck,`
 `gdspeccheck,xmlsupply,gdauthor,gdvalidate,gdproject,gdpackage,gdgrammar,gdorder,gdidrule}.py`,
 plus `population/Maps/BaDecPageFieldMap.cs` and the `fill-html` command in `demo/Program.cs`.
