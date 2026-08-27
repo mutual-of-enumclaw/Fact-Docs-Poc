@@ -786,6 +786,12 @@ if (args.Length >= 2 && args[0] == "emit-html")
             // the F, record, which declares the field's real extent, and let the value not
             // wrap. (Measured: without this the policy number overruns into the
             // "Effective Date:" label.)
+            // WIDTH is the space the flowed line reserved. FapToPdfGenerator.RenderFields
+            // uses the same (pos.Col2 - pos.Col1), so the AcroForm widget on the accepted
+            // fillable-PDF path is this wide too -- and that file relies on the flattened
+            // field auto-sizing its text into the box. Widening the box to the declared
+            // length instead was TRIED and is wrong: it renders at full size and overruns
+            // the next label, which the PDF never does.
             float fw = Math.Max(Px(fpos.Col2) - Px(fpos.Col1),
                                 Px(fld.Position.Col2) - Px(fld.Position.Col1));
             // Same baseline anchor as a text run: Documaker puts the baseline on the
@@ -915,6 +921,7 @@ if (args.Length >= 5 && args[0] == "fill-html")
     var fhHtml = await File.ReadAllTextAsync(fhIn);
     int filled = 0;
     var notInHtml = new List<string>();
+    var shrunk = new List<string>();
     foreach (var kv in fhValues)
     {
         // Locate the field's own empty span and splice the value between its tags.
@@ -932,7 +939,37 @@ if (args.Length >= 5 && args[0] == "fill-html")
         if (!hit.Success) { notInHtml.Add(kv.Key); continue; }
         string esc = kv.Value
             .Replace("&", "&amp;").Replace("<", "&lt;").Replace(">", "&gt;");
-        fhHtml = fhHtml[..hit.Index] + hit.Value + esc + fhHtml[(hit.Index + hit.Length)..];
+
+        // AUTO-SIZE INTO THE BOX -- what the accepted path does. DocProd does not shift
+        // fields: the room is reserved at design time as blank continuation runs in the
+        // flowed line (MCS90A: label / "X" / an EMPTY M,TT of declared length 12 / next
+        // label), and the parser already extends the field's Col2 through them. Nothing
+        // reflows at fill time. On a WIP form the value lands in an AcroForm widget which
+        // "auto-sizes its text to the box height" (FapToPdfGenerator), so it SHRINKS
+        // inside its rectangle rather than spilling. A bare <span> has no such rectangle,
+        // so shrink here to match. Where the box is very tight the value renders small --
+        // that is the legacy form's own geometry, not a rendering defect: MCS90A reserves
+        // 2.80pt/char for POLICYNUM and 1.23pt/char for EFFDATE against ~4.5pt needed.
+        var wm = System.Text.RegularExpressions.Regex.Match(hit.Value, "width:([0-9.]+)pt");
+        var sm = System.Text.RegularExpressions.Regex.Match(hit.Value, "font-size:([0-9.]+)pt");
+        string opening = hit.Value;
+        var inv = System.Globalization.CultureInfo.InvariantCulture;
+        if (wm.Success && sm.Success
+            && float.TryParse(wm.Groups[1].Value, System.Globalization.NumberStyles.Float, inv, out float boxPt)
+            && float.TryParse(sm.Groups[1].Value, System.Globalization.NumberStyles.Float, inv, out float curPt)
+            && boxPt > 1f && kv.Value.Length > 0)
+        {
+            const float AdvanceEm = 0.5f;   // estimate for the narrow faces these forms use
+            if (kv.Value.Length * curPt * AdvanceEm > boxPt)
+            {
+                float fitted = Math.Max(5f, boxPt / (kv.Value.Length * AdvanceEm));
+                opening = opening.Replace($"font-size:{sm.Groups[1].Value}pt",
+                    $"font-size:{fitted.ToString("0.##", inv)}pt");
+                shrunk.Add($"{kv.Key} {curPt.ToString("0.#", inv)}->{fitted.ToString("0.#", inv)}pt "
+                           + $"(box {boxPt.ToString("0.#", inv)}pt, {kv.Value.Length} chars)");
+            }
+        }
+        fhHtml = fhHtml[..hit.Index] + opening + esc + fhHtml[(hit.Index + hit.Length)..];
         filled++;
     }
 
@@ -953,6 +990,7 @@ if (args.Length >= 5 && args[0] == "fill-html")
     await File.WriteAllTextAsync(fhOut, fhHtml);
     Console.WriteLine();
     Console.WriteLine($"filled  {filled} of {fhValues.Count} span(s), verified in the output");
+    foreach (var sh in shrunk) Console.WriteLine($"fitted  {sh}");
     if (notInHtml.Count > 0)
         Console.WriteLine($"NO SPAN {notInHtml.Count} value(s) have no field on this form: "
             + string.Join(", ", notInHtml));
