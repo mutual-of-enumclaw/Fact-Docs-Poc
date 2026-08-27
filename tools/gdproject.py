@@ -123,6 +123,13 @@ def register(gdproj: str, gd_file: str, folder: str, dry_run: bool = False) -> i
         print('\n(dry run -- nothing written)')
         return 0
 
+    # The manifest is the one irreplaceable file in a project -- 83 document
+    # registrations here -- and this rewrites it. Keep a copy of the original.
+    backup = gdproj + '.bak'
+    if not os.path.exists(backup):
+        shutil.copy2(gdproj, backup)
+        print(f'backup    {os.path.basename(backup)}')
+
     os.makedirs(os.path.dirname(target), exist_ok=True)
     shutil.copy2(gd_file, target)
     tree.write(gdproj, encoding='utf-8', xml_declaration=True)

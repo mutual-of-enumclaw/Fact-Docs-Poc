@@ -3739,3 +3739,60 @@ places.
 one step further out: the question "can Studio open this?" was answerable from the installed product
 in two commands. Reasoning about what a `.gdsp` "probably is" would have produced a confident guess,
 and the file-type list is a fact.
+
+## 48. The authored template, registered in a Studio project (2026-08-26)
+
+Products supplied a sandbox copy of the Studio project — `GhostDraft Studio/Cody's World` — and the
+authored template is now registered in it.
+
+```
+documents            83 -> 84
+added                Documents\Proprietary\Authored Loss Payable Clause Schedule.gd
+backup               Cody's World.gdproj.bak   (written before the manifest was touched)
+```
+
+Checked after writing, since the manifest is the one irreplaceable file in a project:
+
+| check | result |
+|---|---|
+| manifest still parses | yes |
+| documents added / removed | **1 / 0** |
+| `conceptLibraries`, `styleLibraries`, `templateCatalogs`, `scenarios`, `documentPaths`, `projectFolders`, `files`, `folders` | **all unchanged** (1, 3, 1, 32, 1, 17, 0, 0) |
+| `.gd` on disk, byte-identical to source | yes, 16,514 bytes |
+
+### The project's library is the same library the package ships
+
+This is what makes §44–46's resolution valid inside a Studio project, which has only a `.gdm` and no
+Packager-generated `model.xml`:
+
+| | Studio project | package export |
+|---|---|---|
+| name | `Model Library` | `Model Library` |
+| versionIdentifier | `Model Library|0|0` | `Model Library|0|0` |
+| guids | 588 | 587 |
+
+**587 guids in both; zero in the package that the project lacks.** The package export is a strict
+subset of the project library, so every path the emitter resolved against `model.xml` resolves here
+too. The one extra concept in the project is an attribute named
+`Policy Effective Date Full in Words` (`365114b5-…`) — authored in Studio since the 2607.0 export,
+which is exactly the direction of travel you would expect and a useful confirmation that the project
+is the upstream of the package rather than a copy of it.
+
+### Where this leaves the chain
+
+Every link is now checked except the last:
+
+```
+declarative spec -> .gd with logic          gdauthor.py, grammar verified from the bytes
+.gd -> resolves against the real model      13 bindings, 0 unresolved
+.gd -> read back by an independent reader   tree reconstructed exactly
+paths -> exist in real Server XML           7/7 present with values in 32 test cases
+.gd -> registered in a Studio project       83 -> 84, nothing else touched
+Studio -> renders the logic                 CONFIRMED by Products' screenshot (§46)
+Studio -> resolves the bindings             <- open the project and look
+```
+
+§46 already proved Studio understands the logic — `FOR EACH`, the five `IF`s, the `ELSE`, the
+nesting. What was unresolved there was the library, and the library is present in this project. If a
+red underline survives, the model panel is the thing to photograph: it named the cause correctly
+both previous times, where the tooltip did not.
