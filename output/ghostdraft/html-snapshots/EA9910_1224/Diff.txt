@@ -1,6 +1,6 @@
 EA9910_1224: DIFFERENT  score 99.5%
 pages   golden 9  html 9  (pages with text)
-words   golden 4919  html 4879  missing 44  extra 4
+words   golden 4919  html 4884  missing 42  extra 7
 
 MISSING (in the GhostDraft golden, not in the HTML render)
   [CPP 1039223 01 COMMERCIAL]  <=  POLICY NUMBER:  CPP 1039223 01                                                             COMMERCIAL AUTO
@@ -18,23 +18,24 @@ MISSING (in the GhostDraft golden, not in the HTML render)
   [4]  <=  (4) Physical       Damage        Coverage                an "insured", other than an officer or insurance
   [3]  <=  The following is added to subparagraph 3. under              BUSINESS AUTO CONDITIONS:
   [6]  <=  6.  Unintentional Failure To Disclose Hazards
-  [8 9 9]  <=  Page 8 of 9        Includes copyrighted material of Insurance Services Office, Inc. with its permission   EA 99 10 12 24
+  [8 9 INSURANCE 9]  <=  Page 8 of 9        Includes copyrighted material of Insurance Services Office, Inc. with its permission   EA 99 10 12 24
   [ENDORSEMENT]  <=  any  of  the  information  provided  by  you  and        endorsement. the following definitions are added
   [POLICY]  <=  relied upon by us in the issuance of this policy.        to SECTION V - DEFINITIONS:
   [POLICY]  <=  to cancel or non-renew this policy.                      or foster child.
   [5]  <=  Others To Us Loss Condition (subparagraph 5.
   [AUTO]  <=  SECTION IV - BUSINESS AUTO CONDITIONS)
   [THIS]  <=  with respect to the coverage provided under this
-  [THE]  <=  Coverage  Form,  but  only  to  the  extent  that
-  [WRITTEN AGREEMENT]  <=  a.  Under a written contract or agreement with
   [S]  <=  such person(s) or organization(s); and
   [EA 9 10 12 24 PAGE 9 9]  <=  EA 99 10 12 24  Includes copyrighted material of Insurance Services Office, Inc. with its permission  Page 9 of 9
 
 EXTRA (in the HTML render, not in the GhostDraft golden)
   [EXTENSION]  <=  Schedule  above  for Vacation Expense  Allowance  Coverage  Extension  - Limit Per Day, subject to the
   [AUTOS]  <=  (8)     Aircraft, "autos", watercraft, or  any  other  motorized   vehicles, including  any  equipment,
+  [INSURED]  <=  e.      Failure by an agent, servant, or "employee" of an "insured", other than an officer or insurance manager (if
   [LIABILITY]  <=  you  are a corporation), a partner (if you are a partnership), or a manager   (if you are a limited liability
+  [CONTRACT]  <=  a.      Under  a written contract or agreement with such person(s) or organization(s); and
   [LOSS]  <=  b.      Prior to the "accident" or the "loss".
+  [OR]  <=  household, including a ward or foster child.
 
 golden   C:\src\fact-docgen\src\Moe.Commercial.Documents.Generation.Integration.Tests\TestData\Snapshots\EA9910_1224\GoldenSnapshot.txt
 template C:\src\fact-poc\output\ghostdraft\batch\EA9910-1224.json

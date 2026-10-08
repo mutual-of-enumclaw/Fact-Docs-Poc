@@ -13,7 +13,7 @@ POLICY   NUMBER:    CPP  0026912  02                                            
                                                               SCHEDULE
                                                                                                           Estimated
                 Coverages                      Limit Of Insurance  And  Deductible                         Premium
-            Comprehensive      Least  Of Actual Cash  Value, Cost  Of Repair, Or                   $20.00
+            Comprehensive      Least  Of Actual Cash  Value, Cost  Of Repair, Or                   $ 20.00
                                $ 25,000                    Limit Of Insurance
                                $                           Deductible  For Each  Covered   Trailer
             Specified          Least  Of Actual Cash  Value, Cost  Of Repair, Or                   $
@@ -21,7 +21,7 @@ POLICY   NUMBER:    CPP  0026912  02                                            
                                $                           Limit Of Insurance
             Loss
                                $                           Deductible  For Each  Covered   Trailer
-            Collision          Least  Of Actual Cash  Value, Cost  Of Repair, Or                   $34.00
+            Collision          Least  Of Actual Cash  Value, Cost  Of Repair, Or                   $ 34.00
                                $ 25,000                    Limit Of Insurance
                                $ 1,000                     Deductible  For Each  Covered   Trailer
             Fire               Least  Of Actual Cash  Value, Cost  Of Repair, Or                   $

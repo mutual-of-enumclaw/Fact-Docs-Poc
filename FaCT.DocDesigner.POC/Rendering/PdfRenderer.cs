@@ -56,9 +56,9 @@ public sealed class PdfRenderer(IConfiguration configuration, ILogger<PdfRendere
 			// can be filled per flowing page.
 			await page.SetViewportAsync(new ViewPortOptions { Width = 816, Height = 1056 });
 			var plan = await page.EvaluateFunctionAsync<string?>(PrepareFootersScript);
-			return plan is null
-				? await PrintAsync(page, null)
-				: await PrintWithFootersAsync(page, JsonSerializer.Deserialize<FooterPlan>(plan, JsonOptions)!);
+			var footers = plan is null ? null : JsonSerializer.Deserialize<FooterPlan>(plan, JsonOptions)!;
+			Task<byte[]> Print() => footers is null ? PrintAsync(page, null) : PrintWithFootersAsync(page, footers);
+			return await PrintWithFlowNumbersAsync(page, Print);
 		}
 
 		// A template's own page setup (designer: Page Setup): paper, orientation, margins and header/footer variants.
@@ -89,6 +89,42 @@ public sealed class PdfRenderer(IConfiguration configuration, ILogger<PdfRendere
 	private static Regex HtmlLang() => HtmlLangPattern;
 
 	private static readonly Regex HtmlLangPattern = new("^<!DOCTYPE html><html lang=\"([a-z]{2})\"", RegexOptions.Compiled);
+
+	// Page numbers outside the footers Chrome prints (a running header's "(Page X of Y)", DA 01 93) repeat in every
+	// printed copy of the header: the document is printed once per page with the numbers spelled out and each page is
+	// taken from its own print. One page needs one print.
+	private async Task<byte[]> PrintWithFlowNumbersAsync(IPage page, Func<Task<byte[]>> print)
+	{
+		if (!await page.EvaluateFunctionAsync<bool>(FillFlowNumbersScript, 1, 1))
+		{
+			return await print();
+		}
+		var first = await print();
+		var total = PageCount(first);
+		if (total == 1)
+		{
+			return first;
+		}
+		var pages = Enumerable.Range(1, total).ToArray();
+		var prints = new List<byte[]>();
+		foreach (var n in pages)
+		{
+			await page.EvaluateFunctionAsync<bool>(FillFlowNumbersScript, n, total);
+			prints.Add(await print());
+		}
+		return ComposePages(prints, pages.ToList(), pages);
+	}
+
+	private const string FillFlowNumbersScript = """
+		(n, total) => {
+			const own = e => !e.closest('.gd-pdffoot, .gd-pdffoot-even, .gd-sheetfoot');
+			const numbers = [...document.querySelectorAll('.gd-pageno')].filter(own);
+			const counts = [...document.querySelectorAll('.gd-pagecount')].filter(own);
+			numbers.forEach(e => e.textContent = String(n));
+			counts.forEach(e => e.textContent = String(total));
+			return numbers.length + counts.length > 0;
+		}
+		""";
 
 	// Size: letter|legal|a4. Margins: top, right, bottom, left in inches. Templates: "header:default|first|even" and
 	// "footer:..." => Chrome header/footer template.

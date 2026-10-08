@@ -11,8 +11,7 @@ POLICY   NUMBER:    FPP  0014214  00                                            
             This endorsement  changes  the policy effective on the inception date of the policy unless another date is indicated
             below.
              Named   Insured: WA  AUTO   2025  BUCKET   TEST
-             Endorsement   Effective Date:
-                                            02/16/2026
+             Endorsement   Effective Date:  02/16/2026
                                                               SCHEDULE
              Description  Of Vehicles That Are  Covered  Autos:
              Veh# 001  2004 OCP   TTT Rule  232 01169 4VZDM1291YC035694

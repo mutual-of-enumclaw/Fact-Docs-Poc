@@ -1,8 +1,8 @@
-POLICY   NUMBER:      FPP  1000088  00                                                  COMMERCIAL      AUTO
+POLICY   NUMBER:       FPP  1000088  00                                                   COMMERCIAL      AUTO
                    THIS  ENDORSEMENT           CHANGES       THE   POLICY.    PLEASE      READ    IT CAREFULLY.
-                                            NAMED     INDIVIDUALS       AS   INSUREDS      -
-                                   FARM    FAMILY    CORPORATIONS           OR  PARTNERSHIPS
-                This endorsement  modifies insurance  provided under the following:
+                                            NAMED      INDIVIDUALS      AS   INSUREDS      -
+                                   FARM    FAMILY     CORPORATIONS          OR  PARTNERSHIPS
+                This endorsement  modifies insurance provided under  the following:
                 BUSINESS    AUTO  COVERAGE      FORM
                 Any individual named  in the SCHEDULE    below is designated as a Named  Insured in addition to the first
                 Named   Insured shown  in Item One of the Declarations.
@@ -12,33 +12,31 @@ POLICY   NUMBER:      FPP  1000088  00                                          
                          Item One of the Declarations.
                                                               SCHEDULE
                                                               Names   of Individuals
-                For the individual Named Insured(s) shown  in the SCHEDULE,   the policy is changed as follows:
-            A.      CHANGES     IN LIABILITY  COVERAGE                           "Family  members"    are "insureds" for
-                                                                                 any  covered  "auto" you  own  and any
-                1.      The FELLOW    EMPLOYEE
-                                                                                 other  "auto" described   in paragraph
-                        EXCLUSION    does
-                                                                                 2.b. of this endorsement.
-                        not apply to "bodily injury" to you or
-                                                                          b.      Any  "auto" you don't own is a covered
-                        any "family member's  " fellow
-                                                                                  "auto" while being used  by you  or by
-                        employees.
-                                                                                  any "family member"  except:
-                2.      While any "auto" you own  is a
-                                                                              (1)     Any  "auto" owned  by  any "family
-                        covered  "auto" under LIABILITY
-                                                                                      members"   that is not described as
+                For the individual Named Insured(s) shown  in the SCHEDULE,    the policy is changed as follows:
+                                                                                    "Family members"   are "insureds" for
+            A.      CHANGES     IN LIABILITY  COVERAGE
+                                                                                    any  covered  "auto"  you  own  and
+                1.      The  FELLOW    EMPLOYEE
+                                                                                    any   other   "auto"  described   in
+                        EXCLUSION     does
+                                                                                    paragraph  2.b. of this endorsement.
+                        not apply to "bodily injury" to you or any
+                                                                             b.      Any  "auto"  you  don't  own  is  a
+                        "family member's " fellow employees.
+                                                                                     covered  "auto" while being used by
+                2.      While  any "auto" you  own  is a                             you  or  by  any  "family member"
+                        covered  "auto" under LIABILITY                              except:
                         COVERAGE:
-                                                                                      a covered  "auto" in Item Three of
-                    a.      The following is added to WHO  IS
-                                                                                      the Declarations.
-                            AN  INSURED:
+                                                                                 (1)     Any   "auto"  owned    by  any
+                    a.      The  following is  added  to  WHO                            "family members"   that  is not
+                            IS  AN INSURED:                                              described as  a covered  "auto"
+                                                                                         in   Item    Three    of    the
+                                                                                         Declarations.
              EA  99 40 01 94    Includes copyrighted material of Insurance Services Office, Inc. with its permission Page 1 of 2
 --- Page 2 ---
-POLICY   NUMBER:      FPP  1000088  00                                                  COMMERCIAL      AUTO
+POLICY   NUMBER:       FPP  1000088  00                                                   COMMERCIAL      AUTO
                          (2)     Any  "auto" furnished or available for your or any  "family member's"  regular use  that is
-                                 neither described in Item Three of the Declarations nor owned by any other Named   Insured
+                                 neither described in Item Three of the Declarations nor owned by any  other Named  Insured
                                  on this policy.
                          (3)     Any "auto" used  by you or by any of your "family members"  while working  in a business of
                                  selling, servicing, repairing or parking "autos."
@@ -46,9 +44,9 @@ POLICY   NUMBER:      FPP  1000088  00                                          
                                  members"  while working in any other business or occupation.
                 3.      Private Passenger   Type  Changes
                     a.      The  POLLUTION     Exclusion  and,  if forming a part  of the policy, the NUCLEAR     ENERGY
-                            LIABILITY  EXCLUSION    (BROAD   FORM),
+                            LIABILITY  EXCLUSION     (BROAD    FORM),
                             does not apply to any covered "auto" of the "private passenger type."
-                    b.      The following exclusion is added and applies only to "private passenger type" covered "autos":
+                    b.      The following exclusion is added and  applies only to "private passenger type" covered "autos":
                             This insurance does not apply to:
                             "Bodily injury" or "property damage" for which an "insured" under the policy is also an "insured"
                             under the nuclear energy  liability policy or would be an "insured" but for its termination upon its
@@ -58,18 +56,18 @@ POLICY   NUMBER:      FPP  1000088  00                                          
                             York.
             B.      CHANGES     IN PHYSICAL   DAMAGE
                     PERSONAL     AUTO   COVERAGE
-                    While any  "auto" you own is a covered "auto" under PHYSICAL   DAMAGE    COVERAGE     , a "non-owned
+                    While any  "auto" you own is a covered "auto" under PHYSICAL   DAMAGE     COVERAGE     , a "non-owned
                     auto" will also be considered a covered "auto." However, the most we will pay for "loss" to a "non- owned
                     auto" that is a "trailer" is $500.
-            C.      ADDITIONAL     DEFINITIONS
-                                            The  following is added to the DEFINITIONS  Section:
+            C.      ADDITIONAL    DEFINITIONS
+                                             The following is added to the DEFINITIONS  Section:
                 1.      "Family member"   means  a person related to you by blood, marriage or adoption who is a resident
                         of your household, including a ward or foster child.
                 2.      The words  "you" and "your" include your spouse if a resident of the same household.
                 3.      When   the phrase  "private passenger  type  auto" appears  in quotation  marks  it includes any
                         covered  "auto" you own  of the pick-up or van type not used  for business purposes,  other than
                         farming or ranching.
-                4.      When   the phrase "non-owned  auto" appears  in quotation marks it means any "private passenger
+                4.      When  the phrase  "non-owned  auto" appears  in quotation marks it means any "private passenger
                         type auto" not owned   by you or any  "family member"  while it is in the custody of or while it is
                         being operated by you  or any "family member."
              EA  99 40 01 94    Includes copyrighted material of Insurance Services Office, Inc. with its permission Page 2 of 2

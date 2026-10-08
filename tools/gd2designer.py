@@ -103,7 +103,7 @@ WINGDINGS = {0xA7: '\u25aa', 0x6C: '\u25cf', 0x6E: '\u25a0', 0x71: '\u2751', 0x7
 
 def default_cp():
     return {'b': False, 'i': False, 'ul': False, 'strike': False, 'caps': False, 'fs': 24, 'f': 0, 'cf': 0,
-            'va': '', 'v': False}
+            'va': '', 'v': False, 'scale': 100, 'sp': 0}
 
 
 def default_pp():
@@ -120,7 +120,8 @@ def new_rowdef():
 
 
 def cp_key(cp):
-    return (cp['b'], cp['i'], cp['ul'], cp['strike'], cp['caps'], cp['fs'], cp['f'], cp['cf'], cp['va'])
+    return (cp['b'], cp['i'], cp['ul'], cp['strike'], cp['caps'], cp['fs'], cp['f'], cp['cf'], cp['va'],
+            cp['scale'], cp['sp'])
 
 
 class Container:
@@ -314,8 +315,15 @@ class RtfParser:
                 kids.append(n)
         self.inl = []
         p = dict(self.pp)
+        p['mark_fs'] = self.st['cp']['fs']
+        if getattr(self, 'after_page', False):
+            p['sb'] = 0
+            self.after_page = False
         if self.colbreak:
             p['colbreak'] = True
+            # like after \page: the paragraph began in the column before, so the next one opens without its space
+            # before (DA 00 93's right-hand symbol column, 5.8pt too low)
+            p['sb'] = 0
             self.colbreak = self.colsplit = False
         self.place({'k': 'para', 'p': p, 'kids': kids}, intbl)
 
@@ -515,6 +523,12 @@ class RtfParser:
             cp['f'] = n or 0
         elif w == 'cf':
             cp['cf'] = n or 0
+        elif w == 'charscalex':
+            cp['scale'] = n or 100
+        elif w == 'expndtw':
+            cp['sp'] = n or 0
+        elif w == 'expnd':
+            cp['sp'] = (n or 0) * 5      # quarter points; \expndtw (twips) follows it when Word writes both
         elif w == 'super':
             cp['va'] = 'super'
         elif w == 'sub':
@@ -544,14 +558,23 @@ class RtfParser:
             self.place(node, False)
             # the new section's \sectd properties follow \sect: \sbknone makes it continuous, \colsN adds columns
             self.last_sect = node if w == 'sect' else None
+            self.cont_sect = False
+            # the rest of a paragraph broken by \page opens the next page without its space before: the paragraph
+            # began on the page before (DA 00 93 page 2: sb224 on the page-break paragraph, 11pt too low)
+            self.after_page = w == 'page'
         elif w == 'sbknone' and getattr(self, 'last_sect', None):
             self.last_sect['k'] = 'colsect'
+            # a continuous section continues the page: its header/footer distances and margins only apply to
+            # pages that START in it (DA 00 93's two-column symbol list says \headery0 -- page 2 keeps 576)
+            self.cont_sect = True
         elif w in ('sbknone', 'sbkpage', 'sbkcol', 'sbkeven', 'sbkodd'):
             self.page.setdefault('sbk', w)
         elif w == 'cols' and getattr(self, 'last_sect', None):
             self.last_sect['cols'] = n or 1
         elif w == 'colsx' and getattr(self, 'last_sect', None):
             self.last_sect['gap'] = n or 0
+        elif w in ('colw', 'colsr') and getattr(self, 'last_sect', None):
+            self.last_sect.setdefault(w, []).append(n or 0)
         # tables
         elif w == 'cell':
             self.end_cell()
@@ -614,7 +637,14 @@ class RtfParser:
                 node['relh' if w[4] == 'x' else 'relv'] = w[5:]
         # page setup (document or section)
         elif w in ('headery', 'footery'):
-            self.page[w] = n or 0
+            if not getattr(self, 'cont_sect', False):
+                self.page[w] = n or 0
+        elif getattr(self, 'cont_sect', False) and (
+                w.rstrip('sxn') in ('margl', 'margr', 'margt', 'margb', 'paperw', 'paperh') or
+                w in ('marglsxn', 'margrsxn', 'margtsxn', 'margbsxn', 'pgwsxn', 'pghsxn')):
+            # ...but its side margins narrow or widen its own text (DA 00 93's footnote section: 0.25in margins)
+            if w in ('margl', 'margr', 'marglsxn', 'margrsxn') and getattr(self, 'last_sect', None):
+                self.last_sect[w[:5]] = n or 0
         elif w.rstrip('sxn') in ('margl', 'margr', 'margt', 'margb', 'paperw', 'paperh') or \
                 w in ('marglsxn', 'margrsxn', 'margtsxn', 'margbsxn', 'pgwsxn', 'pghsxn'):
             key = {'pgwsxn': 'paperw', 'pghsxn': 'paperh'}.get(w, w[:5] if w.startswith('marg') else w)
@@ -648,7 +678,10 @@ def split_marker_runs(runs):
 
     for a, b, mid in spans:
         emit(pos, a)
-        out.append({'k': 'marker', 'id': mid})
+        # GhostDraft prints a fill point's value in the formatting of its marker's '%' (Word may style '[1]' apart:
+        # DA 00 93 Named Insured '%' 9.5pt 110% wide, '[1]' 10pt -> the value prints 9.5pt 110% wide; the premium
+        # '%' 8pt regular, '[17]' 10pt -> 8pt)
+        out.append({'k': 'marker', 'id': mid, 'c': runs[owner[a]]['c']})
         pos = b
     emit(pos, len(text))
     return out
@@ -669,6 +702,20 @@ def find_marker(node, mid, path=None):
 
 def is_empty_inline(kids):
     return all(k['k'] == 'run' and not k['t'].strip() for k in kids)
+
+
+def run_sizes(kids):
+    """Font sizes (half points) of the text a paragraph prints: its runs and fill points (None = a fill point with
+    no formatting of its own), inside Show Ifs too."""
+    out = []
+    for k in kids:
+        if k['k'] == 'run' and k['t'].strip():
+            out.append(k['c'][5] if k['c'] else None)
+        elif k['k'] == 'fill':
+            out.append(k['c'][5] if k.get('c') else None)
+        elif k['k'] in ('region', 'para') or ('kids' in k and k['k'] not in ('shape',)):
+            out.extend(run_sizes(k.get('kids', [])))
+    return out
 
 
 def has_content(n):
@@ -808,6 +855,7 @@ class Converter:
         self.notes: list[str] = []
         self.counts = Counter()
         self.bind: dict[str, dict] = {}       # model registrations: xml path -> {kind, value?}
+        self.bool_tests: set[str] = set()     # liquid paths of the yes/no tests conditions read
         self.fonts: dict[int, str] = {}
         self.colors: list = []
         tree = self.template_tree(name, stack=())
@@ -881,10 +929,10 @@ class Converter:
         """Rewrite run style keys to carry the font NAME and color VALUE instead of per-template indexes."""
         def fix(node):
             for k in node.get('kids', []):
-                if k['k'] == 'run' or (k['k'] == 'field' and k.get('c')):
-                    b, i, ul, s, caps, fs, f, cf, va = k['c']
+                if k['k'] in ('run', 'marker') or (k['k'] == 'field' and k.get('c')):
+                    b, i, ul, s, caps, fs, f, cf, va, *rest = k['c']
                     color = parser.colors[cf] if 0 < cf < len(parser.colors) else None
-                    k['c'] = (b, i, ul, s, caps, fs, fontmap.get(f, ''), color, va)
+                    k['c'] = (b, i, ul, s, caps, fs, fontmap.get(f, ''), color, va, *rest)
                 elif k['k'] == 'row':
                     for cd in k['def']['cells']:
                         bg = cd.get('bg') or 0
@@ -960,7 +1008,11 @@ class Converter:
             fmt = 'decimal' if rtype.startswith('Currency') else 'number'
         elif 'dollars' in lowered or rtype.startswith('Currency'):
             fmt = 'dollars'
+        # an unformatted Decimal prints as given: GhostDraft keeps a .NET decimal's scale (Server XML 1.37600 prints
+        # 1.37600, DA 02 93), so the message carries it as text rather than a number the composer would normalise
+        plain_decimal = not fmt and rtype.startswith('Decimal')
         kind = 'date' if fmt == 'shortdate' else 'money' if fmt in ('dollars', 'decimal', 'currency') else \
+            'text' if plain_decimal else \
             'number' if fmt == 'number' or rtype.startswith(('Integer', 'Number', 'Decimal')) else 'text'
         self.register(r.xml_path, kind)
         return {'k': 'fill', 'field': liquid(r.xml_path, scopes), 'format': fmt}
@@ -1049,6 +1101,8 @@ class Converter:
         if leaf in ('test', 'derived-test', 'mutexTestGroup'):
             if leaf == 'derived-test':
                 self.notes.append(f'derived test "{desc}" -> {base}: GhostDraft computes it; the message must supply it')
+            elif leaf == 'test':
+                self.bool_tests.add(base)
             self.register(r.xml_path, 'bool')
             return {'field': base, 'operator': 'eq', 'value': 'true'}
         self.register(r.xml_path, 'list' if leaf in ('list', 'list-item') else 'present')
@@ -1063,6 +1117,13 @@ class Converter:
                 conds.append(self.condition(p, scopes))
         ids = [p.get('ID', '') for p in parts]
         self.counts['conditionals'] += 1
+        # GhostDraft leaves out BOTH branches of "if <test> ... otherwise ..." when the message has no value for the
+        # test (DA 40 93: no ORPolicy -> neither "Full Cov/ No" nor "N/A"), so the otherwise needs the test false
+        if len(conds) == 2 and conds[1] is None and conds[0] and conds[0]['field'] in self.bool_tests and \
+                conds[0]['operator'] in ('eq', 'ne') and conds[0]['value'] == 'true':
+            first = conds[0]
+            conds = [dict(first, operator='eq', value='true' if first['operator'] == 'eq' else 'false'),
+                     dict(first, operator='eq', value='false' if first['operator'] == 'eq' else 'true')]
         ops.append(('cond', ids, conds))
 
     def list_op(self, ins, desc, scopes, fills, ops):
@@ -1102,6 +1163,8 @@ class Converter:
         for i, k in enumerate(node.get('kids', [])):
             if k['k'] == 'marker' and k['id'] in fills:
                 rep = fills[k['id']]
+                if rep is not None and rep.get('k') == 'fill' and k.get('c'):
+                    rep = dict(rep, c=k['c'])
                 node['kids'][i] = rep if rep is not None else {'k': 'run', 't': '', 'c': None}
             elif 'kids' in k:
                 self.replace_fills(k, fills)
@@ -1376,6 +1439,10 @@ class Emitter:
             # a flow page whose only content is a Show If that printed nothing must not start a page
             '.gd-if:empty{display:none;}',
             '.gd-flow:not(:has(:not(.gd-if))){display:none;}',
+            # the page break between two flows sits on the default (unnamed) page: leaving the flow's named page
+            # breaks before it, then it breaks after itself -- a blank sheet (DA 00 93 page 2). The next flow breaks.
+            '.gd-flow + .page-break:has(+ .gd-flow){display:none;}',
+            '.gd-flow + .page-break + .gd-flow{break-before:page;}',
             # likewise a form sheet whose shapes all sit in Show Ifs that printed nothing (the other branch's sheet)
             '.form-page:not(:has(:not(.gd-if))){display:none;}',
             '.form-page .abs{position:absolute;white-space:pre;margin:0;padding:0;line-height:normal;}',
@@ -1420,12 +1487,20 @@ class Emitter:
             walk(t)
         self.base = c.most_common(1)[0][0] if c else ('Arial', 20)
 
-    def run_class(self, key):
+    def run_class(self, key, text=None):
         if not key:
             return None
-        b, i, ul, strike, caps, fs, font, color, va = key
+        b, i, ul, strike, caps, fs, font, color, va, *rest = key
+        scale, sp = rest if len(rest) == 2 else (100, 0)
         bf, bs = self.base
         deco = ' '.join(x for x in ('underline' if ul else '', 'line-through' if strike else '') if x)
+        # Word's character spacing (\expndtw, twips) is letter-spacing; its horizontal scale (\charscalex) stretches
+        # the glyphs, which CSS can't do to wrapping text -- the extra advance is spread as letter-spacing instead
+        # (DA 00 93's company line at 105%, Named Insured at 110%), so the words land where GhostDraft puts them
+        spacing = sp / 20
+        if scale != 100:
+            sample = text if text else 'Abcdefghijklmnopqrstuvwxyz 0123456789'
+            spacing += (scale / 100 - 1) * measure(sample, fs / 2, b, i, font or bf) / len(sample)
         return self.cls('gd-c', [
             'font-weight:bold' if b else '',
             'font-style:italic' if i else '',
@@ -1435,6 +1510,7 @@ class Emitter:
             f'font-family:{font_css(font)}' if font and font != bf else '',
             f'color:{color}' if color and color.lower() not in ('#000000',) else '',
             f'vertical-align:{va};font-size:smaller' if va else '',
+            f'letter-spacing:{spacing:.2f}pt' if abs(spacing) >= 0.005 else '',
         ])
 
     def para_class(self, p):
@@ -1460,23 +1536,53 @@ class Emitter:
     # ------------------------------------------------------------------ blocks
     def blocks(self, kids):
         out = []
-        cols = None     # open multi-column section: [section node, blocks]
+        cols = None     # open multi-column section: [section node, blocks, blocks per column break]
         for b in kids:
             if b['k'] in ('pagebreak', 'colsect', 'secbreak'):
                 if cols:
                     out.append(self.columns(*cols))
                     cols = None
                 out.extend(self.block(b))
-                if b['k'] != 'secbreak' and b.get('cols', 1) > 1:
-                    cols = [b, []]
+                if b['k'] != 'secbreak' and (b.get('cols', 1) > 1 or self.sect_shift(b)):
+                    cols = [b, [], [[]]]
                 continue
-            (cols[1] if cols else out).extend(self.block(b))
+            if cols and b['k'] == 'para' and b['p'].get('colbreak') and cols[2][-1]:
+                cols[2].append([])
+            comps = self.block(b)
+            (cols[1] if cols else out).extend(comps)
+            if cols:
+                cols[2][-1].extend(comps)
         if cols:
             out.append(self.columns(*cols))
         return out
 
-    def columns(self, sect, comps):
-        # Word section col or k == 'colsect'umns (\cols2\colsx720): newspaper columns, balanced at the end of a continuous section
+    def sect_shift(self, sect):
+        """A continuous section's own side margins relative to the page's, in twips (left, right), or None."""
+        pg = self.page or {}
+        dl = sect.get('margl', pg.get('margl', 1440)) - pg.get('margl', 1440)
+        dr = sect.get('margr', pg.get('margr', 1440)) - pg.get('margr', 1440)
+        return (dl, dr) if dl or dr else None
+
+    def columns(self, sect, comps, parts=None):
+        shift = self.sect_shift(sect)
+        out = self.section_columns(sect, comps, parts) if sect.get('cols', 1) > 1 else \
+            {'tagName': 'div', 'components': comps}
+        if shift:
+            out['classes'] = out.get('classes', []) + [
+                self.cls('gd-sm', [f'margin-left:{pt(shift[0])}', f'margin-right:{pt(shift[1])}'])]
+        return out
+
+    def section_columns(self, sect, comps, parts=None):
+        # Word section columns (\cols2\colsx720): newspaper columns, balanced at the end of a continuous section
+        widths = sect.get('colw') or []
+        if parts and len(parts) == sect['cols'] and len(widths) == sect['cols'] and len(set(widths)) > 1:
+            # columns of their own widths (\colw), filled up to a column break: a grid lays them out exactly
+            # (DA 00 93's symbol list: 252.45pt + 263.8pt; CSS columns are equal, the right one 5.7pt off)
+            gap = (sect.get('colsr') or [sect.get('gap', 720)])[0]
+            cls = self.cls('gd-cols', ['display:grid', 'grid-template-columns:' + ' '.join(pt(w) for w in widths),
+                                       f'column-gap:{pt(gap)}', 'align-items:start'])
+            return {'tagName': 'div', 'classes': [cls],
+                    'components': [{'tagName': 'div', 'components': p} for p in parts]}
         cls = self.cls('gd-cols', [f'column-count:{sect["cols"]}', f'column-gap:{pt(sect.get("gap", 720))}',
                                    'column-fill:balance'])
         return {'tagName': 'div', 'classes': [cls], 'components': comps}
@@ -1517,6 +1623,15 @@ class Emitter:
             kids = kids[first + 1:]
         comps.extend(self.inlines(kids))
         classes = ['gd-p'] + [c for c in [self.para_class(p['p'])] if c]
+        sizes = run_sizes(kids)
+        if comps and sizes and None not in sizes and self.base[1] not in sizes and min(sizes) < self.base[1]:
+            # Word sizes a line by the text on it; the CSS line box also holds a strut of the paragraph's own font,
+            # so a 7.5pt paragraph in an 8pt document gets 8pt lines (DA 40 93's intro: 12pt pitch, GhostDraft 11.5)
+            classes.append(self.cls('gd-m', [f'font-size:{min(sizes) / 2:g}pt']))
+        if not comps and p['p'].get('mark_fs') and p['p']['mark_fs'] != self.base[1]:
+            # an empty paragraph is one line of its paragraph mark's size (DA 00 93: the 10pt blank lines between
+            # ITEM ONE's rows in an 8pt document)
+            classes.append(self.cls('gd-m', [f'font-size:{p["p"]["mark_fs"] / 2:g}pt']))
         if any(c.get('type') in ('conditional', 'choice') for c in comps):
             # a Show If inside the paragraph leaves its paragraph mark behind: the line stays when it is hidden
             classes.append('gd-keepline')
@@ -1558,11 +1673,13 @@ class Emitter:
                 if not x['t']:
                     continue
                 t = x['t'].replace('{{', '{\u200b{').replace('{%', '{\u200b%')
-                c = self.run_class(x['c'])
+                c = self.run_class(x['c'], x['t'])
                 node = {'type': 'textnode', 'content': t}
                 out.append({'tagName': 'span', 'classes': [c], 'components': [node]} if c else node)
             elif k == 'fill':
-                out.append({'type': 'data-field', 'field': x['field'], 'format': x['format']})
+                field = {'type': 'data-field', 'field': x['field'], 'format': x['format']}
+                c = self.run_class(x['c']) if x.get('c') else None
+                out.append({'tagName': 'span', 'classes': [c], 'components': [field]} if c else field)
             elif k == 'tab':
                 out.append({'tagName': 'span', 'classes': ['gd-tab']})
             elif k == 'br':
@@ -1688,10 +1805,22 @@ class Emitter:
         keep = len(rows) > 1 and all(
             any(b['k'] == 'para' and b['p'].get('keepn') for c in r['kids'] for b in c.get('kids', []))
             for r in rows[:-1])
-        tcls = self.cls('gd-t', [f'width:{self.tw(width)}' if width else '', f'margin-left:{self.tw(left)}' if left else '',
+        tcls = self.cls('gd-t', [self.table_width(first, width) if width else '',
+                                 f'margin-left:{self.tw(left)}' if left else '',
                                  'break-inside:avoid' if keep else ''])
         self._pct = saved_pct
         return {'type': 'table', 'classes': ['gd-table'] + ([tcls] if tcls else []), 'components': groups}
+
+    def table_width(self, first, width):
+        """A percent-width table (\\trftsWidth2) is that share of the text width PLUS its rows' left and right cell
+        padding, as in Word: DA 00 93's 100% tables are 550.8pt wide in a 540pt column, their cell text lining up
+        with the margin on the left and the table running 10.8pt into the right margin."""
+        w = self.tw(width)
+        if first and first['def'].get('fts') == 2 and getattr(self, '_pct', None):
+            pad = first['def']['pad'].get('l', 0) + first['def']['pad'].get('r', 0)
+            if pad:
+                return f'width:calc({w} + {pt(pad)})'
+        return f'width:{w}'
 
     PCT_BASE = 10000
 
@@ -1835,7 +1964,7 @@ class Emitter:
                 cd = row['def']['cells'][i] if i < len(row['def']['cells']) else None
                 x = cd['x'] if cd else prev_x + 1440
                 cells.append({'cell': cell, 'def': cd, 'x': x, 'w': x - prev_x, 'span': 1, 'drop': False,
-                              'pad': row['def']['pad']})
+                              'pad': row['def']['pad'], 'pct': row['def'].get('fts') == 2})
                 prev_x = x
             grid.append(cells)
         for ri, cells in enumerate(grid):
@@ -1856,6 +1985,16 @@ class Emitter:
                 if c['drop']:
                     continue
                 comp = {'type': 'cell', 'components': self.blocks(c['cell']['kids'])}
+                exact = row['def'].get('h') or 0
+                if exact < 0:
+                    # an exact row height (\trrh negative) doesn't grow with its content; a CSS row does (DA 40 93:
+                    # "ADDITIONAL COVERAGE ENDORSEMENTS INCLUDED:" and a blank line in an 18.7pt row, 15pt too tall).
+                    # GhostDraft doesn't clip what doesn't fit, it prints over the next row (CA 04 54's VIN), so the
+                    # content box is capped and the rest overflows visibly
+                    pad = self.cell_pad(c)
+                    inner = max(-exact - pad.get('t', 0) - pad.get('b', 0), 0)
+                    clip = self.cls('gd-x', [f'max-height:{pt(inner)}', 'overflow:visible'])
+                    comp['components'] = [{'tagName': 'div', 'classes': [clip], 'components': comp['components']}]
                 cc = self.cell_class(c)
                 if cc:
                     comp['classes'] = [cc]
@@ -1875,7 +2014,7 @@ class Emitter:
                 # GhostDraft lays an at-least row height out as the content height, the cell top/bottom padding
                 # comes on top (CA 20 16 schedule: \trrh518 with 3.6pt top padding prints a 29.9pt row pitch);
                 # exact heights (negative) include it (CA 20 16 page 1 text boxes)
-                pads = [dict(c['pad'], **(c['def'] or new_celldef())['pad']) for c in cells if not c['drop']]
+                pads = [self.cell_pad(c) for c in cells if not c['drop']]
                 h += max((p.get('t', 0) + p.get('b', 0) for p in pads), default=0)
                 # ...and so do the row's borders (0.5pt borders: 29.4pt of height + padding prints a 29.9pt
                 # pitch); a collapsed CSS row holds half of each border inside its height
@@ -1889,6 +2028,14 @@ class Emitter:
                 tr['classes'] = [self.cls('gd-tr', [f'height:{pt(h)}'])]
             out.append(tr)
         return out
+
+    @staticmethod
+    def cell_pad(c):
+        """The row's cell margins with the cell's own on top. In a percent-width table a cell margin of 0 keeps the
+        row's: GhostDraft prints DA 40 93's "Named Insured:" (\\clpadl0 under \\trpaddl108) 5.4pt in from the table
+        edge, while the ISO schedules' fixed-width tables print their 0-margin amount cells at 0 (CA 20 21)."""
+        own = (c['def'] or new_celldef())['pad']
+        return dict(c['pad'], **({k: v for k, v in own.items() if v} if c.get('pct') else own))
 
     def cell_class(self, c):
         cd = c['def'] or new_celldef()
@@ -1906,8 +2053,7 @@ class Emitter:
             decls.append('vertical-align:' + ('middle' if cd['valign'] == 'c' else 'bottom'))
         if cd.get('bg'):
             decls.append(f'background:{cd["bg"]}')
-        pad = dict(c['pad'])
-        pad.update(cd['pad'])
+        pad = self.cell_pad(c)
         # Word draws cell borders inside the padding, so a bordered cell keeps its full text width; a collapsed CSS
         # border takes half its width out of the cell (CA 20 16 "Specified Causes Of Loss" wrapped at 0.5pt short)
         for side in 'lr':
@@ -1962,8 +2108,11 @@ class Emitter:
         # sheet's footer is laid out on the sheet and numbered after a first print finds each sheet's page
         ff = sinks.get('footer-first')
         feet = [footer, sinks.get('footer-other')] + [f for s in sects if s for f in (sect_hf(s)[1], s.get('footer-other'))]
-        self._pdf_feet = bool(any(f and self.has_field(f['kids']) for f in feet)
-                              and (not ff or foot_sig(ff) == foot_sig(footer)))
+        # any running footer goes there, not only a numbered one: Chrome prints a flow's last tfoot right under the
+        # body, where Word keeps the footer at the foot of the page (DA 00 93 page 1). A first page split into a flow
+        # of its own (split_first) is a section of its own, so its first-page footer may differ.
+        self._pdf_feet = bool(any(f and has_content({'k': 'region', 'kids': strip_shapes(f['kids'])}) for f in feet)
+                              and (not ff or foot_sig(ff) == foot_sig(footer) or split_first))
         self._doc_sinks, self._sec_ids = sinks, {}
         out, flow = [], []
         queue = list(zip(pages, sects))
@@ -2375,8 +2524,12 @@ def choice_as_ifs(choice):
     branches = choice['kids']
     if len(branches) != 2 or not branches[0]['cond']:
         return None
-    conds = [branches[0]['cond'], branches[1]['cond'] or negate(branches[0]['cond'])]
-    if branches[1]['cond'] or not conds[1]:
+    first, second = branches[0]['cond'], branches[1]['cond']
+    # "if <test> / otherwise" whose otherwise was made "<test> is false" (cond_op) is still an if/else pair
+    complement = bool(second) and second.get('field') == first.get('field') and \
+        {first.get('operator'), second.get('operator')} == {'eq'} and {first.get('value'), second.get('value')} == {'true', 'false'}
+    conds = [first, second or negate(first)]
+    if (second and not complement) or not conds[1]:
         return None
     return [{'k': 'region', 'kind': 'if', 'level': choice['level'], 'inline': False, 'kids': b['kids'], 'cond': c}
             for b, c in zip(branches, conds)]

@@ -186,7 +186,7 @@
       "LiabilityCoverage": {
         "EstimatedCostofHire": 0,
         "Premium": 25,
-        "RatePerEachCostOfHire": 1.37600,
+        "RatePerEachCostOfHire": "1.37600",
         "State": "WA",
         "TotalPremium": 25
       }

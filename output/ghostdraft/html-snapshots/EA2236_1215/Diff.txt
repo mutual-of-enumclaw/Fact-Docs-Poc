@@ -1,10 +1,9 @@
-EA2236_1215: DIFFERENT  score 98.1%
+EA2236_1215: DIFFERENT  score 97.9%
 pages   golden 4  html 7  (pages with text)
-words   golden 2396  html 2477  missing 5  extra 86
+words   golden 2396  html 2492  missing 4  extra 100
 
 MISSING (in the GhostDraft golden, not in the HTML render)
   [4 4]  <=  EA 22 36 12 15  Includes copyrighted material of Insurance Services Office, Inc. with its permission     Page 4 of 4
-  [SUCH]  <=  in  the  county and  state  in  which  such            you.
   [4]  <=  4. "Pedestrian"  means  any  person  while  not
   [4]  <=  EA 22 36 12 15  Includes copyrighted material of Insurance Services Office, Inc. with its permission     Page 5 of 4
 
@@ -12,16 +11,25 @@ EXTRA (in the HTML render, not in the GhostDraft golden)
   [7]  <=  EA  22 36 12 15    Includes copyrighted material of Insurance Services Office, Inc. with its permission Page 1 of 7
   [7]  <=  EA  22 36 12 15    Includes copyrighted material of Insurance Services Office, Inc. with its permission Page 2 of 7
   [7]  <=  EA  22 36 12 15    Includes copyrighted material of Insurance Services Office, Inc. with its permission Page 3 of 7
-  [EXPENSES]  <=  expenses   and  are to be  paid by  the
-  [2 7]  <=  EA  22 36 12 15    Includes copyrighted material of Insurance Services Office, Inc. with its permission Page 4 of 7
-  [POLICY NUMBER CPP 0029008 0 COMMERCIAL AUTO]  <=  POLICY   NUMBER:      CPP  0029008   00                                                 COMMERCIAL      AUTO
-  [EA 2 36 12 15]  <=  EA  22 36 12 15
-  [EA 2 36 12 15 INCLUDES COPYRIGHTED MATERIAL OF INSURANCE SERVICES OFFICE INC WITH ITS PERMISSION PAGE OF 7]  <=  EA  22 36 12 15    Includes copyrighted material of Insurance Services Office, Inc. with its permission Page 5 of 7
-  [POLICY NUMBER CPP 0029008 0 COMMERCIAL AUTO]  <=  POLICY   NUMBER:      CPP  0029008   00                                                 COMMERCIAL      AUTO
-  [EA 2 36 12 15]  <=  EA  22 36 12 15
-  [INCLUDES COPYRIGHTED MATERIAL OF INSURANCE SERVICES OFFICE INC WITH ITS PERMISSION PAGE 6 OF 7]  <=  EA  22 36 12 15    Includes copyrighted material of Insurance Services Office, Inc. with its permission Page 6 of 7
-  [POLICY NUMBER CPP 0029008 0 COMMERCIAL AUTO]  <=  POLICY   NUMBER:      CPP  0029008   00                                                 COMMERCIAL      AUTO
-  [INCLUDES COPYRIGHTED MATERIAL OF INSURANCE SERVICES OFFICE INC WITH ITS PERMISSION PAGE 7 OF 7]  <=  EA  22 36 12 15    Includes copyrighted material of Insurance Services Office, Inc. with its permission Page 7 of 7
+  [7]  <=  EA  22 36 12 15    Includes copyrighted material of Insurance Services Office, Inc. with its permission Page 4 of 7
+  [NUMBER CPP 0029008 0 COMMERCIAL]  <=  POLICY   NUMBER:       CPP  0029008  00                                                   COMMERCIAL      AUTO
+  [EA 36 12 15]  <=  EA 22  36 12 15
+  [POLICY]  <=  (1)     Insurance benefits under  another policy
+  [AUTO]  <=  "auto", other than the  "covered auto", with
+  [EA 2 36 12 15 INCLUDES COPYRIGHTED MATERIAL INSURANCE SERVICES OFFICE INC ITS PERMISSION PAGE 7]  <=  EA  22 36 12 15    Includes copyrighted material of Insurance Services Office, Inc. with its permission Page 5 of 7
+  [POLICY NUMBER CPP 0029008 0 COMMERCIAL AUTO]  <=  POLICY   NUMBER:       CPP  0029008  00                                                   COMMERCIAL      AUTO
+  [EA 2 36 12 15]  <=  EA 22  36 12 15
+  [2]  <=  (2)     We  are entitled to the proceeds  of any
+  [WITH]  <=  connection with the recovery.
+  [EA 2 36 12 15 INCLUDES COPYRIGHTED MATERIAL INSURANCE SERVICES OFFICE INC WITH ITS PERMISSION PAGE 6 7]  <=  EA  22 36 12 15    Includes copyrighted material of Insurance Services Office, Inc. with its permission Page 6 of 7
+  [POLICY NUMBER CPP 0029008 0 COMMERCIAL AUTO]  <=  POLICY   NUMBER:       CPP  0029008  00                                                   COMMERCIAL      AUTO
+  [EA 2 36 12 15]  <=  EA 22  36 12 15
+  [OF]  <=  Costs  to the "insured" of the arbitration
+  [OF]  <=  all other  costs of  arbitration shall be
+  [2]  <=  (2)     Unless   both  parties agree   otherwise,
+  [OF]  <=  which  the "insured" lives. Local rules of
+  [OF]  <=  by two of the arbitrators will be binding.
+  [EA 2 36 12 15 INCLUDES COPYRIGHTED MATERIAL OF INSURANCE SERVICES OFFICE INC WITH ITS PERMISSION PAGE 7 OF 7]  <=  EA  22 36 12 15    Includes copyrighted material of Insurance Services Office, Inc. with its permission Page 7 of 7
 
 golden   C:\src\fact-docgen\src\Moe.Commercial.Documents.Generation.Integration.Tests\TestData\Snapshots\EA2236_1215\GoldenSnapshot.txt
 template C:\src\fact-poc\output\ghostdraft\batch\EA2236-1215.json

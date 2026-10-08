@@ -662,33 +662,32 @@ COVERAGE      is deleted and  replaced by                         monitoring  of
              EA  99 11 12 24     Includes copyrighted material of Insurance Services Office, Inc., with its permission Page # of #
                                                             Mutual Of Enumclaw
 --- Page 9 ---
-P.      CAMPER     BODIES   COVERAGE
-                e.      An   adjustment   for  depreciation   and
-                        physical  condition   will be   made    in        The  following Coverage  is added to paragraph  A.
-                        determining actual cash  value at the time        Coverage   as found  in SECTION   III – PHYSICAL
-                        of the “loss”.                                    DAMAGE     COVERAGE:
-                f.      If a repair or replacement results in better  7.      Camper   Bodies  Coverage
+e.      An   adjustment   for  depreciation   and P.      CAMPER     BODIES   COVERAGE
+                        physical  condition   will be   made    in
+                                                                          The  following Coverage  is added to paragraph  A.
+                        determining actual cash  value at the time
+                                                                          Coverage   as found  in SECTION   III – PHYSICAL
+                        of the “loss”.
+                                                                          DAMAGE     COVERAGE:
+                f.      If a repair or replacement results in better
+                                                                      7.      Camper   Bodies  Coverage
                         than like kind or quality, we will not pay for
                                                                               If  Comprehensive    Coverage    or  Specified
                         the amount  of betterment.
                                                                               Causes   Of Loss  Coverage   is provided for a
-                g.      No deductible applies to this coverage.               covered  “auto”, then in the event of a “loss” to
-                                                                              a  “camper”   detached   from   such  covered
-                h.      The  insurance   provided  by this Audio,
-                                                                              “auto”,  the   Physical   Damage    Coverage
-                        Visual  and  Data   Electronic Equipment
-                                                                              applicable to the covered “auto” will also apply
-                        Coverage   is excess over any  other valid
-                                                                              to the detached  “camper”  as if it were part of
-                        and collectible insurance.
+                g.      No deductible applies to this coverage.
+                                                                              covered  “auto”, then in the event of a “loss” to
+                h.      The  insurance   provided  by this Audio,             a  “camper”   detached   from   such  covered
+                        Visual  and  Data   Electronic Equipment              “auto”,  the   Physical   Damage    Coverage
+                        Coverage   is excess over any  other valid            applicable to the covered “auto” will also apply
+                        and collectible insurance.                            to the detached  “camper”  as if it were part of
                                                                               the covered  “auto” on which it is rated.
         O.      AUTO   LOAN/LEASE     GAP  COVERAGE
                                                                   Q.      CONTENTS     OF  A TRAVEL    TRAILER,   CAMPER,
                 The  following Coverage is added  to paragraph A.
                                                                           OR  MOTOR    HOME   COVERAGE
                 Coverage   as found in SECTION    III – PHYSICAL
-                                                                          The  following Coverage  is added to paragraph  A.
-                DAMAGE    COVERAGE:
+                DAMAGE    COVERAGE:                                       The  following Coverage  is added to paragraph  A.
                                                                           Coverage   as found  in SECTION   III – PHYSICAL
             6.      Auto  Loan/Lease   Gap Coverage
                                                                           DAMAGE     COVERAGE:
@@ -697,64 +696,64 @@ P.      CAMPER     BODIES   COVERAGE
                         "auto"   shown     in    ITEM    THREE:
                                                                               Motor  Home   Coverage
                         SCHEDULE     OF  OWNED     AUTOS    of the
-                                                                          a.      When   a travel trailer, “camper”, or motor
-                        Business  Auto  Declarations, we  will pay
-                                                                                  home    is   shown    in  ITEM    THREE:
-                        any  unpaid amount   due  on the lease  or
-                                                                                  SCHEDULE      OF  OWNED    AUTOS    of the
-                        loan for a covered "auto", less:
+                        Business  Auto  Declarations, we  will pay        a.      When   a travel trailer, “camper”, or motor
+                        any  unpaid amount   due  on the lease  or                home    is   shown    in  ITEM    THREE:
+                        loan for a covered "auto", less:                          SCHEDULE      OF  OWNED    AUTOS    of the
                                                                                   Business  Auto  Declarations as a covered
                         (1) The  amount   paid under  the policy's
                                                                                   “auto” for Physical Damage  Coverage,  we
                             Physical Damage   Coverage;  and
                                                                                   will pay up to the limit of insurance shown
-                    (2)     Any:                                                  in the Schedule  above  per occurrence for
-                                                                                  Contents  Of A  Travel Trailer, Camper, Or
-                        (a)     Overdue     or    any    deferred
-                                                                                  Motor  Home   Coverage  – Inside for “loss”
-                                lease/loan payments   at the time
-                                                                                  to personal property owned  by you or by a
-                                of the "loss";
+                    (2)     Any:
+                                                                                  in the Schedule  above  per occurrence for
+                        (a)     Overdue     or    any    deferred                 Contents  Of A  Travel Trailer, Camper, Or
+                                lease/loan payments   at the time                 Motor  Home   Coverage  – Inside for “loss”
+                                of the "loss";                                    to personal property owned  by you or by a
                                                                                   “family member”   that is inside the travel
                         (b)     Financial    penalties   imposed
                                                                                   trailer, “camper”, or motor  home   at the
                                 under  a lease for excessive use,
                                                                                   time of “loss”.
                                 abnormal  wear  and  tear, or high
-                                                                                  We   will also  pay   up  to  the limit of
-                                mileage;
+                                mileage;                                          We   will also  pay   up  to  the limit of
                                                                                   insurance  shown   in the Schedule  above
                         (c)     Security deposits not returned by
                                                                                   per  occurrence  for Contents Of  A Travel
                                 the lessor;
                                                                                   Trailer,  Camper,     Or   Motor    Home
-                                                                                  Coverage   – Outside for “loss” to personal
-                        (d)     Costs  for  extended   warranties,
-                                                                                  property  owned   by you  or by  a “family
+                        (d)     Costs  for  extended   warranties,                Coverage   – Outside for “loss” to personal
                                 Credit  Life  Insurance,   Health,
-                                Accident  or Disability Insurance                 member”   that is outside the travel trailer,
-                                purchased  with the loan or lease;                “camper”,  or motor  home   at the time of
-                                                                                  “loss”.
+                                                                                  property  owned   by you  or by  a “family
+                                Accident  or Disability Insurance
+                                                                                  member”   that is outside the travel trailer,
+                                purchased  with the loan or lease;
+                                                                                  “camper”,  or motor  home   at the time of
                                 and
-                                                                          b.      We  will not pay for “loss” to:
+                                                                                  “loss”.
                         (e)     Carry-over     balances      from
+                                                                          b.      We  will not pay for “loss” to:
                                 previous loans or leases.
                                                                               (1)     Records   or accounts, money,  money
-                b.      The most  we will pay under this Coverage                     orders, bank  certified checks, bullion,
-                        in the event of a total “loss” to a covered                   deeds,  contracts, evidences  of debt,
-                                                                                      securities, tokens or tickets, stamps in
+                b.      The most  we will pay under this Coverage
+                                                                                      orders, bank  certified checks, bullion,
+                        in the event of a total “loss” to a covered
+                                                                                      deeds,  contracts, evidences  of debt,
                         “auto”  is  the  amount   shown    in  the
-                        Schedule  above  for Auto Loan/Lease Gap                      current  use,  manuscripts,  accounts
-                        Coverage.                                                     receivable, or valuable records;
-                c.      The   insurance  provided   by  this Auto             (2)     Digital  tokens   of  any   kind,   by
-                                                                                      whatever  name   known,  including but
-                        Loan/Lease   GAP    Coverage   is  excess
-                                                                                      not  limited to, non-fungible  tokens,
+                                                                                      securities, tokens or tickets, stamps in
+                        Schedule  above  for Auto Loan/Lease Gap
+                                                                                      current  use,  manuscripts,  accounts
+                        Coverage.
+                                                                                      receivable, or valuable records;
+                c.      The   insurance  provided   by  this Auto
+                                                                              (2)     Digital  tokens   of  any   kind,   by
+                        Loan/Lease   GAP    Coverage   is  excess                     whatever  name   known,  including but
                         over  any   other  valid  and   collectible
-                        insurance, including but not limited to, any                  crypto  tokens, or any  other  type of
-                                                                                      digital token;
-                        coverage  provided  by or purchased  from
-                        the lessor or any financial institution.              (3)     Precious  metals or alloys;
+                                                                                      not  limited to, non-fungible  tokens,
+                        insurance, including but not limited to, any
+                                                                                      crypto  tokens, or any  other  type of
+                        coverage  provided  by or purchased  from                     digital token;
+                        the lessor or any financial institution.
+                                                                              (3)     Precious  metals or alloys;
              EA  99 11 12 24     Includes copyrighted material of Insurance Services Office, Inc., with its permission Page # of #
                                                             Mutual Of Enumclaw
 --- Page 10 ---

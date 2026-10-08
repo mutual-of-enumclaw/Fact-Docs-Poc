@@ -16,7 +16,7 @@ POLICY   NUMBER:    CPP  0020147   00                                           
                                                               SCHEDULE
                          Description  Of Covered  "Auto"                    Per "Loss"  Limit        Additional Premium
                        2007 DODGE    3D7MX38A87G814971
-                                                                        $1,000                     $76.00
+                                                                        $1,000                     $ 76.00
                                                                         $                          $
                                                                         $                          $
              Information required to complete this Schedule, if not shown above, will be shown in the Declarations.

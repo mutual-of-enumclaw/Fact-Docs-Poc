@@ -2439,7 +2439,7 @@
        "type": "table",
        "classes": [
         "gd-table",
-        "gd-t8"
+        "gd-t10"
        ],
        "components": [
         {
@@ -2454,21 +2454,21 @@
             {
              "type": "cell",
              "classes": [
-              "gd-col5"
-             ],
-             "components": []
-            },
-            {
-             "type": "cell",
-             "classes": [
-              "gd-col6"
-             ],
-             "components": []
-            },
-            {
-             "type": "cell",
-             "classes": [
               "gd-col7"
+             ],
+             "components": []
+            },
+            {
+             "type": "cell",
+             "classes": [
+              "gd-col8"
+             ],
+             "components": []
+            },
+            {
+             "type": "cell",
+             "classes": [
+              "gd-col9"
              ],
              "components": []
             }
@@ -2486,40 +2486,56 @@
              "type": "cell",
              "components": [
               {
-               "type": "text",
-               "tagName": "p",
+               "tagName": "div",
                "classes": [
-                "gd-p",
-                "gd-p1"
+                "gd-x2"
                ],
-               "components": []
+               "components": [
+                {
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p1"
+                 ],
+                 "components": []
+                }
+               ]
               }
              ],
              "classes": [
-              "gd-td2"
+              "gd-td3"
              ]
             },
             {
              "type": "cell",
              "components": [
               {
-               "type": "text",
-               "tagName": "p",
+               "tagName": "div",
                "classes": [
-                "gd-p",
-                "gd-p1"
+                "gd-x2"
                ],
                "components": [
                 {
-                 "type": "data-field",
-                 "field": "Insured.PrimaryNamedInsured",
-                 "format": ""
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p1"
+                 ],
+                 "components": [
+                  {
+                   "type": "data-field",
+                   "field": "Insured.PrimaryNamedInsured",
+                   "format": ""
+                  }
+                 ]
                 }
                ]
               }
              ],
              "classes": [
-              "gd-td2"
+              "gd-td3"
              ],
              "attributes": {
               "colspan": "2"
@@ -2527,7 +2543,7 @@
             }
            ],
            "classes": [
-            "gd-tr3"
+            "gd-tr4"
            ]
           },
           {
@@ -2537,17 +2553,25 @@
              "type": "cell",
              "components": [
               {
-               "type": "text",
-               "tagName": "p",
+               "tagName": "div",
                "classes": [
-                "gd-p",
-                "gd-p1"
+                "gd-x5"
                ],
-               "components": []
+               "components": [
+                {
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p1"
+                 ],
+                 "components": []
+                }
+               ]
               }
              ],
              "classes": [
-              "gd-td2"
+              "gd-td3"
              ],
              "attributes": {
               "colspan": "2"
@@ -2557,67 +2581,75 @@
              "type": "cell",
              "components": [
               {
-               "type": "text",
-               "tagName": "p",
+               "tagName": "div",
                "classes": [
-                "gd-p",
-                "gd-p1",
-                "gd-keepline"
+                "gd-x5"
                ],
                "components": [
                 {
-                 "type": "choice",
-                 "tagName": "span",
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p1",
+                  "gd-keepline"
+                 ],
                  "components": [
                   {
-                   "type": "choice-branch",
+                   "type": "choice",
                    "tagName": "span",
                    "components": [
                     {
-                     "type": "data-field",
+                     "type": "choice-branch",
+                     "tagName": "span",
+                     "components": [
+                      {
+                       "type": "data-field",
+                       "field": "Policy.TransactionEffectiveDate",
+                       "format": "shortdate"
+                      }
+                     ],
                      "field": "Policy.TransactionEffectiveDate",
-                     "format": "shortdate"
-                    }
-                   ],
-                   "field": "Policy.TransactionEffectiveDate",
-                   "operator": "present",
-                   "value": "",
-                   "classes": [
-                    "gd-if"
-                   ]
-                  },
-                  {
-                   "type": "choice-branch",
-                   "tagName": "span",
-                   "components": [
+                     "operator": "present",
+                     "value": "",
+                     "classes": [
+                      "gd-if"
+                     ]
+                    },
                     {
-                     "type": "data-field",
-                     "field": "Policy.TransactionEffectiveDateWording",
-                     "format": ""
+                     "type": "choice-branch",
+                     "tagName": "span",
+                     "components": [
+                      {
+                       "type": "data-field",
+                       "field": "Policy.TransactionEffectiveDateWording",
+                       "format": ""
+                      }
+                     ],
+                     "field": "",
+                     "operator": "else",
+                     "value": "",
+                     "classes": [
+                      "gd-if"
+                     ]
                     }
                    ],
-                   "field": "",
-                   "operator": "else",
-                   "value": "",
                    "classes": [
                     "gd-if"
                    ]
                   }
-                 ],
-                 "classes": [
-                  "gd-if"
                  ]
                 }
                ]
               }
              ],
              "classes": [
-              "gd-td2"
+              "gd-td3"
              ]
             }
            ],
            "classes": [
-            "gd-tr4"
+            "gd-tr6"
            ]
           }
          ]
@@ -2653,7 +2685,7 @@
        "type": "table",
        "classes": [
         "gd-table",
-        "gd-t27"
+        "gd-t36"
        ],
        "components": [
         {
@@ -2668,56 +2700,56 @@
             {
              "type": "cell",
              "classes": [
-              "gd-col19"
+              "gd-col28"
              ],
              "components": []
             },
             {
              "type": "cell",
              "classes": [
-              "gd-col20"
+              "gd-col29"
              ],
              "components": []
             },
             {
              "type": "cell",
              "classes": [
-              "gd-col21"
+              "gd-col30"
              ],
              "components": []
             },
             {
              "type": "cell",
              "classes": [
-              "gd-col22"
+              "gd-col31"
              ],
              "components": []
             },
             {
              "type": "cell",
              "classes": [
-              "gd-col23"
+              "gd-col32"
              ],
              "components": []
             },
             {
              "type": "cell",
              "classes": [
-              "gd-col24"
+              "gd-col33"
              ],
              "components": []
             },
             {
              "type": "cell",
              "classes": [
-              "gd-col25"
+              "gd-col34"
              ],
              "components": []
             },
             {
              "type": "cell",
              "classes": [
-              "gd-col26"
+              "gd-col35"
              ],
              "components": []
             }
@@ -2735,51 +2767,25 @@
              "type": "cell",
              "components": [
               {
-               "type": "text",
-               "tagName": "p",
+               "tagName": "div",
                "classes": [
-                "gd-p",
-                "gd-p1"
-               ],
-               "components": []
-              }
-             ],
-             "classes": [
-              "gd-td2"
-             ],
-             "attributes": {
-              "colspan": "8"
-             }
-            }
-           ],
-           "classes": [
-            "gd-tr9"
-           ]
-          },
-          {
-           "type": "row",
-           "components": [
-            {
-             "type": "cell",
-             "components": [
-              {
-               "type": "text",
-               "tagName": "p",
-               "classes": [
-                "gd-p",
-                "gd-p1"
+                "gd-x11"
                ],
                "components": [
                 {
-                 "type": "data-field",
-                 "field": "CAState_specificPolicyLevelCoverages.BusinessInterruptionCoverage_Oregon.BusinessActivitiesDependentonScheduledProperty",
-                 "format": ""
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p1"
+                 ],
+                 "components": []
                 }
                ]
               }
              ],
              "classes": [
-              "gd-td2"
+              "gd-td3"
              ],
              "attributes": {
               "colspan": "8"
@@ -2787,7 +2793,7 @@
             }
            ],
            "classes": [
-            "gd-tr10"
+            "gd-tr12"
            ]
           },
           {
@@ -2797,17 +2803,67 @@
              "type": "cell",
              "components": [
               {
-               "type": "text",
-               "tagName": "p",
+               "tagName": "div",
                "classes": [
-                "gd-p",
-                "gd-p1"
+                "gd-x13"
                ],
-               "components": []
+               "components": [
+                {
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p1"
+                 ],
+                 "components": [
+                  {
+                   "type": "data-field",
+                   "field": "CAState_specificPolicyLevelCoverages.BusinessInterruptionCoverage_Oregon.BusinessActivitiesDependentonScheduledProperty",
+                   "format": ""
+                  }
+                 ]
+                }
+               ]
               }
              ],
              "classes": [
-              "gd-td2"
+              "gd-td3"
+             ],
+             "attributes": {
+              "colspan": "8"
+             }
+            }
+           ],
+           "classes": [
+            "gd-tr14"
+           ]
+          },
+          {
+           "type": "row",
+           "components": [
+            {
+             "type": "cell",
+             "components": [
+              {
+               "tagName": "div",
+               "classes": [
+                "gd-x15"
+               ],
+               "components": [
+                {
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p1"
+                 ],
+                 "components": []
+                }
+               ]
+              }
+             ],
+             "classes": [
+              "gd-td3"
              ],
              "attributes": {
               "colspan": "2"
@@ -2817,104 +2873,136 @@
              "type": "cell",
              "components": [
               {
-               "type": "text",
-               "tagName": "p",
+               "tagName": "div",
                "classes": [
-                "gd-p",
-                "gd-p11",
-                "gd-keepline"
+                "gd-x17"
                ],
                "components": [
                 {
-                 "type": "conditional",
-                 "tagName": "span",
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p16",
+                  "gd-keepline"
+                 ],
                  "components": [
                   {
-                   "type": "textnode",
-                   "content": "X"
+                   "type": "conditional",
+                   "tagName": "span",
+                   "components": [
+                    {
+                     "type": "textnode",
+                     "content": "X"
+                    }
+                   ],
+                   "field": "CAState_specificPolicyLevelCoverages.BusinessInterruptionCoverage_Oregon.includesBusinessIncomewithoutExtraExpense",
+                   "operator": "eq",
+                   "value": "true",
+                   "classes": [
+                    "gd-if"
+                   ]
                   }
-                 ],
-                 "field": "CAState_specificPolicyLevelCoverages.BusinessInterruptionCoverage_Oregon.includesBusinessIncomewithoutExtraExpense",
-                 "operator": "eq",
-                 "value": "true",
-                 "classes": [
-                  "gd-if"
                  ]
                 }
                ]
               }
              ],
              "classes": [
-              "gd-td12"
+              "gd-td18"
              ]
             },
             {
              "type": "cell",
              "components": [
               {
-               "type": "text",
-               "tagName": "p",
+               "tagName": "div",
                "classes": [
-                "gd-p",
-                "gd-p1"
-               ],
-               "components": []
-              }
-             ],
-             "classes": [
-              "gd-td2"
-             ]
-            },
-            {
-             "type": "cell",
-             "components": [
-              {
-               "type": "text",
-               "tagName": "p",
-               "classes": [
-                "gd-p",
-                "gd-p11",
-                "gd-keepline"
+                "gd-x15"
                ],
                "components": [
                 {
-                 "type": "conditional",
-                 "tagName": "span",
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p1"
+                 ],
+                 "components": []
+                }
+               ]
+              }
+             ],
+             "classes": [
+              "gd-td3"
+             ]
+            },
+            {
+             "type": "cell",
+             "components": [
+              {
+               "tagName": "div",
+               "classes": [
+                "gd-x17"
+               ],
+               "components": [
+                {
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p16",
+                  "gd-keepline"
+                 ],
                  "components": [
                   {
-                   "type": "textnode",
-                   "content": "X"
+                   "type": "conditional",
+                   "tagName": "span",
+                   "components": [
+                    {
+                     "type": "textnode",
+                     "content": "X"
+                    }
+                   ],
+                   "field": "CAState_specificPolicyLevelCoverages.BusinessInterruptionCoverage_Oregon.IncludesBusinessIncomeandExtraExpense",
+                   "operator": "eq",
+                   "value": "true",
+                   "classes": [
+                    "gd-if"
+                   ]
                   }
-                 ],
-                 "field": "CAState_specificPolicyLevelCoverages.BusinessInterruptionCoverage_Oregon.IncludesBusinessIncomeandExtraExpense",
-                 "operator": "eq",
-                 "value": "true",
-                 "classes": [
-                  "gd-if"
                  ]
                 }
                ]
               }
              ],
              "classes": [
-              "gd-td12"
+              "gd-td18"
              ]
             },
             {
              "type": "cell",
              "components": [
               {
-               "type": "text",
-               "tagName": "p",
+               "tagName": "div",
                "classes": [
-                "gd-p",
-                "gd-p1"
+                "gd-x15"
                ],
-               "components": []
+               "components": [
+                {
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p1"
+                 ],
+                 "components": []
+                }
+               ]
               }
              ],
              "classes": [
-              "gd-td2"
+              "gd-td3"
              ],
              "attributes": {
               "colspan": "3"
@@ -2922,7 +3010,7 @@
             }
            ],
            "classes": [
-            "gd-tr13"
+            "gd-tr19"
            ]
           },
           {
@@ -2932,17 +3020,25 @@
              "type": "cell",
              "components": [
               {
-               "type": "text",
-               "tagName": "p",
+               "tagName": "div",
                "classes": [
-                "gd-p",
-                "gd-p1"
+                "gd-x20"
                ],
-               "components": []
+               "components": [
+                {
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p1"
+                 ],
+                 "components": []
+                }
+               ]
               }
              ],
              "classes": [
-              "gd-td2"
+              "gd-td3"
              ],
              "attributes": {
               "colspan": "8"
@@ -2950,7 +3046,7 @@
             }
            ],
            "classes": [
-            "gd-tr14"
+            "gd-tr21"
            ]
           }
          ]
@@ -2964,189 +3060,42 @@
            "components": [
             {
              "type": "cell",
-             "components": [],
+             "components": [
+              {
+               "tagName": "div",
+               "classes": [
+                "gd-x22"
+               ],
+               "components": []
+              }
+             ],
              "classes": [
-              "gd-td2"
+              "gd-td3"
              ]
             },
             {
              "type": "cell",
              "components": [
               {
-               "type": "text",
-               "tagName": "p",
+               "tagName": "div",
                "classes": [
-                "gd-p",
-                "gd-p11"
-               ],
-               "components": []
-              }
-             ],
-             "classes": [
-              "gd-td15"
-             ],
-             "attributes": {
-              "colspan": "5"
-             }
-            },
-            {
-             "type": "cell",
-             "components": [
-              {
-               "type": "text",
-               "tagName": "p",
-               "classes": [
-                "gd-p",
-                "gd-p1"
-               ],
-               "components": []
-              }
-             ],
-             "classes": [
-              "gd-td2"
-             ]
-            },
-            {
-             "type": "cell",
-             "components": [
-              {
-               "type": "text",
-               "tagName": "p",
-               "classes": [
-                "gd-p",
-                "gd-p1"
-               ],
-               "components": []
-              }
-             ],
-             "classes": [
-              "gd-td16"
-             ]
-            }
-           ],
-           "classes": [
-            "gd-tr17"
-           ]
-          },
-          {
-           "type": "row",
-           "components": [
-            {
-             "type": "cell",
-             "components": [
-              {
-               "type": "text",
-               "tagName": "p",
-               "classes": [
-                "gd-p",
-                "gd-p1"
-               ],
-               "components": []
-              }
-             ],
-             "classes": [
-              "gd-td2"
-             ]
-            },
-            {
-             "type": "cell",
-             "components": [
-              {
-               "type": "text",
-               "tagName": "p",
-               "classes": [
-                "gd-p",
-                "gd-p11"
-               ],
-               "components": []
-              }
-             ],
-             "classes": [
-              "gd-td15"
-             ],
-             "attributes": {
-              "colspan": "5"
-             }
-            },
-            {
-             "type": "cell",
-             "components": [
-              {
-               "type": "text",
-               "tagName": "p",
-               "classes": [
-                "gd-p",
-                "gd-p1"
-               ],
-               "components": []
-              }
-             ],
-             "classes": [
-              "gd-td2"
-             ]
-            },
-            {
-             "type": "cell",
-             "components": [
-              {
-               "type": "text",
-               "tagName": "p",
-               "classes": [
-                "gd-p",
-                "gd-p1"
-               ],
-               "components": []
-              }
-             ],
-             "classes": [
-              "gd-td16"
-             ]
-            }
-           ],
-           "classes": [
-            "gd-tr17"
-           ]
-          },
-          {
-           "type": "row",
-           "components": [
-            {
-             "type": "cell",
-             "components": [
-              {
-               "type": "text",
-               "tagName": "p",
-               "classes": [
-                "gd-p",
-                "gd-p1"
-               ],
-               "components": []
-              }
-             ],
-             "classes": [
-              "gd-td2"
-             ]
-            },
-            {
-             "type": "cell",
-             "components": [
-              {
-               "type": "text",
-               "tagName": "p",
-               "classes": [
-                "gd-p",
-                "gd-p11"
+                "gd-x22"
                ],
                "components": [
                 {
-                 "type": "textnode",
-                 "content": "See Attached Schedule"
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p16"
+                 ],
+                 "components": []
                 }
                ]
               }
              ],
              "classes": [
-              "gd-td15"
+              "gd-td23"
              ],
              "attributes": {
               "colspan": "5"
@@ -3156,39 +3105,55 @@
              "type": "cell",
              "components": [
               {
-               "type": "text",
-               "tagName": "p",
+               "tagName": "div",
                "classes": [
-                "gd-p",
-                "gd-p1"
+                "gd-x22"
                ],
-               "components": []
+               "components": [
+                {
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p1"
+                 ],
+                 "components": []
+                }
+               ]
               }
              ],
              "classes": [
-              "gd-td2"
+              "gd-td3"
              ]
             },
             {
              "type": "cell",
              "components": [
               {
-               "type": "text",
-               "tagName": "p",
+               "tagName": "div",
                "classes": [
-                "gd-p",
-                "gd-p1"
+                "gd-x22"
                ],
-               "components": []
+               "components": [
+                {
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p1"
+                 ],
+                 "components": []
+                }
+               ]
               }
              ],
              "classes": [
-              "gd-td16"
+              "gd-td24"
              ]
             }
            ],
            "classes": [
-            "gd-tr17"
+            "gd-tr25"
            ]
           },
           {
@@ -3198,34 +3163,50 @@
              "type": "cell",
              "components": [
               {
-               "type": "text",
-               "tagName": "p",
+               "tagName": "div",
                "classes": [
-                "gd-p",
-                "gd-p1"
+                "gd-x22"
                ],
-               "components": []
+               "components": [
+                {
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p1"
+                 ],
+                 "components": []
+                }
+               ]
               }
              ],
              "classes": [
-              "gd-td2"
+              "gd-td3"
              ]
             },
             {
              "type": "cell",
              "components": [
               {
-               "type": "text",
-               "tagName": "p",
+               "tagName": "div",
                "classes": [
-                "gd-p",
-                "gd-p11"
+                "gd-x22"
                ],
-               "components": []
+               "components": [
+                {
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p16"
+                 ],
+                 "components": []
+                }
+               ]
               }
              ],
              "classes": [
-              "gd-td15"
+              "gd-td23"
              ],
              "attributes": {
               "colspan": "5"
@@ -3235,39 +3216,55 @@
              "type": "cell",
              "components": [
               {
-               "type": "text",
-               "tagName": "p",
+               "tagName": "div",
                "classes": [
-                "gd-p",
-                "gd-p1"
+                "gd-x22"
                ],
-               "components": []
+               "components": [
+                {
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p1"
+                 ],
+                 "components": []
+                }
+               ]
               }
              ],
              "classes": [
-              "gd-td2"
+              "gd-td3"
              ]
             },
             {
              "type": "cell",
              "components": [
               {
-               "type": "text",
-               "tagName": "p",
+               "tagName": "div",
                "classes": [
-                "gd-p",
-                "gd-p1"
+                "gd-x22"
                ],
-               "components": []
+               "components": [
+                {
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p1"
+                 ],
+                 "components": []
+                }
+               ]
               }
              ],
              "classes": [
-              "gd-td16"
+              "gd-td24"
              ]
             }
            ],
            "classes": [
-            "gd-tr17"
+            "gd-tr25"
            ]
           },
           {
@@ -3277,34 +3274,55 @@
              "type": "cell",
              "components": [
               {
-               "type": "text",
-               "tagName": "p",
+               "tagName": "div",
                "classes": [
-                "gd-p",
-                "gd-p1"
+                "gd-x22"
                ],
-               "components": []
+               "components": [
+                {
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p1"
+                 ],
+                 "components": []
+                }
+               ]
               }
              ],
              "classes": [
-              "gd-td2"
+              "gd-td3"
              ]
             },
             {
              "type": "cell",
              "components": [
               {
-               "type": "text",
-               "tagName": "p",
+               "tagName": "div",
                "classes": [
-                "gd-p",
-                "gd-p11"
+                "gd-x22"
                ],
-               "components": []
+               "components": [
+                {
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p16"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "See Attached Schedule"
+                  }
+                 ]
+                }
+               ]
               }
              ],
              "classes": [
-              "gd-td15"
+              "gd-td23"
              ],
              "attributes": {
               "colspan": "5"
@@ -3314,39 +3332,277 @@
              "type": "cell",
              "components": [
               {
-               "type": "text",
-               "tagName": "p",
+               "tagName": "div",
                "classes": [
-                "gd-p",
-                "gd-p1"
+                "gd-x22"
                ],
-               "components": []
+               "components": [
+                {
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p1"
+                 ],
+                 "components": []
+                }
+               ]
               }
              ],
              "classes": [
-              "gd-td2"
+              "gd-td3"
              ]
             },
             {
              "type": "cell",
              "components": [
               {
-               "type": "text",
-               "tagName": "p",
+               "tagName": "div",
                "classes": [
-                "gd-p",
-                "gd-p1"
+                "gd-x22"
                ],
-               "components": []
+               "components": [
+                {
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p1"
+                 ],
+                 "components": []
+                }
+               ]
               }
              ],
              "classes": [
-              "gd-td16"
+              "gd-td24"
              ]
             }
            ],
            "classes": [
-            "gd-tr17"
+            "gd-tr25"
+           ]
+          },
+          {
+           "type": "row",
+           "components": [
+            {
+             "type": "cell",
+             "components": [
+              {
+               "tagName": "div",
+               "classes": [
+                "gd-x22"
+               ],
+               "components": [
+                {
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p1"
+                 ],
+                 "components": []
+                }
+               ]
+              }
+             ],
+             "classes": [
+              "gd-td3"
+             ]
+            },
+            {
+             "type": "cell",
+             "components": [
+              {
+               "tagName": "div",
+               "classes": [
+                "gd-x22"
+               ],
+               "components": [
+                {
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p16"
+                 ],
+                 "components": []
+                }
+               ]
+              }
+             ],
+             "classes": [
+              "gd-td23"
+             ],
+             "attributes": {
+              "colspan": "5"
+             }
+            },
+            {
+             "type": "cell",
+             "components": [
+              {
+               "tagName": "div",
+               "classes": [
+                "gd-x22"
+               ],
+               "components": [
+                {
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p1"
+                 ],
+                 "components": []
+                }
+               ]
+              }
+             ],
+             "classes": [
+              "gd-td3"
+             ]
+            },
+            {
+             "type": "cell",
+             "components": [
+              {
+               "tagName": "div",
+               "classes": [
+                "gd-x22"
+               ],
+               "components": [
+                {
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p1"
+                 ],
+                 "components": []
+                }
+               ]
+              }
+             ],
+             "classes": [
+              "gd-td24"
+             ]
+            }
+           ],
+           "classes": [
+            "gd-tr25"
+           ]
+          },
+          {
+           "type": "row",
+           "components": [
+            {
+             "type": "cell",
+             "components": [
+              {
+               "tagName": "div",
+               "classes": [
+                "gd-x22"
+               ],
+               "components": [
+                {
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p1"
+                 ],
+                 "components": []
+                }
+               ]
+              }
+             ],
+             "classes": [
+              "gd-td3"
+             ]
+            },
+            {
+             "type": "cell",
+             "components": [
+              {
+               "tagName": "div",
+               "classes": [
+                "gd-x22"
+               ],
+               "components": [
+                {
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p16"
+                 ],
+                 "components": []
+                }
+               ]
+              }
+             ],
+             "classes": [
+              "gd-td23"
+             ],
+             "attributes": {
+              "colspan": "5"
+             }
+            },
+            {
+             "type": "cell",
+             "components": [
+              {
+               "tagName": "div",
+               "classes": [
+                "gd-x22"
+               ],
+               "components": [
+                {
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p1"
+                 ],
+                 "components": []
+                }
+               ]
+              }
+             ],
+             "classes": [
+              "gd-td3"
+             ]
+            },
+            {
+             "type": "cell",
+             "components": [
+              {
+               "tagName": "div",
+               "classes": [
+                "gd-x22"
+               ],
+               "components": [
+                {
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p1"
+                 ],
+                 "components": []
+                }
+               ]
+              }
+             ],
+             "classes": [
+              "gd-td24"
+             ]
+            }
+           ],
+           "classes": [
+            "gd-tr25"
            ]
           }
          ],
@@ -3367,32 +3623,48 @@
            "components": [
             {
              "type": "cell",
-             "components": [],
+             "components": [
+              {
+               "tagName": "div",
+               "classes": [
+                "gd-x26"
+               ],
+               "components": []
+              }
+             ],
              "classes": [
-              "gd-td2"
+              "gd-td3"
              ]
             },
             {
              "type": "cell",
              "components": [
               {
-               "type": "text",
-               "tagName": "p",
+               "tagName": "div",
                "classes": [
-                "gd-p",
-                "gd-p1"
+                "gd-x26"
                ],
                "components": [
                 {
-                 "type": "data-field",
-                 "field": "Item.Description",
-                 "format": ""
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p1"
+                 ],
+                 "components": [
+                  {
+                   "type": "data-field",
+                   "field": "Item.Description",
+                   "format": ""
+                  }
+                 ]
                 }
                ]
               }
              ],
              "classes": [
-              "gd-td2"
+              "gd-td3"
              ],
              "attributes": {
               "colspan": "5"
@@ -3402,90 +3674,106 @@
              "type": "cell",
              "components": [
               {
-               "type": "text",
-               "tagName": "p",
+               "tagName": "div",
                "classes": [
-                "gd-p",
-                "gd-p1"
+                "gd-x26"
                ],
-               "components": []
+               "components": [
+                {
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p1"
+                 ],
+                 "components": []
+                }
+               ]
               }
              ],
              "classes": [
-              "gd-td2"
+              "gd-td3"
              ]
             },
             {
              "type": "cell",
              "components": [
               {
-               "type": "text",
-               "tagName": "p",
+               "tagName": "div",
                "classes": [
-                "gd-p",
-                "gd-p1",
-                "gd-keepline"
+                "gd-x26"
                ],
                "components": [
                 {
-                 "type": "choice",
-                 "tagName": "span",
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p1",
+                  "gd-keepline"
+                 ],
                  "components": [
                   {
-                   "type": "choice-branch",
+                   "type": "choice",
                    "tagName": "span",
                    "components": [
                     {
-                     "type": "data-field",
+                     "type": "choice-branch",
+                     "tagName": "span",
+                     "components": [
+                      {
+                       "type": "data-field",
+                       "field": "Item.Limit",
+                       "format": "number"
+                      }
+                     ],
                      "field": "Item.Limit",
-                     "format": "number"
-                    }
-                   ],
-                   "field": "Item.Limit",
-                   "operator": "present",
-                   "value": "",
-                   "classes": [
-                    "gd-if"
-                   ]
-                  },
-                  {
-                   "type": "choice-branch",
-                   "tagName": "span",
-                   "components": [
+                     "operator": "present",
+                     "value": "",
+                     "classes": [
+                      "gd-if"
+                     ]
+                    },
                     {
-                     "type": "data-field",
-                     "field": "Item.LimitWording",
-                     "format": ""
+                     "type": "choice-branch",
+                     "tagName": "span",
+                     "components": [
+                      {
+                       "type": "data-field",
+                       "field": "Item.LimitWording",
+                       "format": ""
+                      }
+                     ],
+                     "field": "",
+                     "operator": "else",
+                     "value": "",
+                     "classes": [
+                      "gd-if"
+                     ]
                     }
                    ],
-                   "field": "",
-                   "operator": "else",
-                   "value": "",
                    "classes": [
                     "gd-if"
                    ]
                   }
-                 ],
-                 "classes": [
-                  "gd-if"
                  ]
                 }
                ]
               }
              ],
              "classes": [
-              "gd-td16"
+              "gd-td24"
              ]
             }
            ],
            "classes": [
-            "gd-tr18"
+            "gd-tr27"
            ]
           }
          ],
          "field": "CAState_specificPolicyLevelCoverages.BusinessInterruptionCoverage_Oregon.ScheduledPropertywithSeparateLimits.has7ormore",
-         "operator": "ne",
-         "value": "true"
+         "operator": "eq",
+         "value": "false"
         }
        ]
       },
@@ -3517,7 +3805,7 @@
        "type": "table",
        "classes": [
         "gd-table",
-        "gd-t34"
+        "gd-t43"
        ],
        "components": [
         {
@@ -3540,7 +3828,7 @@
                 {
                  "tagName": "span",
                  "classes": [
-                  "gd-c28"
+                  "gd-c37"
                  ],
                  "components": [
                   {
@@ -3553,7 +3841,7 @@
               }
              ],
              "classes": [
-              "gd-td29"
+              "gd-td38"
              ]
             },
             {
@@ -3564,7 +3852,7 @@
                "tagName": "p",
                "classes": [
                 "gd-p",
-                "gd-p11"
+                "gd-p16"
                ],
                "components": [
                 {
@@ -3575,7 +3863,7 @@
               }
              ],
              "classes": [
-              "gd-td30"
+              "gd-td39"
              ]
             },
             {
@@ -3586,13 +3874,13 @@
                "tagName": "p",
                "classes": [
                 "gd-p",
-                "gd-p31"
+                "gd-p40"
                ],
                "components": [
                 {
                  "tagName": "span",
                  "classes": [
-                  "gd-c28"
+                  "gd-c37"
                  ],
                  "components": [
                   {
@@ -3604,7 +3892,7 @@
                 {
                  "tagName": "span",
                  "classes": [
-                  "gd-c28",
+                  "gd-c37",
                   "gd-pageno"
                  ],
                  "components": [
@@ -3617,7 +3905,7 @@
                 {
                  "tagName": "span",
                  "classes": [
-                  "gd-c28"
+                  "gd-c37"
                  ],
                  "components": [
                   {
@@ -3629,7 +3917,7 @@
                 {
                  "tagName": "span",
                  "classes": [
-                  "gd-c28",
+                  "gd-c37",
                   "gd-pagecount"
                  ],
                  "components": [
@@ -3643,7 +3931,7 @@
               }
              ],
              "classes": [
-              "gd-td32"
+              "gd-td41"
              ]
             },
             {
@@ -3660,7 +3948,7 @@
               }
              ],
              "classes": [
-              "gd-td33"
+              "gd-td42"
              ]
             }
            ]
@@ -3703,7 +3991,7 @@
        "type": "table",
        "classes": [
         "gd-table",
-        "gd-t34"
+        "gd-t43"
        ],
        "components": [
         {
@@ -3726,7 +4014,7 @@
                 {
                  "tagName": "span",
                  "classes": [
-                  "gd-c28"
+                  "gd-c37"
                  ],
                  "components": [
                   {
@@ -3738,7 +4026,7 @@
                 {
                  "tagName": "span",
                  "classes": [
-                  "gd-c28",
+                  "gd-c37",
                   "gd-pageno"
                  ],
                  "components": [
@@ -3751,7 +4039,7 @@
                 {
                  "tagName": "span",
                  "classes": [
-                  "gd-c28"
+                  "gd-c37"
                  ],
                  "components": [
                   {
@@ -3763,7 +4051,7 @@
                 {
                  "tagName": "span",
                  "classes": [
-                  "gd-c28",
+                  "gd-c37",
                   "gd-pagecount"
                  ],
                  "components": [
@@ -3777,7 +4065,7 @@
               }
              ],
              "classes": [
-              "gd-td29"
+              "gd-td38"
              ]
             },
             {
@@ -3788,7 +4076,7 @@
                "tagName": "p",
                "classes": [
                 "gd-p",
-                "gd-p11"
+                "gd-p16"
                ],
                "components": [
                 {
@@ -3799,7 +4087,7 @@
               }
              ],
              "classes": [
-              "gd-td30"
+              "gd-td39"
              ]
             },
             {
@@ -3810,13 +4098,13 @@
                "tagName": "p",
                "classes": [
                 "gd-p",
-                "gd-p31"
+                "gd-p40"
                ],
                "components": [
                 {
                  "tagName": "span",
                  "classes": [
-                  "gd-c28"
+                  "gd-c37"
                  ],
                  "components": [
                   {
@@ -3829,7 +4117,7 @@
               }
              ],
              "classes": [
-              "gd-td32"
+              "gd-td41"
              ]
             },
             {
@@ -3840,13 +4128,13 @@
                "tagName": "p",
                "classes": [
                 "gd-p",
-                "gd-p35"
+                "gd-p44"
                ],
                "components": []
               }
              ],
              "classes": [
-              "gd-td33"
+              "gd-td42"
              ]
             }
            ]
@@ -6914,65 +7202,97 @@
            "components": [
             {
              "type": "cell",
-             "components": [],
+             "components": [
+              {
+               "tagName": "div",
+               "classes": [
+                "gd-x22"
+               ],
+               "components": []
+              }
+             ],
              "classes": [
-              "gd-td36"
+              "gd-td45"
              ]
             },
             {
              "type": "cell",
              "components": [
               {
-               "type": "text",
-               "tagName": "p",
+               "tagName": "div",
                "classes": [
-                "gd-p",
-                "gd-p1"
+                "gd-x22"
                ],
-               "components": []
+               "components": [
+                {
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p1"
+                 ],
+                 "components": []
+                }
+               ]
               }
              ],
              "classes": [
-              "gd-td37"
+              "gd-td46"
              ]
             },
             {
              "type": "cell",
              "components": [
               {
-               "type": "text",
-               "tagName": "p",
+               "tagName": "div",
                "classes": [
-                "gd-p",
-                "gd-p1"
+                "gd-x22"
                ],
-               "components": []
+               "components": [
+                {
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p1"
+                 ],
+                 "components": []
+                }
+               ]
               }
              ],
              "classes": [
-              "gd-td38"
+              "gd-td47"
              ]
             },
             {
              "type": "cell",
              "components": [
               {
-               "type": "text",
-               "tagName": "p",
+               "tagName": "div",
                "classes": [
-                "gd-p",
-                "gd-p1"
+                "gd-x22"
                ],
-               "components": []
+               "components": [
+                {
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p1"
+                 ],
+                 "components": []
+                }
+               ]
               }
              ],
              "classes": [
-              "gd-td39"
+              "gd-td48"
              ]
             }
            ],
            "classes": [
-            "gd-tr17"
+            "gd-tr25"
            ]
           }
          ],
@@ -6997,116 +7317,148 @@
              "components": [
               {
                "type": "cell",
-               "components": [],
-               "classes": [
-                "gd-td36"
-               ]
-              },
-              {
-               "type": "cell",
                "components": [
                 {
-                 "type": "text",
-                 "tagName": "p",
+                 "tagName": "div",
                  "classes": [
-                  "gd-p",
-                  "gd-p1"
-                 ],
-                 "components": [
-                  {
-                   "type": "data-field",
-                   "field": "Item.Description",
-                   "format": ""
-                  }
-                 ]
-                }
-               ],
-               "classes": [
-                "gd-td37"
-               ]
-              },
-              {
-               "type": "cell",
-               "components": [
-                {
-                 "type": "text",
-                 "tagName": "p",
-                 "classes": [
-                  "gd-p",
-                  "gd-p1"
+                  "gd-x22"
                  ],
                  "components": []
                 }
                ],
                "classes": [
-                "gd-td38"
+                "gd-td45"
                ]
               },
               {
                "type": "cell",
                "components": [
                 {
-                 "type": "text",
-                 "tagName": "p",
+                 "tagName": "div",
                  "classes": [
-                  "gd-p",
-                  "gd-p1",
-                  "gd-keepline"
+                  "gd-x22"
                  ],
                  "components": [
                   {
-                   "type": "choice",
-                   "tagName": "span",
+                   "type": "text",
+                   "tagName": "p",
+                   "classes": [
+                    "gd-p",
+                    "gd-p1"
+                   ],
                    "components": [
                     {
-                     "type": "choice-branch",
-                     "tagName": "span",
-                     "components": [
-                      {
-                       "type": "data-field",
-                       "field": "Item.Limit",
-                       "format": "number"
-                      }
-                     ],
-                     "field": "Item.Limit",
-                     "operator": "present",
-                     "value": "",
-                     "classes": [
-                      "gd-if"
-                     ]
-                    },
-                    {
-                     "type": "choice-branch",
-                     "tagName": "span",
-                     "components": [
-                      {
-                       "type": "data-field",
-                       "field": "Item.LimitWording",
-                       "format": ""
-                      }
-                     ],
-                     "field": "",
-                     "operator": "else",
-                     "value": "",
-                     "classes": [
-                      "gd-if"
-                     ]
+                     "type": "data-field",
+                     "field": "Item.Description",
+                     "format": ""
                     }
-                   ],
-                   "classes": [
-                    "gd-if"
                    ]
                   }
                  ]
                 }
                ],
                "classes": [
-                "gd-td39"
+                "gd-td46"
+               ]
+              },
+              {
+               "type": "cell",
+               "components": [
+                {
+                 "tagName": "div",
+                 "classes": [
+                  "gd-x22"
+                 ],
+                 "components": [
+                  {
+                   "type": "text",
+                   "tagName": "p",
+                   "classes": [
+                    "gd-p",
+                    "gd-p1"
+                   ],
+                   "components": []
+                  }
+                 ]
+                }
+               ],
+               "classes": [
+                "gd-td47"
+               ]
+              },
+              {
+               "type": "cell",
+               "components": [
+                {
+                 "tagName": "div",
+                 "classes": [
+                  "gd-x22"
+                 ],
+                 "components": [
+                  {
+                   "type": "text",
+                   "tagName": "p",
+                   "classes": [
+                    "gd-p",
+                    "gd-p1",
+                    "gd-keepline"
+                   ],
+                   "components": [
+                    {
+                     "type": "choice",
+                     "tagName": "span",
+                     "components": [
+                      {
+                       "type": "choice-branch",
+                       "tagName": "span",
+                       "components": [
+                        {
+                         "type": "data-field",
+                         "field": "Item.Limit",
+                         "format": "number"
+                        }
+                       ],
+                       "field": "Item.Limit",
+                       "operator": "present",
+                       "value": "",
+                       "classes": [
+                        "gd-if"
+                       ]
+                      },
+                      {
+                       "type": "choice-branch",
+                       "tagName": "span",
+                       "components": [
+                        {
+                         "type": "data-field",
+                         "field": "Item.LimitWording",
+                         "format": ""
+                        }
+                       ],
+                       "field": "",
+                       "operator": "else",
+                       "value": "",
+                       "classes": [
+                        "gd-if"
+                       ]
+                      }
+                     ],
+                     "classes": [
+                      "gd-if"
+                     ]
+                    }
+                   ]
+                  }
+                 ]
+                }
+               ],
+               "classes": [
+                "gd-td48"
                ]
               }
              ],
              "classes": [
-              "gd-tr17"
+              "gd-tr25"
              ]
             }
            ],
@@ -7167,14 +7519,14 @@
             {
              "type": "cell",
              "classes": [
-              "gd-col42"
+              "gd-col53"
              ],
              "components": []
             },
             {
              "type": "cell",
              "classes": [
-              "gd-col43"
+              "gd-col54"
              ],
              "components": []
             }
@@ -7191,120 +7543,168 @@
            "components": [
             {
              "type": "cell",
-             "components": [],
+             "components": [
+              {
+               "tagName": "div",
+               "classes": [
+                "gd-x49"
+               ],
+               "components": []
+              }
+             ],
              "classes": [
-              "gd-td2"
+              "gd-td3"
              ]
             },
             {
              "type": "cell",
              "components": [
               {
-               "type": "text",
-               "tagName": "p",
+               "tagName": "div",
                "classes": [
-                "gd-p",
-                "gd-p11"
-               ],
-               "components": []
-              }
-             ],
-             "classes": [
-              "gd-td15"
-             ]
-            }
-           ],
-           "classes": [
-            "gd-tr40"
-           ]
-          },
-          {
-           "type": "row",
-           "components": [
-            {
-             "type": "cell",
-             "components": [
-              {
-               "type": "text",
-               "tagName": "p",
-               "classes": [
-                "gd-p",
-                "gd-p1"
-               ],
-               "components": []
-              }
-             ],
-             "classes": [
-              "gd-td2"
-             ]
-            },
-            {
-             "type": "cell",
-             "components": [
-              {
-               "type": "text",
-               "tagName": "p",
-               "classes": [
-                "gd-p",
-                "gd-p11"
-               ],
-               "components": []
-              }
-             ],
-             "classes": [
-              "gd-td15"
-             ]
-            }
-           ],
-           "classes": [
-            "gd-tr40"
-           ]
-          },
-          {
-           "type": "row",
-           "components": [
-            {
-             "type": "cell",
-             "components": [
-              {
-               "type": "text",
-               "tagName": "p",
-               "classes": [
-                "gd-p",
-                "gd-p1"
-               ],
-               "components": []
-              }
-             ],
-             "classes": [
-              "gd-td2"
-             ]
-            },
-            {
-             "type": "cell",
-             "components": [
-              {
-               "type": "text",
-               "tagName": "p",
-               "classes": [
-                "gd-p",
-                "gd-p11"
+                "gd-x49"
                ],
                "components": [
                 {
-                 "type": "textnode",
-                 "content": "See Attached Schedule"
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p16"
+                 ],
+                 "components": []
                 }
                ]
               }
              ],
              "classes": [
-              "gd-td15"
+              "gd-td23"
              ]
             }
            ],
            "classes": [
-            "gd-tr40"
+            "gd-tr50"
+           ]
+          },
+          {
+           "type": "row",
+           "components": [
+            {
+             "type": "cell",
+             "components": [
+              {
+               "tagName": "div",
+               "classes": [
+                "gd-x49"
+               ],
+               "components": [
+                {
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p1"
+                 ],
+                 "components": []
+                }
+               ]
+              }
+             ],
+             "classes": [
+              "gd-td3"
+             ]
+            },
+            {
+             "type": "cell",
+             "components": [
+              {
+               "tagName": "div",
+               "classes": [
+                "gd-x49"
+               ],
+               "components": [
+                {
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p16"
+                 ],
+                 "components": []
+                }
+               ]
+              }
+             ],
+             "classes": [
+              "gd-td23"
+             ]
+            }
+           ],
+           "classes": [
+            "gd-tr50"
+           ]
+          },
+          {
+           "type": "row",
+           "components": [
+            {
+             "type": "cell",
+             "components": [
+              {
+               "tagName": "div",
+               "classes": [
+                "gd-x49"
+               ],
+               "components": [
+                {
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p1"
+                 ],
+                 "components": []
+                }
+               ]
+              }
+             ],
+             "classes": [
+              "gd-td3"
+             ]
+            },
+            {
+             "type": "cell",
+             "components": [
+              {
+               "tagName": "div",
+               "classes": [
+                "gd-x49"
+               ],
+               "components": [
+                {
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p16"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "See Attached Schedule"
+                  }
+                 ]
+                }
+               ]
+              }
+             ],
+             "classes": [
+              "gd-td23"
+             ]
+            }
+           ],
+           "classes": [
+            "gd-tr50"
            ]
           }
          ],
@@ -7325,43 +7725,59 @@
            "components": [
             {
              "type": "cell",
-             "components": [],
+             "components": [
+              {
+               "tagName": "div",
+               "classes": [
+                "gd-x51"
+               ],
+               "components": []
+              }
+             ],
              "classes": [
-              "gd-td2"
+              "gd-td3"
              ]
             },
             {
              "type": "cell",
              "components": [
               {
-               "type": "text",
-               "tagName": "p",
+               "tagName": "div",
                "classes": [
-                "gd-p",
-                "gd-p1"
+                "gd-x51"
                ],
                "components": [
                 {
-                 "type": "data-field",
-                 "field": "Item.Description",
-                 "format": ""
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p1"
+                 ],
+                 "components": [
+                  {
+                   "type": "data-field",
+                   "field": "Item.Description",
+                   "format": ""
+                  }
+                 ]
                 }
                ]
               }
              ],
              "classes": [
-              "gd-td2"
+              "gd-td3"
              ]
             }
            ],
            "classes": [
-            "gd-tr41"
+            "gd-tr52"
            ]
           }
          ],
          "field": "CAState_specificPolicyLevelCoverages.BusinessInterruptionCoverage_Oregon.ScheduledPropertywithSameLimit.has7ormore",
-         "operator": "ne",
-         "value": "true"
+         "operator": "eq",
+         "value": "false"
         }
        ]
       },
@@ -7394,7 +7810,7 @@
        "type": "table",
        "classes": [
         "gd-table",
-        "gd-t62"
+        "gd-t83"
        ],
        "components": [
         {
@@ -7409,56 +7825,56 @@
             {
              "type": "cell",
              "classes": [
-              "gd-col54"
+              "gd-col75"
              ],
              "components": []
             },
             {
              "type": "cell",
              "classes": [
-              "gd-col55"
+              "gd-col76"
              ],
              "components": []
             },
             {
              "type": "cell",
              "classes": [
-              "gd-col56"
+              "gd-col77"
              ],
              "components": []
             },
             {
              "type": "cell",
              "classes": [
-              "gd-col57"
+              "gd-col78"
              ],
              "components": []
             },
             {
              "type": "cell",
              "classes": [
-              "gd-col58"
+              "gd-col79"
              ],
              "components": []
             },
             {
              "type": "cell",
              "classes": [
-              "gd-col59"
+              "gd-col80"
              ],
              "components": []
             },
             {
              "type": "cell",
              "classes": [
-              "gd-col60"
+              "gd-col81"
              ],
              "components": []
             },
             {
              "type": "cell",
              "classes": [
-              "gd-col61"
+              "gd-col82"
              ],
              "components": []
             }
@@ -7476,17 +7892,25 @@
              "type": "cell",
              "components": [
               {
-               "type": "text",
-               "tagName": "p",
+               "tagName": "div",
                "classes": [
-                "gd-p",
-                "gd-p1"
+                "gd-x55"
                ],
-               "components": []
+               "components": [
+                {
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p1"
+                 ],
+                 "components": []
+                }
+               ]
               }
              ],
              "classes": [
-              "gd-td2"
+              "gd-td3"
              ],
              "attributes": {
               "colspan": "5"
@@ -7496,62 +7920,70 @@
              "type": "cell",
              "components": [
               {
-               "type": "text",
-               "tagName": "p",
+               "tagName": "div",
                "classes": [
-                "gd-p",
-                "gd-p1",
-                "gd-keepline"
+                "gd-x55"
                ],
                "components": [
                 {
-                 "type": "choice",
-                 "tagName": "span",
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p1",
+                  "gd-keepline"
+                 ],
                  "components": [
                   {
-                   "type": "choice-branch",
+                   "type": "choice",
                    "tagName": "span",
                    "components": [
                     {
-                     "type": "data-field",
+                     "type": "choice-branch",
+                     "tagName": "span",
+                     "components": [
+                      {
+                       "type": "data-field",
+                       "field": "CAState_specificPolicyLevelCoverages.BusinessInterruptionCoverage_Oregon.ScheduledPropertywithSameLimit.Limit",
+                       "format": "number"
+                      }
+                     ],
                      "field": "CAState_specificPolicyLevelCoverages.BusinessInterruptionCoverage_Oregon.ScheduledPropertywithSameLimit.Limit",
-                     "format": "number"
-                    }
-                   ],
-                   "field": "CAState_specificPolicyLevelCoverages.BusinessInterruptionCoverage_Oregon.ScheduledPropertywithSameLimit.Limit",
-                   "operator": "present",
-                   "value": "",
-                   "classes": [
-                    "gd-if"
-                   ]
-                  },
-                  {
-                   "type": "choice-branch",
-                   "tagName": "span",
-                   "components": [
+                     "operator": "present",
+                     "value": "",
+                     "classes": [
+                      "gd-if"
+                     ]
+                    },
                     {
-                     "type": "data-field",
-                     "field": "CAState_specificPolicyLevelCoverages.BusinessInterruptionCoverage_Oregon.ScheduledPropertywithSameLimit.LimitWording",
-                     "format": ""
+                     "type": "choice-branch",
+                     "tagName": "span",
+                     "components": [
+                      {
+                       "type": "data-field",
+                       "field": "CAState_specificPolicyLevelCoverages.BusinessInterruptionCoverage_Oregon.ScheduledPropertywithSameLimit.LimitWording",
+                       "format": ""
+                      }
+                     ],
+                     "field": "",
+                     "operator": "else",
+                     "value": "",
+                     "classes": [
+                      "gd-if"
+                     ]
                     }
                    ],
-                   "field": "",
-                   "operator": "else",
-                   "value": "",
                    "classes": [
                     "gd-if"
                    ]
                   }
-                 ],
-                 "classes": [
-                  "gd-if"
                  ]
                 }
                ]
               }
              ],
              "classes": [
-              "gd-td44"
+              "gd-td56"
              ],
              "attributes": {
               "colspan": "3"
@@ -7559,7 +7991,7 @@
             }
            ],
            "classes": [
-            "gd-tr45"
+            "gd-tr57"
            ]
           },
           {
@@ -7569,17 +8001,25 @@
              "type": "cell",
              "components": [
               {
-               "type": "text",
-               "tagName": "p",
+               "tagName": "div",
                "classes": [
-                "gd-p",
-                "gd-p1"
+                "gd-x58"
                ],
-               "components": []
+               "components": [
+                {
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p1"
+                 ],
+                 "components": []
+                }
+               ]
               }
              ],
              "classes": [
-              "gd-td2"
+              "gd-td3"
              ],
              "attributes": {
               "colspan": "8"
@@ -7587,7 +8027,7 @@
             }
            ],
            "classes": [
-            "gd-tr46"
+            "gd-tr59"
            ]
           },
           {
@@ -7597,69 +8037,93 @@
              "type": "cell",
              "components": [
               {
-               "type": "text",
-               "tagName": "p",
+               "tagName": "div",
                "classes": [
-                "gd-p",
-                "gd-p1"
+                "gd-x60"
                ],
-               "components": []
+               "components": [
+                {
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p1"
+                 ],
+                 "components": []
+                }
+               ]
               }
              ],
              "classes": [
-              "gd-td2"
+              "gd-td3"
              ]
             },
             {
              "type": "cell",
              "components": [
               {
-               "type": "text",
-               "tagName": "p",
+               "tagName": "div",
                "classes": [
-                "gd-p",
-                "gd-p11",
-                "gd-keepline"
+                "gd-x61"
                ],
                "components": [
                 {
-                 "type": "conditional",
-                 "tagName": "span",
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p16",
+                  "gd-keepline"
+                 ],
                  "components": [
                   {
-                   "type": "textnode",
-                   "content": "X"
+                   "type": "conditional",
+                   "tagName": "span",
+                   "components": [
+                    {
+                     "type": "textnode",
+                     "content": "X"
+                    }
+                   ],
+                   "field": "CAState_specificPolicyLevelCoverages.BusinessInterruptionCoverage_Oregon.CoveredCausesofLoss.includeComprehensive",
+                   "operator": "eq",
+                   "value": "true",
+                   "classes": [
+                    "gd-if"
+                   ]
                   }
-                 ],
-                 "field": "CAState_specificPolicyLevelCoverages.BusinessInterruptionCoverage_Oregon.CoveredCausesofLoss.includeComprehensive",
-                 "operator": "eq",
-                 "value": "true",
-                 "classes": [
-                  "gd-if"
                  ]
                 }
                ]
               }
              ],
              "classes": [
-              "gd-td12"
+              "gd-td18"
              ]
             },
             {
              "type": "cell",
              "components": [
               {
-               "type": "text",
-               "tagName": "p",
+               "tagName": "div",
                "classes": [
-                "gd-p",
-                "gd-p1"
+                "gd-x60"
                ],
-               "components": []
+               "components": [
+                {
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p1"
+                 ],
+                 "components": []
+                }
+               ]
               }
              ],
              "classes": [
-              "gd-td2"
+              "gd-td3"
              ],
              "attributes": {
               "colspan": "2"
@@ -7669,52 +8133,68 @@
              "type": "cell",
              "components": [
               {
-               "type": "text",
-               "tagName": "p",
+               "tagName": "div",
                "classes": [
-                "gd-p",
-                "gd-p11",
-                "gd-keepline"
+                "gd-x61"
                ],
                "components": [
                 {
-                 "type": "conditional",
-                 "tagName": "span",
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p16",
+                  "gd-keepline"
+                 ],
                  "components": [
                   {
-                   "type": "textnode",
-                   "content": "X"
+                   "type": "conditional",
+                   "tagName": "span",
+                   "components": [
+                    {
+                     "type": "textnode",
+                     "content": "X"
+                    }
+                   ],
+                   "field": "CAState_specificPolicyLevelCoverages.BusinessInterruptionCoverage_Oregon.CoveredCausesofLoss.includeSpecifiedCausesofLoss",
+                   "operator": "eq",
+                   "value": "true",
+                   "classes": [
+                    "gd-if"
+                   ]
                   }
-                 ],
-                 "field": "CAState_specificPolicyLevelCoverages.BusinessInterruptionCoverage_Oregon.CoveredCausesofLoss.includeSpecifiedCausesofLoss",
-                 "operator": "eq",
-                 "value": "true",
-                 "classes": [
-                  "gd-if"
                  ]
                 }
                ]
               }
              ],
              "classes": [
-              "gd-td12"
+              "gd-td18"
              ]
             },
             {
              "type": "cell",
              "components": [
               {
-               "type": "text",
-               "tagName": "p",
+               "tagName": "div",
                "classes": [
-                "gd-p",
-                "gd-p1"
+                "gd-x60"
                ],
-               "components": []
+               "components": [
+                {
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p1"
+                 ],
+                 "components": []
+                }
+               ]
               }
              ],
              "classes": [
-              "gd-td2"
+              "gd-td3"
              ],
              "attributes": {
               "colspan": "3"
@@ -7722,7 +8202,7 @@
             }
            ],
            "classes": [
-            "gd-tr47"
+            "gd-tr62"
            ]
           },
           {
@@ -7732,34 +8212,50 @@
              "type": "cell",
              "components": [
               {
-               "type": "text",
-               "tagName": "p",
+               "tagName": "div",
                "classes": [
-                "gd-p",
-                "gd-p1"
+                "gd-x63"
                ],
-               "components": []
+               "components": [
+                {
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p1"
+                 ],
+                 "components": []
+                }
+               ]
               }
              ],
              "classes": [
-              "gd-td2"
+              "gd-td3"
              ]
             },
             {
              "type": "cell",
              "components": [
               {
-               "type": "text",
-               "tagName": "p",
+               "tagName": "div",
                "classes": [
-                "gd-p",
-                "gd-p1"
+                "gd-x63"
                ],
-               "components": []
+               "components": [
+                {
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p1"
+                 ],
+                 "components": []
+                }
+               ]
               }
              ],
              "classes": [
-              "gd-td2"
+              "gd-td3"
              ],
              "attributes": {
               "colspan": "7"
@@ -7767,7 +8263,7 @@
             }
            ],
            "classes": [
-            "gd-tr48"
+            "gd-tr64"
            ]
           },
           {
@@ -7777,69 +8273,93 @@
              "type": "cell",
              "components": [
               {
-               "type": "text",
-               "tagName": "p",
+               "tagName": "div",
                "classes": [
-                "gd-p",
-                "gd-p1"
+                "gd-x60"
                ],
-               "components": []
+               "components": [
+                {
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p1"
+                 ],
+                 "components": []
+                }
+               ]
               }
              ],
              "classes": [
-              "gd-td2"
+              "gd-td3"
              ]
             },
             {
              "type": "cell",
              "components": [
               {
-               "type": "text",
-               "tagName": "p",
+               "tagName": "div",
                "classes": [
-                "gd-p",
-                "gd-p11",
-                "gd-keepline"
+                "gd-x61"
                ],
                "components": [
                 {
-                 "type": "conditional",
-                 "tagName": "span",
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p16",
+                  "gd-keepline"
+                 ],
                  "components": [
                   {
-                   "type": "textnode",
-                   "content": "X"
+                   "type": "conditional",
+                   "tagName": "span",
+                   "components": [
+                    {
+                     "type": "textnode",
+                     "content": "X"
+                    }
+                   ],
+                   "field": "CAState_specificPolicyLevelCoverages.BusinessInterruptionCoverage_Oregon.CoveredCausesofLoss.includeCollision",
+                   "operator": "eq",
+                   "value": "true",
+                   "classes": [
+                    "gd-if"
+                   ]
                   }
-                 ],
-                 "field": "CAState_specificPolicyLevelCoverages.BusinessInterruptionCoverage_Oregon.CoveredCausesofLoss.includeCollision",
-                 "operator": "eq",
-                 "value": "true",
-                 "classes": [
-                  "gd-if"
                  ]
                 }
                ]
               }
              ],
              "classes": [
-              "gd-td12"
+              "gd-td18"
              ]
             },
             {
              "type": "cell",
              "components": [
               {
-               "type": "text",
-               "tagName": "p",
+               "tagName": "div",
                "classes": [
-                "gd-p",
-                "gd-p1"
+                "gd-x60"
                ],
-               "components": []
+               "components": [
+                {
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p1"
+                 ],
+                 "components": []
+                }
+               ]
               }
              ],
              "classes": [
-              "gd-td2"
+              "gd-td3"
              ],
              "attributes": {
               "colspan": "6"
@@ -7847,7 +8367,7 @@
             }
            ],
            "classes": [
-            "gd-tr47"
+            "gd-tr62"
            ]
           },
           {
@@ -7857,17 +8377,25 @@
              "type": "cell",
              "components": [
               {
-               "type": "text",
-               "tagName": "p",
+               "tagName": "div",
                "classes": [
-                "gd-p",
-                "gd-p1"
+                "gd-x65"
                ],
-               "components": []
+               "components": [
+                {
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p1"
+                 ],
+                 "components": []
+                }
+               ]
               }
              ],
              "classes": [
-              "gd-td2"
+              "gd-td3"
              ],
              "attributes": {
               "colspan": "8"
@@ -7875,7 +8403,7 @@
             }
            ],
            "classes": [
-            "gd-tr49"
+            "gd-tr66"
            ]
           },
           {
@@ -7885,17 +8413,25 @@
              "type": "cell",
              "components": [
               {
-               "type": "text",
-               "tagName": "p",
+               "tagName": "div",
                "classes": [
-                "gd-p",
-                "gd-p1"
+                "gd-x67"
                ],
-               "components": []
+               "components": [
+                {
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p1"
+                 ],
+                 "components": []
+                }
+               ]
               }
              ],
              "classes": [
-              "gd-td2"
+              "gd-td3"
              ],
              "attributes": {
               "colspan": "6"
@@ -7905,62 +8441,70 @@
              "type": "cell",
              "components": [
               {
-               "type": "text",
-               "tagName": "p",
+               "tagName": "div",
                "classes": [
-                "gd-p",
-                "gd-p1",
-                "gd-keepline"
+                "gd-x67"
                ],
                "components": [
                 {
-                 "type": "choice",
-                 "tagName": "span",
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p1",
+                  "gd-keepline"
+                 ],
                  "components": [
                   {
-                   "type": "choice-branch",
+                   "type": "choice",
                    "tagName": "span",
                    "components": [
                     {
-                     "type": "data-field",
+                     "type": "choice-branch",
+                     "tagName": "span",
+                     "components": [
+                      {
+                       "type": "data-field",
+                       "field": "CAState_specificPolicyLevelCoverages.BusinessInterruptionCoverage_Oregon.WaitingPeriod",
+                       "format": "number"
+                      }
+                     ],
                      "field": "CAState_specificPolicyLevelCoverages.BusinessInterruptionCoverage_Oregon.WaitingPeriod",
-                     "format": "number"
-                    }
-                   ],
-                   "field": "CAState_specificPolicyLevelCoverages.BusinessInterruptionCoverage_Oregon.WaitingPeriod",
-                   "operator": "present",
-                   "value": "",
-                   "classes": [
-                    "gd-if"
-                   ]
-                  },
-                  {
-                   "type": "choice-branch",
-                   "tagName": "span",
-                   "components": [
+                     "operator": "present",
+                     "value": "",
+                     "classes": [
+                      "gd-if"
+                     ]
+                    },
                     {
-                     "type": "data-field",
-                     "field": "CAState_specificPolicyLevelCoverages.BusinessInterruptionCoverage_Oregon.WaitingPeriodWording",
-                     "format": ""
+                     "type": "choice-branch",
+                     "tagName": "span",
+                     "components": [
+                      {
+                       "type": "data-field",
+                       "field": "CAState_specificPolicyLevelCoverages.BusinessInterruptionCoverage_Oregon.WaitingPeriodWording",
+                       "format": ""
+                      }
+                     ],
+                     "field": "",
+                     "operator": "else",
+                     "value": "",
+                     "classes": [
+                      "gd-if"
+                     ]
                     }
                    ],
-                   "field": "",
-                   "operator": "else",
-                   "value": "",
                    "classes": [
                     "gd-if"
                    ]
                   }
-                 ],
-                 "classes": [
-                  "gd-if"
                  ]
                 }
                ]
               }
              ],
              "classes": [
-              "gd-td2"
+              "gd-td3"
              ],
              "attributes": {
               "colspan": "2"
@@ -7968,7 +8512,7 @@
             }
            ],
            "classes": [
-            "gd-tr50"
+            "gd-tr68"
            ]
           },
           {
@@ -7978,17 +8522,25 @@
              "type": "cell",
              "components": [
               {
-               "type": "text",
-               "tagName": "p",
+               "tagName": "div",
                "classes": [
-                "gd-p",
-                "gd-p1"
+                "gd-x69"
                ],
-               "components": []
+               "components": [
+                {
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p1"
+                 ],
+                 "components": []
+                }
+               ]
               }
              ],
              "classes": [
-              "gd-td2"
+              "gd-td3"
              ],
              "attributes": {
               "colspan": "7"
@@ -7998,67 +8550,75 @@
              "type": "cell",
              "components": [
               {
-               "type": "text",
-               "tagName": "p",
+               "tagName": "div",
                "classes": [
-                "gd-p",
-                "gd-p1",
-                "gd-keepline"
+                "gd-x69"
                ],
                "components": [
                 {
-                 "type": "choice",
-                 "tagName": "span",
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p1",
+                  "gd-keepline"
+                 ],
                  "components": [
                   {
-                   "type": "choice-branch",
+                   "type": "choice",
                    "tagName": "span",
                    "components": [
                     {
-                     "type": "data-field",
+                     "type": "choice-branch",
+                     "tagName": "span",
+                     "components": [
+                      {
+                       "type": "data-field",
+                       "field": "CAState_specificPolicyLevelCoverages.BusinessInterruptionCoverage_Oregon.ExtendedCoverageDays",
+                       "format": "number"
+                      }
+                     ],
                      "field": "CAState_specificPolicyLevelCoverages.BusinessInterruptionCoverage_Oregon.ExtendedCoverageDays",
-                     "format": "number"
-                    }
-                   ],
-                   "field": "CAState_specificPolicyLevelCoverages.BusinessInterruptionCoverage_Oregon.ExtendedCoverageDays",
-                   "operator": "present",
-                   "value": "",
-                   "classes": [
-                    "gd-if"
-                   ]
-                  },
-                  {
-                   "type": "choice-branch",
-                   "tagName": "span",
-                   "components": [
+                     "operator": "present",
+                     "value": "",
+                     "classes": [
+                      "gd-if"
+                     ]
+                    },
                     {
-                     "type": "data-field",
-                     "field": "CAState_specificPolicyLevelCoverages.BusinessInterruptionCoverage_Oregon.ExtendedCoverageDaysWording",
-                     "format": ""
+                     "type": "choice-branch",
+                     "tagName": "span",
+                     "components": [
+                      {
+                       "type": "data-field",
+                       "field": "CAState_specificPolicyLevelCoverages.BusinessInterruptionCoverage_Oregon.ExtendedCoverageDaysWording",
+                       "format": ""
+                      }
+                     ],
+                     "field": "",
+                     "operator": "else",
+                     "value": "",
+                     "classes": [
+                      "gd-if"
+                     ]
                     }
                    ],
-                   "field": "",
-                   "operator": "else",
-                   "value": "",
                    "classes": [
                     "gd-if"
                    ]
                   }
-                 ],
-                 "classes": [
-                  "gd-if"
                  ]
                 }
                ]
               }
              ],
              "classes": [
-              "gd-td2"
+              "gd-td3"
              ]
             }
            ],
            "classes": [
-            "gd-tr51"
+            "gd-tr70"
            ]
           },
           {
@@ -8068,17 +8628,25 @@
              "type": "cell",
              "components": [
               {
-               "type": "text",
-               "tagName": "p",
+               "tagName": "div",
                "classes": [
-                "gd-p",
-                "gd-p1"
+                "gd-x71"
                ],
-               "components": []
+               "components": [
+                {
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p1"
+                 ],
+                 "components": []
+                }
+               ]
               }
              ],
              "classes": [
-              "gd-td2"
+              "gd-td3"
              ],
              "attributes": {
               "colspan": "3"
@@ -8088,62 +8656,70 @@
              "type": "cell",
              "components": [
               {
-               "type": "text",
-               "tagName": "p",
+               "tagName": "div",
                "classes": [
-                "gd-p",
-                "gd-p1",
-                "gd-keepline"
+                "gd-x71"
                ],
                "components": [
                 {
-                 "type": "choice",
-                 "tagName": "span",
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p1",
+                  "gd-keepline"
+                 ],
                  "components": [
                   {
-                   "type": "choice-branch",
+                   "type": "choice",
                    "tagName": "span",
                    "components": [
                     {
-                     "type": "data-field",
+                     "type": "choice-branch",
+                     "tagName": "span",
+                     "components": [
+                      {
+                       "type": "data-field",
+                       "field": "CAState_specificPolicyLevelCoverages.BusinessInterruptionCoverage_Oregon.Premium",
+                       "format": "decimal"
+                      }
+                     ],
                      "field": "CAState_specificPolicyLevelCoverages.BusinessInterruptionCoverage_Oregon.Premium",
-                     "format": "decimal"
-                    }
-                   ],
-                   "field": "CAState_specificPolicyLevelCoverages.BusinessInterruptionCoverage_Oregon.Premium",
-                   "operator": "present",
-                   "value": "",
-                   "classes": [
-                    "gd-if"
-                   ]
-                  },
-                  {
-                   "type": "choice-branch",
-                   "tagName": "span",
-                   "components": [
+                     "operator": "present",
+                     "value": "",
+                     "classes": [
+                      "gd-if"
+                     ]
+                    },
                     {
-                     "type": "data-field",
-                     "field": "CAState_specificPolicyLevelCoverages.BusinessInterruptionCoverage_Oregon.PremiumWording",
-                     "format": ""
+                     "type": "choice-branch",
+                     "tagName": "span",
+                     "components": [
+                      {
+                       "type": "data-field",
+                       "field": "CAState_specificPolicyLevelCoverages.BusinessInterruptionCoverage_Oregon.PremiumWording",
+                       "format": ""
+                      }
+                     ],
+                     "field": "",
+                     "operator": "else",
+                     "value": "",
+                     "classes": [
+                      "gd-if"
+                     ]
                     }
                    ],
-                   "field": "",
-                   "operator": "else",
-                   "value": "",
                    "classes": [
                     "gd-if"
                    ]
                   }
-                 ],
-                 "classes": [
-                  "gd-if"
                  ]
                 }
                ]
               }
              ],
              "classes": [
-              "gd-td16"
+              "gd-td24"
              ],
              "attributes": {
               "colspan": "5"
@@ -8151,7 +8727,7 @@
             }
            ],
            "classes": [
-            "gd-tr52"
+            "gd-tr72"
            ]
           },
           {
@@ -8161,17 +8737,25 @@
              "type": "cell",
              "components": [
               {
-               "type": "text",
-               "tagName": "p",
+               "tagName": "div",
                "classes": [
-                "gd-p",
-                "gd-p1"
+                "gd-x73"
                ],
-               "components": []
+               "components": [
+                {
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p1"
+                 ],
+                 "components": []
+                }
+               ]
               }
              ],
              "classes": [
-              "gd-td2"
+              "gd-td3"
              ],
              "attributes": {
               "colspan": "8"
@@ -8179,7 +8763,7 @@
             }
            ],
            "classes": [
-            "gd-tr53"
+            "gd-tr74"
            ]
           }
          ]
@@ -8214,7 +8798,7 @@
        "type": "table",
        "classes": [
         "gd-table",
-        "gd-t34"
+        "gd-t43"
        ],
        "components": [
         {
@@ -8237,7 +8821,7 @@
                 {
                  "tagName": "span",
                  "classes": [
-                  "gd-c28"
+                  "gd-c37"
                  ],
                  "components": [
                   {
@@ -8250,7 +8834,7 @@
               }
              ],
              "classes": [
-              "gd-td29"
+              "gd-td38"
              ]
             },
             {
@@ -8261,7 +8845,7 @@
                "tagName": "p",
                "classes": [
                 "gd-p",
-                "gd-p11"
+                "gd-p16"
                ],
                "components": [
                 {
@@ -8272,7 +8856,7 @@
               }
              ],
              "classes": [
-              "gd-td30"
+              "gd-td39"
              ]
             },
             {
@@ -8283,13 +8867,13 @@
                "tagName": "p",
                "classes": [
                 "gd-p",
-                "gd-p31"
+                "gd-p40"
                ],
                "components": [
                 {
                  "tagName": "span",
                  "classes": [
-                  "gd-c28"
+                  "gd-c37"
                  ],
                  "components": [
                   {
@@ -8301,7 +8885,7 @@
                 {
                  "tagName": "span",
                  "classes": [
-                  "gd-c28",
+                  "gd-c37",
                   "gd-pageno"
                  ],
                  "components": [
@@ -8314,7 +8898,7 @@
                 {
                  "tagName": "span",
                  "classes": [
-                  "gd-c28"
+                  "gd-c37"
                  ],
                  "components": [
                   {
@@ -8326,7 +8910,7 @@
                 {
                  "tagName": "span",
                  "classes": [
-                  "gd-c28",
+                  "gd-c37",
                   "gd-pagecount"
                  ],
                  "components": [
@@ -8340,7 +8924,7 @@
               }
              ],
              "classes": [
-              "gd-td32"
+              "gd-td41"
              ]
             },
             {
@@ -8357,7 +8941,7 @@
               }
              ],
              "classes": [
-              "gd-td33"
+              "gd-td42"
              ]
             }
            ]
@@ -8400,7 +8984,7 @@
        "type": "table",
        "classes": [
         "gd-table",
-        "gd-t34"
+        "gd-t43"
        ],
        "components": [
         {
@@ -8423,7 +9007,7 @@
                 {
                  "tagName": "span",
                  "classes": [
-                  "gd-c28"
+                  "gd-c37"
                  ],
                  "components": [
                   {
@@ -8435,7 +9019,7 @@
                 {
                  "tagName": "span",
                  "classes": [
-                  "gd-c28",
+                  "gd-c37",
                   "gd-pageno"
                  ],
                  "components": [
@@ -8448,7 +9032,7 @@
                 {
                  "tagName": "span",
                  "classes": [
-                  "gd-c28"
+                  "gd-c37"
                  ],
                  "components": [
                   {
@@ -8460,7 +9044,7 @@
                 {
                  "tagName": "span",
                  "classes": [
-                  "gd-c28",
+                  "gd-c37",
                   "gd-pagecount"
                  ],
                  "components": [
@@ -8474,7 +9058,7 @@
               }
              ],
              "classes": [
-              "gd-td29"
+              "gd-td38"
              ]
             },
             {
@@ -8485,7 +9069,7 @@
                "tagName": "p",
                "classes": [
                 "gd-p",
-                "gd-p11"
+                "gd-p16"
                ],
                "components": [
                 {
@@ -8496,7 +9080,7 @@
               }
              ],
              "classes": [
-              "gd-td30"
+              "gd-td39"
              ]
             },
             {
@@ -8507,13 +9091,13 @@
                "tagName": "p",
                "classes": [
                 "gd-p",
-                "gd-p31"
+                "gd-p40"
                ],
                "components": [
                 {
                  "tagName": "span",
                  "classes": [
-                  "gd-c28"
+                  "gd-c37"
                  ],
                  "components": [
                   {
@@ -8526,7 +9110,7 @@
               }
              ],
              "classes": [
-              "gd-td32"
+              "gd-td41"
              ]
             },
             {
@@ -8537,13 +9121,13 @@
                "tagName": "p",
                "classes": [
                 "gd-p",
-                "gd-p35"
+                "gd-p44"
                ],
                "components": []
               }
              ],
              "classes": [
-              "gd-td33"
+              "gd-td42"
              ]
             }
            ]
@@ -16676,7 +17260,7 @@
        "type": "table",
        "classes": [
         "gd-table",
-        "gd-t34"
+        "gd-t43"
        ],
        "components": [
         {
@@ -16699,7 +17283,7 @@
                 {
                  "tagName": "span",
                  "classes": [
-                  "gd-c28"
+                  "gd-c37"
                  ],
                  "components": [
                   {
@@ -16712,7 +17296,7 @@
               }
              ],
              "classes": [
-              "gd-td29"
+              "gd-td38"
              ]
             },
             {
@@ -16723,7 +17307,7 @@
                "tagName": "p",
                "classes": [
                 "gd-p",
-                "gd-p11"
+                "gd-p16"
                ],
                "components": [
                 {
@@ -16734,7 +17318,7 @@
               }
              ],
              "classes": [
-              "gd-td30"
+              "gd-td39"
              ]
             },
             {
@@ -16745,13 +17329,13 @@
                "tagName": "p",
                "classes": [
                 "gd-p",
-                "gd-p31"
+                "gd-p40"
                ],
                "components": [
                 {
                  "tagName": "span",
                  "classes": [
-                  "gd-c28"
+                  "gd-c37"
                  ],
                  "components": [
                   {
@@ -16763,7 +17347,7 @@
                 {
                  "tagName": "span",
                  "classes": [
-                  "gd-c28",
+                  "gd-c37",
                   "gd-pageno"
                  ],
                  "components": [
@@ -16776,7 +17360,7 @@
                 {
                  "tagName": "span",
                  "classes": [
-                  "gd-c28"
+                  "gd-c37"
                  ],
                  "components": [
                   {
@@ -16788,7 +17372,7 @@
                 {
                  "tagName": "span",
                  "classes": [
-                  "gd-c28",
+                  "gd-c37",
                   "gd-pagecount"
                  ],
                  "components": [
@@ -16802,7 +17386,7 @@
               }
              ],
              "classes": [
-              "gd-td32"
+              "gd-td41"
              ]
             },
             {
@@ -16819,7 +17403,7 @@
               }
              ],
              "classes": [
-              "gd-td33"
+              "gd-td42"
              ]
             }
            ]
@@ -16862,7 +17446,7 @@
        "type": "table",
        "classes": [
         "gd-table",
-        "gd-t34"
+        "gd-t43"
        ],
        "components": [
         {
@@ -16885,7 +17469,7 @@
                 {
                  "tagName": "span",
                  "classes": [
-                  "gd-c28"
+                  "gd-c37"
                  ],
                  "components": [
                   {
@@ -16897,7 +17481,7 @@
                 {
                  "tagName": "span",
                  "classes": [
-                  "gd-c28",
+                  "gd-c37",
                   "gd-pageno"
                  ],
                  "components": [
@@ -16910,7 +17494,7 @@
                 {
                  "tagName": "span",
                  "classes": [
-                  "gd-c28"
+                  "gd-c37"
                  ],
                  "components": [
                   {
@@ -16922,7 +17506,7 @@
                 {
                  "tagName": "span",
                  "classes": [
-                  "gd-c28",
+                  "gd-c37",
                   "gd-pagecount"
                  ],
                  "components": [
@@ -16936,7 +17520,7 @@
               }
              ],
              "classes": [
-              "gd-td29"
+              "gd-td38"
              ]
             },
             {
@@ -16947,7 +17531,7 @@
                "tagName": "p",
                "classes": [
                 "gd-p",
-                "gd-p11"
+                "gd-p16"
                ],
                "components": [
                 {
@@ -16958,7 +17542,7 @@
               }
              ],
              "classes": [
-              "gd-td30"
+              "gd-td39"
              ]
             },
             {
@@ -16969,13 +17553,13 @@
                "tagName": "p",
                "classes": [
                 "gd-p",
-                "gd-p31"
+                "gd-p40"
                ],
                "components": [
                 {
                  "tagName": "span",
                  "classes": [
-                  "gd-c28"
+                  "gd-c37"
                  ],
                  "components": [
                   {
@@ -16988,7 +17572,7 @@
               }
              ],
              "classes": [
-              "gd-td32"
+              "gd-td41"
              ]
             },
             {
@@ -16999,13 +17583,13 @@
                "tagName": "p",
                "classes": [
                 "gd-p",
-                "gd-p35"
+                "gd-p44"
                ],
                "components": []
               }
              ],
              "classes": [
-              "gd-td33"
+              "gd-td42"
              ]
             }
            ]
@@ -26607,7 +27191,7 @@
        "type": "table",
        "classes": [
         "gd-table",
-        "gd-t34"
+        "gd-t43"
        ],
        "components": [
         {
@@ -26630,7 +27214,7 @@
                 {
                  "tagName": "span",
                  "classes": [
-                  "gd-c28"
+                  "gd-c37"
                  ],
                  "components": [
                   {
@@ -26643,7 +27227,7 @@
               }
              ],
              "classes": [
-              "gd-td29"
+              "gd-td38"
              ]
             },
             {
@@ -26654,7 +27238,7 @@
                "tagName": "p",
                "classes": [
                 "gd-p",
-                "gd-p11"
+                "gd-p16"
                ],
                "components": [
                 {
@@ -26665,7 +27249,7 @@
               }
              ],
              "classes": [
-              "gd-td30"
+              "gd-td39"
              ]
             },
             {
@@ -26676,13 +27260,13 @@
                "tagName": "p",
                "classes": [
                 "gd-p",
-                "gd-p31"
+                "gd-p40"
                ],
                "components": [
                 {
                  "tagName": "span",
                  "classes": [
-                  "gd-c28"
+                  "gd-c37"
                  ],
                  "components": [
                   {
@@ -26694,7 +27278,7 @@
                 {
                  "tagName": "span",
                  "classes": [
-                  "gd-c28",
+                  "gd-c37",
                   "gd-pageno"
                  ],
                  "components": [
@@ -26707,7 +27291,7 @@
                 {
                  "tagName": "span",
                  "classes": [
-                  "gd-c28"
+                  "gd-c37"
                  ],
                  "components": [
                   {
@@ -26719,7 +27303,7 @@
                 {
                  "tagName": "span",
                  "classes": [
-                  "gd-c28",
+                  "gd-c37",
                   "gd-pagecount"
                  ],
                  "components": [
@@ -26733,7 +27317,7 @@
               }
              ],
              "classes": [
-              "gd-td32"
+              "gd-td41"
              ]
             },
             {
@@ -26750,7 +27334,7 @@
               }
              ],
              "classes": [
-              "gd-td33"
+              "gd-td42"
              ]
             }
            ]
@@ -26793,7 +27377,7 @@
        "type": "table",
        "classes": [
         "gd-table",
-        "gd-t34"
+        "gd-t43"
        ],
        "components": [
         {
@@ -26816,7 +27400,7 @@
                 {
                  "tagName": "span",
                  "classes": [
-                  "gd-c28"
+                  "gd-c37"
                  ],
                  "components": [
                   {
@@ -26828,7 +27412,7 @@
                 {
                  "tagName": "span",
                  "classes": [
-                  "gd-c28",
+                  "gd-c37",
                   "gd-pageno"
                  ],
                  "components": [
@@ -26841,7 +27425,7 @@
                 {
                  "tagName": "span",
                  "classes": [
-                  "gd-c28"
+                  "gd-c37"
                  ],
                  "components": [
                   {
@@ -26853,7 +27437,7 @@
                 {
                  "tagName": "span",
                  "classes": [
-                  "gd-c28",
+                  "gd-c37",
                   "gd-pagecount"
                  ],
                  "components": [
@@ -26867,7 +27451,7 @@
               }
              ],
              "classes": [
-              "gd-td29"
+              "gd-td38"
              ]
             },
             {
@@ -26878,7 +27462,7 @@
                "tagName": "p",
                "classes": [
                 "gd-p",
-                "gd-p11"
+                "gd-p16"
                ],
                "components": [
                 {
@@ -26889,7 +27473,7 @@
               }
              ],
              "classes": [
-              "gd-td30"
+              "gd-td39"
              ]
             },
             {
@@ -26900,13 +27484,13 @@
                "tagName": "p",
                "classes": [
                 "gd-p",
-                "gd-p31"
+                "gd-p40"
                ],
                "components": [
                 {
                  "tagName": "span",
                  "classes": [
-                  "gd-c28"
+                  "gd-c37"
                  ],
                  "components": [
                   {
@@ -26919,7 +27503,7 @@
               }
              ],
              "classes": [
-              "gd-td32"
+              "gd-td41"
              ]
             },
             {
@@ -26930,13 +27514,13 @@
                "tagName": "p",
                "classes": [
                 "gd-p",
-                "gd-p35"
+                "gd-p44"
                ],
                "components": []
               }
              ],
              "classes": [
-              "gd-td33"
+              "gd-td42"
              ]
             }
            ]
@@ -38370,7 +38954,7 @@
        "type": "table",
        "classes": [
         "gd-table",
-        "gd-t34"
+        "gd-t43"
        ],
        "components": [
         {
@@ -38393,7 +38977,7 @@
                 {
                  "tagName": "span",
                  "classes": [
-                  "gd-c28"
+                  "gd-c37"
                  ],
                  "components": [
                   {
@@ -38406,7 +38990,7 @@
               }
              ],
              "classes": [
-              "gd-td29"
+              "gd-td38"
              ]
             },
             {
@@ -38417,7 +39001,7 @@
                "tagName": "p",
                "classes": [
                 "gd-p",
-                "gd-p11"
+                "gd-p16"
                ],
                "components": [
                 {
@@ -38428,7 +39012,7 @@
               }
              ],
              "classes": [
-              "gd-td30"
+              "gd-td39"
              ]
             },
             {
@@ -38439,13 +39023,13 @@
                "tagName": "p",
                "classes": [
                 "gd-p",
-                "gd-p31"
+                "gd-p40"
                ],
                "components": [
                 {
                  "tagName": "span",
                  "classes": [
-                  "gd-c28"
+                  "gd-c37"
                  ],
                  "components": [
                   {
@@ -38457,7 +39041,7 @@
                 {
                  "tagName": "span",
                  "classes": [
-                  "gd-c28",
+                  "gd-c37",
                   "gd-pageno"
                  ],
                  "components": [
@@ -38470,7 +39054,7 @@
                 {
                  "tagName": "span",
                  "classes": [
-                  "gd-c28"
+                  "gd-c37"
                  ],
                  "components": [
                   {
@@ -38482,7 +39066,7 @@
                 {
                  "tagName": "span",
                  "classes": [
-                  "gd-c28",
+                  "gd-c37",
                   "gd-pagecount"
                  ],
                  "components": [
@@ -38496,7 +39080,7 @@
               }
              ],
              "classes": [
-              "gd-td32"
+              "gd-td41"
              ]
             },
             {
@@ -38513,7 +39097,7 @@
               }
              ],
              "classes": [
-              "gd-td33"
+              "gd-td42"
              ]
             }
            ]
@@ -38556,7 +39140,7 @@
        "type": "table",
        "classes": [
         "gd-table",
-        "gd-t34"
+        "gd-t43"
        ],
        "components": [
         {
@@ -38579,7 +39163,7 @@
                 {
                  "tagName": "span",
                  "classes": [
-                  "gd-c28"
+                  "gd-c37"
                  ],
                  "components": [
                   {
@@ -38591,7 +39175,7 @@
                 {
                  "tagName": "span",
                  "classes": [
-                  "gd-c28",
+                  "gd-c37",
                   "gd-pageno"
                  ],
                  "components": [
@@ -38604,7 +39188,7 @@
                 {
                  "tagName": "span",
                  "classes": [
-                  "gd-c28"
+                  "gd-c37"
                  ],
                  "components": [
                   {
@@ -38616,7 +39200,7 @@
                 {
                  "tagName": "span",
                  "classes": [
-                  "gd-c28",
+                  "gd-c37",
                   "gd-pagecount"
                  ],
                  "components": [
@@ -38630,7 +39214,7 @@
               }
              ],
              "classes": [
-              "gd-td29"
+              "gd-td38"
              ]
             },
             {
@@ -38641,7 +39225,7 @@
                "tagName": "p",
                "classes": [
                 "gd-p",
-                "gd-p11"
+                "gd-p16"
                ],
                "components": [
                 {
@@ -38652,7 +39236,7 @@
               }
              ],
              "classes": [
-              "gd-td30"
+              "gd-td39"
              ]
             },
             {
@@ -38663,13 +39247,13 @@
                "tagName": "p",
                "classes": [
                 "gd-p",
-                "gd-p31"
+                "gd-p40"
                ],
                "components": [
                 {
                  "tagName": "span",
                  "classes": [
-                  "gd-c28"
+                  "gd-c37"
                  ],
                  "components": [
                   {
@@ -38682,7 +39266,7 @@
               }
              ],
              "classes": [
-              "gd-td32"
+              "gd-td41"
              ]
             },
             {
@@ -38693,13 +39277,13 @@
                "tagName": "p",
                "classes": [
                 "gd-p",
-                "gd-p35"
+                "gd-p44"
                ],
                "components": []
               }
              ],
              "classes": [
-              "gd-td33"
+              "gd-td42"
              ]
             }
            ]
@@ -46838,7 +47422,7 @@
        "type": "table",
        "classes": [
         "gd-table",
-        "gd-t34"
+        "gd-t43"
        ],
        "components": [
         {
@@ -46861,7 +47445,7 @@
                 {
                  "tagName": "span",
                  "classes": [
-                  "gd-c28"
+                  "gd-c37"
                  ],
                  "components": [
                   {
@@ -46874,7 +47458,7 @@
               }
              ],
              "classes": [
-              "gd-td29"
+              "gd-td38"
              ]
             },
             {
@@ -46885,7 +47469,7 @@
                "tagName": "p",
                "classes": [
                 "gd-p",
-                "gd-p11"
+                "gd-p16"
                ],
                "components": [
                 {
@@ -46896,7 +47480,7 @@
               }
              ],
              "classes": [
-              "gd-td30"
+              "gd-td39"
              ]
             },
             {
@@ -46907,13 +47491,13 @@
                "tagName": "p",
                "classes": [
                 "gd-p",
-                "gd-p31"
+                "gd-p40"
                ],
                "components": [
                 {
                  "tagName": "span",
                  "classes": [
-                  "gd-c28"
+                  "gd-c37"
                  ],
                  "components": [
                   {
@@ -46925,7 +47509,7 @@
                 {
                  "tagName": "span",
                  "classes": [
-                  "gd-c28",
+                  "gd-c37",
                   "gd-pageno"
                  ],
                  "components": [
@@ -46938,7 +47522,7 @@
                 {
                  "tagName": "span",
                  "classes": [
-                  "gd-c28"
+                  "gd-c37"
                  ],
                  "components": [
                   {
@@ -46950,7 +47534,7 @@
                 {
                  "tagName": "span",
                  "classes": [
-                  "gd-c28",
+                  "gd-c37",
                   "gd-pagecount"
                  ],
                  "components": [
@@ -46964,7 +47548,7 @@
               }
              ],
              "classes": [
-              "gd-td32"
+              "gd-td41"
              ]
             },
             {
@@ -46981,7 +47565,7 @@
               }
              ],
              "classes": [
-              "gd-td33"
+              "gd-td42"
              ]
             }
            ]
@@ -47024,7 +47608,7 @@
        "type": "table",
        "classes": [
         "gd-table",
-        "gd-t34"
+        "gd-t43"
        ],
        "components": [
         {
@@ -47047,7 +47631,7 @@
                 {
                  "tagName": "span",
                  "classes": [
-                  "gd-c28"
+                  "gd-c37"
                  ],
                  "components": [
                   {
@@ -47059,7 +47643,7 @@
                 {
                  "tagName": "span",
                  "classes": [
-                  "gd-c28",
+                  "gd-c37",
                   "gd-pageno"
                  ],
                  "components": [
@@ -47072,7 +47656,7 @@
                 {
                  "tagName": "span",
                  "classes": [
-                  "gd-c28"
+                  "gd-c37"
                  ],
                  "components": [
                   {
@@ -47084,7 +47668,7 @@
                 {
                  "tagName": "span",
                  "classes": [
-                  "gd-c28",
+                  "gd-c37",
                   "gd-pagecount"
                  ],
                  "components": [
@@ -47098,7 +47682,7 @@
               }
              ],
              "classes": [
-              "gd-td29"
+              "gd-td38"
              ]
             },
             {
@@ -47109,7 +47693,7 @@
                "tagName": "p",
                "classes": [
                 "gd-p",
-                "gd-p11"
+                "gd-p16"
                ],
                "components": [
                 {
@@ -47120,7 +47704,7 @@
               }
              ],
              "classes": [
-              "gd-td30"
+              "gd-td39"
              ]
             },
             {
@@ -47131,13 +47715,13 @@
                "tagName": "p",
                "classes": [
                 "gd-p",
-                "gd-p31"
+                "gd-p40"
                ],
                "components": [
                 {
                  "tagName": "span",
                  "classes": [
-                  "gd-c28"
+                  "gd-c37"
                  ],
                  "components": [
                   {
@@ -47150,7 +47734,7 @@
               }
              ],
              "classes": [
-              "gd-td32"
+              "gd-td41"
              ]
             },
             {
@@ -47161,13 +47745,13 @@
                "tagName": "p",
                "classes": [
                 "gd-p",
-                "gd-p35"
+                "gd-p44"
                ],
                "components": []
               }
              ],
              "classes": [
-              "gd-td33"
+              "gd-td42"
              ]
             }
            ]
@@ -51216,7 +51800,7 @@
        "type": "table",
        "classes": [
         "gd-table",
-        "gd-t34"
+        "gd-t43"
        ],
        "components": [
         {
@@ -51239,7 +51823,7 @@
                 {
                  "tagName": "span",
                  "classes": [
-                  "gd-c28"
+                  "gd-c37"
                  ],
                  "components": [
                   {
@@ -51252,7 +51836,7 @@
               }
              ],
              "classes": [
-              "gd-td29"
+              "gd-td38"
              ]
             },
             {
@@ -51263,7 +51847,7 @@
                "tagName": "p",
                "classes": [
                 "gd-p",
-                "gd-p11"
+                "gd-p16"
                ],
                "components": [
                 {
@@ -51274,7 +51858,7 @@
               }
              ],
              "classes": [
-              "gd-td30"
+              "gd-td39"
              ]
             },
             {
@@ -51285,13 +51869,13 @@
                "tagName": "p",
                "classes": [
                 "gd-p",
-                "gd-p31"
+                "gd-p40"
                ],
                "components": [
                 {
                  "tagName": "span",
                  "classes": [
-                  "gd-c28"
+                  "gd-c37"
                  ],
                  "components": [
                   {
@@ -51303,7 +51887,7 @@
                 {
                  "tagName": "span",
                  "classes": [
-                  "gd-c28",
+                  "gd-c37",
                   "gd-pageno"
                  ],
                  "components": [
@@ -51316,7 +51900,7 @@
                 {
                  "tagName": "span",
                  "classes": [
-                  "gd-c28"
+                  "gd-c37"
                  ],
                  "components": [
                   {
@@ -51328,7 +51912,7 @@
                 {
                  "tagName": "span",
                  "classes": [
-                  "gd-c28",
+                  "gd-c37",
                   "gd-pagecount"
                  ],
                  "components": [
@@ -51342,7 +51926,7 @@
               }
              ],
              "classes": [
-              "gd-td32"
+              "gd-td41"
              ]
             },
             {
@@ -51359,7 +51943,7 @@
               }
              ],
              "classes": [
-              "gd-td33"
+              "gd-td42"
              ]
             }
            ]
@@ -51402,7 +51986,7 @@
        "type": "table",
        "classes": [
         "gd-table",
-        "gd-t34"
+        "gd-t43"
        ],
        "components": [
         {
@@ -51425,7 +52009,7 @@
                 {
                  "tagName": "span",
                  "classes": [
-                  "gd-c28"
+                  "gd-c37"
                  ],
                  "components": [
                   {
@@ -51437,7 +52021,7 @@
                 {
                  "tagName": "span",
                  "classes": [
-                  "gd-c28",
+                  "gd-c37",
                   "gd-pageno"
                  ],
                  "components": [
@@ -51450,7 +52034,7 @@
                 {
                  "tagName": "span",
                  "classes": [
-                  "gd-c28"
+                  "gd-c37"
                  ],
                  "components": [
                   {
@@ -51462,7 +52046,7 @@
                 {
                  "tagName": "span",
                  "classes": [
-                  "gd-c28",
+                  "gd-c37",
                   "gd-pagecount"
                  ],
                  "components": [
@@ -51476,7 +52060,7 @@
               }
              ],
              "classes": [
-              "gd-td29"
+              "gd-td38"
              ]
             },
             {
@@ -51487,7 +52071,7 @@
                "tagName": "p",
                "classes": [
                 "gd-p",
-                "gd-p11"
+                "gd-p16"
                ],
                "components": [
                 {
@@ -51498,7 +52082,7 @@
               }
              ],
              "classes": [
-              "gd-td30"
+              "gd-td39"
              ]
             },
             {
@@ -51509,13 +52093,13 @@
                "tagName": "p",
                "classes": [
                 "gd-p",
-                "gd-p31"
+                "gd-p40"
                ],
                "components": [
                 {
                  "tagName": "span",
                  "classes": [
-                  "gd-c28"
+                  "gd-c37"
                  ],
                  "components": [
                   {
@@ -51528,7 +52112,7 @@
               }
              ],
              "classes": [
-              "gd-td32"
+              "gd-td41"
              ]
             },
             {
@@ -51539,13 +52123,13 @@
                "tagName": "p",
                "classes": [
                 "gd-p",
-                "gd-p35"
+                "gd-p44"
                ],
                "components": []
               }
              ],
              "classes": [
-              "gd-td33"
+              "gd-td42"
              ]
             }
            ]
@@ -51604,7 +52188,7 @@
                  "tagName": "div",
                  "classes": [
                   "gd-pagebg",
-                  "gd-bg63"
+                  "gd-bg84"
                  ],
                  "components": []
                 },
@@ -51657,7 +52241,7 @@
                  "type": "table",
                  "classes": [
                   "gd-table",
-                  "gd-t34"
+                  "gd-t43"
                  ],
                  "components": [
                   {
@@ -51680,7 +52264,7 @@
                           {
                            "tagName": "span",
                            "classes": [
-                            "gd-c28"
+                            "gd-c37"
                            ],
                            "components": [
                             {
@@ -51693,7 +52277,7 @@
                         }
                        ],
                        "classes": [
-                        "gd-td64"
+                        "gd-td85"
                        ]
                       },
                       {
@@ -51704,13 +52288,13 @@
                          "tagName": "p",
                          "classes": [
                           "gd-p",
-                          "gd-p65"
+                          "gd-p86"
                          ],
                          "components": []
                         }
                        ],
                        "classes": [
-                        "gd-td66"
+                        "gd-td87"
                        ]
                       },
                       {
@@ -51721,13 +52305,13 @@
                          "tagName": "p",
                          "classes": [
                           "gd-p",
-                          "gd-p31"
+                          "gd-p40"
                          ],
                          "components": [
                           {
                            "tagName": "span",
                            "classes": [
-                            "gd-c28"
+                            "gd-c37"
                            ],
                            "components": [
                             {
@@ -51739,7 +52323,7 @@
                           {
                            "tagName": "span",
                            "classes": [
-                            "gd-c28",
+                            "gd-c37",
                             "gd-pageno"
                            ],
                            "components": [
@@ -51752,7 +52336,7 @@
                           {
                            "tagName": "span",
                            "classes": [
-                            "gd-c28"
+                            "gd-c37"
                            ],
                            "components": [
                             {
@@ -51764,7 +52348,7 @@
                           {
                            "tagName": "span",
                            "classes": [
-                            "gd-c28",
+                            "gd-c37",
                             "gd-pagecount"
                            ],
                            "components": [
@@ -51778,7 +52362,7 @@
                         }
                        ],
                        "classes": [
-                        "gd-td67"
+                        "gd-td88"
                        ]
                       },
                       {
@@ -51795,7 +52379,7 @@
                         }
                        ],
                        "classes": [
-                        "gd-td68"
+                        "gd-td89"
                        ]
                       }
                      ]
@@ -51840,7 +52424,7 @@
                  "type": "table",
                  "classes": [
                   "gd-table",
-                  "gd-t34"
+                  "gd-t43"
                  ],
                  "components": [
                   {
@@ -51863,7 +52447,7 @@
                           {
                            "tagName": "span",
                            "classes": [
-                            "gd-c28"
+                            "gd-c37"
                            ],
                            "components": [
                             {
@@ -51875,7 +52459,7 @@
                           {
                            "tagName": "span",
                            "classes": [
-                            "gd-c28",
+                            "gd-c37",
                             "gd-pageno"
                            ],
                            "components": [
@@ -51888,7 +52472,7 @@
                           {
                            "tagName": "span",
                            "classes": [
-                            "gd-c28"
+                            "gd-c37"
                            ],
                            "components": [
                             {
@@ -51900,7 +52484,7 @@
                           {
                            "tagName": "span",
                            "classes": [
-                            "gd-c28",
+                            "gd-c37",
                             "gd-pagecount"
                            ],
                            "components": [
@@ -51914,7 +52498,7 @@
                         }
                        ],
                        "classes": [
-                        "gd-td64"
+                        "gd-td85"
                        ]
                       },
                       {
@@ -51925,13 +52509,13 @@
                          "tagName": "p",
                          "classes": [
                           "gd-p",
-                          "gd-p65"
+                          "gd-p86"
                          ],
                          "components": []
                         }
                        ],
                        "classes": [
-                        "gd-td66"
+                        "gd-td87"
                        ]
                       },
                       {
@@ -51942,13 +52526,13 @@
                          "tagName": "p",
                          "classes": [
                           "gd-p",
-                          "gd-p31"
+                          "gd-p40"
                          ],
                          "components": [
                           {
                            "tagName": "span",
                            "classes": [
-                            "gd-c28"
+                            "gd-c37"
                            ],
                            "components": [
                             {
@@ -51961,7 +52545,7 @@
                         }
                        ],
                        "classes": [
-                        "gd-td67"
+                        "gd-td88"
                        ]
                       },
                       {
@@ -51972,13 +52556,13 @@
                          "tagName": "p",
                          "classes": [
                           "gd-p",
-                          "gd-p35"
+                          "gd-p44"
                          ],
                          "components": []
                         }
                        ],
                        "classes": [
-                        "gd-td68"
+                        "gd-td89"
                        ]
                       }
                      ]
@@ -52048,13 +52632,13 @@
                    "tagName": "p",
                    "classes": [
                     "gd-p",
-                    "gd-p11"
+                    "gd-p16"
                    ],
                    "components": [
                     {
                      "tagName": "span",
                      "classes": [
-                      "gd-c69"
+                      "gd-c90"
                      ],
                      "components": [
                       {
@@ -52070,7 +52654,7 @@
                    "tagName": "p",
                    "classes": [
                     "gd-p",
-                    "gd-p11"
+                    "gd-p16"
                    ],
                    "components": []
                   },
@@ -52079,13 +52663,13 @@
                    "tagName": "p",
                    "classes": [
                     "gd-p",
-                    "gd-p11"
+                    "gd-p16"
                    ],
                    "components": [
                     {
                      "tagName": "span",
                      "classes": [
-                      "gd-c28"
+                      "gd-c37"
                      ],
                      "components": [
                       {
@@ -52101,7 +52685,7 @@
                    "tagName": "p",
                    "classes": [
                     "gd-p",
-                    "gd-p11"
+                    "gd-p16"
                    ],
                    "components": []
                   },
@@ -52123,21 +52707,21 @@
                         {
                          "type": "cell",
                          "classes": [
-                          "gd-col76"
+                          "gd-col97"
                          ],
                          "components": []
                         },
                         {
                          "type": "cell",
                          "classes": [
-                          "gd-col77"
+                          "gd-col98"
                          ],
                          "components": []
                         },
                         {
                          "type": "cell",
                          "classes": [
-                          "gd-col78"
+                          "gd-col99"
                          ],
                          "components": []
                         }
@@ -52156,22 +52740,30 @@
                          "type": "cell",
                          "components": [
                           {
-                           "type": "text",
-                           "tagName": "p",
+                           "tagName": "div",
                            "classes": [
-                            "gd-p",
-                            "gd-p11"
+                            "gd-x71"
                            ],
                            "components": [
                             {
-                             "tagName": "span",
+                             "type": "text",
+                             "tagName": "p",
                              "classes": [
-                              "gd-c28"
+                              "gd-p",
+                              "gd-p16"
                              ],
                              "components": [
                               {
-                               "type": "textnode",
-                               "content": "Option A"
+                               "tagName": "span",
+                               "classes": [
+                                "gd-c37"
+                               ],
+                               "components": [
+                                {
+                                 "type": "textnode",
+                                 "content": "Option A"
+                                }
+                               ]
                               }
                              ]
                             }
@@ -52179,7 +52771,7 @@
                           }
                          ],
                          "classes": [
-                          "gd-td70"
+                          "gd-td91"
                          ],
                          "attributes": {
                           "colspan": "3"
@@ -52187,7 +52779,7 @@
                         }
                        ],
                        "classes": [
-                        "gd-tr52"
+                        "gd-tr72"
                        ]
                       },
                       {
@@ -52197,22 +52789,30 @@
                          "type": "cell",
                          "components": [
                           {
-                           "type": "text",
-                           "tagName": "p",
+                           "tagName": "div",
                            "classes": [
-                            "gd-p",
-                            "gd-p1"
+                            "gd-x71"
                            ],
                            "components": [
                             {
-                             "tagName": "span",
+                             "type": "text",
+                             "tagName": "p",
                              "classes": [
-                              "gd-c28"
+                              "gd-p",
+                              "gd-p1"
                              ],
                              "components": [
                               {
-                               "type": "textnode",
-                               "content": "Description Of Scheduled Property"
+                               "tagName": "span",
+                               "classes": [
+                                "gd-c37"
+                               ],
+                               "components": [
+                                {
+                                 "type": "textnode",
+                                 "content": "Description Of Scheduled Property"
+                                }
+                               ]
                               }
                              ]
                             }
@@ -52220,7 +52820,7 @@
                           }
                          ],
                          "classes": [
-                          "gd-td71"
+                          "gd-td92"
                          ],
                          "attributes": {
                           "colspan": "2"
@@ -52230,22 +52830,30 @@
                          "type": "cell",
                          "components": [
                           {
-                           "type": "text",
-                           "tagName": "p",
+                           "tagName": "div",
                            "classes": [
-                            "gd-p",
-                            "gd-p1"
+                            "gd-x71"
                            ],
                            "components": [
                             {
-                             "tagName": "span",
+                             "type": "text",
+                             "tagName": "p",
                              "classes": [
-                              "gd-c28"
+                              "gd-p",
+                              "gd-p1"
                              ],
                              "components": [
                               {
-                               "type": "textnode",
-                               "content": "Limit Of Insurance"
+                               "tagName": "span",
+                               "classes": [
+                                "gd-c37"
+                               ],
+                               "components": [
+                                {
+                                 "type": "textnode",
+                                 "content": "Limit Of Insurance"
+                                }
+                               ]
                               }
                              ]
                             }
@@ -52253,12 +52861,12 @@
                           }
                          ],
                          "classes": [
-                          "gd-td71"
+                          "gd-td92"
                          ]
                         }
                        ],
                        "classes": [
-                        "gd-tr52"
+                        "gd-tr72"
                        ]
                       }
                      ],
@@ -52291,7 +52899,7 @@
                             {
                              "tagName": "span",
                              "classes": [
-                              "gd-c28"
+                              "gd-c37"
                              ],
                              "components": [
                               {
@@ -52304,7 +52912,7 @@
                           }
                          ],
                          "classes": [
-                          "gd-td72"
+                          "gd-td93"
                          ]
                         },
                         {
@@ -52327,7 +52935,7 @@
                           }
                          ],
                          "classes": [
-                          "gd-td73"
+                          "gd-td94"
                          ]
                         },
                         {
@@ -52345,7 +52953,7 @@
                             {
                              "tagName": "span",
                              "classes": [
-                              "gd-c28"
+                              "gd-c37"
                              ],
                              "components": [
                               {
@@ -52363,9 +52971,17 @@
                                "tagName": "span",
                                "components": [
                                 {
-                                 "type": "data-field",
-                                 "field": "Item.Limit",
-                                 "format": "number"
+                                 "tagName": "span",
+                                 "classes": [
+                                  "gd-c37"
+                                 ],
+                                 "components": [
+                                  {
+                                   "type": "data-field",
+                                   "field": "Item.Limit",
+                                   "format": "number"
+                                  }
+                                 ]
                                 }
                                ],
                                "field": "Item.Limit",
@@ -52380,9 +52996,17 @@
                                "tagName": "span",
                                "components": [
                                 {
-                                 "type": "data-field",
-                                 "field": "Item.LimitWording",
-                                 "format": ""
+                                 "tagName": "span",
+                                 "classes": [
+                                  "gd-c37"
+                                 ],
+                                 "components": [
+                                  {
+                                   "type": "data-field",
+                                   "field": "Item.LimitWording",
+                                   "format": ""
+                                  }
+                                 ]
                                 }
                                ],
                                "field": "",
@@ -52401,12 +53025,12 @@
                           }
                          ],
                          "classes": [
-                          "gd-td74"
+                          "gd-td95"
                          ]
                         }
                        ],
                        "classes": [
-                        "gd-tr75"
+                        "gd-tr96"
                        ]
                       }
                      ],
@@ -52452,21 +53076,21 @@
                         {
                          "type": "cell",
                          "classes": [
-                          "gd-col76"
+                          "gd-col97"
                          ],
                          "components": []
                         },
                         {
                          "type": "cell",
                          "classes": [
-                          "gd-col84"
+                          "gd-col106"
                          ],
                          "components": []
                         },
                         {
                          "type": "cell",
                          "classes": [
-                          "gd-col85"
+                          "gd-col107"
                          ],
                          "components": []
                         }
@@ -52485,22 +53109,30 @@
                          "type": "cell",
                          "components": [
                           {
-                           "type": "text",
-                           "tagName": "p",
+                           "tagName": "div",
                            "classes": [
-                            "gd-p",
-                            "gd-p11"
+                            "gd-x60"
                            ],
                            "components": [
                             {
-                             "tagName": "span",
+                             "type": "text",
+                             "tagName": "p",
                              "classes": [
-                              "gd-c28"
+                              "gd-p",
+                              "gd-p16"
                              ],
                              "components": [
                               {
-                               "type": "textnode",
-                               "content": "Option B"
+                               "tagName": "span",
+                               "classes": [
+                                "gd-c37"
+                               ],
+                               "components": [
+                                {
+                                 "type": "textnode",
+                                 "content": "Option B"
+                                }
+                               ]
                               }
                              ]
                             }
@@ -52508,7 +53140,7 @@
                           }
                          ],
                          "classes": [
-                          "gd-td70"
+                          "gd-td91"
                          ],
                          "attributes": {
                           "colspan": "3"
@@ -52516,7 +53148,7 @@
                         }
                        ],
                        "classes": [
-                        "gd-tr47"
+                        "gd-tr62"
                        ]
                       },
                       {
@@ -52526,22 +53158,30 @@
                          "type": "cell",
                          "components": [
                           {
-                           "type": "text",
-                           "tagName": "p",
+                           "tagName": "div",
                            "classes": [
-                            "gd-p",
-                            "gd-p1"
+                            "gd-x100"
                            ],
                            "components": [
                             {
-                             "tagName": "span",
+                             "type": "text",
+                             "tagName": "p",
                              "classes": [
-                              "gd-c28"
+                              "gd-p",
+                              "gd-p1"
                              ],
                              "components": [
                               {
-                               "type": "textnode",
-                               "content": "Description Of Scheduled Property"
+                               "tagName": "span",
+                               "classes": [
+                                "gd-c37"
+                               ],
+                               "components": [
+                                {
+                                 "type": "textnode",
+                                 "content": "Description Of Scheduled Property"
+                                }
+                               ]
                               }
                              ]
                             }
@@ -52549,7 +53189,7 @@
                           }
                          ],
                          "classes": [
-                          "gd-td71"
+                          "gd-td92"
                          ],
                          "attributes": {
                           "colspan": "3"
@@ -52557,7 +53197,7 @@
                         }
                        ],
                        "classes": [
-                        "gd-tr79"
+                        "gd-tr101"
                        ]
                       }
                      ],
@@ -52590,7 +53230,7 @@
                             {
                              "tagName": "span",
                              "classes": [
-                              "gd-c28"
+                              "gd-c37"
                              ],
                              "components": [
                               {
@@ -52603,7 +53243,7 @@
                           }
                          ],
                          "classes": [
-                          "gd-td72"
+                          "gd-td93"
                          ]
                         },
                         {
@@ -52626,7 +53266,7 @@
                           }
                          ],
                          "classes": [
-                          "gd-td73"
+                          "gd-td94"
                          ],
                          "attributes": {
                           "colspan": "2"
@@ -52634,7 +53274,7 @@
                         }
                        ],
                        "classes": [
-                        "gd-tr80"
+                        "gd-tr102"
                        ]
                       }
                      ],
@@ -52663,7 +53303,7 @@
                             {
                              "tagName": "span",
                              "classes": [
-                              "gd-c28"
+                              "gd-c37"
                              ],
                              "components": [
                               {
@@ -52676,7 +53316,7 @@
                           }
                          ],
                          "classes": [
-                          "gd-td81"
+                          "gd-td103"
                          ],
                          "attributes": {
                           "colspan": "2"
@@ -52697,7 +53337,7 @@
                             {
                              "tagName": "span",
                              "classes": [
-                              "gd-c28"
+                              "gd-c37"
                              ],
                              "components": [
                               {
@@ -52753,12 +53393,12 @@
                           }
                          ],
                          "classes": [
-                          "gd-td82"
+                          "gd-td104"
                          ]
                         }
                        ],
                        "classes": [
-                        "gd-tr83"
+                        "gd-tr105"
                        ]
                       }
                      ],
@@ -52776,7 +53416,8 @@
                    "tagName": "p",
                    "classes": [
                     "gd-p",
-                    "gd-p1"
+                    "gd-p1",
+                    "gd-m108"
                    ],
                    "components": []
                   },
@@ -52785,7 +53426,8 @@
                    "tagName": "p",
                    "classes": [
                     "gd-p",
-                    "gd-p1"
+                    "gd-p1",
+                    "gd-m108"
                    ],
                    "components": []
                   }
@@ -52806,13 +53448,13 @@
                    "tagName": "p",
                    "classes": [
                     "gd-p",
-                    "gd-p11"
+                    "gd-p16"
                    ],
                    "components": [
                     {
                      "tagName": "span",
                      "classes": [
-                      "gd-c69"
+                      "gd-c90"
                      ],
                      "components": [
                       {
@@ -52828,7 +53470,7 @@
                    "tagName": "p",
                    "classes": [
                     "gd-p",
-                    "gd-p11"
+                    "gd-p16"
                    ],
                    "components": []
                   },
@@ -52837,13 +53479,13 @@
                    "tagName": "p",
                    "classes": [
                     "gd-p",
-                    "gd-p11"
+                    "gd-p16"
                    ],
                    "components": [
                     {
                      "tagName": "span",
                      "classes": [
-                      "gd-c28"
+                      "gd-c37"
                      ],
                      "components": [
                       {
@@ -52859,7 +53501,7 @@
                    "tagName": "p",
                    "classes": [
                     "gd-p",
-                    "gd-p11"
+                    "gd-p16"
                    ],
                    "components": []
                   },
@@ -52881,21 +53523,21 @@
                         {
                          "type": "cell",
                          "classes": [
-                          "gd-col76"
+                          "gd-col97"
                          ],
                          "components": []
                         },
                         {
                          "type": "cell",
                          "classes": [
-                          "gd-col77"
+                          "gd-col98"
                          ],
                          "components": []
                         },
                         {
                          "type": "cell",
                          "classes": [
-                          "gd-col78"
+                          "gd-col99"
                          ],
                          "components": []
                         }
@@ -52914,22 +53556,30 @@
                          "type": "cell",
                          "components": [
                           {
-                           "type": "text",
-                           "tagName": "p",
+                           "tagName": "div",
                            "classes": [
-                            "gd-p",
-                            "gd-p11"
+                            "gd-x71"
                            ],
                            "components": [
                             {
-                             "tagName": "span",
+                             "type": "text",
+                             "tagName": "p",
                              "classes": [
-                              "gd-c28"
+                              "gd-p",
+                              "gd-p16"
                              ],
                              "components": [
                               {
-                               "type": "textnode",
-                               "content": "Option A"
+                               "tagName": "span",
+                               "classes": [
+                                "gd-c37"
+                               ],
+                               "components": [
+                                {
+                                 "type": "textnode",
+                                 "content": "Option A"
+                                }
+                               ]
                               }
                              ]
                             }
@@ -52937,7 +53587,7 @@
                           }
                          ],
                          "classes": [
-                          "gd-td70"
+                          "gd-td91"
                          ],
                          "attributes": {
                           "colspan": "3"
@@ -52945,7 +53595,7 @@
                         }
                        ],
                        "classes": [
-                        "gd-tr52"
+                        "gd-tr72"
                        ]
                       },
                       {
@@ -52955,22 +53605,30 @@
                          "type": "cell",
                          "components": [
                           {
-                           "type": "text",
-                           "tagName": "p",
+                           "tagName": "div",
                            "classes": [
-                            "gd-p",
-                            "gd-p1"
+                            "gd-x71"
                            ],
                            "components": [
                             {
-                             "tagName": "span",
+                             "type": "text",
+                             "tagName": "p",
                              "classes": [
-                              "gd-c28"
+                              "gd-p",
+                              "gd-p1"
                              ],
                              "components": [
                               {
-                               "type": "textnode",
-                               "content": "Description Of Scheduled Property"
+                               "tagName": "span",
+                               "classes": [
+                                "gd-c37"
+                               ],
+                               "components": [
+                                {
+                                 "type": "textnode",
+                                 "content": "Description Of Scheduled Property"
+                                }
+                               ]
                               }
                              ]
                             }
@@ -52978,7 +53636,7 @@
                           }
                          ],
                          "classes": [
-                          "gd-td71"
+                          "gd-td92"
                          ],
                          "attributes": {
                           "colspan": "2"
@@ -52988,22 +53646,30 @@
                          "type": "cell",
                          "components": [
                           {
-                           "type": "text",
-                           "tagName": "p",
+                           "tagName": "div",
                            "classes": [
-                            "gd-p",
-                            "gd-p1"
+                            "gd-x71"
                            ],
                            "components": [
                             {
-                             "tagName": "span",
+                             "type": "text",
+                             "tagName": "p",
                              "classes": [
-                              "gd-c28"
+                              "gd-p",
+                              "gd-p1"
                              ],
                              "components": [
                               {
-                               "type": "textnode",
-                               "content": "Limit Of Insurance"
+                               "tagName": "span",
+                               "classes": [
+                                "gd-c37"
+                               ],
+                               "components": [
+                                {
+                                 "type": "textnode",
+                                 "content": "Limit Of Insurance"
+                                }
+                               ]
                               }
                              ]
                             }
@@ -53011,12 +53677,12 @@
                           }
                          ],
                          "classes": [
-                          "gd-td71"
+                          "gd-td92"
                          ]
                         }
                        ],
                        "classes": [
-                        "gd-tr52"
+                        "gd-tr72"
                        ]
                       }
                      ],
@@ -53049,7 +53715,7 @@
                             {
                              "tagName": "span",
                              "classes": [
-                              "gd-c28"
+                              "gd-c37"
                              ],
                              "components": [
                               {
@@ -53062,7 +53728,7 @@
                           }
                          ],
                          "classes": [
-                          "gd-td72"
+                          "gd-td93"
                          ]
                         },
                         {
@@ -53085,7 +53751,7 @@
                           }
                          ],
                          "classes": [
-                          "gd-td73"
+                          "gd-td94"
                          ]
                         },
                         {
@@ -53103,7 +53769,7 @@
                             {
                              "tagName": "span",
                              "classes": [
-                              "gd-c28"
+                              "gd-c37"
                              ],
                              "components": [
                               {
@@ -53121,9 +53787,17 @@
                                "tagName": "span",
                                "components": [
                                 {
-                                 "type": "data-field",
-                                 "field": "Item.Limit",
-                                 "format": "number"
+                                 "tagName": "span",
+                                 "classes": [
+                                  "gd-c37"
+                                 ],
+                                 "components": [
+                                  {
+                                   "type": "data-field",
+                                   "field": "Item.Limit",
+                                   "format": "number"
+                                  }
+                                 ]
                                 }
                                ],
                                "field": "Item.Limit",
@@ -53138,9 +53812,17 @@
                                "tagName": "span",
                                "components": [
                                 {
-                                 "type": "data-field",
-                                 "field": "Item.LimitWording",
-                                 "format": ""
+                                 "tagName": "span",
+                                 "classes": [
+                                  "gd-c37"
+                                 ],
+                                 "components": [
+                                  {
+                                   "type": "data-field",
+                                   "field": "Item.LimitWording",
+                                   "format": ""
+                                  }
+                                 ]
                                 }
                                ],
                                "field": "",
@@ -53159,12 +53841,12 @@
                           }
                          ],
                          "classes": [
-                          "gd-td74"
+                          "gd-td95"
                          ]
                         }
                        ],
                        "classes": [
-                        "gd-tr75"
+                        "gd-tr96"
                        ]
                       }
                      ],
@@ -53210,21 +53892,21 @@
                         {
                          "type": "cell",
                          "classes": [
-                          "gd-col76"
+                          "gd-col97"
                          ],
                          "components": []
                         },
                         {
                          "type": "cell",
                          "classes": [
-                          "gd-col84"
+                          "gd-col106"
                          ],
                          "components": []
                         },
                         {
                          "type": "cell",
                          "classes": [
-                          "gd-col85"
+                          "gd-col107"
                          ],
                          "components": []
                         }
@@ -53243,22 +53925,30 @@
                          "type": "cell",
                          "components": [
                           {
-                           "type": "text",
-                           "tagName": "p",
+                           "tagName": "div",
                            "classes": [
-                            "gd-p",
-                            "gd-p11"
+                            "gd-x60"
                            ],
                            "components": [
                             {
-                             "tagName": "span",
+                             "type": "text",
+                             "tagName": "p",
                              "classes": [
-                              "gd-c28"
+                              "gd-p",
+                              "gd-p16"
                              ],
                              "components": [
                               {
-                               "type": "textnode",
-                               "content": "Option B"
+                               "tagName": "span",
+                               "classes": [
+                                "gd-c37"
+                               ],
+                               "components": [
+                                {
+                                 "type": "textnode",
+                                 "content": "Option B"
+                                }
+                               ]
                               }
                              ]
                             }
@@ -53266,7 +53956,7 @@
                           }
                          ],
                          "classes": [
-                          "gd-td70"
+                          "gd-td91"
                          ],
                          "attributes": {
                           "colspan": "3"
@@ -53274,7 +53964,7 @@
                         }
                        ],
                        "classes": [
-                        "gd-tr47"
+                        "gd-tr62"
                        ]
                       },
                       {
@@ -53284,22 +53974,30 @@
                          "type": "cell",
                          "components": [
                           {
-                           "type": "text",
-                           "tagName": "p",
+                           "tagName": "div",
                            "classes": [
-                            "gd-p",
-                            "gd-p1"
+                            "gd-x100"
                            ],
                            "components": [
                             {
-                             "tagName": "span",
+                             "type": "text",
+                             "tagName": "p",
                              "classes": [
-                              "gd-c28"
+                              "gd-p",
+                              "gd-p1"
                              ],
                              "components": [
                               {
-                               "type": "textnode",
-                               "content": "Description Of Scheduled Property"
+                               "tagName": "span",
+                               "classes": [
+                                "gd-c37"
+                               ],
+                               "components": [
+                                {
+                                 "type": "textnode",
+                                 "content": "Description Of Scheduled Property"
+                                }
+                               ]
                               }
                              ]
                             }
@@ -53307,7 +54005,7 @@
                           }
                          ],
                          "classes": [
-                          "gd-td71"
+                          "gd-td92"
                          ],
                          "attributes": {
                           "colspan": "3"
@@ -53315,7 +54013,7 @@
                         }
                        ],
                        "classes": [
-                        "gd-tr79"
+                        "gd-tr101"
                        ]
                       }
                      ],
@@ -53348,7 +54046,7 @@
                             {
                              "tagName": "span",
                              "classes": [
-                              "gd-c28"
+                              "gd-c37"
                              ],
                              "components": [
                               {
@@ -53361,7 +54059,7 @@
                           }
                          ],
                          "classes": [
-                          "gd-td72"
+                          "gd-td93"
                          ]
                         },
                         {
@@ -53384,7 +54082,7 @@
                           }
                          ],
                          "classes": [
-                          "gd-td73"
+                          "gd-td94"
                          ],
                          "attributes": {
                           "colspan": "2"
@@ -53392,7 +54090,7 @@
                         }
                        ],
                        "classes": [
-                        "gd-tr80"
+                        "gd-tr102"
                        ]
                       }
                      ],
@@ -53421,7 +54119,7 @@
                             {
                              "tagName": "span",
                              "classes": [
-                              "gd-c28"
+                              "gd-c37"
                              ],
                              "components": [
                               {
@@ -53434,7 +54132,7 @@
                           }
                          ],
                          "classes": [
-                          "gd-td81"
+                          "gd-td103"
                          ],
                          "attributes": {
                           "colspan": "2"
@@ -53455,7 +54153,7 @@
                             {
                              "tagName": "span",
                              "classes": [
-                              "gd-c28"
+                              "gd-c37"
                              ],
                              "components": [
                               {
@@ -53511,12 +54209,12 @@
                           }
                          ],
                          "classes": [
-                          "gd-td82"
+                          "gd-td104"
                          ]
                         }
                        ],
                        "classes": [
-                        "gd-tr83"
+                        "gd-tr105"
                        ]
                       }
                      ],
@@ -53534,7 +54232,8 @@
                    "tagName": "p",
                    "classes": [
                     "gd-p",
-                    "gd-p1"
+                    "gd-p1",
+                    "gd-m108"
                    ],
                    "components": []
                   },
@@ -53543,7 +54242,8 @@
                    "tagName": "p",
                    "classes": [
                     "gd-p",
-                    "gd-p1"
+                    "gd-p1",
+                    "gd-m108"
                    ],
                    "components": []
                   }
@@ -53579,7 +54279,7 @@
    ]
   }
  ],
- "css": ".form-page{position:relative;width:612pt;height:792pt;overflow:hidden;background:#fff;}\n.form-page + .form-page{page-break-before:always;}\n@page gdflow{margin:54pt 0 69.1pt 0;}\n.gd-flow{page:gdflow;padding:0 54pt 0 54pt;}\n@page gdrun{margin:54pt 0 12.25pt 0;}\n.gd-flow.gd-run{page:gdrun;}\n.gd-doc table.gd-runt{width:100%;border-collapse:collapse;table-layout:fixed;}\n.gd-doc table.gd-runt>*>tr>td{padding:0;}\n.gd-doc table.gd-runt>thead>tr>td{height:0pt;vertical-align:top;}\n.gd-doc table.gd-runt>tfoot>tr>td{height:56.85pt;vertical-align:bottom;position:relative;}\n.gd-pdffoot-even{position:absolute;visibility:hidden;left:0;right:0;bottom:0;}\n.gd-doc table.gd-runt>thead>tr>td{position:relative;}\n.gd-pgmark{position:absolute;left:0;top:0;font-size:2pt;line-height:1;color:#fff;white-space:nowrap;}\n.gd-sheetfoot{position:absolute;background:#fff;}\n.gd-sheetfoot.gd-side-even{display:none;}\n.gd-foot-fixed{display:none;}\n@media print{.gd-foot-space{visibility:hidden;}.gd-foot-fixed{display:block;position:fixed;left:0;right:0;bottom:0;padding:0 54pt 0 54pt;}}\n.gd-if:empty{display:none;}\n.gd-flow:not(:has(:not(.gd-if))){display:none;}\n.form-page:not(:has(:not(.gd-if))){display:none;}\n.form-page .abs{position:absolute;white-space:pre;margin:0;padding:0;line-height:normal;}\n.form-page .rule{position:absolute;background:#000;}\n.form-page .gd-tb{white-space:normal;box-sizing:border-box;}\n.gd-doc .gd-pagebg{position:absolute;width:0;height:0;}\n.gd-doc .gd-anchor{position:relative;}\n.gd-doc .gd-anchored{position:absolute;box-sizing:border-box;}\n.gd-doc .gd-header{position:relative;}\n.gd-pagebg .abs{position:absolute;white-space:pre;margin:0;padding:0;line-height:normal;}\n.gd-pagebg .rule{position:absolute;background:#000;}\n.gd-pagebg .gd-tb{white-space:normal;box-sizing:border-box;}\n.gd-doc{font-family:'Arial',sans-serif;font-size:10pt;color:#000;line-height:1.15;}\n:where(.gd-doc) p{margin:0;}\n.gd-doc p:empty::before{content:\"\\00a0\";}\n.gd-doc p.gd-keepline{min-height:1lh;}\n.gd-doc .gd-table{border-collapse:collapse;table-layout:fixed;}\n:where(.gd-doc) td{vertical-align:top;padding:0 5.4pt;}\n.gd-doc tr.gd-grid td{height:0;padding:0;border:0;}\n.gd-doc .gd-box{margin:0 0 6pt 0;}\n.gd-doc .gd-tab{display:inline-block;width:36pt;}\n.gd-doc .gd-hang{display:inline-block;}\n.gd-doc .gd-img-missing{display:inline-block;border:1px dashed #9ca3af;color:#6b7280;font-size:7pt;}\n.gd-doc .gd-p1{line-height:1.15;}\n.gd-doc .gd-td2{padding:3.6pt 5.75pt 0pt 5.75pt;}\n.gd-doc .gd-tr3{height:22.05pt;}\n.gd-doc .gd-tr4{height:23.05pt;}\n.gd-doc .gd-col5{width:77.25pt;}\n.gd-doc .gd-col6{width:60.95pt;}\n.gd-doc .gd-col7{width:366pt;}\n.gd-doc .gd-t8{width:504.2pt;}\n.gd-doc .gd-tr9{height:18.45pt;}\n.gd-doc .gd-tr10{height:79.15pt;}\n.gd-doc .gd-p11{text-align:center;line-height:1.15;}\n.gd-doc .gd-td12{vertical-align:middle;padding:0pt 0pt 0pt 0pt;}\n.gd-doc .gd-tr13{height:15pt;}\n.gd-doc .gd-tr14{height:40.4pt;}\n.gd-doc .gd-td15{vertical-align:middle;padding:3.6pt 5.75pt 0pt 5.75pt;}\n.gd-doc .gd-td16{padding:3.6pt 5.75pt 0pt 0pt;}\n.gd-doc .gd-tr17{height:29.5pt;}\n.gd-doc .gd-tr18{height:29.4pt;}\n.gd-doc .gd-col19{width:9.7pt;}\n.gd-doc .gd-col20{width:4.5pt;}\n.gd-doc .gd-col21{width:14.15pt;}\n.gd-doc .gd-col22{width:230.75pt;}\n.gd-doc .gd-col23{width:14.1pt;}\n.gd-doc .gd-col24{width:62.5pt;}\n.gd-doc .gd-col25{width:7.5pt;}\n.gd-doc .gd-col26{width:160.5pt;}\n.gd-doc .gd-t27{width:503.7pt;}\n.gd-doc .gd-c28{font-weight:bold;}\n.gd-doc .gd-td29{width:110.05pt;vertical-align:bottom;padding:4.25pt 3.4pt 0pt 3.4pt;}\n.gd-doc .gd-td30{width:295.55pt;vertical-align:bottom;padding:4.25pt 3.4pt 0pt 3.4pt;}\n.gd-doc .gd-p31{text-align:right;line-height:1.15;}\n.gd-doc .gd-td32{width:104.4pt;vertical-align:bottom;padding:4.25pt 3.4pt 0pt 3.4pt;}\n.gd-doc .gd-td33{width:30pt;vertical-align:bottom;padding:4.25pt 3.4pt 0pt 3.4pt;}\n.gd-doc .gd-t34{width:540pt;margin-left:-3.6pt;}\n.gd-doc .gd-p35{margin-top:3pt;line-height:1.15;}\n.gd-doc .gd-td36{width:10.25pt;padding:3.6pt 5.75pt 0pt 5.75pt;}\n.gd-doc .gd-td37{width:325.3pt;padding:3.6pt 5.75pt 0pt 5.75pt;}\n.gd-doc .gd-td38{width:10.7pt;padding:3.6pt 5.75pt 0pt 5.75pt;}\n.gd-doc .gd-td39{width:158.05pt;padding:3.6pt 5.75pt 0pt 0pt;}\n.gd-doc .gd-tr40{height:34.55pt;}\n.gd-doc .gd-tr41{height:34.15pt;}\n.gd-doc .gd-col42{width:10.25pt;}\n.gd-doc .gd-col43{width:494.05pt;}\n.gd-doc .gd-td44{vertical-align:middle;padding:3.6pt 5.75pt 0pt 0pt;}\n.gd-doc .gd-tr45{height:18pt;}\n.gd-doc .gd-tr46{height:112.85pt;}\n.gd-doc .gd-tr47{height:15.1pt;}\n.gd-doc .gd-tr48{height:4.75pt;}\n.gd-doc .gd-tr49{height:5.1pt;}\n.gd-doc .gd-tr50{height:17.5pt;}\n.gd-doc .gd-tr51{height:17.2pt;}\n.gd-doc .gd-tr52{height:17.3pt;}\n.gd-doc .gd-tr53{height:17.8pt;}\n.gd-doc .gd-col54{width:18.4pt;}\n.gd-doc .gd-col55{width:12.95pt;}\n.gd-doc .gd-col56{width:38.7pt;}\n.gd-doc .gd-col57{width:94.25pt;}\n.gd-doc .gd-col58{width:13.3pt;}\n.gd-doc .gd-col59{width:189.95pt;}\n.gd-doc .gd-col60{width:78.45pt;}\n.gd-doc .gd-col61{width:58.3pt;}\n.gd-doc .gd-t62{width:504.3pt;}\n.gd-doc .gd-bg63{left:-54pt;top:-54pt;}\n.gd-doc .gd-td64{width:110.05pt;padding:3.6pt 3.6pt 0pt 3.6pt;}\n.gd-doc .gd-p65{text-align:center;margin-top:3pt;line-height:1.15;}\n.gd-doc .gd-td66{width:295.55pt;padding:3.6pt 3.6pt 0pt 3.6pt;}\n.gd-doc .gd-td67{width:104.4pt;padding:3.6pt 3.6pt 0pt 3.6pt;}\n.gd-doc .gd-td68{width:30pt;padding:3.6pt 3.6pt 0pt 3.6pt;}\n.gd-doc .gd-c69{font-weight:bold;font-size:18pt;}\n.gd-doc .gd-td70{border-top:0.5pt solid #000000;border-left:0.5pt solid #000000;border-bottom:0.5pt solid #000000;border-right:0.5pt solid #000000;vertical-align:middle;padding:3.6pt 5.5pt 0pt 5.5pt;}\n.gd-doc .gd-td71{border-top:0.5pt solid #000000;border-left:0.5pt solid #000000;border-bottom:0.5pt solid #000000;border-right:0.5pt solid #000000;vertical-align:bottom;padding:3.6pt 5.5pt 0pt 2.65pt;}\n.gd-doc .gd-td72{border-top:0.5pt solid #000000;border-left:0.5pt solid #000000;border-bottom:0.5pt solid #000000;padding:3.6pt 0pt 0pt 2.65pt;}\n.gd-doc .gd-td73{border-top:0.5pt solid #000000;border-bottom:0.5pt solid #000000;border-right:0.5pt solid #000000;padding:3.6pt 5.5pt 0pt 5.75pt;}\n.gd-doc .gd-td74{border-top:0.5pt solid #000000;border-left:0.5pt solid #000000;border-bottom:0.5pt solid #000000;border-right:0.5pt solid #000000;padding:3.6pt 5.5pt 0pt 2.65pt;}\n.gd-doc .gd-tr75{height:33.6pt;}\n.gd-doc .gd-col76{width:15pt;}\n.gd-doc .gd-col77{width:320.7pt;}\n.gd-doc .gd-col78{width:168.2pt;}\n.gd-doc .gd-tr79{height:14.4pt;}\n.gd-doc .gd-tr80{height:38.65pt;}\n.gd-doc .gd-td81{border-left:0.5pt solid #000000;border-bottom:0.5pt solid #000000;padding:3.6pt 0pt 0pt 2.65pt;}\n.gd-doc .gd-td82{border-bottom:0.5pt solid #000000;border-right:0.5pt solid #000000;padding:3.6pt 5.5pt 0pt 0pt;}\n.gd-doc .gd-tr83{height:20.4pt;}\n.gd-doc .gd-col84{width:156.75pt;}\n.gd-doc .gd-col85{width:332.55pt;}",
+ "css": ".form-page{position:relative;width:612pt;height:792pt;overflow:hidden;background:#fff;}\n.form-page + .form-page{page-break-before:always;}\n@page gdflow{margin:54pt 0 69.1pt 0;}\n.gd-flow{page:gdflow;padding:0 54pt 0 54pt;}\n@page gdrun{margin:54pt 0 12.25pt 0;}\n.gd-flow.gd-run{page:gdrun;}\n.gd-doc table.gd-runt{width:100%;border-collapse:collapse;table-layout:fixed;}\n.gd-doc table.gd-runt>*>tr>td{padding:0;}\n.gd-doc table.gd-runt>thead>tr>td{height:0pt;vertical-align:top;}\n.gd-doc table.gd-runt>tfoot>tr>td{height:56.85pt;vertical-align:bottom;position:relative;}\n.gd-pdffoot-even{position:absolute;visibility:hidden;left:0;right:0;bottom:0;}\n.gd-doc table.gd-runt>thead>tr>td{position:relative;}\n.gd-pgmark{position:absolute;left:0;top:0;font-size:2pt;line-height:1;color:#fff;white-space:nowrap;}\n.gd-sheetfoot{position:absolute;background:#fff;}\n.gd-sheetfoot.gd-side-even{display:none;}\n.gd-foot-fixed{display:none;}\n@media print{.gd-foot-space{visibility:hidden;}.gd-foot-fixed{display:block;position:fixed;left:0;right:0;bottom:0;padding:0 54pt 0 54pt;}}\n.gd-if:empty{display:none;}\n.gd-flow:not(:has(:not(.gd-if))){display:none;}\n.gd-flow + .page-break:has(+ .gd-flow){display:none;}\n.gd-flow + .page-break + .gd-flow{break-before:page;}\n.form-page:not(:has(:not(.gd-if))){display:none;}\n.form-page .abs{position:absolute;white-space:pre;margin:0;padding:0;line-height:normal;}\n.form-page .rule{position:absolute;background:#000;}\n.form-page .gd-tb{white-space:normal;box-sizing:border-box;}\n.gd-doc .gd-pagebg{position:absolute;width:0;height:0;}\n.gd-doc .gd-anchor{position:relative;}\n.gd-doc .gd-anchored{position:absolute;box-sizing:border-box;}\n.gd-doc .gd-header{position:relative;}\n.gd-pagebg .abs{position:absolute;white-space:pre;margin:0;padding:0;line-height:normal;}\n.gd-pagebg .rule{position:absolute;background:#000;}\n.gd-pagebg .gd-tb{white-space:normal;box-sizing:border-box;}\n.gd-doc{font-family:'Arial',sans-serif;font-size:10pt;color:#000;line-height:1.15;}\n:where(.gd-doc) p{margin:0;}\n.gd-doc p:empty::before{content:\"\\00a0\";}\n.gd-doc p.gd-keepline{min-height:1lh;}\n.gd-doc .gd-table{border-collapse:collapse;table-layout:fixed;}\n:where(.gd-doc) td{vertical-align:top;padding:0 5.4pt;}\n.gd-doc tr.gd-grid td{height:0;padding:0;border:0;}\n.gd-doc .gd-box{margin:0 0 6pt 0;}\n.gd-doc .gd-tab{display:inline-block;width:36pt;}\n.gd-doc .gd-hang{display:inline-block;}\n.gd-doc .gd-img-missing{display:inline-block;border:1px dashed #9ca3af;color:#6b7280;font-size:7pt;}\n.gd-doc .gd-p1{line-height:1.15;}\n.gd-doc .gd-x2{max-height:18.45pt;overflow:visible;}\n.gd-doc .gd-td3{padding:3.6pt 5.75pt 0pt 5.75pt;}\n.gd-doc .gd-tr4{height:22.05pt;}\n.gd-doc .gd-x5{max-height:19.45pt;overflow:visible;}\n.gd-doc .gd-tr6{height:23.05pt;}\n.gd-doc .gd-col7{width:77.25pt;}\n.gd-doc .gd-col8{width:60.95pt;}\n.gd-doc .gd-col9{width:366pt;}\n.gd-doc .gd-t10{width:504.2pt;}\n.gd-doc .gd-x11{max-height:14.85pt;overflow:visible;}\n.gd-doc .gd-tr12{height:18.45pt;}\n.gd-doc .gd-x13{max-height:75.55pt;overflow:visible;}\n.gd-doc .gd-tr14{height:79.15pt;}\n.gd-doc .gd-x15{max-height:11.4pt;overflow:visible;}\n.gd-doc .gd-p16{text-align:center;line-height:1.15;}\n.gd-doc .gd-x17{max-height:15pt;overflow:visible;}\n.gd-doc .gd-td18{vertical-align:middle;padding:0pt 0pt 0pt 0pt;}\n.gd-doc .gd-tr19{height:15pt;}\n.gd-doc .gd-x20{max-height:36.8pt;overflow:visible;}\n.gd-doc .gd-tr21{height:40.4pt;}\n.gd-doc .gd-x22{max-height:25.9pt;overflow:visible;}\n.gd-doc .gd-td23{vertical-align:middle;padding:3.6pt 5.75pt 0pt 5.75pt;}\n.gd-doc .gd-td24{padding:3.6pt 5.75pt 0pt 0pt;}\n.gd-doc .gd-tr25{height:29.5pt;}\n.gd-doc .gd-x26{max-height:25.8pt;overflow:visible;}\n.gd-doc .gd-tr27{height:29.4pt;}\n.gd-doc .gd-col28{width:9.7pt;}\n.gd-doc .gd-col29{width:4.5pt;}\n.gd-doc .gd-col30{width:14.15pt;}\n.gd-doc .gd-col31{width:230.75pt;}\n.gd-doc .gd-col32{width:14.1pt;}\n.gd-doc .gd-col33{width:62.5pt;}\n.gd-doc .gd-col34{width:7.5pt;}\n.gd-doc .gd-col35{width:160.5pt;}\n.gd-doc .gd-t36{width:503.7pt;}\n.gd-doc .gd-c37{font-weight:bold;}\n.gd-doc .gd-td38{width:110.05pt;vertical-align:bottom;padding:4.25pt 3.4pt 0pt 3.4pt;}\n.gd-doc .gd-td39{width:295.55pt;vertical-align:bottom;padding:4.25pt 3.4pt 0pt 3.4pt;}\n.gd-doc .gd-p40{text-align:right;line-height:1.15;}\n.gd-doc .gd-td41{width:104.4pt;vertical-align:bottom;padding:4.25pt 3.4pt 0pt 3.4pt;}\n.gd-doc .gd-td42{width:30pt;vertical-align:bottom;padding:4.25pt 3.4pt 0pt 3.4pt;}\n.gd-doc .gd-t43{width:540pt;margin-left:-3.6pt;}\n.gd-doc .gd-p44{margin-top:3pt;line-height:1.15;}\n.gd-doc .gd-td45{width:10.25pt;padding:3.6pt 5.75pt 0pt 5.75pt;}\n.gd-doc .gd-td46{width:325.3pt;padding:3.6pt 5.75pt 0pt 5.75pt;}\n.gd-doc .gd-td47{width:10.7pt;padding:3.6pt 5.75pt 0pt 5.75pt;}\n.gd-doc .gd-td48{width:158.05pt;padding:3.6pt 5.75pt 0pt 0pt;}\n.gd-doc .gd-x49{max-height:30.95pt;overflow:visible;}\n.gd-doc .gd-tr50{height:34.55pt;}\n.gd-doc .gd-x51{max-height:30.55pt;overflow:visible;}\n.gd-doc .gd-tr52{height:34.15pt;}\n.gd-doc .gd-col53{width:10.25pt;}\n.gd-doc .gd-col54{width:494.05pt;}\n.gd-doc .gd-x55{max-height:14.4pt;overflow:visible;}\n.gd-doc .gd-td56{vertical-align:middle;padding:3.6pt 5.75pt 0pt 0pt;}\n.gd-doc .gd-tr57{height:18pt;}\n.gd-doc .gd-x58{max-height:109.25pt;overflow:visible;}\n.gd-doc .gd-tr59{height:112.85pt;}\n.gd-doc .gd-x60{max-height:11.5pt;overflow:visible;}\n.gd-doc .gd-x61{max-height:15.1pt;overflow:visible;}\n.gd-doc .gd-tr62{height:15.1pt;}\n.gd-doc .gd-x63{max-height:1.15pt;overflow:visible;}\n.gd-doc .gd-tr64{height:4.75pt;}\n.gd-doc .gd-x65{max-height:1.5pt;overflow:visible;}\n.gd-doc .gd-tr66{height:5.1pt;}\n.gd-doc .gd-x67{max-height:13.9pt;overflow:visible;}\n.gd-doc .gd-tr68{height:17.5pt;}\n.gd-doc .gd-x69{max-height:13.6pt;overflow:visible;}\n.gd-doc .gd-tr70{height:17.2pt;}\n.gd-doc .gd-x71{max-height:13.7pt;overflow:visible;}\n.gd-doc .gd-tr72{height:17.3pt;}\n.gd-doc .gd-x73{max-height:14.2pt;overflow:visible;}\n.gd-doc .gd-tr74{height:17.8pt;}\n.gd-doc .gd-col75{width:18.4pt;}\n.gd-doc .gd-col76{width:12.95pt;}\n.gd-doc .gd-col77{width:38.7pt;}\n.gd-doc .gd-col78{width:94.25pt;}\n.gd-doc .gd-col79{width:13.3pt;}\n.gd-doc .gd-col80{width:189.95pt;}\n.gd-doc .gd-col81{width:78.45pt;}\n.gd-doc .gd-col82{width:58.3pt;}\n.gd-doc .gd-t83{width:504.3pt;}\n.gd-doc .gd-bg84{left:-54pt;top:-54pt;}\n.gd-doc .gd-td85{width:110.05pt;padding:3.6pt 3.6pt 0pt 3.6pt;}\n.gd-doc .gd-p86{text-align:center;margin-top:3pt;line-height:1.15;}\n.gd-doc .gd-td87{width:295.55pt;padding:3.6pt 3.6pt 0pt 3.6pt;}\n.gd-doc .gd-td88{width:104.4pt;padding:3.6pt 3.6pt 0pt 3.6pt;}\n.gd-doc .gd-td89{width:30pt;padding:3.6pt 3.6pt 0pt 3.6pt;}\n.gd-doc .gd-c90{font-weight:bold;font-size:18pt;}\n.gd-doc .gd-td91{border-top:0.5pt solid #000000;border-left:0.5pt solid #000000;border-bottom:0.5pt solid #000000;border-right:0.5pt solid #000000;vertical-align:middle;padding:3.6pt 5.5pt 0pt 5.5pt;}\n.gd-doc .gd-td92{border-top:0.5pt solid #000000;border-left:0.5pt solid #000000;border-bottom:0.5pt solid #000000;border-right:0.5pt solid #000000;vertical-align:bottom;padding:3.6pt 5.5pt 0pt 2.65pt;}\n.gd-doc .gd-td93{border-top:0.5pt solid #000000;border-left:0.5pt solid #000000;border-bottom:0.5pt solid #000000;padding:3.6pt 0pt 0pt 2.65pt;}\n.gd-doc .gd-td94{border-top:0.5pt solid #000000;border-bottom:0.5pt solid #000000;border-right:0.5pt solid #000000;padding:3.6pt 5.5pt 0pt 5.75pt;}\n.gd-doc .gd-td95{border-top:0.5pt solid #000000;border-left:0.5pt solid #000000;border-bottom:0.5pt solid #000000;border-right:0.5pt solid #000000;padding:3.6pt 5.5pt 0pt 2.65pt;}\n.gd-doc .gd-tr96{height:33.6pt;}\n.gd-doc .gd-col97{width:15pt;}\n.gd-doc .gd-col98{width:320.7pt;}\n.gd-doc .gd-col99{width:168.2pt;}\n.gd-doc .gd-x100{max-height:10.8pt;overflow:visible;}\n.gd-doc .gd-tr101{height:14.4pt;}\n.gd-doc .gd-tr102{height:38.65pt;}\n.gd-doc .gd-td103{border-left:0.5pt solid #000000;border-bottom:0.5pt solid #000000;padding:3.6pt 0pt 0pt 2.65pt;}\n.gd-doc .gd-td104{border-bottom:0.5pt solid #000000;border-right:0.5pt solid #000000;padding:3.6pt 5.5pt 0pt 0pt;}\n.gd-doc .gd-tr105{height:20.4pt;}\n.gd-doc .gd-col106{width:156.75pt;}\n.gd-doc .gd-col107{width:332.55pt;}\n.gd-doc .gd-m108{font-size:12pt;}",
  "model": {
   "Insured": {
    "PrimaryNamedInsured": "Primary Named Insured"

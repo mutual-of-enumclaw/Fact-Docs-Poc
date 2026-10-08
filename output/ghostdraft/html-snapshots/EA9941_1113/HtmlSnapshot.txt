@@ -1,5 +1,5 @@
-POLICY   NUMBER:      FPP  0013478  00                                                  COMMERCIAL      AUTO
-                                                                                                            EA 99 41 11 13
+POLICY   NUMBER:       FPP  0013478  00                                                   COMMERCIAL      AUTO
+                                                                                                              EA  99 41 11 13
                    THIS  ENDORSEMENT           CHANGES       THE   POLICY.    PLEASE      READ    IT CAREFULLY.
                            FARM        AUTO         SEASONAL               LAY-UP         PREMIUM
                                    CONSIDERATION                      ENDORSEMENT
@@ -7,39 +7,38 @@ POLICY   NUMBER:      FPP  0013478  00                                          
                 BUSINESS    AUTO  COVERAGE      FORM
                 MOTOR    CARRIER   COVERAGE      FORM
                                                               SCHEDULE
-                                                                                                    Total
-                                 Description of Covered "Autos" to which this endorsement
-             Vehicle Number                                                                    Lay-Up  Period
-                                                          applies
-                                                                                               (No. of Months)
-        A.      Premium   Calculation  Modification
-                                                                        5.      The  "total lay-up period" designated for any
-            1.      The  premiums  that are shown  in Item Three                "auto" is part of the exposures that you told
-                    of  the  Declarations  for liability, medical               us that you  would  have and  final premium
-                    payments,  uninsured  motorist, underinsured                calculation  is subject   to  Paragraph   6.
-                    motorist, and  collision coverages,  for the                PREMIUM      AUDIT    of  the   Section   B.
-                    "autos"  described  in the  schedule  above                 GENERAL     CONDITIONS     of the Coverage
-                    were  calculated  including a credit for the                Form.
-                    "total lay up period" shown in the schedule
-                                                                    A.      Additional Definitions
+                                                                                                      Total
+                                  Description of Covered "Autos" to which this endorsement
+             Vehicle Number                                                                      Lay-Up  Period
+                                                           applies
+                                                                                                 (No. of Months)
+        A.      Premium   Calculation  Modification                     5.      The  "total lay-up period" designated for any
+                                                                                "auto" is part of the exposures that you told
+            1.      The  premiums  that are shown  in Item Three
+                                                                                us that you  would  have and  final premium
+                    of  the  Declarations  for liability, medical
+                                                                                calculation  is subject   to  Paragraph   6.
+                    payments,  uninsured  motorist, underinsured
+                                                                                PREMIUM      AUDIT    of  the   Section   B.
+                    motorist, and  collision coverages,  for the
+                                                                                GENERAL     CONDITIONS     of the Coverage
+                    "autos"  described  in the  schedule  above
+                                                                                Form.
+                    were  calculated  including a credit for the
+                    "total lay up period" shown in the schedule     A.      Additional Definitions
                     above.
                                                                             "Lay-up" means   any period of time during which
-            2.      The  "total lay-up period" for any "auto" must
-                                                                            an "auto" is parked, garaged  or stored, and not
-                    be  at least  90  days  for a  credit to  be
-                                                                            in  use  for  farm  operations  nor  any   other
-                    included in the premium  calculation for that
-                                                                            purpose.  Occasional   movement    of an  "auto"
-                    "auto."
-                                                                            from one parking, garaging or storage location to
-            3.      The  "total lay up period" for any one "auto"           another is not considered use.
-                    may  not exceed  nine  months  in any policy
-                                                                            "Total lay-up  period"  means   the  cumulative
-                    term.
-                                                                            number   of  days  in  "lay-up" for  any  "auto"
-            4.      If you make   a  request in writing, we  will           expressed  as months.
-                    change  the number   of months  for the "total
-                                                                        1.      Thirty days is considered one month.
+            2.      The  "total lay-up period" for any "auto" must          an "auto" is parked, garaged  or stored, and not
+                    be  at least  90  days  for a  credit to  be            in  use  for  farm  operations  nor  any   other
+                    included in the premium  calculation for that           purpose.  Occasional   movement    of an  "auto"
+                    "auto."                                                 from one parking, garaging or storage location to
+                                                                            another is not considered use.
+            3.      The  "total lay up period" for any one "auto"
+                    may  not exceed  nine  months  in any policy            "Total lay-up  period"  means   the  cumulative
+                    term.                                                   number   of  days  in  "lay-up" for  any  "auto"
+                                                                            expressed  as months.
+            4.      If you make   a  request in writing, we  will
+                    change  the number   of months  for the "total      1.      Thirty days is considered one month.
                     lay up  period"  for any  "auto" during  the
                                                                         2.      If thirty does  not evenly  divide  into the
                     policy  term   and   adjust   the  premium
@@ -47,4 +46,4 @@ POLICY   NUMBER:      FPP  0013478  00                                          
                     calculation by endorsement.
                                                                                 remaining  days  shall be  considered  as  a
                                                                                 whole additional month.
-             EA  99 41 11 13                                                                                   Page  1 of 1
+             EA  99 41 11 13                                                                                     Page  1 of 1

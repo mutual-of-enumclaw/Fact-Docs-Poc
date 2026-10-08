@@ -70,7 +70,9 @@ public sealed class GhostDraftGoldenSnapshotTests(DesignerFixture designer) : IC
 
 	/// <summary>
 	/// A Word column break (RTF \column) starts the next newspaper column: in EA 99 02 the second column starts at
-	/// "b. Financial penalties", level with the first line of the first column (CSS balancing alone moved "a." over).
+	/// "b. Financial penalties" (CSS balancing alone moved "a." over). The break paragraph began in the first column,
+	/// so its space before stays there: GhostDraft prints "Financial" 5.1pt above the first column's "Physical"
+	/// (that paragraph keeps its 5pt space before at the top of the section).
 	/// </summary>
 	[Fact]
 	public async Task A_column_break_starts_the_next_column()
@@ -88,7 +90,7 @@ public sealed class GhostDraftGoldenSnapshotTests(DesignerFixture designer) : IC
 		var columnTop = words.First(w => w.Text == "Physical").BoundingBox;
 		var financial = words.First(w => w.Text == "Financial").BoundingBox;
 		var overdue = words.First(w => w.Text == "Overdue").BoundingBox;
-		Assert.Equal(columnTop.Bottom, financial.Bottom, 2.0);
+		Assert.Equal(columnTop.Bottom + 5.1, financial.Bottom, 1.0);
 		Assert.True(financial.Left > columnTop.Right, "\"Financial\" should be in the right-hand column");
 		Assert.True(overdue.Left < financial.Left && overdue.Bottom < columnTop.Bottom, "\"a. Overdue\" should stay at the foot of the left-hand column");
 	}

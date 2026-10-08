@@ -1,6 +1,6 @@
 CA2162_1114: DIFFERENT  score 99.5%
 pages   golden 5  html 6  (pages with text)
-words   golden 2924  html 2928  missing 12  extra 16
+words   golden 2924  html 2927  missing 13  extra 16
 
 MISSING (in the GhostDraft golden, not in the HTML render)
   [CPP 0000999 COMMERCIAL]  <=  POLICY NUMBER:CPP 0000999 00                                                                  COMMERCIAL AUTO
@@ -10,17 +10,18 @@ MISSING (in the GhostDraft golden, not in the HTML render)
   [5]  <=  exceed $5,000.
   [5]  <=  Page 4 of 5                            © Insurance Services Office, Inc., 2014                       CA 21 62 11 14
   [AUTO]  <=  arbitration  award.  If  this  demand  is  not               (3) The Named Insured's covered "auto".
+  [A]  <=  notification of a claim by or on behalf of            e. For which  a bodily  injury  liability  bond  or
   [POLICY]  <=  that bond or policy to an "insured" is not
   [5 5]  <=  CA 21 62 11 14                         © Insurance Services Office, Inc., 2014                           Page 5 of 5
 
 EXTRA (in the HTML render, not in the GhostDraft golden)
   [6]  <=  6.        "Bodily injury" arising directly or indirectly out of:
-  [6]  <=  Page  2 of 6                        © Insurance Services  Office, Inc., 2014                   CA 21 62 11 14
-  [6]  <=  CA  21 62 11 14                     © Insurance Services  Office, Inc., 2014                      Page  3 of 6
-  [6]  <=  Page  4 of 6                        © Insurance Services  Office, Inc., 2014                   CA 21 62 11 14
-  [6]  <=  CA  21 62 11 14                     © Insurance Services  Office, Inc., 2014                      Page  5 of 6
+  [6]  <=  Page  2 of 6                         © Insurance Services Office, Inc., 2014                    CA  21 62 11 14
+  [6]  <=  CA  21 62 11 14                      © Insurance Services Office, Inc., 2014                        Page  3 of 6
+  [6]  <=  Page  4 of 6                         © Insurance Services Office, Inc., 2014                    CA  21 62 11 14
+  [6]  <=  CA  21 62 11 14                      © Insurance Services Office, Inc., 2014                        Page  5 of 6
   [LIABILITY OF]  <=  e.        For which a  bodily injury liability bond or policy applies at the time of the "accident", but the
-  [PAGE 6 OF 6 INSURANCE SERVICES OFFICE INC 2014]  <=  Page  6 of 6                        © Insurance Services  Office, Inc., 2014                   CA 21 62 11 14
+  [PAGE 6 OF 6 INSURANCE SERVICES OFFICE INC 2014]  <=  Page  6 of 6                         © Insurance Services Office, Inc., 2014                    CA  21 62 11 14
 
 golden   C:\src\fact-docgen\src\Moe.Commercial.Documents.Generation.Integration.Tests\TestData\Snapshots\CA2162_1114\GoldenSnapshot.txt
 template C:\src\fact-poc\output\ghostdraft\batch\CA2162-1114.json

@@ -13,8 +13,8 @@ POLICY   NUMBER:    CPP  0018915  00                                            
              Named   Insured  LARRY   BENGE                          Countersigned  By
                                                                                   (Authorized Representative)
                                                                SCHEDULE
-             "Bodily Injury"                                         $250,000        Each Person
-                                                                     $500,000        Each "Accident"
+             "Bodily Injury"                                         $ 250,000       Each Person
+                                                                     $ 500,000       Each "Accident"
              "Property Damage"                                       $               Each "Accident"
             (If no entry appears above, information required to complete this endorsement  will be shown in the Declarations
             as applicable to this endorsement.)

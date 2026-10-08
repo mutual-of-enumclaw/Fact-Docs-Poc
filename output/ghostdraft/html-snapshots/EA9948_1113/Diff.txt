@@ -1,9 +1,13 @@
-EA9948_1113: DIFFERENT  score 99.9%
+EA9948_1113: DIFFERENT  score 99.3%
 pages   golden 1  html 1  (pages with text)
-words   golden 456  html 455  missing 1  extra 0
+words   golden 456  html 460  missing 1  extra 5
 
 MISSING (in the GhostDraft golden, not in the HTML render)
-  [POLLUTANTS]  <=  release or escape of "pollutants":
+  [THE]  <=  migration,   release   or   escape   of   the
+
+EXTRA (in the HTML render, not in the GhostDraft golden)
+  [DISCHARGE DISPERSAL SEEPAGE MIGRATION]  <=  discharge,  dispersal, seepage,   migration,
+  [POLLUTANTS]  <=  which   the "pollutants" are  contained
 
 golden   C:\src\fact-docgen\src\Moe.Commercial.Documents.Generation.Integration.Tests\TestData\Snapshots\EA9948_1113\GoldenSnapshot.txt
 template C:\src\fact-poc\output\ghostdraft\batch\EA9948-1113.json

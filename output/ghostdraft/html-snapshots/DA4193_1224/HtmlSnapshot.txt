@@ -1,4 +1,4 @@
-Business   Auto  Coverage    Declarations   – FARM    AUTOS    (Continued)             Policy No. FPP 1039223  01
+Business   Auto  Coverage    Declarations   – FARM    AUTOS    (Continued)             Policy No. FPP 1039223 01
             Item Three: Schedule  of Owned Autos    (Page # of #)
             Cov.
                                                                                                                  Cost New/Age
@@ -6,7 +6,7 @@ Business   Auto  Coverage    Declarations   – FARM    AUTOS    (Continued)    
             Auto            Description of Covered Auto            Covered Auto VIN            Terr.
                                                                                        Location                     Group
             No.
-            1              2015 JEEP  RUBICON                1C4BJWFG0FL678350         WA    005     7391      $63,000/ 5
+            1                 2015 JEEP RUBICON                 1C4BJWFG0FL678350       WA     005     7391       $63,000/ 5
                                                                       Uninsured or
               Cov.                                    Covered Autos                      Auto
                                                                       Underinsured                       P.I.P.
@@ -16,7 +16,7 @@ Business   Auto  Coverage    Declarations   – FARM    AUTOS    (Continued)    
                          OR Private Passenger/Use
               No.
                                                         Premium         Premium         Premium         Premium
-              1           PPT/ALL  OTHER              $1,267           $182            $27
+               1            PPT/ALL OTHER               $1,267           $182            $27
                                           Physical Damage Coverages -Limits, Deductibles And Premiums
                                                                                                                    Cov. Auto
              Cov.
@@ -24,7 +24,7 @@ Business   Auto  Coverage    Declarations   – FARM    AUTOS    (Continued)    
                         Limit **          Comprehensive       Specified Causes       Collision
            Auto No.                                                                                      Labor
                      ACV or Value    Deductible *  Premium       Premium      Deductible *  Premium     Premium    Premium
-             1          ACV          $1,000        $139                      $1,000        $552         $2       $2,169
+              1          ACV           $1,000       $139                       $1,000        $552         $2        $2,169
             *See Business Auto  Coverage Form  CA 00 01 Section III Physical Damage For Limit of Insurance and Deductible
             Provisions.
             **If a Value Amount is shown in lieu of ACV, refer to Endorsement CA 99 28.

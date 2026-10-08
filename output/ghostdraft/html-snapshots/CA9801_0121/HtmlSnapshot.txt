@@ -42,7 +42,7 @@ POLICY   NUMBER:    CPP  0028569  00                                            
              4.
              5.
              6.
-             Limit Of Insurance                   $100,000
+             Limit Of Insurance                   $ 100,000
              Notes:
              l   Use this section of the Schedule   (Option B) when  a single Limit of Insurance  applies to the total of
                  all covered business  income   loss and extra expense   attributable to all items of scheduled property
@@ -52,15 +52,11 @@ POLICY   NUMBER:    CPP  0028569  00                                            
                  different items of scheduled  property.
              Covered   Causes  Of Loss  Option(s)  (select all that apply):
                  X  Comprehensive        OR          Specified Causes   Of Loss
-                    Collision
-                 X
-             Business  Income   Coverage  Waiting  Period  (number of hours, if other than 72):
-             Extended  Business   Income  Additional  Coverage  (number  of consecutive days, if other than 60):
-                                                                                               72
-             Premium:     $
-                                                                                                                365
+                 X  Collision
+             Business  Income   Coverage  Waiting  Period  (number of hours, if other than 72): 72
+             Extended  Business   Income  Additional  Coverage  (number  of consecutive days, if other than 60): 365
+             Premium:     $ 1,713.00
              Information required to complete this Schedule, if not shown above, will be shown in the Declarations.
-                            1,713.00
             Page  2 of 7                         © Insurance  Services Office, Inc., 2020                   CA  98 01 01 21  Page 2 of 8 © Insurance Services Office, Inc., 2020 CA 98 01 01 21
 --- Page 3 ---
 A. Coverage                                                      However,      Extended     Business     Income

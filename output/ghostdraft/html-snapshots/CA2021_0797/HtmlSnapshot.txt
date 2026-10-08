@@ -17,10 +17,10 @@ POLICY   NUMBER:    CPP  0003417  15                                            
                                                                                                 (Authorized Representative)
                                                               SCHEDULE
                    Coverages             Vehicle  No.                  Limit Of Liability                    Premium
-             Liability                 001                $500,000            Each  "Accident"         $268.00
-             Medical Payments          001                $500                Each  Person             $9.00
-             Uninsured Motorists                          $500,000            Each  "Accident"         $8.00
-             Underinsured  Motorists                      $500,000            Each  "Accident"         $27.00
+             Liability                 001                $500,000            Each  "Accident"         $ 268.00
+             Medical Payments          001                $500                Each  Person             $ 9.00
+             Uninsured Motorists                          $500,000            Each  "Accident"         $ 8.00
+             Underinsured  Motorists                      $500,000            Each  "Accident"         $ 27.00
              (Indicate only when
              coverage is not included
              in Uninsured Motorists
@@ -30,11 +30,9 @@ POLICY   NUMBER:    CPP  0003417  15                                            
                                                           $                   Less  $100 deductible    $
              Collision                                    $                   Less  $100 deductible    $
              Each of the exclusions for which an additional          Additional        Exclusion 2     $
-             premium  charge is indicated is deleted.                Premium:          Exclusion 3     $Included
-                                                                                       Exclusion 4     $
-                                                                                                         Included
-                                                                                       Total Premium   $
-                                                         312.00
+             premium  charge is indicated is deleted.                Premium:          Exclusion 3     $ Included
+                                                                                       Exclusion 4     $ Included
+                                                         312.00                        Total Premium   $
              Vehicle No.                            Description of "Snowmobiles" which are covered  "autos".
              001                         01/01/2010 SKI  DOO  SUMMIT    EVEREST    5PSBS111581023776
             (If no entry appears above, information required to complete this endorsement  will be shown in the Declarations

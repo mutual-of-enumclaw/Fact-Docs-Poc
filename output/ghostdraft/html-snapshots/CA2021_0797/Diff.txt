@@ -8,7 +8,7 @@ MISSING (in the GhostDraft golden, not in the HTML render)
   [CCOPYRIGHT OPYRIGHT INSURANCE SERVICES OFFICE INC 1996]  <=  Page Page 2 of of 2              CCopyright, Insurance Services Office, Inc., 1996opyright, Insurance Services Office, Inc.,  1996     CA 20 21 07 97CA 20 21 07 97
 
 EXTRA (in the HTML render, not in the GhostDraft golden)
-  [001]  <=  Medical Payments          001                $500                Each  Person             $9.00
+  [001]  <=  Medical Payments          001                $500                Each  Person             $ 9.00
   [001 01]  <=  001                         01/01/2010 SKI  DOO  SUMMIT    EVEREST    5PSBS111581023776
   [COPYRIGHT COPYRIGHT]  <=  CA  20 21 07 97                 Copyright, Insurance Services Office, Inc., 1996                    Page  1 of 2     o  CA 20 21 07 97 Copyright, Insurance Services Office, Inc., 1996 Page 1 of 2
   [PAGE OF 2 COPYRIGHT CA 20 21 07 97]  <=  Page  2 of 2                    Copyright, Insurance Services Office, Inc., 1996                CA  20 21 07 97  Page 2 of 2 Copyright, Insurance Services Office, Inc., 1996 CA 20 21 07 97

@@ -7,7 +7,7 @@ MISSING (in the GhostDraft golden, not in the HTML render)
   [PPAGE AGE]  <=  CA 04 54 02 21 CA 04 54 02 21         ©© Insurance Services Office, Inc., 2020Insurance Services Office, Inc., 2020     PPage age 1  of of 1
 
 EXTRA (in the HTML render, not in the GhostDraft golden)
-  [2005]  <=  006        2005 FREIGHTLINER                             8.00                      15.00
+  [2005]  <=  006        2005 FREIGHTLINER                            $8.00                     $ 15.00
   [06546]  <=  1FUJA6CKX4LN06546
   [PAGE]  <=  CA  04 54 02 21                      © Insurance Services  Office, Inc., 2020                       Page  1 of 1  CA 04 54 02 21 © Insurance Services Office, Inc., 2020 Page 1 of 1
 

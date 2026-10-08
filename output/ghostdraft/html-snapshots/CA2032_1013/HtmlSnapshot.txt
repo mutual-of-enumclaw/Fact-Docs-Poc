@@ -14,11 +14,11 @@ POLICY   NUMBER:    CPP  0000999  00                                            
              Endorsement   Effective Date:  01/15/2026
                                                               SCHEDULE
                   Coverages          Vehicle No.                Limit Of Insurance                        Premium
-             Covered  Autos          1            $500,000                    Each  Accident      $150.00
+             Covered  Autos          1            $ 500,000                   Each  Accident      $ 150.00
              Liability
-             Auto Medical            1            $500                        Each  Person        $10.00
+             Auto Medical            1            $ 500                       Each  Person        $ 10.00
              Payments
-             Uninsured  Motorists                 $500,000                    Each  Accident      $25.00
+             Uninsured  Motorists                 $ 500,000                   Each  Accident      $ 25.00
              Other (Nonphysical                   $                                               $
              Damage)   Auto
              Coverage:

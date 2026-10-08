@@ -40,6 +40,7 @@ public static class PdfText
 		}
 
 		const double charWidth = 4.5; // ~10pt text; only used to lay words out readably
+		var spaces = page.Letters.Where(l => string.IsNullOrWhiteSpace(l.Value)).ToList();
 		var sb = new StringBuilder();
 		foreach (var line in lines)
 		{
@@ -55,7 +56,10 @@ public static class PdfText
 					text.Append(' ');
 				}
 				// Absolutely positioned pieces of one word ("N" + "amed") touch: no gap narrower than a space splits a word.
-				if (prev is not null && word.BoundingBox.Left - prev.BoundingBox.Right < 0.15 * FontSize(prev))
+				// A space character between them does (Word's condensed spacing, \expndtw, narrows a real space) -- unless
+				// they touch: a letter of another layer (a form sheet's own wording) can sit in the gap of "N" + "amed".
+				var gap = prev is null ? 0 : word.BoundingBox.Left - prev.BoundingBox.Right;
+				if (prev is not null && gap < 0.15 * FontSize(prev) && !(gap > 0.25 && SpaceBetween(spaces, prev, word)))
 				{
 					text.Append(word.Text);
 					prev = word;
@@ -111,4 +115,8 @@ public static class PdfText
 	}
 
 	private static double FontSize(Word word) => word.Letters.Count > 0 ? word.Letters[^1].PointSize : 10;
+
+	private static bool SpaceBetween(List<Letter> spaces, Word left, Word right) =>
+		spaces.Any(s => Math.Abs(s.StartBaseLine.Y - left.Letters[^1].StartBaseLine.Y) < 1.0 &&
+			s.StartBaseLine.X >= left.Letters[^1].StartBaseLine.X && s.StartBaseLine.X <= right.Letters[0].StartBaseLine.X);
 }

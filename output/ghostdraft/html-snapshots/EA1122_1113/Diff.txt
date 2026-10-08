@@ -1,15 +1,13 @@
-EA1122_1113: DIFFERENT  score 99.8%
+EA1122_1113: DIFFERENT  score 99.9%
 pages   golden 3  html 3  (pages with text)
-words   golden 1499  html 1497  missing 4  extra 2
+words   golden 1499  html 1499  missing 2  extra 2
 
 MISSING (in the GhostDraft golden, not in the HTML render)
-  [AUTO]  <=  If   "income   continuation   benefits"   are          "occupying"  an  "auto"  at  the  time  injury
-  [FOLLOWING]  <=  3.  The  following  ARBITRATION  condition  is
-  [THE]  <=  jurisdiction.  A decision by(2) of the
-  [OF]  <=  EA 11 22 11 13                                                                                           Page 3 of 3
+  [FOR]  <=  auto  insurance  providing  payments  for
+  [OR]  <=  (30) days or the parties do not agree
 
 EXTRA (in the HTML render, not in the GhostDraft golden)
-  [ANY]  <=  this coverage applies, the most  we will pay                shall be excess  over  any  other collectible
+  [ANY]  <=  shall be excess  over  any  other collectible
   [ARBITRATION]  <=  Arbitration shall  begin   upon   a  written
 
 golden   C:\src\fact-docgen\src\Moe.Commercial.Documents.Generation.Integration.Tests\TestData\Snapshots\EA1122_1113\GoldenSnapshot.txt

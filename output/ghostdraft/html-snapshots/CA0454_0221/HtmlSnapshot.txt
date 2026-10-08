@@ -17,10 +17,9 @@ POLICY   NUMBER:    FPP  0014321  00                                            
                 Number                 Are  Covered  "Autos"                Additional Premium       Additional  Premium
                   001        2005 FREIGHTLINER                            $8.00                     $ 15.00
                              1FUJA6CKX4LN06546
-                                                                          $                         $
-                  006        2005 FREIGHTLINER                             8.00                      15.00
-                                                                          $                         $
+                  006        2005 FREIGHTLINER                            $8.00                     $ 15.00
                              1FUJA6CKX4LN06546
+                                                                          $                         $
              Information required to complete this Schedule, if not shown above, will be shown in the Declarations.
             A. Physical  Damage    Coverage   is amended   by the            d.  Costs for extended  warranties, Credit Life
                addition of the following:                                        Insurance,  Health, Accident   or Disability

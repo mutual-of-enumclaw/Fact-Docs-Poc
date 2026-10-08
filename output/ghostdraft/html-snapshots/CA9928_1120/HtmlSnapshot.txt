@@ -15,9 +15,9 @@ POLICY   NUMBER:    CPP  0029080   00                                           
                                                               SCHEDULE
              The  insurance provided by this endorsement  is reduced by the following deductible(s):
               Vehicle Number          Coverage             Limit Of Insurance  And  Deductible              Premium
-                    008          Comprehensive        $ 10,399                Limit Of Insurance      $49.00
+                    008          Comprehensive        $ 10,399                Limit Of Insurance      $ 49.00
                                                       $ 500                   Deductible
-                    008          Collision            $ 10,399                Limit Of Insurance      $148.00
+                    008          Collision            $ 10,399                Limit Of Insurance      $ 148.00
                                                       $ 1,000                 Deductible
                                                       $                       Limit Of Insurance      $
                                                       $                       Deductible

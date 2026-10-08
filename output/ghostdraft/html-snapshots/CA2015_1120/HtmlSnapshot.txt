@@ -10,16 +10,17 @@ POLICY   NUMBER:    CPP  0024658  07                                            
             This endorsement  changes  the Policy effective on the inception date of the Policy unless another date is indicated
             below.
              Named   Insured: THE  ALIGNMENT     SHOP   LLC
-             Endorsement   Effective Date:  04/20/2026
+                                            04/20/2026
+             Endorsement   Effective Date:
                                                               SCHEDULE
                                            Covered
                                             "Auto"
                                             Vehicle
                    Coverages               Numbers                    Limit Of Insurance                    Premium
              Covered  Autos
-             Liability                        4           $1,000,000           Each  Accident         $865.00
+             Liability                        4           $ 1,000,000          Each  Accident         $865.00
              Auto Medical
-             Payments                         4           $5,000               Each  Person           $12.00
+             Payments                         4           $ 5,000              Each  Person           $12.00
              Personal  Injury
              Protection Or                                Separately  Stated
              Equivalent  No-fault                         In Each  P.I.P.
@@ -29,8 +30,7 @@ POLICY   NUMBER:    CPP  0024658  07                                            
              Motorists (Indicate only
              when  coverage is not
              included in Uninsured
-             Motorists Coverage.)                         $1,000,000           Each  Accident         $
-                                                                                                       288.00
+             Motorists Coverage.)                         $ 1,000,000          Each  Accident         $288.00
              Comprehensive                                 $                             Deductible    $
                                                            For Each  Covered  Auto, For  Loss
                                                            Caused  By  Theft Or Mischief Or
