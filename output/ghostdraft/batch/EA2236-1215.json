@@ -1,0 +1,3758 @@
+{
+ "name": "EA2236-1215",
+ "title": "EA 22 36 12 15",
+ "source": "EA2236 1215.gd",
+ "package": "proprietary-ca-2607",
+ "components": [
+  {
+   "tagName": "div",
+   "classes": [
+    "gd-doc",
+    "gd-flow",
+    "gd-run"
+   ],
+   "components": [
+    {
+     "tagName": "table",
+     "classes": [
+      "gd-runt"
+     ],
+     "components": [
+      {
+       "tagName": "thead",
+       "components": [
+        {
+         "tagName": "tr",
+         "components": [
+          {
+           "tagName": "td",
+           "components": [
+            {
+             "tagName": "div",
+             "classes": [
+              "gd-header"
+             ],
+             "components": [
+              {
+               "type": "table",
+               "classes": [
+                "gd-table",
+                "gd-t8"
+               ],
+               "components": [
+                {
+                 "type": "tbody",
+                 "components": [
+                  {
+                   "type": "row",
+                   "components": [
+                    {
+                     "type": "cell",
+                     "components": [
+                      {
+                       "type": "text",
+                       "tagName": "p",
+                       "classes": [
+                        "gd-p",
+                        "gd-p2"
+                       ],
+                       "components": [
+                        {
+                         "tagName": "span",
+                         "classes": [
+                          "gd-c1"
+                         ],
+                         "components": [
+                          {
+                           "type": "textnode",
+                           "content": "POLICY NUMBER:"
+                          }
+                         ]
+                        }
+                       ]
+                      }
+                     ],
+                     "classes": [
+                      "gd-td3"
+                     ]
+                    },
+                    {
+                     "type": "cell",
+                     "components": [
+                      {
+                       "type": "text",
+                       "tagName": "p",
+                       "classes": [
+                        "gd-p",
+                        "gd-p2"
+                       ],
+                       "components": [
+                        {
+                         "type": "data-field",
+                         "field": "Policy.PolicyNumber",
+                         "format": ""
+                        }
+                       ]
+                      }
+                     ],
+                     "classes": [
+                      "gd-td4"
+                     ]
+                    },
+                    {
+                     "type": "cell",
+                     "components": [
+                      {
+                       "type": "text",
+                       "tagName": "p",
+                       "classes": [
+                        "gd-p",
+                        "gd-p5"
+                       ],
+                       "components": [
+                        {
+                         "tagName": "span",
+                         "classes": [
+                          "gd-c1"
+                         ],
+                         "components": [
+                          {
+                           "type": "textnode",
+                           "content": "COMMERCIAL AUTO"
+                          }
+                         ]
+                        }
+                       ]
+                      }
+                     ],
+                     "classes": [
+                      "gd-td6"
+                     ]
+                    }
+                   ]
+                  },
+                  {
+                   "type": "row",
+                   "components": [
+                    {
+                     "type": "cell",
+                     "components": [
+                      {
+                       "type": "text",
+                       "tagName": "p",
+                       "classes": [
+                        "gd-p",
+                        "gd-p7"
+                       ],
+                       "components": []
+                      }
+                     ],
+                     "classes": [
+                      "gd-td3"
+                     ]
+                    },
+                    {
+                     "type": "cell",
+                     "components": [
+                      {
+                       "type": "text",
+                       "tagName": "p",
+                       "classes": [
+                        "gd-p",
+                        "gd-p7"
+                       ],
+                       "components": []
+                      }
+                     ],
+                     "classes": [
+                      "gd-td4"
+                     ]
+                    },
+                    {
+                     "type": "cell",
+                     "components": [
+                      {
+                       "type": "text",
+                       "tagName": "p",
+                       "classes": [
+                        "gd-p",
+                        "gd-p5"
+                       ],
+                       "components": [
+                        {
+                         "tagName": "span",
+                         "classes": [
+                          "gd-c1"
+                         ],
+                         "components": [
+                          {
+                           "type": "textnode",
+                           "content": "EA 22 36 12 15"
+                          }
+                         ]
+                        }
+                       ]
+                      }
+                     ],
+                     "classes": [
+                      "gd-td6"
+                     ]
+                    }
+                   ]
+                  }
+                 ]
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p2"
+               ],
+               "components": []
+              }
+             ]
+            },
+            {
+             "tagName": "span",
+             "classes": [
+              "gd-pgmark",
+              "gd-sec-0"
+             ]
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "tagName": "tfoot",
+       "components": [
+        {
+         "tagName": "tr",
+         "components": [
+          {
+           "tagName": "td",
+           "components": [
+            {
+             "tagName": "div",
+             "classes": [
+              "gd-footer",
+              "gd-foot-space",
+              "gd-pdffoot",
+              "gd-sec-0",
+              "gd-fy-18",
+              "gd-mb-72",
+              "gd-ml-54",
+              "gd-mr-54"
+             ],
+             "components": [
+              {
+               "type": "table",
+               "classes": [
+                "gd-table",
+                "gd-t15"
+               ],
+               "components": [
+                {
+                 "type": "tbody",
+                 "components": [
+                  {
+                   "type": "row",
+                   "components": [
+                    {
+                     "type": "cell",
+                     "components": [
+                      {
+                       "type": "text",
+                       "tagName": "p",
+                       "classes": [
+                        "gd-p",
+                        "gd-p2"
+                       ],
+                       "components": [
+                        {
+                         "tagName": "span",
+                         "classes": [
+                          "gd-c9"
+                         ],
+                         "components": [
+                          {
+                           "type": "textnode",
+                           "content": "EA 22 36 12 15"
+                          }
+                         ]
+                        }
+                       ]
+                      }
+                     ],
+                     "classes": [
+                      "gd-td10"
+                     ]
+                    },
+                    {
+                     "type": "cell",
+                     "components": [
+                      {
+                       "type": "text",
+                       "tagName": "p",
+                       "classes": [
+                        "gd-p",
+                        "gd-p12"
+                       ],
+                       "components": [
+                        {
+                         "tagName": "span",
+                         "classes": [
+                          "gd-c11"
+                         ],
+                         "components": [
+                          {
+                           "type": "textnode",
+                           "content": "Includes copyrighted material of Insurance Services Office, Inc. with its permission"
+                          }
+                         ]
+                        }
+                       ]
+                      }
+                     ],
+                     "classes": [
+                      "gd-td13"
+                     ]
+                    },
+                    {
+                     "type": "cell",
+                     "components": [
+                      {
+                       "type": "text",
+                       "tagName": "p",
+                       "classes": [
+                        "gd-p",
+                        "gd-p5"
+                       ],
+                       "components": [
+                        {
+                         "tagName": "span",
+                         "classes": [
+                          "gd-c9"
+                         ],
+                         "components": [
+                          {
+                           "type": "textnode",
+                           "content": "Page "
+                          }
+                         ]
+                        },
+                        {
+                         "tagName": "span",
+                         "classes": [
+                          "gd-c9",
+                          "gd-pageno"
+                         ],
+                         "components": [
+                          {
+                           "type": "textnode",
+                           "content": "#"
+                          }
+                         ]
+                        },
+                        {
+                         "tagName": "span",
+                         "classes": [
+                          "gd-c9"
+                         ],
+                         "components": [
+                          {
+                           "type": "textnode",
+                           "content": " of "
+                          }
+                         ]
+                        },
+                        {
+                         "tagName": "span",
+                         "classes": [
+                          "gd-c9",
+                          "gd-pagecount"
+                         ],
+                         "components": [
+                          {
+                           "type": "textnode",
+                           "content": "#"
+                          }
+                         ]
+                        }
+                       ]
+                      }
+                     ],
+                     "classes": [
+                      "gd-td14"
+                     ]
+                    }
+                   ]
+                  }
+                 ]
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p2"
+               ],
+               "components": []
+              }
+             ]
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "tagName": "tbody",
+       "components": [
+        {
+         "tagName": "tr",
+         "components": [
+          {
+           "tagName": "td",
+           "components": [
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p7"
+             ],
+             "components": [
+              {
+               "tagName": "span",
+               "classes": [
+                "gd-c16"
+               ],
+               "components": [
+                {
+                 "type": "textnode",
+                 "content": "THIS ENDORSEMENT CHANGES THE POLICY. PLEASE READ IT CAREFULLY."
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p2"
+             ],
+             "components": []
+            },
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p18"
+             ],
+             "components": [
+              {
+               "tagName": "span",
+               "classes": [
+                "gd-c17"
+               ],
+               "components": [
+                {
+                 "type": "textnode",
+                 "content": "OREGON PERSONAL INJURY PROTECTION"
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p19"
+             ],
+             "components": [
+              {
+               "type": "textnode",
+               "content": "For a covered \"auto\" licensed or principally garaged in, or \"garage operations\" conducted in, Oregon, this endorsement modifies insurance provided under the following:"
+              }
+             ]
+            },
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p20"
+             ],
+             "components": []
+            },
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p21"
+             ],
+             "components": [
+              {
+               "type": "textnode",
+               "content": "BUSINESS AUTO COVERAGE FORM"
+              }
+             ]
+            },
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p21"
+             ],
+             "components": [
+              {
+               "type": "textnode",
+               "content": "MOTOR CARRIER COVERAGE FORM"
+              }
+             ]
+            },
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p22"
+             ],
+             "components": []
+            },
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p23"
+             ],
+             "components": [
+              {
+               "type": "textnode",
+               "content": "With respect to coverage provided by this endorsement, the provisions of the Coverage Form apply unless modified by the endorsement."
+              }
+             ]
+            },
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p24"
+             ],
+             "components": [
+              {
+               "type": "textnode",
+               "content": "This endorsement changes the policy effective on the inception date of the policy unless another date is indicated below."
+              }
+             ]
+            },
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p25"
+             ],
+             "components": [
+              {
+               "tagName": "span",
+               "classes": [
+                "gd-c9"
+               ],
+               "components": [
+                {
+                 "type": "textnode",
+                 "content": "SCHEDULE"
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p26"
+             ],
+             "components": []
+            },
+            {
+             "type": "table",
+             "classes": [
+              "gd-table",
+              "gd-t52"
+             ],
+             "components": [
+              {
+               "type": "tbody",
+               "components": [
+                {
+                 "type": "row",
+                 "classes": [
+                  "gd-grid"
+                 ],
+                 "components": [
+                  {
+                   "type": "cell",
+                   "classes": [
+                    "gd-col49"
+                   ],
+                   "components": []
+                  },
+                  {
+                   "type": "cell",
+                   "classes": [
+                    "gd-col50"
+                   ],
+                   "components": []
+                  },
+                  {
+                   "type": "cell",
+                   "classes": [
+                    "gd-col51"
+                   ],
+                   "components": []
+                  }
+                 ]
+                }
+               ]
+              },
+              {
+               "type": "tbody",
+               "components": [
+                {
+                 "type": "row",
+                 "components": [
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p27"
+                     ],
+                     "components": [
+                      {
+                       "tagName": "span",
+                       "classes": [
+                        "gd-c9"
+                       ],
+                       "components": [
+                        {
+                         "type": "textnode",
+                         "content": "Benefits"
+                        }
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td28"
+                   ]
+                  },
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p29"
+                     ],
+                     "components": [
+                      {
+                       "tagName": "span",
+                       "classes": [
+                        "gd-c9"
+                       ],
+                       "components": [
+                        {
+                         "type": "textnode",
+                         "content": "Limit Per Person"
+                        }
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td28"
+                   ],
+                   "attributes": {
+                    "colspan": "2"
+                   }
+                  }
+                 ],
+                 "classes": [
+                  "gd-tr30"
+                 ]
+                },
+                {
+                 "type": "row",
+                 "components": [
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p31"
+                     ],
+                     "components": [
+                      {
+                       "tagName": "span",
+                       "classes": [
+                        "gd-c9"
+                       ],
+                       "components": [
+                        {
+                         "type": "textnode",
+                         "content": "Medical And Hospital Expenses"
+                        }
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td32"
+                   ]
+                  },
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p33"
+                     ],
+                     "components": [
+                      {
+                       "type": "data-field",
+                       "field": "MOECAPolicyLevelCoverages.PersonalInjuryProtection_Oregon.MedicalandHopsitalExpensesLimit",
+                       "format": "dollars"
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td34"
+                   ]
+                  },
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p2"
+                     ],
+                     "components": []
+                    }
+                   ],
+                   "classes": [
+                    "gd-td35"
+                   ]
+                  }
+                 ],
+                 "classes": [
+                  "gd-tr36"
+                 ]
+                },
+                {
+                 "type": "row",
+                 "components": [
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p37"
+                     ],
+                     "components": [
+                      {
+                       "tagName": "span",
+                       "classes": [
+                        "gd-c9"
+                       ],
+                       "components": [
+                        {
+                         "type": "textnode",
+                         "content": "Income Continuation Expenses"
+                        }
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td38"
+                   ]
+                  },
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p39"
+                     ],
+                     "components": [
+                      {
+                       "type": "textnode",
+                       "content": "$3,000"
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td40"
+                   ]
+                  },
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p41"
+                     ],
+                     "components": [
+                      {
+                       "type": "textnode",
+                       "content": "Per Month"
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td42"
+                   ]
+                  }
+                 ],
+                 "classes": [
+                  "gd-tr36"
+                 ]
+                },
+                {
+                 "type": "row",
+                 "components": [
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p43"
+                     ],
+                     "components": [
+                      {
+                       "tagName": "span",
+                       "classes": [
+                        "gd-c9"
+                       ],
+                       "components": [
+                        {
+                         "type": "textnode",
+                         "content": "Loss Of Services Expenses"
+                        }
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td38"
+                   ]
+                  },
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p44"
+                     ],
+                     "components": [
+                      {
+                       "type": "textnode",
+                       "content": "$30"
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td40"
+                   ]
+                  },
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p45"
+                     ],
+                     "components": [
+                      {
+                       "type": "textnode",
+                       "content": "Per Day"
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td42"
+                   ]
+                  }
+                 ],
+                 "classes": [
+                  "gd-tr36"
+                 ]
+                },
+                {
+                 "type": "row",
+                 "components": [
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p43"
+                     ],
+                     "components": [
+                      {
+                       "tagName": "span",
+                       "classes": [
+                        "gd-c9"
+                       ],
+                       "components": [
+                        {
+                         "type": "textnode",
+                         "content": "Funeral Expenses"
+                        }
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td38"
+                   ]
+                  },
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p44"
+                     ],
+                     "components": [
+                      {
+                       "type": "textnode",
+                       "content": "$5,000"
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td40"
+                   ]
+                  },
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p2"
+                     ],
+                     "components": []
+                    }
+                   ],
+                   "classes": [
+                    "gd-td42"
+                   ]
+                  }
+                 ],
+                 "classes": [
+                  "gd-tr36"
+                 ]
+                },
+                {
+                 "type": "row",
+                 "components": [
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p43"
+                     ],
+                     "components": [
+                      {
+                       "tagName": "span",
+                       "classes": [
+                        "gd-c9"
+                       ],
+                       "components": [
+                        {
+                         "type": "textnode",
+                         "content": "Child Care Expenses"
+                        }
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td46"
+                   ]
+                  },
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p44"
+                     ],
+                     "components": [
+                      {
+                       "type": "textnode",
+                       "content": "$25"
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td47"
+                   ]
+                  },
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p45"
+                     ],
+                     "components": [
+                      {
+                       "type": "textnode",
+                       "content": "Per Day up to a Maximum of $750"
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td48"
+                   ]
+                  }
+                 ],
+                 "classes": [
+                  "gd-tr36"
+                 ]
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p53"
+             ],
+             "components": []
+            },
+            {
+             "tagName": "div",
+             "classes": [
+              "gd-cols144"
+             ],
+             "components": [
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p54"
+               ],
+               "components": [
+                {
+                 "type": "textnode",
+                 "content": "We agree with you, subject to all of the provisions of this endorsement and to all of the provisions of the policy except as modified herein, as follows:"
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p56"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h55"
+                 ],
+                 "components": [
+                  {
+                   "tagName": "span",
+                   "classes": [
+                    "gd-c9"
+                   ],
+                   "components": [
+                    {
+                     "type": "textnode",
+                     "content": "A."
+                    }
+                   ]
+                  }
+                 ]
+                },
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-c9"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "Coverage"
+                  }
+                 ]
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p57"
+               ],
+               "components": [
+                {
+                 "type": "textnode",
+                 "content": "We will pay Personal Injury Protection benefits to an \"insured\" who sustains \"bodily injury\" in an “accident” arising out of the ownership, maintenance or use of an \"auto\" as an \"auto\". Subject to the limits shown in the Schedule, these Personal Injury Protection benefits consist of the following:"
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p59"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h58"
+                 ],
+                 "components": [
+                  {
+                   "tagName": "span",
+                   "classes": [
+                    "gd-c9"
+                   ],
+                   "components": [
+                    {
+                     "type": "textnode",
+                     "content": "1."
+                    }
+                   ]
+                  }
+                 ]
+                },
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-c9"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "Medical And Hospital Expenses"
+                  }
+                 ]
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p60"
+               ],
+               "components": [
+                {
+                 "type": "textnode",
+                 "content": "All reasonable and necessary expenses incurred within two years from the date of the “accident” for medical, hospital, dental, surgical, ambulance and prosthetic services."
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p62"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h61"
+                 ],
+                 "components": [
+                  {
+                   "tagName": "span",
+                   "classes": [
+                    "gd-c9"
+                   ],
+                   "components": [
+                    {
+                     "type": "textnode",
+                     "content": "2."
+                    }
+                   ]
+                  }
+                 ]
+                },
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-c9"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "Income Continuation Expenses"
+                  }
+                 ]
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p63"
+               ],
+               "components": [
+                {
+                 "type": "textnode",
+                 "content": "Eighty-five percent (85%) of the \"insured's\" loss of income from work during a period of disability caused by \"bodily injury\" sustained by such person in the “accident” provided that:"
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p65"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h64"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "a."
+                  }
+                 ]
+                },
+                {
+                 "type": "textnode",
+                 "content": "Such person was usually engaged in a paying occupation at the time of the “accident”;"
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p66"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h55"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "b."
+                  }
+                 ]
+                },
+                {
+                 "type": "textnode",
+                 "content": "The period of such disability continues for at least 14 days; and,"
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p67"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h64"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "c."
+                  }
+                 ]
+                },
+                {
+                 "type": "textnode",
+                 "content": "Income continuation expenses shall include only expenses for loss of income incurred from the date such disability commenced to the date on which such person is able to return to his usual occupation and is subject to a maximum payment period in the aggregate of 52 weeks."
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p68"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h61"
+                 ],
+                 "components": [
+                  {
+                   "tagName": "span",
+                   "classes": [
+                    "gd-c9"
+                   ],
+                   "components": [
+                    {
+                     "type": "textnode",
+                     "content": "3."
+                    }
+                   ]
+                  }
+                 ]
+                },
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-c9"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "Loss Of Services Expenses"
+                  }
+                 ]
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p69"
+               ],
+               "components": [
+                {
+                 "type": "textnode",
+                 "content": "Expenses reasonably incurred during a period of disability caused by \"bodily injury\" sustained by an \"insured\" in the “accident” for essential services that were performed by a person who is not related to the \"insured\" or residing in the \"insured's\" household in lieu of those such person would have performed without income provided that:"
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p70"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h55"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "a."
+                  }
+                 ]
+                },
+                {
+                 "type": "textnode",
+                 "content": "Such person was not usually engaged in a paying occupation at the time of the “accident”;"
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p70"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h55"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "b."
+                  }
+                 ]
+                },
+                {
+                 "type": "textnode",
+                 "content": "The period of such disability continues for at least 14 days; and"
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p71"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h64"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "c."
+                  }
+                 ]
+                },
+                {
+                 "type": "textnode",
+                 "content": "Loss of services expenses shall include only expense for such services actually rendered from the date such disability commenced to the date on which such person is reasonably able to perform such services and is subject to a maximum payment period in the aggregate of 52 weeks."
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p72"
+               ],
+               "components": [
+                {
+                 "type": "textnode",
+                 "content": "However, loss of services expenses shall not include child care expenses."
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p74"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h73"
+                 ],
+                 "components": [
+                  {
+                   "tagName": "span",
+                   "classes": [
+                    "gd-c9"
+                   ],
+                   "components": [
+                    {
+                     "type": "textnode",
+                     "content": "4."
+                    }
+                   ]
+                  }
+                 ]
+                },
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-c9"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "Funeral Expenses"
+                  }
+                 ]
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p75"
+               ],
+               "components": [
+                {
+                 "type": "textnode",
+                 "content": "Reasonable and necessary expenses for professional funeral services incurred within one year after the date of the \"accident”."
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p74"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h73"
+                 ],
+                 "components": [
+                  {
+                   "tagName": "span",
+                   "classes": [
+                    "gd-c9"
+                   ],
+                   "components": [
+                    {
+                     "type": "textnode",
+                     "content": "5."
+                    }
+                   ]
+                  }
+                 ]
+                },
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-c9"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "Child Care Expenses"
+                  }
+                 ]
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p76"
+               ],
+               "components": [
+                {
+                 "type": "textnode",
+                 "content": "Expenses reasonably incurred for the care of a minor child of an \"insured\" who has sustained \"bodily injury\" in the “accident”, provided:"
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p78"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h77"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "a."
+                  }
+                 ]
+                },
+                {
+                 "type": "textnode",
+                 "content": "The \"insured\" is the parent of the minor child and is required to be hospitalized for a minimum of 24 hours; and"
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p80"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h79"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "b."
+                  }
+                 ]
+                },
+                {
+                 "type": "textnode",
+                 "content": "Payments begin after the initial 24 hours of hospitalization and are made for as long as the \"insured\" is unable to return to work if he or she is usually engaged in a paying occupation. If such person was not usually engaged in a paying occupation at the time of the \"accident\", then payment will continue for as long as he or she is unable to perform essential services that he or she would have performed without income."
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p56"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h55"
+                 ],
+                 "components": [
+                  {
+                   "tagName": "span",
+                   "classes": [
+                    "gd-c9"
+                   ],
+                   "components": [
+                    {
+                     "type": "textnode",
+                     "content": "B."
+                    }
+                   ]
+                  }
+                 ]
+                },
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-c9"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "Who Is An Insured"
+                  }
+                 ]
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p81"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h64"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "1."
+                  }
+                 ]
+                },
+                {
+                 "type": "textnode",
+                 "content": "You, if you sustain \"bodily injury\" while \"occupying\", maintaining or using a \"private passenger auto\" or, while a \"pedestrian\", through being struck by an \"auto\"."
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p82"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h64"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "2."
+                  }
+                 ]
+                },
+                {
+                 "type": "textnode",
+                 "content": "If you are an individual, any \"family member\" who sustains \"bodily injury\" while \"occupying\", maintaining or using a \"private passenger auto\" or, while a \"pedestrian\", through being struck by an \"auto\"."
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p83"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h64"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "3."
+                  }
+                 ]
+                },
+                {
+                 "type": "textnode",
+                 "content": "Any other person who sustains \"bodily injury\" while \"occupying\", maintaining or using the \"covered auto\" with your permission or, while a \"pedestrian\" through being struck by a \"covered auto\"."
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p84"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h55"
+                 ],
+                 "components": [
+                  {
+                   "tagName": "span",
+                   "classes": [
+                    "gd-c9"
+                   ],
+                   "components": [
+                    {
+                     "type": "textnode",
+                     "content": "C."
+                    }
+                   ]
+                  }
+                 ]
+                },
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-c9"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "Exclusions"
+                  }
+                 ]
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p85"
+               ],
+               "components": [
+                {
+                 "type": "textnode",
+                 "content": "We will not pay Personal Injury Protection benefits for \"bodily injury\":"
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p86"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h61"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "1."
+                  }
+                 ]
+                },
+                {
+                 "type": "textnode",
+                 "content": "Sustained by any person:"
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p87"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h77"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "a."
+                  }
+                 ]
+                },
+                {
+                 "type": "textnode",
+                 "content": "Who intentionally causes injury to himself or herself;"
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p88"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h79"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "b."
+                  }
+                 ]
+                },
+                {
+                 "type": "textnode",
+                 "content": "While participating in any prearranged or organized racing or speed contest or in practice or preparation for any such contest; or"
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p89"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h64"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "c."
+                  }
+                 ]
+                },
+                {
+                 "type": "textnode",
+                 "content": "Who willfully conceals or misrepresents any material fact in connection with a claim for Personal Injury Protection benefits."
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p90"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h64"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "2."
+                  }
+                 ]
+                },
+                {
+                 "type": "textnode",
+                 "content": "That results in the application of income continuation expenses and loss of service expenses, sustained by any \"pedestrian\" other than you or a \"family member” in an “accident” that occurs outside the State of Oregon."
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p91"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h61"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "3."
+                  }
+                 ]
+                },
+                {
+                 "type": "textnode",
+                 "content": "Arising directly or indirectly out of:"
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p93"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h92"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "a."
+                  }
+                 ]
+                },
+                {
+                 "type": "textnode",
+                 "content": "War, including undeclared or civil war;"
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p94"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h79"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "b."
+                  }
+                 ]
+                },
+                {
+                 "type": "textnode",
+                 "content": "Warlike action by a military force, including action in hindering or defending against an actual or expected attack, by any government, sovereign or other authority using military personnel or other agents; or"
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p95"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h79"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "c."
+                  }
+                 ]
+                },
+                {
+                 "type": "textnode",
+                 "content": "Insurrection, rebellion, revolution, usurped power, or action taken by governmental authority in hindering or defending against any of these."
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p90"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h64"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "4."
+                  }
+                 ]
+                },
+                {
+                 "type": "textnode",
+                 "content": "Resulting from the radioactive, toxic, explosive or other hazardous properties of nuclear material."
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p96"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h64"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "5."
+                  }
+                 ]
+                },
+                {
+                 "type": "textnode",
+                 "content": "Sustained by you or any \"family member\" while \"occupying\" any \"auto\" you own or furnished or available for your regular use that is not a \"covered auto\", including a motorcycle or moped as defined in Oregon Statutes."
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p97"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h64"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "6."
+                  }
+                 ]
+                },
+                {
+                 "type": "textnode",
+                 "content": "Sustained by a \"family member\" while \"occupying\" any \"auto\" owned by such \"family member\" or furnished or available for the \"family member's\" regular use that is not a \"covered auto\", including a motorcycle or moped as defined in Oregon Statutes."
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p84"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h55"
+                 ],
+                 "components": [
+                  {
+                   "tagName": "span",
+                   "classes": [
+                    "gd-c9"
+                   ],
+                   "components": [
+                    {
+                     "type": "textnode",
+                     "content": "D."
+                    }
+                   ]
+                  }
+                 ]
+                },
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-c9"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "Limit Of Insurance"
+                  }
+                 ]
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p98"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h64"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "1."
+                  }
+                 ]
+                },
+                {
+                 "type": "textnode",
+                 "content": "Regardless of the number of \"insureds\", policies or bonds applicable, claims made, premiums paid or \"covered autos\" to which this coverage applies, the most we will pay for Personal Injury Protection benefits for \"bodily injury\" sustained by any one \"insured\" in any one “auto” “accident” is the Limit Per Person amount shown in the Schedule."
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p99"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h64"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "2."
+                  }
+                 ]
+                },
+                {
+                 "type": "textnode",
+                 "content": "Any amount paid under this coverage will be reduced by any amount paid or payable by any workers' compensation or any other similar medical or disability benefits law (excluding Medicare and Medicaid)."
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p100"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h64"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "3."
+                  }
+                 ]
+                },
+                {
+                 "type": "textnode",
+                 "content": "Any amount payable under this coverage to you or a \"family member\" will reduce any amount payable for damages under this coverage form's Uninsured Motorists Coverage."
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p101"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h64"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "4."
+                  }
+                 ]
+                },
+                {
+                 "type": "textnode",
+                 "content": "Any amount paid under this coverage to an \"insured\" will reduce any amount the \"insured\" may be entitled to recover for the same damages under this coverage form's Liability Coverage."
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p102"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h77"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "5."
+                  }
+                 ]
+                },
+                {
+                 "type": "textnode",
+                 "content": "Any amount payable for medical and hospital expenses shall be reduced by the amount of the deductible you may elect. If you elect a deductible, it will be shown in the Schedule. The deductible applies only to you and/or any \"family member\"."
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p103"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h92"
+                 ],
+                 "components": [
+                  {
+                   "tagName": "span",
+                   "classes": [
+                    "gd-c9"
+                   ],
+                   "components": [
+                    {
+                     "type": "textnode",
+                     "content": "E."
+                    }
+                   ]
+                  }
+                 ]
+                },
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-c9"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "Changes In Conditions"
+                  }
+                 ]
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p104"
+               ],
+               "components": [
+                {
+                 "type": "textnode",
+                 "content": "The "
+                },
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-c9"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "conditions "
+                  }
+                 ]
+                },
+                {
+                 "type": "textnode",
+                 "content": "are changed for "
+                },
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-c9"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "Personal Injury Protection "
+                  }
+                 ]
+                },
+                {
+                 "type": "textnode",
+                 "content": "as follows:"
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p105"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h77"
+                 ],
+                 "components": [
+                  {
+                   "tagName": "span",
+                   "classes": [
+                    "gd-c9"
+                   ],
+                   "components": [
+                    {
+                     "type": "textnode",
+                     "content": "1."
+                    }
+                   ]
+                  }
+                 ]
+                },
+                {
+                 "type": "textnode",
+                 "content": "The following is added to "
+                },
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-c9"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "Duties In The Event Of Accident, Claim, Suit Or Loss:"
+                  }
+                 ]
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p106"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h77"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "a."
+                  }
+                 ]
+                },
+                {
+                 "type": "textnode",
+                 "content": "If an \"insured\" or his or her legal representative institutes legal action for damages for \"bodily injury\", he or she must promptly give us a copy of the summons and complaint or other process served in connection with the legal action."
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p107"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h79"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "b."
+                  }
+                 ]
+                },
+                {
+                 "type": "textnode",
+                 "content": "The \"insured\" or someone on his or her behalf must promptly give us written proof of claim, under oath if required, including:"
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p109"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h108"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "(1)"
+                  }
+                 ]
+                },
+                {
+                 "type": "textnode",
+                 "content": "Full particulars of the nature and extent of the \"bodily injury\", treatment and rehabilitation received and contemplated; and"
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p110"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h108"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "(2)"
+                  }
+                 ]
+                },
+                {
+                 "type": "textnode",
+                 "content": "Such other information that will help us determine the amount due and payable."
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p111"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h64"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "c."
+                  }
+                 ]
+                },
+                {
+                 "type": "textnode",
+                 "content": "The \"insured\" or his or her legal representative shall give us authorization, each time we request it, to obtain medical reports, copies of records and information with respect to loss of income."
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p112"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h55"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "d."
+                  }
+                 ]
+                },
+                {
+                 "type": "textnode",
+                 "content": "We may require that the \"insured\", as a condition for receiving income continuation expenses, cooperate in furnishing us reasonable medical proof of his or her inability to work."
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p82"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h64"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "2."
+                  }
+                 ]
+                },
+                {
+                 "type": "textnode",
+                 "content": "The "
+                },
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-c9"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "Other Insurance "
+                  }
+                 ]
+                },
+                {
+                 "type": "textnode",
+                 "content": "Condition in the Business Auto and Garage Coverage Forms and the "
+                },
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-c9"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "Other Insurance – Primary And Excess Insurance Provisions "
+                  }
+                 ]
+                },
+                {
+                 "type": "textnode",
+                 "content": "Condition in the Truckers and Motor Carrier Coverage Forms are replaced by the following:"
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p113"
+               ],
+               "components": [
+                {
+                 "type": "textnode",
+                 "content": "The coverage provided in this endorsement is excess for:"
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p114"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h64"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "a."
+                  }
+                 ]
+                },
+                {
+                 "type": "textnode",
+                 "content": "\"Bodily injury\" sustained by any \"pedestrian\", other than you or any \"family member\". This coverage is excess to the extent that amounts are paid or payable to or for such \"pedestrian\" under any collateral benefits, including but not limited to:"
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p116"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h115"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "(1)"
+                  }
+                 ]
+                },
+                {
+                 "type": "textnode",
+                 "content": "Insurance benefits under another policy issued by us or another company;"
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p117"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h115"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "(2)"
+                  }
+                 ]
+                },
+                {
+                 "type": "textnode",
+                 "content": "Governmental benefits (except Medicare and Medicaid benefits);"
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p119"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h118"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "(3)"
+                  }
+                 ]
+                },
+                {
+                 "type": "textnode",
+                 "content": "Gratuitous benefits; or"
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p120"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h115"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "(4)"
+                  }
+                 ]
+                },
+                {
+                 "type": "textnode",
+                 "content": "Oregon Personal Injury Protection benefits."
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p121"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h55"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "b."
+                  }
+                 ]
+                },
+                {
+                 "type": "textnode",
+                 "content": "\"Bodily injury\" sustained by you or any \"family member\" while \"occupying\" any \"auto\", other than the \"covered auto\", with respect to which Oregon Personal Injury Protection benefits are in effect."
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p122"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h58"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "3."
+                  }
+                 ]
+                },
+                {
+                 "type": "textnode",
+                 "content": "The following conditions are added:"
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p123"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h58"
+                 ],
+                 "components": [
+                  {
+                   "tagName": "span",
+                   "classes": [
+                    "gd-c9"
+                   ],
+                   "components": [
+                    {
+                     "type": "textnode",
+                     "content": "a."
+                    }
+                   ]
+                  }
+                 ]
+                },
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-c9"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "Reimbursement And Trust"
+                  }
+                 ]
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p124"
+               ],
+               "components": [
+                {
+                 "type": "textnode",
+                 "content": "In the event of payment to any person of any benefits under this endorsement:"
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p125"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h115"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "(1)"
+                  }
+                 ]
+                },
+                {
+                 "type": "textnode",
+                 "content": "We shall be entitled to reimbursement or subrogation in accordance with the provisions of ORS 743.825, ORS 743.830"
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p126"
+               ],
+               "components": [
+                {
+                 "type": "textnode",
+                 "content": "or Section 8 of Chapter 784 Laws 1975."
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p127"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h115"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "(2)"
+                  }
+                 ]
+                },
+                {
+                 "type": "textnode",
+                 "content": "We are entitled to the proceeds of any settlement or judgment that may result from the exercise of any rights of recovery of the \"insured\" against any person or organization legally responsible for the \"accident”, to the extent benefits were paid, less our share of expenses, costs and attorney's fees incurred by the \"insured\" in connection with such recovery."
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p125"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h115"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "(3)"
+                  }
+                 ]
+                },
+                {
+                 "type": "textnode",
+                 "content": "The \"insured\" shall hold in trust for our benefit all his or her rights of recovery to the extent of benefits furnished."
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p128"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h115"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "(4)"
+                  }
+                 ]
+                },
+                {
+                 "type": "textnode",
+                 "content": "The \"insured\" shall do whatever is proper to secure and shall do nothing after loss to prejudice such rights."
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p128"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h115"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "(5)"
+                  }
+                 ]
+                },
+                {
+                 "type": "textnode",
+                 "content": "If we request in writing, the \"insured\" shall take, through any representative not in conflict of interest with him or her, designated by us, such action as may be necessary or appropriate to recover such benefits furnished as damages from the person or organization legally responsible, such action to be taken in the name of the \"insured\", but only to the extent of benefits furnished by us. In the event of recovery, we shall also be reimbursed out of such recovery for the \"insured's\" share of expenses, costs and attorney's fees incurred by us in connection with the recovery."
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p129"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h115"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "(6)"
+                  }
+                 ]
+                },
+                {
+                 "type": "textnode",
+                 "content": "The \"insured\" shall execute and deliver to us such instructions and papers as may be appropriate to secure the rights and obligations of the \"insured\" and us as established by this provision."
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p131"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h130"
+                 ],
+                 "components": [
+                  {
+                   "tagName": "span",
+                   "classes": [
+                    "gd-c9"
+                   ],
+                   "components": [
+                    {
+                     "type": "textnode",
+                     "content": "b."
+                    }
+                   ]
+                  }
+                 ]
+                },
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-c9"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "Arbitration"
+                  }
+                 ]
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p132"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h108"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "(1)"
+                  }
+                 ]
+                },
+                {
+                 "type": "textnode",
+                 "content": "If we and an \"insured\" disagree whether the \"insured\" is entitled to recover Personal Injury Protection benefits, or do not agree as to the amount payable under this coverage, then if both parties agree at the time of the dispute the matter shall be arbitrated."
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p133"
+               ],
+               "components": [
+                {
+                 "type": "textnode",
+                 "content": "In the event of arbitration, each party will select an arbitrator. The two arbitrators will select a third. If they cannot agree on the choice of the third arbitrator within 30 days, either may request that selection be made by a judge of a court of record in the county and state in which such arbitration is pending. Each party will pay the expenses it incurs and bear the expenses of the third arbitrator equally. Costs to the \"insured\" of the arbitration proceedings shall not exceed $100, and all other costs of arbitration shall be borne by us. However, attorneys’ fees and fees paid to medical or other expert witnesses are not arbitration expenses and are to be paid by the party incurring them."
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p134"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h108"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "(2)"
+                  }
+                 ]
+                },
+                {
+                 "type": "textnode",
+                 "content": "Unless both parties agree otherwise, arbitration will take place in the county in which the \"insured\" lives. Local rules of law as to arbitration procedure and evidence will apply. A decision agreed to by two of the arbitrators will be binding."
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p135"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h61"
+                 ],
+                 "components": [
+                  {
+                   "tagName": "span",
+                   "classes": [
+                    "gd-c9"
+                   ],
+                   "components": [
+                    {
+                     "type": "textnode",
+                     "content": "c."
+                    }
+                   ]
+                  }
+                 ]
+                },
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-c9"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "Coordination And Nonduplication"
+                  }
+                 ]
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p136"
+               ],
+               "components": [
+                {
+                 "type": "textnode",
+                 "content": "Any automobile medical payments coverage afforded under this Coverage Part is excess over any medical expense benefits paid or payable under this endorsement or any other automobile insurance policy covering \"bodily injury\" to an \"insured\"."
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p138"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h137"
+                 ],
+                 "components": [
+                  {
+                   "tagName": "span",
+                   "classes": [
+                    "gd-c9"
+                   ],
+                   "components": [
+                    {
+                     "type": "textnode",
+                     "content": "F."
+                    }
+                   ]
+                  }
+                 ]
+                },
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-c9"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "Additional Definitions"
+                  }
+                 ]
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p139"
+               ],
+               "components": [
+                {
+                 "type": "textnode",
+                 "content": "As used in this endorsement:"
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p140"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h61"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "1."
+                  }
+                 ]
+                },
+                {
+                 "type": "textnode",
+                 "content": "\"Covered auto\" means a \"private passenger auto\" to which the \"bodily injury\" Liability Coverage of the policy applies and for which a specific premium is charged."
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p141"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h61"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "2."
+                  }
+                 ]
+                },
+                {
+                 "type": "textnode",
+                 "content": "\"Family member\" means a spouse and any other person related to you by blood, marriage or adoption (including a ward or foster child) who is a resident of the same household as you."
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p142"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h64"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "3."
+                  }
+                 ]
+                },
+                {
+                 "type": "textnode",
+                 "content": "\"Occupying\" means in or upon or entering into or alighting from."
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p143"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h64"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "4."
+                  }
+                 ]
+                },
+                {
+                 "type": "textnode",
+                 "content": "\"Pedestrian\" means any person while not \"occupying\" a self-propelled vehicle other than a wheelchair or a similar low-powered motorized or mechanically propelled vehicle that is designed specifically for use by a physically disabled person who has a medical necessity for a wheelchair or other low-powered vehicle."
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p143"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h64"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "5."
+                  }
+                 ]
+                },
+                {
+                 "type": "textnode",
+                 "content": "\"Private passenger auto\" means a four-wheel passenger or station wagon-type \"auto\" not used as a public or livery conveyance and includes any other four-wheel \"auto\" of the utility, pick-up body, sedan delivery or panel truck type not used for wholesale or retail delivery other than farming, a self-propelled mobile home and a farm truck."
+                }
+               ]
+              }
+             ]
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "tagName": "div",
+     "classes": [
+      "gd-footer",
+      "gd-foot-fixed"
+     ],
+     "components": [
+      {
+       "type": "table",
+       "classes": [
+        "gd-table",
+        "gd-t15"
+       ],
+       "components": [
+        {
+         "type": "tbody",
+         "components": [
+          {
+           "type": "row",
+           "components": [
+            {
+             "type": "cell",
+             "components": [
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p2"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-c9"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "EA 22 36 12 15"
+                  }
+                 ]
+                }
+               ]
+              }
+             ],
+             "classes": [
+              "gd-td10"
+             ]
+            },
+            {
+             "type": "cell",
+             "components": [
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p12"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-c11"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "Includes copyrighted material of Insurance Services Office, Inc. with its permission"
+                  }
+                 ]
+                }
+               ]
+              }
+             ],
+             "classes": [
+              "gd-td13"
+             ]
+            },
+            {
+             "type": "cell",
+             "components": [
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p5"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-c9"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "Page "
+                  }
+                 ]
+                },
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-c9",
+                  "gd-pageno"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "#"
+                  }
+                 ]
+                },
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-c9"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": " of "
+                  }
+                 ]
+                },
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-c9",
+                  "gd-pagecount"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "#"
+                  }
+                 ]
+                }
+               ]
+              }
+             ],
+             "classes": [
+              "gd-td14"
+             ]
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "tagName": "p",
+       "classes": [
+        "gd-p",
+        "gd-p2"
+       ],
+       "components": []
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "css": ".form-page{position:relative;width:612pt;height:792pt;overflow:hidden;background:#fff;}\n.form-page + .form-page{page-break-before:always;}\n@page gdflow{margin:54pt 0 72pt 0;}\n.gd-flow{page:gdflow;padding:0 54pt 0 54pt;}\n@page gdrun{margin:0pt 0 18pt 0;}\n.gd-flow.gd-run{page:gdrun;}\n.gd-doc table.gd-runt{width:100%;border-collapse:collapse;table-layout:fixed;}\n.gd-doc table.gd-runt>*>tr>td{padding:0;}\n.gd-doc table.gd-runt>thead>tr>td{height:54pt;vertical-align:top;}\n.gd-doc table.gd-runt>tfoot>tr>td{height:54pt;vertical-align:bottom;position:relative;}\n.gd-pdffoot-even{position:absolute;visibility:hidden;left:0;right:0;bottom:0;}\n.gd-doc table.gd-runt>thead>tr>td{position:relative;}\n.gd-pgmark{position:absolute;left:0;top:0;font-size:2pt;line-height:1;color:#fff;white-space:nowrap;}\n.gd-sheetfoot{position:absolute;background:#fff;}\n.gd-sheetfoot.gd-side-even{display:none;}\n.gd-foot-fixed{display:none;}\n@media print{.gd-foot-space{visibility:hidden;}.gd-foot-fixed{display:block;position:fixed;left:0;right:0;bottom:0;padding:0 54pt 0 54pt;}}\n.gd-if:empty{display:none;}\n.gd-flow:not(:has(:not(.gd-if))){display:none;}\n.form-page:not(:has(:not(.gd-if))){display:none;}\n.form-page .abs{position:absolute;white-space:pre;margin:0;padding:0;line-height:normal;}\n.form-page .rule{position:absolute;background:#000;}\n.form-page .gd-tb{white-space:normal;box-sizing:border-box;}\n.gd-doc .gd-pagebg{position:absolute;width:0;height:0;}\n.gd-doc .gd-anchor{position:relative;}\n.gd-doc .gd-anchored{position:absolute;box-sizing:border-box;}\n.gd-doc .gd-header{position:relative;}\n.gd-pagebg .abs{position:absolute;white-space:pre;margin:0;padding:0;line-height:normal;}\n.gd-pagebg .rule{position:absolute;background:#000;}\n.gd-pagebg .gd-tb{white-space:normal;box-sizing:border-box;}\n.gd-doc{font-family:'Arial',sans-serif;font-size:10pt;color:#000;line-height:1.15;}\n:where(.gd-doc) p{margin:0;}\n.gd-doc p:empty::before{content:\"\\00a0\";}\n.gd-doc p.gd-keepline{min-height:1lh;}\n.gd-doc .gd-table{border-collapse:collapse;table-layout:fixed;}\n:where(.gd-doc) td{vertical-align:top;padding:0 5.4pt;}\n.gd-doc tr.gd-grid td{height:0;padding:0;border:0;}\n.gd-doc .gd-box{margin:0 0 6pt 0;}\n.gd-doc .gd-tab{display:inline-block;width:36pt;}\n.gd-doc .gd-hang{display:inline-block;}\n.gd-doc .gd-img-missing{display:inline-block;border:1px dashed #9ca3af;color:#6b7280;font-size:7pt;}\n.gd-doc .gd-c1{font-weight:bold;text-transform:uppercase;}\n.gd-doc .gd-p2{line-height:1.15;}\n.gd-doc .gd-td3{width:19.640%;padding:0pt 5.4pt 0pt 5.4pt;}\n.gd-doc .gd-td4{width:58.040%;padding:0pt 5.4pt 0pt 5.4pt;}\n.gd-doc .gd-p5{text-align:right;line-height:1.15;}\n.gd-doc .gd-td6{width:22.320%;padding:0pt 5.4pt 0pt 5.4pt;}\n.gd-doc .gd-p7{text-align:center;line-height:1.15;}\n.gd-doc .gd-t8{width:100.000%;}\n.gd-doc .gd-c9{font-weight:bold;}\n.gd-doc .gd-td10{width:16.630%;padding:0pt 5.4pt 0pt 5.4pt;}\n.gd-doc .gd-c11{font-size:9pt;}\n.gd-doc .gd-p12{margin-left:1pt;margin-top:0.7pt;line-height:1.15;}\n.gd-doc .gd-td13{width:69.400%;padding:0pt 5.4pt 0pt 5.4pt;}\n.gd-doc .gd-td14{width:13.970%;padding:0pt 5.4pt 0pt 5.4pt;}\n.gd-doc .gd-t15{width:100.000%;margin-left:-0.140%;}\n.gd-doc .gd-c16{font-weight:bold;text-transform:uppercase;font-size:12pt;}\n.gd-doc .gd-c17{font-weight:bold;font-size:18pt;}\n.gd-doc .gd-p18{text-align:center;margin-left:0.25pt;margin-right:0.25pt;margin-top:8.9pt;line-height:1.15;}\n.gd-doc .gd-p19{margin-left:18pt;margin-top:14.9pt;line-height:1.1;}\n.gd-doc .gd-p20{margin-top:3.6pt;line-height:1.15;}\n.gd-doc .gd-p21{margin-left:33.1pt;line-height:1.09;}\n.gd-doc .gd-p22{margin-top:3.5pt;line-height:1.15;}\n.gd-doc .gd-p23{margin-left:18pt;margin-right:12.45pt;margin-top:0.05pt;line-height:1.1;}\n.gd-doc .gd-p24{margin-left:18pt;margin-right:12.45pt;margin-top:4.15pt;line-height:1.09;}\n.gd-doc .gd-p25{text-align:center;margin-left:0.25pt;margin-top:10.45pt;line-height:1.15;}\n.gd-doc .gd-p26{margin-top:0.15pt;margin-bottom:0.05pt;line-height:1.15;}\n.gd-doc .gd-p27{text-align:center;margin-left:0.95pt;margin-top:2.15pt;line-height:10.6pt;}\n.gd-doc .gd-td28{border-top:1pt solid #000000;border-left:1pt solid #000000;border-bottom:1pt solid #000000;border-right:1pt solid #000000;vertical-align:middle;padding:0pt 0pt 0pt 0pt;}\n.gd-doc .gd-p29{text-align:center;margin-right:0.05pt;margin-top:2.15pt;line-height:10.6pt;}\n.gd-doc .gd-tr30{height:14.75pt;}\n.gd-doc .gd-p31{margin-left:2.85pt;margin-top:5.9pt;line-height:1.15;}\n.gd-doc .gd-td32{border-top:1pt solid #000000;border-left:1pt solid #000000;border-right:1pt solid #000000;vertical-align:middle;padding:0pt 0pt 0pt 0pt;}\n.gd-doc .gd-p33{margin-left:7.2pt;line-height:1.15;}\n.gd-doc .gd-td34{border-top:1pt solid #000000;border-left:1pt solid #000000;vertical-align:middle;padding:0pt 0pt 0pt 0pt;}\n.gd-doc .gd-td35{border-top:1pt solid #000000;border-right:0.5pt solid #000;vertical-align:middle;padding:0pt 0pt 0pt 0pt;}\n.gd-doc .gd-tr36{height:19.45pt;}\n.gd-doc .gd-p37{margin-left:2.85pt;margin-top:4.4pt;line-height:1.15;}\n.gd-doc .gd-td38{border-left:1pt solid #000000;border-right:1pt solid #000000;vertical-align:middle;padding:0pt 0pt 0pt 0pt;}\n.gd-doc .gd-p39{margin-left:7.2pt;margin-top:4.5pt;line-height:1.15;}\n.gd-doc .gd-td40{border-left:1pt solid #000000;vertical-align:middle;padding:0pt 0pt 0pt 0pt;}\n.gd-doc .gd-p41{margin-left:3.45pt;margin-top:4.5pt;line-height:1.15;}\n.gd-doc .gd-td42{border-right:1pt solid #000000;vertical-align:middle;padding:0pt 0pt 0pt 0pt;}\n.gd-doc .gd-p43{margin-left:2.85pt;margin-top:4.8pt;line-height:1.15;}\n.gd-doc .gd-p44{margin-left:7.2pt;margin-top:4.9pt;line-height:1.15;}\n.gd-doc .gd-p45{margin-left:3.45pt;margin-top:4.9pt;line-height:1.15;}\n.gd-doc .gd-td46{border-left:1pt solid #000000;border-bottom:1pt solid #000000;border-right:1pt solid #000000;vertical-align:middle;padding:0pt 0pt 0pt 0pt;}\n.gd-doc .gd-td47{border-left:1pt solid #000000;border-bottom:1pt solid #000000;vertical-align:middle;padding:0pt 0pt 0pt 0pt;}\n.gd-doc .gd-td48{border-bottom:1pt solid #000000;border-right:1pt solid #000000;vertical-align:middle;padding:0pt 0pt 0pt 0pt;}\n.gd-doc .gd-col49{width:252pt;}\n.gd-doc .gd-col50{width:44.1pt;}\n.gd-doc .gd-col51{width:186.4pt;}\n.gd-doc .gd-t52{width:482.5pt;margin-left:18pt;}\n.gd-doc .gd-p53{margin-top:1.85pt;line-height:1.15;}\n.gd-doc .gd-p54{text-align:justify;margin-left:18pt;margin-right:2.2pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-h55{min-width:14.9pt;}\n.gd-doc .gd-p56{text-align:justify;margin-left:32.9pt;text-indent:-14.9pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-p57{text-align:justify;margin-left:33.1pt;margin-right:1.9pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-h58{min-width:14.1pt;}\n.gd-doc .gd-p59{text-align:justify;margin-left:47.9pt;text-indent:-14.1pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-p60{text-align:justify;margin-left:48pt;margin-right:2.15pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-h61{min-width:14.2pt;}\n.gd-doc .gd-p62{text-align:justify;margin-left:47.9pt;text-indent:-14.2pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-p63{text-align:justify;margin-left:48pt;margin-right:2.2pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-h64{min-width:14.3pt;}\n.gd-doc .gd-p65{text-align:justify;margin-left:47.25pt;margin-right:17.6pt;text-indent:-14.3pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-p66{text-align:justify;margin-left:47.25pt;margin-right:17.65pt;text-indent:-14.9pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-p67{text-align:justify;margin-left:47.25pt;margin-right:17.65pt;text-indent:-14.3pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-p68{text-align:justify;margin-left:32.2pt;text-indent:-14.2pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-p69{text-align:justify;margin-left:32.25pt;margin-right:17.6pt;text-indent:-0.05pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-p70{text-align:justify;margin-left:63pt;margin-right:2.2pt;text-indent:-14.9pt;margin-top:4pt;line-height:11pt;break-after:avoid;}\n.gd-doc .gd-p71{text-align:justify;margin-left:63pt;margin-right:1.9pt;text-indent:-14.3pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-p72{text-align:justify;margin-left:48pt;margin-right:2.2pt;text-indent:-0.05pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-h73{min-width:14.35pt;}\n.gd-doc .gd-p74{text-align:justify;margin-left:47.9pt;text-indent:-14.35pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-p75{text-align:justify;margin-left:48pt;margin-right:2.1pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-p76{text-align:justify;margin-left:48pt;margin-right:2.05pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-h77{min-width:14.4pt;}\n.gd-doc .gd-p78{text-align:justify;margin-left:63pt;margin-right:2.1pt;text-indent:-14.4pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-h79{min-width:15pt;}\n.gd-doc .gd-p80{text-align:justify;margin-left:63pt;margin-right:2.05pt;text-indent:-15pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-p81{text-align:justify;margin-left:47.85pt;margin-right:2.3pt;text-indent:-14.3pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-p82{text-align:justify;margin-left:47.85pt;margin-right:2pt;text-indent:-14.3pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-p83{text-align:justify;margin-left:47.85pt;margin-right:2.05pt;text-indent:-14.3pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-p84{text-align:justify;margin-left:32.75pt;text-indent:-14.9pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-p85{text-align:justify;margin-left:33pt;margin-right:5.85pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-p86{text-align:justify;margin-left:47.8pt;text-indent:-14.2pt;margin-top:4pt;line-height:11pt;break-after:avoid;}\n.gd-doc .gd-p87{text-align:justify;margin-left:63pt;margin-right:17.95pt;text-indent:-14.4pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-p88{text-align:justify;margin-left:63pt;margin-right:17.75pt;text-indent:-15pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-p89{text-align:justify;margin-left:62.85pt;margin-right:17.35pt;text-indent:-14.3pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-p90{text-align:justify;margin-left:47.85pt;margin-right:17.75pt;text-indent:-14.3pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-p91{text-align:justify;margin-left:47.8pt;text-indent:-14.2pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-h92{min-width:14.95pt;}\n.gd-doc .gd-p93{text-align:justify;margin-left:62.8pt;text-indent:-14.95pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-p94{text-align:justify;margin-left:62.85pt;margin-right:17.75pt;text-indent:-15pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-p95{text-align:justify;margin-left:62.85pt;margin-right:17.5pt;text-indent:-15pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-p96{text-align:justify;margin-left:47.85pt;margin-right:17.9pt;text-indent:-14.3pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-p97{text-align:justify;margin-left:47.85pt;margin-right:17.6pt;text-indent:-14.3pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-p98{text-align:justify;margin-left:47.85pt;margin-right:17.8pt;text-indent:-14.3pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-p99{text-align:justify;margin-left:47.85pt;margin-right:17.5pt;text-indent:-14.3pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-p100{text-align:justify;margin-left:47.85pt;margin-right:17.5pt;text-indent:-14.3pt;margin-top:4pt;line-height:11pt;break-after:avoid;}\n.gd-doc .gd-p101{text-align:justify;margin-left:48pt;margin-right:1.9pt;text-indent:-14.3pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-p102{text-align:justify;margin-left:48pt;margin-right:2.05pt;text-indent:-14.4pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-p103{text-align:justify;margin-left:32.95pt;text-indent:-14.95pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-p104{text-align:justify;margin-left:33pt;margin-right:5.55pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-p105{text-align:justify;margin-left:48pt;margin-right:2.3pt;text-indent:-14.4pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-p106{text-align:justify;margin-left:63pt;margin-right:1.9pt;text-indent:-14.4pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-p107{text-align:justify;margin-left:63pt;margin-right:2.25pt;text-indent:-15pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-h108{min-width:18.4pt;}\n.gd-doc .gd-p109{text-align:justify;margin-left:78pt;margin-right:2.2pt;text-indent:-18.4pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-p110{text-align:justify;margin-left:78pt;margin-right:2.3pt;text-indent:-18.4pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-p111{text-align:justify;margin-left:62.85pt;margin-right:2.2pt;text-indent:-14.3pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-p112{text-align:justify;margin-left:62.85pt;margin-right:1.9pt;text-indent:-14.9pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-p113{text-align:justify;margin-left:47.85pt;margin-right:5.65pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-p114{text-align:justify;margin-left:47.25pt;margin-right:17.75pt;text-indent:-14.3pt;margin-top:4pt;line-height:11pt;break-after:avoid;}\n.gd-doc .gd-h115{min-width:18.25pt;}\n.gd-doc .gd-p116{margin-left:62.25pt;margin-right:17.3pt;text-indent:-18.25pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-p117{margin-left:62.25pt;margin-right:17.75pt;text-indent:-18.25pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-h118{min-width:18.2pt;}\n.gd-doc .gd-p119{margin-left:62.2pt;text-indent:-18.2pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-p120{margin-left:62.25pt;margin-right:17.9pt;text-indent:-18.25pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-p121{text-align:justify;margin-left:47.25pt;margin-right:17.45pt;text-indent:-14.9pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-p122{text-align:justify;margin-left:32.1pt;text-indent:-14.1pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-p123{text-align:justify;margin-left:47.1pt;text-indent:-14.1pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-p124{text-align:justify;margin-left:47.5pt;margin-right:20.75pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-p125{text-align:justify;margin-left:62.15pt;margin-right:17.9pt;text-indent:-18.25pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-p126{text-align:justify;margin-left:62.15pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-p127{text-align:justify;margin-left:62.15pt;margin-right:17.5pt;text-indent:-18.25pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-p128{text-align:justify;margin-left:62.15pt;margin-right:17.95pt;text-indent:-18.25pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-p129{text-align:justify;margin-left:78pt;margin-right:0.35pt;text-indent:-18.25pt;margin-top:4pt;line-height:11pt;break-after:avoid;}\n.gd-doc .gd-h130{min-width:14.75pt;}\n.gd-doc .gd-p131{text-align:justify;margin-left:62.85pt;text-indent:-14.75pt;margin-top:4pt;line-height:11pt;break-after:avoid;}\n.gd-doc .gd-p132{text-align:justify;margin-left:78pt;margin-right:0.15pt;text-indent:-18.4pt;margin-top:4pt;line-height:11pt;break-after:avoid;}\n.gd-doc .gd-p133{text-align:justify;margin-left:77.6pt;margin-right:0.05pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-p134{text-align:justify;margin-left:78pt;text-indent:-18.4pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-p135{text-align:justify;margin-left:66.35pt;text-indent:-14.2pt;margin-top:4pt;line-height:11pt;break-before:column;}\n.gd-doc .gd-p136{text-align:justify;margin-left:66.8pt;margin-right:17.8pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-h137{min-width:14.7pt;}\n.gd-doc .gd-p138{text-align:justify;margin-left:36.25pt;text-indent:-14.7pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-p139{text-align:justify;margin-left:36.6pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-p140{text-align:justify;margin-left:51.35pt;margin-right:17.95pt;text-indent:-14.2pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-p141{text-align:justify;margin-left:51.35pt;margin-right:17.5pt;text-indent:-14.2pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-p142{text-align:justify;margin-left:51.35pt;margin-right:17.7pt;text-indent:-14.3pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-p143{text-align:justify;margin-left:51.35pt;margin-right:17.75pt;text-indent:-14.3pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-cols144{column-count:2;column-gap:3.55pt;column-fill:balance;}",
+ "model": {
+  "Policy": {
+   "PolicyNumber": "Policy Number"
+  },
+  "MOECAPolicyLevelCoverages": {
+   "PersonalInjuryProtection_Oregon": {
+    "MedicalandHopsitalExpensesLimit": 25000
+   }
+  }
+ },
+ "report": {
+  "counts": {
+   "fill points": 3,
+   "page-number fields": 2,
+   "paragraphs": 127,
+   "subscriptions": 1,
+   "subscriptions expanded": 1,
+   "tables": 3
+  },
+  "notes": [
+   "running footer repeats on every flowing page",
+   "running header repeats on every flowing page"
+  ]
+ }
+}

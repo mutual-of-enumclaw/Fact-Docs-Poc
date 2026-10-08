@@ -1,0 +1,13 @@
+file       C:\src\FaCT-DocProd-Documentation\1_From Docucorp_System\DMStudioGuide.pdf
+format     pdf
+pages      100
+recall     99 % of 15734 original words appear in the render
+precision  98 % of 15839 rendered words come from the original
+visual     97 % page likeness (ink within ~4pt of the original) [100 %, 100 %, 100 %, 100 %, 100 %, 100 %, 99 %, 99 %, 99 %, 99 %, 99 %, 100 %, 98 %, 98 %, 98 %, 95 %, 99 %, 74 %, 98 %, 97 %, 98 %, 100 %, 99 %, 98 %, 95 %, 98 %, 98 %, 99 %, 99 %, 98 %, 98 %, 99 %, 98 %, 99 %, 99 %, 97 %, 96 %, 99 %, 99 %, 99 %, 98 %, 92 %, 99 %, 99 %, 98 %, 98 %, 99 %, 86 %, 88 %, 98 %, 97 %, 97 %, 98 %, 97 %, 98 %, 97 %, 97 %, 98 %, 98 %, 96 %, 98 %, 97 %, 98 %, 97 %, 96 %, 99 %, 99 %, 99 %, 99 %, 98 %, 100 %, 99 %, 99 %, 98 %, 95 %, 88 %, 98 %, 95 %, 60 %, 96 %, 99 %, 87 %, 99 %, 99 %, 99 %, 99 %, 92 %, 86 %, 98 %, 84 %, 99 %, 99 %, 98 %, 99 %, 88 %, 98 %, 98 %, 87 %, 98 %, 98 %]
+review     -
+counts     2973 texts, 0 fields, 1408 shapes, 80 images, 0 skipped
+fields     
+notes      Imported pages 1-100 of 348.
+           5 font(s) embedded in the PDF are used for its text.
+           1 embedded font(s) can't be used in a browser (no Unicode character map, or characters missing) and were replaced by a standard family.
+missing    do ake studio user the information or and logo x group copy with can as an users to for system form from using introduction options creating multi development environment base installing starting menus menu file edit view manage window help

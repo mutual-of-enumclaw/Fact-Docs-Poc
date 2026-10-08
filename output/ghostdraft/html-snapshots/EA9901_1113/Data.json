@@ -1,0 +1,579 @@
+{
+  "Agent": {
+    "AddressLine1": "",
+    "AddressLine2_Isthereaddressline2": "",
+    "AgencyCode": "",
+    "City": "",
+    "FullName": "",
+    "Isthereaddressline2": false,
+    "PhoneNumber": "",
+    "State": "",
+    "Zip": ""
+  },
+  "Insured": {
+    "AddressLine1": "",
+    "AddressLine2_Isthereaddressline2": "",
+    "City": "",
+    "FullName": "CPP002779002 INSURED",
+    "Isthereaddressline2": false,
+    "NamedDriver": "",
+    "PhoneNumber": "",
+    "State": "",
+    "Zip": ""
+  },
+  "MOECAAutoLevelCoverages": {
+    "AutoCount": {
+      "has4ormoreautoswithLongFormLossPayableClauseWA": false,
+      "has4ormoreautoswithLossPayableClause": false,
+      "has4ormoreautoswithLossPayableClauseWA": false,
+      "has5ormoreautoswithAutoLoanLeaseGapCoverage": false,
+      "has5ormoreautoswithSupplementalRentalReimbursement": false,
+      "has8ormoreautoswithFarmAutoSeasonalLayUpCoverage": false
+    },
+    "AutosWithFarmAutoSeasonalLayUp": {},
+    "AutosWithLoanLeaseGap": {
+      "TotalPremiums": {
+        "CollisionPremium": "0",
+        "ComprehensivePremium": "0"
+      }
+    },
+    "AutosWithLossPayableClause": {},
+    "AutosWithSupplementalRentalReimbursement": {
+      "TotalPremiums": {
+        "CollisionPremium": 126,
+        "ComprehensivePremium": 87
+      },
+      "Autos": [
+        {
+          "CollisionPremium": 42,
+          "ComprehensivePremium": 29,
+          "Description": "2017 NISSAN NV200 SV 3N6CM0KN9HK709361",
+          "MaximumPaymentPerCoveredAuto_AnyOneDay": 40,
+          "MaximumPaymentPerCoveredAuto_AnyOnePeriod": 2400,
+          "MaximumPaymentPerCoveredAuto_NumberofDays": "60",
+          "VehicleNumber": "1",
+          "VIN": ""
+        },
+        {
+          "CollisionPremium": 42,
+          "ComprehensivePremium": 29,
+          "Description": "2020 LAND ROVER SALWR2SE2LA881425",
+          "MaximumPaymentPerCoveredAuto_AnyOneDay": 40,
+          "MaximumPaymentPerCoveredAuto_AnyOnePeriod": 2400,
+          "MaximumPaymentPerCoveredAuto_NumberofDays": "60",
+          "VehicleNumber": "2",
+          "VIN": ""
+        },
+        {
+          "CollisionPremium": 42,
+          "ComprehensivePremium": 29,
+          "Description": "2020 AUDI SQ8 WA1CWAF16LD025848",
+          "MaximumPaymentPerCoveredAuto_AnyOneDay": 40,
+          "MaximumPaymentPerCoveredAuto_AnyOnePeriod": 2400,
+          "MaximumPaymentPerCoveredAuto_NumberofDays": "60",
+          "VehicleNumber": "3",
+          "VIN": ""
+        }
+      ]
+    }
+  },
+  "MOECAPolicyLevelCoverages": {
+    "ExcludedDrivers": {
+      "NameofExcludedDriver": "",
+      "Relationship": ""
+    },
+    "FarmFamilyCorporationsorPartnerships": {
+      "has8OrMoreFarmFamilyCorpOrPartnerships": false
+    },
+    "FormFUniformMotorCarrierBodilyAndPropertyDamageLiabilityInsuranceEndorsement": {
+      "Day": "0",
+      "MCS90Text": "",
+      "Month": "",
+      "State": {
+        "Arizona": true,
+        "Idaho": true,
+        "Montana": true,
+        "Oregon": true,
+        "Utah": true,
+        "Washington": true,
+        "Wyoming": true
+      },
+      "Year": "0"
+    },
+    "LimitedPollutionLiabilityCoverageExtension": {
+      "forHiredAutos": false,
+      "forOwnedAutos": false,
+      "forSpeciallyDescribedAutos": false,
+      "Limit": "0",
+      "Premium": "0"
+    },
+    "MCS_90": {
+      "AmendingPolicyNumber": "CPP 0027790 02",
+      "ExcessAmount1": "0",
+      "ExcessAmount2": "0",
+      "InExcessOf": "0",
+      "IssuedDay": "0",
+      "IssuedMonth": "",
+      "IssuedYear": "",
+      "Limit": "0",
+      "MotorCarrierName": "",
+      "MotorCarrierStateOrProvince": "",
+      "USDOTNumber": "0"
+    },
+    "PersonalInjuryProtection_Idaho": {
+      "LossofServiceBenefits": "0",
+      "MedicalandHospitalBenefitsLimit": "0",
+      "TotalMaximumIncomeContinuationBenefits": "0",
+      "WeeklyMaximumIncomeContinuationBenefits": "0"
+    },
+    "PersonalInjuryProtection_Oregon": {
+      "MedicalandHopsitalExpensesLimit": "0"
+    },
+    "UtahPersonalInjuryProtection": "",
+    "UtahUnderinsuredMotoristsCoverage": {
+      "LimitOfInsurance": "0"
+    },
+    "UtahUninsuredMotoristsCoverage": {
+      "EndorsementEffectiveDate": "2019-05-15T00:00:00",
+      "LimitOfInsurance": "0"
+    },
+    "WashingtonPersonalInjuryProtection_NamedIndividuals": "",
+    "WashingtonTruckers_IntermodelInterchangeUniformEndorsementFormUIIE": ""
+  },
+  "MOEPolicyDecInfo": {
+    "ItemFiveScheduleForNonOwnershipLiability": {
+      "AutoServiceOperations": {
+        "NumberOfEmployees": {
+          "IsProvided": false,
+          "NumberWording": "",
+          "PremiumWording": ""
+        },
+        "NumberOfPartners": {
+          "IsProvided": false,
+          "NumberWording": "",
+          "PremiumWording": ""
+        },
+        "NumberOfVolunteers": {
+          "IsProvided": false,
+          "NumberWording": "",
+          "PremiumWording": ""
+        }
+      },
+      "OtherThanASocialServiceAgency": {
+        "NumberOfEmployees": {
+          "IsProvided": false,
+          "NumberWording": "",
+          "PremiumWording": ""
+        },
+        "NumberOfPartners": {
+          "IsProvided": false,
+          "NumberWording": "",
+          "PremiumWording": ""
+        }
+      },
+      "OtherThankAutoServiceOperationsPartnershipsLLCs": {
+        "NumberOfEmployees": {
+          "IsProvided": false,
+          "NumberWording": "",
+          "PremiumWording": ""
+        },
+        "NumberOfVolunteers": {
+          "IsProvided": false,
+          "NumberWording": "",
+          "PremiumWording": ""
+        }
+      },
+      "PartnershipsOrLLCs": {
+        "NumberOfEmployees": {
+          "IsProvided": false,
+          "NumberWording": "",
+          "PremiumWording": ""
+        },
+        "NumberOfPartners": {
+          "IsProvided": false,
+          "NumberWording": "",
+          "PremiumWording": ""
+        },
+        "NumberOfVolunteers": {
+          "IsProvided": false,
+          "NumberWording": "",
+          "PremiumWording": ""
+        }
+      },
+      "SocialServiceAgency": {
+        "NumberOfEmployees": {
+          "IsProvided": false,
+          "NumberWording": "",
+          "PremiumWording": ""
+        },
+        "NumberOfVolunteers": {
+          "IsProvided": false,
+          "NumberWording": "",
+          "PremiumWording": ""
+        }
+      },
+      "TotalPremium": "0"
+    },
+    "ItemFourHiredOrBorrowedCoveredAutoCoverageAndPremiums": {
+      "LiabilityCoverage": {
+        "EstimatedCostofHire": "0",
+        "Premium": "0",
+        "RatePerEachCostOfHire": "0",
+        "State": "",
+        "TotalPremium": "0"
+      }
+    },
+    "ItemSixScheduleOfDriversForPersonalUseAutos": {
+      "Drivers": {}
+    },
+    "ItemThreeScheduleOfOwnedAutos": {
+      "Vehicles": {
+        "Vehicles": [
+          {
+            "AgeGroup": {
+              "AgeGroup_IsProvided": "0",
+              "AgeGroupWording": "",
+              "IsProvided": false
+            },
+            "AutoMedicalPremium": {
+              "AutoMedicalPremium_IsProvided": "0",
+              "AutoMedicalPremiumWording": "",
+              "IsProvided": false
+            },
+            "ClassCode": "",
+            "CostNew": {
+              "CostNew_IsProvided": "0",
+              "CostNewWording": "",
+              "IsProvided": false
+            },
+            "CovAutoNo": "1",
+            "CovAutoTotalPremium": {
+              "CovAutoTotalPremium_IsProvided": "0",
+              "CovAutoTotalPremiumWording": "",
+              "IsProvided": true
+            },
+            "CoveredAutoVIN": "3N6CM0KN9HK709361",
+            "DecscriptionOfCoveredAuto": "NISSAN NV200 SV",
+            "GarageLocation": "WA",
+            "GVWGCWRadiusUseSeatingCapacityORPrivatePassengerUse": "",
+            "LiabilityPremium": {
+              "IsProvided": false,
+              "LiabilityPremium_IsProvided": "0",
+              "LiabilityPremiumWording": ""
+            },
+            "Make": "",
+            "Model": "",
+            "MTSpecific": {
+              "AutoMedicalPayments": "",
+              "Liability": "",
+              "PhysicalDamage": {
+                "Collision": {
+                  "Collision": "",
+                  "Deductible": "0"
+                },
+                "Comprehensive": {
+                  "Comprehensive": "",
+                  "Deductible": "0"
+                },
+                "LimitWording": "",
+                "SpecifiedCausesOfLossCoverage": "",
+                "TowingAndLabor": ""
+              },
+              "UnderinsuredMotorists": "",
+              "UninsuredMotorists": ""
+            },
+            "PhysicalDamageCoveragePremiums": {
+              "Collision": {
+                "Deductible_IsProvided": "0",
+                "DeductibleWording": "",
+                "IsProvided": true,
+                "Premium_IsProvided": "42",
+                "PremiumWording": "42"
+              },
+              "Comprehensive": {
+                "Deductible_IsProvided": "0",
+                "DeductibleWording": "",
+                "IsProvided": true,
+                "Premium_IsProvided": "29",
+                "PremiumWording": "29"
+              },
+              "Limit": {
+                "IsProvided": false,
+                "Limit_IsProvided": "0",
+                "LimitWording": "ACV"
+              },
+              "SpecifiedCause": {
+                "IsProvided": false,
+                "Premium_IsProvided": "0",
+                "PremiumWording": ""
+              },
+              "TowingAndLabor": {
+                "IsProvided": false,
+                "Premium_IsProvided": "0",
+                "PremiumWording": ""
+              }
+            },
+            "PIP": {
+              "IsProvided": false,
+              "Premium_IsProvided": "0",
+              "PremiumWording": ""
+            },
+            "Territory": "",
+            "UninsuredOrUnderinsuredMotorist": {
+              "IsProvided": false,
+              "Premium_IsProvided": "0",
+              "PremiumWording": ""
+            },
+            "Year": "2017"
+          },
+          {
+            "AgeGroup": {
+              "AgeGroup_IsProvided": "0",
+              "AgeGroupWording": "",
+              "IsProvided": false
+            },
+            "AutoMedicalPremium": {
+              "AutoMedicalPremium_IsProvided": "0",
+              "AutoMedicalPremiumWording": "",
+              "IsProvided": false
+            },
+            "ClassCode": "",
+            "CostNew": {
+              "CostNew_IsProvided": "0",
+              "CostNewWording": "",
+              "IsProvided": false
+            },
+            "CovAutoNo": "2",
+            "CovAutoTotalPremium": {
+              "CovAutoTotalPremium_IsProvided": "0",
+              "CovAutoTotalPremiumWording": "",
+              "IsProvided": true
+            },
+            "CoveredAutoVIN": "SALWR2SE2LA881425",
+            "DecscriptionOfCoveredAuto": "LAND ROVER",
+            "GarageLocation": "WA",
+            "GVWGCWRadiusUseSeatingCapacityORPrivatePassengerUse": "",
+            "LiabilityPremium": {
+              "IsProvided": false,
+              "LiabilityPremium_IsProvided": "0",
+              "LiabilityPremiumWording": ""
+            },
+            "Make": "",
+            "Model": "",
+            "MTSpecific": {
+              "AutoMedicalPayments": "",
+              "Liability": "",
+              "PhysicalDamage": {
+                "Collision": {
+                  "Collision": "",
+                  "Deductible": "0"
+                },
+                "Comprehensive": {
+                  "Comprehensive": "",
+                  "Deductible": "0"
+                },
+                "LimitWording": "",
+                "SpecifiedCausesOfLossCoverage": "",
+                "TowingAndLabor": ""
+              },
+              "UnderinsuredMotorists": "",
+              "UninsuredMotorists": ""
+            },
+            "PhysicalDamageCoveragePremiums": {
+              "Collision": {
+                "Deductible_IsProvided": "0",
+                "DeductibleWording": "",
+                "IsProvided": true,
+                "Premium_IsProvided": "42",
+                "PremiumWording": "42"
+              },
+              "Comprehensive": {
+                "Deductible_IsProvided": "0",
+                "DeductibleWording": "",
+                "IsProvided": true,
+                "Premium_IsProvided": "29",
+                "PremiumWording": "29"
+              },
+              "Limit": {
+                "IsProvided": false,
+                "Limit_IsProvided": "0",
+                "LimitWording": "ACV"
+              },
+              "SpecifiedCause": {
+                "IsProvided": false,
+                "Premium_IsProvided": "0",
+                "PremiumWording": ""
+              },
+              "TowingAndLabor": {
+                "IsProvided": false,
+                "Premium_IsProvided": "0",
+                "PremiumWording": ""
+              }
+            },
+            "PIP": {
+              "IsProvided": false,
+              "Premium_IsProvided": "0",
+              "PremiumWording": ""
+            },
+            "Territory": "",
+            "UninsuredOrUnderinsuredMotorist": {
+              "IsProvided": false,
+              "Premium_IsProvided": "0",
+              "PremiumWording": ""
+            },
+            "Year": "2020"
+          },
+          {
+            "AgeGroup": {
+              "AgeGroup_IsProvided": "0",
+              "AgeGroupWording": "",
+              "IsProvided": false
+            },
+            "AutoMedicalPremium": {
+              "AutoMedicalPremium_IsProvided": "0",
+              "AutoMedicalPremiumWording": "",
+              "IsProvided": false
+            },
+            "ClassCode": "",
+            "CostNew": {
+              "CostNew_IsProvided": "0",
+              "CostNewWording": "",
+              "IsProvided": false
+            },
+            "CovAutoNo": "3",
+            "CovAutoTotalPremium": {
+              "CovAutoTotalPremium_IsProvided": "0",
+              "CovAutoTotalPremiumWording": "",
+              "IsProvided": true
+            },
+            "CoveredAutoVIN": "WA1CWAF16LD025848",
+            "DecscriptionOfCoveredAuto": "AUDI SQ8",
+            "GarageLocation": "WA",
+            "GVWGCWRadiusUseSeatingCapacityORPrivatePassengerUse": "",
+            "LiabilityPremium": {
+              "IsProvided": false,
+              "LiabilityPremium_IsProvided": "0",
+              "LiabilityPremiumWording": ""
+            },
+            "Make": "",
+            "Model": "",
+            "MTSpecific": {
+              "AutoMedicalPayments": "",
+              "Liability": "",
+              "PhysicalDamage": {
+                "Collision": {
+                  "Collision": "",
+                  "Deductible": "0"
+                },
+                "Comprehensive": {
+                  "Comprehensive": "",
+                  "Deductible": "0"
+                },
+                "LimitWording": "",
+                "SpecifiedCausesOfLossCoverage": "",
+                "TowingAndLabor": ""
+              },
+              "UnderinsuredMotorists": "",
+              "UninsuredMotorists": ""
+            },
+            "PhysicalDamageCoveragePremiums": {
+              "Collision": {
+                "Deductible_IsProvided": "0",
+                "DeductibleWording": "",
+                "IsProvided": true,
+                "Premium_IsProvided": "42",
+                "PremiumWording": "42"
+              },
+              "Comprehensive": {
+                "Deductible_IsProvided": "0",
+                "DeductibleWording": "",
+                "IsProvided": true,
+                "Premium_IsProvided": "29",
+                "PremiumWording": "29"
+              },
+              "Limit": {
+                "IsProvided": false,
+                "Limit_IsProvided": "0",
+                "LimitWording": "ACV"
+              },
+              "SpecifiedCause": {
+                "IsProvided": false,
+                "Premium_IsProvided": "0",
+                "PremiumWording": ""
+              },
+              "TowingAndLabor": {
+                "IsProvided": false,
+                "Premium_IsProvided": "0",
+                "PremiumWording": ""
+              }
+            },
+            "PIP": {
+              "IsProvided": false,
+              "Premium_IsProvided": "0",
+              "PremiumWording": ""
+            },
+            "Territory": "",
+            "UninsuredOrUnderinsuredMotorist": {
+              "IsProvided": false,
+              "Premium_IsProvided": "0",
+              "PremiumWording": ""
+            },
+            "Year": "2020"
+          }
+        ]
+      }
+    },
+    "ItemTwoScheduleOfCoveragesAndCoveredAutos": {
+      "AdditionalAutoSymbols": {
+        "_10": "",
+        "_11": ""
+      },
+      "AdditionalCoverageEndorsements": {
+        "AdditionalCoverageEndorsements": [
+          {
+            "EndorsementName": "Rental Reimbursement",
+            "EndorsementPremium": "213"
+          }
+        ]
+      },
+      "AutoMedicalPayments": {
+        "ApplicableCoveredAutoSymbols": ""
+      },
+      "Liability": {
+        "ApplicableCoveredAutoSymbols": ""
+      },
+      "PersonalInjuryProtection": {
+        "ApplicableCoveredAutoSymbols": ""
+      },
+      "PhysicalDamageCollisionCoverage": {
+        "ApplicableCoveredAutoSymbols": ""
+      },
+      "PhysicalDamageComprehensiveCoverage": {
+        "ApplicableCoveredAutoSymbols": ""
+      },
+      "PhysicalDamageSpecifiedCausesOfLossCoverage": {
+        "ApplicableCoveredAutoSymbols": ""
+      },
+      "PhysicalDamageTowingAndLaborCoverage": {
+        "ApplicableCoveredAutoSymbols": ""
+      },
+      "TotalEstimatedPremium": "0",
+      "UnderinsuredMotoristCoverage": {
+        "ApplicableCoveredAutoSymbols": ""
+      },
+      "UninsuredMotoristCoverage": {
+        "ApplicableCoveredAutoSymbols": ""
+      }
+    }
+  },
+  "Policy": {
+    "FormOfBusiness": "",
+    "Isthisaneworrenewalpolicy": "NewBusiness",
+    "LOB": "",
+    "Module": "02",
+    "PolicyEffectiveDate": "2019-05-15T00:00:00",
+    "PolicyExpirationDate": "2020-05-15T00:00:00",
+    "PolicyNumber": "CPP 0027790 02",
+    "TypeofBusiness": ""
+  }
+}

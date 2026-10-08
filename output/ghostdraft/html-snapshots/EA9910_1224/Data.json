@@ -1,0 +1,346 @@
+{
+  "Agent": {
+    "AddressLine1": "",
+    "AddressLine2_Isthereaddressline2": "",
+    "AgencyCode": "",
+    "City": "",
+    "FullName": "",
+    "Isthereaddressline2": false,
+    "PhoneNumber": "",
+    "State": "",
+    "Zip": ""
+  },
+  "Insured": {
+    "AddressLine1": "",
+    "AddressLine2_Isthereaddressline2": "",
+    "City": "",
+    "FullName": "BARRON FINANCIAL SERVICES INC",
+    "Isthereaddressline2": false,
+    "NamedDriver": "",
+    "PhoneNumber": "",
+    "State": "",
+    "Zip": ""
+  },
+  "MOECAAutoLevelCoverages": {
+    "AutoCount": {
+      "has4ormoreautoswithLongFormLossPayableClauseWA": false,
+      "has4ormoreautoswithLossPayableClause": false,
+      "has4ormoreautoswithLossPayableClauseWA": false,
+      "has5ormoreautoswithAutoLoanLeaseGapCoverage": false,
+      "has5ormoreautoswithSupplementalRentalReimbursement": false,
+      "has8ormoreautoswithFarmAutoSeasonalLayUpCoverage": false
+    },
+    "AutosWithFarmAutoSeasonalLayUp": {},
+    "AutosWithLoanLeaseGap": {
+      "TotalPremiums": {
+        "CollisionPremium": "0",
+        "ComprehensivePremium": "0"
+      }
+    },
+    "AutosWithLossPayableClause": {},
+    "AutosWithSupplementalRentalReimbursement": {
+      "TotalPremiums": {
+        "CollisionPremium": "0",
+        "ComprehensivePremium": "0"
+      }
+    }
+  },
+  "MOECAPolicyLevelCoverages": {
+    "ExcludedDrivers": {
+      "NameofExcludedDriver": "",
+      "Relationship": ""
+    },
+    "FarmFamilyCorporationsorPartnerships": {
+      "has8OrMoreFarmFamilyCorpOrPartnerships": false
+    },
+    "FormFUniformMotorCarrierBodilyAndPropertyDamageLiabilityInsuranceEndorsement": {
+      "Day": "0",
+      "MCS90Text": "",
+      "Month": "",
+      "State": {
+        "Arizona": true,
+        "Idaho": true,
+        "Montana": true,
+        "Oregon": true,
+        "Utah": true,
+        "Washington": true,
+        "Wyoming": true
+      },
+      "Year": "0"
+    },
+    "LimitedPollutionLiabilityCoverageExtension": {
+      "forHiredAutos": false,
+      "forOwnedAutos": false,
+      "forSpeciallyDescribedAutos": false,
+      "Limit": "0",
+      "Premium": "0"
+    },
+    "MCS_90": {
+      "AmendingPolicyNumber": "CPP 1039223 01",
+      "ExcessAmount1": "0",
+      "ExcessAmount2": "0",
+      "InExcessOf": "0",
+      "IssuedDay": "0",
+      "IssuedMonth": "",
+      "IssuedYear": "",
+      "Limit": "0",
+      "MotorCarrierName": "",
+      "MotorCarrierStateOrProvince": "",
+      "USDOTNumber": "0"
+    },
+    "PersonalInjuryProtection_Idaho": {
+      "LossofServiceBenefits": "0",
+      "MedicalandHospitalBenefitsLimit": "0",
+      "TotalMaximumIncomeContinuationBenefits": "0",
+      "WeeklyMaximumIncomeContinuationBenefits": "0"
+    },
+    "PersonalInjuryProtection_Oregon": {
+      "MedicalandHopsitalExpensesLimit": "0"
+    },
+    "UtahPersonalInjuryProtection": "",
+    "UtahUnderinsuredMotoristsCoverage": {
+      "LimitOfInsurance": "0"
+    },
+    "UtahUninsuredMotoristsCoverage": {
+      "EndorsementEffectiveDate": "2019-10-05T00:00:00",
+      "LimitOfInsurance": "0"
+    },
+    "WashingtonPersonalInjuryProtection_NamedIndividuals": "",
+    "WashingtonTruckers_IntermodelInterchangeUniformEndorsementFormUIIE": ""
+  },
+  "MOEPolicyDecInfo": {
+    "ItemFiveScheduleForNonOwnershipLiability": {
+      "AutoServiceOperations": {
+        "NumberOfEmployees": {
+          "IsProvided": false,
+          "NumberWording": "",
+          "PremiumWording": ""
+        },
+        "NumberOfPartners": {
+          "IsProvided": false,
+          "NumberWording": "",
+          "PremiumWording": ""
+        },
+        "NumberOfVolunteers": {
+          "IsProvided": false,
+          "NumberWording": "",
+          "PremiumWording": ""
+        }
+      },
+      "OtherThanASocialServiceAgency": {
+        "NumberOfEmployees": {
+          "IsProvided": false,
+          "NumberWording": "",
+          "PremiumWording": ""
+        },
+        "NumberOfPartners": {
+          "IsProvided": false,
+          "NumberWording": "",
+          "PremiumWording": ""
+        }
+      },
+      "OtherThankAutoServiceOperationsPartnershipsLLCs": {
+        "NumberOfEmployees": {
+          "IsProvided": false,
+          "NumberWording": "",
+          "PremiumWording": ""
+        },
+        "NumberOfVolunteers": {
+          "IsProvided": false,
+          "NumberWording": "",
+          "PremiumWording": ""
+        }
+      },
+      "PartnershipsOrLLCs": {
+        "NumberOfEmployees": {
+          "IsProvided": false,
+          "NumberWording": "",
+          "PremiumWording": ""
+        },
+        "NumberOfPartners": {
+          "IsProvided": false,
+          "NumberWording": "",
+          "PremiumWording": ""
+        },
+        "NumberOfVolunteers": {
+          "IsProvided": false,
+          "NumberWording": "",
+          "PremiumWording": ""
+        }
+      },
+      "SocialServiceAgency": {
+        "NumberOfEmployees": {
+          "IsProvided": false,
+          "NumberWording": "",
+          "PremiumWording": ""
+        },
+        "NumberOfVolunteers": {
+          "IsProvided": false,
+          "NumberWording": "",
+          "PremiumWording": ""
+        }
+      },
+      "TotalPremium": "0"
+    },
+    "ItemFourHiredOrBorrowedCoveredAutoCoverageAndPremiums": {
+      "LiabilityCoverage": {
+        "EstimatedCostofHire": "0",
+        "Premium": "0",
+        "RatePerEachCostOfHire": "0",
+        "State": "",
+        "TotalPremium": "0"
+      }
+    },
+    "ItemSixScheduleOfDriversForPersonalUseAutos": {
+      "Drivers": {}
+    },
+    "ItemThreeScheduleOfOwnedAutos": {
+      "Vehicles": {
+        "Vehicles": [
+          {
+            "AgeGroup": {
+              "AgeGroup_IsProvided": "0",
+              "AgeGroupWording": "",
+              "IsProvided": false
+            },
+            "AutoMedicalPremium": {
+              "AutoMedicalPremium_IsProvided": "0",
+              "AutoMedicalPremiumWording": "",
+              "IsProvided": false
+            },
+            "ClassCode": "",
+            "CostNew": {
+              "CostNew_IsProvided": "0",
+              "CostNewWording": "",
+              "IsProvided": false
+            },
+            "CovAutoNo": "1",
+            "CovAutoTotalPremium": {
+              "CovAutoTotalPremium_IsProvided": "0",
+              "CovAutoTotalPremiumWording": "",
+              "IsProvided": false
+            },
+            "CoveredAutoVIN": "1C4BJWFG0FL678350",
+            "DecscriptionOfCoveredAuto": "RUBICON",
+            "GarageLocation": "",
+            "GVWGCWRadiusUseSeatingCapacityORPrivatePassengerUse": "",
+            "LiabilityPremium": {
+              "IsProvided": false,
+              "LiabilityPremium_IsProvided": "0",
+              "LiabilityPremiumWording": ""
+            },
+            "Make": "",
+            "Model": "",
+            "MTSpecific": {
+              "AutoMedicalPayments": "",
+              "Liability": "",
+              "PhysicalDamage": {
+                "Collision": {
+                  "Collision": "",
+                  "Deductible": "0"
+                },
+                "Comprehensive": {
+                  "Comprehensive": "",
+                  "Deductible": "0"
+                },
+                "LimitWording": "",
+                "SpecifiedCausesOfLossCoverage": "",
+                "TowingAndLabor": ""
+              },
+              "UnderinsuredMotorists": "",
+              "UninsuredMotorists": ""
+            },
+            "PhysicalDamageCoveragePremiums": {
+              "Collision": {
+                "Deductible_IsProvided": "0",
+                "DeductibleWording": "",
+                "IsProvided": false,
+                "Premium_IsProvided": "0",
+                "PremiumWording": ""
+              },
+              "Comprehensive": {
+                "Deductible_IsProvided": "0",
+                "DeductibleWording": "",
+                "IsProvided": false,
+                "Premium_IsProvided": "0",
+                "PremiumWording": ""
+              },
+              "Limit": {
+                "IsProvided": false,
+                "Limit_IsProvided": "0",
+                "LimitWording": ""
+              },
+              "SpecifiedCause": {
+                "IsProvided": false,
+                "Premium_IsProvided": "0",
+                "PremiumWording": ""
+              },
+              "TowingAndLabor": {
+                "IsProvided": false,
+                "Premium_IsProvided": "0",
+                "PremiumWording": ""
+              }
+            },
+            "PIP": {
+              "IsProvided": false,
+              "Premium_IsProvided": "0",
+              "PremiumWording": ""
+            },
+            "Territory": "",
+            "UninsuredOrUnderinsuredMotorist": {
+              "IsProvided": false,
+              "Premium_IsProvided": "0",
+              "PremiumWording": ""
+            },
+            "Year": "2015"
+          }
+        ]
+      }
+    },
+    "ItemTwoScheduleOfCoveragesAndCoveredAutos": {
+      "AdditionalAutoSymbols": {
+        "_10": "",
+        "_11": ""
+      },
+      "AdditionalCoverageEndorsements": {},
+      "AutoMedicalPayments": {
+        "ApplicableCoveredAutoSymbols": ""
+      },
+      "Liability": {
+        "ApplicableCoveredAutoSymbols": ""
+      },
+      "PersonalInjuryProtection": {
+        "ApplicableCoveredAutoSymbols": ""
+      },
+      "PhysicalDamageCollisionCoverage": {
+        "ApplicableCoveredAutoSymbols": ""
+      },
+      "PhysicalDamageComprehensiveCoverage": {
+        "ApplicableCoveredAutoSymbols": ""
+      },
+      "PhysicalDamageSpecifiedCausesOfLossCoverage": {
+        "ApplicableCoveredAutoSymbols": ""
+      },
+      "PhysicalDamageTowingAndLaborCoverage": {
+        "ApplicableCoveredAutoSymbols": ""
+      },
+      "TotalEstimatedPremium": "0",
+      "UnderinsuredMotoristCoverage": {
+        "ApplicableCoveredAutoSymbols": ""
+      },
+      "UninsuredMotoristCoverage": {
+        "ApplicableCoveredAutoSymbols": ""
+      }
+    }
+  },
+  "Policy": {
+    "FormOfBusiness": "",
+    "Isthisaneworrenewalpolicy": "NewBusiness",
+    "LOB": "",
+    "Module": "01",
+    "PolicyEffectiveDate": "2019-10-05T00:00:00",
+    "PolicyExpirationDate": "2020-10-05T00:00:00",
+    "PolicyNumber": "CPP 1039223 01",
+    "TypeofBusiness": ""
+  }
+}

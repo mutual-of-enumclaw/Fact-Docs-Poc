@@ -1,0 +1,7 @@
+CA2071_1120: MATCH  score 100.0%
+pages   golden 1  html 1  (pages with text)
+words   golden 380  html 380  missing 0  extra 0
+
+golden   C:\src\fact-docgen\src\Moe.Commercial.Documents.Generation.Integration.Tests\TestData\Snapshots\CA2071_1120\GoldenSnapshot.txt
+template C:\src\fact-poc\output\ghostdraft\batch\CA-20-71-11-20-Auto-Loan-Or-Lease-Gap-Coverage.json
+serverxml C:\src\fact-poc\output\ghostdraft\serverxml\CA2071_1120\ServerXml.xml

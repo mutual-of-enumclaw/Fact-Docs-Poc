@@ -1,0 +1,7 @@
+CA0421_1120: MATCH  score 100.0%
+pages   golden 1  html 1  (pages with text)
+words   golden 235  html 235  missing 0  extra 0
+
+golden   C:\src\fact-docgen\src\Moe.Commercial.Documents.Generation.Integration.Tests\TestData\Snapshots\CA0421_1120\GoldenSnapshot.txt
+template C:\src\fact-poc\output\ghostdraft\batch\CA-04-21-11-20-Full-Safety-Glass-Coverage.json
+serverxml C:\src\fact-poc\output\ghostdraft\serverxml\CA0421_1120\ServerXml.xml

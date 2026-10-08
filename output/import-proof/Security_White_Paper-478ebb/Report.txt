@@ -1,0 +1,15 @@
+file       C:\src\FaCT-DocProd-Documentation\2_From CSC\Security_White_Paper.pdf
+format     pdf
+pages      97
+recall     97 % of 22272 original words appear in the render
+precision  87 % of 24895 rendered words come from the original
+visual     94 % page likeness (ink within ~4pt of the original) [97 %, 97 %, 96 %, 95 %, 94 %, 95 %, 94 %, 94 %, 95 %, 95 %, 94 %, 95 %, 94 %, 94 %, 94 %, 96 %, 94 %, 98 %, 98 %, 94 %, 94 %, 94 %, 18 %, 96 %, 95 %, 96 %, 96 %, 90 %, 94 %, 96 %, 96 %, 95 %, 85 %, 97 %, 94 %, 96 %, 82 %, 96 %, 94 %, 95 %, 96 %, 82 %, 96 %, 95 %, 96 %, 95 %, 86 %, 96 %, 94 %, 96 %, 94 %, 95 %, 82 %, 96 %, 94 %, 91 %, 96 %, 95 %, 96 %, 95 %, 85 %, 96 %, 94 %, 97 %, 83 %, 98 %, 94 %, 96 %, 94 %, 96 %, 92 %, 96 %, 94 %, 93 %, 96 %, 95 %, 94 %, 95 %, 93 %, 95 %, 95 %, 94 %, 93 %, 96 %, 95 %, 96 %, 98 %, 94 %, 95 %, 95 %, 94 %, 96 %, 99 %, 99 %, 99 %, 99 %, 98 %]
+review     -
+counts     4854 texts, 0 fields, 9263 shapes, 500 images, 0 skipped
+fields     
+notes      3 font(s) embedded in the PDF are used for its text.
+           The lines and shapes on page(s) 28, 33, 37, 42, 47, 53, 56, 61, 65, 71, 74 could not be read and are missing.
+           343 character(s) of rotated or vertical text were skipped.
+           1838 curved or diagonal shape(s) (circles, logos drawn as vectors) were skipped.
+           297 image(s) in an encoding that can't be converted were skipped.
+missing    csc companion products release security white paper information your web 29 preface product names when how document is point agency link underwriting ordering for introduction secure 7 hardening site 9 server 13 ssl 15 implementation implementing several 21 advanced claims

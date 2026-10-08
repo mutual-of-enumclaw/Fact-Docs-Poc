@@ -1,0 +1,13 @@
+CA9951_0221: DIFFERENT  score 99.5%
+pages   golden 1  html 1  (pages with text)
+words   golden 333  html 332  missing 2  extra 1
+
+MISSING (in the GhostDraft golden, not in the HTML render)
+  [PPAGE AGE]  <=  CA 99 51 02 21CA 99 51 02 21          ©© Insurance Services Office, Inc., 2020Insurance Services Office, Inc., 2020     PPage age 1  of of 1
+
+EXTRA (in the HTML render, not in the GhostDraft golden)
+  [PAGE]  <=  CA  99 51 02 21                      © Insurance Services  Office, Inc., 2020                       Page  1 of 1  CA 99 51 02 21 © Insurance Services Office, Inc., 2020 Page 1 of 1
+
+golden   C:\src\fact-docgen\src\Moe.Commercial.Documents.Generation.Integration.Tests\TestData\Snapshots\CA9951_0221\GoldenSnapshot.txt
+template C:\src\fact-poc\output\ghostdraft\batch\CA-99-51-02-21-Washington---Auto-Loan-Coverage---Private-Passeng.json
+serverxml C:\src\fact-poc\output\ghostdraft\serverxml\CA9951_0221\ServerXml.xml

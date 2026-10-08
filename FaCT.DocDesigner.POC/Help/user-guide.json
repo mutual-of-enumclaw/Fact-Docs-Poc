@@ -1,0 +1,778 @@
+{
+  "guide": {
+    "title": "MOE Document Designer",
+    "subtitle": "User Guide",
+    "edition": "Working draft (proof of concept)",
+    "updated": "2026-10-01",
+    "summary": "How to design, test and publish customer documents with the Document Designer: building pages from blocks, binding them to message data, previewing with test data, sharing clauses, importing existing Word, PDF, Documaker and GhostDraft documents, and publishing versions safely.",
+    "audience": "Document authors, business analysts and reviewers. No programming is needed; a few advanced notes mention the Liquid template language for people who are curious about what the designer produces."
+  },
+  "chapters": [
+    {
+      "title": "Getting started",
+      "summary": "What the designer does and a tour of the screen.",
+      "intro": "The Document Designer is where customer documents are laid out. A document template describes the page: text, headings, tables, logos and the places where policy data is printed. When a policy event happens, the document service fills the published template with that policy's data and produces the PDF.",
+      "sections": [
+        {
+          "title": "What you can do",
+          "paragraphs": [
+            "Design documents visually by dragging blocks onto the page and typing directly on it.",
+            "Bind parts of the page to message data (policy number, insured name, locations, claims) so every generated document shows the right values.",
+            "Preview the result as a PDF with example data or with any number of saved test scenarios.",
+            "Keep versions: work on a draft while the published version keeps generating documents, review what changes before publishing, and roll back if needed.",
+            "Reuse wording across documents with shared clauses, and bring existing Word, PDF, Documaker and GhostDraft documents into the designer."
+          ],
+          "steps": [],
+          "tip": "",
+          "note": "",
+          "covers": []
+        },
+        {
+          "title": "The screen at a glance",
+          "paragraphs": [
+            "The top bar holds the main actions: Publish, Save Draft and Preview PDF. The three-dot menu next to them has Show Liquid, Compare with Published, Render Published, the import commands and Discard Draft.",
+            "The toolbar underneath chooses what you are working on: Kind (Template or Clause), the name, the saved Version with its Open button and a badge showing the open version and its status. On the right, Test data picks the data used for sample values and previews, Scenarios manages test data, and Data fields show switches how bound fields look on the canvas.",
+            "The left panel has the Model (the data your document can print) and the Blocks you can drag onto the page. The page itself is in the middle. The right panel has three tabs: Settings for the selected element, Styles for its look, and Layers for the structure of the page."
+          ],
+          "steps": [],
+          "tip": "Hover over any button to see what it does.",
+          "note": "",
+          "covers": []
+        },
+        {
+          "title": "Opening a document",
+          "paragraphs": [
+            "Every template has a name made of letters, numbers, dashes and underscores (for example cpp-declarations). The designer opens the newest saved version of the name shown in the toolbar when it starts."
+          ],
+          "steps": [
+            "Choose Template in Kind (or Clause for a shared clause).",
+            "Type the name and press Tab. The Version list fills with the saved versions.",
+            "Pick a version and click Open.",
+            "To start a new document, type a new name: the status bar says it is new, and Save Draft creates version 1."
+          ],
+          "tip": "If you have unsaved changes the designer asks before replacing them.",
+          "note": "",
+          "covers": []
+        },
+        {
+          "title": "The gallery and duplicating",
+          "paragraphs": [
+            "Gallery (at the start of the toolbar) shows every template and clause as a card with a small picture of its first page, its published and newest versions, when it was last saved, and how many test scenarios and open comments it has. Find by name, show only templates or clauses, and sort by name or by most recently saved.",
+            "Duplicate copies a saved version into a new template or clause, as draft v1. The copy takes the data model and, if you leave the box ticked, the test scenarios; comments stay with the original. It is the quickest way to start a new document from an existing one."
+          ],
+          "steps": [
+            "Click Gallery.",
+            "Click Open on a card to work on its newest version, or Duplicate to copy it.",
+            "For a duplicate, type the new name, choose which version to copy (the published one or the newest), and click Duplicate. The copy opens in the designer.",
+            "To copy the document you have open, use Duplicate in the three-dot menu."
+          ],
+          "tip": "Thumbnails show the document with its own example data.",
+          "note": "Only saved versions can be copied; unsaved changes on the canvas are not included.",
+          "covers": [18]
+        }
+      ]
+    },
+    {
+      "title": "Building a document",
+      "summary": "Blocks, text, layout and styling.",
+      "intro": "Documents are built from blocks. Drag a block from the Blocks panel onto the page, then type into it or change it in the Settings and Styles tabs.",
+      "sections": [
+        {
+          "title": "Blocks",
+          "paragraphs": [
+            "Brand blocks give the MOE look: Document Header (logo and title), MOE Logo, Card, Callout and Lead-in.",
+            "Basic blocks are Heading, Subheading and Text.",
+            "Data blocks print message data: Data Table, Repeat, Show If, Data Image and Clause. Single values are added from the Model panel instead (see Working with data).",
+            "Layout blocks arrange the page: 2 Columns, 3 Columns, 1/3 + 2/3, 2/3 + 1/3, Divider and Page Break. Material blocks add icons, banners and cards. Form Page blocks build fixed-position form pages like converted Documaker forms."
+          ],
+          "steps": [
+            "Find the block in the Blocks panel.",
+            "Drag it onto the page. A green line shows where it will land.",
+            "Click the new block to select it; its options appear in the Settings tab."
+          ],
+          "tip": "Select an element and press Delete to remove it, or use the toolbar that appears above the selection to move, copy or delete it.",
+          "note": "",
+          "covers": []
+        },
+        {
+          "title": "Columns and page breaks",
+          "paragraphs": [
+            "Column blocks place content side by side. Select a column to set its width (1/4, 1/3, 1/2 and so on) or drag its edge; select the row to set the gap between columns and how they line up. Columns still flow and paginate in the PDF.",
+            "A Page Break starts a new page in the PDF. On the canvas it shows as a dashed red line labelled page break."
+          ],
+          "steps": [],
+          "tip": "",
+          "note": "",
+          "covers": []
+        },
+        {
+          "title": "Styling",
+          "paragraphs": [
+            "Select an element and open the Styles tab to change fonts, colors, spacing, borders and alignment. Styles apply to the selected element; classes shown at the top of the tab let several elements share a style.",
+            "The Layers tab shows the structure of the page as a tree. Use it to select elements that are hard to click on the page, or to drag them into a different place. Invisible helper elements that the designer adds to protect imported text are kept out of the Layers tree."
+          ],
+          "steps": [],
+          "tip": "Show Liquid in the three-dot menu shows exactly what the designer will save: the page as HTML with Liquid placeholders, and its CSS.",
+          "note": "",
+          "covers": [5]
+        },
+        {
+          "title": "Saving your own blocks",
+          "paragraphs": [
+            "Anything you build can become a block: a styled summary box, a signature area, a table of coverages with its data fields. Saved blocks are shared by every template and appear in the Blocks panel under the category you choose (My blocks by default).",
+            "A saved block keeps its content, its data fields and its styles. Each time you drop it you get an independent copy: changing the copy doesn't change the saved block or other documents. For wording that must stay the same everywhere and update in one place, use a shared clause instead."
+          ],
+          "steps": [
+            "Select the element to save (select its outer box to save everything inside it).",
+            "Click the Save as block button on the selection toolbar, or use Save Selection as Block in the three-dot menu.",
+            "Give the block a name, choose or type a category, and click Save block.",
+            "Drag it from the Blocks panel into any template."
+          ],
+          "tip": "Saving a block with an existing name replaces it (the designer asks first). Manage Saved Blocks in the three-dot menu lists your blocks and deletes them; copies already placed in templates stay.",
+          "note": "Data fields in a block print the same message values in every template, so they show as binding problems in a template whose model doesn't have them.",
+          "covers": [15]
+        },
+        {
+          "title": "Page setup, header and footer",
+          "paragraphs": [
+            "Every template prints on Letter paper with half-inch margins and the standard footer (Mutual Of Enumclaw on the left, Page X of Y on the right) until you give it a page setup. Page Setup in the three-dot menu chooses the paper (Letter, Legal or A4), portrait or landscape, the four margins in inches, and what prints in the header and footer of every page.",
+            "The header and footer each have a left, center and right part. Type plain text, or insert: [Page] for the page number, [Pages] for the number of pages, [Date] for the date the document is printed, [Logo] for the company logo, or a data field from the Field list, which appears as {policy.number}. Other text prints exactly as typed.",
+            "Different first page gives page 1 its own header and footer, for example a clean cover with nothing in them. Different odd and even pages gives the even pages their own, for example with the page number on the left for two-sided printing. Leave a part empty to print nothing there.",
+            "The canvas becomes as wide as the text area of the chosen page, so lines wrap on screen as they will in the PDF. The page setup itself is not on the canvas: use Preview to see the header and footer."
+          ],
+          "steps": [
+            "Open the three-dot menu and click Page Setup.",
+            "Choose the paper, the orientation and the margins.",
+            "Fill in the header and footer parts. Click a part, then click [Page], [Pages], [Date] or [Logo], or pick a field from the Field list, to insert it where the cursor is.",
+            "Tick Different first page or Different odd and even pages if you need them, and fill in their parts.",
+            "Click Apply, then Preview to check the PDF, and Save Draft."
+          ],
+          "tip": "The header and footer print inside the top and bottom margins: if the header looks cut off, make the top margin bigger, or the header/footer text smaller.",
+          "note": "Use Standard Setup in the dialog removes the page setup and goes back to Letter with the standard footer. Clauses have no page setup: they print with the template that includes them. Imported Documaker and GhostDraft forms keep their own page layout.",
+          "covers": [20]
+        },
+        {
+          "title": "Watermarks",
+          "paragraphs": [
+            "A watermark is a large see-through word printed across the middle of every page, over the content, which stays readable underneath. Watermark in the three-dot menu chooses the word (DRAFT, SPECIMEN, VOID, COPY, SAMPLE or your own text of up to 40 characters), its color, how strong it is, its size, and whether it runs diagonally or straight across.",
+            "Print chooses when it appears: On every document, or Only when a field of the data meets a condition, for example VOID only when policy.status equals void. The conditions work like Show If.",
+            "The watermark shows on the canvas too, but clicks pass through it to the content underneath. Remove Watermark in the dialog takes it off.",
+            "Proofs are marked automatically: rendering a draft version of a template prints DRAFT across it, so a proof can't be mistaken for the real document. Published versions print without it. Systems that render documents can also ask for a word such as SPECIMEN on any version; that word replaces the template's own watermark."
+          ],
+          "steps": [
+            "Open the three-dot menu and click Watermark.",
+            "Choose the word, or Other text and type your own.",
+            "Choose the color, strength, size and angle.",
+            "To print it only sometimes, set Print to Only when, then choose the field, the condition and the value.",
+            "Click Apply, then Preview with test data that meets the condition to check it."
+          ],
+          "tip": "Red with Strong strength suits VOID; grey with Light or Medium strength suits DRAFT and SPECIMEN without hiding the wording.",
+          "note": "Clauses have no watermark of their own: they print with the template that includes them.",
+          "covers": [21]
+        },
+        {
+          "title": "Themes: brand colors and fonts",
+          "paragraphs": [
+            "Every document uses the MOE brand colors and the Figtree font. A theme changes them for a brand or a line of business: any of the brand colors (MOE Green, Alpine Green, Aqua and the rest), the font for the text and the font for headings. Everything styled with a brand color follows: headings, table headers, totals, icons, cards and the like.",
+            "Theme in the three-dot menu chooses the theme for the template you are working on, with a preview of its colors and fonts. The canvas changes straight away. Choose MOE standard to go back to the standard look.",
+            "Publishers manage themes: Manage Themes in the Theme dialog creates and changes themes and uploads fonts (WOFF2, WOFF, TTF or OTF files, one file per weight and style, for example regular 400 and bold 700). Fonts are built into each PDF, so they print the same everywhere.",
+            "A theme is shared: saving a change to it changes every template that uses it, including published ones, the next time they are printed. A theme that templates still use can't be deleted, and neither can the last file of a font a theme uses."
+          ],
+          "steps": [
+            "Open the three-dot menu and click Theme.",
+            "Choose a theme and check the preview, then click Apply.",
+            "To make or change a theme (Publishers): click Manage Themes, choose New theme or an existing one.",
+            "Give a new theme a short name (used inside templates, can't be changed later) and a name people see.",
+            "Pick colors; the arrow next to a color puts the standard one back. Choose the text and heading fonts.",
+            "To use your own font, open Uploaded fonts, choose the file, check the family name and weight, and click Upload Font. Upload the bold (700) file too if headings use the font.",
+            "Click Save Theme."
+          ],
+          "tip": "Choose colors with enough contrast against white for text, and keep table header colors dark enough for white text to stay readable.",
+          "note": "Only Publishers can save or delete themes and fonts, because a change reaches published documents straight away. Every change is recorded in History (All activity).",
+          "covers": [22]
+        }
+      ]
+    },
+    {
+      "title": "Working with data",
+      "summary": "The data model, fields, formats, lists and conditions.",
+      "intro": "A template prints values from the message the document service receives. The Model panel shows the shape of that message: groups of values, single values and lists.",
+      "sections": [
+        {
+          "title": "The data model",
+          "paragraphs": [
+            "The model is an example message in JSON. Its shape builds the Model tree; its values are what the canvas and Preview PDF show. The model is saved with each template version.",
+            "Lists (shown with square brackets) become Repeats and Data Tables. Inside a list, each item has a short name: in a list called locations each item is location, so a location's name is location.name."
+          ],
+          "steps": [
+            "To change the model, click the edit button in the Model panel, change the JSON and click Apply.",
+            "To add a single property, click the + next to a group or list in the Model tree (or the + at the top of the Model panel for the top level), type its name, choose its type and click Add. A property added to a list is added to every item of the list.",
+            "To load a model from a file, click the upload button and choose a JSON example message or a JSON Schema. For a schema the designer makes up example values, using the schema's own examples where it has them; every property in the schema is still offered, so a master schema whose example covers one line of business still shows all the others (Orbital's quote.bundled.schema.json gives 461 fields)."
+          ],
+          "tip": "Property names must be letters, numbers and underscores to be used in a template. Others are shown greyed out.",
+          "note": "Models are limited to 2 MB.",
+          "covers": [33, 34]
+        },
+        {
+          "title": "Adding data fields",
+          "paragraphs": [
+            "A data field prints one value from the message, such as the policy number. On the canvas it is tinted so you can tell it apart from fixed text."
+          ],
+          "steps": [
+            "Drag a value from the Model panel onto the page.",
+            "To rebind a field to a different value, select the field on the page and click the value in the Model panel.",
+            "In the Settings tab choose a Format and, optionally, what to print when the value is empty (If empty, show)."
+          ],
+          "tip": "Dragging a group (for example policy) adds a label and a field for each of its values in one go.",
+          "note": "",
+          "covers": []
+        },
+        {
+          "title": "Formats",
+          "paragraphs": [
+            "Formats control how a value prints: Currency, Whole dollars ($1,234), Percent, Number (1,234), Decimal (1,234.00), Date (MM/dd/yyyy) and UPPERCASE. Without a format the value prints as it is in the message.",
+            "If empty, show prints a replacement such as Not Applicable when the value is missing or blank.",
+            "Without a format, true and false print as Yes and No, and numbers print without trailing zeros (1200.0 prints 1200, 1234.50 prints 1234.5), the same as in Word templates."
+          ],
+          "steps": [],
+          "tip": "",
+          "note": "",
+          "covers": []
+        },
+        {
+          "title": "Conditional styling",
+          "paragraphs": [
+            "Conditional styling changes how an element looks when the data meets a condition: red text when the loss ratio is greater than 1, a yellow highlight on open claims, struck-through text for a cancelled coverage. The element always prints; only its style changes. To leave content out altogether, use Show If instead.",
+            "Styles: red, green or grey text; bold, italic or struck through; a yellow, red or green highlight. A highlighted table row is highlighted across all its cells.",
+            "An element can have up to ten rules; every rule that holds adds its style. Rules use the same conditions as Show If. Inside a list (a Repeat or a Data Table), rules can test the fields of each item, and each item is styled on its own.",
+            "The canvas shows the styles your test data gives and a dashed purple outline around elements with rules; hover over one to read its rules."
+          ],
+          "steps": [
+            "Select the element (a paragraph, a table row, a cell, a field).",
+            "Open the three-dot menu and click Conditional Styling.",
+            "Click Add Rule, choose the style, the field, the condition and the value.",
+            "Add more rules if needed, then click Apply.",
+            "Switch test data scenarios to see the styles change."
+          ],
+          "tip": "To highlight whole rows of a Data Table, select the row (not a cell) before opening Conditional Styling.",
+          "note": "Conditional styling isn't carried into Word template exports; the export lists it as a warning.",
+          "covers": [24]
+        },
+        {
+          "title": "Barcodes, charts and signatures",
+          "paragraphs": [
+            "Barcode / QR Code prints a value from the data as a code a phone or scanner can read: QR code, Code 128, Code 39, Data Matrix or PDF417. Choose the kind and the width in Settings; Code 128 and Code 39 also have a bar height and can print the value under the bars. A value the kind can't hold (for example accented letters in Code 39) prints nothing rather than a wrong code.",
+            "Chart draws a list from the data: columns, horizontal bars, a line, a pie or a donut. Choose the list, the field for the labels (such as the year) and the field for the values (such as the loss amount), an optional title and how values are shown (currency, number, percent). Items without a number are left out. Charts use the brand colors, so a theme recolors them.",
+            "Signature gives a signature line with the signer's role (such as Insured), and optionally their name and title from the data, a signature picture from the data, and a date: a line to write it on, the date the document is printed, or a date from the data. The E-signature anchor (\\s1\\ by default) is invisible text on the line that DocuSign and similar services use to place the signature; clear it if you don't need it.",
+            "All three are drawn by the server, so the canvas shows them with your test data exactly as the PDF will."
+          ],
+          "steps": [
+            "Drag Barcode / QR Code, Chart or Signature from the Data blocks onto the page.",
+            "For a barcode, select a property in the Model panel to choose its value, then the kind and width in Settings.",
+            "For a chart or a signature, choose the fields in Settings.",
+            "Preview the PDF to check the result."
+          ],
+          "tip": "Give QR codes at least an inch, and long Code 128 values three inches or more, so phones and scanners read them easily.",
+          "note": "Barcodes and charts aren't carried into Word template exports yet, and neither is the e-signature anchor; signature lines are. The export lists what it leaves out.",
+          "covers": [25]
+        },
+        {
+          "title": "Custom formats",
+          "paragraphs": [
+            "When the preset formats aren't enough, choose Custom in the Format list of a data field, calculated field or total. The Custom format dialog has three kinds.",
+            "Number: currency, plain number or percent; how many decimals; whether to group thousands; negative numbers as -1,234 or (1,234); and text to print when the value is zero, such as None or Included.",
+            "Date: a style such as July 1, 2026, Jul 1, 2026, 07/01/2026 or Wednesday, July 1, 2026, in English or in Spanish, Mexican Spanish, Canadian English or Canadian French (1 de julio de 2026).",
+            "Text mask: for phone numbers, ZIP+4 and tax IDs. Each # is filled with the next digit of the value and each * hides a digit, so ***-**-#### prints only the last four digits of a Social Security number. A value with the wrong number of digits prints as it is, so nothing is lost.",
+            "The dialog shows the pattern it builds (the same patterns Word and .NET use) and what example values look like with it. You can also type a pattern of your own."
+          ],
+          "steps": [
+            "Select the field and open the Settings tab.",
+            "In Format, choose Custom.",
+            "Choose the kind, then the options; check the examples, or type your own value in Try with.",
+            "Click Apply. The canvas shows the sample value with the new format.",
+            "To change it later, click Edit custom format under the Format list."
+          ],
+          "tip": "Put words in a pattern between single quotes, for example 'None' for the zero text or 'de' in a Spanish date.",
+          "note": "Number and date formats in English (US) carry into the Word template export exactly. Other languages print in US English there, and masks print without the mask; the export lists both as warnings.",
+          "covers": [23]
+        },
+        {
+          "title": "Lists: Repeat and Data Table",
+          "paragraphs": [
+            "A Repeat prints its contents once for every item of a list: one card per location, one line per claim. A Data Table prints a table with one row per item and can add a totals row.",
+            "Dragging a list from the Model panel onto the page asks whether you want a table, cards or a list, and which of the item's values to show.",
+            "A Repeat can show a message when the list is empty (If empty, show), and can print only the items that meet a condition (Only if)."
+          ],
+          "steps": [],
+          "tip": "On the canvas, Repeats are outlined in purple and labelled with the list they repeat over.",
+          "note": "",
+          "covers": []
+        },
+        {
+          "title": "Show If",
+          "paragraphs": [
+            "Show If prints its contents only when a condition is met, for example only for renewals or only when there are claims. Conditions are: has a value / is not empty, is empty, equals, does not equal, is greater than, is less than and contains."
+          ],
+          "steps": [
+            "Drag Show If from the Data blocks onto the page and put the conditional content inside it.",
+            "With Show If selected, click the value to test in the Model panel.",
+            "Choose the Condition and, for comparisons, type the Value."
+          ],
+          "tip": "",
+          "note": "",
+          "covers": []
+        },
+        {
+          "title": "Calculated fields",
+          "paragraphs": [
+            "A Calculated Field prints a value worked out from the data: a total premium, a percentage, the number of locations, the days in the policy term or a full name. Calculations use fields from the Model, numbers, + − × ÷ and parentheses (multiplication and division come first, as in arithmetic), and these functions: sum, count, average (of a list field, for example sum(claims.amount)), min, max, round (halves round up), abs, concat (join text and values), default (a replacement when a value is empty) and days_between (whole days between two dates).",
+            "The builder checks the calculation as you type, points at any mistake, and shows the result with the selected test data. On the page the field shows its result too, and the Format and If empty, show settings work as for any data field. Dividing by zero or by an empty value gives 0 rather than an error.",
+            "Inside a Repeat or Data Table a calculation can use the item's fields (claim.amount × 2); the canvas shows the result for the first item."
+          ],
+          "steps": [
+            "Drag Calculated Field from the Data blocks onto the page. The calculation builder opens.",
+            "Type the calculation, or click fields, operators and functions to insert them.",
+            "Choose a Format and check the result shown under the buttons.",
+            "Click Apply. To change it later, select the field and click Edit calculation in the Settings tab."
+          ],
+          "tip": "Text in a calculation goes in quotes: concat(insured.first, ' ', insured.last).",
+          "note": "A calculation that uses a field the model doesn't have is listed as a binding problem under the Model panel.",
+          "covers": [16]
+        },
+        {
+          "title": "Data images",
+          "paragraphs": [
+            "A Data Image prints an image that arrives in the message, for example a vendor map or photo. Bind it to the image value like any other field."
+          ],
+          "steps": [],
+          "tip": "",
+          "note": "",
+          "covers": []
+        },
+        {
+          "title": "How fields look on the canvas",
+          "paragraphs": [
+            "Data fields show switches the canvas between Sample values (what the PDF will print with the selected test data), Field names, and Liquid (the exact placeholder that is saved). The saved template is the same in every mode; hover a field to see its full expression."
+          ],
+          "steps": [],
+          "tip": "",
+          "note": "",
+          "covers": []
+        },
+        {
+          "title": "Binding problems",
+          "paragraphs": [
+            "When a field, list or condition points at something the model doesn't have, it is outlined in red and listed under the Model panel. Click a problem to select the element, then click the right value in the Model panel to fix it.",
+            "If the model should have the property, click Add to model on the problem instead. The designer adds it where the path says, with an example value that suits how it is used (0 for a currency field, today's date for a date, Yes for a condition); change the value with the edit button if needed. Add all to model fixes every such problem at once, including the list of a Repeat or Data Table and the fields of its items.",
+            "A condition that counts a group (for example OtherAutoCoverages.size, common in converted GhostDraft forms) offers Use Coverages.size instead: a group can't be counted, so it binds to the list inside the group.",
+            "Fields inside a list only work inside a Repeat or Data Table over that list; the problem list says so when one is placed outside."
+          ],
+          "steps": [],
+          "tip": "Adding to the model doesn't change your test data scenarios; add the new values to them with Scenarios.",
+          "note": "",
+          "covers": [33]
+        }
+      ]
+    },
+    {
+      "title": "Test data and previews",
+      "summary": "Preview PDF, test scenarios and Preview all.",
+      "intro": "Always look at the document the way customers will see it. The designer renders the PDF with the same engine the document service uses.",
+      "sections": [
+        {
+          "title": "Preview PDF",
+          "paragraphs": [
+            "Preview PDF renders what is on the canvas right now (saved or not) with the data chosen in Test data. The PDF opens in a window with links to open it in a new tab or download it."
+          ],
+          "steps": [],
+          "tip": "",
+          "note": "",
+          "covers": []
+        },
+        {
+          "title": "Test data scenarios",
+          "paragraphs": [
+            "One example is rarely enough. Scenarios are named sets of test data, such as Minimal policy, Many locations or No claims, saved for the template name. They are kept across versions and are never published.",
+            "Pick a scenario in Test data to see its values on the canvas and in Preview PDF. The status bar lists any fields that scenario has no value for, and any lists it leaves empty."
+          ],
+          "steps": [
+            "Click Scenarios in the toolbar.",
+            "Click New scenario. The editor starts from the data currently shown.",
+            "Give it a name, change the JSON and click Save scenario.",
+            "Use Show to switch to a scenario, Edit to change or rename it, and Delete to remove it."
+          ],
+          "tip": "Make a scenario for each edge case you care about: missing optional data, long names, many list items, zero amounts.",
+          "note": "Up to 50 scenarios per template, 2 MB each.",
+          "covers": [12]
+        },
+        {
+          "title": "Preview all",
+          "paragraphs": [
+            "Preview all renders the model example and every scenario in one go. The list on the left shows each one's page count, empty fields or the reason it failed; click one to see its PDF."
+          ],
+          "steps": [
+            "Click Scenarios, then Preview all.",
+            "Click each result to check its PDF."
+          ],
+          "tip": "",
+          "note": "Preview all renders up to 20 scenarios at a time.",
+          "covers": [12]
+        }
+      ]
+    },
+    {
+      "title": "Versions and publishing",
+      "summary": "Drafts, publishing safely, comparing and rolling back.",
+      "intro": "Every template keeps its history. Customers only ever get the Published version; you work on a Draft until it is ready.",
+      "sections": [
+        {
+          "title": "Draft, Published and Retired",
+          "paragraphs": [
+            "Draft is work in progress. Save Draft saves the canvas to the draft (or starts a new draft when the open version is Published or Retired, which are read-only).",
+            "Published is the live version used for generated documents. There is only one at a time.",
+            "Retired versions were published before. They are kept so you can look at them or roll back.",
+            "With nothing selected on the page, the Settings tab shows the template's details: its title, form code and edition (for example DA 00 93, 12/24), type and library category. They are saved with each version, so a new edition is a new version, and they are how the template is listed in the library."
+          ],
+          "steps": [],
+          "tip": "The badge next to the Version list shows the open version and its status, followed by • unsaved when there are unsaved changes.",
+          "note": "The edition is a month and year (MM/YY); the designer says so while you type if it isn't.",
+          "covers": [38]
+        },
+        {
+          "title": "Publishing and reviewing changes",
+          "paragraphs": [
+            "Publish saves the canvas as a draft if needed and makes it the live version; the previous published version is retired.",
+            "When a version is already published, the designer first shows Review changes before publishing: the printed text with additions and removals marked, both PDFs side by side, and the HTML and CSS differences. Both versions are rendered with the same test data so only template changes show up. Click Publish to go ahead or Cancel to keep the current version live."
+          ],
+          "steps": [
+            "Click Publish.",
+            "Read the summary and the Printed text tab; check PDFs side by side for layout changes.",
+            "Click Publish vN, or Cancel."
+          ],
+          "tip": "Compare with Published in the three-dot menu shows the same review at any time without publishing.",
+          "note": "",
+          "covers": [13]
+        },
+        {
+          "title": "Rolling back",
+          "paragraphs": [
+            "To go back to an earlier version, open the retired version and click Publish. The review shows what will change, and the button reads Roll back to vN."
+          ],
+          "steps": [],
+          "tip": "",
+          "note": "",
+          "covers": [13]
+        },
+        {
+          "title": "Roles and signing in",
+          "paragraphs": [
+            "When sign-in is turned on, everyone signs in and their roles decide what they can do. Anyone signed in can open documents, preview them, browse the gallery and read history. Authors save drafts, import documents, manage test scenarios and saved blocks, duplicate and add words to the dictionary. Publishers publish and roll back. Reviewers, Authors and Publishers can comment. Someone with no role can look but not change anything.",
+            "Your name and roles are shown at the top right. Buttons for things your roles don't allow are greyed out, and hovering them says which role is needed; the server checks every change again, so nothing can be done around the screen.",
+            "The organisation can also require a second person to publish: then nobody can publish a version they saved themselves, so every change is seen by two people before customers get it."
+          ],
+          "steps": [],
+          "tip": "Comments are always signed with your name when sign-in is on.",
+          "note": "In this proof of concept you choose your name from a list; the real designer will sign you in with your Microsoft work account.",
+          "covers": [19]
+        },
+        {
+          "title": "History",
+          "paragraphs": [
+            "Every change is recorded: who saved, published, rolled back, discarded or duplicated a version, who changed test scenarios, saved blocks or the dictionary, who commented, and when someone was refused. History in the three-dot menu lists this for the document you have open, newest first; tick All activity to see everything.",
+            "The record can't be edited or deleted from the designer."
+          ],
+          "steps": [
+            "Open History from the three-dot menu.",
+            "Read who did what, to which version, and when.",
+            "Tick All activity to see every document and person."
+          ],
+          "tip": "",
+          "note": "",
+          "covers": [19]
+        },
+        {
+          "title": "Discard Draft and Render Published",
+          "paragraphs": [
+            "Discard Draft (three-dot menu) deletes the draft version. It cannot be undone.",
+            "Render Published renders the published version on the server exactly as the document service would, which is useful to confirm what customers are currently receiving."
+          ],
+          "steps": [],
+          "tip": "",
+          "note": "",
+          "covers": []
+        },
+        {
+          "title": "Exporting to Word and HTML",
+          "paragraphs": [
+            "The three-dot menu exports the canvas: Export Word Template (.docx) makes a Word template that DocGen fills with data and turns into a PDF; Export HTML Template keeps the {{ data }} placeholders; Export HTML with Example Data fills them with the example data.",
+            "The HTML with example data is exactly the page the PDF is made from, so it matches Preview PDF word for word. The page size, margins and running header and footer are added when the PDF is printed, so they don't show in the HTML file.",
+            "The Word template is checked against the PDF: filled by DocGen's own code and printed, it has the same words on every page, the same paper size and margins, the same header and footer (with Page X of Y, first page and even page versions) and the same custom number and date formats. Fonts and line breaks can differ a little, because Word templates are printed by a different program.",
+            "A few things can't be carried into a Word template: themes, watermarks, conditional styling, barcodes, charts, calculated fields, totals, If empty text, masks, languages other than English (US) and fixed-layout form pages. The export never drops them silently: it lists each one as a warning when you download the file."
+          ],
+          "steps": [],
+          "tip": "Read the export warnings before handing a Word template to DocGen: each one is a difference from the PDF.",
+          "note": "",
+          "covers": []
+        },
+        {
+          "title": "Languages: Spanish and French versions",
+          "paragraphs": [
+            "A template can have a Spanish and a French (Canada) version besides English. They keep the template's name and data fields, so the same message data fills every language. Each language has its own Draft, Published and Retired versions and is published on its own.",
+            "In a Spanish or French document, true/false values print as Sí/No or Oui/Non. Custom formats with no language of their own print in the document's language, for example 1 de octubre de 2026. The standard footer reads Página 1 de 2. The preset formats (currency, number, short date) print the same in every language.",
+            "Clauses can be translated the same way. A Spanish template prints the Spanish version of a clause when one is published, and the English version until then.",
+            "When a document is asked for in a language that has nothing published, the English version is sent instead, and the response says so. A new language can only be started once the English version has been saved.",
+            "Translations go along everywhere else too. The gallery shows which languages a template is also in. Duplicating a template copies each translation as that language's draft v1. Field usage search finds fields in translations and opens them in their language."
+          ],
+          "steps": [
+            "Open the English version, then pick Spanish in the Language box on the toolbar.",
+            "If there is no Spanish version yet, the canvas keeps the English text. Translate the wording, leaving the data fields in place.",
+            "Click Save Draft to create Spanish v1. The status bar says whether it uses the same data fields as English.",
+            "Publish it when it is ready. Pick English in the Language box to go back to the English version."
+          ],
+          "tip": "Languages… in the three-dot menu lists every language with its newest and published versions. It also shows any data fields a translation leaves out or adds compared with English, and any clauses that still print in English.",
+          "note": "Exporting a Spanish or French version to Word gives a warning: DocGen's Word filler prints Yes/No, month names and numbers in English (US).",
+          "covers": [27]
+        }
+      ]
+    },
+    {
+      "title": "Shared clauses",
+      "summary": "Write wording once and use it in many documents.",
+      "intro": "A clause is a reusable piece of a document, such as a standard exclusion, a disclaimer or a contact block. Clauses have their own versions; publishing a new version of a clause updates every template that uses it.",
+      "sections": [
+        {
+          "title": "Creating a clause",
+          "paragraphs": [
+            "Clauses are designed on the same canvas as templates and can use data fields, lists and conditions. They use the data of the document they are placed in."
+          ],
+          "steps": [
+            "Set Kind to Clause and type the clause name.",
+            "Design the clause on the canvas.",
+            "Save Draft, then Publish when it is ready. Only published clauses can be used in templates."
+          ],
+          "tip": "",
+          "note": "A clause can't include itself, directly or through another clause.",
+          "covers": [11]
+        },
+        {
+          "title": "Using a clause in a template",
+          "paragraphs": [
+            "The Clause block places a clause in the template. The canvas shows the clause's current wording (read-only) with a teal outline. By default the latest published version prints, so the template picks up clause updates automatically. Pin a version to keep a specific wording.",
+            "If a clause is missing or not yet published, the canvas and Preview PDF say so."
+          ],
+          "steps": [
+            "Drag the Clause block from the Data blocks onto the page.",
+            "In the Settings tab choose the clause.",
+            "Optionally type a version number in Pin version."
+          ],
+          "tip": "To change the wording, switch Kind to Clause, open the clause and publish a new version. Templates that pin an older version are not affected.",
+          "note": "",
+          "covers": [11]
+        }
+      ]
+    },
+    {
+      "title": "Importing existing documents",
+      "summary": "Word, PDF, Documaker and GhostDraft.",
+      "intro": "Start from an existing document instead of a blank page. Imports open on the canvas as a new, unsaved template named after the file.",
+      "sections": [
+        {
+          "title": "Word documents (.docx)",
+          "paragraphs": [
+            "Word documents become flowing content: headings, paragraphs, lists, tables, images, links and page breaks. The Word page margins are kept, and the default header and footer become a running header and footer with page numbers (Page X of Y).",
+            "Mail-merge fields and content controls become data fields, and a data model is built from them. Placeholder text such as {{ policy.number }}, «Insured Name» and, optionally, [Insured Name] can also become data fields; the import dialog lets you choose which kinds to look for. Word field switches (uppercase, date and number pictures) become field formats.",
+            "Letters saved by Word for Windows and Word for Mac import the same way. A field Word split into pieces is still one field, spaces in field names become underscores (Hello world becomes Hello_world), and fields in tables, headers and footers are kept. When a field's code and the text Word last showed differ, the field code wins."
+          ],
+          "steps": [
+            "Three-dot menu, Import PDF / Word, and choose the .docx file.",
+            "Tick the kinds of placeholder text to turn into data fields and click Import.",
+            "Read the status bar: it lists what was imported and any notes, such as first-page or multi-section headers that were not carried over."
+          ],
+          "tip": "",
+          "note": "Old .doc files must be saved as .docx in Word first.",
+          "covers": [1, 2, 10]
+        },
+        {
+          "title": "PDF documents",
+          "paragraphs": [
+            "PDF pages are imported as fixed form pages: text, lines, boxes, images and form fields keep their positions. Fonts embedded in the PDF are used where they can be, so spacing matches the original.",
+            "Fillable PDF form fields are kept as form fields to be mapped to the model (see Mapping form fields). Each field keeps its place, size and character limit. Check boxes come in as check boxes: once mapped, they print an X when the data says yes.",
+            "Forms made with Adobe LiveCycle, such as IRS forms, keep their fields inside a parent field and also carry an XFA form. The designer imports their standard form fields and says so in the status bar. When two fields share a name, the name of their parent is added to tell them apart (for example Page2[0].f1_01[0]). A PDF that has only an XFA form and no standard fields has no fields to import; save it from Adobe as a standard PDF form first.",
+            "PDFs longer than 100 pages can't be imported in one go; the designer asks which pages to import (From and To)."
+          ],
+          "steps": [
+            "Three-dot menu, Import PDF / Word, and choose the PDF.",
+            "For a long PDF, enter the page range and click Import."
+          ],
+          "tip": "",
+          "note": "Scanned PDFs (pictures of pages) have no text to import yet; text recognition is planned.",
+          "covers": [4, 8, 10]
+        },
+        {
+          "title": "Mapping form fields",
+          "paragraphs": [
+            "Imported form fields start unmapped. The Model panel counts them and can suggest a model value for each by comparing names (it understands abbreviations such as NO, EFF and INSD, spelling slips, and whether a field holds a date or an amount)."
+          ],
+          "tip": "Some forms use coded field names (an IRS W-9's name line is f1_01[0]). For those, Suggest mappings reads the words printed next to each field on the form, such as Name of entity/individual. A check box takes the words to its right; other fields take the words before them or just above them. The suggestions list shows that label under the field name, and hovering an unmapped field shows it too.",
+          "steps": [
+            "Click Suggest mappings under the Model panel.",
+            "Check the suggestions. Confident matches are already ticked; change or untick others.",
+            "Click Apply. Mapped fields get a sensible format for their type.",
+            "Map any remaining fields by selecting them and clicking a value in the Model panel.",
+            "For a check box, map the value that decides it. Leave Checked when empty and the box gets an X when the value means yes: true, a number other than 0, or Yes, Y, X, On or 1. Type a value in Checked when to mark the box only for that value. For example, map every box of 'Federal tax classification' to the same property and give each its own value (Individual, C Corporation, and so on)."
+          ],
+          "note": "",
+          "covers": [3]
+        },
+        {
+          "title": "Documaker and GhostDraft forms",
+          "paragraphs": [
+            "Import Legacy Form opens a Documaker form converted to HTML by the fact-pdf-tools converter. Import GhostDraft Form opens a GhostDraft template converted by the gd2designer tool, including its fill points, conditions, lists and a sample model.",
+            "The GhostDraft conversion review page (review.html) shows each converted form beside GhostDraft's own PDF. After approving a form there, click Add to Designer Library: the designer opens in a new tab, imports the form and saves it as a draft template named after the form. Check it with Preview PDF, then publish it."
+          ],
+          "steps": [],
+          "tip": "",
+          "note": "",
+          "covers": [32]
+        },
+        {
+          "title": "Checking import quality",
+          "paragraphs": [
+            "The team checks the importer against real documents by rendering each imported document and comparing it with the original, both by words and visually. Documents that score below 90% are sent to the import review page, which shows the original, the rendering and colored overlays (original red, rendering blue, both black) so differences are easy to spot and record."
+          ],
+          "steps": [],
+          "tip": "",
+          "note": "",
+          "covers": [7]
+        }
+      ]
+    },
+    {
+      "title": "Reviewing and polishing",
+      "summary": "Find and replace, spelling and reviewer comments.",
+      "intro": "Before a document goes live, tidy its wording and let reviewers leave notes where they matter. These tools work on the text you typed; data fields, calculations and shared clauses are left alone.",
+      "sections": [
+        {
+          "title": "Find and replace",
+          "paragraphs": [
+            "Find and replace searches the text of the page: headings, paragraphs, table cells and so on. Matches inside data fields, calculated fields and clauses are not found or changed, so a search for policy never touches a policy.number field."
+          ],
+          "steps": [
+            "Open Find and Replace from the three-dot menu, or press Ctrl+F.",
+            "Type the text to find. Tick Match case or Whole words to narrow it down.",
+            "Use Next and Previous to go through the matches; each one is selected on the page.",
+            "Type the replacement and click Replace (the current match) or Replace all."
+          ],
+          "tip": "Use Whole words to avoid changing longer words that contain the text (policy inside policyholder).",
+          "note": "A replacement can't contain {{ or {%, so it can't turn into template code.",
+          "covers": [17]
+        },
+        {
+          "title": "Checking spelling",
+          "paragraphs": [
+            "Check Spelling lists the words of the page text that the dictionary doesn't know, how often each appears, and suggestions. The dictionary is American English plus insurance and Mutual of Enumclaw terms (coinsurance, subrogation, policyholder, Enumclaw and others). Short all-capital words such as CPP or TIV and words with numbers are treated as codes and not checked."
+          ],
+          "steps": [
+            "Open Check Spelling from the three-dot menu.",
+            "Click a suggestion to replace that word everywhere on the page.",
+            "Click Ignore to skip a word until you reload the designer, or Add to dictionary to accept it for everyone."
+          ],
+          "tip": "Run the check after imports: converted documents often carry over old typos.",
+          "note": "Words added to the dictionary are shared by all authors, so add only real words and names.",
+          "covers": [17]
+        },
+        {
+          "title": "Reviewer comments",
+          "paragraphs": [
+            "Comments are notes on a particular element of the page, for example “use the new exclusion wording here”. Elements with open comments have an orange outline, and the Comments tab shows how many are open. Comments belong to the template (not to one version), are never printed, and keep pointing at their element after the template is saved and reopened.",
+            "Anyone can reply, resolve a comment when it has been dealt with, reopen it, or delete it. If the element is deleted, its comments stay in the list marked no longer on the page."
+          ],
+          "steps": [
+            "Select the element on the page and open the Comments tab (or click Comment on the selection toolbar).",
+            "Enter your name the first time; the designer remembers it.",
+            "Write the comment and click Comment on selection.",
+            "Click a comment's element name to select it on the page; use Reply, Resolve or Reopen, and Delete as needed. Switch the list between Open and All."
+          ],
+          "tip": "Resolve comments rather than deleting them, so the conversation stays available.",
+          "note": "",
+          "covers": [17]
+        }
+      ]
+    },
+    {
+      "title": "Finding where fields are used",
+      "summary": "Which templates and clauses use a value.",
+      "intro": "Before a message field is renamed or retired, find every document that prints it.",
+      "sections": [
+        {
+          "title": "Field usage search",
+          "paragraphs": [
+            "The search looks through every template and clause (their newest and published versions) and lists the ones that use the field, how often, and through which clauses. A parent finds everything under it: policy also finds policy.number. Fields inside lists are written with [] (locations[].name). The current, unsaved canvas is counted too."
+          ],
+          "steps": [
+            "Click the filter button in the Model panel heading, or hover a value in the Model tree and click its filter button.",
+            "Type or pick the field and click Search. Tick All versions to include retired versions.",
+            "Click Open on a result to load that version into the designer."
+          ],
+          "tip": "",
+          "note": "",
+          "covers": [14]
+        }
+      ]
+    },
+    {
+      "title": "Reference",
+      "summary": "Limits and advanced notes.",
+      "intro": "Details that are useful to know once you are comfortable with the designer.",
+      "sections": [
+        {
+          "title": "Features that can be switched off",
+          "paragraphs": [
+            "An administrator can switch features off, for a demo or while a feature is rolled out. A feature that is off is hidden: its menu items, buttons and blocks don't appear. Documents that already use it still render as before.",
+            "Features:Profile=demo in the designer's settings, or dotnet run --launch-profile demo, shows only the core features: the gallery, importing PDF and Word, data fields, lists and conditions, clauses, test data, page setup, preview and publishing."
+          ],
+          "steps": [],
+          "tip": "",
+          "note": "If a feature described in this guide isn't on your screen, it may be switched off.",
+          "covers": [31]
+        },
+        {
+          "title": "The designer inside other applications",
+          "paragraphs": [
+            "The designer can be shown inside another MOE application, such as Commercial Web. There the application provides the title bar, the template list and the Save, Publish and Preview buttons, and can show a real policy's data on the canvas instead of the test data.",
+            "Only applications listed in the designer's Embed:AllowedOrigins setting can show it; any other web page that tries is blocked by the browser."
+          ],
+          "steps": [],
+          "tip": "",
+          "note": "",
+          "covers": [38]
+        },
+        {
+          "title": "Limits",
+          "paragraphs": [
+            "Data model: 2 MB. Test scenarios: 50 per template, 2 MB each; Preview all renders up to 20. PDF import: 100 pages at a time. Names: letters, numbers, dashes and underscores, up to 64 characters."
+          ],
+          "steps": [],
+          "tip": "",
+          "note": "",
+          "covers": []
+        },
+        {
+          "title": "Liquid, for the curious",
+          "paragraphs": [
+            "The designer saves templates as HTML with Liquid placeholders, the format the document service fills in. A data field is saved as {{ policy.number }}, a Repeat as {% for location in locations %} … {% endfor %}, Show If as {% if … %} and a Clause as {% include 'name' %}. Show Liquid in the three-dot menu shows the whole template.",
+            "Values from the message are always printed as text, so message data can never change the layout of the page."
+          ],
+          "steps": [],
+          "tip": "",
+          "note": "",
+          "covers": []
+        }
+      ]
+    }
+  ],
+  "maintenance": {
+    "howToUpdate": "This guide is data for the user-guide template. Add or change sections here when a feature is added or changed (list the checklist items a section covers in covers); the PDF at /api/help/user-guide.pdf is rendered from the published user-guide template with this file. Change the layout by opening the user-guide template in the designer.",
+    "internalChecklistItems": [6]
+  }
+}

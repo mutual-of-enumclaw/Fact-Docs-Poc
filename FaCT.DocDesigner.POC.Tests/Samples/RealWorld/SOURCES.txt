@@ -1,0 +1,11 @@
+Real-world sample files for the import tests (RealWorldImportTests). Downloaded 2026-10-02.
+
+docx/  Word mail-merge documents from the docx-mailmerge project's tests folder
+       https://github.com/Bouke/docx-mailmerge/tree/master/tests
+       Copyright (C) 2012 Bouke Haarsma, MIT License (docx/LICENSE.txt).
+       Saved by Word 2010 (Windows) and Word 2011 (Mac): MERGEFIELDs split across runs, spaces in field names, a field
+       whose shown result differs from its name, fields in tables, headers and footers, page breaks.
+
+pdf/   IRS fillable forms (fw9, fw4, fw7, fss4, f1040, f8822) from https://www.irs.gov/forms-instructions-and-publications
+       Works of the U.S. federal government: public domain.
+       Made with Adobe LiveCycle: an XFA form plus standard AcroForm fields, all nested under one "topmostSubform[0]" parent.

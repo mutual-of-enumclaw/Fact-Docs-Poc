@@ -1,0 +1,11 @@
+file       C:\src\FaCT-DocProd-Documentation\ARC2PDF\ARC2PDF Process Overview.docx
+format     docx
+pages      1
+recall     100 % of 433 original words appear in the render
+precision  96 % of 461 rendered words come from the original
+visual     - page likeness (ink within ~4pt of the original)
+review     -
+counts     50 paragraphs, 0 headings, 9 listItems, 0 tables, 2 images, 0 fields, 0 links, 0 textBoxes, 2 pageBreaks, 0 headers, 0 footers, 0 pageNumbers, 0 placeholders
+fields     
+notes      
+missing    

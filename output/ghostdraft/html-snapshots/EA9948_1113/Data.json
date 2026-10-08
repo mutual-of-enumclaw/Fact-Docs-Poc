@@ -1,0 +1,1419 @@
+{
+  "Agent": {
+    "AddressLine1": "",
+    "AddressLine2_Isthereaddressline2": "",
+    "AgencyCode": "",
+    "City": "",
+    "FullName": "",
+    "Isthereaddressline2": false,
+    "PhoneNumber": "",
+    "State": "",
+    "Zip": ""
+  },
+  "Insured": {
+    "AddressLine1": "",
+    "AddressLine2_Isthereaddressline2": "",
+    "City": "",
+    "FullName": "SNAKE RIVER PRODUCE CO LLC",
+    "Isthereaddressline2": false,
+    "NamedDriver": "",
+    "PhoneNumber": "",
+    "State": "",
+    "Zip": ""
+  },
+  "MOECAAutoLevelCoverages": {
+    "AutoCount": {
+      "has4ormoreautoswithLongFormLossPayableClauseWA": false,
+      "has4ormoreautoswithLossPayableClause": false,
+      "has4ormoreautoswithLossPayableClauseWA": false,
+      "has5ormoreautoswithAutoLoanLeaseGapCoverage": false,
+      "has5ormoreautoswithSupplementalRentalReimbursement": false,
+      "has8ormoreautoswithFarmAutoSeasonalLayUpCoverage": false
+    },
+    "AutosWithFarmAutoSeasonalLayUp": {},
+    "AutosWithLoanLeaseGap": {
+      "TotalPremiums": {
+        "CollisionPremium": "1200",
+        "ComprehensivePremium": "600"
+      }
+    },
+    "AutosWithLossPayableClause": {},
+    "AutosWithSupplementalRentalReimbursement": {
+      "TotalPremiums": {
+        "CollisionPremium": "0",
+        "ComprehensivePremium": "0"
+      }
+    }
+  },
+  "MOECAPolicyLevelCoverages": {
+    "ExcludedDrivers": {
+      "NameofExcludedDriver": "",
+      "Relationship": ""
+    },
+    "FarmFamilyCorporationsorPartnerships": {
+      "has8OrMoreFarmFamilyCorpOrPartnerships": false
+    },
+    "FormFUniformMotorCarrierBodilyAndPropertyDamageLiabilityInsuranceEndorsement": {
+      "Day": "0",
+      "MCS90Text": "",
+      "Month": "",
+      "State": {
+        "Arizona": true,
+        "Idaho": true,
+        "Montana": true,
+        "Oregon": true,
+        "Utah": true,
+        "Washington": true,
+        "Wyoming": true
+      },
+      "Year": "0"
+    },
+    "LimitedPollutionLiabilityCoverageExtension": {
+      "forHiredAutos": false,
+      "forOwnedAutos": false,
+      "forSpeciallyDescribedAutos": false,
+      "Limit": 100000,
+      "Premium": 182
+    },
+    "MCS_90": {
+      "AmendingPolicyNumber": "CPP 0028485 00",
+      "ExcessAmount1": "0",
+      "ExcessAmount2": "0",
+      "InExcessOf": "0",
+      "IssuedDay": "0",
+      "IssuedMonth": "",
+      "IssuedYear": "",
+      "Limit": "0",
+      "MotorCarrierName": "",
+      "MotorCarrierStateOrProvince": "",
+      "USDOTNumber": "0"
+    },
+    "PersonalInjuryProtection_Idaho": {
+      "LossofServiceBenefits": "0",
+      "MedicalandHospitalBenefitsLimit": "0",
+      "TotalMaximumIncomeContinuationBenefits": "0",
+      "WeeklyMaximumIncomeContinuationBenefits": "0"
+    },
+    "PersonalInjuryProtection_Oregon": {
+      "MedicalandHopsitalExpensesLimit": "0"
+    },
+    "UtahPersonalInjuryProtection": "",
+    "UtahUnderinsuredMotoristsCoverage": {
+      "LimitOfInsurance": "0"
+    },
+    "UtahUninsuredMotoristsCoverage": {
+      "EndorsementEffectiveDate": "2023-08-01T00:00:00",
+      "LimitOfInsurance": "0"
+    },
+    "WashingtonPersonalInjuryProtection_NamedIndividuals": "",
+    "WashingtonTruckers_IntermodelInterchangeUniformEndorsementFormUIIE": ""
+  },
+  "MOEPolicyDecInfo": {
+    "ItemFiveScheduleForNonOwnershipLiability": {
+      "AutoServiceOperations": {
+        "NumberOfEmployees": {
+          "IsProvided": false,
+          "NumberWording": "",
+          "PremiumWording": ""
+        },
+        "NumberOfPartners": {
+          "IsProvided": false,
+          "NumberWording": "",
+          "PremiumWording": ""
+        },
+        "NumberOfVolunteers": {
+          "IsProvided": false,
+          "NumberWording": "",
+          "PremiumWording": ""
+        }
+      },
+      "OtherThanASocialServiceAgency": {
+        "NumberOfEmployees": {
+          "IsProvided": false,
+          "NumberWording": "",
+          "PremiumWording": ""
+        },
+        "NumberOfPartners": {
+          "IsProvided": false,
+          "NumberWording": "",
+          "PremiumWording": ""
+        }
+      },
+      "OtherThankAutoServiceOperationsPartnershipsLLCs": {
+        "NumberOfEmployees": {
+          "IsProvided": false,
+          "NumberWording": "",
+          "PremiumWording": ""
+        },
+        "NumberOfVolunteers": {
+          "IsProvided": false,
+          "NumberWording": "",
+          "PremiumWording": ""
+        }
+      },
+      "PartnershipsOrLLCs": {
+        "NumberOfEmployees": {
+          "IsProvided": false,
+          "NumberWording": "",
+          "PremiumWording": ""
+        },
+        "NumberOfPartners": {
+          "IsProvided": false,
+          "NumberWording": "",
+          "PremiumWording": ""
+        },
+        "NumberOfVolunteers": {
+          "IsProvided": false,
+          "NumberWording": "",
+          "PremiumWording": ""
+        }
+      },
+      "SocialServiceAgency": {
+        "NumberOfEmployees": {
+          "IsProvided": false,
+          "NumberWording": "",
+          "PremiumWording": ""
+        },
+        "NumberOfVolunteers": {
+          "IsProvided": false,
+          "NumberWording": "",
+          "PremiumWording": ""
+        }
+      },
+      "TotalPremium": "0"
+    },
+    "ItemFourHiredOrBorrowedCoveredAutoCoverageAndPremiums": {
+      "LiabilityCoverage": {
+        "EstimatedCostofHire": "0",
+        "Premium": "0",
+        "RatePerEachCostOfHire": "0",
+        "State": "",
+        "TotalPremium": "0"
+      }
+    },
+    "ItemSixScheduleOfDriversForPersonalUseAutos": {
+      "Drivers": {}
+    },
+    "ItemThreeScheduleOfOwnedAutos": {
+      "Vehicles": {
+        "Vehicles": [
+          {
+            "AgeGroup": {
+              "AgeGroup_IsProvided": "0",
+              "AgeGroupWording": "",
+              "IsProvided": false
+            },
+            "AutoMedicalPremium": {
+              "AutoMedicalPremium_IsProvided": "0",
+              "AutoMedicalPremiumWording": "",
+              "IsProvided": false
+            },
+            "ClassCode": "7399",
+            "CostNew": {
+              "CostNew_IsProvided": "0",
+              "CostNewWording": "",
+              "IsProvided": false
+            },
+            "CovAutoNo": "1",
+            "CovAutoTotalPremium": {
+              "CovAutoTotalPremium_IsProvided": "0",
+              "CovAutoTotalPremiumWording": "",
+              "IsProvided": true
+            },
+            "CoveredAutoVIN": "1HGCG5655WA041090",
+            "DecscriptionOfCoveredAuto": "TRUCK",
+            "GarageLocation": "OR",
+            "GVWGCWRadiusUseSeatingCapacityORPrivatePassengerUse": "",
+            "LiabilityPremium": {
+              "IsProvided": true,
+              "LiabilityPremium_IsProvided": "100",
+              "LiabilityPremiumWording": ""
+            },
+            "Make": "",
+            "Model": "",
+            "MTSpecific": {
+              "AutoMedicalPayments": "",
+              "Liability": "",
+              "PhysicalDamage": {
+                "Collision": {
+                  "Collision": "",
+                  "Deductible": "500"
+                },
+                "Comprehensive": {
+                  "Comprehensive": "",
+                  "Deductible": "500"
+                },
+                "LimitWording": "",
+                "SpecifiedCausesOfLossCoverage": "",
+                "TowingAndLabor": ""
+              },
+              "UnderinsuredMotorists": "",
+              "UninsuredMotorists": ""
+            },
+            "PhysicalDamageCoveragePremiums": {
+              "Collision": {
+                "Deductible_IsProvided": "500",
+                "DeductibleWording": "500",
+                "IsProvided": true,
+                "Premium_IsProvided": "100",
+                "PremiumWording": "100"
+              },
+              "Comprehensive": {
+                "Deductible_IsProvided": "500",
+                "DeductibleWording": "500",
+                "IsProvided": true,
+                "Premium_IsProvided": "50",
+                "PremiumWording": "50"
+              },
+              "Limit": {
+                "IsProvided": false,
+                "Limit_IsProvided": "0",
+                "LimitWording": "ACV"
+              },
+              "SpecifiedCause": {
+                "IsProvided": false,
+                "Premium_IsProvided": "0",
+                "PremiumWording": ""
+              },
+              "TowingAndLabor": {
+                "IsProvided": false,
+                "Premium_IsProvided": "0",
+                "PremiumWording": ""
+              }
+            },
+            "PIP": {
+              "IsProvided": false,
+              "Premium_IsProvided": "0",
+              "PremiumWording": ""
+            },
+            "Territory": "",
+            "UninsuredOrUnderinsuredMotorist": {
+              "IsProvided": false,
+              "Premium_IsProvided": "0",
+              "PremiumWording": ""
+            },
+            "Year": "2024"
+          },
+          {
+            "AgeGroup": {
+              "AgeGroup_IsProvided": "0",
+              "AgeGroupWording": "",
+              "IsProvided": false
+            },
+            "AutoMedicalPremium": {
+              "AutoMedicalPremium_IsProvided": "0",
+              "AutoMedicalPremiumWording": "",
+              "IsProvided": false
+            },
+            "ClassCode": "7399",
+            "CostNew": {
+              "CostNew_IsProvided": "0",
+              "CostNewWording": "",
+              "IsProvided": false
+            },
+            "CovAutoNo": "2",
+            "CovAutoTotalPremium": {
+              "CovAutoTotalPremium_IsProvided": "0",
+              "CovAutoTotalPremiumWording": "",
+              "IsProvided": true
+            },
+            "CoveredAutoVIN": "1HGCG5655WA041091",
+            "DecscriptionOfCoveredAuto": "TRUCK",
+            "GarageLocation": "OR",
+            "GVWGCWRadiusUseSeatingCapacityORPrivatePassengerUse": "",
+            "LiabilityPremium": {
+              "IsProvided": true,
+              "LiabilityPremium_IsProvided": "100",
+              "LiabilityPremiumWording": ""
+            },
+            "Make": "",
+            "Model": "",
+            "MTSpecific": {
+              "AutoMedicalPayments": "",
+              "Liability": "",
+              "PhysicalDamage": {
+                "Collision": {
+                  "Collision": "",
+                  "Deductible": "500"
+                },
+                "Comprehensive": {
+                  "Comprehensive": "",
+                  "Deductible": "500"
+                },
+                "LimitWording": "",
+                "SpecifiedCausesOfLossCoverage": "",
+                "TowingAndLabor": ""
+              },
+              "UnderinsuredMotorists": "",
+              "UninsuredMotorists": ""
+            },
+            "PhysicalDamageCoveragePremiums": {
+              "Collision": {
+                "Deductible_IsProvided": "500",
+                "DeductibleWording": "500",
+                "IsProvided": true,
+                "Premium_IsProvided": "100",
+                "PremiumWording": "100"
+              },
+              "Comprehensive": {
+                "Deductible_IsProvided": "500",
+                "DeductibleWording": "500",
+                "IsProvided": true,
+                "Premium_IsProvided": "50",
+                "PremiumWording": "50"
+              },
+              "Limit": {
+                "IsProvided": false,
+                "Limit_IsProvided": "0",
+                "LimitWording": "ACV"
+              },
+              "SpecifiedCause": {
+                "IsProvided": false,
+                "Premium_IsProvided": "0",
+                "PremiumWording": ""
+              },
+              "TowingAndLabor": {
+                "IsProvided": false,
+                "Premium_IsProvided": "0",
+                "PremiumWording": ""
+              }
+            },
+            "PIP": {
+              "IsProvided": false,
+              "Premium_IsProvided": "0",
+              "PremiumWording": ""
+            },
+            "Territory": "",
+            "UninsuredOrUnderinsuredMotorist": {
+              "IsProvided": false,
+              "Premium_IsProvided": "0",
+              "PremiumWording": ""
+            },
+            "Year": "2024"
+          },
+          {
+            "AgeGroup": {
+              "AgeGroup_IsProvided": "0",
+              "AgeGroupWording": "",
+              "IsProvided": false
+            },
+            "AutoMedicalPremium": {
+              "AutoMedicalPremium_IsProvided": "0",
+              "AutoMedicalPremiumWording": "",
+              "IsProvided": false
+            },
+            "ClassCode": "7399",
+            "CostNew": {
+              "CostNew_IsProvided": "0",
+              "CostNewWording": "",
+              "IsProvided": false
+            },
+            "CovAutoNo": "3",
+            "CovAutoTotalPremium": {
+              "CovAutoTotalPremium_IsProvided": "0",
+              "CovAutoTotalPremiumWording": "",
+              "IsProvided": true
+            },
+            "CoveredAutoVIN": "1HGCG5655WA041092",
+            "DecscriptionOfCoveredAuto": "TRUCK",
+            "GarageLocation": "OR",
+            "GVWGCWRadiusUseSeatingCapacityORPrivatePassengerUse": "",
+            "LiabilityPremium": {
+              "IsProvided": true,
+              "LiabilityPremium_IsProvided": "100",
+              "LiabilityPremiumWording": ""
+            },
+            "Make": "",
+            "Model": "",
+            "MTSpecific": {
+              "AutoMedicalPayments": "",
+              "Liability": "",
+              "PhysicalDamage": {
+                "Collision": {
+                  "Collision": "",
+                  "Deductible": "500"
+                },
+                "Comprehensive": {
+                  "Comprehensive": "",
+                  "Deductible": "500"
+                },
+                "LimitWording": "",
+                "SpecifiedCausesOfLossCoverage": "",
+                "TowingAndLabor": ""
+              },
+              "UnderinsuredMotorists": "",
+              "UninsuredMotorists": ""
+            },
+            "PhysicalDamageCoveragePremiums": {
+              "Collision": {
+                "Deductible_IsProvided": "500",
+                "DeductibleWording": "500",
+                "IsProvided": true,
+                "Premium_IsProvided": "100",
+                "PremiumWording": "100"
+              },
+              "Comprehensive": {
+                "Deductible_IsProvided": "500",
+                "DeductibleWording": "500",
+                "IsProvided": true,
+                "Premium_IsProvided": "50",
+                "PremiumWording": "50"
+              },
+              "Limit": {
+                "IsProvided": false,
+                "Limit_IsProvided": "0",
+                "LimitWording": "ACV"
+              },
+              "SpecifiedCause": {
+                "IsProvided": false,
+                "Premium_IsProvided": "0",
+                "PremiumWording": ""
+              },
+              "TowingAndLabor": {
+                "IsProvided": false,
+                "Premium_IsProvided": "0",
+                "PremiumWording": ""
+              }
+            },
+            "PIP": {
+              "IsProvided": false,
+              "Premium_IsProvided": "0",
+              "PremiumWording": ""
+            },
+            "Territory": "",
+            "UninsuredOrUnderinsuredMotorist": {
+              "IsProvided": false,
+              "Premium_IsProvided": "0",
+              "PremiumWording": ""
+            },
+            "Year": "2024"
+          },
+          {
+            "AgeGroup": {
+              "AgeGroup_IsProvided": "0",
+              "AgeGroupWording": "",
+              "IsProvided": false
+            },
+            "AutoMedicalPremium": {
+              "AutoMedicalPremium_IsProvided": "0",
+              "AutoMedicalPremiumWording": "",
+              "IsProvided": false
+            },
+            "ClassCode": "7399",
+            "CostNew": {
+              "CostNew_IsProvided": "0",
+              "CostNewWording": "",
+              "IsProvided": false
+            },
+            "CovAutoNo": "4",
+            "CovAutoTotalPremium": {
+              "CovAutoTotalPremium_IsProvided": "0",
+              "CovAutoTotalPremiumWording": "",
+              "IsProvided": true
+            },
+            "CoveredAutoVIN": "1HGCG5655WA041093",
+            "DecscriptionOfCoveredAuto": "TRUCK",
+            "GarageLocation": "OR",
+            "GVWGCWRadiusUseSeatingCapacityORPrivatePassengerUse": "",
+            "LiabilityPremium": {
+              "IsProvided": true,
+              "LiabilityPremium_IsProvided": "100",
+              "LiabilityPremiumWording": ""
+            },
+            "Make": "",
+            "Model": "",
+            "MTSpecific": {
+              "AutoMedicalPayments": "",
+              "Liability": "",
+              "PhysicalDamage": {
+                "Collision": {
+                  "Collision": "",
+                  "Deductible": "500"
+                },
+                "Comprehensive": {
+                  "Comprehensive": "",
+                  "Deductible": "500"
+                },
+                "LimitWording": "",
+                "SpecifiedCausesOfLossCoverage": "",
+                "TowingAndLabor": ""
+              },
+              "UnderinsuredMotorists": "",
+              "UninsuredMotorists": ""
+            },
+            "PhysicalDamageCoveragePremiums": {
+              "Collision": {
+                "Deductible_IsProvided": "500",
+                "DeductibleWording": "500",
+                "IsProvided": true,
+                "Premium_IsProvided": "100",
+                "PremiumWording": "100"
+              },
+              "Comprehensive": {
+                "Deductible_IsProvided": "500",
+                "DeductibleWording": "500",
+                "IsProvided": true,
+                "Premium_IsProvided": "50",
+                "PremiumWording": "50"
+              },
+              "Limit": {
+                "IsProvided": false,
+                "Limit_IsProvided": "0",
+                "LimitWording": "ACV"
+              },
+              "SpecifiedCause": {
+                "IsProvided": false,
+                "Premium_IsProvided": "0",
+                "PremiumWording": ""
+              },
+              "TowingAndLabor": {
+                "IsProvided": false,
+                "Premium_IsProvided": "0",
+                "PremiumWording": ""
+              }
+            },
+            "PIP": {
+              "IsProvided": false,
+              "Premium_IsProvided": "0",
+              "PremiumWording": ""
+            },
+            "Territory": "",
+            "UninsuredOrUnderinsuredMotorist": {
+              "IsProvided": false,
+              "Premium_IsProvided": "0",
+              "PremiumWording": ""
+            },
+            "Year": "2024"
+          },
+          {
+            "AgeGroup": {
+              "AgeGroup_IsProvided": "0",
+              "AgeGroupWording": "",
+              "IsProvided": false
+            },
+            "AutoMedicalPremium": {
+              "AutoMedicalPremium_IsProvided": "0",
+              "AutoMedicalPremiumWording": "",
+              "IsProvided": false
+            },
+            "ClassCode": "7399",
+            "CostNew": {
+              "CostNew_IsProvided": "0",
+              "CostNewWording": "",
+              "IsProvided": false
+            },
+            "CovAutoNo": "5",
+            "CovAutoTotalPremium": {
+              "CovAutoTotalPremium_IsProvided": "0",
+              "CovAutoTotalPremiumWording": "",
+              "IsProvided": true
+            },
+            "CoveredAutoVIN": "1HGCG5655WA041094",
+            "DecscriptionOfCoveredAuto": "TRUCK",
+            "GarageLocation": "OR",
+            "GVWGCWRadiusUseSeatingCapacityORPrivatePassengerUse": "",
+            "LiabilityPremium": {
+              "IsProvided": true,
+              "LiabilityPremium_IsProvided": "100",
+              "LiabilityPremiumWording": ""
+            },
+            "Make": "",
+            "Model": "",
+            "MTSpecific": {
+              "AutoMedicalPayments": "",
+              "Liability": "",
+              "PhysicalDamage": {
+                "Collision": {
+                  "Collision": "",
+                  "Deductible": "500"
+                },
+                "Comprehensive": {
+                  "Comprehensive": "",
+                  "Deductible": "500"
+                },
+                "LimitWording": "",
+                "SpecifiedCausesOfLossCoverage": "",
+                "TowingAndLabor": ""
+              },
+              "UnderinsuredMotorists": "",
+              "UninsuredMotorists": ""
+            },
+            "PhysicalDamageCoveragePremiums": {
+              "Collision": {
+                "Deductible_IsProvided": "500",
+                "DeductibleWording": "500",
+                "IsProvided": true,
+                "Premium_IsProvided": "100",
+                "PremiumWording": "100"
+              },
+              "Comprehensive": {
+                "Deductible_IsProvided": "500",
+                "DeductibleWording": "500",
+                "IsProvided": true,
+                "Premium_IsProvided": "50",
+                "PremiumWording": "50"
+              },
+              "Limit": {
+                "IsProvided": false,
+                "Limit_IsProvided": "0",
+                "LimitWording": "ACV"
+              },
+              "SpecifiedCause": {
+                "IsProvided": false,
+                "Premium_IsProvided": "0",
+                "PremiumWording": ""
+              },
+              "TowingAndLabor": {
+                "IsProvided": false,
+                "Premium_IsProvided": "0",
+                "PremiumWording": ""
+              }
+            },
+            "PIP": {
+              "IsProvided": false,
+              "Premium_IsProvided": "0",
+              "PremiumWording": ""
+            },
+            "Territory": "",
+            "UninsuredOrUnderinsuredMotorist": {
+              "IsProvided": false,
+              "Premium_IsProvided": "0",
+              "PremiumWording": ""
+            },
+            "Year": "2024"
+          },
+          {
+            "AgeGroup": {
+              "AgeGroup_IsProvided": "0",
+              "AgeGroupWording": "",
+              "IsProvided": false
+            },
+            "AutoMedicalPremium": {
+              "AutoMedicalPremium_IsProvided": "0",
+              "AutoMedicalPremiumWording": "",
+              "IsProvided": false
+            },
+            "ClassCode": "7399",
+            "CostNew": {
+              "CostNew_IsProvided": "0",
+              "CostNewWording": "",
+              "IsProvided": false
+            },
+            "CovAutoNo": "6",
+            "CovAutoTotalPremium": {
+              "CovAutoTotalPremium_IsProvided": "0",
+              "CovAutoTotalPremiumWording": "",
+              "IsProvided": true
+            },
+            "CoveredAutoVIN": "1HGCG5655WA041095",
+            "DecscriptionOfCoveredAuto": "TRUCK",
+            "GarageLocation": "OR",
+            "GVWGCWRadiusUseSeatingCapacityORPrivatePassengerUse": "",
+            "LiabilityPremium": {
+              "IsProvided": true,
+              "LiabilityPremium_IsProvided": "100",
+              "LiabilityPremiumWording": ""
+            },
+            "Make": "",
+            "Model": "",
+            "MTSpecific": {
+              "AutoMedicalPayments": "",
+              "Liability": "",
+              "PhysicalDamage": {
+                "Collision": {
+                  "Collision": "",
+                  "Deductible": "500"
+                },
+                "Comprehensive": {
+                  "Comprehensive": "",
+                  "Deductible": "500"
+                },
+                "LimitWording": "",
+                "SpecifiedCausesOfLossCoverage": "",
+                "TowingAndLabor": ""
+              },
+              "UnderinsuredMotorists": "",
+              "UninsuredMotorists": ""
+            },
+            "PhysicalDamageCoveragePremiums": {
+              "Collision": {
+                "Deductible_IsProvided": "500",
+                "DeductibleWording": "500",
+                "IsProvided": true,
+                "Premium_IsProvided": "100",
+                "PremiumWording": "100"
+              },
+              "Comprehensive": {
+                "Deductible_IsProvided": "500",
+                "DeductibleWording": "500",
+                "IsProvided": true,
+                "Premium_IsProvided": "50",
+                "PremiumWording": "50"
+              },
+              "Limit": {
+                "IsProvided": false,
+                "Limit_IsProvided": "0",
+                "LimitWording": "ACV"
+              },
+              "SpecifiedCause": {
+                "IsProvided": false,
+                "Premium_IsProvided": "0",
+                "PremiumWording": ""
+              },
+              "TowingAndLabor": {
+                "IsProvided": false,
+                "Premium_IsProvided": "0",
+                "PremiumWording": ""
+              }
+            },
+            "PIP": {
+              "IsProvided": false,
+              "Premium_IsProvided": "0",
+              "PremiumWording": ""
+            },
+            "Territory": "",
+            "UninsuredOrUnderinsuredMotorist": {
+              "IsProvided": false,
+              "Premium_IsProvided": "0",
+              "PremiumWording": ""
+            },
+            "Year": "2024"
+          },
+          {
+            "AgeGroup": {
+              "AgeGroup_IsProvided": "0",
+              "AgeGroupWording": "",
+              "IsProvided": false
+            },
+            "AutoMedicalPremium": {
+              "AutoMedicalPremium_IsProvided": "0",
+              "AutoMedicalPremiumWording": "",
+              "IsProvided": false
+            },
+            "ClassCode": "7399",
+            "CostNew": {
+              "CostNew_IsProvided": "0",
+              "CostNewWording": "",
+              "IsProvided": false
+            },
+            "CovAutoNo": "7",
+            "CovAutoTotalPremium": {
+              "CovAutoTotalPremium_IsProvided": "0",
+              "CovAutoTotalPremiumWording": "",
+              "IsProvided": true
+            },
+            "CoveredAutoVIN": "1HGCG5655WA041096",
+            "DecscriptionOfCoveredAuto": "TRUCK",
+            "GarageLocation": "OR",
+            "GVWGCWRadiusUseSeatingCapacityORPrivatePassengerUse": "",
+            "LiabilityPremium": {
+              "IsProvided": true,
+              "LiabilityPremium_IsProvided": "100",
+              "LiabilityPremiumWording": ""
+            },
+            "Make": "",
+            "Model": "",
+            "MTSpecific": {
+              "AutoMedicalPayments": "",
+              "Liability": "",
+              "PhysicalDamage": {
+                "Collision": {
+                  "Collision": "",
+                  "Deductible": "500"
+                },
+                "Comprehensive": {
+                  "Comprehensive": "",
+                  "Deductible": "500"
+                },
+                "LimitWording": "",
+                "SpecifiedCausesOfLossCoverage": "",
+                "TowingAndLabor": ""
+              },
+              "UnderinsuredMotorists": "",
+              "UninsuredMotorists": ""
+            },
+            "PhysicalDamageCoveragePremiums": {
+              "Collision": {
+                "Deductible_IsProvided": "500",
+                "DeductibleWording": "500",
+                "IsProvided": true,
+                "Premium_IsProvided": "100",
+                "PremiumWording": "100"
+              },
+              "Comprehensive": {
+                "Deductible_IsProvided": "500",
+                "DeductibleWording": "500",
+                "IsProvided": true,
+                "Premium_IsProvided": "50",
+                "PremiumWording": "50"
+              },
+              "Limit": {
+                "IsProvided": false,
+                "Limit_IsProvided": "0",
+                "LimitWording": "ACV"
+              },
+              "SpecifiedCause": {
+                "IsProvided": false,
+                "Premium_IsProvided": "0",
+                "PremiumWording": ""
+              },
+              "TowingAndLabor": {
+                "IsProvided": false,
+                "Premium_IsProvided": "0",
+                "PremiumWording": ""
+              }
+            },
+            "PIP": {
+              "IsProvided": false,
+              "Premium_IsProvided": "0",
+              "PremiumWording": ""
+            },
+            "Territory": "",
+            "UninsuredOrUnderinsuredMotorist": {
+              "IsProvided": false,
+              "Premium_IsProvided": "0",
+              "PremiumWording": ""
+            },
+            "Year": "2024"
+          },
+          {
+            "AgeGroup": {
+              "AgeGroup_IsProvided": "0",
+              "AgeGroupWording": "",
+              "IsProvided": false
+            },
+            "AutoMedicalPremium": {
+              "AutoMedicalPremium_IsProvided": "0",
+              "AutoMedicalPremiumWording": "",
+              "IsProvided": false
+            },
+            "ClassCode": "7399",
+            "CostNew": {
+              "CostNew_IsProvided": "0",
+              "CostNewWording": "",
+              "IsProvided": false
+            },
+            "CovAutoNo": "8",
+            "CovAutoTotalPremium": {
+              "CovAutoTotalPremium_IsProvided": "0",
+              "CovAutoTotalPremiumWording": "",
+              "IsProvided": true
+            },
+            "CoveredAutoVIN": "1HGCG5655WA041097",
+            "DecscriptionOfCoveredAuto": "TRUCK",
+            "GarageLocation": "OR",
+            "GVWGCWRadiusUseSeatingCapacityORPrivatePassengerUse": "",
+            "LiabilityPremium": {
+              "IsProvided": true,
+              "LiabilityPremium_IsProvided": "100",
+              "LiabilityPremiumWording": ""
+            },
+            "Make": "",
+            "Model": "",
+            "MTSpecific": {
+              "AutoMedicalPayments": "",
+              "Liability": "",
+              "PhysicalDamage": {
+                "Collision": {
+                  "Collision": "",
+                  "Deductible": "500"
+                },
+                "Comprehensive": {
+                  "Comprehensive": "",
+                  "Deductible": "500"
+                },
+                "LimitWording": "",
+                "SpecifiedCausesOfLossCoverage": "",
+                "TowingAndLabor": ""
+              },
+              "UnderinsuredMotorists": "",
+              "UninsuredMotorists": ""
+            },
+            "PhysicalDamageCoveragePremiums": {
+              "Collision": {
+                "Deductible_IsProvided": "500",
+                "DeductibleWording": "500",
+                "IsProvided": true,
+                "Premium_IsProvided": "100",
+                "PremiumWording": "100"
+              },
+              "Comprehensive": {
+                "Deductible_IsProvided": "500",
+                "DeductibleWording": "500",
+                "IsProvided": true,
+                "Premium_IsProvided": "50",
+                "PremiumWording": "50"
+              },
+              "Limit": {
+                "IsProvided": false,
+                "Limit_IsProvided": "0",
+                "LimitWording": "ACV"
+              },
+              "SpecifiedCause": {
+                "IsProvided": false,
+                "Premium_IsProvided": "0",
+                "PremiumWording": ""
+              },
+              "TowingAndLabor": {
+                "IsProvided": false,
+                "Premium_IsProvided": "0",
+                "PremiumWording": ""
+              }
+            },
+            "PIP": {
+              "IsProvided": false,
+              "Premium_IsProvided": "0",
+              "PremiumWording": ""
+            },
+            "Territory": "",
+            "UninsuredOrUnderinsuredMotorist": {
+              "IsProvided": false,
+              "Premium_IsProvided": "0",
+              "PremiumWording": ""
+            },
+            "Year": "2024"
+          },
+          {
+            "AgeGroup": {
+              "AgeGroup_IsProvided": "0",
+              "AgeGroupWording": "",
+              "IsProvided": false
+            },
+            "AutoMedicalPremium": {
+              "AutoMedicalPremium_IsProvided": "0",
+              "AutoMedicalPremiumWording": "",
+              "IsProvided": false
+            },
+            "ClassCode": "7399",
+            "CostNew": {
+              "CostNew_IsProvided": "0",
+              "CostNewWording": "",
+              "IsProvided": false
+            },
+            "CovAutoNo": "9",
+            "CovAutoTotalPremium": {
+              "CovAutoTotalPremium_IsProvided": "0",
+              "CovAutoTotalPremiumWording": "",
+              "IsProvided": true
+            },
+            "CoveredAutoVIN": "1HGCG5655WA041098",
+            "DecscriptionOfCoveredAuto": "TRUCK",
+            "GarageLocation": "OR",
+            "GVWGCWRadiusUseSeatingCapacityORPrivatePassengerUse": "",
+            "LiabilityPremium": {
+              "IsProvided": true,
+              "LiabilityPremium_IsProvided": "100",
+              "LiabilityPremiumWording": ""
+            },
+            "Make": "",
+            "Model": "",
+            "MTSpecific": {
+              "AutoMedicalPayments": "",
+              "Liability": "",
+              "PhysicalDamage": {
+                "Collision": {
+                  "Collision": "",
+                  "Deductible": "500"
+                },
+                "Comprehensive": {
+                  "Comprehensive": "",
+                  "Deductible": "500"
+                },
+                "LimitWording": "",
+                "SpecifiedCausesOfLossCoverage": "",
+                "TowingAndLabor": ""
+              },
+              "UnderinsuredMotorists": "",
+              "UninsuredMotorists": ""
+            },
+            "PhysicalDamageCoveragePremiums": {
+              "Collision": {
+                "Deductible_IsProvided": "500",
+                "DeductibleWording": "500",
+                "IsProvided": true,
+                "Premium_IsProvided": "100",
+                "PremiumWording": "100"
+              },
+              "Comprehensive": {
+                "Deductible_IsProvided": "500",
+                "DeductibleWording": "500",
+                "IsProvided": true,
+                "Premium_IsProvided": "50",
+                "PremiumWording": "50"
+              },
+              "Limit": {
+                "IsProvided": false,
+                "Limit_IsProvided": "0",
+                "LimitWording": "ACV"
+              },
+              "SpecifiedCause": {
+                "IsProvided": false,
+                "Premium_IsProvided": "0",
+                "PremiumWording": ""
+              },
+              "TowingAndLabor": {
+                "IsProvided": false,
+                "Premium_IsProvided": "0",
+                "PremiumWording": ""
+              }
+            },
+            "PIP": {
+              "IsProvided": false,
+              "Premium_IsProvided": "0",
+              "PremiumWording": ""
+            },
+            "Territory": "",
+            "UninsuredOrUnderinsuredMotorist": {
+              "IsProvided": false,
+              "Premium_IsProvided": "0",
+              "PremiumWording": ""
+            },
+            "Year": "2024"
+          },
+          {
+            "AgeGroup": {
+              "AgeGroup_IsProvided": "0",
+              "AgeGroupWording": "",
+              "IsProvided": false
+            },
+            "AutoMedicalPremium": {
+              "AutoMedicalPremium_IsProvided": "0",
+              "AutoMedicalPremiumWording": "",
+              "IsProvided": false
+            },
+            "ClassCode": "7399",
+            "CostNew": {
+              "CostNew_IsProvided": "0",
+              "CostNewWording": "",
+              "IsProvided": false
+            },
+            "CovAutoNo": "10",
+            "CovAutoTotalPremium": {
+              "CovAutoTotalPremium_IsProvided": "0",
+              "CovAutoTotalPremiumWording": "",
+              "IsProvided": true
+            },
+            "CoveredAutoVIN": "1HGCG5655WA041099",
+            "DecscriptionOfCoveredAuto": "TRUCK",
+            "GarageLocation": "OR",
+            "GVWGCWRadiusUseSeatingCapacityORPrivatePassengerUse": "",
+            "LiabilityPremium": {
+              "IsProvided": true,
+              "LiabilityPremium_IsProvided": "100",
+              "LiabilityPremiumWording": ""
+            },
+            "Make": "",
+            "Model": "",
+            "MTSpecific": {
+              "AutoMedicalPayments": "",
+              "Liability": "",
+              "PhysicalDamage": {
+                "Collision": {
+                  "Collision": "",
+                  "Deductible": "500"
+                },
+                "Comprehensive": {
+                  "Comprehensive": "",
+                  "Deductible": "500"
+                },
+                "LimitWording": "",
+                "SpecifiedCausesOfLossCoverage": "",
+                "TowingAndLabor": ""
+              },
+              "UnderinsuredMotorists": "",
+              "UninsuredMotorists": ""
+            },
+            "PhysicalDamageCoveragePremiums": {
+              "Collision": {
+                "Deductible_IsProvided": "500",
+                "DeductibleWording": "500",
+                "IsProvided": true,
+                "Premium_IsProvided": "100",
+                "PremiumWording": "100"
+              },
+              "Comprehensive": {
+                "Deductible_IsProvided": "500",
+                "DeductibleWording": "500",
+                "IsProvided": true,
+                "Premium_IsProvided": "50",
+                "PremiumWording": "50"
+              },
+              "Limit": {
+                "IsProvided": false,
+                "Limit_IsProvided": "0",
+                "LimitWording": "ACV"
+              },
+              "SpecifiedCause": {
+                "IsProvided": false,
+                "Premium_IsProvided": "0",
+                "PremiumWording": ""
+              },
+              "TowingAndLabor": {
+                "IsProvided": false,
+                "Premium_IsProvided": "0",
+                "PremiumWording": ""
+              }
+            },
+            "PIP": {
+              "IsProvided": false,
+              "Premium_IsProvided": "0",
+              "PremiumWording": ""
+            },
+            "Territory": "",
+            "UninsuredOrUnderinsuredMotorist": {
+              "IsProvided": false,
+              "Premium_IsProvided": "0",
+              "PremiumWording": ""
+            },
+            "Year": "2024"
+          },
+          {
+            "AgeGroup": {
+              "AgeGroup_IsProvided": "0",
+              "AgeGroupWording": "",
+              "IsProvided": false
+            },
+            "AutoMedicalPremium": {
+              "AutoMedicalPremium_IsProvided": "0",
+              "AutoMedicalPremiumWording": "",
+              "IsProvided": false
+            },
+            "ClassCode": "7399",
+            "CostNew": {
+              "CostNew_IsProvided": "0",
+              "CostNewWording": "",
+              "IsProvided": false
+            },
+            "CovAutoNo": "11",
+            "CovAutoTotalPremium": {
+              "CovAutoTotalPremium_IsProvided": "0",
+              "CovAutoTotalPremiumWording": "",
+              "IsProvided": true
+            },
+            "CoveredAutoVIN": "1HGCG5655WA0410910",
+            "DecscriptionOfCoveredAuto": "TRUCK",
+            "GarageLocation": "OR",
+            "GVWGCWRadiusUseSeatingCapacityORPrivatePassengerUse": "",
+            "LiabilityPremium": {
+              "IsProvided": true,
+              "LiabilityPremium_IsProvided": "100",
+              "LiabilityPremiumWording": ""
+            },
+            "Make": "",
+            "Model": "",
+            "MTSpecific": {
+              "AutoMedicalPayments": "",
+              "Liability": "",
+              "PhysicalDamage": {
+                "Collision": {
+                  "Collision": "",
+                  "Deductible": "500"
+                },
+                "Comprehensive": {
+                  "Comprehensive": "",
+                  "Deductible": "500"
+                },
+                "LimitWording": "",
+                "SpecifiedCausesOfLossCoverage": "",
+                "TowingAndLabor": ""
+              },
+              "UnderinsuredMotorists": "",
+              "UninsuredMotorists": ""
+            },
+            "PhysicalDamageCoveragePremiums": {
+              "Collision": {
+                "Deductible_IsProvided": "500",
+                "DeductibleWording": "500",
+                "IsProvided": true,
+                "Premium_IsProvided": "100",
+                "PremiumWording": "100"
+              },
+              "Comprehensive": {
+                "Deductible_IsProvided": "500",
+                "DeductibleWording": "500",
+                "IsProvided": true,
+                "Premium_IsProvided": "50",
+                "PremiumWording": "50"
+              },
+              "Limit": {
+                "IsProvided": false,
+                "Limit_IsProvided": "0",
+                "LimitWording": "ACV"
+              },
+              "SpecifiedCause": {
+                "IsProvided": false,
+                "Premium_IsProvided": "0",
+                "PremiumWording": ""
+              },
+              "TowingAndLabor": {
+                "IsProvided": false,
+                "Premium_IsProvided": "0",
+                "PremiumWording": ""
+              }
+            },
+            "PIP": {
+              "IsProvided": false,
+              "Premium_IsProvided": "0",
+              "PremiumWording": ""
+            },
+            "Territory": "",
+            "UninsuredOrUnderinsuredMotorist": {
+              "IsProvided": false,
+              "Premium_IsProvided": "0",
+              "PremiumWording": ""
+            },
+            "Year": "2024"
+          },
+          {
+            "AgeGroup": {
+              "AgeGroup_IsProvided": "0",
+              "AgeGroupWording": "",
+              "IsProvided": false
+            },
+            "AutoMedicalPremium": {
+              "AutoMedicalPremium_IsProvided": "0",
+              "AutoMedicalPremiumWording": "",
+              "IsProvided": false
+            },
+            "ClassCode": "7399",
+            "CostNew": {
+              "CostNew_IsProvided": "0",
+              "CostNewWording": "",
+              "IsProvided": false
+            },
+            "CovAutoNo": "12",
+            "CovAutoTotalPremium": {
+              "CovAutoTotalPremium_IsProvided": "0",
+              "CovAutoTotalPremiumWording": "",
+              "IsProvided": true
+            },
+            "CoveredAutoVIN": "1HGCG5655WA0410911",
+            "DecscriptionOfCoveredAuto": "TRUCK",
+            "GarageLocation": "OR",
+            "GVWGCWRadiusUseSeatingCapacityORPrivatePassengerUse": "",
+            "LiabilityPremium": {
+              "IsProvided": true,
+              "LiabilityPremium_IsProvided": "100",
+              "LiabilityPremiumWording": ""
+            },
+            "Make": "",
+            "Model": "",
+            "MTSpecific": {
+              "AutoMedicalPayments": "",
+              "Liability": "",
+              "PhysicalDamage": {
+                "Collision": {
+                  "Collision": "",
+                  "Deductible": "500"
+                },
+                "Comprehensive": {
+                  "Comprehensive": "",
+                  "Deductible": "500"
+                },
+                "LimitWording": "",
+                "SpecifiedCausesOfLossCoverage": "",
+                "TowingAndLabor": ""
+              },
+              "UnderinsuredMotorists": "",
+              "UninsuredMotorists": ""
+            },
+            "PhysicalDamageCoveragePremiums": {
+              "Collision": {
+                "Deductible_IsProvided": "500",
+                "DeductibleWording": "500",
+                "IsProvided": true,
+                "Premium_IsProvided": "100",
+                "PremiumWording": "100"
+              },
+              "Comprehensive": {
+                "Deductible_IsProvided": "500",
+                "DeductibleWording": "500",
+                "IsProvided": true,
+                "Premium_IsProvided": "50",
+                "PremiumWording": "50"
+              },
+              "Limit": {
+                "IsProvided": false,
+                "Limit_IsProvided": "0",
+                "LimitWording": "ACV"
+              },
+              "SpecifiedCause": {
+                "IsProvided": false,
+                "Premium_IsProvided": "0",
+                "PremiumWording": ""
+              },
+              "TowingAndLabor": {
+                "IsProvided": false,
+                "Premium_IsProvided": "0",
+                "PremiumWording": ""
+              }
+            },
+            "PIP": {
+              "IsProvided": false,
+              "Premium_IsProvided": "0",
+              "PremiumWording": ""
+            },
+            "Territory": "",
+            "UninsuredOrUnderinsuredMotorist": {
+              "IsProvided": false,
+              "Premium_IsProvided": "0",
+              "PremiumWording": ""
+            },
+            "Year": "2024"
+          }
+        ]
+      }
+    },
+    "ItemTwoScheduleOfCoveragesAndCoveredAutos": {
+      "AdditionalAutoSymbols": {
+        "_10": "",
+        "_11": ""
+      },
+      "AdditionalCoverageEndorsements": {},
+      "AutoMedicalPayments": {
+        "ApplicableCoveredAutoSymbols": ""
+      },
+      "Liability": {
+        "ApplicableCoveredAutoSymbols": "7",
+        "Limit": "1000000",
+        "Premium": "1200"
+      },
+      "PersonalInjuryProtection": {
+        "ApplicableCoveredAutoSymbols": ""
+      },
+      "PhysicalDamageCollisionCoverage": {
+        "ApplicableCoveredAutoSymbols": "7",
+        "Limit": "0",
+        "Premium": "1200"
+      },
+      "PhysicalDamageComprehensiveCoverage": {
+        "ApplicableCoveredAutoSymbols": "7",
+        "Limit": "0",
+        "Premium": "600"
+      },
+      "PhysicalDamageSpecifiedCausesOfLossCoverage": {
+        "ApplicableCoveredAutoSymbols": ""
+      },
+      "PhysicalDamageTowingAndLaborCoverage": {
+        "ApplicableCoveredAutoSymbols": ""
+      },
+      "TotalEstimatedPremium": "0",
+      "UnderinsuredMotoristCoverage": {
+        "ApplicableCoveredAutoSymbols": ""
+      },
+      "UninsuredMotoristCoverage": {
+        "ApplicableCoveredAutoSymbols": ""
+      }
+    }
+  },
+  "Policy": {
+    "FormOfBusiness": "",
+    "Isthisaneworrenewalpolicy": "NewBusiness",
+    "LOB": "",
+    "Module": "00",
+    "PolicyEffectiveDate": "2023-08-01T00:00:00",
+    "PolicyExpirationDate": "2024-08-01T00:00:00",
+    "PolicyNumber": "CPP 0028485 00",
+    "TypeofBusiness": ""
+  }
+}

@@ -1,0 +1,5106 @@
+{
+ "name": "CA-N-1101-1225",
+ "title": "CA N 1101 1225",
+ "source": "CA N 1101 1225.gd",
+ "package": "proprietary-ca-2607",
+ "components": [
+  {
+   "type": "legacy-page",
+   "tagName": "section",
+   "classes": [
+    "form-page"
+   ],
+   "components": [
+    {
+     "type": "legacy-shape",
+     "tagName": "div",
+     "classes": [
+      "rule"
+     ],
+     "style": {
+      "left": "53.65pt",
+      "top": "346.69pt",
+      "width": "221.40pt",
+      "height": "0.72pt"
+     }
+    },
+    {
+     "type": "legacy-shape",
+     "tagName": "div",
+     "classes": [
+      "rule"
+     ],
+     "style": {
+      "left": "145.48pt",
+      "top": "333.70pt",
+      "width": "151.94pt",
+      "height": "0.72pt"
+     }
+    },
+    {
+     "type": "legacy-shape",
+     "tagName": "div",
+     "classes": [
+      "rule"
+     ],
+     "style": {
+      "left": "304.64pt",
+      "top": "333.70pt",
+      "width": "254.07pt",
+      "height": "0.72pt"
+     }
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "54.16pt",
+      "top": "738.81pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif",
+      "font-weight": "bold"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "CA N 1101 12 "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "120.29pt",
+      "top": "738.81pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif",
+      "font-weight": "bold"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "25 "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "147.77pt",
+      "top": "738.71pt",
+      "font-size": "9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "Includes copyrighted material of Insurance Services Office, Inc., with its permissi"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "467.69pt",
+      "top": "738.71pt",
+      "font-size": "9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "on"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "491.67pt",
+      "top": "738.81pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif",
+      "font-weight": "bold"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "Page 1 of 1 "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "271.28pt",
+      "top": "750.23pt",
+      "font-size": "9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "Mutual Of Enumclaw"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "182.53pt",
+      "top": "169.44pt",
+      "font-size": "14.5pt",
+      "font-family": "'Arial',sans-serif",
+      "font-weight": "bold"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "IMPORTANT NOTICE TO MEMBERS  "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "107.15pt",
+      "top": "190.08pt",
+      "font-size": "14.5pt",
+      "font-family": "'Arial',sans-serif",
+      "font-weight": "bold"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "REGARDING YOUR COMMERCIAL AUTOMOBILE POLICY "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "54.16pt",
+      "top": "236.44pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "THIS "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "85.10pt",
+      "top": "236.44pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "IMP"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "102.23pt",
+      "top": "236.44pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "OR"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "116.75pt",
+      "top": "236.44pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "TA"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "129.00pt",
+      "top": "236.44pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "NT "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "150.10pt",
+      "top": "236.44pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "NOTICE "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "196.28pt",
+      "top": "236.44pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "T"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "201.96pt",
+      "top": "236.44pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "O "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "217.78pt",
+      "top": "236.44pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "ME"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "232.11pt",
+      "top": "236.44pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "ME"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "246.54pt",
+      "top": "236.44pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "RS "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "268.04pt",
+      "top": "236.44pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "HAS "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "297.01pt",
+      "top": "236.44pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "BEEN "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "332.83pt",
+      "top": "236.44pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "PREPARED "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "396.22pt",
+      "top": "236.44pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "IN "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "414.61pt",
+      "top": "236.44pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "CONJUNCTION "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "495.64pt",
+      "top": "236.44pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "WITH "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "529.56pt",
+      "top": "236.44pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "YOUR "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "54.16pt",
+      "top": "249.40pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "COMMERCIAL "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "124.65pt",
+      "top": "249.40pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "AUTOMOBILE "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "192.97pt",
+      "top": "249.40pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "POLICY.  "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "54.16pt",
+      "top": "271.36pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "NO "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "72.39pt",
+      "top": "271.36pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "COVERAGE "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "132.07pt",
+      "top": "271.36pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "IS "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "144.87pt",
+      "top": "271.36pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "PROVIDED "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "200.40pt",
+      "top": "271.36pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "BY "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "216.80pt",
+      "top": "271.36pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "THIS "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "242.72pt",
+      "top": "271.36pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "IMPORTAN"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "295.60pt",
+      "top": "271.36pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "T "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "304.87pt",
+      "top": "271.36pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "NOTICE "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "345.86pt",
+      "top": "271.36pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "TO "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "362.99pt",
+      "top": "271.36pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "MEMBERS "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "417.05pt",
+      "top": "271.36pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "NOR "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "442.32pt",
+      "top": "271.36pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "CAN "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "466.61pt",
+      "top": "271.36pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "IT "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "478.84pt",
+      "top": "271.36pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "BE "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "495.25pt",
+      "top": "271.36pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "CONSTR"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "537.63pt",
+      "top": "271.36pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "UED "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "54.16pt",
+      "top": "284.35pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "TO "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "71.55pt",
+      "top": "284.35pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "REPLACE "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "121.62pt",
+      "top": "284.35pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "ANY "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "145.82pt",
+      "top": "284.35pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "PROVISIO"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "194.26pt",
+      "top": "284.35pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "NS "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "211.47pt",
+      "top": "284.35pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "OF "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "229.10pt",
+      "top": "284.35pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "YOUR "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "261.61pt",
+      "top": "284.35pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "POLICY. "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "304.77pt",
+      "top": "284.35pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "YOU "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "329.97pt",
+      "top": "284.35pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "SHOULD "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "375.18pt",
+      "top": "284.35pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "READ "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "406.56pt",
+      "top": "284.35pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "YOUR "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "438.80pt",
+      "top": "284.35pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "POLICY, "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "481.80pt",
+      "top": "284.35pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "INCLUDING "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "540.49pt",
+      "top": "284.35pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "ALL "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "54.16pt",
+      "top": "297.33pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "ENDORSEMENT"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "131.90pt",
+      "top": "297.33pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "S "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "143.72pt",
+      "top": "297.33pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "ATTAC"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "176.67pt",
+      "top": "297.33pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "HED "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "202.76pt",
+      "top": "297.33pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "TO "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "221.84pt",
+      "top": "297.33pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "AND "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "248.20pt",
+      "top": "297.33pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "MADE "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "282.16pt",
+      "top": "297.33pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "A "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "294.00pt",
+      "top": "297.33pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "PART "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "325.73pt",
+      "top": "297.33pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "OF "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "344.81pt",
+      "top": "297.33pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "SUCH "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "378.28pt",
+      "top": "297.33pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "POLICY, "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "422.92pt",
+      "top": "297.33pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "CAREFULLY. "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "489.89pt",
+      "top": "297.33pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "YOU "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "516.64pt",
+      "top": "297.33pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "SHOULD "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "54.16pt",
+      "top": "310.32pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "ALSO "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "84.07pt",
+      "top": "310.32pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "REVIEW "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "126.89pt",
+      "top": "310.32pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "YOUR "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "159.19pt",
+      "top": "310.32pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "DECLAR"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "199.87pt",
+      "top": "310.32pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "ATIONS "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "240.62pt",
+      "top": "310.32pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "PAGE "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "271.63pt",
+      "top": "310.32pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "FOR "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "296.29pt",
+      "top": "310.32pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "COMPLET"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "344.73pt",
+      "top": "310.32pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "E "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "354.77pt",
+      "top": "310.32pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "INFORMAT"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "407.05pt",
+      "top": "310.32pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "ION "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "428.14pt",
+      "top": "310.32pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "ON "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "446.37pt",
+      "top": "310.32pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "THE "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "469.93pt",
+      "top": "310.32pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "COVERAGE"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "526.74pt",
+      "top": "310.32pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "S "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "536.80pt",
+      "top": "310.32pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "YOU "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "54.16pt",
+      "top": "323.30pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "ARE "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "81.92pt",
+      "top": "323.30pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "PROVIDED. "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "145.98pt",
+      "top": "323.30pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "IF "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "162.09pt",
+      "top": "323.30pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "THERE "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "203.18pt",
+      "top": "323.30pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "IS "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "219.90pt",
+      "top": "323.30pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "ANY "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "247.67pt",
+      "top": "323.30pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "CONFLICT "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "304.87pt",
+      "top": "323.30pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "BETWEEN "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "361.41pt",
+      "top": "323.30pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "THE "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "388.60pt",
+      "top": "323.30pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "POLICY "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "432.57pt",
+      "top": "323.30pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "AND "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "460.77pt",
+      "top": "323.30pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "THIS "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "490.75pt",
+      "top": "323.30pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "NOTICE, "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "538.51pt",
+      "top": "323.30pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "THE "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "54.16pt",
+      "top": "336.29pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "PROVISIONS OF"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "133.06pt",
+      "top": "336.29pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": " THE PO"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "173.19pt",
+      "top": "336.29pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "LICY SHALL PR"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "246.54pt",
+      "top": "336.29pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "EVAIL "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "54.16pt",
+      "top": "358.37pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "PLEASE READ T"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "132.46pt",
+      "top": "358.37pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "HIS NOTI"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "175.94pt",
+      "top": "358.37pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "CE AND THE R"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "246.51pt",
+      "top": "358.37pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "EFERENCED "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "311.00pt",
+      "top": "358.37pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "POLICY FORM"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "379.91pt",
+      "top": "358.37pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "S CAREFUL"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "435.25pt",
+      "top": "358.37pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "LY. "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "54.16pt",
+      "top": "378.29pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "If th"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "70.35pt",
+      "top": "378.29pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "e Idaho Un"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "118.59pt",
+      "top": "378.29pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "deri"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "134.80pt",
+      "top": "378.29pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "nsured Mo"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "181.41pt",
+      "top": "378.29pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "tori"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "194.85pt",
+      "top": "378.29pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "sts Cove"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "233.15pt",
+      "top": "378.29pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "rage en"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "266.47pt",
+      "top": "378.29pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "dorsem"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "299.22pt",
+      "top": "378.29pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "ent (CA 31 1"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "354.63pt",
+      "top": "378.29pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "8) is at"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "384.00pt",
+      "top": "378.29pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "tached t"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "418.91pt",
+      "top": "378.29pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "o and made "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "473.76pt",
+      "top": "378.29pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "a part of t"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "515.36pt",
+      "top": "378.29pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "his poli"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "545.78pt",
+      "top": "378.29pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "cy, "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "54.16pt",
+      "top": "389.29pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "the "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "74.35pt",
+      "top": "389.29pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "Underi"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "103.20pt",
+      "top": "389.29pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "nsured "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "139.81pt",
+      "top": "389.29pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "Motori"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "166.98pt",
+      "top": "389.29pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "sts "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "186.35pt",
+      "top": "389.29pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "Covera"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "218.01pt",
+      "top": "389.29pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "ge "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "235.48pt",
+      "top": "389.29pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "provid"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "262.18pt",
+      "top": "389.29pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "ed "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "279.79pt",
+      "top": "389.29pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "by "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "296.79pt",
+      "top": "389.29pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "this "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "318.58pt",
+      "top": "389.29pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "endor"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "343.64pt",
+      "top": "389.29pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "sement "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "382.57pt",
+      "top": "389.29pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "will "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "402.71pt",
+      "top": "389.29pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "be "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "420.38pt",
+      "top": "389.29pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "Offse"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "443.77pt",
+      "top": "389.29pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "t "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "453.13pt",
+      "top": "389.29pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "Underi"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "481.93pt",
+      "top": "389.29pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "nsured "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "518.66pt",
+      "top": "389.29pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "Motori"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "545.79pt",
+      "top": "389.29pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "sts "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "54.16pt",
+      "top": "400.29pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "Cove"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "76.93pt",
+      "top": "400.29pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "rage. "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "103.06pt",
+      "top": "400.29pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "Unde"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "126.43pt",
+      "top": "400.29pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "rinsur"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "150.90pt",
+      "top": "400.29pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "ed "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "165.58pt",
+      "top": "400.29pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "Moto"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "187.30pt",
+      "top": "400.29pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "rists "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "208.92pt",
+      "top": "400.29pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "Covera"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "240.47pt",
+      "top": "400.29pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "ge "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "255.09pt",
+      "top": "400.29pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "helps "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "282.13pt",
+      "top": "400.29pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "pay "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "301.68pt",
+      "top": "400.29pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "for "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "316.51pt",
+      "top": "400.29pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "your "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "339.38pt",
+      "top": "400.29pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "injur"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "357.69pt",
+      "top": "400.29pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "ies "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "373.92pt",
+      "top": "400.29pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "if "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "382.28pt",
+      "top": "400.29pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "the "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "399.66pt",
+      "top": "400.29pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "other "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "425.50pt",
+      "top": "400.29pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "party "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "450.83pt",
+      "top": "400.29pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "(the "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "471.35pt",
+      "top": "400.29pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "person "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "505.03pt",
+      "top": "400.29pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "who "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "526.70pt",
+      "top": "400.29pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "caused "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "54.16pt",
+      "top": "411.29pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "the “ac"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "84.14pt",
+      "top": "411.29pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "cident”"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "113.54pt",
+      "top": "411.29pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": ") has insuran"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "170.56pt",
+      "top": "411.29pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "ce but does not have enough t"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "303.95pt",
+      "top": "411.29pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "o pay for all of your injuries. "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "427.89pt",
+      "top": "411.29pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "Offse"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "451.28pt",
+      "top": "411.29pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "t Underins"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "496.16pt",
+      "top": "411.29pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "ured Moto"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "540.56pt",
+      "top": "411.29pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "rist"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "553.43pt",
+      "top": "411.29pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "s "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "54.16pt",
+      "top": "422.30pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "Cove"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "76.93pt",
+      "top": "422.30pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "rage "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "101.56pt",
+      "top": "422.30pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "has "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "122.24pt",
+      "top": "422.30pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "a "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "132.59pt",
+      "top": "422.30pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "Limi"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "150.44pt",
+      "top": "422.30pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "t "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "157.91pt",
+      "top": "422.30pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "Of "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "173.12pt",
+      "top": "422.30pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "Insur"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "194.78pt",
+      "top": "422.30pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "ance "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "220.97pt",
+      "top": "422.30pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "that "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "242.16pt",
+      "top": "422.30pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "decre"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "266.63pt",
+      "top": "422.30pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "ases "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "292.19pt",
+      "top": "422.30pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "by "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "307.40pt",
+      "top": "422.30pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "any "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "328.09pt",
+      "top": "422.30pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "amoun"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "358.05pt",
+      "top": "422.30pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "t(s) "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "376.92pt",
+      "top": "422.30pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "recove"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "406.28pt",
+      "top": "422.30pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "red "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "425.38pt",
+      "top": "422.30pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "from "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "449.85pt",
+      "top": "422.30pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "the "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "468.36pt",
+      "top": "422.30pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "othe"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "487.34pt",
+      "top": "422.30pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "r "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "495.50pt",
+      "top": "422.30pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "party"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "517.21pt",
+      "top": "422.30pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "’s "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "529.15pt",
+      "top": "422.30pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "liabi"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "546.34pt",
+      "top": "422.30pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "lity "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "54.16pt",
+      "top": "433.30pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "insur"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "75.24pt",
+      "top": "433.30pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "ance. If your Unde"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "156.12pt",
+      "top": "433.30pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "rinsur"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "180.59pt",
+      "top": "433.30pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "ed Motori"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "221.64pt",
+      "top": "433.30pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "sts Cover"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "263.24pt",
+      "top": "433.30pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "age Limit Of Insura"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "346.85pt",
+      "top": "433.30pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "nce is the same as the other party’"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "498.36pt",
+      "top": "433.30pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "s liabilit"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "530.56pt",
+      "top": "433.30pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "y limit, "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "54.16pt",
+      "top": "444.30pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "your "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "75.77pt",
+      "top": "444.30pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "Offse"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "99.15pt",
+      "top": "444.30pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "t Unde"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "128.06pt",
+      "top": "444.30pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "rinsure"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "157.96pt",
+      "top": "444.30pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "d Moto"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "187.91pt",
+      "top": "444.30pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "rists "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "208.51pt",
+      "top": "444.30pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "Cove"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "231.30pt",
+      "top": "444.30pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "rage wi"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "262.99pt",
+      "top": "444.30pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "ll no"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "280.73pt",
+      "top": "444.30pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "t pay. "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "54.16pt",
+      "top": "489.30pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "You "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "75.31pt",
+      "top": "489.30pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "should "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "108.16pt",
+      "top": "489.30pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "contact "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "143.82pt",
+      "top": "489.30pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "your "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "166.77pt",
+      "top": "489.30pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "insurance "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "213.44pt",
+      "top": "489.30pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "agent "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "241.86pt",
+      "top": "489.30pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "with "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "263.12pt",
+      "top": "489.30pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "questions "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "309.34pt",
+      "top": "489.30pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "regarding "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "354.88pt",
+      "top": "489.30pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "your "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "377.83pt",
+      "top": "489.30pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "insurance "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "424.54pt",
+      "top": "489.30pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "needs, "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "457.91pt",
+      "top": "489.30pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "the "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "475.19pt",
+      "top": "489.30pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "coverage "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "519.76pt",
+      "top": "489.30pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "provided "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "54.16pt",
+      "top": "500.28pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "by "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "67.94pt",
+      "top": "500.28pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "your "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "90.68pt",
+      "top": "500.28pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "policy, "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "122.23pt",
+      "top": "500.28pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "and/or "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "153.80pt",
+      "top": "500.28pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "the "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "170.99pt",
+      "top": "500.28pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "information "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "223.64pt",
+      "top": "500.28pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "provided "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "265.26pt",
+      "top": "500.28pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "by "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "279.09pt",
+      "top": "500.28pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "this "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "297.92pt",
+      "top": "500.28pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "Important "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "343.31pt",
+      "top": "500.28pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "Notice "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "374.91pt",
+      "top": "500.28pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "To "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "389.84pt",
+      "top": "500.28pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "Members"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "431.62pt",
+      "top": "500.28pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": ". "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "437.61pt",
+      "top": "500.28pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "Thank you "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "487.39pt",
+      "top": "500.28pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "for "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "502.36pt",
+      "top": "500.28pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "insuring "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "540.32pt",
+      "top": "500.28pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "with "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "54.16pt",
+      "top": "511.26pt",
+      "font-size": "9.9pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "Mutual of Enumclaw Insurance Company. "
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "css": ".form-page{position:relative;width:612pt;height:792pt;overflow:hidden;background:#fff;}\n.form-page + .form-page{page-break-before:always;}\n@page gdflow{margin:72pt 0 72pt 0;}\n.gd-flow{page:gdflow;padding:0 89.85pt 0 89.85pt;}\n@page gdrun{margin:0pt 0 0pt 0;}\n.gd-flow.gd-run{page:gdrun;}\n.gd-doc table.gd-runt{width:100%;border-collapse:collapse;table-layout:fixed;}\n.gd-doc table.gd-runt>*>tr>td{padding:0;}\n.gd-doc table.gd-runt>thead>tr>td{height:72pt;vertical-align:top;}\n.gd-doc table.gd-runt>tfoot>tr>td{height:72pt;vertical-align:bottom;position:relative;}\n.gd-pdffoot-even{position:absolute;visibility:hidden;left:0;right:0;bottom:0;}\n.gd-doc table.gd-runt>thead>tr>td{position:relative;}\n.gd-pgmark{position:absolute;left:0;top:0;font-size:2pt;line-height:1;color:#fff;white-space:nowrap;}\n.gd-sheetfoot{position:absolute;background:#fff;}\n.gd-sheetfoot.gd-side-even{display:none;}\n.gd-foot-fixed{display:none;}\n@media print{.gd-foot-space{visibility:hidden;}.gd-foot-fixed{display:block;position:fixed;left:0;right:0;bottom:0;padding:0 89.85pt 0 89.85pt;}}\n.gd-if:empty{display:none;}\n.gd-flow:not(:has(:not(.gd-if))){display:none;}\n.form-page:not(:has(:not(.gd-if))){display:none;}\n.form-page .abs{position:absolute;white-space:pre;margin:0;padding:0;line-height:normal;}\n.form-page .rule{position:absolute;background:#000;}\n.form-page .gd-tb{white-space:normal;box-sizing:border-box;}\n.gd-doc .gd-pagebg{position:absolute;width:0;height:0;}\n.gd-doc .gd-anchor{position:relative;}\n.gd-doc .gd-anchored{position:absolute;box-sizing:border-box;}\n.gd-doc .gd-header{position:relative;}\n.gd-pagebg .abs{position:absolute;white-space:pre;margin:0;padding:0;line-height:normal;}\n.gd-pagebg .rule{position:absolute;background:#000;}\n.gd-pagebg .gd-tb{white-space:normal;box-sizing:border-box;}\n.gd-doc{font-family:'Arial',sans-serif;font-size:10pt;color:#000;line-height:1.15;}\n:where(.gd-doc) p{margin:0;}\n.gd-doc p:empty::before{content:\"\\00a0\";}\n.gd-doc p.gd-keepline{min-height:1lh;}\n.gd-doc .gd-table{border-collapse:collapse;table-layout:fixed;}\n:where(.gd-doc) td{vertical-align:top;padding:0 5.4pt;}\n.gd-doc tr.gd-grid td{height:0;padding:0;border:0;}\n.gd-doc .gd-box{margin:0 0 6pt 0;}\n.gd-doc .gd-tab{display:inline-block;width:36pt;}\n.gd-doc .gd-hang{display:inline-block;}\n.gd-doc .gd-img-missing{display:inline-block;border:1px dashed #9ca3af;color:#6b7280;font-size:7pt;}",
+ "model": {},
+ "report": {
+  "counts": {
+   "form pages": 1,
+   "rules (EMF+)": 3,
+   "wording lines (EMF+)": 265
+  },
+  "notes": []
+ }
+}

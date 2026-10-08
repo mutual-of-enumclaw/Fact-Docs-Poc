@@ -1,0 +1,7 @@
+CA2326_0221: MATCH  score 100.0%
+pages   golden 2  html 2  (pages with text)
+words   golden 633  html 633  missing 0  extra 0
+
+golden   C:\src\fact-docgen\src\Moe.Commercial.Documents.Generation.Integration.Tests\TestData\Snapshots\CA2326_0221\GoldenSnapshot.txt
+template C:\src\fact-poc\output\ghostdraft\batch\CA-23-26-02-21-Washington-Truckers---Uniform-Intermodal-Intercha.json
+serverxml C:\src\fact-poc\output\ghostdraft\serverxml\CA2326_0221\ServerXml.xml

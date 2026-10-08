@@ -1,0 +1,10 @@
+EA9905_1113: DIFFERENT  score 99.9%
+pages   golden 2  html 2  (pages with text)
+words   golden 409  html 408  missing 1  extra 0
+
+MISSING (in the GhostDraft golden, not in the HTML render)
+  [LOSS]  <=  Veh.   Description of Covered "Autos" To Which                                                  Loss Payee Name
+
+golden   C:\src\fact-docgen\src\Moe.Commercial.Documents.Generation.Integration.Tests\TestData\Snapshots\EA9905_1113\GoldenSnapshot.txt
+template C:\src\fact-poc\output\ghostdraft\batch\EA9905-1113.json
+serverxml C:\src\fact-poc\output\ghostdraft\serverxml\EA9905_1113\ServerXml.xml

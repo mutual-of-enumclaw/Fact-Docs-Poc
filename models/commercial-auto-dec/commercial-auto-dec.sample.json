@@ -1,0 +1,338 @@
+{
+  "documentType": "commercial-auto-declarations",
+  "generatedAt": "2026-10-05T09:00:00-07:00",
+  "policy": {
+    "symbol": "CAP",
+    "number": "0501396",
+    "module": "00",
+    "displayNumber": "CAP 0501396 00",
+    "quoteNumber": "CAQ0501396",
+    "transaction": "New Business",
+    "issueDate": "2026-09-15",
+    "termMonths": 12
+  },
+  "carrier": {
+    "name": "Mutual of Enumclaw Insurance Company",
+    "address": {
+      "street": "1460 Wells Street",
+      "city": "Enumclaw",
+      "state": "WA",
+      "zip": "98022"
+    },
+    "phone": "(800) 366-5551"
+  },
+  "agency": {
+    "code": "A10293",
+    "agentCode": "B77021",
+    "name": "Cascade Commercial Insurance Agency",
+    "address": {
+      "street": "1200 112th Ave NE, Suite 300",
+      "city": "Bellevue",
+      "state": "WA",
+      "zip": "98004"
+    },
+    "phone": "(425) 555-0142"
+  },
+  "rating": {
+    "coverages": {
+      "liability": { "symbols": "7", "premium": 1417 },
+      "medicalPayments": { "symbols": "7", "premium": 27 },
+      "uninsuredMotorists": { "symbols": "2", "premium": 182 },
+      "comprehensive": { "symbols": "7", "premium": 139 },
+      "collision": { "symbols": "7", "premium": 552 },
+      "towingAndLabor": { "symbols": "7", "premium": 2 },
+      "hiredAuto": { "symbols": "8", "premium": 45 },
+      "nonOwnedAuto": { "symbols": "9", "premium": 38 }
+    },
+    "endorsementsPremium": 60,
+    "totalPremium": 2462
+  },
+  "autos": [
+    {
+      "number": 1,
+      "vehicle": {
+        "vehicleId": "0195d3a3-8e2f-7a53-b164-7d3b0c6d0001",
+        "vin": "1FTFW1ET5DFA12345",
+        "year": 2019,
+        "make": "Ford",
+        "model": "F-250",
+        "classCode": "01234",
+        "costNew": 48000,
+        "leasingArrangement": "owned",
+        "collisionDeductible": "500",
+        "comprehensiveDeductible": "500"
+      },
+      "garaging": {
+        "street": "4200 Industrial Way",
+        "city": "Bellevue",
+        "state": "WA",
+        "zip": "98004"
+      },
+      "premiums": {
+        "liability": 690,
+        "medicalPayments": 13,
+        "uninsuredMotorists": 88,
+        "comprehensive": 61,
+        "collision": 254,
+        "towingAndLabor": 1,
+        "total": 1107
+      }
+    },
+    {
+      "number": 2,
+      "vehicle": {
+        "vehicleId": "0195d3a3-8e2f-7a53-b164-7d3b0c6d0002",
+        "vin": "",
+        "year": 2022,
+        "make": "Isuzu",
+        "model": "NPR",
+        "classCode": "01235",
+        "costNew": 62000,
+        "leasingArrangement": "leasedWithAdditionalInsured",
+        "collisionDeductible": "500",
+        "comprehensiveDeductible": "500"
+      },
+      "garaging": {
+        "street": "4200 Industrial Way",
+        "city": "Bellevue",
+        "state": "WA",
+        "zip": "98004"
+      },
+      "premiums": {
+        "liability": 727,
+        "medicalPayments": 14,
+        "uninsuredMotorists": 94,
+        "comprehensive": 78,
+        "collision": 298,
+        "towingAndLabor": 1,
+        "total": 1212
+      }
+    }
+  ],
+  "forms": [
+    { "number": "DA 00 93", "edition": "12 24", "title": "Business Auto Coverage Form Declarations" },
+    { "number": "CA 00 01", "edition": "11 20", "title": "Business Auto Coverage Form" },
+    { "number": "IL 00 17", "edition": "11 98", "title": "Common Policy Conditions" },
+    { "number": "IL 00 21", "edition": "09 08", "title": "Nuclear Energy Liability Exclusion Endorsement (Broad Form)" },
+    { "number": "CA 20 01", "edition": "11 20", "title": "Lessor - Additional Insured And Loss Payee" },
+    { "number": "CA 99 23", "edition": "10 13", "title": "Rental Reimbursement Coverage" }
+  ],
+  "quote": {
+    "quoteReference": "NO-2026-00417",
+    "effectiveDate": "2026-10-01",
+    "expirationDate": "2027-10-01",
+    "state": "WA",
+    "agencyOfRecord": {
+      "code": "A10293",
+      "agentCode": "B77021"
+    },
+    "namedInsured": {
+      "name": "Apex Plumbing LLC",
+      "entityType": "llc",
+      "additionalInsureds": [
+        {
+          "name": "Apex Holdings Inc",
+          "address": {
+            "street": "4200 Industrial Way",
+            "city": "Bellevue",
+            "state": "WA",
+            "zip": "98004"
+          }
+        }
+      ],
+      "address": {
+        "street": "4200 Industrial Way",
+        "city": "Bellevue",
+        "state": "WA",
+        "zip": "98004"
+      }
+    },
+    "locations": [
+      {
+        "locationId": "0195d3a1-4f6c-7c31-9b2e-5a1d8e4f0001",
+        "description": "Main yard and dispatch",
+        "address": {
+          "street": "4200 Industrial Way",
+          "city": "Bellevue",
+          "state": "WA",
+          "zip": "98004"
+        }
+      }
+    ],
+    "commercialAuto": {
+      "declarationType": "commercialAuto",
+      "hiredAutoBasis": "withHoldHarmless",
+      "nonOwnedAutoBasis": "otherThanSocialService",
+      "nonOwnedIncludesEmployees": true,
+      "autoEnhancement": "special",
+      "packageModClass": "notApplicable",
+      "driveOtherCar": {
+        "namedIndividualCount": 2,
+        "territory": "001",
+        "includesLiability": true,
+        "includesComprehensive": true,
+        "includesCollision": true,
+        "medicalPaymentsLimit": "5000",
+        "uninsuredMotoristsLimit": "none",
+        "underinsuredMotoristsLimit": "oneHundredTwentyFiveThousandSingleLimit",
+        "underinsuredMotoristsLimitBasis": "singleLimit",
+        "underinsuredMotoristsInsuredType": "individualOrMarried"
+      },
+      "liabilityLimit": 1000000,
+      "liabilityDeductible": "none",
+      "liabilityDeductibleBasis": "none",
+      "medicalPaymentsLimit": "5000",
+      "towingAndLaborLimit": 75,
+      "uninsuredMotoristsLimitBasis": "combinedSingle",
+      "uninsuredMotoristsCombinedSingleLimit": 1000000,
+      "uninsuredMotoristsPropertyDamageLimit": 25000,
+      "uninsuredMotoristsInsuredType": "individualOrMarried",
+      "hiredAutoCollisionDeductible": "500",
+      "hiredAutoComprehensiveDeductible": "100",
+      "coverages": [
+        {
+          "code": "TRLCOL",
+          "attrs": {
+            "trailerLimit": 25000,
+            "deductible": "500",
+            "radiusClass": "INT",
+            "trailerCount": 12
+          }
+        },
+        {
+          "code": "OPBI",
+          "attrs": {
+            "limit": 500
+          },
+          "schedule": [
+            {
+              "code": "OPBI",
+              "attrs": {
+                "itemLimit": 500
+              }
+            },
+            {
+              "code": "OPBI",
+              "attrs": {
+                "itemLimit": 600
+              }
+            }
+          ]
+        },
+        {
+          "code": "DOCUMP",
+          "attrs": {
+            "propertyDamageLimit": 25000
+          }
+        }
+      ],
+      "vehicles": [
+        {
+          "vehicleId": "0195d3a3-8e2f-7a53-b164-7d3b0c6d0001",
+          "vin": "1FTFW1ET5DFA12345",
+          "year": 2019,
+          "make": "Ford",
+          "model": "F-250",
+          "classCode": "01234",
+          "bodyType": "pickup",
+          "grossVehicleWeight": 10000,
+          "costNew": 48000,
+          "radiusOfOperation": 50,
+          "garagingLocationId": "0195d3a1-4f6c-7c31-9b2e-5a1d8e4f0001",
+          "leasingArrangement": "owned",
+          "carriesAmusementDevice": false,
+          "personalInjuryProtection": "none",
+          "hasLiability": true,
+          "hasMedicalPayments": true,
+          "hasTowingAndLabor": true,
+          "hasUninsuredMotorists": true,
+          "hasFullGlass": false,
+          "includesPassengerHazard": false,
+          "collisionDeductible": "500",
+          "comprehensiveDeductible": "500",
+          "uninsuredMotoristsLimitBasis": "combinedSingle",
+          "coverages": [
+            {
+              "code": "RENTAL",
+              "attrs": {
+                "maximumAmountPerDay": 50,
+                "numberOfDays": 30
+              }
+            },
+            {
+              "code": "UN",
+              "attrs": {
+                "limitType": "SL",
+                "singleLimit": 100000
+              }
+            },
+            {
+              "code": "UMPD",
+              "attrs": {
+                "limit": 25000
+              }
+            }
+          ]
+        },
+        {
+          "vehicleId": "0195d3a3-8e2f-7a53-b164-7d3b0c6d0002",
+          "year": 2022,
+          "make": "Isuzu",
+          "model": "NPR",
+          "classCode": "01235",
+          "bodyType": "box truck",
+          "grossVehicleWeight": 14500,
+          "costNew": 62000,
+          "radiusOfOperation": 200,
+          "garagingLocationId": "0195d3a1-4f6c-7c31-9b2e-5a1d8e4f0001",
+          "leasingArrangement": "leasedWithAdditionalInsured",
+          "hasLiability": true,
+          "hasMedicalPayments": true,
+          "hasTowingAndLabor": true,
+          "hasUninsuredMotorists": true,
+          "hasFullGlass": false,
+          "collisionDeductible": "500",
+          "comprehensiveDeductible": "500",
+          "uninsuredMotoristsLimitBasis": "combinedSingle",
+          "coverages": [
+            {
+              "code": "UN",
+              "attrs": {
+                "limitType": "SL",
+                "singleLimit": 100000
+              }
+            }
+          ]
+        }
+      ],
+      "drivers": [
+        {
+          "driverId": "0195d3a4-5c9a-7b64-9275-8e4c1d7e0001",
+          "firstName": "Dana",
+          "lastName": "Reyes",
+          "dateOfBirth": "1984-03-11",
+          "licenseNumber": "REYESD842K1",
+          "licenseState": "WA",
+          "dateFirstLicensed": "2002-06-01",
+          "assignedVehicleId": "0195d3a3-8e2f-7a53-b164-7d3b0c6d0001"
+        }
+      ]
+    },
+    "modifiers": {
+      "irpm": 0.92,
+      "expenseReduction": 0.97,
+      "byGroup": [
+        {
+          "group": "liability",
+          "scheduleMod": 0.9,
+          "experienceMod": 1.05
+        },
+        {
+          "group": "physicalDamage",
+          "scheduleMod": 0.95,
+          "experienceMod": 1.0
+        }
+      ]
+    }
+  }
+}

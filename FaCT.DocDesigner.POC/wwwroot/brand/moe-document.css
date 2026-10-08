@@ -1,0 +1,264 @@
+/* ==========================================================================
+   Mutual Of Enumclaw - document (print/PDF) brand stylesheet.
+   Tokens from MOE-Brand-Kit/tokens/moe-brand.css (MOE Brand Guide 2026), with the type scale converted
+   to print: body never below 10pt, two headline sizes only, extra leading.
+   Loaded by the designer canvas AND prepended to every rendered PDF, so templates only carry layout.
+   ========================================================================== */
+
+:root {
+	--moe-green: #144835;
+	--moe-green-apple: #93CA15;
+	--moe-alpine-green: #448843;
+	--moe-sky-blue: #3FCCE3;
+	--moe-sunshine: #F0B52B;
+	--moe-sandstone: #D6882B;
+	--moe-autumn: #DE7552;
+	--moe-twilight: #417493;
+	--moe-slate: #8DBAD8;
+	--moe-aqua: #00A8BF;
+	--moe-aqua-accessible: #00788A; /* guide 4.6: accessible variant of Aqua for meaningful text */
+	--moe-black: #2D2927;
+	--moe-stone: #9EA6BE;
+	--moe-dk-grey: #888B95;
+	--moe-med-grey: #D0D4E3;
+	--moe-ex-lt-grey: #F1F2F2;
+	--moe-white: #FFFFFF;
+
+	/* Figtree is self-hosted (brand/fonts) and embedded in every PDF; Segoe UI is the guide's approved substitute. */
+	--moe-font-sans: "Figtree", "Segoe UI", Arial, sans-serif;
+	/* Headings use the body font unless a theme gives them their own. */
+	--moe-font-heading: var(--moe-font-sans);
+}
+
+@page { size: Letter; }
+
+body {
+	margin: 0;
+	color: var(--moe-black);
+	font-family: var(--moe-font-sans);
+	font-weight: 400;
+	font-size: 10.5pt;
+	line-height: 1.45;
+	-webkit-print-color-adjust: exact;
+	print-color-adjust: exact;
+}
+
+h1, h2, h3 { font-family: var(--moe-font-heading); font-weight: 700; line-height: 1.2; margin: 0 0 8px; }
+h1 { font-size: 20pt; color: var(--moe-green); }
+h2 { font-size: 12.5pt; color: var(--moe-alpine-green); text-transform: uppercase; letter-spacing: .03em; margin-top: 18px; break-after: avoid; }
+h3 { font-size: 10.5pt; color: var(--moe-alpine-green); text-transform: uppercase; letter-spacing: .03em; margin-top: 10px; break-after: avoid; }
+p { margin: 0 0 8px; }
+
+/* All-cap lead-in; uses the accessible Aqua variant because it carries meaning on documents. */
+.moe-leadin { font-size: 8.5pt; font-weight: 700; color: var(--moe-aqua-accessible); text-transform: uppercase; letter-spacing: .08em; margin: 0 0 2px; }
+.moe-intro { font-size: 12pt; font-weight: 300; color: var(--moe-green); }
+.moe-small { font-size: 10pt; }
+.moe-caption { font-size: 10pt; font-style: italic; color: var(--moe-black); }
+
+/* Document header: primary horizontal logo on white with clear space, Green Apple accent bar. */
+.doc-header { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-bottom: 10px; border-bottom: 4px solid var(--moe-green-apple); margin-bottom: 14px; }
+.doc-header h1 { margin: 0; text-align: right; }
+.brand-logo { display: block; width: 190px; height: auto; margin: 6px; } /* >= 157px minimum, ~0.34H clear space */
+.brand-logo--stacked { width: 110px; }
+
+/* Data Image: photo from the message (e.g. aerial evidence). Fills its column; width is adjustable in Styles. */
+.data-image { display: block; width: 100%; max-width: 100%; height: auto; border-radius: 4px; margin: 4px 0; break-inside: avoid; }
+
+/* Label / value */
+.kv { margin: 2px 0; }
+.kv-label { font-weight: 700; color: var(--moe-green); margin-right: 4px; }
+
+/* Layout */
+.row { display: flex; gap: 16px; }
+.row--gap-none { gap: 0; }
+.row--gap-sm { gap: 8px; }
+.row--gap-lg { gap: 32px; }
+.row--top { align-items: flex-start; }
+.row--middle { align-items: center; }
+.row--bottom { align-items: flex-end; }
+.col { flex: 1 1 0; min-width: 0; min-height: 16px; }
+.page-break { break-after: page; }
+
+/* Legacy forms converted from Documaker (fact-pdf-tools "emit-html"): fixed Letter pages, every element at its
+   original position. A named page drops the document margins and running footer for these pages only. */
+@page legacy-form { size: 8.5in 11in; margin: 0; }
+.form-page { page: legacy-form; position: relative; width: 816px; height: 1056px; overflow: hidden; background: #fff; color: #000; line-height: normal; }
+.form-page + .form-page { break-before: page; }
+.form-page .abs { position: absolute; white-space: pre; margin: 0; padding: 0; }
+.form-page .field { white-space: nowrap; overflow: hidden; }
+/* check boxes from fillable PDFs: the X sits in the middle of the box */
+.form-page .field-check { display: flex; align-items: center; justify-content: center; font-weight: 700; line-height: 1; }
+.form-page .rule { position: absolute; background: #000; }
+.form-page .box { position: absolute; border: solid #000; box-sizing: border-box; }
+.form-page .shade, .form-page .img { position: absolute; }
+.form-page .bullet { position: absolute; background: #000; border-radius: 50%; }
+hr, .moe-rule { border: 0; border-top: 1px solid var(--moe-med-grey); margin: 12px 0; }
+
+/* Cards and callouts - flat, not glossy */
+.moe-card { border: 1px solid var(--moe-med-grey); border-radius: 6px; padding: 8px 12px; margin: 8px 0; break-inside: avoid; }
+.moe-card--accent { border-top: 4px solid var(--moe-green-apple); }
+.moe-card-title { font-weight: 700; color: var(--moe-green); font-size: 11.5pt; margin-bottom: 4px; }
+.moe-callout { border-left: 4px solid var(--moe-sunshine); background: var(--moe-ex-lt-grey); padding: 6px 10px; margin: 8px 0; }
+
+/* Chips (e.g. highlights) */
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { border: 1px solid var(--moe-alpine-green); color: var(--moe-green); border-radius: 12px; padding: 1px 10px; }
+
+/* Tables: MOE Green header, Ex Lt Grey zebra. Header row repeats on every printed page. */
+.moe-table { width: 100%; border-collapse: collapse; margin: 6px 0 10px; }
+.moe-table thead { display: table-header-group; }
+.moe-table tr { break-inside: avoid; }
+.moe-table th { background: var(--moe-green); color: var(--moe-white); font-weight: 700; text-align: left; padding: 5px 8px; }
+.moe-table td { padding: 4px 8px; border-bottom: 1px solid var(--moe-med-grey); vertical-align: top; }
+.moe-table tbody tr:nth-child(even) { background: var(--moe-ex-lt-grey); }
+.moe-table .num { text-align: right; }
+/* Totals print once after the last row (a tfoot would otherwise repeat on every page). */
+.moe-table tfoot { display: table-row-group; }
+.moe-table tfoot td { font-weight: 700; color: var(--moe-green); border-top: 2px solid var(--moe-green); border-bottom: 0; background: var(--moe-white); }
+
+/* Printed in place of a list that has no items. */
+.moe-empty { font-style: italic; }
+
+/* Plain Table and Box blocks, and the table tools' presets. The presets also restyle converted GhostDraft tables,
+   whose own borders are id rules, so they are !important; a cell's preset beats its table's. */
+.doc-table { width: 100%; border-collapse: collapse; margin: 6px 0 10px; }
+.doc-table td, .doc-table th { padding: 3px 6px; vertical-align: top; text-align: left; }
+.doc-table td > p, .doc-table th > p { margin: 0; }
+.tbl-b-all { border: 0.75pt solid #000 !important; }
+.tbl-b-all td, .tbl-b-all th { border: 0.75pt solid #000 !important; }
+.tbl-b-outside { border: 0.75pt solid #000 !important; }
+.tbl-b-outside td, .tbl-b-outside th, .tbl-b-none, .tbl-b-none td, .tbl-b-none th, .tbl-b-rows, .tbl-b-bottom td, .tbl-b-bottom th { border: 0 !important; }
+.tbl-b-rows td, .tbl-b-rows th { border: 0 !important; border-bottom: 0.75pt solid #000 !important; }
+.tbl-b-bottom { border: 0 !important; border-bottom: 0.75pt solid #000 !important; }
+td.cell-b-all, th.cell-b-all { border: 0.75pt solid #000 !important; }
+td.cell-b-bottom, th.cell-b-bottom { border: 0 !important; border-bottom: 0.75pt solid #000 !important; }
+td.cell-b-top, th.cell-b-top { border: 0 !important; border-top: 0.75pt solid #000 !important; }
+td.cell-b-none, th.cell-b-none { border: 0 !important; }
+td.cell-shade-light, th.cell-shade-light { background: #F2F2F2 !important; }
+td.cell-shade-grey, th.cell-shade-grey { background: #D9D9D9 !important; }
+td.cell-shade-dark, th.cell-shade-dark { background: #BFBFBF !important; }
+td.cell-shade-green, th.cell-shade-green { background: #EEF6E0 !important; }
+td.cell-va-top, th.cell-va-top { vertical-align: top !important; }
+td.cell-va-middle, th.cell-va-middle { vertical-align: middle !important; }
+td.cell-va-bottom, th.cell-va-bottom { vertical-align: bottom !important; }
+.doc-box { border: 0.75pt solid #000; padding: 4pt 6pt; margin: 6pt 0; break-inside: avoid; }
+.doc-box > :last-child { margin-bottom: 0; }
+
+.moe-list-item { padding: 6px 0; border-bottom: 1px solid var(--moe-med-grey); break-inside: avoid; }
+
+/* ==========================================================================
+   Material-style elements (Material 3 shapes, elevation and icons) in MOE colours and Figtree.
+   ========================================================================== */
+
+/* Icons: Material Symbols as inline SVG; colour follows the text colour unless a tone class is set. */
+.moe-icon { display: inline-block; width: 1.3em; height: 1.3em; vertical-align: -0.28em; line-height: 0; color: var(--moe-green); }
+.moe-icon svg { width: 100%; height: 100%; fill: currentColor; }
+.moe-icon--lg { width: 2em; height: 2em; vertical-align: -0.6em; }
+.moe-icon--xl { width: 3em; height: 3em; vertical-align: middle; }
+.moe-icon--alpine { color: var(--moe-alpine-green); }
+.moe-icon--apple { color: var(--moe-green-apple); }
+.moe-icon--aqua { color: var(--moe-aqua-accessible); }
+.moe-icon--sunshine { color: var(--moe-sunshine); }
+.moe-icon--autumn { color: var(--moe-autumn); }
+.moe-icon--black { color: var(--moe-black); }
+.moe-icon--white { color: var(--moe-white); }
+
+/* Cards: elevated / outlined / filled, 12px corners. */
+.md-card { border-radius: 12px; padding: 12px 16px; margin: 8px 0; break-inside: avoid; background: var(--moe-white); }
+.md-card--elevated { box-shadow: 0 1px 2px rgba(45, 41, 39, .3), 0 1px 3px 1px rgba(45, 41, 39, .15); }
+.md-card--outlined { border: 1px solid var(--moe-med-grey); }
+.md-card--filled { background: #E8EFEB; } /* MOE Green at ~10% */
+.md-card-title { font-size: 12pt; font-weight: 600; color: var(--moe-green); margin-bottom: 4px; }
+
+/* Icon + text rows and banners. */
+.md-list-item { display: flex; align-items: flex-start; gap: 12px; padding: 6px 0; break-inside: avoid; }
+.md-list-item > .moe-icon { flex: none; margin-top: 1px; vertical-align: 0; }
+.md-list-item-text { flex: 1; min-height: 16px; }
+.md-banner { display: flex; align-items: flex-start; gap: 12px; padding: 10px 16px; margin: 8px 0; border-radius: 12px; background: #E5F1F3; break-inside: avoid; } /* Aqua at ~10% */
+.md-banner > .moe-icon { flex: none; vertical-align: 0; }
+
+/* Data table, Material style: outlined container, light header, row dividers, no zebra. */
+.moe-table.md-table { border-collapse: separate; border-spacing: 0; border: 1px solid var(--moe-med-grey); border-radius: 12px; overflow: hidden; }
+.moe-table.md-table th { background: var(--moe-white); color: var(--moe-black); font-weight: 600; padding: 8px 12px; border-bottom: 1px solid var(--moe-med-grey); }
+.moe-table.md-table td { padding: 8px 12px; border-bottom: 1px solid var(--moe-ex-lt-grey); }
+.moe-table.md-table tbody tr:nth-child(even) { background: transparent; }
+.moe-table.md-table tfoot td { background: var(--moe-ex-lt-grey); border-top: 1px solid var(--moe-med-grey); }
+
+/* Page setup (size, margins, header/footer): read by the PDF renderer, never shown in the document itself. */
+.doc-setup { display: none !important; }
+/* Which brand theme the template uses: read by the server, never shown. */
+.doc-theme { display: none !important; }
+.doc-language { display: none !important; }
+
+/* Watermark (DRAFT / SPECIMEN / VOID ...): fixed, so Chrome prints it across the middle of every page, over the content
+   but see-through. Look chosen by classes: wm-color-*, wm-strength-*, wm-size-*, wm-angle-*. */
+.doc-watermark { position: fixed; top: 0; right: 0; bottom: 0; left: 0; display: flex; align-items: center; justify-content: center; overflow: hidden; pointer-events: none; z-index: 2147483000; }
+.doc-watermark-text { font-family: var(--moe-font-sans); font-weight: 700; font-size: 96pt; line-height: 1; letter-spacing: 0.04em; white-space: nowrap; color: var(--moe-dk-grey); opacity: 0.2; transform: rotate(-45deg); }
+.wm-color-red .doc-watermark-text { color: #D9342B; }
+.wm-color-green .doc-watermark-text { color: var(--moe-green); }
+.wm-color-blue .doc-watermark-text { color: var(--moe-twilight); }
+.wm-strength-light .doc-watermark-text { opacity: 0.12; }
+.wm-strength-strong .doc-watermark-text { opacity: 0.35; }
+.wm-size-small .doc-watermark-text { font-size: 60pt; }
+.wm-size-large .doc-watermark-text { font-size: 140pt; }
+.wm-angle-horizontal .doc-watermark-text { transform: none; }
+/* A watermark stamped at render time (e.g. DRAFT on a draft proof) replaces the template's own. */
+.doc-watermark-stamped .doc-watermark:not(.doc-watermark-stamp) { display: none; }
+
+/* Barcodes and QR codes (inline SVG from the barcode filter): black modules on white, quiet zone from the padding. */
+.doc-barcode { display: inline-block; vertical-align: top; padding: 2px 10px; background: #FFFFFF; text-align: center; break-inside: avoid; }
+.doc-barcode .doc-code { display: block; width: 100%; fill: #000000; }
+.doc-barcode-2d { padding: 0; }
+.doc-barcode-2d .doc-code { height: auto; }
+.doc-barcode-h-s .doc-code-code128, .doc-barcode-h-s .doc-code-code39 { height: 0.35in; }
+.doc-barcode-h-m .doc-code-code128, .doc-barcode-h-m .doc-code-code39 { height: 0.5in; }
+.doc-barcode-h-l .doc-code-code128, .doc-barcode-h-l .doc-code-code39 { height: 0.75in; }
+.doc-barcode-text { display: block; margin-top: 2px; font-size: 8pt; letter-spacing: 0.08em; color: var(--moe-black); }
+
+/* Charts (inline SVG from the chart filter). Series colors are brand tokens, so a theme recolors charts. */
+.doc-chart { break-inside: avoid; margin: 8px 0; }
+.doc-chart-title { font-family: var(--moe-font-heading); font-weight: 700; color: var(--moe-green); margin-bottom: 4px; }
+.doc-chart-svg { display: block; width: 100%; height: auto; font-family: var(--moe-font-sans); }
+.doc-chart-svg text { font-size: 11px; fill: var(--moe-black); }
+.doc-chart-svg .chart-axis-label { fill: var(--moe-dk-grey); font-size: 10px; }
+.doc-chart-svg .chart-value { font-weight: 600; }
+.doc-chart-svg .chart-total { font-size: 18px; font-weight: 700; fill: var(--moe-green); }
+.doc-chart-svg .chart-empty { fill: var(--moe-dk-grey); font-size: 14px; }
+.doc-chart-svg .chart-grid { stroke: var(--moe-ex-lt-grey); stroke-width: 1; }
+.doc-chart-svg .chart-axis { stroke: var(--moe-dk-grey); stroke-width: 1; }
+.doc-chart-svg .chart-line { fill: none; stroke-width: 3; }
+.doc-chart-svg .chart-hole { fill: #FFFFFF; }
+.doc-chart-svg .chart-slice { stroke: #FFFFFF; stroke-width: 2; }
+.chart-s1 { fill: var(--moe-green); }
+.chart-s1-stroke { stroke: var(--moe-green); }
+.chart-s2 { fill: var(--moe-green-apple); }
+.chart-s3 { fill: var(--moe-aqua); }
+.chart-s4 { fill: var(--moe-sunshine); }
+.chart-s5 { fill: var(--moe-twilight); }
+.chart-s6 { fill: var(--moe-autumn); }
+.chart-s7 { fill: var(--moe-alpine-green); }
+.chart-s8 { fill: var(--moe-stone); }
+
+/* Signature block: image (when the data has one), the line, name / title / role and date. The e-signature anchor
+   (e.g. \s1\ for DocuSign) is invisible text on the line that an e-signature service finds. */
+.doc-signature { display: inline-block; width: 3.25in; margin: 18px 24px 8px 0; vertical-align: top; break-inside: avoid; }
+.doc-signature-image { display: block; max-width: 100%; max-height: 0.6in; margin-bottom: -4px; }
+.doc-signature-line { position: relative; height: 0.45in; border-bottom: 1px solid var(--moe-black); }
+.doc-esign-anchor { position: absolute; left: 2px; bottom: 2px; color: #FFFFFF; font-size: 1pt; line-height: 1; }
+.doc-signature-name { margin-top: 3px; font-weight: 600; }
+.doc-signature-title, .doc-signature-label, .doc-signature-date { font-size: 9pt; color: var(--moe-dk-grey); }
+
+/* Conditional styling: classes a template adds to an element when a data condition holds (designer: Conditional Styling). */
+.cs-red-text { color: #D9342B !important; }
+.cs-green-text { color: var(--moe-green) !important; }
+.cs-muted { color: var(--moe-dk-grey) !important; }
+.cs-bold { font-weight: 700 !important; }
+.cs-italic { font-style: italic !important; }
+.cs-strike { text-decoration: line-through !important; }
+.cs-highlight-yellow { background-color: #FBEACA !important; }
+.cs-highlight-red { background-color: #F9DEDC !important; }
+.cs-highlight-green { background-color: #E4F2C9 !important; }
+/* a highlighted table row wins over the banded rows */
+tr.cs-highlight-yellow > td { background-color: #FBEACA !important; }
+tr.cs-highlight-red > td { background-color: #F9DEDC !important; }
+tr.cs-highlight-green > td { background-color: #E4F2C9 !important; }

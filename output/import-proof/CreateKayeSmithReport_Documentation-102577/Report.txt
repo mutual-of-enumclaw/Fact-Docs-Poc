@@ -1,0 +1,11 @@
+file       C:\src\FaCT-DocProd-Documentation\3_From MOE\CALLBACKS\KayeSmith Report\CreateKayeSmithReport_Documentation.docx
+format     docx
+pages      13
+recall     100 % of 1840 original words appear in the render
+precision  95 % of 1971 rendered words come from the original
+visual     - page likeness (ink within ~4pt of the original)
+review     -
+counts     336 paragraphs, 2 headings, 7 listItems, 4 tables, 3 images, 0 fields, 0 links, 0 textBoxes, 8 pageBreaks, 0 headers, 0 footers, 0 pageNumbers, 0 placeholders
+fields     
+notes      
+missing    definitions3 overview3 flow4 functions5 createkayesmithreport6

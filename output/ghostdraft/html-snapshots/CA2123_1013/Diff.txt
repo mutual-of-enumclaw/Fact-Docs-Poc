@@ -1,0 +1,7 @@
+CA2123_1013: MATCH  score 100.0%
+pages   golden 4  html 4  (pages with text)
+words   golden 2017  html 2017  missing 0  extra 0
+
+golden   C:\src\fact-docgen\src\Moe.Commercial.Documents.Generation.Integration.Tests\TestData\Snapshots\CA2123_1013\GoldenSnapshot.txt
+template C:\src\fact-poc\output\ghostdraft\batch\CA-21-23-10-13-Wyoming-Uninsured-Motorists-Coverage.json
+serverxml C:\src\fact-poc\output\ghostdraft\serverxml\CA2123_1013\ServerXml.xml

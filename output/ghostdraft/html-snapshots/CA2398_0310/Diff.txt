@@ -1,0 +1,7 @@
+CA2398_0310: MATCH  score 100.0%
+pages   golden 3  html 3  (pages with text)
+words   golden 1030  html 1030  missing 0  extra 0
+
+golden   C:\src\fact-docgen\src\Moe.Commercial.Documents.Generation.Integration.Tests\TestData\Snapshots\CA2398_0310\GoldenSnapshot.txt
+template C:\src\fact-poc\output\ghostdraft\batch\CA-23-98-03-10-Trailer-Interchange-Coverage.json
+serverxml C:\src\fact-poc\output\ghostdraft\serverxml\CA2398_0310\ServerXml.xml

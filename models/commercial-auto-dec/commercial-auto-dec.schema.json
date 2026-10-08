@@ -1,0 +1,122 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://moe.com/schemas/documents/commercial-auto-declarations/v1",
+  "title": "Commercial Auto Declarations - document model",
+  "description": "What a Commercial Auto Dec page is rendered from. `quote` is the Orbital master model, unchanged; the other sections hold what the master model doesn't carry (policy number, per-coverage and per-auto premiums, covered auto symbols, agency details, forms schedule) and joins a template can't make (each auto with its garaging address and premiums). Built by the hydrator from Orbital, POINT and the forms rules.",
+  "type": "object",
+  "required": ["documentType", "policy", "carrier", "agency", "rating", "autos", "forms", "quote"],
+  "properties": {
+    "documentType": { "const": "commercial-auto-declarations" },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "policy": {
+      "type": "object",
+      "description": "Policy identity. Source: POINT (via fact-commercial-api) once bound; quote number from Orbital QuoteDto.currentVersion.quoteNumber.",
+      "required": ["symbol", "number", "module", "displayNumber"],
+      "properties": {
+        "symbol": { "type": "string", "examples": ["CAP"] },
+        "number": { "type": "string", "pattern": "^[0-9]{7}$" },
+        "module": { "type": "string", "pattern": "^[0-9]{2}$" },
+        "displayNumber": { "type": "string", "examples": ["CAP 0501396 00"] },
+        "quoteNumber": { "type": "string" },
+        "transaction": { "type": "string", "examples": ["New Business", "Renewal", "Endorsement"] },
+        "issueDate": { "type": "string", "format": "date" },
+        "termMonths": { "type": "integer" }
+      }
+    },
+    "carrier": {
+      "type": "object",
+      "description": "Writing company. Source: configuration (Orbital metadata.underwritingCompanyCode = MOE).",
+      "properties": {
+        "name": { "type": "string" },
+        "address": { "$ref": "https://orbital.moe.com/schemas/common/address/v1" },
+        "phone": { "type": "string" }
+      }
+    },
+    "agency": {
+      "type": "object",
+      "description": "Agency of record with its printable details. Source: quote.agencyOfRecord codes, looked up in the agency system.",
+      "properties": {
+        "code": { "type": "string" },
+        "agentCode": { "type": "string" },
+        "name": { "type": "string" },
+        "address": { "$ref": "https://orbital.moe.com/schemas/common/address/v1" },
+        "phone": { "type": "string" }
+      }
+    },
+    "rating": {
+      "type": "object",
+      "description": "Premiums by coverage and the covered auto symbols for ITEM TWO. Source: the rating result (POINT); Orbital only returns the total today.",
+      "properties": {
+        "coverages": {
+          "type": "object",
+          "description": "One entry per Dec page coverage line; absent = not written (the line doesn't print).",
+          "properties": {
+            "liability": { "$ref": "#/definitions/coverageLine" },
+            "personalInjuryProtection": { "$ref": "#/definitions/coverageLine" },
+            "medicalPayments": { "$ref": "#/definitions/coverageLine" },
+            "uninsuredMotorists": { "$ref": "#/definitions/coverageLine" },
+            "underinsuredMotorists": { "$ref": "#/definitions/coverageLine" },
+            "comprehensive": { "$ref": "#/definitions/coverageLine" },
+            "specifiedCausesOfLoss": { "$ref": "#/definitions/coverageLine" },
+            "collision": { "$ref": "#/definitions/coverageLine" },
+            "towingAndLabor": { "$ref": "#/definitions/coverageLine" },
+            "hiredAuto": { "$ref": "#/definitions/coverageLine" },
+            "nonOwnedAuto": { "$ref": "#/definitions/coverageLine" }
+          }
+        },
+        "endorsementsPremium": { "type": "number" },
+        "totalPremium": { "type": "number" }
+      }
+    },
+    "autos": {
+      "type": "array",
+      "description": "ITEM THREE schedule: each quote.commercialAuto.vehicles[] entry, numbered, with its garaging address (joined from quote.locations by garagingLocationId) and premiums.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "number": { "type": "integer" },
+          "vehicle": { "$ref": "https://orbital.moe.com/schemas/common/vehicle/v1" },
+          "garaging": { "$ref": "https://orbital.moe.com/schemas/common/address/v1" },
+          "premiums": {
+            "type": "object",
+            "properties": {
+              "liability": { "type": "number" },
+              "medicalPayments": { "type": "number" },
+              "uninsuredMotorists": { "type": "number" },
+              "comprehensive": { "type": "number" },
+              "collision": { "type": "number" },
+              "towingAndLabor": { "type": "number" },
+              "total": { "type": "number" }
+            }
+          }
+        }
+      }
+    },
+    "forms": {
+      "type": "array",
+      "description": "Forms and endorsements attached at inception. Source: the forms rules (fact-docgen IGetFormsForPolicy) with titles from the forms inventory.",
+      "items": {
+        "type": "object",
+        "required": ["number", "edition"],
+        "properties": {
+          "number": { "type": "string", "examples": ["CA 00 01"] },
+          "edition": { "type": "string", "examples": ["11 20"] },
+          "title": { "type": "string" }
+        }
+      }
+    },
+    "quote": {
+      "description": "The Orbital master model (quote inputs) as stored on the quote version: GET /quotes/{quoteId} -> currentVersion.inputs.",
+      "$ref": "https://orbital.moe.com/schemas/quote/quote/v1"
+    }
+  },
+  "definitions": {
+    "coverageLine": {
+      "type": "object",
+      "properties": {
+        "symbols": { "type": "string", "description": "Covered auto symbols, e.g. \"7\" or \"2, 8, 9\"." },
+        "premium": { "type": "number" }
+      }
+    }
+  }
+}

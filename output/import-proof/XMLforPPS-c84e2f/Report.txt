@@ -1,0 +1,11 @@
+file       C:\src\FaCT-DocProd-Documentation\1_From Docucorp_System\XMLforPPS.pdf
+format     pdf
+pages      18
+recall     99 % of 3439 original words appear in the render
+precision  99 % of 3446 rendered words come from the original
+visual     89 % page likeness (ink within ~4pt of the original) [99 %, 100 %, 99 %, 0 %, 97 %, 98 %, 99 %, 99 %, 98 %, 98 %, 98 %, 100 %, 97 %, 88 %, 83 %, 74 %, 94 %, 82 %]
+review     sent to review (score below 90 %)
+counts     797 texts, 0 fields, 142 shapes, 10 images, 0 skipped
+fields     
+notes      3 font(s) embedded in the PDF are used for its text.
+missing    importing files is be documaker format p that as modifying export creating file example transforming xmlexp xmlfile 09 note field left type attribute br break circle

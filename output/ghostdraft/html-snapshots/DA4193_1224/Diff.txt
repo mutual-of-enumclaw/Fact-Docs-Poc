@@ -1,0 +1,10 @@
+DA4193_1224: DIFFERENT  score 99.4%
+pages   golden 1  html 1  (pages with text)
+words   golden 166  html 164  missing 2  extra 0
+
+MISSING (in the GhostDraft golden, not in the HTML render)
+  [1 1]  <=  1               ACV                  $1,000              $139                                     $1,000              $552                $2              $2,169
+
+golden   C:\src\fact-docgen\src\Moe.Commercial.Documents.Generation.Integration.Tests\TestData\Snapshots\DA4193_1224\GoldenSnapshot.txt
+template C:\src\fact-poc\output\ghostdraft\batch\DA4193-1224.json
+serverxml C:\src\fact-poc\output\ghostdraft\serverxml\DA4193_1224\ServerXml.xml

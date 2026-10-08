@@ -1,0 +1,13 @@
+file       C:\src\FaCT-DocProd-Documentation\2_From CSC\Installation_Guide.pdf
+format     pdf
+pages      73
+recall     96 % of 8643 original words appear in the render
+precision  85 % of 9827 rendered words come from the original
+visual     98 % page likeness (ink within ~4pt of the original) [96 %, 96 %, 98 %, 97 %, 94 %, 95 %, 94 %, 95 %, 98 %, 95 %, 96 %, 99 %, 99 %, 100 %, 100 %, 99 %, 99 %, 95 %, 99 %, 100 %, 99 %, 100 %, 100 %, 100 %, 99 %, 100 %, 100 %, 99 %, 100 %, 100 %, 100 %, 99 %, 100 %, 99 %, 100 %, 100 %, 99 %, 100 %, 100 %, 100 %, 100 %, 100 %, 96 %, 97 %, 99 %, 98 %, 96 %, 96 %, 96 %, 94 %, 98 %, 99 %, 99 %, 96 %, 95 %, 97 %, 96 %, 96 %, 95 %, 100 %, 98 %, 95 %, 97 %, 99 %, 95 %, 95 %, 95 %, 96 %, 94 %, 95 %, 97 %, 94 %, 94 %]
+review     -
+counts     1838 texts, 0 fields, 313 shapes, 68 images, 0 skipped
+fields     
+notes      4 font(s) embedded in the PDF are used for its text.
+           1 embedded font(s) can't be used in a browser (no Unicode character map, or characters missing) and were replaced by a standard family.
+           245 character(s) of rotated or vertical text were skipped.
+missing    document production installation guide to steps for the from or table contents overview dvd 3 pre checklist 9 installing system 11 13 print server 21 37 additional 43 software 45 on 5 required post 47 51 55 running antivirus 57

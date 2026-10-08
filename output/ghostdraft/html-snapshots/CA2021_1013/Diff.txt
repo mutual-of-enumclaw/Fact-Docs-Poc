@@ -1,0 +1,18 @@
+CA2021_1013: DIFFERENT  score 95.4%
+pages   golden 2  html 4  (pages with text)
+words   golden 448  html 489  missing 1  extra 42
+
+MISSING (in the GhostDraft golden, not in the HTML render)
+  [1]  <=  C. Exclusion 1., 2. or 3. above may be deleted by
+
+EXTRA (in the HTML render, not in the GhostDraft golden)
+  [001]  <=  Auto Medical              001           $500                 Each  Person           $9.00
+  [4]  <=  CA  20 21 10 13                      © Insurance  Services Office, Inc., 2011                       Page  1 of 2  CA 20 21 10 13 © Insurance Services Office, Inc., 2011 Page 1 of 4
+  [001]  <=  001        2010 SKI DOO   SUMMIT   EVEREST    5PSBS111581023776
+  [PAGE OF INSURANCE SERVICES OFFICE INC 2011 CA 20 21 10 13 PAGE 2 OF 4 INSURANCE SERVICES OFFICE INC 2011 CA 20 21 10 13]  <=  Page  2 of 2                         © Insurance  Services Office, Inc., 2011                   CA  20 21 10 13  Page 2 of 4 © Insurance Services Office, Inc., 2011 CA 20 21 10 13
+  [CA 20 21 10 13 PAGE 3 OF 4]  <=  CA  20 21 10 13                                                                                     Page  3 of 4
+  [PAGE 4 OF 4]  <=  Page  4 of 4                                                                                    CA  20 21 10 13
+
+golden   C:\src\fact-docgen\src\Moe.Commercial.Documents.Generation.Integration.Tests\TestData\Snapshots\CA2021_1013\GoldenSnapshot.txt
+template C:\src\fact-poc\output\ghostdraft\batch\CA-20-21-10-13-Snowmobiles.json
+serverxml C:\src\fact-poc\output\ghostdraft\serverxml\CA2021_1013\ServerXml.xml

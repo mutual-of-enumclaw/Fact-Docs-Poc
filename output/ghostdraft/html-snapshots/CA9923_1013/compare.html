@@ -1,0 +1,189 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>CA9923_1013</title><style>
+body{font-family:Segoe UI,Arial,sans-serif;margin:16px;background:#f4f4f4;color:#222}
+a{color:#0b5cad}
+table.list{border-collapse:collapse;background:#fff}
+table.list td,table.list th{border:1px solid #ccc;padding:3px 8px;text-align:left;font-size:13px}
+tr.ok td{background:#e6f4ea}
+.nav{margin:8px 0}
+.row{display:flex;gap:10px;align-items:flex-start;margin:6px 0 18px}
+.col{background:#fff;border:1px solid #bbb;padding:4px}
+.col h3{margin:0 0 4px;font-size:13px;font-weight:600}
+.col img{display:block;width:100%;height:auto;border:1px solid #ddd}
+.empty{width:100%;aspect-ratio:8.5/11;display:flex;align-items:center;justify-content:center;color:#999;border:1px dashed #bbb}
+pre{background:#fff;border:1px solid #ccc;padding:8px;font-size:12px;overflow:auto;max-height:420px}
+label{font-size:13px;margin-right:12px}
+body.no-overlay .ov{display:none}
+</style></head>
+<body><div class="nav"><a href="../index.html">&larr; all cases</a></div>
+<h2>CA9923_1013 &mdash; different (word score 0.976)</h2>
+<label><input type="checkbox" checked onchange="document.body.classList.toggle('no-overlay', !this.checked)"> overlay
+(black = both, <span style="color:#d00">red = GhostDraft only</span>, <span style="color:#0aa">cyan = HTML only</span>)</label>
+<details><summary>Text diff (Diff.txt)</summary><pre>CA9923_1013: DIFFERENT  score 97.6%
+pages   golden 3  html 3  (pages with text)
+words   golden 578  html 606  missing 0  extra 28
+
+EXTRA (in the HTML render, not in the GhostDraft golden)
+  [SERVICES OFFICE INC 2011 PAGE SERVICES OFFICE INC 2011 CA 10 13]  &lt;=  Page  2 of 2                         © Insurance  Services Office, Inc., 2011                   CA  99 23 10 13  Page 2 of 3 © Insurance Services Office, Inc., 2011 CA 99 23 10 13
+  [INSURANCE]  &lt;=  Coverage           This Insurance  Applies           Day         Days       Period          Premium
+  [2]  &lt;=  1XPFDB9X2LN285820
+  [2]  &lt;=  Causes  Of  Loss   1XPFDB9X2LN285820
+  [INSURANCE]  &lt;=  Coverage           This Insurance  Applies           Day         Days       Period          Premium
+  [1 9 2]  &lt;=  1XPFDB9X2LN285820
+  [OF]  &lt;=  Causes  Of  Loss
+  [CA 9 10 13 PAGE 3 OF 3]  &lt;=  CA  99 23 10 13                                                                                     Page  3 of 3
+
+golden   C:\src\fact-docgen\src\Moe.Commercial.Documents.Generation.Integration.Tests\TestData\Snapshots\CA9923_1013\GoldenSnapshot.txt
+template C:\src\fact-poc\output\ghostdraft\batch\CA-99-23-10-13-Rental-Reimbursement-Coverage.json
+serverxml C:\src\fact-poc\output\ghostdraft\serverxml\CA9923_1013\ServerXml.xml
+</pre></details>
+<div class="row"><div class="col" style="flex:1"><h3>GhostDraft (TST) &mdash; page 1</h3><img src="gd-p1.png" loading="lazy"></div><div class="col" style="flex:1"><h3>HTML designer &mdash; page 1</h3><img src="html-p1.png" loading="lazy"></div><div class="col ov" style="flex:1"><h3>Overlay &mdash; 7.1% pixels differ</h3><img src="overlay-p1.png" loading="lazy"></div></div><details><summary>Page 1 layout: 1 words moved, 0 resized, 0 rules missing, 6 extra</summary><pre>moved TEST (-2.1, -0.3)pt
+extra h rule at 283.9 (53.2-558.0)
+extra h rule at 361.9 (54.0-558.0)
+extra h rule at 388.1 (289.5-468.0)
+extra h rule at 424.9 (54.0-558.0)
+extra h rule at 453.4 (54.0-558.0)
+extra h rule at 481.9 (54.0-558.0)</pre></details><div class="row"><div class="col" style="flex:1"><h3>GhostDraft (TST) &mdash; page 2</h3><img src="gd-p2.png" loading="lazy"></div><div class="col" style="flex:1"><h3>HTML designer &mdash; page 2</h3><img src="html-p2.png" loading="lazy"></div><div class="col ov" style="flex:1"><h3>Overlay &mdash; 0.8% pixels differ</h3><img src="overlay-p2.png" loading="lazy"></div></div><div class="row"><div class="col" style="flex:1"><h3>GhostDraft (TST) &mdash; page 3</h3><img src="gd-p3.png" loading="lazy"></div><div class="col" style="flex:1"><h3>HTML designer &mdash; page 3</h3><img src="html-p3.png" loading="lazy"></div><div class="col ov" style="flex:1"><h3>Overlay &mdash; 8.3% pixels differ</h3><img src="overlay-p3.png" loading="lazy"></div></div><details><summary>Page 3 layout: 94 words moved, 0 resized, 25 rules missing, 25 extra</summary><pre>moved Maximum (+0.4, -11.5)pt
+moved Payment (+0.4, -11.5)pt
+moved Each (+0.5, -11.0)pt
+moved Covered (+0.5, -11.0)pt
+moved &quot;Auto&quot; (+0.4, -11.0)pt
+moved Designation (+0.5, -11.4)pt
+moved Or (+0.4, -11.4)pt
+moved Description (+0.4, -11.4)pt
+moved Of (+0.8, -10.9)pt
+moved Covered (+0.8, -10.9)pt
+moved &quot;Autos&quot; (+0.8, -10.9)pt
+moved To (+0.8, -10.9)pt
+moved Which (+0.0, -10.9)pt
+moved Any (+0.4, -10.9)pt
+moved One (+0.4, -10.9)pt
+moved No. (+0.4, -10.9)pt
+moved Of (+0.4, -10.9)pt
+moved Any (+0.4, -10.9)pt
+moved One (+0.4, -10.9)pt
+moved Coverage (+0.4, -11.1)pt
+moved This (+0.6, -11.1)pt
+moved Insurance (+0.6, -11.1)pt
+moved Applies (+0.2, -11.1)pt
+moved Day (+0.4, -11.1)pt
+moved Days (+0.4, -11.1)pt
+moved Period (+0.4, -11.1)pt
+moved Premium (+0.4, -11.1)pt
+moved Comprehensive (+0.5, -11.0)pt
+moved $ (+0.5, -11.0)pt
+moved $ (+0.5, -11.0)pt
+moved $ (+0.5, -11.0)pt
+moved Collision (+0.5, -10.9)pt
+moved Veh# (+0.5, -10.9)pt
+moved 005 (-0.1, -10.9)pt
+moved 50 (+0.4, -10.9)pt
+moved $5,000.00 (+0.5, -10.9)pt
+moved 1XPFDB9X2LN285820 (+0.5, -11.1)pt
+moved Specified (+0.5, -10.8)pt
+moved Veh# (+0.5, -10.8)pt
+moved 005 (-0.1, -10.8)pt
+moved 45 (+0.4, -10.8)pt
+moved $3,375.00 (+0.5, -10.8)pt
+moved Causes (+0.5, -11.0)pt
+moved Of (+0.5, -11.0)pt
+moved Loss (+0.5, -11.0)pt
+moved 1XPFDB9X2LN285820 (+0.5, -11.0)pt
+moved Total (+1.0, -10.7)pt
+moved Premium (+0.3, -10.7)pt
+moved Maximum (+0.4, -22.2)pt
+moved Payment (+0.4, -22.2)pt
+moved Each (+0.5, -22.4)pt
+moved Covered (+0.5, -22.4)pt
+moved &quot;Auto&quot; (+0.4, -22.4)pt
+moved Designation (+0.5, -22.0)pt
+moved Or (+0.4, -22.0)pt
+moved Description (+0.4, -22.0)pt
+moved Of (+0.8, -21.5)pt
+moved Covered (+0.8, -21.5)pt
+moved &quot;Autos&quot; (+0.8, -21.5)pt
+moved To (+0.8, -21.5)pt
+moved Which (+0.0, -21.5)pt
+moved Any (+0.4, -21.5)pt
+moved One (+0.4, -21.5)pt
+moved No. (+0.4, -21.5)pt
+moved Of (+0.4, -21.5)pt
+moved Any (+0.4, -21.5)pt
+moved One (+0.4, -21.5)pt
+moved Coverage (+0.4, -21.8)pt
+moved This (+0.6, -21.8)pt
+moved Insurance (+0.6, -21.8)pt
+moved Applies (+0.2, -21.8)pt
+moved Day (+0.4, -21.8)pt
+moved Days (+0.4, -21.8)pt
+moved Period (+0.4, -21.8)pt
+moved Premium (+0.4, -21.8)pt
+moved Comprehensive (+0.5, -21.6)pt
+moved Veh# (+0.5, -21.6)pt
+moved 008 (-0.1, -21.6)pt
+moved 30 (+0.4, -21.6)pt
+moved $1,500.00 (+0.5, -21.6)pt
+moved 1XPFDB9X2LN285820 (+0.5, -21.9)pt
+moved Collision (+0.5, -21.5)pt
+moved $ (+0.5, -21.5)pt
+moved $ (+0.5, -21.5)pt
+moved $ (+0.5, -21.5)pt
+moved Specified (+0.5, -21.4)pt
+moved $ (+0.5, -21.4)pt
+moved $ (+0.5, -21.4)pt
+moved $ (+0.5, -21.4)pt
+moved Causes (+0.5, -21.7)pt
+moved Of (+0.5, -21.7)pt
+moved Loss (+0.5, -21.7)pt
+moved Total (+1.0, -21.3)pt
+moved Premium (+0.3, -21.3)pt
+missing h rule at 120.9 (54.2-558.4)
+missing h rule at 148.0 (288.9-468.4)
+missing h rule at 175.1 (54.2-558.4)
+missing h rule at 208.0 (54.2-558.4)
+missing h rule at 240.9 (54.2-558.4)
+missing h rule at 273.8 (54.2-558.4)
+missing h rule at 292.8 (54.2-558.4)
+missing h rule at 304.8 (54.2-558.4)
+missing h rule at 331.9 (288.9-468.4)
+missing h rule at 359.0 (54.2-558.4)
+missing h rule at 391.9 (54.2-558.4)
+missing h rule at 424.8 (54.2-558.4)
+missing h rule at 457.7 (54.2-558.4)
+missing h rule at 476.7 (54.2-558.4)
+missing v rule at 54.0 (305.0-476.4)
+missing v rule at 139.9 (121.1-273.5)
+missing v rule at 139.9 (305.0-457.4)
+missing v rule at 288.6 (121.1-273.5)
+missing v rule at 288.6 (305.0-457.4)
+missing v rule at 358.5 (148.2-273.5)
+missing v rule at 358.5 (332.1-457.4)
+missing v rule at 400.5 (148.2-273.5)
+missing v rule at 400.5 (332.1-457.4)
+missing v rule at 468.6 (305.0-476.4)
+missing v rule at 558.6 (305.0-476.4)
+extra h rule at 109.9 (54.0-559.5)
+extra h rule at 136.9 (289.5-469.5)
+extra h rule at 163.9 (54.0-559.5)
+extra h rule at 196.9 (54.0-559.5)
+extra h rule at 229.9 (54.0-559.5)
+extra h rule at 262.9 (54.0-559.5)
+extra h rule at 281.6 (54.0-559.5)
+extra h rule at 282.4 (54.0-559.5)
+extra h rule at 310.1 (289.5-469.5)
+extra h rule at 337.1 (54.0-559.5)
+extra h rule at 370.1 (54.0-559.5)
+extra h rule at 403.1 (54.0-559.5)
+extra h rule at 436.1 (54.0-559.5)
+extra h rule at 454.9 (54.0-559.5)
+extra v rule at 54.4 (109.5-455.2)
+extra v rule at 140.6 (109.5-263.2)
+extra v rule at 140.6 (282.0-436.5)
+extra v rule at 289.1 (109.5-263.2)
+extra v rule at 289.1 (282.0-436.5)
+extra v rule at 358.9 (137.2-263.2)
+extra v rule at 358.9 (310.5-436.5)
+extra v rule at 400.9 (137.2-263.2)
+extra v rule at 400.9 (310.5-436.5)
+extra v rule at 469.1 (109.5-455.2)
+extra v rule at 559.1 (109.5-455.2)</pre></details><div class="row"><div class="col" style="flex:1"><h3>GhostDraft (TST) &mdash; page 4</h3><img src="gd-p4.png" loading="lazy"></div><div class="col" style="flex:1"><h3>HTML designer &mdash; page 4</h3><div class="empty">no page</div></div><div class="col ov" style="flex:1"><h3>Overlay</h3><div class="empty">page count differs</div></div></div>
+</body></html>

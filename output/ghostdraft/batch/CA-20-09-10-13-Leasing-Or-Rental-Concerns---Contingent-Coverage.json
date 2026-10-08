@@ -1,0 +1,8145 @@
+{
+ "name": "CA-20-09-10-13-Leasing-Or-Rental-Concerns---Contingent-Coverage",
+ "title": "CA 20 09 10 13",
+ "source": "CA 20 09 10 13 Leasing Or Rental Concerns - Contingent Coverage.gd",
+ "package": "commercial-auto-2607",
+ "components": [
+  {
+   "type": "legacy-page",
+   "tagName": "section",
+   "classes": [
+    "form-page"
+   ],
+   "components": [
+    {
+     "type": "legacy-shape",
+     "tagName": "div",
+     "classes": [
+      "rule"
+     ],
+     "style": {
+      "left": "53.53pt",
+      "top": "294.34pt",
+      "width": "0.72pt",
+      "height": "0.78pt"
+     }
+    },
+    {
+     "type": "legacy-shape",
+     "tagName": "div",
+     "classes": [
+      "rule"
+     ],
+     "style": {
+      "left": "53.53pt",
+      "top": "294.34pt",
+      "width": "91.22pt",
+      "height": "0.72pt"
+     }
+    },
+    {
+     "type": "legacy-shape",
+     "tagName": "div",
+     "classes": [
+      "rule"
+     ],
+     "style": {
+      "left": "144.75pt",
+      "top": "294.34pt",
+      "width": "412.88pt",
+      "height": "0.72pt"
+     }
+    },
+    {
+     "type": "legacy-shape",
+     "tagName": "div",
+     "classes": [
+      "rule"
+     ],
+     "style": {
+      "left": "557.63pt",
+      "top": "294.34pt",
+      "width": "0.72pt",
+      "height": "0.78pt"
+     }
+    },
+    {
+     "type": "legacy-shape",
+     "tagName": "div",
+     "classes": [
+      "rule"
+     ],
+     "style": {
+      "left": "557.63pt",
+      "top": "294.34pt",
+      "width": "0.72pt",
+      "height": "0.72pt"
+     }
+    },
+    {
+     "type": "legacy-shape",
+     "tagName": "div",
+     "classes": [
+      "rule"
+     ],
+     "style": {
+      "left": "53.53pt",
+      "top": "295.12pt",
+      "width": "0.72pt",
+      "height": "21.96pt"
+     }
+    },
+    {
+     "type": "legacy-shape",
+     "tagName": "div",
+     "classes": [
+      "rule"
+     ],
+     "style": {
+      "left": "557.63pt",
+      "top": "295.12pt",
+      "width": "0.72pt",
+      "height": "21.96pt"
+     }
+    },
+    {
+     "type": "legacy-shape",
+     "tagName": "div",
+     "classes": [
+      "rule"
+     ],
+     "style": {
+      "left": "53.53pt",
+      "top": "317.09pt",
+      "width": "0.72pt",
+      "height": "22.74pt"
+     }
+    },
+    {
+     "type": "legacy-shape",
+     "tagName": "div",
+     "classes": [
+      "rule"
+     ],
+     "style": {
+      "left": "53.53pt",
+      "top": "339.11pt",
+      "width": "150.51pt",
+      "height": "0.72pt"
+     }
+    },
+    {
+     "type": "legacy-shape",
+     "tagName": "div",
+     "classes": [
+      "rule"
+     ],
+     "style": {
+      "left": "203.32pt",
+      "top": "339.11pt",
+      "width": "0.72pt",
+      "height": "0.72pt"
+     }
+    },
+    {
+     "type": "legacy-shape",
+     "tagName": "div",
+     "classes": [
+      "rule"
+     ],
+     "style": {
+      "left": "204.04pt",
+      "top": "339.11pt",
+      "width": "353.59pt",
+      "height": "0.72pt"
+     }
+    },
+    {
+     "type": "legacy-shape",
+     "tagName": "div",
+     "classes": [
+      "rule"
+     ],
+     "style": {
+      "left": "557.63pt",
+      "top": "317.09pt",
+      "width": "0.72pt",
+      "height": "22.74pt"
+     }
+    },
+    {
+     "type": "legacy-shape",
+     "tagName": "div",
+     "classes": [
+      "rule"
+     ],
+     "style": {
+      "left": "557.63pt",
+      "top": "339.11pt",
+      "width": "0.72pt",
+      "height": "0.72pt"
+     }
+    },
+    {
+     "type": "legacy-shape",
+     "tagName": "div",
+     "classes": [
+      "rule"
+     ],
+     "style": {
+      "left": "53.59pt",
+      "top": "372.84pt",
+      "width": "0.50pt",
+      "height": "0.50pt"
+     }
+    },
+    {
+     "type": "legacy-shape",
+     "tagName": "div",
+     "classes": [
+      "rule"
+     ],
+     "style": {
+      "left": "53.59pt",
+      "top": "372.84pt",
+      "width": "115.94pt",
+      "height": "0.50pt"
+     }
+    },
+    {
+     "type": "legacy-shape",
+     "tagName": "div",
+     "classes": [
+      "rule"
+     ],
+     "style": {
+      "left": "169.53pt",
+      "top": "372.84pt",
+      "width": "388.22pt",
+      "height": "0.50pt"
+     }
+    },
+    {
+     "type": "legacy-shape",
+     "tagName": "div",
+     "classes": [
+      "rule"
+     ],
+     "style": {
+      "left": "557.75pt",
+      "top": "372.84pt",
+      "width": "0.50pt",
+      "height": "0.50pt"
+     }
+    },
+    {
+     "type": "legacy-shape",
+     "tagName": "div",
+     "classes": [
+      "rule"
+     ],
+     "style": {
+      "left": "557.75pt",
+      "top": "372.84pt",
+      "width": "0.50pt",
+      "height": "0.50pt"
+     }
+    },
+    {
+     "type": "legacy-shape",
+     "tagName": "div",
+     "classes": [
+      "rule"
+     ],
+     "style": {
+      "left": "53.59pt",
+      "top": "373.32pt",
+      "width": "0.50pt",
+      "height": "29.04pt"
+     }
+    },
+    {
+     "type": "legacy-shape",
+     "tagName": "div",
+     "classes": [
+      "rule"
+     ],
+     "style": {
+      "left": "557.75pt",
+      "top": "373.32pt",
+      "width": "0.50pt",
+      "height": "29.04pt"
+     }
+    },
+    {
+     "type": "legacy-shape",
+     "tagName": "div",
+     "classes": [
+      "rule"
+     ],
+     "style": {
+      "left": "53.59pt",
+      "top": "402.36pt",
+      "width": "115.94pt",
+      "height": "0.50pt"
+     }
+    },
+    {
+     "type": "legacy-shape",
+     "tagName": "div",
+     "classes": [
+      "rule"
+     ],
+     "style": {
+      "left": "169.53pt",
+      "top": "402.36pt",
+      "width": "388.22pt",
+      "height": "0.50pt"
+     }
+    },
+    {
+     "type": "legacy-shape",
+     "tagName": "div",
+     "classes": [
+      "rule"
+     ],
+     "style": {
+      "left": "557.75pt",
+      "top": "402.36pt",
+      "width": "0.50pt",
+      "height": "0.50pt"
+     }
+    },
+    {
+     "type": "legacy-shape",
+     "tagName": "div",
+     "classes": [
+      "rule"
+     ],
+     "style": {
+      "left": "53.59pt",
+      "top": "402.84pt",
+      "width": "0.50pt",
+      "height": "14.52pt"
+     }
+    },
+    {
+     "type": "legacy-shape",
+     "tagName": "div",
+     "classes": [
+      "rule"
+     ],
+     "style": {
+      "left": "53.59pt",
+      "top": "416.88pt",
+      "width": "504.16pt",
+      "height": "0.50pt"
+     }
+    },
+    {
+     "type": "legacy-shape",
+     "tagName": "div",
+     "classes": [
+      "rule"
+     ],
+     "style": {
+      "left": "557.75pt",
+      "top": "402.84pt",
+      "width": "0.50pt",
+      "height": "14.52pt"
+     }
+    },
+    {
+     "type": "legacy-shape",
+     "tagName": "div",
+     "classes": [
+      "rule"
+     ],
+     "style": {
+      "left": "557.75pt",
+      "top": "416.88pt",
+      "width": "0.50pt",
+      "height": "0.50pt"
+     }
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "54.15pt",
+      "top": "53.77pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "POLICY NUMBER: "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "458.21pt",
+      "top": "53.77pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif",
+      "font-weight": "bold"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "COMMERCIAL AUTO"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "488.22pt",
+      "top": "64.75pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif",
+      "font-weight": "bold"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "CA 20 09 10 13"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "80.53pt",
+      "top": "88.35pt",
+      "font-size": "12pt",
+      "font-family": "'Arial',sans-serif",
+      "font-weight": "bold"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "THIS ENDORSEMENT CHANGES THE POLICY.  PLEASE READ IT CAREFULLY. "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "54.15pt",
+      "top": "756.65pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif",
+      "font-weight": "bold"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "CA 20 09 10 13 "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "220.03pt",
+      "top": "756.65pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "© Insurance Services Office, Inc.,"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "371.38pt",
+      "top": "756.65pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "2011"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "504.30pt",
+      "top": "756.65pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif",
+      "font-weight": "bold"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "Page 1"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "539.37pt",
+      "top": "756.65pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif",
+      "font-weight": "bold"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "of 2"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "149.80pt",
+      "top": "111.42pt",
+      "font-size": "18pt",
+      "font-family": "'Arial',sans-serif",
+      "font-weight": "bold"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "LEASING OR RENTAL CONCERNS –  "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "192.77pt",
+      "top": "129.43pt",
+      "font-size": "18pt",
+      "font-family": "'Arial',sans-serif",
+      "font-weight": "bold"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "CONTINGENT COVERAGE "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "54.15pt",
+      "top": "168.09pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "This endorsement modifies insura"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "204.17pt",
+      "top": "168.09pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "nce provided under the following:  "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "69.28pt",
+      "top": "194.07pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "BUSINESS AUTO COVERAGE FORM "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "69.28pt",
+      "top": "205.11pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "MOTOR CARRIER COVERAGE FORM "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "54.15pt",
+      "top": "231.10pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "With "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "79.24pt",
+      "top": "231.10pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "respect "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "117.11pt",
+      "top": "231.10pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "to "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "130.51pt",
+      "top": "231.10pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "coverage "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "176.61pt",
+      "top": "231.10pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "provided "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "220.03pt",
+      "top": "231.10pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "by "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "235.56pt",
+      "top": "231.10pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "this "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "256.20pt",
+      "top": "231.10pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "endorsement, "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "322.45pt",
+      "top": "231.10pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "the "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "341.35pt",
+      "top": "231.10pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "provisions "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "391.38pt",
+      "top": "231.10pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "of "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "404.77pt",
+      "top": "231.10pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "the "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "423.73pt",
+      "top": "231.10pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "Coverage "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "472.13pt",
+      "top": "231.10pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "Form "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "500.47pt",
+      "top": "231.10pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "apply "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "529.36pt",
+      "top": "231.10pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "unless "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "54.15pt",
+      "top": "242.08pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "modified by the endorsement.  "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "54.15pt",
+      "top": "257.14pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "This endorsement changes the policy "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "223.52pt",
+      "top": "257.14pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "effective on the inception d"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "343.22pt",
+      "top": "257.14pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "ate of the "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "388.28pt",
+      "top": "257.14pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "policy unless another "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "485.58pt",
+      "top": "257.14pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "date is indicated "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "54.15pt",
+      "top": "268.12pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "below.  "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "57.03pt",
+      "top": "297.83pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif",
+      "font-weight": "bold"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "Named Insured: "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "57.03pt",
+      "top": "319.85pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif",
+      "font-weight": "bold"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "Endorsement Effective Date: "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "278.66pt",
+      "top": "350.63pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif",
+      "font-weight": "bold"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "SCHEDULE "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "57.03pt",
+      "top": "383.64pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif",
+      "font-weight": "bold"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "Limit Of Insurance: "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "157.27pt",
+      "top": "383.64pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif",
+      "font-weight": "bold"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "$ "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "57.03pt",
+      "top": "405.60pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "Information required to complete this Schedule, if not shown abov"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "347.21pt",
+      "top": "405.60pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "e, will be shown in the Declarations. "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "54.15pt",
+      "top": "436.15pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif",
+      "font-weight": "bold"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "A. "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "69.15pt",
+      "top": "436.15pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif",
+      "font-weight": "bold"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "Covered "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "117.23pt",
+      "top": "436.15pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif",
+      "font-weight": "bold"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "Autos "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "153.71pt",
+      "top": "436.15pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif",
+      "font-weight": "bold"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "Liability "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "199.58pt",
+      "top": "436.15pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif",
+      "font-weight": "bold"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "Coverage"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "253.27pt",
+      "top": "436.15pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "and "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "278.04pt",
+      "top": "436.15pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "any "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "69.16pt",
+      "top": "447.13pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "required "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "109.66pt",
+      "top": "447.13pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "no-fault "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "146.87pt",
+      "top": "447.13pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "insurance "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "194.05pt",
+      "top": "447.13pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "provided "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "236.30pt",
+      "top": "447.13pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "by "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "250.74pt",
+      "top": "447.13pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "the "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "268.52pt",
+      "top": "447.13pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "policy "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "69.16pt",
+      "top": "458.11pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "for "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "84.56pt",
+      "top": "458.11pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "a "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "93.80pt",
+      "top": "458.11pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "covered "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "133.09pt",
+      "top": "458.11pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "\"auto\" "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "163.42pt",
+      "top": "458.11pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "that "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "183.84pt",
+      "top": "458.11pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "is "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "194.80pt",
+      "top": "458.11pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "a "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "204.09pt",
+      "top": "458.11pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "\"leased "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "240.83pt",
+      "top": "458.11pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "auto\" "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "267.56pt",
+      "top": "458.11pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "apply, "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "69.16pt",
+      "top": "469.15pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "subject to the following provisions:  "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "69.82pt",
+      "top": "484.15pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif",
+      "font-weight": "bold"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "1. "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "84.16pt",
+      "top": "484.15pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "The lessee or rentee has furnished you with: "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "84.82pt",
+      "top": "499.16pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif",
+      "font-weight": "bold"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "a."
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "99.16pt",
+      "top": "499.16pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "A certificate of insurance; "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "84.28pt",
+      "top": "514.16pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif",
+      "font-weight": "bold"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "b."
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "99.16pt",
+      "top": "514.16pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "A copy of the policy; or  "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "84.82pt",
+      "top": "529.16pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif",
+      "font-weight": "bold"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "c."
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "99.16pt",
+      "top": "529.16pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "A "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "109.75pt",
+      "top": "529.16pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "copy "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "134.76pt",
+      "top": "529.16pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "of "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "147.02pt",
+      "top": "529.16pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "the "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "164.80pt",
+      "top": "529.16pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "endorsement "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "226.97pt",
+      "top": "529.16pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "making "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "263.07pt",
+      "top": "529.16pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "you "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "283.07pt",
+      "top": "529.16pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "an "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "99.16pt",
+      "top": "540.14pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "additional "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "151.96pt",
+      "top": "540.14pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "insured "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "194.67pt",
+      "top": "540.14pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "on "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "215.73pt",
+      "top": "540.14pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "the "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "239.62pt",
+      "top": "540.14pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "lessee's "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "285.36pt",
+      "top": "540.14pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "or "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "99.16pt",
+      "top": "551.12pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "rentee's policy; "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "84.16pt",
+      "top": "566.19pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "as required "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "137.72pt",
+      "top": "566.19pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "by the "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "168.53pt",
+      "top": "566.19pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "leasing or "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "215.37pt",
+      "top": "566.19pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "rental agreement; "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "84.16pt",
+      "top": "577.17pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "and  "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "69.82pt",
+      "top": "592.17pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif",
+      "font-weight": "bold"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "2. "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "84.16pt",
+      "top": "592.17pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "At "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "99.92pt",
+      "top": "592.17pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "the "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "120.14pt",
+      "top": "592.17pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "time "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "145.29pt",
+      "top": "592.17pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "of "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "159.95pt",
+      "top": "592.17pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "an "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "177.33pt",
+      "top": "592.17pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "\"accident\", "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "230.76pt",
+      "top": "592.17pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "the "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "250.98pt",
+      "top": "592.17pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "insurance "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "84.16pt",
+      "top": "603.15pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "required "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "128.87pt",
+      "top": "603.15pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "by "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "147.42pt",
+      "top": "603.15pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "the "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "169.40pt",
+      "top": "603.15pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "leasing "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "209.14pt",
+      "top": "603.15pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "agreement "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "264.97pt",
+      "top": "603.15pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "is "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "280.26pt",
+      "top": "603.15pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "not "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "84.16pt",
+      "top": "614.13pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "collectible.  "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "69.82pt",
+      "top": "629.20pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif",
+      "font-weight": "bold"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "3. "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "84.16pt",
+      "top": "629.20pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "For "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "102.67pt",
+      "top": "629.20pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "you, "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "125.08pt",
+      "top": "629.20pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "your "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "148.05pt",
+      "top": "629.20pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "\"employees\" "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "207.07pt",
+      "top": "629.20pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "or "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "219.45pt",
+      "top": "629.20pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "agents, "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "255.74pt",
+      "top": "629.20pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "the "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "273.15pt",
+      "top": "629.20pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "Limit "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "84.16pt",
+      "top": "640.18pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "of "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "97.14pt",
+      "top": "640.18pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "Insurance "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "145.65pt",
+      "top": "640.18pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "provided "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "188.67pt",
+      "top": "640.18pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "by "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "203.79pt",
+      "top": "640.18pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "this "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "224.01pt",
+      "top": "640.18pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "endorsement "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "286.97pt",
+      "top": "640.18pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "is "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "84.16pt",
+      "top": "651.16pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "the lesser of:  "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "84.82pt",
+      "top": "666.16pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif",
+      "font-weight": "bold"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "a. "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "99.16pt",
+      "top": "666.16pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "The "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "119.83pt",
+      "top": "666.16pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "limits "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "145.95pt",
+      "top": "666.16pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "of "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "157.71pt",
+      "top": "666.16pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "liability "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "191.07pt",
+      "top": "666.16pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "required "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "231.19pt",
+      "top": "666.16pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "by "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "245.18pt",
+      "top": "666.16pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "the "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "262.51pt",
+      "top": "666.16pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "leasing "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "99.16pt",
+      "top": "677.14pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "agreement; or  "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "348.33pt",
+      "top": "436.15pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif",
+      "font-weight": "bold"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "b. "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "363.21pt",
+      "top": "436.15pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "The amount shown in the Schedule.  "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "333.87pt",
+      "top": "451.15pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif",
+      "font-weight": "bold"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "4."
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "348.21pt",
+      "top": "451.15pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "For "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "368.48pt",
+      "top": "451.15pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "the "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "387.64pt",
+      "top": "451.15pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "lessee "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "421.79pt",
+      "top": "451.15pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "or "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "435.93pt",
+      "top": "451.15pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "rentee, "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "472.26pt",
+      "top": "451.15pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "any "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "493.62pt",
+      "top": "451.15pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "\"employee\" "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "549.34pt",
+      "top": "451.15pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "or "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "348.21pt",
+      "top": "462.13pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "agent "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "378.03pt",
+      "top": "462.13pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "of "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "391.20pt",
+      "top": "462.13pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "the "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "409.88pt",
+      "top": "462.13pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "lessee "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "443.60pt",
+      "top": "462.13pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "or "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "457.22pt",
+      "top": "462.13pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "rentee "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "490.39pt",
+      "top": "462.13pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "or "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "504.01pt",
+      "top": "462.13pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "any "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "524.91pt",
+      "top": "462.13pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "person, "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "348.21pt",
+      "top": "473.11pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "except "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "384.22pt",
+      "top": "473.11pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "you "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "406.80pt",
+      "top": "473.11pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "or "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "422.19pt",
+      "top": "473.11pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "your "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "448.14pt",
+      "top": "473.11pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "\"employees\" "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "510.11pt",
+      "top": "473.11pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "or "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "525.44pt",
+      "top": "473.11pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "agents, "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "348.21pt",
+      "top": "484.15pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "operating the "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "410.02pt",
+      "top": "484.15pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "\"leased auto\" "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "472.10pt",
+      "top": "484.15pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "with the "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "509.99pt",
+      "top": "484.15pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "permission "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "348.21pt",
+      "top": "495.13pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "of any "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "378.83pt",
+      "top": "495.13pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "of these, "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "420.53pt",
+      "top": "495.13pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "the Limit "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "461.65pt",
+      "top": "495.13pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "of Insurance "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "519.99pt",
+      "top": "495.13pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "provided "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "348.21pt",
+      "top": "506.12pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "by "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "366.46pt",
+      "top": "506.12pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "this "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "389.72pt",
+      "top": "506.12pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "endorsement "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "455.71pt",
+      "top": "506.12pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "is "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "470.61pt",
+      "top": "506.12pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "the "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "492.21pt",
+      "top": "506.12pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "minimum "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "540.44pt",
+      "top": "506.12pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "limit "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "348.21pt",
+      "top": "517.16pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "required "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "393.24pt",
+      "top": "517.16pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "by "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "412.09pt",
+      "top": "517.16pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "any "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "436.61pt",
+      "top": "517.16pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "applicable "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "489.92pt",
+      "top": "517.16pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "compulsory "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "549.33pt",
+      "top": "517.16pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "or "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "348.21pt",
+      "top": "528.14pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "financial responsibility law.  "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "333.87pt",
+      "top": "543.14pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif",
+      "font-weight": "bold"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "5. "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "348.21pt",
+      "top": "543.14pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "The "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "368.73pt",
+      "top": "543.14pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "insurance provided "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "456.90pt",
+      "top": "543.14pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "by "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "470.64pt",
+      "top": "543.14pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "this "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "489.43pt",
+      "top": "543.14pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "endorsement "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "551.06pt",
+      "top": "543.14pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "is "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "348.21pt",
+      "top": "554.12pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "excess "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "385.45pt",
+      "top": "554.12pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "over "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "410.97pt",
+      "top": "554.12pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "any "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "433.18pt",
+      "top": "554.12pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "other "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "462.05pt",
+      "top": "554.12pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "collectible "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "512.08pt",
+      "top": "554.12pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "insurance, "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "348.21pt",
+      "top": "565.17pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "whether "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "387.94pt",
+      "top": "565.17pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "primary, "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "428.15pt",
+      "top": "565.17pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "excess "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "463.31pt",
+      "top": "565.17pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "or "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "476.31pt",
+      "top": "565.17pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "contingent, "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "529.29pt",
+      "top": "565.17pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "unless "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "348.21pt",
+      "top": "576.15pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "such insurance is specifically written "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "512.32pt",
+      "top": "576.15pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "to apply in "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "348.21pt",
+      "top": "587.13pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "excess of this policy.  "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "318.20pt",
+      "top": "602.19pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif",
+      "font-weight": "bold"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "B. "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "333.21pt",
+      "top": "602.19pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "If "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "343.04pt",
+      "top": "602.19pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "the "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "361.24pt",
+      "top": "602.19pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "lessee's "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "401.28pt",
+      "top": "602.19pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "or "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "414.36pt",
+      "top": "602.19pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "rentee's "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "453.86pt",
+      "top": "602.19pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "policy "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "483.70pt",
+      "top": "602.19pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "is "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "495.10pt",
+      "top": "602.19pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "cancelled, "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "544.36pt",
+      "top": "602.19pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "the "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "333.21pt",
+      "top": "613.17pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "insurance "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "380.44pt",
+      "top": "613.17pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "provided "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "422.64pt",
+      "top": "613.17pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "by "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "437.07pt",
+      "top": "613.17pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "this "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "456.52pt",
+      "top": "613.17pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "endorsement "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "518.78pt",
+      "top": "613.17pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "ends "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "544.36pt",
+      "top": "613.17pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "the "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "333.21pt",
+      "top": "624.15pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "earlier of the following dates:  "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "333.87pt",
+      "top": "639.16pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif",
+      "font-weight": "bold"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "1. "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "348.21pt",
+      "top": "639.16pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "The "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "371.12pt",
+      "top": "639.16pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "date "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "396.27pt",
+      "top": "639.16pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "you "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "418.02pt",
+      "top": "639.16pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "regain "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "451.45pt",
+      "top": "639.16pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "custody "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "491.58pt",
+      "top": "639.16pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "of "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "505.59pt",
+      "top": "639.16pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "the "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "525.22pt",
+      "top": "639.16pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "\"leased "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "348.21pt",
+      "top": "650.14pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "auto\"; or  "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "333.87pt",
+      "top": "665.20pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif",
+      "font-weight": "bold"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "2. "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "348.21pt",
+      "top": "665.20pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "30 days after the effective date of cancellation.  "
+      }
+     ]
+    },
+    {
+     "tagName": "div",
+     "classes": [
+      "abs",
+      "gd-doc",
+      "gd-tb"
+     ],
+     "style": {
+      "left": "137.75pt",
+      "top": "50.3pt",
+      "width": "216.15pt",
+      "padding": "3.6pt 5.76pt 0pt 5.76pt"
+     },
+     "components": [
+      {
+       "type": "text",
+       "tagName": "p",
+       "classes": [
+        "gd-p",
+        "gd-p1"
+       ],
+       "components": [
+        {
+         "type": "data-field",
+         "field": "Policy.PolicyNumber",
+         "format": ""
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "tagName": "div",
+     "classes": [
+      "abs",
+      "gd-doc",
+      "gd-tb"
+     ],
+     "style": {
+      "left": "46.85pt",
+      "top": "290.35pt",
+      "width": "516.75pt",
+      "padding": "3.6pt 7.2pt 0pt 7.2pt"
+     },
+     "components": [
+      {
+       "type": "table",
+       "classes": [
+        "gd-table",
+        "gd-t10"
+       ],
+       "components": [
+        {
+         "type": "tbody",
+         "components": [
+          {
+           "type": "row",
+           "classes": [
+            "gd-grid"
+           ],
+           "components": [
+            {
+             "type": "cell",
+             "classes": [
+              "gd-col7"
+             ],
+             "components": []
+            },
+            {
+             "type": "cell",
+             "classes": [
+              "gd-col8"
+             ],
+             "components": []
+            },
+            {
+             "type": "cell",
+             "classes": [
+              "gd-col9"
+             ],
+             "components": []
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "type": "tbody",
+         "components": [
+          {
+           "type": "row",
+           "components": [
+            {
+             "type": "cell",
+             "components": [
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p1"
+               ],
+               "components": []
+              }
+             ],
+             "classes": [
+              "gd-td2"
+             ]
+            },
+            {
+             "type": "cell",
+             "components": [
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p1"
+               ],
+               "components": [
+                {
+                 "type": "data-field",
+                 "field": "Insured.PrimaryNamedInsured",
+                 "format": ""
+                }
+               ]
+              }
+             ],
+             "classes": [
+              "gd-td3"
+             ],
+             "attributes": {
+              "colspan": "2"
+             }
+            }
+           ],
+           "classes": [
+            "gd-tr4"
+           ]
+          },
+          {
+           "type": "row",
+           "components": [
+            {
+             "type": "cell",
+             "components": [
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p1"
+               ],
+               "components": []
+              }
+             ],
+             "classes": [
+              "gd-td2"
+             ],
+             "attributes": {
+              "colspan": "2"
+             }
+            },
+            {
+             "type": "cell",
+             "components": [
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p1",
+                "gd-keepline"
+               ],
+               "components": [
+                {
+                 "type": "choice",
+                 "tagName": "span",
+                 "components": [
+                  {
+                   "type": "choice-branch",
+                   "tagName": "span",
+                   "components": [
+                    {
+                     "type": "data-field",
+                     "field": "Policy.TransactionEffectiveDate",
+                     "format": "shortdate"
+                    }
+                   ],
+                   "field": "Policy.TransactionEffectiveDate",
+                   "operator": "present",
+                   "value": "",
+                   "classes": [
+                    "gd-if"
+                   ]
+                  },
+                  {
+                   "type": "choice-branch",
+                   "tagName": "span",
+                   "components": [
+                    {
+                     "type": "data-field",
+                     "field": "Policy.TransactionEffectiveDateWording",
+                     "format": ""
+                    }
+                   ],
+                   "field": "",
+                   "operator": "else",
+                   "value": "",
+                   "classes": [
+                    "gd-if"
+                   ]
+                  }
+                 ],
+                 "classes": [
+                  "gd-if"
+                 ]
+                }
+               ]
+              }
+             ],
+             "classes": [
+              "gd-td5"
+             ]
+            }
+           ],
+           "classes": [
+            "gd-tr6"
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "tagName": "p",
+       "classes": [
+        "gd-p",
+        "gd-p1"
+       ],
+       "components": []
+      }
+     ]
+    },
+    {
+     "type": "conditional",
+     "tagName": "div",
+     "components": [
+      {
+       "type": "conditional",
+       "tagName": "div",
+       "components": [
+        {
+         "tagName": "div",
+         "classes": [
+          "abs",
+          "gd-doc",
+          "gd-tb"
+         ],
+         "style": {
+          "left": "48pt",
+          "top": "369.05pt",
+          "width": "514.35pt",
+          "padding": "3.6pt 5.76pt 0pt 5.76pt"
+         },
+         "components": [
+          {
+           "type": "table",
+           "classes": [
+            "gd-table",
+            "gd-t16"
+           ],
+           "components": [
+            {
+             "type": "tbody",
+             "components": [
+              {
+               "type": "row",
+               "components": [
+                {
+                 "type": "cell",
+                 "components": [
+                  {
+                   "type": "text",
+                   "tagName": "p",
+                   "classes": [
+                    "gd-p",
+                    "gd-p1"
+                   ],
+                   "components": []
+                  }
+                 ],
+                 "classes": [
+                  "gd-td11"
+                 ]
+                },
+                {
+                 "type": "cell",
+                 "components": [
+                  {
+                   "type": "text",
+                   "tagName": "p",
+                   "classes": [
+                    "gd-p",
+                    "gd-p1"
+                   ],
+                   "components": []
+                  }
+                 ],
+                 "classes": [
+                  "gd-td12"
+                 ]
+                },
+                {
+                 "type": "cell",
+                 "components": [
+                  {
+                   "type": "text",
+                   "tagName": "p",
+                   "classes": [
+                    "gd-p",
+                    "gd-p13"
+                   ],
+                   "components": [
+                    {
+                     "type": "textnode",
+                     "content": "See Attached Schedule"
+                    }
+                   ]
+                  }
+                 ],
+                 "classes": [
+                  "gd-td14"
+                 ]
+                }
+               ],
+               "classes": [
+                "gd-tr15"
+               ]
+              }
+             ]
+            }
+           ]
+          },
+          {
+           "type": "text",
+           "tagName": "p",
+           "classes": [
+            "gd-p",
+            "gd-p1"
+           ],
+           "components": []
+          }
+         ]
+        }
+       ],
+       "field": "CAPolicyLevelCoverages.LeasingorRentalContingentCoverage.CoverageLimits.size",
+       "operator": "gt",
+       "value": "1",
+       "classes": [
+        "gd-if"
+       ]
+      }
+     ],
+     "field": "Policy.datashouldshow",
+     "operator": "eq",
+     "value": "true",
+     "classes": [
+      "gd-if"
+     ]
+    },
+    {
+     "type": "conditional",
+     "tagName": "div",
+     "components": [
+      {
+       "type": "conditional",
+       "tagName": "div",
+       "components": [
+        {
+         "tagName": "div",
+         "classes": [
+          "abs",
+          "gd-doc",
+          "gd-tb"
+         ],
+         "style": {
+          "left": "48pt",
+          "top": "369.05pt",
+          "width": "514.35pt",
+          "padding": "3.6pt 5.76pt 0pt 5.76pt"
+         },
+         "components": [
+          {
+           "type": "table",
+           "classes": [
+            "gd-table"
+           ],
+           "components": [
+            {
+             "type": "repeat",
+             "tagName": "tbody",
+             "listPath": "CAPolicyLevelCoverages.LeasingorRentalContingentCoverage.CoverageLimits.CoverageLimits",
+             "components": [
+              {
+               "type": "row",
+               "components": [
+                {
+                 "type": "cell",
+                 "components": [],
+                 "classes": [
+                  "gd-td11"
+                 ]
+                },
+                {
+                 "type": "cell",
+                 "components": [
+                  {
+                   "type": "text",
+                   "tagName": "p",
+                   "classes": [
+                    "gd-p",
+                    "gd-p1"
+                   ],
+                   "components": []
+                  }
+                 ],
+                 "classes": [
+                  "gd-td17"
+                 ]
+                },
+                {
+                 "type": "cell",
+                 "components": [
+                  {
+                   "type": "text",
+                   "tagName": "p",
+                   "classes": [
+                    "gd-p",
+                    "gd-p1",
+                    "gd-keepline"
+                   ],
+                   "components": [
+                    {
+                     "type": "choice",
+                     "tagName": "span",
+                     "components": [
+                      {
+                       "type": "choice-branch",
+                       "tagName": "span",
+                       "components": [
+                        {
+                         "type": "data-field",
+                         "field": "CoverageLimit.Limit",
+                         "format": "number"
+                        }
+                       ],
+                       "field": "CoverageLimit.Limit",
+                       "operator": "present",
+                       "value": "",
+                       "classes": [
+                        "gd-if"
+                       ]
+                      },
+                      {
+                       "type": "choice-branch",
+                       "tagName": "span",
+                       "components": [
+                        {
+                         "type": "data-field",
+                         "field": "CoverageLimit.LimitWording",
+                         "format": ""
+                        }
+                       ],
+                       "field": "",
+                       "operator": "else",
+                       "value": "",
+                       "classes": [
+                        "gd-if"
+                       ]
+                      }
+                     ],
+                     "classes": [
+                      "gd-if"
+                     ]
+                    }
+                   ]
+                  }
+                 ],
+                 "classes": [
+                  "gd-td18"
+                 ]
+                }
+               ],
+               "classes": [
+                "gd-tr19"
+               ]
+              }
+             ]
+            }
+           ]
+          },
+          {
+           "type": "text",
+           "tagName": "p",
+           "classes": [
+            "gd-p",
+            "gd-p1"
+           ],
+           "components": []
+          }
+         ]
+        }
+       ],
+       "field": "CAPolicyLevelCoverages.LeasingorRentalContingentCoverage.CoverageLimits.size",
+       "operator": "lt",
+       "value": "2",
+       "classes": [
+        "gd-if"
+       ]
+      }
+     ],
+     "field": "Policy.datashouldshow",
+     "operator": "eq",
+     "value": "true",
+     "classes": [
+      "gd-if"
+     ]
+    },
+    {
+     "tagName": "div",
+     "classes": [
+      "gd-doc",
+      "gd-sheetfoot",
+      "gd-side-odd"
+     ],
+     "style": {
+      "left": "54.15pt",
+      "right": "54.15pt",
+      "bottom": "12.2pt"
+     },
+     "components": [
+      {
+       "type": "table",
+       "classes": [
+        "gd-table",
+        "gd-t26"
+       ],
+       "components": [
+        {
+         "type": "tbody",
+         "components": [
+          {
+           "type": "row",
+           "components": [
+            {
+             "type": "cell",
+             "components": [
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p1"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-c20"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "CA 20 09 10 13"
+                  }
+                 ]
+                }
+               ]
+              }
+             ],
+             "classes": [
+              "gd-td21"
+             ]
+            },
+            {
+             "type": "cell",
+             "components": [
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p13"
+               ],
+               "components": [
+                {
+                 "type": "textnode",
+                 "content": "© Insurance Services Office, Inc., 2011"
+                }
+               ]
+              }
+             ],
+             "classes": [
+              "gd-td22"
+             ]
+            },
+            {
+             "type": "cell",
+             "components": [
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p23"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-c20"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "Page "
+                  }
+                 ]
+                },
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-c20",
+                  "gd-pageno"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "#"
+                  }
+                 ]
+                },
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-c20"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": " of "
+                  }
+                 ]
+                },
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-c20",
+                  "gd-pagecount"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "#"
+                  }
+                 ]
+                }
+               ]
+              }
+             ],
+             "classes": [
+              "gd-td24"
+             ]
+            },
+            {
+             "type": "cell",
+             "components": [
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p1"
+               ],
+               "components": []
+              }
+             ],
+             "classes": [
+              "gd-td25"
+             ]
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "tagName": "p",
+       "classes": [
+        "gd-p",
+        "gd-p1"
+       ],
+       "components": []
+      },
+      {
+       "tagName": "span",
+       "classes": [
+        "gd-pgmark"
+       ]
+      }
+     ]
+    },
+    {
+     "tagName": "div",
+     "classes": [
+      "gd-doc",
+      "gd-sheetfoot",
+      "gd-side-even"
+     ],
+     "style": {
+      "left": "54.15pt",
+      "right": "54.15pt",
+      "bottom": "12.2pt"
+     },
+     "components": [
+      {
+       "type": "table",
+       "classes": [
+        "gd-table",
+        "gd-t26"
+       ],
+       "components": [
+        {
+         "type": "tbody",
+         "components": [
+          {
+           "type": "row",
+           "components": [
+            {
+             "type": "cell",
+             "components": [
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p1"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-c20"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "Page "
+                  }
+                 ]
+                },
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-c20",
+                  "gd-pageno"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "#"
+                  }
+                 ]
+                },
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-c20"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": " of "
+                  }
+                 ]
+                },
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-c20",
+                  "gd-pagecount"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "#"
+                  }
+                 ]
+                }
+               ]
+              }
+             ],
+             "classes": [
+              "gd-td21"
+             ]
+            },
+            {
+             "type": "cell",
+             "components": [
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p13"
+               ],
+               "components": [
+                {
+                 "type": "textnode",
+                 "content": "© Insurance Services Office, Inc., 2011"
+                }
+               ]
+              }
+             ],
+             "classes": [
+              "gd-td22"
+             ]
+            },
+            {
+             "type": "cell",
+             "components": [
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p23"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-c20"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "CA 20 09 10 13"
+                  }
+                 ]
+                }
+               ]
+              }
+             ],
+             "classes": [
+              "gd-td24"
+             ]
+            },
+            {
+             "type": "cell",
+             "components": [
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p27"
+               ],
+               "components": []
+              }
+             ],
+             "classes": [
+              "gd-td25"
+             ]
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "tagName": "p",
+       "classes": [
+        "gd-p",
+        "gd-p1"
+       ],
+       "components": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "type": "legacy-page",
+   "tagName": "section",
+   "classes": [
+    "form-page"
+   ],
+   "components": [
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "54.15pt",
+      "top": "756.66pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif",
+      "font-weight": "bold"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "Page 2 of 2 "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "220.03pt",
+      "top": "756.66pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "© Insurance Services Office, Inc.,"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "371.38pt",
+      "top": "756.66pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "2011"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "487.08pt",
+      "top": "756.66pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif",
+      "font-weight": "bold"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "CA 20 09 10 13"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "54.15pt",
+      "top": "69.31pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif",
+      "font-weight": "bold"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "C. "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "69.15pt",
+      "top": "69.31pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif",
+      "font-weight": "bold"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "Additional Definition  "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "69.28pt",
+      "top": "84.31pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "The following is added to the "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "199.38pt",
+      "top": "84.31pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif",
+      "font-weight": "bold"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "Definitions"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "251.05pt",
+      "top": "84.31pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": " section:  "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "69.28pt",
+      "top": "99.32pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "\"Leased "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "109.66pt",
+      "top": "99.32pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "auto\" "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "136.58pt",
+      "top": "99.32pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "means "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "170.57pt",
+      "top": "99.32pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "an "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "185.67pt",
+      "top": "99.32pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "\"auto\" "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "216.17pt",
+      "top": "99.32pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "you "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "236.28pt",
+      "top": "99.32pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "lease "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "264.17pt",
+      "top": "99.32pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "or "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "277.02pt",
+      "top": "99.32pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "rent "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "69.28pt",
+      "top": "110.30pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "to "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "83.46pt",
+      "top": "110.30pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "a "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "94.86pt",
+      "top": "110.30pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "lessee "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "129.66pt",
+      "top": "110.30pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "or "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "144.39pt",
+      "top": "110.30pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "rentee, "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "181.37pt",
+      "top": "110.30pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "including "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "226.64pt",
+      "top": "110.30pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "any "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "248.62pt",
+      "top": "110.30pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "substitute, "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "69.28pt",
+      "top": "121.28pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "replacement "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "132.31pt",
+      "top": "121.28pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "or "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "149.27pt",
+      "top": "121.28pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "extra "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "179.61pt",
+      "top": "121.28pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "\"auto\" "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "214.21pt",
+      "top": "121.28pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "needed "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "255.59pt",
+      "top": "121.28pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "to "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "272.00pt",
+      "top": "121.28pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "meet "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "69.28pt",
+      "top": "132.26pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "seasonal "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "113.61pt",
+      "top": "132.26pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "or "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "126.74pt",
+      "top": "132.26pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "other "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "153.88pt",
+      "top": "132.26pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "needs, "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "188.15pt",
+      "top": "132.26pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "under "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "218.02pt",
+      "top": "132.26pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "a "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "227.86pt",
+      "top": "132.26pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "lease "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "256.02pt",
+      "top": "132.26pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "or "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "269.21pt",
+      "top": "132.26pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "rental "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "69.28pt",
+      "top": "143.30pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "agreement "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "122.20pt",
+      "top": "143.30pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "that "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "144.03pt",
+      "top": "143.30pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "requires "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "185.36pt",
+      "top": "143.30pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "the "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "204.31pt",
+      "top": "143.30pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "lessee "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "238.40pt",
+      "top": "143.30pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "or "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "252.32pt",
+      "top": "143.30pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "rentee "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "285.85pt",
+      "top": "143.30pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "to "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "69.28pt",
+      "top": "154.28pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "provide primary insurance for you.  "
+      }
+     ]
+    },
+    {
+     "tagName": "div",
+     "classes": [
+      "gd-doc",
+      "gd-sheetfoot",
+      "gd-side-odd"
+     ],
+     "style": {
+      "left": "54.15pt",
+      "right": "54.15pt",
+      "bottom": "12.2pt"
+     },
+     "components": [
+      {
+       "type": "table",
+       "classes": [
+        "gd-table",
+        "gd-t26"
+       ],
+       "components": [
+        {
+         "type": "tbody",
+         "components": [
+          {
+           "type": "row",
+           "components": [
+            {
+             "type": "cell",
+             "components": [
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p1"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-c20"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "CA 20 09 10 13"
+                  }
+                 ]
+                }
+               ]
+              }
+             ],
+             "classes": [
+              "gd-td21"
+             ]
+            },
+            {
+             "type": "cell",
+             "components": [
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p13"
+               ],
+               "components": [
+                {
+                 "type": "textnode",
+                 "content": "© Insurance Services Office, Inc., 2011"
+                }
+               ]
+              }
+             ],
+             "classes": [
+              "gd-td22"
+             ]
+            },
+            {
+             "type": "cell",
+             "components": [
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p23"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-c20"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "Page "
+                  }
+                 ]
+                },
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-c20",
+                  "gd-pageno"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "#"
+                  }
+                 ]
+                },
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-c20"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": " of "
+                  }
+                 ]
+                },
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-c20",
+                  "gd-pagecount"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "#"
+                  }
+                 ]
+                }
+               ]
+              }
+             ],
+             "classes": [
+              "gd-td24"
+             ]
+            },
+            {
+             "type": "cell",
+             "components": [
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p1"
+               ],
+               "components": []
+              }
+             ],
+             "classes": [
+              "gd-td25"
+             ]
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "tagName": "p",
+       "classes": [
+        "gd-p",
+        "gd-p1"
+       ],
+       "components": []
+      },
+      {
+       "tagName": "span",
+       "classes": [
+        "gd-pgmark"
+       ]
+      }
+     ]
+    },
+    {
+     "tagName": "div",
+     "classes": [
+      "gd-doc",
+      "gd-sheetfoot",
+      "gd-side-even"
+     ],
+     "style": {
+      "left": "54.15pt",
+      "right": "54.15pt",
+      "bottom": "12.2pt"
+     },
+     "components": [
+      {
+       "type": "table",
+       "classes": [
+        "gd-table",
+        "gd-t26"
+       ],
+       "components": [
+        {
+         "type": "tbody",
+         "components": [
+          {
+           "type": "row",
+           "components": [
+            {
+             "type": "cell",
+             "components": [
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p1"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-c20"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "Page "
+                  }
+                 ]
+                },
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-c20",
+                  "gd-pageno"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "#"
+                  }
+                 ]
+                },
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-c20"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": " of "
+                  }
+                 ]
+                },
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-c20",
+                  "gd-pagecount"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "#"
+                  }
+                 ]
+                }
+               ]
+              }
+             ],
+             "classes": [
+              "gd-td21"
+             ]
+            },
+            {
+             "type": "cell",
+             "components": [
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p13"
+               ],
+               "components": [
+                {
+                 "type": "textnode",
+                 "content": "© Insurance Services Office, Inc., 2011"
+                }
+               ]
+              }
+             ],
+             "classes": [
+              "gd-td22"
+             ]
+            },
+            {
+             "type": "cell",
+             "components": [
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p23"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-c20"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "CA 20 09 10 13"
+                  }
+                 ]
+                }
+               ]
+              }
+             ],
+             "classes": [
+              "gd-td24"
+             ]
+            },
+            {
+             "type": "cell",
+             "components": [
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p27"
+               ],
+               "components": []
+              }
+             ],
+             "classes": [
+              "gd-td25"
+             ]
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "tagName": "p",
+       "classes": [
+        "gd-p",
+        "gd-p1"
+       ],
+       "components": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "tagName": "div",
+   "classes": [
+    "gd-doc",
+    "gd-flow",
+    "gd-run"
+   ],
+   "components": [
+    {
+     "type": "conditional",
+     "tagName": "div",
+     "components": [
+      {
+       "type": "conditional",
+       "tagName": "div",
+       "components": [
+        {
+         "tagName": "table",
+         "classes": [
+          "gd-runt"
+         ],
+         "components": [
+          {
+           "tagName": "thead",
+           "components": [
+            {
+             "tagName": "tr",
+             "components": [
+              {
+               "tagName": "td",
+               "components": [
+                {
+                 "tagName": "div",
+                 "classes": [
+                  "gd-header"
+                 ],
+                 "components": [
+                  {
+                   "tagName": "div",
+                   "classes": [
+                    "gd-pagebg",
+                    "gd-bg28"
+                   ],
+                   "components": []
+                  },
+                  {
+                   "type": "text",
+                   "tagName": "p",
+                   "classes": [
+                    "gd-p",
+                    "gd-p1"
+                   ],
+                   "components": []
+                  }
+                 ]
+                },
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-pgmark",
+                  "gd-sec-0"
+                 ]
+                }
+               ]
+              }
+             ]
+            }
+           ]
+          },
+          {
+           "tagName": "tfoot",
+           "components": [
+            {
+             "tagName": "tr",
+             "components": [
+              {
+               "tagName": "td",
+               "components": [
+                {
+                 "tagName": "div",
+                 "classes": [
+                  "gd-footer",
+                  "gd-pdffoot",
+                  "gd-sec-0",
+                  "gd-fy-12.2",
+                  "gd-mb-69.15",
+                  "gd-ml-54.15",
+                  "gd-mr-54.15"
+                 ],
+                 "components": [
+                  {
+                   "type": "table",
+                   "classes": [
+                    "gd-table",
+                    "gd-t26"
+                   ],
+                   "components": [
+                    {
+                     "type": "tbody",
+                     "components": [
+                      {
+                       "type": "row",
+                       "components": [
+                        {
+                         "type": "cell",
+                         "components": [
+                          {
+                           "type": "text",
+                           "tagName": "p",
+                           "classes": [
+                            "gd-p",
+                            "gd-p1"
+                           ],
+                           "components": [
+                            {
+                             "tagName": "span",
+                             "classes": [
+                              "gd-c20"
+                             ],
+                             "components": [
+                              {
+                               "type": "textnode",
+                               "content": "CA 20 09 10 13"
+                              }
+                             ]
+                            }
+                           ]
+                          }
+                         ],
+                         "classes": [
+                          "gd-td29"
+                         ]
+                        },
+                        {
+                         "type": "cell",
+                         "components": [
+                          {
+                           "type": "text",
+                           "tagName": "p",
+                           "classes": [
+                            "gd-p",
+                            "gd-p30"
+                           ],
+                           "components": []
+                          }
+                         ],
+                         "classes": [
+                          "gd-td31"
+                         ]
+                        },
+                        {
+                         "type": "cell",
+                         "components": [
+                          {
+                           "type": "text",
+                           "tagName": "p",
+                           "classes": [
+                            "gd-p",
+                            "gd-p23"
+                           ],
+                           "components": [
+                            {
+                             "tagName": "span",
+                             "classes": [
+                              "gd-c20"
+                             ],
+                             "components": [
+                              {
+                               "type": "textnode",
+                               "content": "Page "
+                              }
+                             ]
+                            },
+                            {
+                             "tagName": "span",
+                             "classes": [
+                              "gd-c20",
+                              "gd-pageno"
+                             ],
+                             "components": [
+                              {
+                               "type": "textnode",
+                               "content": "#"
+                              }
+                             ]
+                            },
+                            {
+                             "tagName": "span",
+                             "classes": [
+                              "gd-c20"
+                             ],
+                             "components": [
+                              {
+                               "type": "textnode",
+                               "content": " of "
+                              }
+                             ]
+                            },
+                            {
+                             "tagName": "span",
+                             "classes": [
+                              "gd-c20",
+                              "gd-pagecount"
+                             ],
+                             "components": [
+                              {
+                               "type": "textnode",
+                               "content": "#"
+                              }
+                             ]
+                            }
+                           ]
+                          }
+                         ],
+                         "classes": [
+                          "gd-td32"
+                         ]
+                        },
+                        {
+                         "type": "cell",
+                         "components": [
+                          {
+                           "type": "text",
+                           "tagName": "p",
+                           "classes": [
+                            "gd-p",
+                            "gd-p1"
+                           ],
+                           "components": []
+                          }
+                         ],
+                         "classes": [
+                          "gd-td33"
+                         ]
+                        }
+                       ]
+                      }
+                     ]
+                    }
+                   ]
+                  },
+                  {
+                   "type": "text",
+                   "tagName": "p",
+                   "classes": [
+                    "gd-p",
+                    "gd-p1",
+                    "gd-keepline"
+                   ],
+                   "components": [
+                    {
+                     "type": "conditional",
+                     "tagName": "span",
+                     "components": [],
+                     "field": "Policy.usesoverflowscheduleforadditionalinsureds",
+                     "operator": "ne",
+                     "value": "true",
+                     "classes": [
+                      "gd-if"
+                     ]
+                    }
+                   ]
+                  }
+                 ]
+                },
+                {
+                 "tagName": "div",
+                 "classes": [
+                  "gd-footer",
+                  "gd-pdffoot-even",
+                  "gd-sec-0"
+                 ],
+                 "components": [
+                  {
+                   "type": "table",
+                   "classes": [
+                    "gd-table",
+                    "gd-t26"
+                   ],
+                   "components": [
+                    {
+                     "type": "tbody",
+                     "components": [
+                      {
+                       "type": "row",
+                       "components": [
+                        {
+                         "type": "cell",
+                         "components": [
+                          {
+                           "type": "text",
+                           "tagName": "p",
+                           "classes": [
+                            "gd-p",
+                            "gd-p1"
+                           ],
+                           "components": [
+                            {
+                             "tagName": "span",
+                             "classes": [
+                              "gd-c20"
+                             ],
+                             "components": [
+                              {
+                               "type": "textnode",
+                               "content": "Page "
+                              }
+                             ]
+                            },
+                            {
+                             "tagName": "span",
+                             "classes": [
+                              "gd-c20",
+                              "gd-pageno"
+                             ],
+                             "components": [
+                              {
+                               "type": "textnode",
+                               "content": "#"
+                              }
+                             ]
+                            },
+                            {
+                             "tagName": "span",
+                             "classes": [
+                              "gd-c20"
+                             ],
+                             "components": [
+                              {
+                               "type": "textnode",
+                               "content": " of "
+                              }
+                             ]
+                            },
+                            {
+                             "tagName": "span",
+                             "classes": [
+                              "gd-c20",
+                              "gd-pagecount"
+                             ],
+                             "components": [
+                              {
+                               "type": "textnode",
+                               "content": "#"
+                              }
+                             ]
+                            }
+                           ]
+                          }
+                         ],
+                         "classes": [
+                          "gd-td29"
+                         ]
+                        },
+                        {
+                         "type": "cell",
+                         "components": [
+                          {
+                           "type": "text",
+                           "tagName": "p",
+                           "classes": [
+                            "gd-p",
+                            "gd-p30"
+                           ],
+                           "components": []
+                          }
+                         ],
+                         "classes": [
+                          "gd-td31"
+                         ]
+                        },
+                        {
+                         "type": "cell",
+                         "components": [
+                          {
+                           "type": "text",
+                           "tagName": "p",
+                           "classes": [
+                            "gd-p",
+                            "gd-p23"
+                           ],
+                           "components": [
+                            {
+                             "tagName": "span",
+                             "classes": [
+                              "gd-c20"
+                             ],
+                             "components": [
+                              {
+                               "type": "textnode",
+                               "content": "CA 20 09 10 13"
+                              }
+                             ]
+                            }
+                           ]
+                          }
+                         ],
+                         "classes": [
+                          "gd-td32"
+                         ]
+                        },
+                        {
+                         "type": "cell",
+                         "components": [
+                          {
+                           "type": "text",
+                           "tagName": "p",
+                           "classes": [
+                            "gd-p",
+                            "gd-p27"
+                           ],
+                           "components": []
+                          }
+                         ],
+                         "classes": [
+                          "gd-td33"
+                         ]
+                        }
+                       ]
+                      }
+                     ]
+                    }
+                   ]
+                  },
+                  {
+                   "type": "text",
+                   "tagName": "p",
+                   "classes": [
+                    "gd-p",
+                    "gd-p1",
+                    "gd-keepline"
+                   ],
+                   "components": [
+                    {
+                     "type": "conditional",
+                     "tagName": "span",
+                     "components": [],
+                     "field": "Policy.usesoverflowscheduleforadditionalinsureds",
+                     "operator": "ne",
+                     "value": "true",
+                     "classes": [
+                      "gd-if"
+                     ]
+                    }
+                   ]
+                  }
+                 ]
+                }
+               ]
+              }
+             ]
+            }
+           ]
+          },
+          {
+           "tagName": "tbody",
+           "components": [
+            {
+             "tagName": "tr",
+             "components": [
+              {
+               "tagName": "td",
+               "components": [
+                {
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p13"
+                 ],
+                 "components": [
+                  {
+                   "tagName": "span",
+                   "classes": [
+                    "gd-c34"
+                   ],
+                   "components": [
+                    {
+                     "type": "textnode",
+                     "content": "LEASING OR RENTAL CONCERNS -"
+                    }
+                   ]
+                  }
+                 ]
+                },
+                {
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p13"
+                 ],
+                 "components": [
+                  {
+                   "tagName": "span",
+                   "classes": [
+                    "gd-c34"
+                   ],
+                   "components": [
+                    {
+                     "type": "textnode",
+                     "content": "CONTINGENT COVERAGE"
+                    }
+                   ]
+                  }
+                 ]
+                },
+                {
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p13"
+                 ],
+                 "components": []
+                },
+                {
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p13"
+                 ],
+                 "components": [
+                  {
+                   "tagName": "span",
+                   "classes": [
+                    "gd-c20"
+                   ],
+                   "components": [
+                    {
+                     "type": "textnode",
+                     "content": "SCHEDULE"
+                    }
+                   ]
+                  }
+                 ]
+                },
+                {
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p13"
+                 ],
+                 "components": []
+                },
+                {
+                 "type": "table",
+                 "classes": [
+                  "gd-table",
+                  "gd-t16"
+                 ],
+                 "components": [
+                  {
+                   "type": "tbody",
+                   "components": [
+                    {
+                     "type": "row",
+                     "classes": [
+                      "gd-grid"
+                     ],
+                     "components": [
+                      {
+                       "type": "cell",
+                       "classes": [
+                        "gd-col39"
+                       ],
+                       "components": []
+                      },
+                      {
+                       "type": "cell",
+                       "classes": [
+                        "gd-col40"
+                       ],
+                       "components": []
+                      },
+                      {
+                       "type": "cell",
+                       "classes": [
+                        "gd-col41"
+                       ],
+                       "components": []
+                      }
+                     ]
+                    }
+                   ]
+                  },
+                  {
+                   "type": "tbody",
+                   "components": [
+                    {
+                     "type": "row",
+                     "components": [
+                      {
+                       "type": "cell",
+                       "components": [
+                        {
+                         "type": "text",
+                         "tagName": "p",
+                         "classes": [
+                          "gd-p",
+                          "gd-p13"
+                         ],
+                         "components": [
+                          {
+                           "tagName": "span",
+                           "classes": [
+                            "gd-c20"
+                           ],
+                           "components": [
+                            {
+                             "type": "textnode",
+                             "content": "Schedule Number"
+                            }
+                           ]
+                          }
+                         ]
+                        }
+                       ],
+                       "classes": [
+                        "gd-td35"
+                       ]
+                      },
+                      {
+                       "type": "cell",
+                       "components": [
+                        {
+                         "type": "text",
+                         "tagName": "p",
+                         "classes": [
+                          "gd-p",
+                          "gd-p13"
+                         ],
+                         "components": [
+                          {
+                           "tagName": "span",
+                           "classes": [
+                            "gd-c20"
+                           ],
+                           "components": [
+                            {
+                             "type": "textnode",
+                             "content": "Limit Of Insurance"
+                            }
+                           ]
+                          }
+                         ]
+                        }
+                       ],
+                       "classes": [
+                        "gd-td35"
+                       ],
+                       "attributes": {
+                        "colspan": "2"
+                       }
+                      }
+                     ],
+                     "classes": [
+                      "gd-tr36"
+                     ]
+                    }
+                   ]
+                  },
+                  {
+                   "type": "repeat",
+                   "tagName": "tbody",
+                   "listPath": "CAPolicyLevelCoverages.LeasingorRentalContingentCoverage.CoverageLimits.CoverageLimits",
+                   "components": [
+                    {
+                     "type": "row",
+                     "components": [
+                      {
+                       "type": "cell",
+                       "components": [
+                        {
+                         "type": "text",
+                         "tagName": "p",
+                         "classes": [
+                          "gd-p",
+                          "gd-p13"
+                         ],
+                         "components": [
+                          {
+                           "type": "textnode",
+                           "content": "1"
+                          }
+                         ]
+                        }
+                       ],
+                       "classes": [
+                        "gd-td35"
+                       ]
+                      },
+                      {
+                       "type": "cell",
+                       "components": [
+                        {
+                         "type": "text",
+                         "tagName": "p",
+                         "classes": [
+                          "gd-p",
+                          "gd-p1"
+                         ],
+                         "components": [
+                          {
+                           "tagName": "span",
+                           "classes": [
+                            "gd-c20"
+                           ],
+                           "components": [
+                            {
+                             "type": "textnode",
+                             "content": "$"
+                            }
+                           ]
+                          }
+                         ]
+                        }
+                       ],
+                       "classes": [
+                        "gd-td37"
+                       ]
+                      },
+                      {
+                       "type": "cell",
+                       "components": [
+                        {
+                         "type": "text",
+                         "tagName": "p",
+                         "classes": [
+                          "gd-p",
+                          "gd-p1",
+                          "gd-keepline"
+                         ],
+                         "components": [
+                          {
+                           "type": "choice",
+                           "tagName": "span",
+                           "components": [
+                            {
+                             "type": "choice-branch",
+                             "tagName": "span",
+                             "components": [
+                              {
+                               "type": "data-field",
+                               "field": "CoverageLimit.Limit",
+                               "format": "number"
+                              }
+                             ],
+                             "field": "CoverageLimit.Limit",
+                             "operator": "present",
+                             "value": "",
+                             "classes": [
+                              "gd-if"
+                             ]
+                            },
+                            {
+                             "type": "choice-branch",
+                             "tagName": "span",
+                             "components": [
+                              {
+                               "type": "data-field",
+                               "field": "CoverageLimit.LimitWording",
+                               "format": ""
+                              }
+                             ],
+                             "field": "",
+                             "operator": "else",
+                             "value": "",
+                             "classes": [
+                              "gd-if"
+                             ]
+                            }
+                           ],
+                           "classes": [
+                            "gd-if"
+                           ]
+                          }
+                         ]
+                        }
+                       ],
+                       "classes": [
+                        "gd-td38"
+                       ]
+                      }
+                     ],
+                     "classes": [
+                      "gd-tr36"
+                     ]
+                    }
+                   ]
+                  }
+                 ]
+                },
+                {
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p1"
+                 ],
+                 "components": []
+                }
+               ]
+              }
+             ]
+            }
+           ]
+          }
+         ]
+        }
+       ],
+       "field": "CAPolicyLevelCoverages.LeasingorRentalContingentCoverage.CoverageLimits.size",
+       "operator": "gt",
+       "value": "1",
+       "classes": [
+        "gd-if"
+       ]
+      }
+     ],
+     "field": "Policy.datashouldshow",
+     "operator": "eq",
+     "value": "true",
+     "classes": [
+      "gd-if"
+     ]
+    }
+   ]
+  }
+ ],
+ "css": ".form-page{position:relative;width:612pt;height:792pt;overflow:hidden;background:#fff;}\n.form-page + .form-page{page-break-before:always;}\n@page gdflow{margin:54.15pt 0 69.15pt 0;}\n.gd-flow{page:gdflow;padding:0 54.15pt 0 54.15pt;}\n@page gdrun{margin:54.15pt 0 12.2pt 0;}\n.gd-flow.gd-run{page:gdrun;}\n.gd-doc table.gd-runt{width:100%;border-collapse:collapse;table-layout:fixed;}\n.gd-doc table.gd-runt>*>tr>td{padding:0;}\n.gd-doc table.gd-runt>thead>tr>td{height:0pt;vertical-align:top;}\n.gd-doc table.gd-runt>tfoot>tr>td{height:56.95pt;vertical-align:bottom;position:relative;}\n.gd-pdffoot-even{position:absolute;visibility:hidden;left:0;right:0;bottom:0;}\n.gd-doc table.gd-runt>thead>tr>td{position:relative;}\n.gd-pgmark{position:absolute;left:0;top:0;font-size:2pt;line-height:1;color:#fff;white-space:nowrap;}\n.gd-sheetfoot{position:absolute;background:#fff;}\n.gd-sheetfoot.gd-side-even{display:none;}\n.gd-foot-fixed{display:none;}\n@media print{.gd-foot-space{visibility:hidden;}.gd-foot-fixed{display:block;position:fixed;left:0;right:0;bottom:0;padding:0 54.15pt 0 54.15pt;}}\n.gd-if:empty{display:none;}\n.gd-flow:not(:has(:not(.gd-if))){display:none;}\n.form-page:not(:has(:not(.gd-if))){display:none;}\n.form-page .abs{position:absolute;white-space:pre;margin:0;padding:0;line-height:normal;}\n.form-page .rule{position:absolute;background:#000;}\n.form-page .gd-tb{white-space:normal;box-sizing:border-box;}\n.gd-doc .gd-pagebg{position:absolute;width:0;height:0;}\n.gd-doc .gd-anchor{position:relative;}\n.gd-doc .gd-anchored{position:absolute;box-sizing:border-box;}\n.gd-doc .gd-header{position:relative;}\n.gd-pagebg .abs{position:absolute;white-space:pre;margin:0;padding:0;line-height:normal;}\n.gd-pagebg .rule{position:absolute;background:#000;}\n.gd-pagebg .gd-tb{white-space:normal;box-sizing:border-box;}\n.gd-doc{font-family:'Arial',sans-serif;font-size:10pt;color:#000;line-height:1.15;}\n:where(.gd-doc) p{margin:0;}\n.gd-doc p:empty::before{content:\"\\00a0\";}\n.gd-doc p.gd-keepline{min-height:1lh;}\n.gd-doc .gd-table{border-collapse:collapse;table-layout:fixed;}\n:where(.gd-doc) td{vertical-align:top;padding:0 5.4pt;}\n.gd-doc tr.gd-grid td{height:0;padding:0;border:0;}\n.gd-doc .gd-box{margin:0 0 6pt 0;}\n.gd-doc .gd-tab{display:inline-block;width:36pt;}\n.gd-doc .gd-hang{display:inline-block;}\n.gd-doc .gd-img-missing{display:inline-block;border:1px dashed #9ca3af;color:#6b7280;font-size:7pt;}\n.gd-doc .gd-p1{line-height:1.15;}\n.gd-doc .gd-td2{padding:3.7pt 5.4pt 0pt 5.4pt;}\n.gd-doc .gd-td3{padding:3.95pt 5.4pt 0pt 5.4pt;}\n.gd-doc .gd-tr4{height:15.4pt;}\n.gd-doc .gd-td5{padding:10.5pt 5.4pt 0pt 5.4pt;}\n.gd-doc .gd-tr6{height:28.8pt;}\n.gd-doc .gd-col7{width:76.8pt;}\n.gd-doc .gd-col8{width:61.15pt;}\n.gd-doc .gd-col9{width:366.35pt;}\n.gd-doc .gd-t10{width:504.3pt;}\n.gd-doc .gd-td11{width:101.5pt;padding:0pt 5.4pt 0pt 5.4pt;}\n.gd-doc .gd-td12{width:7.7pt;padding:0pt 5.4pt 0pt 5.4pt;}\n.gd-doc .gd-p13{text-align:center;line-height:1.15;}\n.gd-doc .gd-td14{width:394.8pt;vertical-align:middle;padding:3.7pt 5.4pt 0pt 0pt;}\n.gd-doc .gd-tr15{height:25.2pt;}\n.gd-doc .gd-t16{width:504pt;}\n.gd-doc .gd-td17{width:7.85pt;padding:0pt 5.4pt 0pt 5.4pt;}\n.gd-doc .gd-td18{width:394.65pt;vertical-align:middle;padding:3.7pt 5.4pt 0pt 0pt;}\n.gd-doc .gd-tr19{height:29.55pt;}\n.gd-doc .gd-c20{font-weight:bold;}\n.gd-doc .gd-td21{width:110.05pt;vertical-align:bottom;padding:4.25pt 3.4pt 0pt 3.4pt;}\n.gd-doc .gd-td22{width:295.55pt;vertical-align:bottom;padding:4.25pt 3.4pt 0pt 3.4pt;}\n.gd-doc .gd-p23{text-align:right;line-height:1.15;}\n.gd-doc .gd-td24{width:104.4pt;vertical-align:bottom;padding:4.25pt 3.4pt 0pt 3.4pt;}\n.gd-doc .gd-td25{width:30pt;vertical-align:bottom;padding:4.25pt 3.4pt 0pt 3.4pt;}\n.gd-doc .gd-t26{width:540pt;margin-left:-3.6pt;}\n.gd-doc .gd-p27{margin-top:3pt;line-height:1.15;}\n.gd-doc .gd-bg28{left:-54.15pt;top:-54.15pt;}\n.gd-doc .gd-td29{width:110.05pt;padding:3.6pt 3.6pt 0pt 3.6pt;}\n.gd-doc .gd-p30{text-align:center;margin-top:3pt;line-height:1.15;}\n.gd-doc .gd-td31{width:295.55pt;padding:3.6pt 3.6pt 0pt 3.6pt;}\n.gd-doc .gd-td32{width:104.4pt;padding:3.6pt 3.6pt 0pt 3.6pt;}\n.gd-doc .gd-td33{width:30pt;padding:3.6pt 3.6pt 0pt 3.6pt;}\n.gd-doc .gd-c34{font-weight:bold;font-size:18pt;}\n.gd-doc .gd-td35{border-top:0.5pt solid #000;border-left:0.5pt solid #000;border-bottom:0.5pt solid #000;border-right:0.5pt solid #000;padding:3.6pt 5.5pt 0pt 5.5pt;}\n.gd-doc .gd-tr36{height:18.5pt;}\n.gd-doc .gd-td37{border-top:0.5pt solid #000;border-left:0.5pt solid #000;border-bottom:0.5pt solid #000;padding:3.6pt 5.75pt 0pt 5.5pt;}\n.gd-doc .gd-td38{border-top:0.5pt solid #000;border-bottom:0.5pt solid #000;border-right:0.5pt solid #000;padding:3.6pt 5.5pt 0pt 0pt;}\n.gd-doc .gd-col39{width:101.5pt;}\n.gd-doc .gd-col40{width:12.45pt;}\n.gd-doc .gd-col41{width:390.05pt;}",
+ "model": {
+  "Insured": {
+   "PrimaryNamedInsured": "Primary Named Insured"
+  },
+  "Policy": {
+   "PolicyNumber": "Policy Number",
+   "TransactionEffectiveDate": "2026-07-01",
+   "TransactionEffectiveDateWording": "Transaction Effective Date Wording",
+   "datashouldshow": true,
+   "usesoverflowscheduleforadditionalinsureds": true
+  },
+  "CAPolicyLevelCoverages": {
+   "LeasingorRentalContingentCoverage": {
+    "CoverageLimits": {
+     "CoverageLimits": [
+      {
+       "Limit": 2,
+       "LimitWording": "Limit Wording"
+      },
+      {
+       "Limit": 3,
+       "LimitWording": "Limit Wording 2"
+      }
+     ]
+    }
+   }
+  }
+ },
+ "report": {
+  "counts": {
+   "choose": 3,
+   "conditionals": 9,
+   "fill points": 8,
+   "form pages": 2,
+   "lists": 2,
+   "page backgrounds": 1,
+   "page-number fields": 12,
+   "paragraphs": 55,
+   "repeat": 2,
+   "rules (EMF+)": 27,
+   "show if": 4,
+   "subscriptions": 4,
+   "subscriptions expanded": 4,
+   "tables": 10,
+   "text boxes": 4,
+   "wording lines (EMF+)": 294
+  },
+  "notes": [
+   "CAPolicyLevelCoverages/LeasingorRentalContingentCoverage/CoverageLimits/Items/CoverageLimit: CoverageLimits is both a value and a group; kept the group",
+   "running footer repeats on every flowing page",
+   "running header repeats on every flowing page"
+  ]
+ }
+}

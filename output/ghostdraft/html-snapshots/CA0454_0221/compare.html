@@ -1,0 +1,51 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>CA0454_0221</title><style>
+body{font-family:Segoe UI,Arial,sans-serif;margin:16px;background:#f4f4f4;color:#222}
+a{color:#0b5cad}
+table.list{border-collapse:collapse;background:#fff}
+table.list td,table.list th{border:1px solid #ccc;padding:3px 8px;text-align:left;font-size:13px}
+tr.ok td{background:#e6f4ea}
+.nav{margin:8px 0}
+.row{display:flex;gap:10px;align-items:flex-start;margin:6px 0 18px}
+.col{background:#fff;border:1px solid #bbb;padding:4px}
+.col h3{margin:0 0 4px;font-size:13px;font-weight:600}
+.col img{display:block;width:100%;height:auto;border:1px solid #ddd}
+.empty{width:100%;aspect-ratio:8.5/11;display:flex;align-items:center;justify-content:center;color:#999;border:1px dashed #bbb}
+pre{background:#fff;border:1px solid #ccc;padding:8px;font-size:12px;overflow:auto;max-height:420px}
+label{font-size:13px;margin-right:12px}
+body.no-overlay .ov{display:none}
+</style></head>
+<body><div class="nav"><a href="../index.html">&larr; all cases</a></div>
+<h2>CA0454_0221 &mdash; different (word score 0.992)</h2>
+<label><input type="checkbox" checked onchange="document.body.classList.toggle('no-overlay', !this.checked)"> overlay
+(black = both, <span style="color:#d00">red = GhostDraft only</span>, <span style="color:#0aa">cyan = HTML only</span>)</label>
+<details><summary>Text diff (Diff.txt)</summary><pre>CA0454_0221: DIFFERENT  score 99.2%
+pages   golden 1  html 1  (pages with text)
+words   golden 381  html 381  missing 3  extra 3
+
+MISSING (in the GhostDraft golden, not in the HTML render)
+  [065462005]  &lt;=  006        1FUJA6CKX4LN065462005 FREIGHTLINER             $ 8.00                     $ 15.00
+  [PPAGE AGE]  &lt;=  CA 04 54 02 21 CA 04 54 02 21         ©© Insurance Services Office, Inc., 2020Insurance Services Office, Inc., 2020     PPage age 1  of of 1
+
+EXTRA (in the HTML render, not in the GhostDraft golden)
+  [2005]  &lt;=  006        2005 FREIGHTLINER                             8.00                      15.00
+  [06546]  &lt;=  1FUJA6CKX4LN06546
+  [PAGE]  &lt;=  CA  04 54 02 21                      © Insurance Services  Office, Inc., 2020                       Page  1 of 1  CA 04 54 02 21 © Insurance Services Office, Inc., 2020 Page 1 of 1
+
+golden   C:\src\fact-docgen\src\Moe.Commercial.Documents.Generation.Integration.Tests\TestData\Snapshots\CA0454_0221\GoldenSnapshot.txt
+template C:\src\fact-poc\output\ghostdraft\batch\CA-04-54-02-21-Washington---Auto-Lease-Gap-Coverage.json
+serverxml C:\src\fact-poc\output\ghostdraft\serverxml\CA0454_0221\ServerXml.xml
+</pre></details>
+<div class="row"><div class="col" style="flex:1"><h3>GhostDraft (TST) &mdash; page 1</h3><img src="gd-p1.png" loading="lazy"></div><div class="col" style="flex:1"><h3>HTML designer &mdash; page 1</h3><img src="html-p1.png" loading="lazy"></div><div class="col ov" style="flex:1"><h3>Overlay &mdash; 7.1% pixels differ</h3><img src="overlay-p1.png" loading="lazy"></div></div><details><summary>Page 1 layout: 8 words moved, 0 resized, 0 rules missing, 5 extra</summary><pre>moved LEASE (-2.2, +0.4)pt
+moved GAP (-2.2, +0.4)pt
+moved COVERAGE (-2.6, +0.4)pt
+moved 006 (-1.0, +11.6)pt
+moved 2005 (-2.0, +11.6)pt
+moved FREIGHTLINER (-2.0, +11.6)pt
+moved 8.00 (-0.2, +11.6)pt
+moved 15.00 (+1.3, +11.6)pt
+extra h rule at 287.6 (53.2-558.0)
+extra h rule at 366.4 (53.2-557.2)
+extra h rule at 403.1 (54.0-557.2)
+extra h rule at 417.4 (54.0-557.2)
+extra h rule at 432.4 (54.0-557.2)</pre></details><div class="row"><div class="col" style="flex:1"><h3>GhostDraft (TST) &mdash; page 2</h3><img src="gd-p2.png" loading="lazy"></div><div class="col" style="flex:1"><h3>HTML designer &mdash; page 2</h3><div class="empty">no page</div></div><div class="col ov" style="flex:1"><h3>Overlay</h3><div class="empty">page count differs</div></div></div>
+</body></html>

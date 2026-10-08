@@ -1,0 +1,45 @@
+CA9936_0221: DIFFERENT  score 98.0%
+pages   golden 7  html 8  (pages with text)
+words   golden 3048  html 3146  missing 13  extra 111
+
+MISSING (in the GhostDraft golden, not in the HTML render)
+  [PPAGE AGE]  <=  CA 99 36 02 21CA 99 36 02 21          ©© Insurance Services Office, Inc., 2020Insurance Services Office, Inc., 2020     PPage age 1  of of 7
+  [CCA]  <=  Page Page 2 of of 7                   ©© Insurance Services Office, Inc., 2020Insurance Services Office, Inc., 2020     CCA 99 36 02 21A 99 36 02 21
+  [PPAGE AGE]  <=  CA 99 36 02 21CA 99 36 02 21          ©© Insurance Services Office, Inc., 2020Insurance Services Office, Inc., 2020     PPage age 3  of of 7
+  [CCA]  <=  Page Page 4 of of 7                   ©© Insurance Services Office, Inc., 2020Insurance Services Office, Inc., 2020     CCA 99 36 02 21A 99 36 02 21
+  [PPAGE AGE]  <=  CA 99 36 02 21CA 99 36 02 21          ©© Insurance Services Office, Inc., 2020Insurance Services Office, Inc., 2020     PPage age 5  of of 7
+  [A]  <=  a.  We  will  reduce  the  amount  of  your                         number  of  hours  is  shown  in  the
+  [A]  <=  expense" loss to the extent you can return                    caused  by  or  resulting  from  a  Covered
+  [CCA]  <=  Page Page 6 of of 7                   ©© Insurance Services Office, Inc., 2020Insurance Services Office, Inc., 2020     CCA 99 36 02 21A 99 36 02 21
+  [PPAGE AGE]  <=  CA 99 36 02 21CA 99 36 02 21          ©© Insurance Services Office, Inc., 2020Insurance Services Office, Inc., 2020     PPage age 7  of of 7
+
+EXTRA (in the HTML render, not in the GhostDraft golden)
+  [8]  <=  CA  99 36 02 21                      © Insurance Services  Office, Inc., 2020                       Page  1 of 7  CA 99 36 02 21 © Insurance Services Office, Inc., 2020 Page 1 of 8
+  [L]  <=  l   Use this section of the Schedule  (Option  A) if there is only one item of scheduled  property or to
+  [L]  <=  l   A particular item of scheduled  property  may  be shown   under Option  A or Option  B of this Schedule,
+  [L]  <=  l   Use this section of the Schedule  (Option  B) when  a single Limit of Insurance  applies to the total of
+  [L]  <=  l   A particular item of scheduled  property  may  be shown   under Option  A or Option  B of this Schedule,
+  [PAGE 8]  <=  Page  2 of 7                         © Insurance Services  Office, Inc., 2020                   CA  99 36 02 21  Page 2 of 8 © Insurance Services Office, Inc., 2020 CA 99 36 02 21
+  [CA PAGE CA PAGE 8]  <=  CA  99 36 02 21                      © Insurance Services  Office, Inc., 2020                       Page  3 of 7  CA 99 36 02 21 © Insurance Services Office, Inc., 2020 Page 3 of 8
+  [PAGE CA PAGE 8 SERVICES OFFICE INC 20 CA]  <=  Page  4 of 7                         © Insurance Services  Office, Inc., 2020                   CA  99 36 02 21  Page 4 of 8 © Insurance Services Office, Inc., 2020 CA 99 36 02 21
+  [CA SERVICES OFFICE INC 20 PAGE CA 9 36 02 21 INSURANCE SERVICES OFFICE INC 20 PAGE 8]  <=  CA  99 36 02 21                      © Insurance Services  Office, Inc., 2020                       Page  5 of 7  CA 99 36 02 21 © Insurance Services Office, Inc., 2020 Page 5 of 8
+  [3]  <=  3. "Operations"  means   your  business  activities
+  [INSURANCE]  <=  by  other   insurance,   except   for
+  [INSURANCE]  <=  insurance  that is written subject to           described  in the Schedule  that are dependent
+  [4]  <=  provisions as the coverage  provided         4. "Period of restoration" means the period of time
+  [PAGE INSURANCE SERVICES OFFICE INC 20 CA 9 36 02 21 PAGE 8 INSURANCE SERVICES OFFICE INC 20 CA 9 36 02 21]  <=  Page  6 of 7                         © Insurance Services  Office, Inc., 2020                   CA  99 36 02 21  Page 6 of 8 © Insurance Services Office, Inc., 2020 CA 99 36 02 21
+  [2]  <=  (2) The    date   when    "operations"   are
+  [OF]  <=  "Period of restoration" does  not include  any
+  [5 OF]  <=  5. "Scheduled    property" means    the  items  of
+  [OF]  <=  enforcement   of   or  compliance   with   any
+  [1 OF]  <=  (1) Regulates   the  use  or  repair of  any
+  [6]  <=  6. "Suspension"     means    the   slowdown     or
+  [OF]  <=  not part of "scheduled property" prior to
+  [OF]  <=  cessation of your "operations".
+  [OR]  <=  damage;   or
+  [CA 9 36 02 21 INSURANCE SERVICES OFFICE INC 20 PAGE OF CA 9 36 02 21 INSURANCE SERVICES OFFICE INC 20 PAGE 7 OF 8]  <=  CA  99 36 02 21                      © Insurance Services  Office, Inc., 2020                       Page  7 of 7  CA 99 36 02 21 © Insurance Services Office, Inc., 2020 Page 7 of 8
+  [PAGE 8 8 CA 9 36 02 21]  <=  Page  8 of 8                                                                                    CA  99 36 02 21
+
+golden   C:\src\fact-docgen\src\Moe.Commercial.Documents.Generation.Integration.Tests\TestData\Snapshots\CA9936_0221\GoldenSnapshot.txt
+template C:\src\fact-poc\output\ghostdraft\batch\CA-99-36-02-21-Washington-Business-Interruption-Coverage.json
+serverxml C:\src\fact-poc\output\ghostdraft\serverxml\CA9936_0221\ServerXml.xml

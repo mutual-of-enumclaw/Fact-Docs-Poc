@@ -1,0 +1,11 @@
+file       C:\src\FaCT-DocProd-Documentation\3_From MOE\TBPP029_BASDAP2500_Processing_Documentation.docx
+format     docx
+pages      3
+recall     100 % of 965 original words appear in the render
+precision  97 % of 1029 rendered words come from the original
+visual     - page likeness (ink within ~4pt of the original)
+review     -
+counts     35 paragraphs, 0 headings, 19 listItems, 0 tables, 0 images, 0 fields, 0 links, 0 textBoxes, 1 pageBreaks, 1 headers, 1 footers, 1 pageNumbers, 0 placeholders
+fields     
+notes      
+missing    

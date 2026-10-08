@@ -1,0 +1,7 @@
+CA2009_1013: MATCH  score 100.0%
+pages   golden 2  html 2  (pages with text)
+words   golden 466  html 466  missing 0  extra 0
+
+golden   C:\src\fact-docgen\src\Moe.Commercial.Documents.Generation.Integration.Tests\TestData\Snapshots\CA2009_1013\GoldenSnapshot.txt
+template C:\src\fact-poc\output\ghostdraft\batch\CA-20-09-10-13-Leasing-Or-Rental-Concerns---Contingent-Coverage.json
+serverxml C:\src\fact-poc\output\ghostdraft\serverxml\CA2009_1013\ServerXml.xml

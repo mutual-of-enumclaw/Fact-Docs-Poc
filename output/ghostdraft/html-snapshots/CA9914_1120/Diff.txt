@@ -1,0 +1,7 @@
+CA9914_1120: MATCH  score 100.0%
+pages   golden 2  html 2  (pages with text)
+words   golden 374  html 374  missing 0  extra 0
+
+golden   C:\src\fact-docgen\src\Moe.Commercial.Documents.Generation.Integration.Tests\TestData\Snapshots\CA9914_1120\GoldenSnapshot.txt
+template C:\src\fact-poc\output\ghostdraft\batch\CA-99-14-11-20-Fire-Fire-And-Theft-Fire-Theft-And-Windstorm-And-.json
+serverxml C:\src\fact-poc\output\ghostdraft\serverxml\CA9914_1120\ServerXml.xml

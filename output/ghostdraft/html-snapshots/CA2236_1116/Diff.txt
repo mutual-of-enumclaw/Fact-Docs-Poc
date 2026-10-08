@@ -1,0 +1,7 @@
+CA2236_1116: MATCH  score 100.0%
+pages   golden 5  html 5  (pages with text)
+words   golden 2508  html 2508  missing 0  extra 0
+
+golden   C:\src\fact-docgen\src\Moe.Commercial.Documents.Generation.Integration.Tests\TestData\Snapshots\CA2236_1116\GoldenSnapshot.txt
+template C:\src\fact-poc\output\ghostdraft\batch\CA-22-36-11-16-Oregon-Personal-Injury-Protection.json
+serverxml C:\src\fact-poc\output\ghostdraft\serverxml\CA2236_1116\ServerXml.xml

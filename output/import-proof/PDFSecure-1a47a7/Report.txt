@@ -1,0 +1,11 @@
+file       C:\src\FaCT-DocProd-Documentation\1_From Docucorp_System\PDFSecure.pdf
+format     pdf
+pages      22
+recall     98 % of 4300 original words appear in the render
+precision  98 % of 4286 rendered words come from the original
+visual     97 % page likeness (ink within ~4pt of the original) [100 %, 100 %, 99 %, 100 %, 98 %, 97 %, 99 %, 98 %, 98 %, 96 %, 97 %, 98 %, 88 %, 98 %, 98 %, 98 %, 97 %, 97 %, 98 %, 85 %, 100 %, 99 %]
+review     -
+counts     945 texts, 0 fields, 345 shapes, 2 images, 0 skipped
+fields     
+notes      3 font(s) embedded in the PDF are used for its text.
+missing    secure files 11 skywire the also be group must to for not security installation configuring 4 choosing understanding encryption using pdfkey tool 12 function example settings tips more password page when note see called allowed remains remain pdfpassword context encryptionisfun

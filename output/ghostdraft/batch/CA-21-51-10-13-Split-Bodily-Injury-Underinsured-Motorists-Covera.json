@@ -1,0 +1,5955 @@
+{
+ "name": "CA-21-51-10-13-Split-Bodily-Injury-Underinsured-Motorists-Covera",
+ "title": "CA 21 51 10 13",
+ "source": "CA 21 51 10 13 Split Bodily Injury Underinsured Motorists Coverage Limits.gd",
+ "package": "commercial-auto-2607",
+ "components": [
+  {
+   "type": "legacy-page",
+   "tagName": "section",
+   "classes": [
+    "form-page"
+   ],
+   "components": [
+    {
+     "type": "legacy-shape",
+     "tagName": "div",
+     "classes": [
+      "rule"
+     ],
+     "style": {
+      "left": "53.53pt",
+      "top": "287.32pt",
+      "width": "0.72pt",
+      "height": "0.78pt"
+     }
+    },
+    {
+     "type": "legacy-shape",
+     "tagName": "div",
+     "classes": [
+      "rule"
+     ],
+     "style": {
+      "left": "53.53pt",
+      "top": "287.32pt",
+      "width": "86.24pt",
+      "height": "0.72pt"
+     }
+    },
+    {
+     "type": "legacy-shape",
+     "tagName": "div",
+     "classes": [
+      "rule"
+     ],
+     "style": {
+      "left": "139.77pt",
+      "top": "287.32pt",
+      "width": "419.00pt",
+      "height": "0.72pt"
+     }
+    },
+    {
+     "type": "legacy-shape",
+     "tagName": "div",
+     "classes": [
+      "rule"
+     ],
+     "style": {
+      "left": "558.77pt",
+      "top": "287.32pt",
+      "width": "0.72pt",
+      "height": "0.78pt"
+     }
+    },
+    {
+     "type": "legacy-shape",
+     "tagName": "div",
+     "classes": [
+      "rule"
+     ],
+     "style": {
+      "left": "558.77pt",
+      "top": "287.32pt",
+      "width": "0.72pt",
+      "height": "0.72pt"
+     }
+    },
+    {
+     "type": "legacy-shape",
+     "tagName": "div",
+     "classes": [
+      "rule"
+     ],
+     "style": {
+      "left": "53.53pt",
+      "top": "288.10pt",
+      "width": "0.72pt",
+      "height": "21.96pt"
+     }
+    },
+    {
+     "type": "legacy-shape",
+     "tagName": "div",
+     "classes": [
+      "rule"
+     ],
+     "style": {
+      "left": "558.77pt",
+      "top": "288.10pt",
+      "width": "0.72pt",
+      "height": "21.96pt"
+     }
+    },
+    {
+     "type": "legacy-shape",
+     "tagName": "div",
+     "classes": [
+      "rule"
+     ],
+     "style": {
+      "left": "53.53pt",
+      "top": "310.07pt",
+      "width": "0.72pt",
+      "height": "22.80pt"
+     }
+    },
+    {
+     "type": "legacy-shape",
+     "tagName": "div",
+     "classes": [
+      "rule"
+     ],
+     "style": {
+      "left": "53.53pt",
+      "top": "332.15pt",
+      "width": "145.53pt",
+      "height": "0.72pt"
+     }
+    },
+    {
+     "type": "legacy-shape",
+     "tagName": "div",
+     "classes": [
+      "rule"
+     ],
+     "style": {
+      "left": "198.34pt",
+      "top": "332.15pt",
+      "width": "0.72pt",
+      "height": "0.72pt"
+     }
+    },
+    {
+     "type": "legacy-shape",
+     "tagName": "div",
+     "classes": [
+      "rule"
+     ],
+     "style": {
+      "left": "199.06pt",
+      "top": "332.15pt",
+      "width": "359.71pt",
+      "height": "0.72pt"
+     }
+    },
+    {
+     "type": "legacy-shape",
+     "tagName": "div",
+     "classes": [
+      "rule"
+     ],
+     "style": {
+      "left": "558.77pt",
+      "top": "310.07pt",
+      "width": "0.72pt",
+      "height": "22.80pt"
+     }
+    },
+    {
+     "type": "legacy-shape",
+     "tagName": "div",
+     "classes": [
+      "rule"
+     ],
+     "style": {
+      "left": "558.77pt",
+      "top": "332.15pt",
+      "width": "0.72pt",
+      "height": "0.72pt"
+     }
+    },
+    {
+     "type": "legacy-shape",
+     "tagName": "div",
+     "classes": [
+      "rule"
+     ],
+     "style": {
+      "left": "53.59pt",
+      "top": "365.87pt",
+      "width": "0.50pt",
+      "height": "0.50pt"
+     }
+    },
+    {
+     "type": "legacy-shape",
+     "tagName": "div",
+     "classes": [
+      "rule"
+     ],
+     "style": {
+      "left": "53.59pt",
+      "top": "365.87pt",
+      "width": "504.76pt",
+      "height": "0.50pt"
+     }
+    },
+    {
+     "type": "legacy-shape",
+     "tagName": "div",
+     "classes": [
+      "rule"
+     ],
+     "style": {
+      "left": "53.59pt",
+      "top": "366.35pt",
+      "width": "0.50pt",
+      "height": "13.98pt"
+     }
+    },
+    {
+     "type": "legacy-shape",
+     "tagName": "div",
+     "classes": [
+      "rule"
+     ],
+     "style": {
+      "left": "557.63pt",
+      "top": "366.35pt",
+      "width": "0.72pt",
+      "height": "13.98pt"
+     }
+    },
+    {
+     "type": "legacy-shape",
+     "tagName": "div",
+     "classes": [
+      "rule"
+     ],
+     "style": {
+      "left": "53.59pt",
+      "top": "380.34pt",
+      "width": "300.96pt",
+      "height": "0.50pt"
+     }
+    },
+    {
+     "type": "legacy-shape",
+     "tagName": "div",
+     "classes": [
+      "rule"
+     ],
+     "style": {
+      "left": "354.55pt",
+      "top": "380.34pt",
+      "width": "203.08pt",
+      "height": "0.50pt"
+     }
+    },
+    {
+     "type": "legacy-shape",
+     "tagName": "div",
+     "classes": [
+      "rule"
+     ],
+     "style": {
+      "left": "557.63pt",
+      "top": "380.34pt",
+      "width": "0.72pt",
+      "height": "0.50pt"
+     }
+    },
+    {
+     "type": "legacy-shape",
+     "tagName": "div",
+     "classes": [
+      "rule"
+     ],
+     "style": {
+      "left": "53.59pt",
+      "top": "380.82pt",
+      "width": "0.50pt",
+      "height": "27.96pt"
+     }
+    },
+    {
+     "type": "legacy-shape",
+     "tagName": "div",
+     "classes": [
+      "rule"
+     ],
+     "style": {
+      "left": "557.63pt",
+      "top": "380.82pt",
+      "width": "0.72pt",
+      "height": "27.96pt"
+     }
+    },
+    {
+     "type": "legacy-shape",
+     "tagName": "div",
+     "classes": [
+      "rule"
+     ],
+     "style": {
+      "left": "53.59pt",
+      "top": "408.78pt",
+      "width": "300.96pt",
+      "height": "0.50pt"
+     }
+    },
+    {
+     "type": "legacy-shape",
+     "tagName": "div",
+     "classes": [
+      "rule"
+     ],
+     "style": {
+      "left": "354.55pt",
+      "top": "408.78pt",
+      "width": "203.08pt",
+      "height": "0.50pt"
+     }
+    },
+    {
+     "type": "legacy-shape",
+     "tagName": "div",
+     "classes": [
+      "rule"
+     ],
+     "style": {
+      "left": "557.63pt",
+      "top": "408.78pt",
+      "width": "0.72pt",
+      "height": "0.50pt"
+     }
+    },
+    {
+     "type": "legacy-shape",
+     "tagName": "div",
+     "classes": [
+      "rule"
+     ],
+     "style": {
+      "left": "53.59pt",
+      "top": "409.26pt",
+      "width": "0.50pt",
+      "height": "28.02pt"
+     }
+    },
+    {
+     "type": "legacy-shape",
+     "tagName": "div",
+     "classes": [
+      "rule"
+     ],
+     "style": {
+      "left": "557.63pt",
+      "top": "409.26pt",
+      "width": "0.72pt",
+      "height": "28.02pt"
+     }
+    },
+    {
+     "type": "legacy-shape",
+     "tagName": "div",
+     "classes": [
+      "rule"
+     ],
+     "style": {
+      "left": "53.59pt",
+      "top": "437.29pt",
+      "width": "0.50pt",
+      "height": "0.78pt"
+     }
+    },
+    {
+     "type": "legacy-shape",
+     "tagName": "div",
+     "classes": [
+      "rule"
+     ],
+     "style": {
+      "left": "54.07pt",
+      "top": "437.29pt",
+      "width": "300.00pt",
+      "height": "0.50pt"
+     }
+    },
+    {
+     "type": "legacy-shape",
+     "tagName": "div",
+     "classes": [
+      "rule"
+     ],
+     "style": {
+      "left": "354.07pt",
+      "top": "437.29pt",
+      "width": "203.56pt",
+      "height": "0.72pt"
+     }
+    },
+    {
+     "type": "legacy-shape",
+     "tagName": "div",
+     "classes": [
+      "rule"
+     ],
+     "style": {
+      "left": "557.63pt",
+      "top": "437.29pt",
+      "width": "0.72pt",
+      "height": "0.78pt"
+     }
+    },
+    {
+     "type": "legacy-shape",
+     "tagName": "div",
+     "classes": [
+      "rule"
+     ],
+     "style": {
+      "left": "53.59pt",
+      "top": "438.07pt",
+      "width": "0.50pt",
+      "height": "14.46pt"
+     }
+    },
+    {
+     "type": "legacy-shape",
+     "tagName": "div",
+     "classes": [
+      "rule"
+     ],
+     "style": {
+      "left": "53.59pt",
+      "top": "452.05pt",
+      "width": "504.04pt",
+      "height": "0.50pt"
+     }
+    },
+    {
+     "type": "legacy-shape",
+     "tagName": "div",
+     "classes": [
+      "rule"
+     ],
+     "style": {
+      "left": "557.63pt",
+      "top": "438.07pt",
+      "width": "0.72pt",
+      "height": "14.46pt"
+     }
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "54.15pt",
+      "top": "53.77pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "POLICY NUMBER: "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "458.21pt",
+      "top": "53.77pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif",
+      "font-weight": "bold"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "COMMERCIAL AUTO"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "488.22pt",
+      "top": "64.75pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif",
+      "font-weight": "bold"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "CA 21 51 10 13"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "80.53pt",
+      "top": "88.35pt",
+      "font-size": "12pt",
+      "font-family": "'Arial',sans-serif",
+      "font-weight": "bold"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "THIS ENDORSEMENT CHANGES THE POLICY.  PLEASE READ IT CAREFULLY. "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "54.15pt",
+      "top": "756.65pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif",
+      "font-weight": "bold"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "CA 21 51 10 13 "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "220.03pt",
+      "top": "756.65pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "© Insurance Services Office, Inc.,"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "371.38pt",
+      "top": "756.65pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "2012"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "504.30pt",
+      "top": "756.65pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif",
+      "font-weight": "bold"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "Page 1"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "539.37pt",
+      "top": "756.65pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif",
+      "font-weight": "bold"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "of 1"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "77.79pt",
+      "top": "111.42pt",
+      "font-size": "18pt",
+      "font-family": "'Arial',sans-serif",
+      "font-weight": "bold"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "SPLIT BODILY INJURY UNDERINSURED MOTORISTS  "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "222.78pt",
+      "top": "129.43pt",
+      "font-size": "18pt",
+      "font-family": "'Arial',sans-serif",
+      "font-weight": "bold"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "COVERAGE LIMITS "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "54.15pt",
+      "top": "168.09pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "This endorsement modifies insura"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "204.17pt",
+      "top": "168.09pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "nce provided under the following:  "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "69.28pt",
+      "top": "194.07pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "UNDERINSURED MOTORISTS COVERAGE "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "54.15pt",
+      "top": "224.14pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "With "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "79.24pt",
+      "top": "224.14pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "respect "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "117.11pt",
+      "top": "224.14pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "to "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "130.51pt",
+      "top": "224.14pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "coverage "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "176.61pt",
+      "top": "224.14pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "provided "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "220.03pt",
+      "top": "224.14pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "by "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "235.56pt",
+      "top": "224.14pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "this "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "256.20pt",
+      "top": "224.14pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "endorsement, "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "322.45pt",
+      "top": "224.14pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "the "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "341.35pt",
+      "top": "224.14pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "provisions "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "391.38pt",
+      "top": "224.14pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "of "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "404.77pt",
+      "top": "224.14pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "the "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "423.73pt",
+      "top": "224.14pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "Coverage "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "472.13pt",
+      "top": "224.14pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "Form "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "500.47pt",
+      "top": "224.14pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "apply "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "529.36pt",
+      "top": "224.14pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "unless "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "54.15pt",
+      "top": "235.12pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "modified by the endorsement.  "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "54.15pt",
+      "top": "250.12pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "This endorsement changes the policy "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "223.52pt",
+      "top": "250.12pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "effective on the inception d"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "343.22pt",
+      "top": "250.12pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "ate of the "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "388.28pt",
+      "top": "250.12pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "policy unless another "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "485.58pt",
+      "top": "250.12pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "date is indicated "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "54.15pt",
+      "top": "261.10pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "below. "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "57.03pt",
+      "top": "290.87pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif",
+      "font-weight": "bold"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "Named Insured: "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "57.03pt",
+      "top": "312.83pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif",
+      "font-weight": "bold"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "Endorsement Effective Date: "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "278.66pt",
+      "top": "343.61pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif",
+      "font-weight": "bold"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "SCHEDULE "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "266.84pt",
+      "top": "369.12pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif",
+      "font-weight": "bold"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "Limit Of Liability "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "57.03pt",
+      "top": "390.60pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif",
+      "font-weight": "bold"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "\"Bodily Injury\": "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "157.25pt",
+      "top": "390.60pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif",
+      "font-weight": "bold"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "$ "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "357.26pt",
+      "top": "390.60pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif",
+      "font-weight": "bold"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "Each Person "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "157.26pt",
+      "top": "419.04pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif",
+      "font-weight": "bold"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "$ "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "357.27pt",
+      "top": "419.04pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif",
+      "font-weight": "bold"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "Each \"Accident\" "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "57.03pt",
+      "top": "440.77pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "Information required to complete this Schedule, if not shown abov"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "347.21pt",
+      "top": "440.77pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "e, will be shown in the Declarations."
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "54.15pt",
+      "top": "471.31pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "Paragraph"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "104.99pt",
+      "top": "471.31pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif",
+      "font-weight": "bold"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "1."
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "117.35pt",
+      "top": "471.31pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "of "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "129.78pt",
+      "top": "471.31pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "the "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "147.77pt",
+      "top": "471.31pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif",
+      "font-weight": "bold"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "Limit "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "175.79pt",
+      "top": "471.31pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif",
+      "font-weight": "bold"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "Of "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "191.00pt",
+      "top": "471.31pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif",
+      "font-weight": "bold"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "Insurance"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "242.29pt",
+      "top": "471.31pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "provision "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "286.46pt",
+      "top": "471.31pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "in "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "54.15pt",
+      "top": "482.29pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "the "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "74.04pt",
+      "top": "482.29pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "Underinsured "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "139.98pt",
+      "top": "482.29pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "Motorists "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "186.54pt",
+      "top": "482.29pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "Coverage "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "235.78pt",
+      "top": "482.29pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "endorsement "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "54.15pt",
+      "top": "493.28pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "applicable "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "107.67pt",
+      "top": "493.28pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "to "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "124.48pt",
+      "top": "493.28pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "\"bodily "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "162.66pt",
+      "top": "493.28pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "injury\" "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "198.60pt",
+      "top": "493.28pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "is "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "214.35pt",
+      "top": "493.28pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "replaced "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "261.17pt",
+      "top": "493.28pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "by "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "280.27pt",
+      "top": "493.28pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "the "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "54.15pt",
+      "top": "504.26pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "following:  "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "54.81pt",
+      "top": "519.32pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif",
+      "font-weight": "bold"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "1. "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "69.16pt",
+      "top": "519.32pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "Regardless "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "126.35pt",
+      "top": "519.32pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "of "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "141.37pt",
+      "top": "519.32pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "the "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "161.97pt",
+      "top": "519.32pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "number "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "202.57pt",
+      "top": "519.32pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "of "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "217.59pt",
+      "top": "519.32pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "covered "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "259.86pt",
+      "top": "519.32pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "\"autos\", "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "69.16pt",
+      "top": "530.30pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "\"insureds\", "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "126.77pt",
+      "top": "530.30pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "premiums "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "180.55pt",
+      "top": "530.30pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "paid, "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "212.14pt",
+      "top": "530.30pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "claims "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "250.35pt",
+      "top": "530.30pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "made "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "285.32pt",
+      "top": "530.30pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "or "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "69.16pt",
+      "top": "541.28pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "vehicles "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "111.49pt",
+      "top": "541.28pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "involved "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "154.35pt",
+      "top": "541.28pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "in "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "168.32pt",
+      "top": "541.28pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "the "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "188.46pt",
+      "top": "541.28pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "\"accident\", "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "241.78pt",
+      "top": "541.28pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "the "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "261.89pt",
+      "top": "541.28pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "limit "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "285.87pt",
+      "top": "541.28pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "of "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "69.16pt",
+      "top": "552.26pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "insurance is as follows:  "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "69.82pt",
+      "top": "567.33pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif",
+      "font-weight": "bold"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "a. "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "84.16pt",
+      "top": "567.33pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "The "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "104.87pt",
+      "top": "567.33pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "most "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "129.93pt",
+      "top": "567.33pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "we "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "146.20pt",
+      "top": "567.33pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "will "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "163.54pt",
+      "top": "567.33pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "pay "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "183.14pt",
+      "top": "567.33pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "for "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "198.28pt",
+      "top": "567.33pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "all "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "211.75pt",
+      "top": "567.33pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "damages "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "256.37pt",
+      "top": "567.33pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "resulting "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "84.16pt",
+      "top": "578.31pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "from "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "108.34pt",
+      "top": "578.31pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "\"bodily "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "142.16pt",
+      "top": "578.31pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "injury\" "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "173.79pt",
+      "top": "578.31pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "to "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "186.28pt",
+      "top": "578.31pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "any "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "206.53pt",
+      "top": "578.31pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "one "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "227.33pt",
+      "top": "578.31pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "person "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "261.98pt",
+      "top": "578.31pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "caused "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "84.16pt",
+      "top": "589.29pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "by "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "99.54pt",
+      "top": "589.29pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "any "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "120.49pt",
+      "top": "589.29pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "one "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "142.00pt",
+      "top": "589.29pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "\"accident\", "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "193.95pt",
+      "top": "589.29pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "including "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "238.27pt",
+      "top": "589.29pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "all "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "253.09pt",
+      "top": "589.29pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "damages "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "84.16pt",
+      "top": "600.27pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "claimed by any "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "154.32pt",
+      "top": "600.27pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "person or organization "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "257.27pt",
+      "top": "600.27pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "for care, "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "84.16pt",
+      "top": "611.31pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "loss "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "107.91pt",
+      "top": "611.31pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "of "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "122.20pt",
+      "top": "611.31pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "services "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "164.83pt",
+      "top": "611.31pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "or "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "179.61pt",
+      "top": "611.31pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "death "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "210.57pt",
+      "top": "611.31pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "resulting "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "254.35pt",
+      "top": "611.31pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "from "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "280.28pt",
+      "top": "611.31pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "the "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "84.16pt",
+      "top": "622.29pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "\"bodily "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "120.15pt",
+      "top": "622.29pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "injury\", "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "156.70pt",
+      "top": "622.29pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "is "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "170.22pt",
+      "top": "622.29pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "the "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "190.44pt",
+      "top": "622.29pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "limit "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "214.44pt",
+      "top": "622.29pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "of "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "229.08pt",
+      "top": "622.29pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "\"Bodily "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "266.18pt",
+      "top": "622.29pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "Injury\" "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "84.16pt",
+      "top": "633.28pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "shown in the Schedule for each person. "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "333.33pt",
+      "top": "471.31pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif",
+      "font-weight": "bold"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "b. "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "348.21pt",
+      "top": "471.31pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "Subject "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "385.84pt",
+      "top": "471.31pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "to "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "398.51pt",
+      "top": "471.31pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "the "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "416.70pt",
+      "top": "471.31pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "limit "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "438.81pt",
+      "top": "471.31pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "for "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "454.81pt",
+      "top": "471.31pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "each "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "480.72pt",
+      "top": "471.31pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "person, "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "518.38pt",
+      "top": "471.31pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "the "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "536.57pt",
+      "top": "471.31pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "most "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "348.21pt",
+      "top": "482.29pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "we "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "367.62pt",
+      "top": "482.29pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "will "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "388.20pt",
+      "top": "482.29pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "pay "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "410.92pt",
+      "top": "482.29pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "for "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "429.28pt",
+      "top": "482.29pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "all "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "445.97pt",
+      "top": "482.29pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "damages "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "493.78pt",
+      "top": "482.29pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "resulting "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "538.32pt",
+      "top": "482.29pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "from "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "348.21pt",
+      "top": "493.27pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "\"bodily "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "381.59pt",
+      "top": "493.27pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "injury\" "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "412.67pt",
+      "top": "493.27pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "caused "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "448.55pt",
+      "top": "493.27pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "by "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "462.79pt",
+      "top": "493.27pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "any "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "482.60pt",
+      "top": "493.27pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "one "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "502.98pt",
+      "top": "493.27pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "\"accident\" "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "550.99pt",
+      "top": "493.27pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "is "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "348.21pt",
+      "top": "504.26pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "the "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "370.76pt",
+      "top": "504.26pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "limit "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "397.17pt",
+      "top": "504.26pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "of "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "414.16pt",
+      "top": "504.26pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "\"Bodily "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "453.59pt",
+      "top": "504.26pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "Injury\" "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "490.32pt",
+      "top": "504.26pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "shown "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "527.88pt",
+      "top": "504.26pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "in "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "544.31pt",
+      "top": "504.26pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "the "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "348.21pt",
+      "top": "515.30pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "Schedule for each \"accident\"."
+      }
+     ]
+    },
+    {
+     "tagName": "div",
+     "classes": [
+      "abs",
+      "gd-doc",
+      "gd-tb"
+     ],
+     "style": {
+      "left": "137.8pt",
+      "top": "50.25pt",
+      "width": "216pt",
+      "padding": "3.6pt 5.76pt 0pt 5.76pt"
+     },
+     "components": [
+      {
+       "type": "text",
+       "tagName": "p",
+       "classes": [
+        "gd-p",
+        "gd-p1"
+       ],
+       "components": [
+        {
+         "type": "data-field",
+         "field": "Policy.PolicyNumber",
+         "format": ""
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "tagName": "div",
+     "classes": [
+      "abs",
+      "gd-doc",
+      "gd-tb"
+     ],
+     "style": {
+      "left": "48pt",
+      "top": "283.65pt",
+      "width": "514.35pt",
+      "padding": "3.6pt 5.76pt 0pt 5.76pt"
+     },
+     "components": [
+      {
+       "type": "table",
+       "classes": [
+        "gd-table",
+        "gd-t9"
+       ],
+       "components": [
+        {
+         "type": "tbody",
+         "components": [
+          {
+           "type": "row",
+           "classes": [
+            "gd-grid"
+           ],
+           "components": [
+            {
+             "type": "cell",
+             "classes": [
+              "gd-col6"
+             ],
+             "components": []
+            },
+            {
+             "type": "cell",
+             "classes": [
+              "gd-col7"
+             ],
+             "components": []
+            },
+            {
+             "type": "cell",
+             "classes": [
+              "gd-col8"
+             ],
+             "components": []
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "type": "tbody",
+         "components": [
+          {
+           "type": "row",
+           "components": [
+            {
+             "type": "cell",
+             "components": [
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p1"
+               ],
+               "components": []
+              }
+             ],
+             "classes": [
+              "gd-td2"
+             ]
+            },
+            {
+             "type": "cell",
+             "components": [
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p1"
+               ],
+               "components": [
+                {
+                 "type": "data-field",
+                 "field": "Insured.PrimaryNamedInsured",
+                 "format": ""
+                }
+               ]
+              }
+             ],
+             "classes": [
+              "gd-td2"
+             ],
+             "attributes": {
+              "colspan": "2"
+             }
+            }
+           ],
+           "classes": [
+            "gd-tr3"
+           ]
+          },
+          {
+           "type": "row",
+           "components": [
+            {
+             "type": "cell",
+             "components": [
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p1"
+               ],
+               "components": []
+              }
+             ],
+             "classes": [
+              "gd-td2"
+             ],
+             "attributes": {
+              "colspan": "2"
+             }
+            },
+            {
+             "type": "cell",
+             "components": [
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p1",
+                "gd-keepline"
+               ],
+               "components": [
+                {
+                 "type": "choice",
+                 "tagName": "span",
+                 "components": [
+                  {
+                   "type": "choice-branch",
+                   "tagName": "span",
+                   "components": [
+                    {
+                     "type": "data-field",
+                     "field": "Policy.TransactionEffectiveDate",
+                     "format": "shortdate"
+                    }
+                   ],
+                   "field": "Policy.TransactionEffectiveDate",
+                   "operator": "present",
+                   "value": "",
+                   "classes": [
+                    "gd-if"
+                   ]
+                  },
+                  {
+                   "type": "choice-branch",
+                   "tagName": "span",
+                   "components": [
+                    {
+                     "type": "data-field",
+                     "field": "Policy.TransactionEffectiveDateWording",
+                     "format": ""
+                    }
+                   ],
+                   "field": "",
+                   "operator": "else",
+                   "value": "",
+                   "classes": [
+                    "gd-if"
+                   ]
+                  }
+                 ],
+                 "classes": [
+                  "gd-if"
+                 ]
+                }
+               ]
+              }
+             ],
+             "classes": [
+              "gd-td4"
+             ]
+            }
+           ],
+           "classes": [
+            "gd-tr5"
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "tagName": "p",
+       "classes": [
+        "gd-p",
+        "gd-p1"
+       ],
+       "components": []
+      }
+     ]
+    },
+    {
+     "type": "conditional",
+     "tagName": "div",
+     "components": [
+      {
+       "tagName": "div",
+       "classes": [
+        "abs",
+        "gd-doc",
+        "gd-tb"
+       ],
+       "style": {
+        "left": "48pt",
+        "top": "376.3pt",
+        "width": "514.35pt",
+        "padding": "3.6pt 5.76pt 0pt 5.76pt"
+       },
+       "components": [
+        {
+         "type": "table",
+         "classes": [
+          "gd-table"
+         ],
+         "components": [
+          {
+           "type": "conditional",
+           "tagName": "tbody",
+           "components": [
+            {
+             "type": "row",
+             "components": [
+              {
+               "type": "cell",
+               "components": [],
+               "classes": [
+                "gd-td10"
+               ]
+              },
+              {
+               "type": "cell",
+               "components": [
+                {
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p1"
+                 ],
+                 "components": []
+                }
+               ],
+               "classes": [
+                "gd-td11"
+               ]
+              },
+              {
+               "type": "cell",
+               "components": [
+                {
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p12"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "See Attached Schedule"
+                  }
+                 ]
+                }
+               ],
+               "classes": [
+                "gd-td13"
+               ]
+              },
+              {
+               "type": "cell",
+               "components": [
+                {
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p1"
+                 ],
+                 "components": []
+                }
+               ],
+               "classes": [
+                "gd-td14"
+               ]
+              }
+             ],
+             "classes": [
+              "gd-tr15"
+             ]
+            },
+            {
+             "type": "row",
+             "components": [
+              {
+               "type": "cell",
+               "components": [
+                {
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p1"
+                 ],
+                 "components": []
+                }
+               ],
+               "classes": [
+                "gd-td10"
+               ]
+              },
+              {
+               "type": "cell",
+               "components": [
+                {
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p1"
+                 ],
+                 "components": []
+                }
+               ],
+               "classes": [
+                "gd-td11"
+               ]
+              },
+              {
+               "type": "cell",
+               "components": [
+                {
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p1"
+                 ],
+                 "components": []
+                }
+               ],
+               "classes": [
+                "gd-td13"
+               ]
+              },
+              {
+               "type": "cell",
+               "components": [
+                {
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p1"
+                 ],
+                 "components": []
+                }
+               ],
+               "classes": [
+                "gd-td14"
+               ]
+              }
+             ],
+             "classes": [
+              "gd-tr16"
+             ]
+            }
+           ],
+           "field": "CAJurisdictionLevelCoverages.Jurisdictions.size",
+           "operator": "gt",
+           "value": "1",
+           "classes": [
+            "gd-if"
+           ]
+          },
+          {
+           "type": "repeat",
+           "tagName": "tbody",
+           "listPath": "CAJurisdictionLevelCoverages.Jurisdictions",
+           "components": [
+            {
+             "type": "row",
+             "components": [
+              {
+               "type": "cell",
+               "components": [],
+               "classes": [
+                "gd-td10"
+               ]
+              },
+              {
+               "type": "cell",
+               "components": [
+                {
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p1"
+                 ],
+                 "components": []
+                }
+               ],
+               "classes": [
+                "gd-td11"
+               ]
+              },
+              {
+               "type": "cell",
+               "components": [
+                {
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p1",
+                  "gd-keepline"
+                 ],
+                 "components": [
+                  {
+                   "type": "choice",
+                   "tagName": "span",
+                   "components": [
+                    {
+                     "type": "choice-branch",
+                     "tagName": "span",
+                     "components": [
+                      {
+                       "type": "data-field",
+                       "field": "Jurisdiction.UnderinsuredMotoristsCoverage.SplitBodilyInjuryLimits.LimitperPerson",
+                       "format": "number"
+                      }
+                     ],
+                     "field": "Jurisdiction.UnderinsuredMotoristsCoverage.SplitBodilyInjuryLimits.LimitperPerson",
+                     "operator": "present",
+                     "value": "",
+                     "classes": [
+                      "gd-if"
+                     ]
+                    },
+                    {
+                     "type": "choice-branch",
+                     "tagName": "span",
+                     "components": [
+                      {
+                       "type": "data-field",
+                       "field": "Jurisdiction.UnderinsuredMotoristsCoverage.SplitBodilyInjuryLimits.LimitperPersonWording",
+                       "format": ""
+                      }
+                     ],
+                     "field": "",
+                     "operator": "else",
+                     "value": "",
+                     "classes": [
+                      "gd-if"
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-if"
+                   ]
+                  }
+                 ]
+                }
+               ],
+               "classes": [
+                "gd-td13"
+               ]
+              },
+              {
+               "type": "cell",
+               "components": [
+                {
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p1"
+                 ],
+                 "components": []
+                }
+               ],
+               "classes": [
+                "gd-td14"
+               ]
+              }
+             ],
+             "classes": [
+              "gd-tr17"
+             ]
+            },
+            {
+             "type": "row",
+             "components": [
+              {
+               "type": "cell",
+               "components": [
+                {
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p1"
+                 ],
+                 "components": []
+                }
+               ],
+               "classes": [
+                "gd-td10"
+               ]
+              },
+              {
+               "type": "cell",
+               "components": [
+                {
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p1"
+                 ],
+                 "components": []
+                }
+               ],
+               "classes": [
+                "gd-td11"
+               ]
+              },
+              {
+               "type": "cell",
+               "components": [
+                {
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p1",
+                  "gd-keepline"
+                 ],
+                 "components": [
+                  {
+                   "type": "choice",
+                   "tagName": "span",
+                   "components": [
+                    {
+                     "type": "choice-branch",
+                     "tagName": "span",
+                     "components": [
+                      {
+                       "type": "data-field",
+                       "field": "Jurisdiction.UnderinsuredMotoristsCoverage.SplitBodilyInjuryLimits.LimitperAccident",
+                       "format": "number"
+                      }
+                     ],
+                     "field": "Jurisdiction.UnderinsuredMotoristsCoverage.SplitBodilyInjuryLimits.LimitperAccident",
+                     "operator": "present",
+                     "value": "",
+                     "classes": [
+                      "gd-if"
+                     ]
+                    },
+                    {
+                     "type": "choice-branch",
+                     "tagName": "span",
+                     "components": [
+                      {
+                       "type": "data-field",
+                       "field": "Jurisdiction.UnderinsuredMotoristsCoverage.SplitBodilyInjuryLimits.LimitperAccidentWording",
+                       "format": ""
+                      }
+                     ],
+                     "field": "",
+                     "operator": "else",
+                     "value": "",
+                     "classes": [
+                      "gd-if"
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-if"
+                   ]
+                  }
+                 ]
+                }
+               ],
+               "classes": [
+                "gd-td13"
+               ]
+              },
+              {
+               "type": "cell",
+               "components": [
+                {
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p1"
+                 ],
+                 "components": []
+                }
+               ],
+               "classes": [
+                "gd-td14"
+               ]
+              }
+             ],
+             "classes": [
+              "gd-tr16"
+             ]
+            }
+           ],
+           "itemField": "Jurisdiction.JurisdictionswithSplitBodilyInjuryUnderinsuredMotoristsCoverage",
+           "itemOperator": "eq",
+           "itemValue": "true",
+           "field": "CAJurisdictionLevelCoverages.Jurisdictions.size",
+           "operator": "lt",
+           "value": "2"
+          }
+         ]
+        },
+        {
+         "type": "text",
+         "tagName": "p",
+         "classes": [
+          "gd-p",
+          "gd-p1"
+         ],
+         "components": []
+        }
+       ]
+      }
+     ],
+     "field": "Policy.datashouldshow",
+     "operator": "eq",
+     "value": "true",
+     "classes": [
+      "gd-if"
+     ]
+    },
+    {
+     "tagName": "div",
+     "classes": [
+      "gd-doc",
+      "gd-sheetfoot",
+      "gd-side-odd"
+     ],
+     "style": {
+      "left": "54.15pt",
+      "right": "54.15pt",
+      "bottom": "12.2pt"
+     },
+     "components": [
+      {
+       "type": "table",
+       "classes": [
+        "gd-table",
+        "gd-t24"
+       ],
+       "components": [
+        {
+         "type": "tbody",
+         "components": [
+          {
+           "type": "row",
+           "components": [
+            {
+             "type": "cell",
+             "components": [
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p1"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-c18"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "CA 21 51 10 13"
+                  }
+                 ]
+                }
+               ]
+              }
+             ],
+             "classes": [
+              "gd-td19"
+             ]
+            },
+            {
+             "type": "cell",
+             "components": [
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p12"
+               ],
+               "components": [
+                {
+                 "type": "textnode",
+                 "content": "© Insurance Services Office, Inc., 2012"
+                }
+               ]
+              }
+             ],
+             "classes": [
+              "gd-td20"
+             ]
+            },
+            {
+             "type": "cell",
+             "components": [
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p21"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-c18"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "Page "
+                  }
+                 ]
+                },
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-c18",
+                  "gd-pageno"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "#"
+                  }
+                 ]
+                },
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-c18"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": " of "
+                  }
+                 ]
+                },
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-c18",
+                  "gd-pagecount"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "#"
+                  }
+                 ]
+                }
+               ]
+              }
+             ],
+             "classes": [
+              "gd-td22"
+             ]
+            },
+            {
+             "type": "cell",
+             "components": [
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p1"
+               ],
+               "components": []
+              }
+             ],
+             "classes": [
+              "gd-td23"
+             ]
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "tagName": "p",
+       "classes": [
+        "gd-p",
+        "gd-p1"
+       ],
+       "components": []
+      },
+      {
+       "tagName": "span",
+       "classes": [
+        "gd-pgmark"
+       ]
+      }
+     ]
+    },
+    {
+     "tagName": "div",
+     "classes": [
+      "gd-doc",
+      "gd-sheetfoot",
+      "gd-side-even"
+     ],
+     "style": {
+      "left": "54.15pt",
+      "right": "54.15pt",
+      "bottom": "12.2pt"
+     },
+     "components": [
+      {
+       "type": "table",
+       "classes": [
+        "gd-table",
+        "gd-t24"
+       ],
+       "components": [
+        {
+         "type": "tbody",
+         "components": [
+          {
+           "type": "row",
+           "components": [
+            {
+             "type": "cell",
+             "components": [
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p1"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-c18"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "Page "
+                  }
+                 ]
+                },
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-c18",
+                  "gd-pageno"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "#"
+                  }
+                 ]
+                },
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-c18"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": " of "
+                  }
+                 ]
+                },
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-c18",
+                  "gd-pagecount"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "#"
+                  }
+                 ]
+                }
+               ]
+              }
+             ],
+             "classes": [
+              "gd-td19"
+             ]
+            },
+            {
+             "type": "cell",
+             "components": [
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p12"
+               ],
+               "components": [
+                {
+                 "type": "textnode",
+                 "content": "© Insurance Services Office, Inc., 2012"
+                }
+               ]
+              }
+             ],
+             "classes": [
+              "gd-td20"
+             ]
+            },
+            {
+             "type": "cell",
+             "components": [
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p21"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-c18"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "CA 21 51 10 13"
+                  }
+                 ]
+                }
+               ]
+              }
+             ],
+             "classes": [
+              "gd-td22"
+             ]
+            },
+            {
+             "type": "cell",
+             "components": [
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p25"
+               ],
+               "components": []
+              }
+             ],
+             "classes": [
+              "gd-td23"
+             ]
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "tagName": "p",
+       "classes": [
+        "gd-p",
+        "gd-p1"
+       ],
+       "components": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "tagName": "div",
+   "classes": [
+    "gd-doc",
+    "gd-flow",
+    "gd-run"
+   ],
+   "components": [
+    {
+     "type": "conditional",
+     "tagName": "div",
+     "components": [
+      {
+       "type": "conditional",
+       "tagName": "div",
+       "components": [
+        {
+         "tagName": "table",
+         "classes": [
+          "gd-runt"
+         ],
+         "components": [
+          {
+           "tagName": "thead",
+           "components": [
+            {
+             "tagName": "tr",
+             "components": [
+              {
+               "tagName": "td",
+               "components": [
+                {
+                 "tagName": "div",
+                 "classes": [
+                  "gd-header"
+                 ],
+                 "components": [
+                  {
+                   "tagName": "div",
+                   "classes": [
+                    "gd-pagebg",
+                    "gd-bg26"
+                   ],
+                   "components": []
+                  },
+                  {
+                   "type": "text",
+                   "tagName": "p",
+                   "classes": [
+                    "gd-p",
+                    "gd-p1"
+                   ],
+                   "components": []
+                  }
+                 ]
+                },
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-pgmark",
+                  "gd-sec-0"
+                 ]
+                }
+               ]
+              }
+             ]
+            }
+           ]
+          },
+          {
+           "tagName": "tfoot",
+           "components": [
+            {
+             "tagName": "tr",
+             "components": [
+              {
+               "tagName": "td",
+               "components": [
+                {
+                 "tagName": "div",
+                 "classes": [
+                  "gd-footer",
+                  "gd-pdffoot",
+                  "gd-sec-0",
+                  "gd-fy-12.2",
+                  "gd-mb-69.15",
+                  "gd-ml-54.15",
+                  "gd-mr-54.15"
+                 ],
+                 "components": [
+                  {
+                   "type": "table",
+                   "classes": [
+                    "gd-table",
+                    "gd-t24"
+                   ],
+                   "components": [
+                    {
+                     "type": "tbody",
+                     "components": [
+                      {
+                       "type": "row",
+                       "components": [
+                        {
+                         "type": "cell",
+                         "components": [
+                          {
+                           "type": "text",
+                           "tagName": "p",
+                           "classes": [
+                            "gd-p",
+                            "gd-p1"
+                           ],
+                           "components": [
+                            {
+                             "tagName": "span",
+                             "classes": [
+                              "gd-c18"
+                             ],
+                             "components": [
+                              {
+                               "type": "textnode",
+                               "content": "CA 21 51 10 13"
+                              }
+                             ]
+                            }
+                           ]
+                          }
+                         ],
+                         "classes": [
+                          "gd-td27"
+                         ]
+                        },
+                        {
+                         "type": "cell",
+                         "components": [
+                          {
+                           "type": "text",
+                           "tagName": "p",
+                           "classes": [
+                            "gd-p",
+                            "gd-p28"
+                           ],
+                           "components": []
+                          }
+                         ],
+                         "classes": [
+                          "gd-td29"
+                         ]
+                        },
+                        {
+                         "type": "cell",
+                         "components": [
+                          {
+                           "type": "text",
+                           "tagName": "p",
+                           "classes": [
+                            "gd-p",
+                            "gd-p21"
+                           ],
+                           "components": [
+                            {
+                             "tagName": "span",
+                             "classes": [
+                              "gd-c18"
+                             ],
+                             "components": [
+                              {
+                               "type": "textnode",
+                               "content": "Page "
+                              }
+                             ]
+                            },
+                            {
+                             "tagName": "span",
+                             "classes": [
+                              "gd-c18",
+                              "gd-pageno"
+                             ],
+                             "components": [
+                              {
+                               "type": "textnode",
+                               "content": "#"
+                              }
+                             ]
+                            },
+                            {
+                             "tagName": "span",
+                             "classes": [
+                              "gd-c18"
+                             ],
+                             "components": [
+                              {
+                               "type": "textnode",
+                               "content": " of "
+                              }
+                             ]
+                            },
+                            {
+                             "tagName": "span",
+                             "classes": [
+                              "gd-c18",
+                              "gd-pagecount"
+                             ],
+                             "components": [
+                              {
+                               "type": "textnode",
+                               "content": "#"
+                              }
+                             ]
+                            }
+                           ]
+                          }
+                         ],
+                         "classes": [
+                          "gd-td30"
+                         ]
+                        },
+                        {
+                         "type": "cell",
+                         "components": [
+                          {
+                           "type": "text",
+                           "tagName": "p",
+                           "classes": [
+                            "gd-p",
+                            "gd-p1"
+                           ],
+                           "components": []
+                          }
+                         ],
+                         "classes": [
+                          "gd-td31"
+                         ]
+                        }
+                       ]
+                      }
+                     ]
+                    }
+                   ]
+                  },
+                  {
+                   "type": "text",
+                   "tagName": "p",
+                   "classes": [
+                    "gd-p",
+                    "gd-p1",
+                    "gd-keepline"
+                   ],
+                   "components": [
+                    {
+                     "type": "conditional",
+                     "tagName": "span",
+                     "components": [],
+                     "field": "Policy.usesoverflowscheduleforadditionalinsureds",
+                     "operator": "ne",
+                     "value": "true",
+                     "classes": [
+                      "gd-if"
+                     ]
+                    }
+                   ]
+                  }
+                 ]
+                },
+                {
+                 "tagName": "div",
+                 "classes": [
+                  "gd-footer",
+                  "gd-pdffoot-even",
+                  "gd-sec-0"
+                 ],
+                 "components": [
+                  {
+                   "type": "table",
+                   "classes": [
+                    "gd-table",
+                    "gd-t24"
+                   ],
+                   "components": [
+                    {
+                     "type": "tbody",
+                     "components": [
+                      {
+                       "type": "row",
+                       "components": [
+                        {
+                         "type": "cell",
+                         "components": [
+                          {
+                           "type": "text",
+                           "tagName": "p",
+                           "classes": [
+                            "gd-p",
+                            "gd-p1"
+                           ],
+                           "components": [
+                            {
+                             "tagName": "span",
+                             "classes": [
+                              "gd-c18"
+                             ],
+                             "components": [
+                              {
+                               "type": "textnode",
+                               "content": "Page "
+                              }
+                             ]
+                            },
+                            {
+                             "tagName": "span",
+                             "classes": [
+                              "gd-c18",
+                              "gd-pageno"
+                             ],
+                             "components": [
+                              {
+                               "type": "textnode",
+                               "content": "#"
+                              }
+                             ]
+                            },
+                            {
+                             "tagName": "span",
+                             "classes": [
+                              "gd-c18"
+                             ],
+                             "components": [
+                              {
+                               "type": "textnode",
+                               "content": " of "
+                              }
+                             ]
+                            },
+                            {
+                             "tagName": "span",
+                             "classes": [
+                              "gd-c18",
+                              "gd-pagecount"
+                             ],
+                             "components": [
+                              {
+                               "type": "textnode",
+                               "content": "#"
+                              }
+                             ]
+                            }
+                           ]
+                          }
+                         ],
+                         "classes": [
+                          "gd-td27"
+                         ]
+                        },
+                        {
+                         "type": "cell",
+                         "components": [
+                          {
+                           "type": "text",
+                           "tagName": "p",
+                           "classes": [
+                            "gd-p",
+                            "gd-p28"
+                           ],
+                           "components": []
+                          }
+                         ],
+                         "classes": [
+                          "gd-td29"
+                         ]
+                        },
+                        {
+                         "type": "cell",
+                         "components": [
+                          {
+                           "type": "text",
+                           "tagName": "p",
+                           "classes": [
+                            "gd-p",
+                            "gd-p21"
+                           ],
+                           "components": [
+                            {
+                             "tagName": "span",
+                             "classes": [
+                              "gd-c18"
+                             ],
+                             "components": [
+                              {
+                               "type": "textnode",
+                               "content": "CA 21 51 10 13"
+                              }
+                             ]
+                            }
+                           ]
+                          }
+                         ],
+                         "classes": [
+                          "gd-td30"
+                         ]
+                        },
+                        {
+                         "type": "cell",
+                         "components": [
+                          {
+                           "type": "text",
+                           "tagName": "p",
+                           "classes": [
+                            "gd-p",
+                            "gd-p25"
+                           ],
+                           "components": []
+                          }
+                         ],
+                         "classes": [
+                          "gd-td31"
+                         ]
+                        }
+                       ]
+                      }
+                     ]
+                    }
+                   ]
+                  },
+                  {
+                   "type": "text",
+                   "tagName": "p",
+                   "classes": [
+                    "gd-p",
+                    "gd-p1",
+                    "gd-keepline"
+                   ],
+                   "components": [
+                    {
+                     "type": "conditional",
+                     "tagName": "span",
+                     "components": [],
+                     "field": "Policy.usesoverflowscheduleforadditionalinsureds",
+                     "operator": "ne",
+                     "value": "true",
+                     "classes": [
+                      "gd-if"
+                     ]
+                    }
+                   ]
+                  }
+                 ]
+                }
+               ]
+              }
+             ]
+            }
+           ]
+          },
+          {
+           "tagName": "tbody",
+           "components": [
+            {
+             "tagName": "tr",
+             "components": [
+              {
+               "tagName": "td",
+               "components": [
+                {
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p12"
+                 ],
+                 "components": [
+                  {
+                   "tagName": "span",
+                   "classes": [
+                    "gd-c32"
+                   ],
+                   "components": [
+                    {
+                     "type": "textnode",
+                     "content": "SPLIT BODILY INJURY UNDERINSURED MOTORISTS"
+                    }
+                   ]
+                  }
+                 ]
+                },
+                {
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p12"
+                 ],
+                 "components": [
+                  {
+                   "tagName": "span",
+                   "classes": [
+                    "gd-c32"
+                   ],
+                   "components": [
+                    {
+                     "type": "textnode",
+                     "content": "COVERAGE LIMITS"
+                    }
+                   ]
+                  }
+                 ]
+                },
+                {
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p12"
+                 ],
+                 "components": []
+                },
+                {
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p12"
+                 ],
+                 "components": [
+                  {
+                   "tagName": "span",
+                   "classes": [
+                    "gd-c18"
+                   ],
+                   "components": [
+                    {
+                     "type": "textnode",
+                     "content": "SCHEDULE"
+                    }
+                   ]
+                  }
+                 ]
+                },
+                {
+                 "type": "repeat",
+                 "tagName": "div",
+                 "listPath": "CAJurisdictionLevelCoverages.Jurisdictions",
+                 "components": [
+                  {
+                   "type": "conditional",
+                   "tagName": "div",
+                   "components": [
+                    {
+                     "type": "table",
+                     "classes": [
+                      "gd-table",
+                      "gd-t47"
+                     ],
+                     "components": [
+                      {
+                       "type": "tbody",
+                       "components": [
+                        {
+                         "type": "row",
+                         "classes": [
+                          "gd-grid"
+                         ],
+                         "components": [
+                          {
+                           "type": "cell",
+                           "classes": [
+                            "gd-col43"
+                           ],
+                           "components": []
+                          },
+                          {
+                           "type": "cell",
+                           "classes": [
+                            "gd-col44"
+                           ],
+                           "components": []
+                          },
+                          {
+                           "type": "cell",
+                           "classes": [
+                            "gd-col45"
+                           ],
+                           "components": []
+                          },
+                          {
+                           "type": "cell",
+                           "classes": [
+                            "gd-col46"
+                           ],
+                           "components": []
+                          }
+                         ]
+                        }
+                       ]
+                      },
+                      {
+                       "type": "tbody",
+                       "components": [
+                        {
+                         "type": "row",
+                         "components": [
+                          {
+                           "type": "cell",
+                           "components": [
+                            {
+                             "type": "text",
+                             "tagName": "p",
+                             "classes": [
+                              "gd-p",
+                              "gd-p33"
+                             ],
+                             "components": [
+                              {
+                               "tagName": "span",
+                               "classes": [
+                                "gd-c18"
+                               ],
+                               "components": [
+                                {
+                                 "type": "textnode",
+                                 "content": "Limit Of Liability"
+                                }
+                               ]
+                              }
+                             ]
+                            }
+                           ],
+                           "classes": [
+                            "gd-td34"
+                           ],
+                           "attributes": {
+                            "colspan": "4"
+                           }
+                          }
+                         ],
+                         "classes": [
+                          "gd-tr35"
+                         ]
+                        },
+                        {
+                         "type": "row",
+                         "components": [
+                          {
+                           "type": "cell",
+                           "components": [
+                            {
+                             "type": "text",
+                             "tagName": "p",
+                             "classes": [
+                              "gd-p",
+                              "gd-p36"
+                             ],
+                             "components": [
+                              {
+                               "tagName": "span",
+                               "classes": [
+                                "gd-c18"
+                               ],
+                               "components": [
+                                {
+                                 "type": "textnode",
+                                 "content": "\"Bodily Injury\":"
+                                }
+                               ]
+                              }
+                             ]
+                            }
+                           ],
+                           "classes": [
+                            "gd-td37"
+                           ]
+                          },
+                          {
+                           "type": "cell",
+                           "components": [
+                            {
+                             "type": "text",
+                             "tagName": "p",
+                             "classes": [
+                              "gd-p",
+                              "gd-p36"
+                             ],
+                             "components": [
+                              {
+                               "tagName": "span",
+                               "classes": [
+                                "gd-c18"
+                               ],
+                               "components": [
+                                {
+                                 "type": "textnode",
+                                 "content": "$"
+                                }
+                               ]
+                              }
+                             ]
+                            }
+                           ],
+                           "classes": [
+                            "gd-td38"
+                           ]
+                          },
+                          {
+                           "type": "cell",
+                           "components": [
+                            {
+                             "type": "text",
+                             "tagName": "p",
+                             "classes": [
+                              "gd-p",
+                              "gd-p36",
+                              "gd-keepline"
+                             ],
+                             "components": [
+                              {
+                               "type": "choice",
+                               "tagName": "span",
+                               "components": [
+                                {
+                                 "type": "choice-branch",
+                                 "tagName": "span",
+                                 "components": [
+                                  {
+                                   "type": "data-field",
+                                   "field": "Jurisdiction.UnderinsuredMotoristsCoverage.SplitBodilyInjuryLimits.LimitperPerson",
+                                   "format": "number"
+                                  }
+                                 ],
+                                 "field": "Jurisdiction.UnderinsuredMotoristsCoverage.SplitBodilyInjuryLimits.LimitperPerson",
+                                 "operator": "present",
+                                 "value": "",
+                                 "classes": [
+                                  "gd-if"
+                                 ]
+                                },
+                                {
+                                 "type": "choice-branch",
+                                 "tagName": "span",
+                                 "components": [
+                                  {
+                                   "type": "data-field",
+                                   "field": "Jurisdiction.UnderinsuredMotoristsCoverage.SplitBodilyInjuryLimits.LimitperPersonWording",
+                                   "format": ""
+                                  }
+                                 ],
+                                 "field": "",
+                                 "operator": "else",
+                                 "value": "",
+                                 "classes": [
+                                  "gd-if"
+                                 ]
+                                }
+                               ],
+                               "classes": [
+                                "gd-if"
+                               ]
+                              }
+                             ]
+                            }
+                           ],
+                           "classes": [
+                            "gd-td39"
+                           ]
+                          },
+                          {
+                           "type": "cell",
+                           "components": [
+                            {
+                             "type": "text",
+                             "tagName": "p",
+                             "classes": [
+                              "gd-p",
+                              "gd-p36"
+                             ],
+                             "components": [
+                              {
+                               "tagName": "span",
+                               "classes": [
+                                "gd-c18"
+                               ],
+                               "components": [
+                                {
+                                 "type": "textnode",
+                                 "content": "Each Person"
+                                }
+                               ]
+                              }
+                             ]
+                            }
+                           ],
+                           "classes": [
+                            "gd-td40"
+                           ]
+                          }
+                         ],
+                         "classes": [
+                          "gd-tr41"
+                         ]
+                        },
+                        {
+                         "type": "row",
+                         "components": [
+                          {
+                           "type": "cell",
+                           "components": [
+                            {
+                             "type": "text",
+                             "tagName": "p",
+                             "classes": [
+                              "gd-p",
+                              "gd-p33"
+                             ],
+                             "components": []
+                            }
+                           ],
+                           "classes": [
+                            "gd-td42"
+                           ],
+                           "attributes": {
+                            "colspan": "4"
+                           }
+                          }
+                         ],
+                         "classes": [
+                          "gd-tr41"
+                         ]
+                        },
+                        {
+                         "type": "row",
+                         "components": [
+                          {
+                           "type": "cell",
+                           "components": [
+                            {
+                             "type": "text",
+                             "tagName": "p",
+                             "classes": [
+                              "gd-p",
+                              "gd-p36"
+                             ],
+                             "components": []
+                            }
+                           ],
+                           "classes": [
+                            "gd-td37"
+                           ]
+                          },
+                          {
+                           "type": "cell",
+                           "components": [
+                            {
+                             "type": "text",
+                             "tagName": "p",
+                             "classes": [
+                              "gd-p",
+                              "gd-p36"
+                             ],
+                             "components": [
+                              {
+                               "tagName": "span",
+                               "classes": [
+                                "gd-c18"
+                               ],
+                               "components": [
+                                {
+                                 "type": "textnode",
+                                 "content": "$"
+                                }
+                               ]
+                              }
+                             ]
+                            }
+                           ],
+                           "classes": [
+                            "gd-td38"
+                           ]
+                          },
+                          {
+                           "type": "cell",
+                           "components": [
+                            {
+                             "type": "text",
+                             "tagName": "p",
+                             "classes": [
+                              "gd-p",
+                              "gd-p36",
+                              "gd-keepline"
+                             ],
+                             "components": [
+                              {
+                               "type": "choice",
+                               "tagName": "span",
+                               "components": [
+                                {
+                                 "type": "choice-branch",
+                                 "tagName": "span",
+                                 "components": [
+                                  {
+                                   "type": "data-field",
+                                   "field": "Jurisdiction.UnderinsuredMotoristsCoverage.SplitBodilyInjuryLimits.LimitperAccident",
+                                   "format": "number"
+                                  }
+                                 ],
+                                 "field": "Jurisdiction.UnderinsuredMotoristsCoverage.SplitBodilyInjuryLimits.LimitperAccident",
+                                 "operator": "present",
+                                 "value": "",
+                                 "classes": [
+                                  "gd-if"
+                                 ]
+                                },
+                                {
+                                 "type": "choice-branch",
+                                 "tagName": "span",
+                                 "components": [
+                                  {
+                                   "type": "data-field",
+                                   "field": "Jurisdiction.UnderinsuredMotoristsCoverage.SplitBodilyInjuryLimits.LimitperAccidentWording",
+                                   "format": ""
+                                  }
+                                 ],
+                                 "field": "",
+                                 "operator": "else",
+                                 "value": "",
+                                 "classes": [
+                                  "gd-if"
+                                 ]
+                                }
+                               ],
+                               "classes": [
+                                "gd-if"
+                               ]
+                              }
+                             ]
+                            }
+                           ],
+                           "classes": [
+                            "gd-td39"
+                           ]
+                          },
+                          {
+                           "type": "cell",
+                           "components": [
+                            {
+                             "type": "text",
+                             "tagName": "p",
+                             "classes": [
+                              "gd-p",
+                              "gd-p36"
+                             ],
+                             "components": [
+                              {
+                               "tagName": "span",
+                               "classes": [
+                                "gd-c18"
+                               ],
+                               "components": [
+                                {
+                                 "type": "textnode",
+                                 "content": "Each \"Accident\""
+                                }
+                               ]
+                              }
+                             ]
+                            }
+                           ],
+                           "classes": [
+                            "gd-td40"
+                           ]
+                          }
+                         ],
+                         "classes": [
+                          "gd-tr41"
+                         ]
+                        },
+                        {
+                         "type": "row",
+                         "components": [
+                          {
+                           "type": "cell",
+                           "components": [
+                            {
+                             "type": "text",
+                             "tagName": "p",
+                             "classes": [
+                              "gd-p",
+                              "gd-p12"
+                             ],
+                             "components": []
+                            }
+                           ],
+                           "classes": [
+                            "gd-td42"
+                           ],
+                           "attributes": {
+                            "colspan": "4"
+                           }
+                          }
+                         ],
+                         "classes": [
+                          "gd-tr41"
+                         ]
+                        }
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "field": "Jurisdiction.JurisdictionswithSplitBodilyInjuryUnderinsuredMotoristsCoverage",
+                   "operator": "eq",
+                   "value": "true",
+                   "classes": [
+                    "gd-if"
+                   ]
+                  }
+                 ]
+                }
+               ]
+              }
+             ]
+            }
+           ]
+          }
+         ]
+        }
+       ],
+       "field": "CAJurisdictionLevelCoverages.Jurisdictions.size",
+       "operator": "gt",
+       "value": "1",
+       "classes": [
+        "gd-if"
+       ]
+      }
+     ],
+     "field": "Policy.datashouldshow",
+     "operator": "eq",
+     "value": "true",
+     "classes": [
+      "gd-if"
+     ]
+    }
+   ]
+  }
+ ],
+ "css": ".form-page{position:relative;width:612pt;height:792pt;overflow:hidden;background:#fff;}\n.form-page + .form-page{page-break-before:always;}\n@page gdflow{margin:54.15pt 0 69.15pt 0;}\n.gd-flow{page:gdflow;padding:0 54.15pt 0 54.15pt;}\n@page gdrun{margin:54.15pt 0 12.2pt 0;}\n.gd-flow.gd-run{page:gdrun;}\n.gd-doc table.gd-runt{width:100%;border-collapse:collapse;table-layout:fixed;}\n.gd-doc table.gd-runt>*>tr>td{padding:0;}\n.gd-doc table.gd-runt>thead>tr>td{height:0pt;vertical-align:top;}\n.gd-doc table.gd-runt>tfoot>tr>td{height:56.95pt;vertical-align:bottom;position:relative;}\n.gd-pdffoot-even{position:absolute;visibility:hidden;left:0;right:0;bottom:0;}\n.gd-doc table.gd-runt>thead>tr>td{position:relative;}\n.gd-pgmark{position:absolute;left:0;top:0;font-size:2pt;line-height:1;color:#fff;white-space:nowrap;}\n.gd-sheetfoot{position:absolute;background:#fff;}\n.gd-sheetfoot.gd-side-even{display:none;}\n.gd-foot-fixed{display:none;}\n@media print{.gd-foot-space{visibility:hidden;}.gd-foot-fixed{display:block;position:fixed;left:0;right:0;bottom:0;padding:0 54.15pt 0 54.15pt;}}\n.gd-if:empty{display:none;}\n.gd-flow:not(:has(:not(.gd-if))){display:none;}\n.form-page:not(:has(:not(.gd-if))){display:none;}\n.form-page .abs{position:absolute;white-space:pre;margin:0;padding:0;line-height:normal;}\n.form-page .rule{position:absolute;background:#000;}\n.form-page .gd-tb{white-space:normal;box-sizing:border-box;}\n.gd-doc .gd-pagebg{position:absolute;width:0;height:0;}\n.gd-doc .gd-anchor{position:relative;}\n.gd-doc .gd-anchored{position:absolute;box-sizing:border-box;}\n.gd-doc .gd-header{position:relative;}\n.gd-pagebg .abs{position:absolute;white-space:pre;margin:0;padding:0;line-height:normal;}\n.gd-pagebg .rule{position:absolute;background:#000;}\n.gd-pagebg .gd-tb{white-space:normal;box-sizing:border-box;}\n.gd-doc{font-family:'Arial',sans-serif;font-size:10pt;color:#000;line-height:1.15;}\n:where(.gd-doc) p{margin:0;}\n.gd-doc p:empty::before{content:\"\\00a0\";}\n.gd-doc p.gd-keepline{min-height:1lh;}\n.gd-doc .gd-table{border-collapse:collapse;table-layout:fixed;}\n:where(.gd-doc) td{vertical-align:top;padding:0 5.4pt;}\n.gd-doc tr.gd-grid td{height:0;padding:0;border:0;}\n.gd-doc .gd-box{margin:0 0 6pt 0;}\n.gd-doc .gd-tab{display:inline-block;width:36pt;}\n.gd-doc .gd-hang{display:inline-block;}\n.gd-doc .gd-img-missing{display:inline-block;border:1px dashed #9ca3af;color:#6b7280;font-size:7pt;}\n.gd-doc .gd-p1{line-height:1.15;}\n.gd-doc .gd-td2{padding:3.6pt 5.75pt 0pt 5.75pt;}\n.gd-doc .gd-tr3{height:13.7pt;}\n.gd-doc .gd-td4{vertical-align:middle;padding:3.6pt 5.75pt 0pt 5.75pt;}\n.gd-doc .gd-tr5{height:31.7pt;}\n.gd-doc .gd-col6{width:77.2pt;}\n.gd-doc .gd-col7{width:60.6pt;}\n.gd-doc .gd-col8{width:367.3pt;}\n.gd-doc .gd-t9{width:505.1pt;}\n.gd-doc .gd-td10{width:103.1pt;padding:3.6pt 5.75pt 0pt 5.75pt;}\n.gd-doc .gd-td11{width:5.7pt;padding:3.6pt 5.75pt 0pt 5.75pt;}\n.gd-doc .gd-p12{text-align:center;line-height:1.15;}\n.gd-doc .gd-td13{width:193.85pt;vertical-align:middle;padding:3.6pt 5.75pt 0pt 0pt;}\n.gd-doc .gd-td14{width:201.4pt;padding:3.6pt 5.75pt 0pt 5.75pt;}\n.gd-doc .gd-tr15{height:28.1pt;}\n.gd-doc .gd-tr16{height:28.5pt;}\n.gd-doc .gd-tr17{height:28.45pt;}\n.gd-doc .gd-c18{font-weight:bold;}\n.gd-doc .gd-td19{width:110.05pt;vertical-align:bottom;padding:4.25pt 3.4pt 0pt 3.4pt;}\n.gd-doc .gd-td20{width:295.55pt;vertical-align:bottom;padding:4.25pt 3.4pt 0pt 3.4pt;}\n.gd-doc .gd-p21{text-align:right;line-height:1.15;}\n.gd-doc .gd-td22{width:104.4pt;vertical-align:bottom;padding:4.25pt 3.4pt 0pt 3.4pt;}\n.gd-doc .gd-td23{width:30pt;vertical-align:bottom;padding:4.25pt 3.4pt 0pt 3.4pt;}\n.gd-doc .gd-t24{width:540pt;margin-left:-3.6pt;}\n.gd-doc .gd-p25{margin-top:3pt;line-height:1.15;}\n.gd-doc .gd-bg26{left:-54.15pt;top:-54.15pt;}\n.gd-doc .gd-td27{width:110.05pt;padding:3.6pt 3.6pt 0pt 3.6pt;}\n.gd-doc .gd-p28{text-align:center;margin-top:3pt;line-height:1.15;}\n.gd-doc .gd-td29{width:295.55pt;padding:3.6pt 3.6pt 0pt 3.6pt;}\n.gd-doc .gd-td30{width:104.4pt;padding:3.6pt 3.6pt 0pt 3.6pt;}\n.gd-doc .gd-td31{width:30pt;padding:3.6pt 3.6pt 0pt 3.6pt;}\n.gd-doc .gd-c32{font-weight:bold;font-size:18pt;}\n.gd-doc .gd-p33{text-align:center;line-height:1.15;break-after:avoid;}\n.gd-doc .gd-td34{border-top:0.5pt solid #000;border-left:0.5pt solid #000;border-bottom:0.5pt solid #000;border-right:0.5pt solid #000;padding:3.6pt 5.5pt 0pt 5.5pt;}\n.gd-doc .gd-tr35{height:18.5pt;}\n.gd-doc .gd-p36{line-height:1.15;break-after:avoid;}\n.gd-doc .gd-td37{border-top:0.5pt solid #000;border-left:0.5pt solid #000;padding:3.6pt 5.75pt 0pt 5.5pt;}\n.gd-doc .gd-td38{border-top:0.5pt solid #000;padding:3.6pt 5.75pt 0pt 5.75pt;}\n.gd-doc .gd-td39{border-top:0.5pt solid #000;padding:3.6pt 5.75pt 0pt 0pt;}\n.gd-doc .gd-td40{border-top:0.5pt solid #000;border-right:0.5pt solid #000;padding:3.6pt 5.5pt 0pt 5.75pt;}\n.gd-doc .gd-tr41{height:18.25pt;}\n.gd-doc .gd-td42{border-left:0.5pt solid #000;border-bottom:0.5pt solid #000;border-right:0.5pt solid #000;padding:3.6pt 5.5pt 0pt 5.5pt;}\n.gd-doc .gd-col43{width:111.65pt;}\n.gd-doc .gd-col44{width:12.45pt;}\n.gd-doc .gd-col45{width:172.5pt;}\n.gd-doc .gd-col46{width:207.4pt;}\n.gd-doc .gd-t47{width:504pt;break-inside:avoid;}",
+ "model": {
+  "Insured": {
+   "PrimaryNamedInsured": "Primary Named Insured"
+  },
+  "Policy": {
+   "PolicyNumber": "Policy Number",
+   "TransactionEffectiveDate": "2026-07-01",
+   "TransactionEffectiveDateWording": "Transaction Effective Date Wording",
+   "datashouldshow": true,
+   "usesoverflowscheduleforadditionalinsureds": true
+  },
+  "CAJurisdictionLevelCoverages": {
+   "Jurisdictions": [
+    {
+     "JurisdictionswithSplitBodilyInjuryUnderinsuredMotoristsCoverage": true,
+     "UnderinsuredMotoristsCoverage": {
+      "SplitBodilyInjuryLimits": {
+       "LimitperAccident": 2,
+       "LimitperAccidentWording": "Limitper Accident Wording",
+       "LimitperPerson": 2,
+       "LimitperPersonWording": "Limitper Person Wording"
+      }
+     }
+    },
+    {
+     "JurisdictionswithSplitBodilyInjuryUnderinsuredMotoristsCoverage": true,
+     "UnderinsuredMotoristsCoverage": {
+      "SplitBodilyInjuryLimits": {
+       "LimitperAccident": 3,
+       "LimitperAccidentWording": "Limitper Accident Wording 2",
+       "LimitperPerson": 3,
+       "LimitperPersonWording": "Limitper Person Wording 2"
+      }
+     }
+    }
+   ]
+  }
+ },
+ "report": {
+  "counts": {
+   "choose": 6,
+   "conditionals": 11,
+   "fill points": 12,
+   "form pages": 1,
+   "lists": 2,
+   "page backgrounds": 1,
+   "page-number fields": 8,
+   "paragraphs": 57,
+   "repeat": 2,
+   "rules (EMF+)": 34,
+   "show if": 4,
+   "subscriptions": 4,
+   "subscriptions expanded": 4,
+   "tables": 7,
+   "text boxes": 3,
+   "wording lines (EMF+)": 174
+  },
+  "notes": [
+   "marker 17 moved out of a row that has content on both sides",
+   "running footer repeats on every flowing page",
+   "running header repeats on every flowing page"
+  ]
+ }
+}

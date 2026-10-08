@@ -1,0 +1,13 @@
+file       C:\src\FaCT-DocProd-Documentation\2_From CSC\Technical_User_Guide.pdf
+format     pdf
+pages      100
+recall     97 % of 16257 original words appear in the render
+precision  89 % of 17643 rendered words come from the original
+visual     96 % page likeness (ink within ~4pt of the original) [96 %, 95 %, 90 %, 90 %, 90 %, 92 %, 94 %, 96 %, 94 %, 96 %, 94 %, 94 %, 94 %, 96 %, 95 %, 98 %, 97 %, 99 %, 97 %, 98 %, 95 %, 97 %, 95 %, 99 %, 95 %, 98 %, 97 %, 97 %, 97 %, 96 %, 95 %, 96 %, 95 %, 98 %, 98 %, 99 %, 98 %, 95 %, 95 %, 98 %, 99 %, 98 %, 99 %, 99 %, 98 %, 95 %, 96 %, 97 %, 96 %, 96 %, 95 %, 96 %, 94 %, 97 %, 96 %, 99 %, 97 %, 96 %, 97 %, 97 %, 97 %, 97 %, 97 %, 98 %, 98 %, 96 %, 95 %, 98 %, 96 %, 98 %, 95 %, 96 %, 98 %, 96 %, 95 %, 97 %, 94 %, 98 %, 97 %, 96 %, 97 %, 97 %, 95 %, 98 %, 97 %, 98 %, 95 %, 98 %, 96 %, 96 %, 97 %, 97 %, 96 %, 97 %, 96 %, 95 %, 98 %, 97 %, 96 %, 96 %]
+review     -
+counts     3634 texts, 0 fields, 844 shapes, 1 images, 0 skipped
+fields     
+notes      Imported pages 1-100 of 253.
+           2 font(s) embedded in the PDF are used for its text.
+           280 character(s) of rotated or vertical text were skipped.
+missing    guide job level 23 a table contents offset processing 7 9 11 rule definitions 15 17 19 csccinitmailinglist 21 25 27 29 3 33 35 37 49 55 57 csccmailinglisttoextract 61 63 65 67 69 73 79 85 89 5

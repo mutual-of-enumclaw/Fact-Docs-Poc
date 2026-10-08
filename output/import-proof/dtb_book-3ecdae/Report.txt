@@ -1,0 +1,13 @@
+file       C:\src\FaCT-DocProd-Documentation\1_From Docucorp_System\dtb_book.pdf
+format     pdf
+pages      100
+recall     98 % of 26569 original words appear in the render
+precision  99 % of 26531 rendered words come from the original
+visual     97 % page likeness (ink within ~4pt of the original) [100 %, 100 %, 99 %, 100 %, 100 %, 99 %, 99 %, 99 %, 99 %, 97 %, 97 %, 97 %, 97 %, 98 %, 97 %, 96 %, 48 %, 98 %, 98 %, 98 %, 97 %, 98 %, 98 %, 84 %, 76 %, 73 %, 97 %, 96 %, 97 %, 96 %, 98 %, 98 %, 95 %, 98 %, 98 %, 98 %, 97 %, 98 %, 98 %, 97 %, 98 %, 98 %, 98 %, 98 %, 94 %, 93 %, 98 %, 98 %, 98 %, 99 %, 98 %, 98 %, 98 %, 98 %, 98 %, 98 %, 97 %, 98 %, 97 %, 98 %, 97 %, 98 %, 96 %, 98 %, 99 %, 98 %, 98 %, 97 %, 98 %, 98 %, 97 %, 98 %, 98 %, 98 %, 98 %, 98 %, 98 %, 97 %, 97 %, 98 %, 98 %, 98 %, 99 %, 98 %, 97 %, 99 %, 97 %, 98 %, 98 %, 98 %, 98 %, 98 %, 98 %, 98 %, 99 %, 98 %, 97 %, 98 %, 98 %, 98 %]
+review     -
+counts     4913 texts, 0 fields, 1462 shapes, 4 images, 0 skipped
+fields     
+notes      Imported pages 1-100 of 226.
+           7 font(s) embedded in the PDF are used for its text.
+           1 embedded font(s) can't be used in a browser (no Unicode character map, or characters missing) and were replaced by a standard family.
+missing    documaker do uto olbox reference in the of this contains is or and a docucreate template x on with number that if use as must an to for form means it right from utility finding afp2mvs afp 15 afpdump cannot

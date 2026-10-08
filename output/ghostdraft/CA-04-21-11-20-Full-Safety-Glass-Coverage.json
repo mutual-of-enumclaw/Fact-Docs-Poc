@@ -1,0 +1,1870 @@
+{
+ "name": "CA-04-21-11-20-Full-Safety-Glass-Coverage",
+ "title": "CA 04 21 11 20",
+ "source": "CA 04 21 11 20 Full Safety Glass Coverage.gd",
+ "package": "commercial-auto-2607",
+ "components": [
+  {
+   "type": "legacy-page",
+   "tagName": "section",
+   "classes": [
+    "form-page"
+   ],
+   "components": [
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "54.15pt",
+      "top": "53.77pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "POLICY NUMBER: "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "458.21pt",
+      "top": "53.77pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif",
+      "font-weight": "bold"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "COMMERCIAL AUTO "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "488.22pt",
+      "top": "64.75pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif",
+      "font-weight": "bold"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "CA 04 21 11 20 "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "80.53pt",
+      "top": "88.35pt",
+      "font-size": "12pt",
+      "font-family": "'Arial',sans-serif",
+      "font-weight": "bold"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "THIS ENDORSEMENT CHANGES THE POLICY.  PLEASE READ IT CAREFULLY. "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "54.15pt",
+      "top": "756.90pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif",
+      "font-weight": "bold"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "CA 04 21 11 20 "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "220.03pt",
+      "top": "756.90pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "© Insurance Services Office, Inc., 2019  "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "504.06pt",
+      "top": "756.90pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif",
+      "font-weight": "bold"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "Page 1 of 1 "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "157.79pt",
+      "top": "111.42pt",
+      "font-size": "18pt",
+      "font-family": "'Arial',sans-serif",
+      "font-weight": "bold"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "FULL SAFETY GLASS COVERAGE "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "54.15pt",
+      "top": "150.08pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "This endorsement modifies insurance provided under the following:  "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "69.28pt",
+      "top": "176.07pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "AUTO DEALERS COVERAGE FORM "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "69.28pt",
+      "top": "187.11pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "BUSINESS AUTO COVERAGE FORM "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "69.28pt",
+      "top": "198.09pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "MOTOR CARRIER COVERAGE FORM "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "54.15pt",
+      "top": "228.10pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif",
+      "width": "504.08pt",
+      "text-align-last": "justify",
+      "white-space": "nowrap"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "With respect to coverage provided by this endorsement, the provisions of the Coverage Form apply unless"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "54.15pt",
+      "top": "239.08pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "modified by the endorsement.  "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "54.15pt",
+      "top": "254.14pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "This endorsement changes the Policy effective on the inception date of the Policy unless another date is indicated "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "54.15pt",
+      "top": "265.12pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "below.  "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "57.03pt",
+      "top": "294.83pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif",
+      "font-weight": "bold"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "Named Insured: "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "57.03pt",
+      "top": "316.85pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif",
+      "font-weight": "bold"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "Endorsement Effective Date: "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "278.66pt",
+      "top": "351.59pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif",
+      "font-weight": "bold"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "SCHEDULE "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "112.78pt",
+      "top": "377.34pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif",
+      "font-weight": "bold"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "Designation Or Description Of Covered \"Autos\" To Which This Insurance Applies "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "177.48pt",
+      "top": "388.38pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif",
+      "font-weight": "bold"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "Enter an \"X\" in only one of the following check boxes:  "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "119.75pt",
+      "top": "407.88pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif",
+      "font-weight": "bold"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "All covered \"autos\"  "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "119.75pt",
+      "top": "427.39pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif",
+      "font-weight": "bold"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "All covered \"autos\" of the private passenger type  "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "119.75pt",
+      "top": "446.89pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif",
+      "font-weight": "bold"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "Each covered \"auto\" described below: "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "59.55pt",
+      "top": "565.05pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "Information required to complete this Schedule, if not shown above, will be shown in the Declarations. "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "54.15pt",
+      "top": "595.59pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif",
+      "font-weight": "bold"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "Physical Damage Coverage"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "184.86pt",
+      "top": "595.59pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": " is modified as follows: "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "54.15pt",
+      "top": "610.59pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "Paragraph "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "105.52pt",
+      "top": "610.59pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif",
+      "font-weight": "bold"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "D. Deductible"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "171.36pt",
+      "top": "610.59pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif",
+      "width": "122.86pt",
+      "text-align-last": "justify",
+      "white-space": "nowrap"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": " in the Business Auto and"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "54.15pt",
+      "top": "621.58pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif",
+      "width": "217.59pt",
+      "text-align-last": "justify",
+      "white-space": "nowrap"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "Motor Carrier Coverage Forms and Paragraph"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "277.04pt",
+      "top": "621.58pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif",
+      "font-weight": "bold"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "F.5. "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "54.15pt",
+      "top": "632.56pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif",
+      "font-weight": "bold"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "Deductible"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "105.34pt",
+      "top": "632.56pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif",
+      "width": "188.83pt",
+      "text-align-last": "justify",
+      "white-space": "nowrap"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": " in the Auto Dealers Coverage Form are"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "54.15pt",
+      "top": "643.54pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "amended by the addition of the following: "
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "318.20pt",
+      "top": "595.59pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif",
+      "width": "240.03pt",
+      "text-align-last": "justify",
+      "white-space": "nowrap"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "Additionally, if the Declarations indicates that"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "318.20pt",
+      "top": "606.57pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif",
+      "width": "240.08pt",
+      "text-align-last": "justify",
+      "white-space": "nowrap"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "Comprehensive Coverage applies, no"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "318.20pt",
+      "top": "617.55pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif",
+      "width": "240.04pt",
+      "text-align-last": "justify",
+      "white-space": "nowrap"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "Comprehensive Coverage deductible applies to the"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "318.20pt",
+      "top": "628.54pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif",
+      "width": "240.00pt",
+      "text-align-last": "justify",
+      "white-space": "nowrap"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "cost of repairing or replacing damaged safety glass"
+      }
+     ]
+    },
+    {
+     "type": "legacy-text",
+     "tagName": "span",
+     "classes": [
+      "abs"
+     ],
+     "style": {
+      "left": "318.20pt",
+      "top": "639.58pt",
+      "font-size": "10pt",
+      "font-family": "'Arial',sans-serif"
+     },
+     "components": [
+      {
+       "type": "textnode",
+       "content": "on the covered \"auto(s)\" described in the Schedule. "
+      }
+     ]
+    },
+    {
+     "tagName": "div",
+     "classes": [
+      "abs",
+      "gd-doc",
+      "gd-tb"
+     ],
+     "style": {
+      "left": "136.6pt",
+      "top": "50.1pt",
+      "width": "216.15pt",
+      "padding": "3.6pt 5.76pt 0pt 5.76pt"
+     },
+     "components": [
+      {
+       "type": "text",
+       "tagName": "p",
+       "classes": [
+        "gd-p",
+        "gd-p1"
+       ],
+       "components": [
+        {
+         "type": "data-field",
+         "field": "Policy.PolicyNumber",
+         "format": ""
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "tagName": "div",
+     "classes": [
+      "abs",
+      "gd-doc",
+      "gd-tb"
+     ],
+     "style": {
+      "left": "46.85pt",
+      "top": "287.4pt",
+      "width": "516.75pt",
+      "padding": "3.6pt 7.2pt 0pt 7.2pt"
+     },
+     "components": [
+      {
+       "type": "table",
+       "classes": [
+        "gd-table",
+        "gd-t10"
+       ],
+       "components": [
+        {
+         "type": "tbody",
+         "components": [
+          {
+           "type": "row",
+           "classes": [
+            "gd-grid"
+           ],
+           "components": [
+            {
+             "type": "cell",
+             "classes": [
+              "gd-col7"
+             ],
+             "components": []
+            },
+            {
+             "type": "cell",
+             "classes": [
+              "gd-col8"
+             ],
+             "components": []
+            },
+            {
+             "type": "cell",
+             "classes": [
+              "gd-col9"
+             ],
+             "components": []
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "type": "tbody",
+         "components": [
+          {
+           "type": "row",
+           "components": [
+            {
+             "type": "cell",
+             "components": [
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p1"
+               ],
+               "components": []
+              }
+             ],
+             "classes": [
+              "gd-td2"
+             ]
+            },
+            {
+             "type": "cell",
+             "components": [
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p1"
+               ],
+               "components": [
+                {
+                 "type": "data-field",
+                 "field": "Insured.PrimaryNamedInsured",
+                 "format": ""
+                }
+               ]
+              }
+             ],
+             "classes": [
+              "gd-td3"
+             ],
+             "attributes": {
+              "colspan": "2"
+             }
+            }
+           ],
+           "classes": [
+            "gd-tr4"
+           ]
+          },
+          {
+           "type": "row",
+           "components": [
+            {
+             "type": "cell",
+             "components": [
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p1"
+               ],
+               "components": []
+              }
+             ],
+             "classes": [
+              "gd-td2"
+             ],
+             "attributes": {
+              "colspan": "2"
+             }
+            },
+            {
+             "type": "cell",
+             "components": [
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p1"
+               ],
+               "components": [
+                {
+                 "type": "choice",
+                 "tagName": "span",
+                 "components": [
+                  {
+                   "type": "choice-branch",
+                   "tagName": "span",
+                   "components": [
+                    {
+                     "type": "data-field",
+                     "field": "Policy.TransactionEffectiveDate",
+                     "format": "shortdate"
+                    }
+                   ],
+                   "field": "Policy.TransactionEffectiveDate",
+                   "operator": "present",
+                   "value": "",
+                   "classes": [
+                    "gd-if"
+                   ]
+                  },
+                  {
+                   "type": "choice-branch",
+                   "tagName": "span",
+                   "components": [
+                    {
+                     "type": "data-field",
+                     "field": "Policy.TransactionEffectiveDateWording",
+                     "format": ""
+                    }
+                   ],
+                   "field": "",
+                   "operator": "else",
+                   "value": "",
+                   "classes": [
+                    "gd-if"
+                   ]
+                  }
+                 ],
+                 "classes": [
+                  "gd-if"
+                 ]
+                }
+               ]
+              }
+             ],
+             "classes": [
+              "gd-td5"
+             ]
+            }
+           ],
+           "classes": [
+            "gd-tr6"
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "tagName": "p",
+       "classes": [
+        "gd-p",
+        "gd-p1"
+       ],
+       "components": []
+      }
+     ]
+    },
+    {
+     "type": "conditional",
+     "tagName": "div",
+     "components": [
+      {
+       "type": "conditional",
+       "tagName": "div",
+       "components": [
+        {
+         "tagName": "div",
+         "classes": [
+          "abs",
+          "gd-doc",
+          "gd-tb"
+         ],
+         "style": {
+          "left": "73.85pt",
+          "top": "403pt",
+          "width": "21.25pt",
+          "padding": "3.6pt 7.2pt 0pt 7.2pt"
+         },
+         "components": [
+          {
+           "type": "text",
+           "tagName": "p",
+           "classes": [
+            "gd-p",
+            "gd-p1"
+           ],
+           "components": [
+            {
+             "type": "textnode",
+             "content": "X"
+            }
+           ]
+          }
+         ]
+        }
+       ],
+       "field": "CAPolicyLevelCoverages.FullSafetyGlassCoverage.appliestoallcoveredautos",
+       "operator": "eq",
+       "value": "true",
+       "classes": [
+        "gd-if"
+       ]
+      }
+     ],
+     "field": "Policy.datashouldshow",
+     "operator": "eq",
+     "value": "true",
+     "classes": [
+      "gd-if"
+     ]
+    },
+    {
+     "type": "conditional",
+     "tagName": "div",
+     "components": [
+      {
+       "type": "conditional",
+       "tagName": "div",
+       "components": [
+        {
+         "tagName": "div",
+         "classes": [
+          "abs",
+          "gd-doc",
+          "gd-tb"
+         ],
+         "style": {
+          "left": "73.85pt",
+          "top": "422.65pt",
+          "width": "21.25pt",
+          "padding": "3.6pt 7.2pt 0pt 7.2pt"
+         },
+         "components": [
+          {
+           "type": "text",
+           "tagName": "p",
+           "classes": [
+            "gd-p",
+            "gd-p1"
+           ],
+           "components": [
+            {
+             "type": "textnode",
+             "content": "X"
+            }
+           ]
+          }
+         ]
+        }
+       ],
+       "field": "CAPolicyLevelCoverages.FullSafetyGlassCoverage.appliestoallprivatepassengercoveredautos",
+       "operator": "eq",
+       "value": "true",
+       "classes": [
+        "gd-if"
+       ]
+      }
+     ],
+     "field": "Policy.datashouldshow",
+     "operator": "eq",
+     "value": "true",
+     "classes": [
+      "gd-if"
+     ]
+    },
+    {
+     "type": "conditional",
+     "tagName": "div",
+     "components": [
+      {
+       "type": "conditional",
+       "tagName": "div",
+       "components": [
+        {
+         "tagName": "div",
+         "classes": [
+          "abs",
+          "gd-doc",
+          "gd-tb"
+         ],
+         "style": {
+          "left": "73.85pt",
+          "top": "442.15pt",
+          "width": "21.25pt",
+          "padding": "3.6pt 7.2pt 0pt 7.2pt"
+         },
+         "components": [
+          {
+           "type": "text",
+           "tagName": "p",
+           "classes": [
+            "gd-p",
+            "gd-p1"
+           ],
+           "components": [
+            {
+             "type": "textnode",
+             "content": "X"
+            }
+           ]
+          }
+         ]
+        }
+       ],
+       "field": "CAPolicyLevelCoverages.FullSafetyGlassCoverage.appliestospecifiedcoveredautos",
+       "operator": "eq",
+       "value": "true",
+       "classes": [
+        "gd-if"
+       ]
+      }
+     ],
+     "field": "Policy.datashouldshow",
+     "operator": "eq",
+     "value": "true",
+     "classes": [
+      "gd-if"
+     ]
+    },
+    {
+     "type": "conditional",
+     "tagName": "div",
+     "components": [
+      {
+       "type": "conditional",
+       "tagName": "div",
+       "components": [
+        {
+         "type": "conditional",
+         "tagName": "div",
+         "components": [
+          {
+           "tagName": "div",
+           "classes": [
+            "abs",
+            "gd-doc",
+            "gd-tb"
+           ],
+           "style": {
+            "left": "49.2pt",
+            "top": "459.1pt",
+            "width": "513.75pt",
+            "padding": "3.6pt 5.76pt 0pt 5.76pt"
+           },
+           "components": [
+            {
+             "type": "table",
+             "classes": [
+              "gd-table",
+              "gd-t14"
+             ],
+             "components": [
+              {
+               "type": "tbody",
+               "components": [
+                {
+                 "type": "row",
+                 "components": [
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p11"
+                     ],
+                     "components": [
+                      {
+                       "type": "textnode",
+                       "content": "See Attached Schedule"
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td12"
+                   ]
+                  }
+                 ],
+                 "classes": [
+                  "gd-tr13"
+                 ]
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p1"
+             ],
+             "components": []
+            }
+           ]
+          }
+         ],
+         "field": "CAAutoLevelCoverages.AutoCount.has2ormoreautoswithFireSafetyGlassCoverageORlongnames",
+         "operator": "eq",
+         "value": "true",
+         "classes": [
+          "gd-if"
+         ]
+        }
+       ],
+       "field": "CAPolicyLevelCoverages.FullSafetyGlassCoverage.appliestospecifiedcoveredautos",
+       "operator": "eq",
+       "value": "true",
+       "classes": [
+        "gd-if"
+       ]
+      }
+     ],
+     "field": "Policy.datashouldshow",
+     "operator": "eq",
+     "value": "true",
+     "classes": [
+      "gd-if"
+     ]
+    },
+    {
+     "type": "conditional",
+     "tagName": "div",
+     "components": [
+      {
+       "type": "conditional",
+       "tagName": "div",
+       "components": [
+        {
+         "type": "conditional",
+         "tagName": "div",
+         "components": [
+          {
+           "tagName": "div",
+           "classes": [
+            "abs",
+            "gd-doc",
+            "gd-tb"
+           ],
+           "style": {
+            "left": "47.6pt",
+            "top": "461.1pt",
+            "width": "513.75pt",
+            "padding": "3.6pt 5.76pt 0pt 5.76pt"
+           },
+           "components": [
+            {
+             "type": "repeat",
+             "tagName": "div",
+             "listPath": "CAAutoLevelCoverages.Autos",
+             "components": [
+              {
+               "type": "conditional",
+               "tagName": "div",
+               "components": [
+                {
+                 "type": "table",
+                 "classes": [
+                  "gd-table",
+                  "gd-t14"
+                 ],
+                 "components": [
+                  {
+                   "type": "tbody",
+                   "components": [
+                    {
+                     "type": "row",
+                     "components": [
+                      {
+                       "type": "cell",
+                       "components": [
+                        {
+                         "type": "text",
+                         "tagName": "p",
+                         "classes": [
+                          "gd-p",
+                          "gd-p1"
+                         ],
+                         "components": [
+                          {
+                           "type": "data-field",
+                           "field": "Auto.VehicleDescription",
+                           "format": ""
+                          }
+                         ]
+                        }
+                       ],
+                       "classes": [
+                        "gd-td15"
+                       ]
+                      }
+                     ],
+                     "classes": [
+                      "gd-tr16"
+                     ]
+                    }
+                   ]
+                  }
+                 ]
+                },
+                {
+                 "type": "text",
+                 "tagName": "p",
+                 "classes": [
+                  "gd-p",
+                  "gd-p1"
+                 ],
+                 "components": []
+                }
+               ],
+               "field": "Auto.AutoswithFullSafetyGlassCoverage",
+               "operator": "eq",
+               "value": "true",
+               "classes": [
+                "gd-if"
+               ]
+              }
+             ]
+            }
+           ]
+          }
+         ],
+         "field": "CAAutoLevelCoverages.AutoCount.has2ormoreautoswithFireSafetyGlassCoverageORlongnames",
+         "operator": "ne",
+         "value": "true",
+         "classes": [
+          "gd-if"
+         ]
+        }
+       ],
+       "field": "CAPolicyLevelCoverages.FullSafetyGlassCoverage.appliestospecifiedcoveredautos",
+       "operator": "eq",
+       "value": "true",
+       "classes": [
+        "gd-if"
+       ]
+      }
+     ],
+     "field": "Policy.datashouldshow",
+     "operator": "eq",
+     "value": "true",
+     "classes": [
+      "gd-if"
+     ]
+    }
+   ]
+  },
+  {
+   "tagName": "div",
+   "classes": [
+    "gd-doc",
+    "gd-flow"
+   ],
+   "components": [
+    {
+     "type": "conditional",
+     "tagName": "div",
+     "components": [
+      {
+       "type": "conditional",
+       "tagName": "div",
+       "components": [
+        {
+         "type": "conditional",
+         "tagName": "div",
+         "components": [
+          {
+           "type": "text",
+           "tagName": "p",
+           "classes": [
+            "gd-p",
+            "gd-p11"
+           ],
+           "components": [
+            {
+             "tagName": "span",
+             "classes": [
+              "gd-c24"
+             ],
+             "components": [
+              {
+               "type": "textnode",
+               "content": "FULL SAFETY GLASS COVERAGE"
+              }
+             ]
+            }
+           ]
+          },
+          {
+           "type": "text",
+           "tagName": "p",
+           "classes": [
+            "gd-p",
+            "gd-p11"
+           ],
+           "components": []
+          },
+          {
+           "type": "text",
+           "tagName": "p",
+           "classes": [
+            "gd-p",
+            "gd-p11"
+           ],
+           "components": [
+            {
+             "tagName": "span",
+             "classes": [
+              "gd-c19"
+             ],
+             "components": [
+              {
+               "type": "textnode",
+               "content": "SCHEDULE"
+              }
+             ]
+            }
+           ]
+          },
+          {
+           "type": "text",
+           "tagName": "p",
+           "classes": [
+            "gd-p",
+            "gd-p11"
+           ],
+           "components": []
+          },
+          {
+           "type": "repeat",
+           "tagName": "div",
+           "listPath": "CAAutoLevelCoverages.Autos",
+           "components": [
+            {
+             "type": "conditional",
+             "tagName": "div",
+             "components": [
+              {
+               "type": "table",
+               "classes": [
+                "gd-table",
+                "gd-t29"
+               ],
+               "components": [
+                {
+                 "type": "tbody",
+                 "components": [
+                  {
+                   "type": "row",
+                   "components": [
+                    {
+                     "type": "cell",
+                     "components": [
+                      {
+                       "type": "text",
+                       "tagName": "p",
+                       "classes": [
+                        "gd-p",
+                        "gd-p11"
+                       ],
+                       "components": [
+                        {
+                         "tagName": "span",
+                         "classes": [
+                          "gd-c19"
+                         ],
+                         "components": [
+                          {
+                           "type": "textnode",
+                           "content": "Designation Or Description Of Covered \"Autos\" To Which This Insurance Applies"
+                          }
+                         ]
+                        }
+                       ]
+                      }
+                     ],
+                     "classes": [
+                      "gd-td25"
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-tr26"
+                   ]
+                  },
+                  {
+                   "type": "row",
+                   "components": [
+                    {
+                     "type": "cell",
+                     "components": [
+                      {
+                       "type": "text",
+                       "tagName": "p",
+                       "classes": [
+                        "gd-p",
+                        "gd-p1"
+                       ],
+                       "components": [
+                        {
+                         "type": "data-field",
+                         "field": "Auto.VehicleDescription",
+                         "format": ""
+                        }
+                       ]
+                      }
+                     ],
+                     "classes": [
+                      "gd-td27"
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-tr28"
+                   ]
+                  }
+                 ]
+                }
+               ]
+              }
+             ],
+             "field": "Auto.AutoswithFullSafetyGlassCoverage",
+             "operator": "eq",
+             "value": "true",
+             "classes": [
+              "gd-if"
+             ]
+            }
+           ]
+          },
+          {
+           "tagName": "div",
+           "classes": [
+            "gd-footer"
+           ],
+           "components": [
+            {
+             "type": "table",
+             "classes": [
+              "gd-table",
+              "gd-t23"
+             ],
+             "components": [
+              {
+               "type": "tbody",
+               "components": [
+                {
+                 "type": "row",
+                 "components": [
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p1"
+                     ],
+                     "components": [
+                      {
+                       "type": "textnode",
+                       "content": "CA 04 21 11 20"
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td17"
+                   ]
+                  },
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p11"
+                     ],
+                     "components": [
+                      {
+                       "type": "textnode",
+                       "content": "ISO"
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td18"
+                   ]
+                  },
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p20"
+                     ],
+                     "components": [
+                      {
+                       "tagName": "span",
+                       "classes": [
+                        "gd-c19"
+                       ],
+                       "components": [
+                        {
+                         "type": "textnode",
+                         "content": "Page "
+                        }
+                       ]
+                      },
+                      {
+                       "type": "textnode",
+                       "content": "#"
+                      },
+                      {
+                       "tagName": "span",
+                       "classes": [
+                        "gd-c19"
+                       ],
+                       "components": [
+                        {
+                         "type": "textnode",
+                         "content": " of "
+                        }
+                       ]
+                      },
+                      {
+                       "type": "textnode",
+                       "content": "#"
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td21"
+                   ]
+                  },
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p1"
+                     ],
+                     "components": []
+                    }
+                   ],
+                   "classes": [
+                    "gd-td22"
+                   ]
+                  }
+                 ]
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p1"
+             ],
+             "components": []
+            }
+           ]
+          }
+         ],
+         "field": "CAAutoLevelCoverages.AutoCount.has2ormoreautoswithFireSafetyGlassCoverageORlongnames",
+         "operator": "eq",
+         "value": "true",
+         "classes": [
+          "gd-if"
+         ]
+        }
+       ],
+       "field": "CAPolicyLevelCoverages.FullSafetyGlassCoverage.appliestospecifiedcoveredautos",
+       "operator": "eq",
+       "value": "true",
+       "classes": [
+        "gd-if"
+       ]
+      }
+     ],
+     "field": "Policy.datashouldshow",
+     "operator": "eq",
+     "value": "true",
+     "classes": [
+      "gd-if"
+     ]
+    }
+   ]
+  }
+ ],
+ "css": ".form-page{position:relative;width:612pt;height:792pt;overflow:hidden;background:#fff;}\n.form-page + .form-page{page-break-before:always;}\n@page gdflow{margin:54.15pt 54.15pt 69.15pt 54.15pt;}\n.gd-flow{page:gdflow;}\n.gd-if:empty{display:none;}\n.gd-flow:not(:has(:not(.gd-if))){display:none;}\n.form-page .abs{position:absolute;white-space:pre;margin:0;padding:0;line-height:normal;}\n.form-page .gd-tb{white-space:normal;box-sizing:border-box;}\n.gd-doc{font-family:'Arial',sans-serif;font-size:10pt;color:#000;line-height:1.15;}\n.gd-doc p{margin:0;}\n.gd-doc p:empty::before{content:\"\\00a0\";}\n.gd-doc .gd-table{border-collapse:collapse;table-layout:fixed;}\n.gd-doc td{vertical-align:top;padding:0 5.4pt;}\n.gd-doc tr.gd-grid td{height:0;padding:0;border:0;}\n.gd-doc .gd-box{margin:0 0 6pt 0;}\n.gd-doc .gd-tab{display:inline-block;width:36pt;}\n.gd-doc .gd-hang{display:inline-block;}\n.gd-doc .gd-img-missing{display:inline-block;border:1px dashed #9ca3af;color:#6b7280;font-size:7pt;}\n.gd-doc .gd-header,.gd-doc .gd-footer{font-size:8pt;color:#374151;}\n.gd-doc .gd-footer{margin-top:12pt;border-top:0.5pt solid #9ca3af;padding-top:4pt;}\n.gd-doc .gd-p1{line-height:1.15;}\n.gd-doc .gd-td2{padding:5.4pt 5.4pt 0pt 3.7pt;}\n.gd-doc .gd-td3{padding:5.4pt 5.4pt 0pt 3.95pt;}\n.gd-doc .gd-tr4{height:15.4pt;}\n.gd-doc .gd-td5{padding:5.4pt 5.4pt 0pt 10.1pt;}\n.gd-doc .gd-tr6{height:28.8pt;}\n.gd-doc .gd-col7{width:76.8pt;}\n.gd-doc .gd-col8{width:61.15pt;}\n.gd-doc .gd-col9{width:366.35pt;}\n.gd-doc .gd-t10{width:504.3pt;}\n.gd-doc .gd-p11{text-align:center;line-height:1.15;}\n.gd-doc .gd-td12{width:504.4pt;vertical-align:middle;padding:5.75pt 5.75pt 0pt 3.6pt;}\n.gd-doc .gd-tr13{height:98.65pt;}\n.gd-doc .gd-t14{width:504.4pt;}\n.gd-doc .gd-td15{width:504.4pt;padding:5.75pt 5.75pt 0pt 3.6pt;}\n.gd-doc .gd-tr16{height:99pt;}\n.gd-doc .gd-td17{width:110.05pt;vertical-align:bottom;padding:3.4pt 3.4pt 0pt 4.25pt;}\n.gd-doc .gd-td18{width:295.55pt;vertical-align:bottom;padding:3.4pt 3.4pt 0pt 4.25pt;}\n.gd-doc .gd-c19{font-weight:bold;}\n.gd-doc .gd-p20{text-align:right;line-height:1.15;}\n.gd-doc .gd-td21{width:104.4pt;vertical-align:bottom;padding:3.4pt 3.4pt 0pt 4.25pt;}\n.gd-doc .gd-td22{width:30pt;vertical-align:bottom;padding:3.4pt 3.4pt 0pt 4.25pt;}\n.gd-doc .gd-t23{width:540pt;margin-left:-3.6pt;}\n.gd-doc .gd-c24{font-weight:bold;font-size:18pt;}\n.gd-doc .gd-td25{width:504pt;border-top:0.5pt solid #000;border-left:0.5pt solid #000;border-bottom:0.5pt solid #000;border-right:0.5pt solid #000;vertical-align:middle;padding:5.75pt 5.75pt 0pt 3.6pt;}\n.gd-doc .gd-tr26{height:32.4pt;}\n.gd-doc .gd-td27{width:504pt;border-top:0.5pt solid #000;border-left:0.5pt solid #000;border-bottom:0.5pt solid #000;border-right:0.5pt solid #000;padding:5.75pt 5.75pt 0pt 3.6pt;}\n.gd-doc .gd-tr28{height:28.1pt;}\n.gd-doc .gd-t29{width:504pt;}",
+ "model": {
+  "Insured": {
+   "PrimaryNamedInsured": "Primary Named Insured"
+  },
+  "Policy": {
+   "PolicyNumber": "Policy Number",
+   "TransactionEffectiveDate": "2026-07-01",
+   "TransactionEffectiveDateWording": "Transaction Effective Date Wording",
+   "datashouldshow": true,
+   "usesoverflowscheduleforadditionalinsureds": true
+  },
+  "CAAutoLevelCoverages": {
+   "AutoCount": {
+    "has2ormoreautoswithFireSafetyGlassCoverageORlongnames": true
+   },
+   "Autos": [
+    {
+     "AutoswithFullSafetyGlassCoverage": true,
+     "VehicleDescription": "Vehicle Description"
+    },
+    {
+     "AutoswithFullSafetyGlassCoverage": true,
+     "VehicleDescription": "Vehicle Description 2"
+    }
+   ]
+  },
+  "CAPolicyLevelCoverages": {
+   "FullSafetyGlassCoverage": {
+    "appliestoallcoveredautos": true,
+    "appliestoallprivatepassengercoveredautos": true,
+    "appliestospecifiedcoveredautos": true
+   }
+  }
+ },
+ "report": {
+  "counts": {
+   "choose": 1,
+   "conditionals": 9,
+   "fill points": 6,
+   "form pages": 1,
+   "lists": 2,
+   "page-number fields": 2,
+   "paragraphs": 24,
+   "repeat": 2,
+   "show if": 3,
+   "subscriptions": 4,
+   "subscriptions expanded": 4,
+   "tables": 5,
+   "text boxes": 7,
+   "wording lines (EMF+)": 40
+  },
+  "notes": [
+   "body text outside the text boxes moved to a page after the form sheet",
+   "else-if around a positioned text box approximated as an independent Show If",
+   "marker 2 moved out of a table that has content on both sides",
+   "running footer placed once at the end of the flowing pages"
+  ]
+ }
+}

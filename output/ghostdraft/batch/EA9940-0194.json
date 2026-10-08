@@ -1,0 +1,2012 @@
+{
+ "name": "EA9940-0194",
+ "title": "EA 99 40 01 94",
+ "source": "EA9940 0194.gd",
+ "package": "proprietary-ca-2607",
+ "components": [
+  {
+   "tagName": "div",
+   "classes": [
+    "gd-doc",
+    "gd-flow",
+    "gd-run"
+   ],
+   "components": [
+    {
+     "tagName": "table",
+     "classes": [
+      "gd-runt"
+     ],
+     "components": [
+      {
+       "tagName": "thead",
+       "components": [
+        {
+         "tagName": "tr",
+         "components": [
+          {
+           "tagName": "td",
+           "components": [
+            {
+             "tagName": "div",
+             "classes": [
+              "gd-header"
+             ],
+             "components": [
+              {
+               "type": "table",
+               "classes": [
+                "gd-table",
+                "gd-t8"
+               ],
+               "components": [
+                {
+                 "type": "tbody",
+                 "components": [
+                  {
+                   "type": "row",
+                   "components": [
+                    {
+                     "type": "cell",
+                     "components": [
+                      {
+                       "type": "text",
+                       "tagName": "p",
+                       "classes": [
+                        "gd-p",
+                        "gd-p2"
+                       ],
+                       "components": [
+                        {
+                         "tagName": "span",
+                         "classes": [
+                          "gd-c1"
+                         ],
+                         "components": [
+                          {
+                           "type": "textnode",
+                           "content": "POLICY NUMBER:"
+                          }
+                         ]
+                        }
+                       ]
+                      }
+                     ],
+                     "classes": [
+                      "gd-td3"
+                     ]
+                    },
+                    {
+                     "type": "cell",
+                     "components": [
+                      {
+                       "type": "text",
+                       "tagName": "p",
+                       "classes": [
+                        "gd-p",
+                        "gd-p2"
+                       ],
+                       "components": [
+                        {
+                         "type": "data-field",
+                         "field": "Policy.PolicyNumber",
+                         "format": ""
+                        }
+                       ]
+                      }
+                     ],
+                     "classes": [
+                      "gd-td4"
+                     ]
+                    },
+                    {
+                     "type": "cell",
+                     "components": [
+                      {
+                       "type": "text",
+                       "tagName": "p",
+                       "classes": [
+                        "gd-p",
+                        "gd-p5"
+                       ],
+                       "components": [
+                        {
+                         "tagName": "span",
+                         "classes": [
+                          "gd-c1"
+                         ],
+                         "components": [
+                          {
+                           "type": "textnode",
+                           "content": "COMMERCIAL AUTO"
+                          }
+                         ]
+                        }
+                       ]
+                      }
+                     ],
+                     "classes": [
+                      "gd-td6"
+                     ]
+                    }
+                   ]
+                  },
+                  {
+                   "type": "row",
+                   "components": [
+                    {
+                     "type": "cell",
+                     "components": [
+                      {
+                       "type": "text",
+                       "tagName": "p",
+                       "classes": [
+                        "gd-p",
+                        "gd-p7"
+                       ],
+                       "components": []
+                      }
+                     ],
+                     "classes": [
+                      "gd-td3"
+                     ]
+                    },
+                    {
+                     "type": "cell",
+                     "components": [
+                      {
+                       "type": "text",
+                       "tagName": "p",
+                       "classes": [
+                        "gd-p",
+                        "gd-p7"
+                       ],
+                       "components": []
+                      }
+                     ],
+                     "classes": [
+                      "gd-td4"
+                     ]
+                    },
+                    {
+                     "type": "cell",
+                     "components": [
+                      {
+                       "type": "text",
+                       "tagName": "p",
+                       "classes": [
+                        "gd-p",
+                        "gd-p5"
+                       ],
+                       "components": []
+                      }
+                     ],
+                     "classes": [
+                      "gd-td6"
+                     ]
+                    }
+                   ]
+                  }
+                 ]
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p2"
+               ],
+               "components": []
+              }
+             ]
+            },
+            {
+             "tagName": "span",
+             "classes": [
+              "gd-pgmark",
+              "gd-sec-0"
+             ]
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "tagName": "tfoot",
+       "components": [
+        {
+         "tagName": "tr",
+         "components": [
+          {
+           "tagName": "td",
+           "components": [
+            {
+             "tagName": "div",
+             "classes": [
+              "gd-footer",
+              "gd-foot-space",
+              "gd-pdffoot",
+              "gd-sec-0",
+              "gd-fy-36",
+              "gd-mb-72",
+              "gd-ml-54",
+              "gd-mr-54"
+             ],
+             "components": [
+              {
+               "type": "table",
+               "classes": [
+                "gd-table",
+                "gd-t15"
+               ],
+               "components": [
+                {
+                 "type": "tbody",
+                 "components": [
+                  {
+                   "type": "row",
+                   "components": [
+                    {
+                     "type": "cell",
+                     "components": [
+                      {
+                       "type": "text",
+                       "tagName": "p",
+                       "classes": [
+                        "gd-p",
+                        "gd-p2"
+                       ],
+                       "components": [
+                        {
+                         "tagName": "span",
+                         "classes": [
+                          "gd-c9"
+                         ],
+                         "components": [
+                          {
+                           "type": "textnode",
+                           "content": "EA 99 40 01 94"
+                          }
+                         ]
+                        }
+                       ]
+                      }
+                     ],
+                     "classes": [
+                      "gd-td10"
+                     ]
+                    },
+                    {
+                     "type": "cell",
+                     "components": [
+                      {
+                       "type": "text",
+                       "tagName": "p",
+                       "classes": [
+                        "gd-p",
+                        "gd-p12"
+                       ],
+                       "components": [
+                        {
+                         "tagName": "span",
+                         "classes": [
+                          "gd-c11"
+                         ],
+                         "components": [
+                          {
+                           "type": "textnode",
+                           "content": "Includes copyrighted material of Insurance Services Office, Inc. with its permission"
+                          }
+                         ]
+                        }
+                       ]
+                      }
+                     ],
+                     "classes": [
+                      "gd-td13"
+                     ]
+                    },
+                    {
+                     "type": "cell",
+                     "components": [
+                      {
+                       "type": "text",
+                       "tagName": "p",
+                       "classes": [
+                        "gd-p",
+                        "gd-p5"
+                       ],
+                       "components": [
+                        {
+                         "tagName": "span",
+                         "classes": [
+                          "gd-c9"
+                         ],
+                         "components": [
+                          {
+                           "type": "textnode",
+                           "content": "Page "
+                          }
+                         ]
+                        },
+                        {
+                         "tagName": "span",
+                         "classes": [
+                          "gd-c9",
+                          "gd-pageno"
+                         ],
+                         "components": [
+                          {
+                           "type": "textnode",
+                           "content": "#"
+                          }
+                         ]
+                        },
+                        {
+                         "tagName": "span",
+                         "classes": [
+                          "gd-c9"
+                         ],
+                         "components": [
+                          {
+                           "type": "textnode",
+                           "content": " of "
+                          }
+                         ]
+                        },
+                        {
+                         "tagName": "span",
+                         "classes": [
+                          "gd-c9",
+                          "gd-pagecount"
+                         ],
+                         "components": [
+                          {
+                           "type": "textnode",
+                           "content": "#"
+                          }
+                         ]
+                        }
+                       ]
+                      }
+                     ],
+                     "classes": [
+                      "gd-td14"
+                     ]
+                    }
+                   ]
+                  }
+                 ]
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p2"
+               ],
+               "components": []
+              }
+             ]
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "tagName": "tbody",
+       "components": [
+        {
+         "tagName": "tr",
+         "components": [
+          {
+           "tagName": "td",
+           "components": [
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p7"
+             ],
+             "components": [
+              {
+               "tagName": "span",
+               "classes": [
+                "gd-c16"
+               ],
+               "components": [
+                {
+                 "type": "textnode",
+                 "content": "THIS ENDORSEMENT CHANGES THE POLICY.  PLEASE READ IT CAREFULLY."
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p2"
+             ],
+             "components": []
+            },
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p7"
+             ],
+             "components": [
+              {
+               "tagName": "span",
+               "classes": [
+                "gd-c17"
+               ],
+               "components": [
+                {
+                 "type": "textnode",
+                 "content": "NAMED INDIVIDUALS AS INSUREDS -"
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p18"
+             ],
+             "components": [
+              {
+               "tagName": "span",
+               "classes": [
+                "gd-c17"
+               ],
+               "components": [
+                {
+                 "type": "textnode",
+                 "content": "FARM FAMILY CORPORATIONS OR PARTNERSHIPS"
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p19"
+             ],
+             "components": []
+            },
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p20"
+             ],
+             "components": [
+              {
+               "type": "textnode",
+               "content": "This endorsement modifies insurance provided under the following: "
+              }
+             ]
+            },
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p20"
+             ],
+             "components": [
+              {
+               "type": "textnode",
+               "content": "BUSINESS AUTO COVERAGE FORM"
+              }
+             ]
+            },
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p2"
+             ],
+             "components": []
+            },
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p21"
+             ],
+             "components": []
+            },
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p22"
+             ],
+             "components": [
+              {
+               "type": "textnode",
+               "content": "Any individual named in the SCHEDULE below is designated as a Named Insured in addition to the first Named Insured shown in Item One of the Declarations."
+              }
+             ]
+            },
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p24"
+             ],
+             "components": [
+              {
+               "tagName": "span",
+               "classes": [
+                "gd-hang",
+                "gd-h23"
+               ],
+               "components": [
+                {
+                 "type": "textnode",
+                 "content": "1."
+                }
+               ]
+              },
+              {
+               "type": "textnode",
+               "content": "The words \"you\" and \"your\" include any individual designated in the SCHEDULE and his or her spouse resident in the same household; except,"
+              }
+             ]
+            },
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p24"
+             ],
+             "components": [
+              {
+               "tagName": "span",
+               "classes": [
+                "gd-hang",
+                "gd-h23"
+               ],
+               "components": [
+                {
+                 "type": "textnode",
+                 "content": "2."
+                }
+               ]
+              },
+              {
+               "type": "textnode",
+               "content": "The first Named Insured is only the farm family partnership or farm family corporation named in Item One of the Declarations."
+              }
+             ]
+            },
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p25"
+             ],
+             "components": []
+            },
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p7"
+             ],
+             "components": [
+              {
+               "tagName": "span",
+               "classes": [
+                "gd-c9"
+               ],
+               "components": [
+                {
+                 "type": "textnode",
+                 "content": "SCHEDULE"
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "type": "table",
+             "classes": [
+              "gd-table",
+              "gd-t35"
+             ],
+             "components": [
+              {
+               "type": "tbody",
+               "components": [
+                {
+                 "type": "row",
+                 "components": [
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p26"
+                     ],
+                     "components": [
+                      {
+                       "type": "textnode",
+                       "content": "Names of Individuals"
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td27"
+                   ]
+                  }
+                 ],
+                 "classes": [
+                  "gd-tr28"
+                 ]
+                }
+               ]
+              },
+              {
+               "type": "conditional",
+               "tagName": "tbody",
+               "components": [
+                {
+                 "type": "row",
+                 "components": [
+                  {
+                   "type": "cell",
+                   "components": [],
+                   "classes": [
+                    "gd-td29"
+                   ]
+                  }
+                 ],
+                 "classes": [
+                  "gd-tr30"
+                 ]
+                },
+                {
+                 "type": "row",
+                 "components": [
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p7"
+                     ],
+                     "components": [
+                      {
+                       "type": "textnode",
+                       "content": "See Attached Schedule"
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td31"
+                   ]
+                  }
+                 ],
+                 "classes": [
+                  "gd-tr32"
+                 ]
+                },
+                {
+                 "type": "row",
+                 "components": [
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p2"
+                     ],
+                     "components": []
+                    }
+                   ],
+                   "classes": [
+                    "gd-td31"
+                   ]
+                  }
+                 ],
+                 "classes": [
+                  "gd-tr32"
+                 ]
+                },
+                {
+                 "type": "row",
+                 "components": [
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p2"
+                     ],
+                     "components": []
+                    }
+                   ],
+                   "classes": [
+                    "gd-td31"
+                   ]
+                  }
+                 ],
+                 "classes": [
+                  "gd-tr32"
+                 ]
+                },
+                {
+                 "type": "row",
+                 "components": [
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p2"
+                     ],
+                     "components": []
+                    }
+                   ],
+                   "classes": [
+                    "gd-td31"
+                   ]
+                  }
+                 ],
+                 "classes": [
+                  "gd-tr32"
+                 ]
+                },
+                {
+                 "type": "row",
+                 "components": [
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p2"
+                     ],
+                     "components": []
+                    }
+                   ],
+                   "classes": [
+                    "gd-td31"
+                   ]
+                  }
+                 ],
+                 "classes": [
+                  "gd-tr32"
+                 ]
+                },
+                {
+                 "type": "row",
+                 "components": [
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p2"
+                     ],
+                     "components": []
+                    }
+                   ],
+                   "classes": [
+                    "gd-td31"
+                   ]
+                  }
+                 ],
+                 "classes": [
+                  "gd-tr33"
+                 ]
+                }
+               ],
+               "field": "MOECAPolicyLevelCoverages.FarmFamilyCorporationsorPartnerships.has8OrMoreFarmFamilyCorpOrPartnerships",
+               "operator": "eq",
+               "value": "true",
+               "classes": [
+                "gd-if"
+               ]
+              },
+              {
+               "type": "repeat",
+               "tagName": "tbody",
+               "listPath": "MOECAPolicyLevelCoverages.FarmFamilyCorporationsorPartnerships.FarmFamilyCorporationsorPartnerships",
+               "components": [
+                {
+                 "type": "row",
+                 "components": [
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p7"
+                     ],
+                     "components": [
+                      {
+                       "type": "data-field",
+                       "field": "FarmFamilyCorporationsorPartnership.AdditionalNamedInsureds",
+                       "format": ""
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td31"
+                   ]
+                  }
+                 ],
+                 "classes": [
+                  "gd-tr34"
+                 ]
+                }
+               ],
+               "field": "MOECAPolicyLevelCoverages.FarmFamilyCorporationsorPartnerships.has8OrMoreFarmFamilyCorpOrPartnerships",
+               "operator": "ne",
+               "value": "true"
+              }
+             ]
+            },
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p2"
+             ],
+             "components": []
+            },
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p36"
+             ],
+             "components": [
+              {
+               "type": "textnode",
+               "content": "For the individual Named Insured(s) shown in the SCHEDULE, the policy is changed as follows:"
+              }
+             ]
+            },
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p37"
+             ],
+             "components": []
+            },
+            {
+             "tagName": "div",
+             "classes": [
+              "gd-cols48"
+             ],
+             "components": [
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p39"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h38"
+                 ],
+                 "components": [
+                  {
+                   "tagName": "span",
+                   "classes": [
+                    "gd-c9"
+                   ],
+                   "components": [
+                    {
+                     "type": "textnode",
+                     "content": "A."
+                    }
+                   ]
+                  }
+                 ]
+                },
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-c9"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "CHANGES IN LIABILITY COVERAGE"
+                  }
+                 ]
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p40"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h38"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "1."
+                  }
+                 ]
+                },
+                {
+                 "type": "textnode",
+                 "content": "The FELLOW EMPLOYEE EXCLUSION does"
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p41"
+               ],
+               "components": [
+                {
+                 "type": "textnode",
+                 "content": "not apply to \"bodily injury\" to you or any \"family member's \" fellow employees."
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p43"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h42"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "2."
+                  }
+                 ]
+                },
+                {
+                 "type": "textnode",
+                 "content": "While any \"auto\" you own is a covered \"auto\" under LIABILITY COVERAGE:"
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p44"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h42"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "a."
+                  }
+                 ]
+                },
+                {
+                 "type": "textnode",
+                 "content": "The following is added to WHO IS AN INSURED:"
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p45"
+               ],
+               "components": [
+                {
+                 "type": "textnode",
+                 "content": "\"Family members\" are \"insureds\" for any covered \"auto\" you own and any other \"auto\" described in paragraph "
+                },
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-c9"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "2.b. "
+                  }
+                 ]
+                },
+                {
+                 "type": "textnode",
+                 "content": "of this endorsement."
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p46"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h42"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "b."
+                  }
+                 ]
+                },
+                {
+                 "type": "textnode",
+                 "content": "Any \"auto\" you don't own is a covered \"auto\" while being used by you or by any \"family member\" except:"
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p47"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h42"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "(1)"
+                  }
+                 ]
+                },
+                {
+                 "type": "textnode",
+                 "content": "Any \"auto\" owned by any \"family members\" that is not described as a covered \"auto\" in Item Three of the Declarations."
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "type": "page-break"
+            },
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p49"
+             ],
+             "components": [
+              {
+               "tagName": "span",
+               "classes": [
+                "gd-hang",
+                "gd-h42"
+               ],
+               "components": [
+                {
+                 "type": "textnode",
+                 "content": "(2)"
+                }
+               ]
+              },
+              {
+               "type": "textnode",
+               "content": "Any \"auto\" furnished or available for your or any \"family member's\" regular use that is neither described in Item Three of the Declarations nor owned by any other Named Insured on this policy."
+              }
+             ]
+            },
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p50"
+             ],
+             "components": [
+              {
+               "tagName": "span",
+               "classes": [
+                "gd-hang",
+                "gd-h42"
+               ],
+               "components": [
+                {
+                 "type": "textnode",
+                 "content": "(3)"
+                }
+               ]
+              },
+              {
+               "type": "textnode",
+               "content": "Any \"auto\" used by you or by any of your \"family members\" while working in a business of selling, servicing, repairing or parking \"autos.\""
+              }
+             ]
+            },
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p49"
+             ],
+             "components": [
+              {
+               "tagName": "span",
+               "classes": [
+                "gd-hang",
+                "gd-h42"
+               ],
+               "components": [
+                {
+                 "type": "textnode",
+                 "content": "(4)"
+                }
+               ]
+              },
+              {
+               "type": "textnode",
+               "content": "Any \"auto\" other than a \"private passenger type\" \"auto\" used by you or any of your \"family members\" while working in any other business or occupation."
+              }
+             ]
+            },
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p52"
+             ],
+             "components": [
+              {
+               "tagName": "span",
+               "classes": [
+                "gd-hang",
+                "gd-h51"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-c9"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "3."
+                  }
+                 ]
+                }
+               ]
+              },
+              {
+               "tagName": "span",
+               "classes": [
+                "gd-c9"
+               ],
+               "components": [
+                {
+                 "type": "textnode",
+                 "content": "Private Passenger Type Changes"
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p53"
+             ],
+             "components": [
+              {
+               "tagName": "span",
+               "classes": [
+                "gd-hang",
+                "gd-h42"
+               ],
+               "components": [
+                {
+                 "type": "textnode",
+                 "content": "a."
+                }
+               ]
+              },
+              {
+               "type": "textnode",
+               "content": "The POLLUTION Exclusion and, if forming a part of the policy, the NUCLEAR ENERGY LIABILITY EXCLUSION (BROAD FORM),"
+              }
+             ]
+            },
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p54"
+             ],
+             "components": [
+              {
+               "type": "textnode",
+               "content": "does not apply to any covered \"auto\" of the \"private passenger type.\""
+              }
+             ]
+            },
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p53"
+             ],
+             "components": [
+              {
+               "tagName": "span",
+               "classes": [
+                "gd-hang",
+                "gd-h42"
+               ],
+               "components": [
+                {
+                 "type": "textnode",
+                 "content": "b."
+                }
+               ]
+              },
+              {
+               "type": "textnode",
+               "content": "The following exclusion is added and applies only to \"private passenger type\" covered \"autos\":"
+              }
+             ]
+            },
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p55"
+             ],
+             "components": [
+              {
+               "type": "textnode",
+               "content": "This insurance does not apply to:"
+              }
+             ]
+            },
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p56"
+             ],
+             "components": [
+              {
+               "type": "textnode",
+               "content": "\"Bodily injury\" or \"property damage\" for which an \"insured\" under the policy is also an \"insured\" under the nuclear energy liability policy or would be an \"insured\" but for its termination upon its exhaustion of its limit of liability. A nuclear energy liability policy is a policy issued by Nuclear Energy Liability Insurance Association, Mutual Atomic Energy Liability Underwriters or any of their successors. This exclusion does not apply to \"autos\" registered or principally garaged in New York."
+              }
+             ]
+            },
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p57"
+             ],
+             "components": [
+              {
+               "tagName": "span",
+               "classes": [
+                "gd-hang",
+                "gd-h51"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-c9"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "B."
+                  }
+                 ]
+                }
+               ]
+              },
+              {
+               "tagName": "span",
+               "classes": [
+                "gd-c9"
+               ],
+               "components": [
+                {
+                 "type": "textnode",
+                 "content": "CHANGES IN PHYSICAL DAMAGE"
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p58"
+             ],
+             "components": [
+              {
+               "type": "textnode",
+               "content": "PERSONAL AUTO COVERAGE"
+              }
+             ]
+            },
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p59"
+             ],
+             "components": [
+              {
+               "type": "textnode",
+               "content": "While any \"auto\" you own is a covered \"auto\" under PHYSICAL DAMAGE COVERAGE , a \"non-owned"
+              }
+             ]
+            },
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p59"
+             ],
+             "components": [
+              {
+               "type": "textnode",
+               "content": "auto\" will also be considered a covered \"auto.\" However, the most we will pay for \"loss\" to a \"non- owned auto\" that is a \"trailer\" is $500. "
+              }
+             ]
+            },
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p61"
+             ],
+             "components": [
+              {
+               "tagName": "span",
+               "classes": [
+                "gd-hang",
+                "gd-h60"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-c9"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "C."
+                  }
+                 ]
+                }
+               ]
+              },
+              {
+               "tagName": "span",
+               "classes": [
+                "gd-c9"
+               ],
+               "components": [
+                {
+                 "type": "textnode",
+                 "content": "ADDITIONAL DEFINITIONS"
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p62"
+             ],
+             "components": [
+              {
+               "type": "textnode",
+               "content": "The following is added to the DEFINITIONS Section:"
+              }
+             ]
+            },
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p47"
+             ],
+             "components": [
+              {
+               "tagName": "span",
+               "classes": [
+                "gd-hang",
+                "gd-h42"
+               ],
+               "components": [
+                {
+                 "type": "textnode",
+                 "content": "1."
+                }
+               ]
+              },
+              {
+               "type": "textnode",
+               "content": "\"Family member\" means a person related to you by blood, marriage or adoption who is a resident of your household, including a ward or foster child."
+              }
+             ]
+            },
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p47"
+             ],
+             "components": [
+              {
+               "tagName": "span",
+               "classes": [
+                "gd-hang",
+                "gd-h42"
+               ],
+               "components": [
+                {
+                 "type": "textnode",
+                 "content": "2."
+                }
+               ]
+              },
+              {
+               "type": "textnode",
+               "content": "The words \"you\" and \"your\" include your spouse if a resident of the same household."
+              }
+             ]
+            },
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p63"
+             ],
+             "components": [
+              {
+               "tagName": "span",
+               "classes": [
+                "gd-hang",
+                "gd-h42"
+               ],
+               "components": [
+                {
+                 "type": "textnode",
+                 "content": "3."
+                }
+               ]
+              },
+              {
+               "type": "textnode",
+               "content": "When the phrase \"private passenger type auto\" appears in quotation marks it includes any covered \"auto\" you own of the pick-up or van type not used for business purposes, other than farming or ranching."
+              }
+             ]
+            },
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p63"
+             ],
+             "components": [
+              {
+               "tagName": "span",
+               "classes": [
+                "gd-hang",
+                "gd-h42"
+               ],
+               "components": [
+                {
+                 "type": "textnode",
+                 "content": "4."
+                }
+               ]
+              },
+              {
+               "type": "textnode",
+               "content": "When the phrase \"non-owned auto\" appears in quotation marks it means any \"private passenger type auto\" not owned by you or any \"family member\" while it is in the custody of or while it is being operated by you or any \"family member.\""
+              }
+             ]
+            },
+            {
+             "type": "conditional",
+             "tagName": "div",
+             "components": [
+              {
+               "type": "page-break"
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p7"
+               ],
+               "components": []
+              },
+              {
+               "type": "table",
+               "classes": [
+                "gd-table",
+                "gd-t70"
+               ],
+               "components": [
+                {
+                 "type": "tbody",
+                 "components": [
+                  {
+                   "type": "row",
+                   "components": [
+                    {
+                     "type": "cell",
+                     "components": [
+                      {
+                       "type": "text",
+                       "tagName": "p",
+                       "classes": [
+                        "gd-p",
+                        "gd-p7"
+                       ],
+                       "components": [
+                        {
+                         "tagName": "span",
+                         "classes": [
+                          "gd-c9"
+                         ],
+                         "components": [
+                          {
+                           "type": "textnode",
+                           "content": "SCHEDULE"
+                          }
+                         ]
+                        }
+                       ]
+                      }
+                     ],
+                     "classes": [
+                      "gd-td64"
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-tr65"
+                   ]
+                  },
+                  {
+                   "type": "row",
+                   "components": [
+                    {
+                     "type": "cell",
+                     "components": [
+                      {
+                       "type": "text",
+                       "tagName": "p",
+                       "classes": [
+                        "gd-p",
+                        "gd-p7"
+                       ],
+                       "components": [
+                        {
+                         "type": "textnode",
+                         "content": "Names of Individuals"
+                        }
+                       ]
+                      }
+                     ],
+                     "classes": [
+                      "gd-td66"
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-tr67"
+                   ]
+                  }
+                 ]
+                },
+                {
+                 "type": "repeat",
+                 "tagName": "tbody",
+                 "listPath": "MOECAPolicyLevelCoverages.FarmFamilyCorporationsorPartnerships.FarmFamilyCorporationsorPartnerships",
+                 "components": [
+                  {
+                   "type": "row",
+                   "components": [
+                    {
+                     "type": "cell",
+                     "components": [
+                      {
+                       "type": "text",
+                       "tagName": "p",
+                       "classes": [
+                        "gd-p",
+                        "gd-p7"
+                       ],
+                       "components": [
+                        {
+                         "type": "data-field",
+                         "field": "FarmFamilyCorporationsorPartnership.AdditionalNamedInsureds",
+                         "format": ""
+                        }
+                       ]
+                      }
+                     ],
+                     "classes": [
+                      "gd-td68"
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-tr69"
+                   ]
+                  }
+                 ]
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p7"
+               ],
+               "components": []
+              }
+             ],
+             "field": "MOECAPolicyLevelCoverages.FarmFamilyCorporationsorPartnerships.has8OrMoreFarmFamilyCorpOrPartnerships",
+             "operator": "eq",
+             "value": "true",
+             "classes": [
+              "gd-if"
+             ]
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "tagName": "div",
+     "classes": [
+      "gd-footer",
+      "gd-foot-fixed"
+     ],
+     "components": [
+      {
+       "type": "table",
+       "classes": [
+        "gd-table",
+        "gd-t15"
+       ],
+       "components": [
+        {
+         "type": "tbody",
+         "components": [
+          {
+           "type": "row",
+           "components": [
+            {
+             "type": "cell",
+             "components": [
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p2"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-c9"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "EA 99 40 01 94"
+                  }
+                 ]
+                }
+               ]
+              }
+             ],
+             "classes": [
+              "gd-td10"
+             ]
+            },
+            {
+             "type": "cell",
+             "components": [
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p12"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-c11"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "Includes copyrighted material of Insurance Services Office, Inc. with its permission"
+                  }
+                 ]
+                }
+               ]
+              }
+             ],
+             "classes": [
+              "gd-td13"
+             ]
+            },
+            {
+             "type": "cell",
+             "components": [
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p5"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-c9"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "Page "
+                  }
+                 ]
+                },
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-c9",
+                  "gd-pageno"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "#"
+                  }
+                 ]
+                },
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-c9"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": " of "
+                  }
+                 ]
+                },
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-c9",
+                  "gd-pagecount"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "#"
+                  }
+                 ]
+                }
+               ]
+              }
+             ],
+             "classes": [
+              "gd-td14"
+             ]
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "tagName": "p",
+       "classes": [
+        "gd-p",
+        "gd-p2"
+       ],
+       "components": []
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "css": ".form-page{position:relative;width:612pt;height:792pt;overflow:hidden;background:#fff;}\n.form-page + .form-page{page-break-before:always;}\n@page gdflow{margin:54pt 0 72pt 0;}\n.gd-flow{page:gdflow;padding:0 54pt 0 54pt;}\n@page gdrun{margin:36pt 0 36pt 0;}\n.gd-flow.gd-run{page:gdrun;}\n.gd-doc table.gd-runt{width:100%;border-collapse:collapse;table-layout:fixed;}\n.gd-doc table.gd-runt>*>tr>td{padding:0;}\n.gd-doc table.gd-runt>thead>tr>td{height:18pt;vertical-align:top;}\n.gd-doc table.gd-runt>tfoot>tr>td{height:36pt;vertical-align:bottom;position:relative;}\n.gd-pdffoot-even{position:absolute;visibility:hidden;left:0;right:0;bottom:0;}\n.gd-doc table.gd-runt>thead>tr>td{position:relative;}\n.gd-pgmark{position:absolute;left:0;top:0;font-size:2pt;line-height:1;color:#fff;white-space:nowrap;}\n.gd-sheetfoot{position:absolute;background:#fff;}\n.gd-sheetfoot.gd-side-even{display:none;}\n.gd-foot-fixed{display:none;}\n@media print{.gd-foot-space{visibility:hidden;}.gd-foot-fixed{display:block;position:fixed;left:0;right:0;bottom:0;padding:0 54pt 0 54pt;}}\n.gd-if:empty{display:none;}\n.gd-flow:not(:has(:not(.gd-if))){display:none;}\n.form-page:not(:has(:not(.gd-if))){display:none;}\n.form-page .abs{position:absolute;white-space:pre;margin:0;padding:0;line-height:normal;}\n.form-page .rule{position:absolute;background:#000;}\n.form-page .gd-tb{white-space:normal;box-sizing:border-box;}\n.gd-doc .gd-pagebg{position:absolute;width:0;height:0;}\n.gd-doc .gd-anchor{position:relative;}\n.gd-doc .gd-anchored{position:absolute;box-sizing:border-box;}\n.gd-doc .gd-header{position:relative;}\n.gd-pagebg .abs{position:absolute;white-space:pre;margin:0;padding:0;line-height:normal;}\n.gd-pagebg .rule{position:absolute;background:#000;}\n.gd-pagebg .gd-tb{white-space:normal;box-sizing:border-box;}\n.gd-doc{font-family:'Arial',sans-serif;font-size:10pt;color:#000;line-height:1.15;}\n:where(.gd-doc) p{margin:0;}\n.gd-doc p:empty::before{content:\"\\00a0\";}\n.gd-doc p.gd-keepline{min-height:1lh;}\n.gd-doc .gd-table{border-collapse:collapse;table-layout:fixed;}\n:where(.gd-doc) td{vertical-align:top;padding:0 5.4pt;}\n.gd-doc tr.gd-grid td{height:0;padding:0;border:0;}\n.gd-doc .gd-box{margin:0 0 6pt 0;}\n.gd-doc .gd-tab{display:inline-block;width:36pt;}\n.gd-doc .gd-hang{display:inline-block;}\n.gd-doc .gd-img-missing{display:inline-block;border:1px dashed #9ca3af;color:#6b7280;font-size:7pt;}\n.gd-doc .gd-c1{font-weight:bold;text-transform:uppercase;}\n.gd-doc .gd-p2{line-height:1.15;}\n.gd-doc .gd-td3{width:19.640%;padding:0pt 5.4pt 0pt 5.4pt;}\n.gd-doc .gd-td4{width:58.040%;padding:0pt 5.4pt 0pt 5.4pt;}\n.gd-doc .gd-p5{text-align:right;line-height:1.15;}\n.gd-doc .gd-td6{width:22.320%;padding:0pt 5.4pt 0pt 5.4pt;}\n.gd-doc .gd-p7{text-align:center;line-height:1.15;}\n.gd-doc .gd-t8{width:100.000%;}\n.gd-doc .gd-c9{font-weight:bold;}\n.gd-doc .gd-td10{width:16.630%;padding:0pt 5.4pt 0pt 5.4pt;}\n.gd-doc .gd-c11{font-size:9pt;}\n.gd-doc .gd-p12{margin-left:1pt;margin-top:0.7pt;line-height:1.15;}\n.gd-doc .gd-td13{width:69.400%;padding:0pt 5.4pt 0pt 5.4pt;}\n.gd-doc .gd-td14{width:13.970%;padding:0pt 5.4pt 0pt 5.4pt;}\n.gd-doc .gd-t15{width:100.000%;margin-left:-0.140%;}\n.gd-doc .gd-c16{font-weight:bold;text-transform:uppercase;font-size:12pt;}\n.gd-doc .gd-c17{font-weight:bold;font-size:12pt;}\n.gd-doc .gd-p18{text-align:center;margin-left:0.05pt;margin-top:0.3pt;line-height:1.15;}\n.gd-doc .gd-p19{margin-top:9.2pt;line-height:1.15;}\n.gd-doc .gd-p20{margin-left:18pt;line-height:2.3;}\n.gd-doc .gd-p21{margin-top:0.1pt;line-height:1.15;}\n.gd-doc .gd-p22{margin-left:18pt;margin-right:0.9pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-h23{min-width:19.5pt;}\n.gd-doc .gd-p24{margin-left:56.85pt;margin-right:17.9pt;text-indent:-19.5pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-p25{margin-top:0.3pt;line-height:1.15;}\n.gd-doc .gd-p26{text-align:center;margin-left:0.7pt;margin-top:5.6pt;line-height:1.15;}\n.gd-doc .gd-td27{width:100.000%;border-top:0.75pt solid #000000;border-left:0.75pt solid #000000;border-bottom:2.25pt double #000000;border-right:0.75pt solid #000000;padding:0pt 0pt 0pt 0pt;}\n.gd-doc .gd-tr28{height:23.8pt;}\n.gd-doc .gd-td29{width:100.000%;border-top:2.25pt double #000000;border-left:0.75pt solid #000000;border-bottom:0.75pt solid #000000;border-right:0.75pt solid #000000;vertical-align:middle;padding:0pt 0pt 0pt 0pt;}\n.gd-doc .gd-tr30{height:20pt;}\n.gd-doc .gd-td31{width:100.000%;border-top:0.75pt solid #000000;border-left:0.75pt solid #000000;border-bottom:0.75pt solid #000000;border-right:0.75pt solid #000000;vertical-align:middle;padding:0pt 0pt 0pt 0pt;}\n.gd-doc .gd-tr32{height:20.85pt;}\n.gd-doc .gd-tr33{height:21.75pt;}\n.gd-doc .gd-tr34{height:21.65pt;}\n.gd-doc .gd-t35{width:100.000%;margin-left:3.710%;}\n.gd-doc .gd-p36{margin-left:18pt;line-height:1.15;}\n.gd-doc .gd-p37{margin-top:0.5pt;line-height:1.15;}\n.gd-doc .gd-h38{min-width:17.9pt;}\n.gd-doc .gd-p39{margin-left:35.9pt;text-indent:-17.9pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-p40{margin-left:53.85pt;text-indent:-17.9pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-p41{margin-left:53.95pt;margin-right:1.95pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-h42{min-width:18pt;}\n.gd-doc .gd-p43{margin-left:53.95pt;margin-right:1.9pt;text-indent:-18pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-p44{margin-left:71.95pt;margin-right:1.9pt;text-indent:-18pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-p45{text-align:justify;margin-left:33.1pt;margin-right:17.85pt;margin-top:4pt;line-height:11pt;break-before:column;}\n.gd-doc .gd-p46{text-align:justify;margin-left:35.95pt;margin-right:17.9pt;text-indent:-18pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-p47{text-align:justify;margin-left:53.95pt;margin-right:17.9pt;text-indent:-18pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-cols48{column-count:2;column-gap:54.85pt;column-fill:balance;}\n.gd-doc .gd-p49{text-align:justify;margin-left:92.85pt;margin-right:1.95pt;text-indent:-18pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-p50{text-align:justify;margin-left:92.85pt;margin-right:1.9pt;text-indent:-18pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-h51{min-width:17.95pt;}\n.gd-doc .gd-p52{margin-left:55.3pt;text-indent:-17.95pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-p53{text-align:justify;margin-left:71.95pt;margin-right:1.95pt;text-indent:-18pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-p54{text-align:justify;margin-left:71.95pt;margin-right:1.95pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-p55{text-align:justify;margin-left:71.95pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-p56{text-align:justify;margin-left:71.95pt;margin-right:1.9pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-p57{margin-left:35.9pt;text-indent:-17.95pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-p58{text-align:justify;margin-left:37.35pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-p59{text-align:justify;margin-left:37.35pt;margin-right:1.95pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-h60{min-width:19.3pt;}\n.gd-doc .gd-p61{margin-left:37.25pt;text-indent:-19.3pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-p62{text-align:center;margin-left:19.3pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-p63{text-align:justify;margin-left:53.95pt;margin-right:17.85pt;text-indent:-18pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-td64{width:100.000%;border-top:0.5pt solid #000;border-left:0.5pt solid #000;border-bottom:0.5pt solid #000;border-right:0.5pt solid #000;vertical-align:middle;padding:0pt 5.75pt 0pt 5.75pt;}\n.gd-doc .gd-tr65{height:22.8pt;}\n.gd-doc .gd-td66{width:100.000%;border-top:0.5pt solid #000;border-left:0.75pt solid #000;border-bottom:2.25pt double #000;border-right:0.75pt solid #000;vertical-align:middle;padding:0pt 5.625pt 0pt 5.625pt;}\n.gd-doc .gd-tr67{height:22.925pt;}\n.gd-doc .gd-td68{width:100.000%;border-top:0.5pt solid #000000;border-left:0.5pt solid #000000;border-bottom:0.5pt solid #000000;border-right:0.5pt solid #000000;vertical-align:middle;padding:0pt 5.75pt 0pt 5.75pt;}\n.gd-doc .gd-tr69{height:19.95pt;}\n.gd-doc .gd-t70{width:100.000%;margin-left:-1.110%;}",
+ "model": {
+  "Policy": {
+   "PolicyNumber": "Policy Number"
+  },
+  "MOECAPolicyLevelCoverages": {
+   "FarmFamilyCorporationsorPartnerships": {
+    "has8OrMoreFarmFamilyCorpOrPartnerships": true,
+    "FarmFamilyCorporationsorPartnerships": [
+     {
+      "AdditionalNamedInsureds": "Additional Named Insureds"
+     },
+     {
+      "AdditionalNamedInsureds": "Additional Named Insureds 2"
+     }
+    ]
+   }
+  }
+ },
+ "report": {
+  "counts": {
+   "choose": 1,
+   "conditionals": 2,
+   "fill points": 4,
+   "lists": 2,
+   "page-number fields": 2,
+   "paragraphs": 68,
+   "repeat": 2,
+   "show if": 1,
+   "subscriptions": 2,
+   "subscriptions expanded": 2,
+   "tables": 4
+  },
+  "notes": [
+   "marker 6 moved out of a cell that has content on both sides",
+   "running footer repeats on every flowing page",
+   "running header repeats on every flowing page"
+  ]
+ }
+}

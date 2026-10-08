@@ -1,0 +1,2 @@
+case,match,score,golden_pages,html_pages,golden_words,html_words,missing,extra
+CA2016_1120,False,0.993,5,5,1049,1040,12,3

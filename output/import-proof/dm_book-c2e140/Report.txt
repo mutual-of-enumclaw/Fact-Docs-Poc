@@ -1,0 +1,15 @@
+file       C:\src\FaCT-DocProd-Documentation\1_From Docucorp_System\dm_book.pdf
+format     pdf
+pages      100
+recall     98 % of 21066 original words appear in the render
+precision  96 % of 21331 rendered words come from the original
+visual     97 % page likeness (ink within ~4pt of the original) [100 %, 100 %, 100 %, 100 %, 100 %, 100 %, 99 %, 99 %, 98 %, 92 %, 80 %, 81 %, 98 %, 81 %, 99 %, 99 %, 88 %, 96 %, 86 %, 98 %, 98 %, 98 %, 98 %, 98 %, 97 %, 88 %, 98 %, 99 %, 99 %, 99 %, 99 %, 98 %, 97 %, 99 %, 96 %, 97 %, 98 %, 98 %, 98 %, 85 %, 98 %, 99 %, 99 %, 98 %, 98 %, 96 %, 98 %, 96 %, 97 %, 97 %, 98 %, 99 %, 99 %, 97 %, 98 %, 99 %, 99 %, 95 %, 96 %, 96 %, 99 %, 95 %, 98 %, 99 %, 97 %, 99 %, 99 %, 98 %, 99 %, 99 %, 99 %, 99 %, 98 %, 97 %, 98 %, 96 %, 97 %, 98 %, 98 %, 98 %, 96 %, 97 %, 97 %, 98 %, 98 %, 98 %, 99 %, 98 %, 98 %, 99 %, 98 %, 99 %, 96 %, 99 %, 99 %, 99 %, 97 %, 98 %, 99 %, 99 %]
+review     -
+counts     4140 texts, 0 fields, 2031 shapes, 92 images, 0 skipped
+fields     
+notes      Imported pages 1-100 of 188.
+           4 font(s) embedded in the PDF are used for its text.
+           1 embedded font(s) can't be used in a browser (no Unicode character map, or characters missing) and were replaced by a standard family.
+           The lines and shapes on page(s) 12 could not be read and are missing.
+           114 curved or diagonal shape(s) (circles, logos drawn as vectors) were skipped.
+missing    documaker guide in the of this information is or and logo are library x document on work your copies as an to for does not copied system into form manual features changes from such chapter overview data entry directory structure

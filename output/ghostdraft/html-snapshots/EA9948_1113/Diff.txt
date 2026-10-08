@@ -1,0 +1,10 @@
+EA9948_1113: DIFFERENT  score 99.9%
+pages   golden 1  html 1  (pages with text)
+words   golden 456  html 455  missing 1  extra 0
+
+MISSING (in the GhostDraft golden, not in the HTML render)
+  [POLLUTANTS]  <=  release or escape of "pollutants":
+
+golden   C:\src\fact-docgen\src\Moe.Commercial.Documents.Generation.Integration.Tests\TestData\Snapshots\EA9948_1113\GoldenSnapshot.txt
+template C:\src\fact-poc\output\ghostdraft\batch\EA9948-1113.json
+serverxml C:\src\fact-poc\output\ghostdraft\serverxml\EA9948_1113\ServerXml.xml

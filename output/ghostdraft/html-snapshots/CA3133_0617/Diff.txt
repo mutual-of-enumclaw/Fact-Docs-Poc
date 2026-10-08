@@ -1,0 +1,10 @@
+CA3133_0617: DIFFERENT  score 100.0%
+pages   golden 3  html 3  (pages with text)
+words   golden 1535  html 1536  missing 0  extra 1
+
+EXTRA (in the HTML render, not in the GhostDraft golden)
+  [TO]  <=  Others   To  Us  is  changed   by  adding  the                self-insurer who  is or becomes   insolvent
+
+golden   C:\src\fact-docgen\src\Moe.Commercial.Documents.Generation.Integration.Tests\TestData\Snapshots\CA3133_0617\GoldenSnapshot.txt
+template C:\src\fact-poc\output\ghostdraft\batch\CA-31-33-06-17-Montana-Underinsured-Motorists-Coverage---Nonstac.json
+serverxml C:\src\fact-poc\output\ghostdraft\serverxml\CA3133_0617\ServerXml.xml

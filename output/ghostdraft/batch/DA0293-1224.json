@@ -1,0 +1,4350 @@
+{
+ "name": "DA0293-1224",
+ "title": "DA 02 93 12 24",
+ "source": "DA0293 1224.gd",
+ "package": "proprietary-ca-2607",
+ "components": [
+  {
+   "tagName": "div",
+   "classes": [
+    "gd-doc",
+    "gd-flow",
+    "gd-run"
+   ],
+   "components": [
+    {
+     "tagName": "table",
+     "classes": [
+      "gd-runt"
+     ],
+     "components": [
+      {
+       "tagName": "thead",
+       "components": [
+        {
+         "tagName": "tr",
+         "components": [
+          {
+           "tagName": "td",
+           "components": [
+            {
+             "tagName": "div",
+             "classes": [
+              "gd-header"
+             ],
+             "components": [
+              {
+               "type": "table",
+               "classes": [
+                "gd-table",
+                "gd-t7"
+               ],
+               "components": [
+                {
+                 "type": "tbody",
+                 "components": [
+                  {
+                   "type": "row",
+                   "components": [
+                    {
+                     "type": "cell",
+                     "components": [
+                      {
+                       "type": "text",
+                       "tagName": "p",
+                       "classes": [
+                        "gd-p",
+                        "gd-p2"
+                       ],
+                       "components": [
+                        {
+                         "tagName": "span",
+                         "classes": [
+                          "gd-c1"
+                         ],
+                         "components": [
+                          {
+                           "type": "textnode",
+                           "content": "BUSINESS AUTO COVERAGE DECLARATIONS (Continued)"
+                          }
+                         ]
+                        }
+                       ]
+                      }
+                     ],
+                     "classes": [
+                      "gd-td3"
+                     ]
+                    },
+                    {
+                     "type": "cell",
+                     "components": [
+                      {
+                       "type": "text",
+                       "tagName": "p",
+                       "classes": [
+                        "gd-p",
+                        "gd-p4"
+                       ],
+                       "components": [
+                        {
+                         "tagName": "span",
+                         "classes": [
+                          "gd-c1"
+                         ],
+                         "components": [
+                          {
+                           "type": "textnode",
+                           "content": "Policy No.:"
+                          }
+                         ]
+                        }
+                       ]
+                      }
+                     ],
+                     "classes": [
+                      "gd-td5"
+                     ]
+                    },
+                    {
+                     "type": "cell",
+                     "components": [
+                      {
+                       "type": "text",
+                       "tagName": "p",
+                       "classes": [
+                        "gd-p",
+                        "gd-p2"
+                       ],
+                       "components": [
+                        {
+                         "type": "data-field",
+                         "field": "Policy.PolicyNumber",
+                         "format": ""
+                        }
+                       ]
+                      }
+                     ],
+                     "classes": [
+                      "gd-td6"
+                     ]
+                    }
+                   ]
+                  }
+                 ]
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p2"
+               ],
+               "components": []
+              }
+             ]
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "tagName": "tfoot",
+       "components": [
+        {
+         "tagName": "tr",
+         "components": [
+          {
+           "tagName": "td",
+           "components": [
+            {
+             "tagName": "div",
+             "classes": [
+              "gd-footer",
+              "gd-foot-space"
+             ],
+             "components": [
+              {
+               "type": "table",
+               "classes": [
+                "gd-table",
+                "gd-t7"
+               ],
+               "components": [
+                {
+                 "type": "tbody",
+                 "components": [
+                  {
+                   "type": "row",
+                   "components": [
+                    {
+                     "type": "cell",
+                     "components": [
+                      {
+                       "type": "text",
+                       "tagName": "p",
+                       "classes": [
+                        "gd-p",
+                        "gd-p2"
+                       ],
+                       "components": [
+                        {
+                         "tagName": "span",
+                         "classes": [
+                          "gd-c1"
+                         ],
+                         "components": [
+                          {
+                           "type": "textnode",
+                           "content": "DA 02 93 12 24"
+                          }
+                         ]
+                        }
+                       ]
+                      }
+                     ],
+                     "classes": [
+                      "gd-td8"
+                     ]
+                    },
+                    {
+                     "type": "cell",
+                     "components": [
+                      {
+                       "type": "text",
+                       "tagName": "p",
+                       "classes": [
+                        "gd-p",
+                        "gd-p9"
+                       ],
+                       "components": []
+                      }
+                     ],
+                     "classes": [
+                      "gd-td10"
+                     ]
+                    },
+                    {
+                     "type": "cell",
+                     "components": [
+                      {
+                       "type": "text",
+                       "tagName": "p",
+                       "classes": [
+                        "gd-p",
+                        "gd-p4"
+                       ],
+                       "components": []
+                      }
+                     ],
+                     "classes": [
+                      "gd-td11"
+                     ]
+                    }
+                   ]
+                  }
+                 ]
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p2"
+               ],
+               "components": []
+              }
+             ]
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "tagName": "tbody",
+       "components": [
+        {
+         "tagName": "tr",
+         "components": [
+          {
+           "tagName": "td",
+           "components": [
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p12"
+             ],
+             "components": []
+            },
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p12"
+             ],
+             "components": [
+              {
+               "tagName": "span",
+               "classes": [
+                "gd-c13"
+               ],
+               "components": [
+                {
+                 "type": "textnode",
+                 "content": "ITEM FOUR: SCHEDULE OF HIRED OR BORROWED COVERED AUTO COVERAGE AND PREMIUMS"
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p14"
+             ],
+             "components": []
+            },
+            {
+             "type": "table",
+             "classes": [
+              "gd-table",
+              "gd-t63"
+             ],
+             "components": [
+              {
+               "type": "tbody",
+               "components": [
+                {
+                 "type": "row",
+                 "classes": [
+                  "gd-grid"
+                 ],
+                 "components": [
+                  {
+                   "type": "cell",
+                   "classes": [
+                    "gd-col55"
+                   ],
+                   "components": []
+                  },
+                  {
+                   "type": "cell",
+                   "classes": [
+                    "gd-col56"
+                   ],
+                   "components": []
+                  },
+                  {
+                   "type": "cell",
+                   "classes": [
+                    "gd-col57"
+                   ],
+                   "components": []
+                  },
+                  {
+                   "type": "cell",
+                   "classes": [
+                    "gd-col57"
+                   ],
+                   "components": []
+                  },
+                  {
+                   "type": "cell",
+                   "classes": [
+                    "gd-col58"
+                   ],
+                   "components": []
+                  },
+                  {
+                   "type": "cell",
+                   "classes": [
+                    "gd-col59"
+                   ],
+                   "components": []
+                  },
+                  {
+                   "type": "cell",
+                   "classes": [
+                    "gd-col60"
+                   ],
+                   "components": []
+                  },
+                  {
+                   "type": "cell",
+                   "classes": [
+                    "gd-col61"
+                   ],
+                   "components": []
+                  },
+                  {
+                   "type": "cell",
+                   "classes": [
+                    "gd-col62"
+                   ],
+                   "components": []
+                  }
+                 ]
+                }
+               ]
+              },
+              {
+               "type": "tbody",
+               "components": [
+                {
+                 "type": "row",
+                 "components": [
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p16"
+                     ],
+                     "components": [
+                      {
+                       "tagName": "span",
+                       "classes": [
+                        "gd-c15"
+                       ],
+                       "components": [
+                        {
+                         "type": "textnode",
+                         "content": "COVERED AUTOS LIABILITY COVERAGE - RATING BASIS, COST OF HIRE"
+                        }
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td17"
+                   ],
+                   "attributes": {
+                    "colspan": "9"
+                   }
+                  }
+                 ],
+                 "classes": [
+                  "gd-tr18"
+                 ]
+                },
+                {
+                 "type": "row",
+                 "components": [
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p20"
+                     ],
+                     "components": [
+                      {
+                       "tagName": "span",
+                       "classes": [
+                        "gd-c19"
+                       ],
+                       "components": [
+                        {
+                         "type": "textnode",
+                         "content": "STATE"
+                        }
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td17"
+                   ],
+                   "attributes": {
+                    "colspan": "2"
+                   }
+                  },
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p21"
+                     ],
+                     "components": [
+                      {
+                       "tagName": "span",
+                       "classes": [
+                        "gd-c19"
+                       ],
+                       "components": [
+                        {
+                         "type": "textnode",
+                         "content": "ESTIMATED ANNUAL COST OF HIRE FOR EACH STATE"
+                        }
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td17"
+                   ]
+                  },
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p22"
+                     ],
+                     "components": [
+                      {
+                       "tagName": "span",
+                       "classes": [
+                        "gd-c19"
+                       ],
+                       "components": [
+                        {
+                         "type": "textnode",
+                         "content": "RATE PER EACH $100 COST OF HIRE"
+                        }
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td17"
+                   ]
+                  },
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p23"
+                     ],
+                     "components": [
+                      {
+                       "tagName": "span",
+                       "classes": [
+                        "gd-c19"
+                       ],
+                       "components": [
+                        {
+                         "type": "textnode",
+                         "content": "FACTOR (IF PRIMARY)"
+                        }
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td17"
+                   ],
+                   "attributes": {
+                    "colspan": "3"
+                   }
+                  },
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p24"
+                     ],
+                     "components": [
+                      {
+                       "tagName": "span",
+                       "classes": [
+                        "gd-c19"
+                       ],
+                       "components": [
+                        {
+                         "type": "textnode",
+                         "content": "PREMIUM"
+                        }
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td17"
+                   ],
+                   "attributes": {
+                    "colspan": "2"
+                   }
+                  }
+                 ],
+                 "classes": [
+                  "gd-tr25"
+                 ]
+                },
+                {
+                 "type": "row",
+                 "components": [
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p26"
+                     ],
+                     "components": [
+                      {
+                       "type": "data-field",
+                       "field": "MOEPolicyDecInfo.ItemFourHiredOrBorrowedCoveredAutoCoverageAndPremiums.LiabilityCoverage.State",
+                       "format": ""
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td17"
+                   ],
+                   "attributes": {
+                    "colspan": "2"
+                   }
+                  },
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p26",
+                      "gd-keepline"
+                     ],
+                     "components": [
+                      {
+                       "type": "choice",
+                       "tagName": "span",
+                       "components": [
+                        {
+                         "type": "choice-branch",
+                         "tagName": "span",
+                         "components": [
+                          {
+                           "type": "data-field",
+                           "field": "MOEPolicyDecInfo.ItemFourHiredOrBorrowedCoveredAutoCoverageAndPremiums.LiabilityCoverage.EstimatedCostofHire",
+                           "format": "dollars"
+                          }
+                         ],
+                         "field": "MOEPolicyDecInfo.ItemFourHiredOrBorrowedCoveredAutoCoverageAndPremiums.LiabilityCoverage.EstimatedCostofHire",
+                         "operator": "present",
+                         "value": "",
+                         "classes": [
+                          "gd-if"
+                         ]
+                        },
+                        {
+                         "type": "choice-branch",
+                         "tagName": "span",
+                         "components": [],
+                         "field": "",
+                         "operator": "else",
+                         "value": "",
+                         "classes": [
+                          "gd-if"
+                         ]
+                        }
+                       ],
+                       "classes": [
+                        "gd-if"
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td17"
+                   ]
+                  },
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p26",
+                      "gd-keepline"
+                     ],
+                     "components": [
+                      {
+                       "type": "choice",
+                       "tagName": "span",
+                       "components": [
+                        {
+                         "type": "choice-branch",
+                         "tagName": "span",
+                         "components": [
+                          {
+                           "type": "data-field",
+                           "field": "MOEPolicyDecInfo.ItemFourHiredOrBorrowedCoveredAutoCoverageAndPremiums.LiabilityCoverage.RatePerEachCostOfHire",
+                           "format": ""
+                          }
+                         ],
+                         "field": "MOEPolicyDecInfo.ItemFourHiredOrBorrowedCoveredAutoCoverageAndPremiums.LiabilityCoverage.RatePerEachCostOfHire",
+                         "operator": "present",
+                         "value": "",
+                         "classes": [
+                          "gd-if"
+                         ]
+                        },
+                        {
+                         "type": "choice-branch",
+                         "tagName": "span",
+                         "components": [],
+                         "field": "",
+                         "operator": "else",
+                         "value": "",
+                         "classes": [
+                          "gd-if"
+                         ]
+                        }
+                       ],
+                       "classes": [
+                        "gd-if"
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td17"
+                   ]
+                  },
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p26",
+                      "gd-keepline"
+                     ],
+                     "components": [
+                      {
+                       "type": "choice",
+                       "tagName": "span",
+                       "components": [
+                        {
+                         "type": "choice-branch",
+                         "tagName": "span",
+                         "components": [
+                          {
+                           "type": "data-field",
+                           "field": "MOEPolicyDecInfo.ItemFourHiredOrBorrowedCoveredAutoCoverageAndPremiums.LiabilityCoverage.Factor",
+                           "format": ""
+                          }
+                         ],
+                         "field": "MOEPolicyDecInfo.ItemFourHiredOrBorrowedCoveredAutoCoverageAndPremiums.LiabilityCoverage.Factor",
+                         "operator": "present",
+                         "value": "",
+                         "classes": [
+                          "gd-if"
+                         ]
+                        },
+                        {
+                         "type": "choice-branch",
+                         "tagName": "span",
+                         "components": [],
+                         "field": "",
+                         "operator": "else",
+                         "value": "",
+                         "classes": [
+                          "gd-if"
+                         ]
+                        }
+                       ],
+                       "classes": [
+                        "gd-if"
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td17"
+                   ],
+                   "attributes": {
+                    "colspan": "3"
+                   }
+                  },
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p26",
+                      "gd-keepline"
+                     ],
+                     "components": [
+                      {
+                       "type": "choice",
+                       "tagName": "span",
+                       "components": [
+                        {
+                         "type": "choice-branch",
+                         "tagName": "span",
+                         "components": [
+                          {
+                           "type": "data-field",
+                           "field": "MOEPolicyDecInfo.ItemFourHiredOrBorrowedCoveredAutoCoverageAndPremiums.LiabilityCoverage.Premium",
+                           "format": "dollars"
+                          }
+                         ],
+                         "field": "MOEPolicyDecInfo.ItemFourHiredOrBorrowedCoveredAutoCoverageAndPremiums.LiabilityCoverage.Premium",
+                         "operator": "present",
+                         "value": "",
+                         "classes": [
+                          "gd-if"
+                         ]
+                        },
+                        {
+                         "type": "choice-branch",
+                         "tagName": "span",
+                         "components": [],
+                         "field": "",
+                         "operator": "else",
+                         "value": "",
+                         "classes": [
+                          "gd-if"
+                         ]
+                        }
+                       ],
+                       "classes": [
+                        "gd-if"
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td17"
+                   ],
+                   "attributes": {
+                    "colspan": "2"
+                   }
+                  }
+                 ],
+                 "classes": [
+                  "gd-tr27"
+                 ]
+                },
+                {
+                 "type": "row",
+                 "components": [
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p28"
+                     ],
+                     "components": []
+                    }
+                   ],
+                   "classes": [
+                    "gd-td29"
+                   ],
+                   "attributes": {
+                    "colspan": "4"
+                   }
+                  },
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p30"
+                     ],
+                     "components": [
+                      {
+                       "tagName": "span",
+                       "classes": [
+                        "gd-c19"
+                       ],
+                       "components": [
+                        {
+                         "type": "textnode",
+                         "content": "TOTAL PREMIUM"
+                        }
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td17"
+                   ],
+                   "attributes": {
+                    "colspan": "3"
+                   }
+                  },
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p26",
+                      "gd-keepline"
+                     ],
+                     "components": [
+                      {
+                       "type": "choice",
+                       "tagName": "span",
+                       "components": [
+                        {
+                         "type": "choice-branch",
+                         "tagName": "span",
+                         "components": [
+                          {
+                           "type": "data-field",
+                           "field": "MOEPolicyDecInfo.ItemFourHiredOrBorrowedCoveredAutoCoverageAndPremiums.LiabilityCoverage.TotalPremium",
+                           "format": "dollars"
+                          }
+                         ],
+                         "field": "MOEPolicyDecInfo.ItemFourHiredOrBorrowedCoveredAutoCoverageAndPremiums.LiabilityCoverage.TotalPremium",
+                         "operator": "present",
+                         "value": "",
+                         "classes": [
+                          "gd-if"
+                         ]
+                        },
+                        {
+                         "type": "choice-branch",
+                         "tagName": "span",
+                         "components": [],
+                         "field": "",
+                         "operator": "else",
+                         "value": "",
+                         "classes": [
+                          "gd-if"
+                         ]
+                        }
+                       ],
+                       "classes": [
+                        "gd-if"
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td17"
+                   ],
+                   "attributes": {
+                    "colspan": "2"
+                   }
+                  }
+                 ],
+                 "classes": [
+                  "gd-tr31"
+                 ]
+                },
+                {
+                 "type": "row",
+                 "components": [
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p33"
+                     ],
+                     "components": [
+                      {
+                       "tagName": "span",
+                       "classes": [
+                        "gd-c32"
+                       ],
+                       "components": [
+                        {
+                         "type": "textnode",
+                         "content": "Cost of hire means the total amount you incur for the hire of \"autos\" you don't own (not including \"autos\" you borrow or rent from your partners or employees or their family members). Cost of hire does not include charges for services performed by motor carriers of property or passengers."
+                        }
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td17"
+                   ],
+                   "attributes": {
+                    "colspan": "9"
+                   }
+                  }
+                 ],
+                 "classes": [
+                  "gd-tr34"
+                 ]
+                },
+                {
+                 "type": "row",
+                 "components": [
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p16"
+                     ],
+                     "components": [
+                      {
+                       "tagName": "span",
+                       "classes": [
+                        "gd-c15"
+                       ],
+                       "components": [
+                        {
+                         "type": "textnode",
+                         "content": "PHYSICAL DAMAGE COVERAGE - RATING BASIS, COST OF HIRE"
+                        }
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td17"
+                   ],
+                   "attributes": {
+                    "colspan": "9"
+                   }
+                  }
+                 ],
+                 "classes": [
+                  "gd-tr18"
+                 ]
+                },
+                {
+                 "type": "row",
+                 "components": [
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p35"
+                     ],
+                     "components": [
+                      {
+                       "tagName": "span",
+                       "classes": [
+                        "gd-c19"
+                       ],
+                       "components": [
+                        {
+                         "type": "textnode",
+                         "content": "COVERAGES"
+                        }
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td17"
+                   ]
+                  },
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p36"
+                     ],
+                     "components": [
+                      {
+                       "tagName": "span",
+                       "classes": [
+                        "gd-c19"
+                       ],
+                       "components": [
+                        {
+                         "type": "textnode",
+                         "content": "LIMIT OF INSURANCE THE MOST WE WILL PAY DEDUCTIBLE"
+                        }
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td17"
+                   ],
+                   "attributes": {
+                    "colspan": "4"
+                   }
+                  },
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p37"
+                     ],
+                     "components": [
+                      {
+                       "tagName": "span",
+                       "classes": [
+                        "gd-c19"
+                       ],
+                       "components": [
+                        {
+                         "type": "textnode",
+                         "content": "ESTIMATED ANNUAL COST OF HIRE"
+                        }
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td17"
+                   ]
+                  },
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p38"
+                     ],
+                     "components": [
+                      {
+                       "tagName": "span",
+                       "classes": [
+                        "gd-c19"
+                       ],
+                       "components": [
+                        {
+                         "type": "textnode",
+                         "content": "RATE PER EACH $100 ANNUAL COST OF HIRE"
+                        }
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td17"
+                   ],
+                   "attributes": {
+                    "colspan": "2"
+                   }
+                  },
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p39"
+                     ],
+                     "components": [
+                      {
+                       "tagName": "span",
+                       "classes": [
+                        "gd-c19"
+                       ],
+                       "components": [
+                        {
+                         "type": "textnode",
+                         "content": "PREMIUM"
+                        }
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td17"
+                   ]
+                  }
+                 ],
+                 "classes": [
+                  "gd-tr40"
+                 ]
+                },
+                {
+                 "type": "row",
+                 "components": [
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p41"
+                     ],
+                     "components": [
+                      {
+                       "tagName": "span",
+                       "classes": [
+                        "gd-c19"
+                       ],
+                       "components": [
+                        {
+                         "type": "textnode",
+                         "content": "COMPREHENSIVE"
+                        }
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td17"
+                   ]
+                  },
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p42",
+                      "gd-keepline"
+                     ],
+                     "components": [
+                      {
+                       "tagName": "span",
+                       "classes": [
+                        "gd-c19"
+                       ],
+                       "components": [
+                        {
+                         "type": "textnode",
+                         "content": "Actual Cash Value, Cost of Repairs or $"
+                        }
+                       ]
+                      },
+                      {
+                       "type": "choice",
+                       "tagName": "span",
+                       "components": [
+                        {
+                         "type": "choice-branch",
+                         "tagName": "span",
+                         "components": [
+                          {
+                           "type": "data-field",
+                           "field": "MOEPolicyDecInfo.ItemFourHiredOrBorrowedCoveredAutoCoverageAndPremiums.PhysicalDamageCoverageRatingBasisCostOfHire.Comprehensive.Limit",
+                           "format": "decimal"
+                          }
+                         ],
+                         "field": "MOEPolicyDecInfo.ItemFourHiredOrBorrowedCoveredAutoCoverageAndPremiums.PhysicalDamageCoverageRatingBasisCostOfHire.Comprehensive.Limit",
+                         "operator": "present",
+                         "value": "",
+                         "classes": [
+                          "gd-if"
+                         ]
+                        },
+                        {
+                         "type": "choice-branch",
+                         "tagName": "span",
+                         "components": [],
+                         "field": "",
+                         "operator": "else",
+                         "value": "",
+                         "classes": [
+                          "gd-if"
+                         ]
+                        }
+                       ],
+                       "classes": [
+                        "gd-if"
+                       ]
+                      }
+                     ]
+                    },
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p43",
+                      "gd-keepline"
+                     ],
+                     "components": [
+                      {
+                       "tagName": "span",
+                       "classes": [
+                        "gd-c19"
+                       ],
+                       "components": [
+                        {
+                         "type": "textnode",
+                         "content": "Whichever Is Less. Minus $"
+                        }
+                       ]
+                      },
+                      {
+                       "type": "choice",
+                       "tagName": "span",
+                       "components": [
+                        {
+                         "type": "choice-branch",
+                         "tagName": "span",
+                         "components": [
+                          {
+                           "type": "data-field",
+                           "field": "MOEPolicyDecInfo.ItemFourHiredOrBorrowedCoveredAutoCoverageAndPremiums.PhysicalDamageCoverageRatingBasisCostOfHire.Comprehensive.Deductible",
+                           "format": "decimal"
+                          }
+                         ],
+                         "field": "MOEPolicyDecInfo.ItemFourHiredOrBorrowedCoveredAutoCoverageAndPremiums.PhysicalDamageCoverageRatingBasisCostOfHire.Comprehensive.Deductible",
+                         "operator": "present",
+                         "value": "",
+                         "classes": [
+                          "gd-if"
+                         ]
+                        },
+                        {
+                         "type": "choice-branch",
+                         "tagName": "span",
+                         "components": [],
+                         "field": "",
+                         "operator": "else",
+                         "value": "",
+                         "classes": [
+                          "gd-if"
+                         ]
+                        }
+                       ],
+                       "classes": [
+                        "gd-if"
+                       ]
+                      },
+                      {
+                       "tagName": "span",
+                       "classes": [
+                        "gd-c19"
+                       ],
+                       "components": [
+                        {
+                         "type": "textnode",
+                         "content": " Deductible For Each"
+                        }
+                       ]
+                      }
+                     ]
+                    },
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p44"
+                     ],
+                     "components": [
+                      {
+                       "tagName": "span",
+                       "classes": [
+                        "gd-c19"
+                       ],
+                       "components": [
+                        {
+                         "type": "textnode",
+                         "content": "Covered Auto; But No Deductible, Applies to Loss Caused by Fire or Lightning."
+                        }
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td17"
+                   ],
+                   "attributes": {
+                    "colspan": "4"
+                   }
+                  },
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p26",
+                      "gd-keepline"
+                     ],
+                     "components": [
+                      {
+                       "type": "choice",
+                       "tagName": "span",
+                       "components": [
+                        {
+                         "type": "choice-branch",
+                         "tagName": "span",
+                         "components": [
+                          {
+                           "type": "data-field",
+                           "field": "MOEPolicyDecInfo.ItemFourHiredOrBorrowedCoveredAutoCoverageAndPremiums.PhysicalDamageCoverageRatingBasisCostOfHire.Comprehensive.EstimatedAnnualCostOfHire",
+                           "format": "dollars"
+                          }
+                         ],
+                         "field": "MOEPolicyDecInfo.ItemFourHiredOrBorrowedCoveredAutoCoverageAndPremiums.PhysicalDamageCoverageRatingBasisCostOfHire.Comprehensive.EstimatedAnnualCostOfHire",
+                         "operator": "present",
+                         "value": "",
+                         "classes": [
+                          "gd-if"
+                         ]
+                        },
+                        {
+                         "type": "choice-branch",
+                         "tagName": "span",
+                         "components": [],
+                         "field": "",
+                         "operator": "else",
+                         "value": "",
+                         "classes": [
+                          "gd-if"
+                         ]
+                        }
+                       ],
+                       "classes": [
+                        "gd-if"
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td17"
+                   ]
+                  },
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p26",
+                      "gd-keepline"
+                     ],
+                     "components": [
+                      {
+                       "type": "choice",
+                       "tagName": "span",
+                       "components": [
+                        {
+                         "type": "choice-branch",
+                         "tagName": "span",
+                         "components": [
+                          {
+                           "type": "data-field",
+                           "field": "MOEPolicyDecInfo.ItemFourHiredOrBorrowedCoveredAutoCoverageAndPremiums.PhysicalDamageCoverageRatingBasisCostOfHire.Comprehensive.RatePerEachAnnualCostOfHire",
+                           "format": ""
+                          }
+                         ],
+                         "field": "MOEPolicyDecInfo.ItemFourHiredOrBorrowedCoveredAutoCoverageAndPremiums.PhysicalDamageCoverageRatingBasisCostOfHire.Comprehensive.RatePerEachAnnualCostOfHire",
+                         "operator": "present",
+                         "value": "",
+                         "classes": [
+                          "gd-if"
+                         ]
+                        },
+                        {
+                         "type": "choice-branch",
+                         "tagName": "span",
+                         "components": [],
+                         "field": "",
+                         "operator": "else",
+                         "value": "",
+                         "classes": [
+                          "gd-if"
+                         ]
+                        }
+                       ],
+                       "classes": [
+                        "gd-if"
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td17"
+                   ],
+                   "attributes": {
+                    "colspan": "2"
+                   }
+                  },
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p26",
+                      "gd-keepline"
+                     ],
+                     "components": [
+                      {
+                       "type": "choice",
+                       "tagName": "span",
+                       "components": [
+                        {
+                         "type": "choice-branch",
+                         "tagName": "span",
+                         "components": [
+                          {
+                           "type": "data-field",
+                           "field": "MOEPolicyDecInfo.ItemFourHiredOrBorrowedCoveredAutoCoverageAndPremiums.PhysicalDamageCoverageRatingBasisCostOfHire.Comprehensive.Premium",
+                           "format": "dollars"
+                          }
+                         ],
+                         "field": "MOEPolicyDecInfo.ItemFourHiredOrBorrowedCoveredAutoCoverageAndPremiums.PhysicalDamageCoverageRatingBasisCostOfHire.Comprehensive.Premium",
+                         "operator": "present",
+                         "value": "",
+                         "classes": [
+                          "gd-if"
+                         ]
+                        },
+                        {
+                         "type": "choice-branch",
+                         "tagName": "span",
+                         "components": [],
+                         "field": "",
+                         "operator": "else",
+                         "value": "",
+                         "classes": [
+                          "gd-if"
+                         ]
+                        }
+                       ],
+                       "classes": [
+                        "gd-if"
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td17"
+                   ]
+                  }
+                 ],
+                 "classes": [
+                  "gd-tr45"
+                 ]
+                },
+                {
+                 "type": "row",
+                 "components": [
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p46"
+                     ],
+                     "components": [
+                      {
+                       "tagName": "span",
+                       "classes": [
+                        "gd-c19"
+                       ],
+                       "components": [
+                        {
+                         "type": "textnode",
+                         "content": "SPECIFIED CAUSES OF LOSS"
+                        }
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td17"
+                   ]
+                  },
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p47",
+                      "gd-keepline"
+                     ],
+                     "components": [
+                      {
+                       "tagName": "span",
+                       "classes": [
+                        "gd-c19"
+                       ],
+                       "components": [
+                        {
+                         "type": "textnode",
+                         "content": "Actual Cash Value, Cost of Repairs or $"
+                        }
+                       ]
+                      },
+                      {
+                       "type": "choice",
+                       "tagName": "span",
+                       "components": [
+                        {
+                         "type": "choice-branch",
+                         "tagName": "span",
+                         "components": [
+                          {
+                           "type": "data-field",
+                           "field": "MOEPolicyDecInfo.ItemFourHiredOrBorrowedCoveredAutoCoverageAndPremiums.PhysicalDamageCoverageRatingBasisCostOfHire.SpecifiedCausesOfLoss.Limit",
+                           "format": "decimal"
+                          }
+                         ],
+                         "field": "MOEPolicyDecInfo.ItemFourHiredOrBorrowedCoveredAutoCoverageAndPremiums.PhysicalDamageCoverageRatingBasisCostOfHire.SpecifiedCausesOfLoss.Limit",
+                         "operator": "present",
+                         "value": "",
+                         "classes": [
+                          "gd-if"
+                         ]
+                        },
+                        {
+                         "type": "choice-branch",
+                         "tagName": "span",
+                         "components": [],
+                         "field": "",
+                         "operator": "else",
+                         "value": "",
+                         "classes": [
+                          "gd-if"
+                         ]
+                        }
+                       ],
+                       "classes": [
+                        "gd-if"
+                       ]
+                      }
+                     ]
+                    },
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p48"
+                     ],
+                     "components": [
+                      {
+                       "tagName": "span",
+                       "classes": [
+                        "gd-c19"
+                       ],
+                       "components": [
+                        {
+                         "type": "textnode",
+                         "content": "Whichever Is Less. Minus $25 Deductible For Each Covered Auto For Loss Caused By Mischief or Vandalism."
+                        }
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td17"
+                   ],
+                   "attributes": {
+                    "colspan": "4"
+                   }
+                  },
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p26",
+                      "gd-keepline"
+                     ],
+                     "components": [
+                      {
+                       "type": "choice",
+                       "tagName": "span",
+                       "components": [
+                        {
+                         "type": "choice-branch",
+                         "tagName": "span",
+                         "components": [
+                          {
+                           "type": "data-field",
+                           "field": "MOEPolicyDecInfo.ItemFourHiredOrBorrowedCoveredAutoCoverageAndPremiums.PhysicalDamageCoverageRatingBasisCostOfHire.SpecifiedCausesOfLoss.EstimatedAnnualCostOfHire",
+                           "format": "dollars"
+                          }
+                         ],
+                         "field": "MOEPolicyDecInfo.ItemFourHiredOrBorrowedCoveredAutoCoverageAndPremiums.PhysicalDamageCoverageRatingBasisCostOfHire.SpecifiedCausesOfLoss.EstimatedAnnualCostOfHire",
+                         "operator": "present",
+                         "value": "",
+                         "classes": [
+                          "gd-if"
+                         ]
+                        },
+                        {
+                         "type": "choice-branch",
+                         "tagName": "span",
+                         "components": [],
+                         "field": "",
+                         "operator": "else",
+                         "value": "",
+                         "classes": [
+                          "gd-if"
+                         ]
+                        }
+                       ],
+                       "classes": [
+                        "gd-if"
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td17"
+                   ]
+                  },
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p26",
+                      "gd-keepline"
+                     ],
+                     "components": [
+                      {
+                       "type": "choice",
+                       "tagName": "span",
+                       "components": [
+                        {
+                         "type": "choice-branch",
+                         "tagName": "span",
+                         "components": [
+                          {
+                           "type": "data-field",
+                           "field": "MOEPolicyDecInfo.ItemFourHiredOrBorrowedCoveredAutoCoverageAndPremiums.PhysicalDamageCoverageRatingBasisCostOfHire.SpecifiedCausesOfLoss.RatePerEachAnnualCostOfHire",
+                           "format": ""
+                          }
+                         ],
+                         "field": "MOEPolicyDecInfo.ItemFourHiredOrBorrowedCoveredAutoCoverageAndPremiums.PhysicalDamageCoverageRatingBasisCostOfHire.SpecifiedCausesOfLoss.RatePerEachAnnualCostOfHire",
+                         "operator": "present",
+                         "value": "",
+                         "classes": [
+                          "gd-if"
+                         ]
+                        },
+                        {
+                         "type": "choice-branch",
+                         "tagName": "span",
+                         "components": [],
+                         "field": "",
+                         "operator": "else",
+                         "value": "",
+                         "classes": [
+                          "gd-if"
+                         ]
+                        }
+                       ],
+                       "classes": [
+                        "gd-if"
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td17"
+                   ],
+                   "attributes": {
+                    "colspan": "2"
+                   }
+                  },
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p26",
+                      "gd-keepline"
+                     ],
+                     "components": [
+                      {
+                       "type": "choice",
+                       "tagName": "span",
+                       "components": [
+                        {
+                         "type": "choice-branch",
+                         "tagName": "span",
+                         "components": [
+                          {
+                           "type": "data-field",
+                           "field": "MOEPolicyDecInfo.ItemFourHiredOrBorrowedCoveredAutoCoverageAndPremiums.PhysicalDamageCoverageRatingBasisCostOfHire.SpecifiedCausesOfLoss.Premium",
+                           "format": "dollars"
+                          }
+                         ],
+                         "field": "MOEPolicyDecInfo.ItemFourHiredOrBorrowedCoveredAutoCoverageAndPremiums.PhysicalDamageCoverageRatingBasisCostOfHire.SpecifiedCausesOfLoss.Premium",
+                         "operator": "present",
+                         "value": "",
+                         "classes": [
+                          "gd-if"
+                         ]
+                        },
+                        {
+                         "type": "choice-branch",
+                         "tagName": "span",
+                         "components": [],
+                         "field": "",
+                         "operator": "else",
+                         "value": "",
+                         "classes": [
+                          "gd-if"
+                         ]
+                        }
+                       ],
+                       "classes": [
+                        "gd-if"
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td17"
+                   ]
+                  }
+                 ],
+                 "classes": [
+                  "gd-tr49"
+                 ]
+                },
+                {
+                 "type": "row",
+                 "components": [
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p50"
+                     ],
+                     "components": [
+                      {
+                       "tagName": "span",
+                       "classes": [
+                        "gd-c19"
+                       ],
+                       "components": [
+                        {
+                         "type": "textnode",
+                         "content": "COLLISION"
+                        }
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td17"
+                   ]
+                  },
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p51",
+                      "gd-keepline"
+                     ],
+                     "components": [
+                      {
+                       "tagName": "span",
+                       "classes": [
+                        "gd-c19"
+                       ],
+                       "components": [
+                        {
+                         "type": "textnode",
+                         "content": "Actual Cash Value, Cost of Repairs Or $"
+                        }
+                       ]
+                      },
+                      {
+                       "type": "choice",
+                       "tagName": "span",
+                       "components": [
+                        {
+                         "type": "choice-branch",
+                         "tagName": "span",
+                         "components": [
+                          {
+                           "type": "data-field",
+                           "field": "MOEPolicyDecInfo.ItemFourHiredOrBorrowedCoveredAutoCoverageAndPremiums.PhysicalDamageCoverageRatingBasisCostOfHire.Collision.Limit",
+                           "format": "decimal"
+                          }
+                         ],
+                         "field": "MOEPolicyDecInfo.ItemFourHiredOrBorrowedCoveredAutoCoverageAndPremiums.PhysicalDamageCoverageRatingBasisCostOfHire.Collision.Limit",
+                         "operator": "present",
+                         "value": "",
+                         "classes": [
+                          "gd-if"
+                         ]
+                        },
+                        {
+                         "type": "choice-branch",
+                         "tagName": "span",
+                         "components": [],
+                         "field": "",
+                         "operator": "else",
+                         "value": "",
+                         "classes": [
+                          "gd-if"
+                         ]
+                        }
+                       ],
+                       "classes": [
+                        "gd-if"
+                       ]
+                      }
+                     ]
+                    },
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p52",
+                      "gd-keepline"
+                     ],
+                     "components": [
+                      {
+                       "tagName": "span",
+                       "classes": [
+                        "gd-c19"
+                       ],
+                       "components": [
+                        {
+                         "type": "textnode",
+                         "content": "Whichever Is Less, Minus $"
+                        }
+                       ]
+                      },
+                      {
+                       "type": "choice",
+                       "tagName": "span",
+                       "components": [
+                        {
+                         "type": "choice-branch",
+                         "tagName": "span",
+                         "components": [
+                          {
+                           "type": "data-field",
+                           "field": "MOEPolicyDecInfo.ItemFourHiredOrBorrowedCoveredAutoCoverageAndPremiums.PhysicalDamageCoverageRatingBasisCostOfHire.Collision.Deductible",
+                           "format": "decimal"
+                          }
+                         ],
+                         "field": "MOEPolicyDecInfo.ItemFourHiredOrBorrowedCoveredAutoCoverageAndPremiums.PhysicalDamageCoverageRatingBasisCostOfHire.Collision.Deductible",
+                         "operator": "present",
+                         "value": "",
+                         "classes": [
+                          "gd-if"
+                         ]
+                        },
+                        {
+                         "type": "choice-branch",
+                         "tagName": "span",
+                         "components": [],
+                         "field": "",
+                         "operator": "else",
+                         "value": "",
+                         "classes": [
+                          "gd-if"
+                         ]
+                        }
+                       ],
+                       "classes": [
+                        "gd-if"
+                       ]
+                      },
+                      {
+                       "tagName": "span",
+                       "classes": [
+                        "gd-c19"
+                       ],
+                       "components": [
+                        {
+                         "type": "textnode",
+                         "content": " Deductible For Each Covered Auto."
+                        }
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td17"
+                   ],
+                   "attributes": {
+                    "colspan": "4"
+                   }
+                  },
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p26",
+                      "gd-keepline"
+                     ],
+                     "components": [
+                      {
+                       "type": "choice",
+                       "tagName": "span",
+                       "components": [
+                        {
+                         "type": "choice-branch",
+                         "tagName": "span",
+                         "components": [
+                          {
+                           "type": "data-field",
+                           "field": "MOEPolicyDecInfo.ItemFourHiredOrBorrowedCoveredAutoCoverageAndPremiums.PhysicalDamageCoverageRatingBasisCostOfHire.Collision.EstimatedAnnualCostOfHire",
+                           "format": "dollars"
+                          }
+                         ],
+                         "field": "MOEPolicyDecInfo.ItemFourHiredOrBorrowedCoveredAutoCoverageAndPremiums.PhysicalDamageCoverageRatingBasisCostOfHire.Collision.EstimatedAnnualCostOfHire",
+                         "operator": "present",
+                         "value": "",
+                         "classes": [
+                          "gd-if"
+                         ]
+                        },
+                        {
+                         "type": "choice-branch",
+                         "tagName": "span",
+                         "components": [],
+                         "field": "",
+                         "operator": "else",
+                         "value": "",
+                         "classes": [
+                          "gd-if"
+                         ]
+                        }
+                       ],
+                       "classes": [
+                        "gd-if"
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td17"
+                   ]
+                  },
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p26",
+                      "gd-keepline"
+                     ],
+                     "components": [
+                      {
+                       "type": "choice",
+                       "tagName": "span",
+                       "components": [
+                        {
+                         "type": "choice-branch",
+                         "tagName": "span",
+                         "components": [
+                          {
+                           "type": "data-field",
+                           "field": "MOEPolicyDecInfo.ItemFourHiredOrBorrowedCoveredAutoCoverageAndPremiums.PhysicalDamageCoverageRatingBasisCostOfHire.Collision.RatePerEachAnnualCostOfHire",
+                           "format": ""
+                          }
+                         ],
+                         "field": "MOEPolicyDecInfo.ItemFourHiredOrBorrowedCoveredAutoCoverageAndPremiums.PhysicalDamageCoverageRatingBasisCostOfHire.Collision.RatePerEachAnnualCostOfHire",
+                         "operator": "present",
+                         "value": "",
+                         "classes": [
+                          "gd-if"
+                         ]
+                        },
+                        {
+                         "type": "choice-branch",
+                         "tagName": "span",
+                         "components": [],
+                         "field": "",
+                         "operator": "else",
+                         "value": "",
+                         "classes": [
+                          "gd-if"
+                         ]
+                        }
+                       ],
+                       "classes": [
+                        "gd-if"
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td17"
+                   ],
+                   "attributes": {
+                    "colspan": "2"
+                   }
+                  },
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p26",
+                      "gd-keepline"
+                     ],
+                     "components": [
+                      {
+                       "type": "choice",
+                       "tagName": "span",
+                       "components": [
+                        {
+                         "type": "choice-branch",
+                         "tagName": "span",
+                         "components": [
+                          {
+                           "type": "data-field",
+                           "field": "MOEPolicyDecInfo.ItemFourHiredOrBorrowedCoveredAutoCoverageAndPremiums.PhysicalDamageCoverageRatingBasisCostOfHire.Collision.Premium",
+                           "format": "dollars"
+                          }
+                         ],
+                         "field": "MOEPolicyDecInfo.ItemFourHiredOrBorrowedCoveredAutoCoverageAndPremiums.PhysicalDamageCoverageRatingBasisCostOfHire.Collision.Premium",
+                         "operator": "present",
+                         "value": "",
+                         "classes": [
+                          "gd-if"
+                         ]
+                        },
+                        {
+                         "type": "choice-branch",
+                         "tagName": "span",
+                         "components": [],
+                         "field": "",
+                         "operator": "else",
+                         "value": "",
+                         "classes": [
+                          "gd-if"
+                         ]
+                        }
+                       ],
+                       "classes": [
+                        "gd-if"
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td17"
+                   ]
+                  }
+                 ],
+                 "classes": [
+                  "gd-tr53"
+                 ]
+                },
+                {
+                 "type": "row",
+                 "components": [
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p28"
+                     ],
+                     "components": []
+                    }
+                   ],
+                   "classes": [
+                    "gd-td29"
+                   ],
+                   "attributes": {
+                    "colspan": "6"
+                   }
+                  },
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p54"
+                     ],
+                     "components": [
+                      {
+                       "tagName": "span",
+                       "classes": [
+                        "gd-c19"
+                       ],
+                       "components": [
+                        {
+                         "type": "textnode",
+                         "content": "TOTAL PREMIUM"
+                        }
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td17"
+                   ],
+                   "attributes": {
+                    "colspan": "2"
+                   }
+                  },
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p26",
+                      "gd-keepline"
+                     ],
+                     "components": [
+                      {
+                       "type": "choice",
+                       "tagName": "span",
+                       "components": [
+                        {
+                         "type": "choice-branch",
+                         "tagName": "span",
+                         "components": [
+                          {
+                           "type": "data-field",
+                           "field": "MOEPolicyDecInfo.ItemFourHiredOrBorrowedCoveredAutoCoverageAndPremiums.PhysicalDamageCoverageRatingBasisCostOfHire.TotalPremium",
+                           "format": "dollars"
+                          }
+                         ],
+                         "field": "MOEPolicyDecInfo.ItemFourHiredOrBorrowedCoveredAutoCoverageAndPremiums.PhysicalDamageCoverageRatingBasisCostOfHire.TotalPremium",
+                         "operator": "present",
+                         "value": "",
+                         "classes": [
+                          "gd-if"
+                         ]
+                        },
+                        {
+                         "type": "choice-branch",
+                         "tagName": "span",
+                         "components": [],
+                         "field": "",
+                         "operator": "else",
+                         "value": "",
+                         "classes": [
+                          "gd-if"
+                         ]
+                        }
+                       ],
+                       "classes": [
+                        "gd-if"
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td17"
+                   ]
+                  }
+                 ],
+                 "classes": [
+                  "gd-tr31"
+                 ]
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "type": "page-break"
+            },
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p64"
+             ],
+             "components": []
+            },
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p66"
+             ],
+             "components": [
+              {
+               "tagName": "span",
+               "classes": [
+                "gd-c65"
+               ],
+               "components": [
+                {
+                 "type": "textnode",
+                 "content": "ITEM FIVE: SCHEDULE FOR NON-OWNERSHIP COVERED AUTOS LIABILITY"
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p67"
+             ],
+             "components": []
+            },
+            {
+             "type": "table",
+             "classes": [
+              "gd-table",
+              "gd-t89"
+             ],
+             "components": [
+              {
+               "type": "tbody",
+               "components": [
+                {
+                 "type": "row",
+                 "components": [
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p68"
+                     ],
+                     "components": [
+                      {
+                       "tagName": "span",
+                       "classes": [
+                        "gd-c15"
+                       ],
+                       "components": [
+                        {
+                         "type": "textnode",
+                         "content": "NAMED INSURED'S BUSINESS"
+                        }
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td69"
+                   ]
+                  },
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p70"
+                     ],
+                     "components": [
+                      {
+                       "tagName": "span",
+                       "classes": [
+                        "gd-c15"
+                       ],
+                       "components": [
+                        {
+                         "type": "textnode",
+                         "content": "RATING BASIS"
+                        }
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td71"
+                   ]
+                  },
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p72"
+                     ],
+                     "components": [
+                      {
+                       "tagName": "span",
+                       "classes": [
+                        "gd-c15"
+                       ],
+                       "components": [
+                        {
+                         "type": "textnode",
+                         "content": "NUMBER"
+                        }
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td73"
+                   ]
+                  },
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p74"
+                     ],
+                     "components": [
+                      {
+                       "tagName": "span",
+                       "classes": [
+                        "gd-c15"
+                       ],
+                       "components": [
+                        {
+                         "type": "textnode",
+                         "content": "PREMIUM"
+                        }
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td75"
+                   ]
+                  }
+                 ],
+                 "classes": [
+                  "gd-tr76"
+                 ]
+                },
+                {
+                 "type": "row",
+                 "components": [
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p77"
+                     ],
+                     "components": [
+                      {
+                       "tagName": "span",
+                       "classes": [
+                        "gd-c19"
+                       ],
+                       "components": [
+                        {
+                         "type": "textnode",
+                         "content": "Other Than Auto Service Operations, Partnerships Or LLCs"
+                        }
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td69"
+                   ],
+                   "attributes": {
+                    "rowspan": "2"
+                   }
+                  },
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p78"
+                     ],
+                     "components": [
+                      {
+                       "tagName": "span",
+                       "classes": [
+                        "gd-c19"
+                       ],
+                       "components": [
+                        {
+                         "type": "textnode",
+                         "content": "Number of Employees"
+                        }
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td71"
+                   ]
+                  },
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p26",
+                      "gd-keepline"
+                     ],
+                     "components": [
+                      {
+                       "type": "choice",
+                       "tagName": "span",
+                       "components": [
+                        {
+                         "type": "choice-branch",
+                         "tagName": "span",
+                         "components": [
+                          {
+                           "type": "data-field",
+                           "field": "MOEPolicyDecInfo.ItemFiveScheduleForNonOwnershipLiability.OtherThankAutoServiceOperationsPartnershipsLLCs.NumberOfEmployees.Number_IsProvided",
+                           "format": ""
+                          }
+                         ],
+                         "field": "MOEPolicyDecInfo.ItemFiveScheduleForNonOwnershipLiability.OtherThankAutoServiceOperationsPartnershipsLLCs.NumberOfEmployees.IsProvided",
+                         "operator": "eq",
+                         "value": "true",
+                         "classes": [
+                          "gd-if"
+                         ]
+                        },
+                        {
+                         "type": "choice-branch",
+                         "tagName": "span",
+                         "components": [
+                          {
+                           "type": "data-field",
+                           "field": "MOEPolicyDecInfo.ItemFiveScheduleForNonOwnershipLiability.OtherThankAutoServiceOperationsPartnershipsLLCs.NumberOfEmployees.NumberWording",
+                           "format": ""
+                          }
+                         ],
+                         "field": "",
+                         "operator": "else",
+                         "value": "",
+                         "classes": [
+                          "gd-if"
+                         ]
+                        }
+                       ],
+                       "classes": [
+                        "gd-if"
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td79"
+                   ]
+                  },
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p26",
+                      "gd-keepline"
+                     ],
+                     "components": [
+                      {
+                       "type": "choice",
+                       "tagName": "span",
+                       "components": [
+                        {
+                         "type": "choice-branch",
+                         "tagName": "span",
+                         "components": [
+                          {
+                           "type": "data-field",
+                           "field": "MOEPolicyDecInfo.ItemFiveScheduleForNonOwnershipLiability.OtherThankAutoServiceOperationsPartnershipsLLCs.NumberOfEmployees.Premium_IsProvided",
+                           "format": "dollars"
+                          }
+                         ],
+                         "field": "MOEPolicyDecInfo.ItemFiveScheduleForNonOwnershipLiability.OtherThankAutoServiceOperationsPartnershipsLLCs.NumberOfEmployees.IsProvided",
+                         "operator": "eq",
+                         "value": "true",
+                         "classes": [
+                          "gd-if"
+                         ]
+                        },
+                        {
+                         "type": "choice-branch",
+                         "tagName": "span",
+                         "components": [
+                          {
+                           "type": "data-field",
+                           "field": "MOEPolicyDecInfo.ItemFiveScheduleForNonOwnershipLiability.OtherThankAutoServiceOperationsPartnershipsLLCs.NumberOfEmployees.PremiumWording",
+                           "format": ""
+                          }
+                         ],
+                         "field": "",
+                         "operator": "else",
+                         "value": "",
+                         "classes": [
+                          "gd-if"
+                         ]
+                        }
+                       ],
+                       "classes": [
+                        "gd-if"
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td80"
+                   ]
+                  }
+                 ],
+                 "classes": [
+                  "gd-tr81"
+                 ]
+                },
+                {
+                 "type": "row",
+                 "components": [
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p82"
+                     ],
+                     "components": [
+                      {
+                       "tagName": "span",
+                       "classes": [
+                        "gd-c19"
+                       ],
+                       "components": [
+                        {
+                         "type": "textnode",
+                         "content": "Number of Volunteers"
+                        }
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td71"
+                   ]
+                  },
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p26",
+                      "gd-keepline"
+                     ],
+                     "components": [
+                      {
+                       "type": "choice",
+                       "tagName": "span",
+                       "components": [
+                        {
+                         "type": "choice-branch",
+                         "tagName": "span",
+                         "components": [
+                          {
+                           "type": "data-field",
+                           "field": "MOEPolicyDecInfo.ItemFiveScheduleForNonOwnershipLiability.OtherThankAutoServiceOperationsPartnershipsLLCs.NumberOfVolunteers.Number_IsProvided",
+                           "format": ""
+                          }
+                         ],
+                         "field": "MOEPolicyDecInfo.ItemFiveScheduleForNonOwnershipLiability.OtherThankAutoServiceOperationsPartnershipsLLCs.NumberOfVolunteers.IsProvided",
+                         "operator": "eq",
+                         "value": "true",
+                         "classes": [
+                          "gd-if"
+                         ]
+                        },
+                        {
+                         "type": "choice-branch",
+                         "tagName": "span",
+                         "components": [
+                          {
+                           "type": "data-field",
+                           "field": "MOEPolicyDecInfo.ItemFiveScheduleForNonOwnershipLiability.OtherThankAutoServiceOperationsPartnershipsLLCs.NumberOfVolunteers.NumberWording",
+                           "format": ""
+                          }
+                         ],
+                         "field": "",
+                         "operator": "else",
+                         "value": "",
+                         "classes": [
+                          "gd-if"
+                         ]
+                        }
+                       ],
+                       "classes": [
+                        "gd-if"
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td79"
+                   ]
+                  },
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p26",
+                      "gd-keepline"
+                     ],
+                     "components": [
+                      {
+                       "type": "choice",
+                       "tagName": "span",
+                       "components": [
+                        {
+                         "type": "choice-branch",
+                         "tagName": "span",
+                         "components": [
+                          {
+                           "type": "data-field",
+                           "field": "MOEPolicyDecInfo.ItemFiveScheduleForNonOwnershipLiability.OtherThankAutoServiceOperationsPartnershipsLLCs.NumberOfVolunteers.Premium_IsProvided",
+                           "format": "dollars"
+                          }
+                         ],
+                         "field": "MOEPolicyDecInfo.ItemFiveScheduleForNonOwnershipLiability.OtherThankAutoServiceOperationsPartnershipsLLCs.NumberOfVolunteers.IsProvided",
+                         "operator": "eq",
+                         "value": "true",
+                         "classes": [
+                          "gd-if"
+                         ]
+                        },
+                        {
+                         "type": "choice-branch",
+                         "tagName": "span",
+                         "components": [
+                          {
+                           "type": "data-field",
+                           "field": "MOEPolicyDecInfo.ItemFiveScheduleForNonOwnershipLiability.OtherThankAutoServiceOperationsPartnershipsLLCs.NumberOfVolunteers.PremiumWording",
+                           "format": ""
+                          }
+                         ],
+                         "field": "",
+                         "operator": "else",
+                         "value": "",
+                         "classes": [
+                          "gd-if"
+                         ]
+                        }
+                       ],
+                       "classes": [
+                        "gd-if"
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td80"
+                   ]
+                  }
+                 ],
+                 "classes": [
+                  "gd-tr83"
+                 ]
+                },
+                {
+                 "type": "row",
+                 "components": [
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p84"
+                     ],
+                     "components": [
+                      {
+                       "tagName": "span",
+                       "classes": [
+                        "gd-c19"
+                       ],
+                       "components": [
+                        {
+                         "type": "textnode",
+                         "content": "Auto Service Operations"
+                        }
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td69"
+                   ],
+                   "attributes": {
+                    "rowspan": "3"
+                   }
+                  },
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p85"
+                     ],
+                     "components": [
+                      {
+                       "tagName": "span",
+                       "classes": [
+                        "gd-c19"
+                       ],
+                       "components": [
+                        {
+                         "type": "textnode",
+                         "content": "Number of Employees Whose Principal Duty Involves The Operation of Autos"
+                        }
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td71"
+                   ]
+                  },
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p26",
+                      "gd-keepline"
+                     ],
+                     "components": [
+                      {
+                       "type": "choice",
+                       "tagName": "span",
+                       "components": [
+                        {
+                         "type": "choice-branch",
+                         "tagName": "span",
+                         "components": [
+                          {
+                           "type": "data-field",
+                           "field": "MOEPolicyDecInfo.ItemFiveScheduleForNonOwnershipLiability.AutoServiceOperations.NumberOfEmployees.Number_IsProvided",
+                           "format": ""
+                          }
+                         ],
+                         "field": "MOEPolicyDecInfo.ItemFiveScheduleForNonOwnershipLiability.AutoServiceOperations.NumberOfEmployees.IsProvided",
+                         "operator": "eq",
+                         "value": "true",
+                         "classes": [
+                          "gd-if"
+                         ]
+                        },
+                        {
+                         "type": "choice-branch",
+                         "tagName": "span",
+                         "components": [
+                          {
+                           "type": "data-field",
+                           "field": "MOEPolicyDecInfo.ItemFiveScheduleForNonOwnershipLiability.AutoServiceOperations.NumberOfEmployees.NumberWording",
+                           "format": ""
+                          }
+                         ],
+                         "field": "",
+                         "operator": "else",
+                         "value": "",
+                         "classes": [
+                          "gd-if"
+                         ]
+                        }
+                       ],
+                       "classes": [
+                        "gd-if"
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td79"
+                   ]
+                  },
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p26",
+                      "gd-keepline"
+                     ],
+                     "components": [
+                      {
+                       "type": "choice",
+                       "tagName": "span",
+                       "components": [
+                        {
+                         "type": "choice-branch",
+                         "tagName": "span",
+                         "components": [
+                          {
+                           "type": "data-field",
+                           "field": "MOEPolicyDecInfo.ItemFiveScheduleForNonOwnershipLiability.AutoServiceOperations.NumberOfEmployees.Premium_IsProvided",
+                           "format": "dollars"
+                          }
+                         ],
+                         "field": "MOEPolicyDecInfo.ItemFiveScheduleForNonOwnershipLiability.AutoServiceOperations.NumberOfEmployees.IsProvided",
+                         "operator": "eq",
+                         "value": "true",
+                         "classes": [
+                          "gd-if"
+                         ]
+                        },
+                        {
+                         "type": "choice-branch",
+                         "tagName": "span",
+                         "components": [
+                          {
+                           "type": "data-field",
+                           "field": "MOEPolicyDecInfo.ItemFiveScheduleForNonOwnershipLiability.AutoServiceOperations.NumberOfEmployees.PremiumWording",
+                           "format": ""
+                          }
+                         ],
+                         "field": "",
+                         "operator": "else",
+                         "value": "",
+                         "classes": [
+                          "gd-if"
+                         ]
+                        }
+                       ],
+                       "classes": [
+                        "gd-if"
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td80"
+                   ]
+                  }
+                 ],
+                 "classes": [
+                  "gd-tr86"
+                 ]
+                },
+                {
+                 "type": "row",
+                 "components": [
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p78"
+                     ],
+                     "components": [
+                      {
+                       "tagName": "span",
+                       "classes": [
+                        "gd-c19"
+                       ],
+                       "components": [
+                        {
+                         "type": "textnode",
+                         "content": "Number of Volunteers"
+                        }
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td71"
+                   ]
+                  },
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p26",
+                      "gd-keepline"
+                     ],
+                     "components": [
+                      {
+                       "type": "choice",
+                       "tagName": "span",
+                       "components": [
+                        {
+                         "type": "choice-branch",
+                         "tagName": "span",
+                         "components": [
+                          {
+                           "type": "data-field",
+                           "field": "MOEPolicyDecInfo.ItemFiveScheduleForNonOwnershipLiability.AutoServiceOperations.NumberOfVolunteers.Number_IsProvided",
+                           "format": ""
+                          }
+                         ],
+                         "field": "MOEPolicyDecInfo.ItemFiveScheduleForNonOwnershipLiability.AutoServiceOperations.NumberOfVolunteers.IsProvided",
+                         "operator": "eq",
+                         "value": "true",
+                         "classes": [
+                          "gd-if"
+                         ]
+                        },
+                        {
+                         "type": "choice-branch",
+                         "tagName": "span",
+                         "components": [
+                          {
+                           "type": "data-field",
+                           "field": "MOEPolicyDecInfo.ItemFiveScheduleForNonOwnershipLiability.AutoServiceOperations.NumberOfVolunteers.NumberWording",
+                           "format": ""
+                          }
+                         ],
+                         "field": "",
+                         "operator": "else",
+                         "value": "",
+                         "classes": [
+                          "gd-if"
+                         ]
+                        }
+                       ],
+                       "classes": [
+                        "gd-if"
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td79"
+                   ]
+                  },
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p26",
+                      "gd-keepline"
+                     ],
+                     "components": [
+                      {
+                       "type": "choice",
+                       "tagName": "span",
+                       "components": [
+                        {
+                         "type": "choice-branch",
+                         "tagName": "span",
+                         "components": [
+                          {
+                           "type": "data-field",
+                           "field": "MOEPolicyDecInfo.ItemFiveScheduleForNonOwnershipLiability.AutoServiceOperations.NumberOfVolunteers.Premium_IsProvided",
+                           "format": "dollars"
+                          }
+                         ],
+                         "field": "MOEPolicyDecInfo.ItemFiveScheduleForNonOwnershipLiability.AutoServiceOperations.NumberOfVolunteers.IsProvided",
+                         "operator": "eq",
+                         "value": "true",
+                         "classes": [
+                          "gd-if"
+                         ]
+                        },
+                        {
+                         "type": "choice-branch",
+                         "tagName": "span",
+                         "components": [
+                          {
+                           "type": "data-field",
+                           "field": "MOEPolicyDecInfo.ItemFiveScheduleForNonOwnershipLiability.AutoServiceOperations.NumberOfVolunteers.PremiumWording",
+                           "format": ""
+                          }
+                         ],
+                         "field": "",
+                         "operator": "else",
+                         "value": "",
+                         "classes": [
+                          "gd-if"
+                         ]
+                        }
+                       ],
+                       "classes": [
+                        "gd-if"
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td80"
+                   ]
+                  }
+                 ],
+                 "classes": [
+                  "gd-tr76"
+                 ]
+                },
+                {
+                 "type": "row",
+                 "components": [
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p87"
+                     ],
+                     "components": [
+                      {
+                       "tagName": "span",
+                       "classes": [
+                        "gd-c19"
+                       ],
+                       "components": [
+                        {
+                         "type": "textnode",
+                         "content": "Number of Partners (Active And Inactive) Or LLC Members"
+                        }
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td71"
+                   ]
+                  },
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p26",
+                      "gd-keepline"
+                     ],
+                     "components": [
+                      {
+                       "type": "choice",
+                       "tagName": "span",
+                       "components": [
+                        {
+                         "type": "choice-branch",
+                         "tagName": "span",
+                         "components": [
+                          {
+                           "type": "data-field",
+                           "field": "MOEPolicyDecInfo.ItemFiveScheduleForNonOwnershipLiability.AutoServiceOperations.NumberOfPartners.Number_IsProvided",
+                           "format": ""
+                          }
+                         ],
+                         "field": "MOEPolicyDecInfo.ItemFiveScheduleForNonOwnershipLiability.AutoServiceOperations.NumberOfPartners.IsProvided",
+                         "operator": "eq",
+                         "value": "true",
+                         "classes": [
+                          "gd-if"
+                         ]
+                        },
+                        {
+                         "type": "choice-branch",
+                         "tagName": "span",
+                         "components": [
+                          {
+                           "type": "data-field",
+                           "field": "MOEPolicyDecInfo.ItemFiveScheduleForNonOwnershipLiability.AutoServiceOperations.NumberOfPartners.NumberWording",
+                           "format": ""
+                          }
+                         ],
+                         "field": "",
+                         "operator": "else",
+                         "value": "",
+                         "classes": [
+                          "gd-if"
+                         ]
+                        }
+                       ],
+                       "classes": [
+                        "gd-if"
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td79"
+                   ]
+                  },
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p26",
+                      "gd-keepline"
+                     ],
+                     "components": [
+                      {
+                       "type": "choice",
+                       "tagName": "span",
+                       "components": [
+                        {
+                         "type": "choice-branch",
+                         "tagName": "span",
+                         "components": [
+                          {
+                           "type": "data-field",
+                           "field": "MOEPolicyDecInfo.ItemFiveScheduleForNonOwnershipLiability.AutoServiceOperations.NumberOfPartners.Premium_IsProvided",
+                           "format": "dollars"
+                          }
+                         ],
+                         "field": "MOEPolicyDecInfo.ItemFiveScheduleForNonOwnershipLiability.AutoServiceOperations.NumberOfPartners.IsProvided",
+                         "operator": "eq",
+                         "value": "true",
+                         "classes": [
+                          "gd-if"
+                         ]
+                        },
+                        {
+                         "type": "choice-branch",
+                         "tagName": "span",
+                         "components": [
+                          {
+                           "type": "data-field",
+                           "field": "MOEPolicyDecInfo.ItemFiveScheduleForNonOwnershipLiability.AutoServiceOperations.NumberOfPartners.PremiumWording",
+                           "format": ""
+                          }
+                         ],
+                         "field": "",
+                         "operator": "else",
+                         "value": "",
+                         "classes": [
+                          "gd-if"
+                         ]
+                        }
+                       ],
+                       "classes": [
+                        "gd-if"
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td80"
+                   ]
+                  }
+                 ],
+                 "classes": [
+                  "gd-tr86"
+                 ]
+                },
+                {
+                 "type": "row",
+                 "components": [
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p88"
+                     ],
+                     "components": [
+                      {
+                       "tagName": "span",
+                       "classes": [
+                        "gd-c19"
+                       ],
+                       "components": [
+                        {
+                         "type": "textnode",
+                         "content": "Partnerships Or LLCs"
+                        }
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td69"
+                   ],
+                   "attributes": {
+                    "rowspan": "3"
+                   }
+                  },
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p82"
+                     ],
+                     "components": [
+                      {
+                       "tagName": "span",
+                       "classes": [
+                        "gd-c19"
+                       ],
+                       "components": [
+                        {
+                         "type": "textnode",
+                         "content": "Number of Employees"
+                        }
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td71"
+                   ]
+                  },
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p26",
+                      "gd-keepline"
+                     ],
+                     "components": [
+                      {
+                       "type": "choice",
+                       "tagName": "span",
+                       "components": [
+                        {
+                         "type": "choice-branch",
+                         "tagName": "span",
+                         "components": [
+                          {
+                           "type": "data-field",
+                           "field": "MOEPolicyDecInfo.ItemFiveScheduleForNonOwnershipLiability.PartnershipsOrLLCs.NumberOfEmployees.Number_IsProvided",
+                           "format": ""
+                          }
+                         ],
+                         "field": "MOEPolicyDecInfo.ItemFiveScheduleForNonOwnershipLiability.PartnershipsOrLLCs.NumberOfEmployees.IsProvided",
+                         "operator": "eq",
+                         "value": "true",
+                         "classes": [
+                          "gd-if"
+                         ]
+                        },
+                        {
+                         "type": "choice-branch",
+                         "tagName": "span",
+                         "components": [
+                          {
+                           "type": "data-field",
+                           "field": "MOEPolicyDecInfo.ItemFiveScheduleForNonOwnershipLiability.PartnershipsOrLLCs.NumberOfEmployees.NumberWording",
+                           "format": ""
+                          }
+                         ],
+                         "field": "",
+                         "operator": "else",
+                         "value": "",
+                         "classes": [
+                          "gd-if"
+                         ]
+                        }
+                       ],
+                       "classes": [
+                        "gd-if"
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td79"
+                   ]
+                  },
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p26",
+                      "gd-keepline"
+                     ],
+                     "components": [
+                      {
+                       "type": "choice",
+                       "tagName": "span",
+                       "components": [
+                        {
+                         "type": "choice-branch",
+                         "tagName": "span",
+                         "components": [
+                          {
+                           "type": "data-field",
+                           "field": "MOEPolicyDecInfo.ItemFiveScheduleForNonOwnershipLiability.PartnershipsOrLLCs.NumberOfEmployees.Premium_IsProvided",
+                           "format": "dollars"
+                          }
+                         ],
+                         "field": "MOEPolicyDecInfo.ItemFiveScheduleForNonOwnershipLiability.PartnershipsOrLLCs.NumberOfEmployees.IsProvided",
+                         "operator": "eq",
+                         "value": "true",
+                         "classes": [
+                          "gd-if"
+                         ]
+                        },
+                        {
+                         "type": "choice-branch",
+                         "tagName": "span",
+                         "components": [
+                          {
+                           "type": "data-field",
+                           "field": "MOEPolicyDecInfo.ItemFiveScheduleForNonOwnershipLiability.PartnershipsOrLLCs.NumberOfEmployees.PremiumWording",
+                           "format": ""
+                          }
+                         ],
+                         "field": "",
+                         "operator": "else",
+                         "value": "",
+                         "classes": [
+                          "gd-if"
+                         ]
+                        }
+                       ],
+                       "classes": [
+                        "gd-if"
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td80"
+                   ]
+                  }
+                 ],
+                 "classes": [
+                  "gd-tr83"
+                 ]
+                },
+                {
+                 "type": "row",
+                 "components": [
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p78"
+                     ],
+                     "components": [
+                      {
+                       "tagName": "span",
+                       "classes": [
+                        "gd-c19"
+                       ],
+                       "components": [
+                        {
+                         "type": "textnode",
+                         "content": "Number of Volunteers"
+                        }
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td71"
+                   ]
+                  },
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p26",
+                      "gd-keepline"
+                     ],
+                     "components": [
+                      {
+                       "type": "choice",
+                       "tagName": "span",
+                       "components": [
+                        {
+                         "type": "choice-branch",
+                         "tagName": "span",
+                         "components": [
+                          {
+                           "type": "data-field",
+                           "field": "MOEPolicyDecInfo.ItemFiveScheduleForNonOwnershipLiability.PartnershipsOrLLCs.NumberOfVolunteers.Number_IsProvided",
+                           "format": ""
+                          }
+                         ],
+                         "field": "MOEPolicyDecInfo.ItemFiveScheduleForNonOwnershipLiability.PartnershipsOrLLCs.NumberOfVolunteers.IsProvided",
+                         "operator": "eq",
+                         "value": "true",
+                         "classes": [
+                          "gd-if"
+                         ]
+                        },
+                        {
+                         "type": "choice-branch",
+                         "tagName": "span",
+                         "components": [
+                          {
+                           "type": "data-field",
+                           "field": "MOEPolicyDecInfo.ItemFiveScheduleForNonOwnershipLiability.PartnershipsOrLLCs.NumberOfVolunteers.NumberWording",
+                           "format": ""
+                          }
+                         ],
+                         "field": "",
+                         "operator": "else",
+                         "value": "",
+                         "classes": [
+                          "gd-if"
+                         ]
+                        }
+                       ],
+                       "classes": [
+                        "gd-if"
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td79"
+                   ]
+                  },
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p26",
+                      "gd-keepline"
+                     ],
+                     "components": [
+                      {
+                       "type": "choice",
+                       "tagName": "span",
+                       "components": [
+                        {
+                         "type": "choice-branch",
+                         "tagName": "span",
+                         "components": [
+                          {
+                           "type": "data-field",
+                           "field": "MOEPolicyDecInfo.ItemFiveScheduleForNonOwnershipLiability.PartnershipsOrLLCs.NumberOfVolunteers.Premium_IsProvided",
+                           "format": "dollars"
+                          }
+                         ],
+                         "field": "MOEPolicyDecInfo.ItemFiveScheduleForNonOwnershipLiability.PartnershipsOrLLCs.NumberOfVolunteers.IsProvided",
+                         "operator": "eq",
+                         "value": "true",
+                         "classes": [
+                          "gd-if"
+                         ]
+                        },
+                        {
+                         "type": "choice-branch",
+                         "tagName": "span",
+                         "components": [
+                          {
+                           "type": "data-field",
+                           "field": "MOEPolicyDecInfo.ItemFiveScheduleForNonOwnershipLiability.PartnershipsOrLLCs.NumberOfVolunteers.PremiumWording",
+                           "format": ""
+                          }
+                         ],
+                         "field": "",
+                         "operator": "else",
+                         "value": "",
+                         "classes": [
+                          "gd-if"
+                         ]
+                        }
+                       ],
+                       "classes": [
+                        "gd-if"
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td80"
+                   ]
+                  }
+                 ],
+                 "classes": [
+                  "gd-tr76"
+                 ]
+                },
+                {
+                 "type": "row",
+                 "components": [
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p78"
+                     ],
+                     "components": [
+                      {
+                       "tagName": "span",
+                       "classes": [
+                        "gd-c19"
+                       ],
+                       "components": [
+                        {
+                         "type": "textnode",
+                         "content": "Number of Partners (Active And Inactive) Or LLC Members"
+                        }
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td71"
+                   ]
+                  },
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p26",
+                      "gd-keepline"
+                     ],
+                     "components": [
+                      {
+                       "type": "choice",
+                       "tagName": "span",
+                       "components": [
+                        {
+                         "type": "choice-branch",
+                         "tagName": "span",
+                         "components": [
+                          {
+                           "type": "data-field",
+                           "field": "MOEPolicyDecInfo.ItemFiveScheduleForNonOwnershipLiability.PartnershipsOrLLCs.NumberOfPartners.Number_IsProvided",
+                           "format": ""
+                          }
+                         ],
+                         "field": "MOEPolicyDecInfo.ItemFiveScheduleForNonOwnershipLiability.PartnershipsOrLLCs.NumberOfPartners.IsProvided",
+                         "operator": "eq",
+                         "value": "true",
+                         "classes": [
+                          "gd-if"
+                         ]
+                        },
+                        {
+                         "type": "choice-branch",
+                         "tagName": "span",
+                         "components": [
+                          {
+                           "type": "data-field",
+                           "field": "MOEPolicyDecInfo.ItemFiveScheduleForNonOwnershipLiability.PartnershipsOrLLCs.NumberOfPartners.NumberWording",
+                           "format": ""
+                          }
+                         ],
+                         "field": "",
+                         "operator": "else",
+                         "value": "",
+                         "classes": [
+                          "gd-if"
+                         ]
+                        }
+                       ],
+                       "classes": [
+                        "gd-if"
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td79"
+                   ]
+                  },
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p26",
+                      "gd-keepline"
+                     ],
+                     "components": [
+                      {
+                       "type": "choice",
+                       "tagName": "span",
+                       "components": [
+                        {
+                         "type": "choice-branch",
+                         "tagName": "span",
+                         "components": [
+                          {
+                           "type": "data-field",
+                           "field": "MOEPolicyDecInfo.ItemFiveScheduleForNonOwnershipLiability.PartnershipsOrLLCs.NumberOfPartners.Premium_IsProvided",
+                           "format": "dollars"
+                          }
+                         ],
+                         "field": "MOEPolicyDecInfo.ItemFiveScheduleForNonOwnershipLiability.PartnershipsOrLLCs.NumberOfPartners.IsProvided",
+                         "operator": "eq",
+                         "value": "true",
+                         "classes": [
+                          "gd-if"
+                         ]
+                        },
+                        {
+                         "type": "choice-branch",
+                         "tagName": "span",
+                         "components": [
+                          {
+                           "type": "data-field",
+                           "field": "MOEPolicyDecInfo.ItemFiveScheduleForNonOwnershipLiability.PartnershipsOrLLCs.NumberOfPartners.PremiumWording",
+                           "format": ""
+                          }
+                         ],
+                         "field": "",
+                         "operator": "else",
+                         "value": "",
+                         "classes": [
+                          "gd-if"
+                         ]
+                        }
+                       ],
+                       "classes": [
+                        "gd-if"
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td80"
+                   ]
+                  }
+                 ],
+                 "classes": [
+                  "gd-tr76"
+                 ]
+                },
+                {
+                 "type": "row",
+                 "components": [
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p88"
+                     ],
+                     "components": []
+                    }
+                   ],
+                   "classes": [
+                    "gd-td69"
+                   ]
+                  },
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p82"
+                     ],
+                     "components": []
+                    }
+                   ],
+                   "classes": [
+                    "gd-td71"
+                   ]
+                  },
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p26"
+                     ],
+                     "components": [
+                      {
+                       "tagName": "span",
+                       "classes": [
+                        "gd-c19"
+                       ],
+                       "components": [
+                        {
+                         "type": "textnode",
+                         "content": "Total Premium"
+                        }
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td79"
+                   ]
+                  },
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p26",
+                      "gd-keepline"
+                     ],
+                     "components": [
+                      {
+                       "type": "choice",
+                       "tagName": "span",
+                       "components": [
+                        {
+                         "type": "choice-branch",
+                         "tagName": "span",
+                         "components": [
+                          {
+                           "type": "data-field",
+                           "field": "MOEPolicyDecInfo.ItemFiveScheduleForNonOwnershipLiability.TotalPremium",
+                           "format": "dollars"
+                          }
+                         ],
+                         "field": "MOEPolicyDecInfo.ItemFiveScheduleForNonOwnershipLiability.TotalPremium",
+                         "operator": "present",
+                         "value": "",
+                         "classes": [
+                          "gd-if"
+                         ]
+                        },
+                        {
+                         "type": "choice-branch",
+                         "tagName": "span",
+                         "components": [],
+                         "field": "",
+                         "operator": "else",
+                         "value": "",
+                         "classes": [
+                          "gd-if"
+                         ]
+                        }
+                       ],
+                       "classes": [
+                        "gd-if"
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td80"
+                   ]
+                  }
+                 ],
+                 "classes": [
+                  "gd-tr83"
+                 ]
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p2"
+             ],
+             "components": []
+            },
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p14"
+             ],
+             "components": []
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "tagName": "div",
+     "classes": [
+      "gd-footer",
+      "gd-foot-fixed"
+     ],
+     "components": [
+      {
+       "type": "table",
+       "classes": [
+        "gd-table",
+        "gd-t7"
+       ],
+       "components": [
+        {
+         "type": "tbody",
+         "components": [
+          {
+           "type": "row",
+           "components": [
+            {
+             "type": "cell",
+             "components": [
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p2"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-c1"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "DA 02 93 12 24"
+                  }
+                 ]
+                }
+               ]
+              }
+             ],
+             "classes": [
+              "gd-td8"
+             ]
+            },
+            {
+             "type": "cell",
+             "components": [
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p9"
+               ],
+               "components": []
+              }
+             ],
+             "classes": [
+              "gd-td10"
+             ]
+            },
+            {
+             "type": "cell",
+             "components": [
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p4"
+               ],
+               "components": []
+              }
+             ],
+             "classes": [
+              "gd-td11"
+             ]
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "tagName": "p",
+       "classes": [
+        "gd-p",
+        "gd-p2"
+       ],
+       "components": []
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "css": ".form-page{position:relative;width:612pt;height:792pt;overflow:hidden;background:#fff;}\n.form-page + .form-page{page-break-before:always;}\n@page gdflow{margin:33pt 0 14pt 0;}\n.gd-flow{page:gdflow;padding:0 18pt 0 18pt;}\n@page gdrun{margin:36pt 0 18pt 0;}\n.gd-flow.gd-run{page:gdrun;}\n.gd-doc table.gd-runt{width:100%;border-collapse:collapse;table-layout:fixed;}\n.gd-doc table.gd-runt>*>tr>td{padding:0;}\n.gd-doc table.gd-runt>thead>tr>td{height:0pt;vertical-align:top;}\n.gd-doc table.gd-runt>tfoot>tr>td{height:0pt;vertical-align:bottom;position:relative;}\n.gd-pdffoot-even{position:absolute;visibility:hidden;left:0;right:0;bottom:0;}\n.gd-doc table.gd-runt>thead>tr>td{position:relative;}\n.gd-pgmark{position:absolute;left:0;top:0;font-size:2pt;line-height:1;color:#fff;white-space:nowrap;}\n.gd-sheetfoot{position:absolute;background:#fff;}\n.gd-sheetfoot.gd-side-even{display:none;}\n.gd-foot-fixed{display:none;}\n@media print{.gd-foot-space{visibility:hidden;}.gd-foot-fixed{display:block;position:fixed;left:0;right:0;bottom:0;padding:0 18pt 0 18pt;}}\n.gd-if:empty{display:none;}\n.gd-flow:not(:has(:not(.gd-if))){display:none;}\n.form-page:not(:has(:not(.gd-if))){display:none;}\n.form-page .abs{position:absolute;white-space:pre;margin:0;padding:0;line-height:normal;}\n.form-page .rule{position:absolute;background:#000;}\n.form-page .gd-tb{white-space:normal;box-sizing:border-box;}\n.gd-doc .gd-pagebg{position:absolute;width:0;height:0;}\n.gd-doc .gd-anchor{position:relative;}\n.gd-doc .gd-anchored{position:absolute;box-sizing:border-box;}\n.gd-doc .gd-header{position:relative;}\n.gd-pagebg .abs{position:absolute;white-space:pre;margin:0;padding:0;line-height:normal;}\n.gd-pagebg .rule{position:absolute;background:#000;}\n.gd-pagebg .gd-tb{white-space:normal;box-sizing:border-box;}\n.gd-doc{font-family:'Arial',sans-serif;font-size:8pt;color:#000;line-height:1.15;}\n:where(.gd-doc) p{margin:0;}\n.gd-doc p:empty::before{content:\"\\00a0\";}\n.gd-doc p.gd-keepline{min-height:1lh;}\n.gd-doc .gd-table{border-collapse:collapse;table-layout:fixed;}\n:where(.gd-doc) td{vertical-align:top;padding:0 5.4pt;}\n.gd-doc tr.gd-grid td{height:0;padding:0;border:0;}\n.gd-doc .gd-box{margin:0 0 6pt 0;}\n.gd-doc .gd-tab{display:inline-block;width:36pt;}\n.gd-doc .gd-hang{display:inline-block;}\n.gd-doc .gd-img-missing{display:inline-block;border:1px dashed #9ca3af;color:#6b7280;font-size:7pt;}\n.gd-doc .gd-c1{font-weight:bold;font-size:11pt;}\n.gd-doc .gd-p2{line-height:1.15;}\n.gd-doc .gd-td3{width:66.780%;padding:0pt 5.4pt 0pt 5.4pt;}\n.gd-doc .gd-p4{text-align:right;line-height:1.15;}\n.gd-doc .gd-td5{width:14.800%;padding:0pt 5.4pt 0pt 5.4pt;}\n.gd-doc .gd-td6{width:18.420%;padding:0pt 5.4pt 0pt 5.4pt;}\n.gd-doc .gd-t7{width:100.000%;}\n.gd-doc .gd-td8{width:17.380%;padding:0pt 5.4pt 0pt 5.4pt;}\n.gd-doc .gd-p9{text-align:center;margin-left:1pt;margin-top:0.7pt;line-height:1.15;}\n.gd-doc .gd-td10{width:68.620%;padding:0pt 5.4pt 0pt 5.4pt;}\n.gd-doc .gd-td11{width:14.000%;padding:0pt 5.4pt 0pt 5.4pt;}\n.gd-doc .gd-p12{margin-left:18pt;margin-top:0.05pt;line-height:1.15;}\n.gd-doc .gd-c13{font-weight:bold;font-size:11.5pt;}\n.gd-doc .gd-p14{margin-top:1.35pt;line-height:1.15;}\n.gd-doc .gd-c15{font-weight:bold;font-size:10pt;}\n.gd-doc .gd-p16{margin-left:5.2pt;margin-top:4.95pt;line-height:1.15;}\n.gd-doc .gd-td17{border-top:1pt solid #000;border-left:1pt solid #000;border-bottom:1pt solid #000;border-right:1pt solid #000;vertical-align:middle;padding:0pt 0pt 0pt 0pt;}\n.gd-doc .gd-tr18{height:20.35pt;}\n.gd-doc .gd-c19{font-weight:bold;}\n.gd-doc .gd-p20{text-align:center;margin-top:7.1pt;line-height:1.15;}\n.gd-doc .gd-p21{text-align:center;margin-top:4.3pt;line-height:12pt;}\n.gd-doc .gd-p22{margin-left:26.1pt;margin-right:11.25pt;text-indent:-13.6pt;margin-top:4.3pt;line-height:12pt;}\n.gd-doc .gd-p23{margin-left:10.65pt;margin-top:7.1pt;line-height:1.15;}\n.gd-doc .gd-p24{margin-left:35.25pt;margin-top:7.1pt;line-height:1.15;}\n.gd-doc .gd-tr25{height:32.25pt;}\n.gd-doc .gd-p26{text-align:center;line-height:1.15;}\n.gd-doc .gd-tr27{height:54.55pt;}\n.gd-doc .gd-p28{margin-left:0.3pt;margin-right:-3.6pt;line-height:1pt;}\n.gd-doc .gd-td29{border-top:1pt solid #000;border-left:1pt solid #000;border-bottom:1pt solid #000;border-right:1pt solid #000;vertical-align:middle;background:#e4e4e4;padding:0pt 0pt 0pt 0pt;}\n.gd-doc .gd-p30{margin-left:20.55pt;margin-top:7.9pt;line-height:1.15;}\n.gd-doc .gd-tr31{height:33.15pt;}\n.gd-doc .gd-c32{font-weight:bold;font-size:6pt;}\n.gd-doc .gd-p33{margin-left:6.85pt;text-indent:-1.7pt;margin-top:4.45pt;line-height:12pt;}\n.gd-doc .gd-tr34{height:32.35pt;}\n.gd-doc .gd-p35{margin-left:20.1pt;margin-top:7.1pt;line-height:1.15;}\n.gd-doc .gd-p36{text-align:center;margin-left:81.55pt;margin-right:78.5pt;text-indent:-2.3pt;margin-top:7.1pt;line-height:1.49;}\n.gd-doc .gd-p37{text-align:center;margin-left:10.4pt;margin-right:9.55pt;margin-top:7.1pt;line-height:1.49;}\n.gd-doc .gd-p38{text-align:center;margin-left:12.45pt;margin-right:11.55pt;text-indent:2.15pt;margin-top:4.3pt;line-height:12pt;}\n.gd-doc .gd-p39{margin-left:10.9pt;margin-top:7.1pt;line-height:1.15;}\n.gd-doc .gd-tr40{height:68.25pt;}\n.gd-doc .gd-p41{margin-left:5.2pt;margin-top:7.1pt;line-height:1.15;}\n.gd-doc .gd-p42{margin-left:5.9pt;margin-top:7.1pt;line-height:1.15;}\n.gd-doc .gd-p43{margin-left:5.95pt;margin-top:2.8pt;line-height:1.15;}\n.gd-doc .gd-p44{margin-left:5.95pt;margin-right:1.65pt;line-height:12pt;}\n.gd-doc .gd-tr45{height:56.25pt;}\n.gd-doc .gd-p46{margin-left:5.2pt;margin-right:0.55pt;margin-top:7.1pt;line-height:1.49;}\n.gd-doc .gd-p47{margin-left:5.95pt;margin-top:7.1pt;line-height:1.15;}\n.gd-doc .gd-p48{margin-left:5.95pt;margin-right:22.6pt;text-indent:2.15pt;line-height:12pt;}\n.gd-doc .gd-tr49{height:44pt;}\n.gd-doc .gd-p50{margin-left:5.2pt;margin-top:6.95pt;line-height:1.15;}\n.gd-doc .gd-p51{margin-left:5.95pt;margin-top:6.95pt;line-height:1.15;}\n.gd-doc .gd-p52{margin-left:5.95pt;margin-right:52.55pt;line-height:12pt;}\n.gd-doc .gd-tr53{height:43.5pt;}\n.gd-doc .gd-p54{text-align:center;margin-left:13.65pt;margin-right:13.8pt;text-indent:6pt;margin-top:5.1pt;line-height:12pt;}\n.gd-doc .gd-col55{width:91.8pt;}\n.gd-doc .gd-col56{width:16.2pt;}\n.gd-doc .gd-col57{width:108pt;}\n.gd-doc .gd-col58{width:24.1pt;}\n.gd-doc .gd-col59{width:66pt;}\n.gd-doc .gd-col60{width:17.9pt;}\n.gd-doc .gd-col61{width:48.6pt;}\n.gd-doc .gd-col62{width:59.4pt;}\n.gd-doc .gd-t63{width:540pt;margin-left:20.15pt;}\n.gd-doc .gd-p64{margin-top:1.95pt;line-height:1.15;}\n.gd-doc .gd-c65{font-weight:bold;font-size:12pt;}\n.gd-doc .gd-p66{margin-left:18pt;line-height:1.15;}\n.gd-doc .gd-p67{margin-top:0.55pt;line-height:1.15;}\n.gd-doc .gd-p68{margin-left:23.95pt;margin-top:5pt;line-height:1.15;}\n.gd-doc .gd-td69{width:194.75pt;border-top:1pt solid #000;border-left:1pt solid #000;border-bottom:1pt solid #000;border-right:1pt solid #000;padding:0pt 0pt 0pt 0pt;}\n.gd-doc .gd-p70{margin-left:46.9pt;margin-top:5pt;line-height:1.15;}\n.gd-doc .gd-td71{width:164.85pt;border-top:1pt solid #000;border-left:1pt solid #000;border-bottom:1pt solid #000;border-right:1pt solid #000;padding:0pt 0pt 0pt 0pt;}\n.gd-doc .gd-p72{margin-left:21.85pt;margin-top:5pt;line-height:1.15;}\n.gd-doc .gd-td73{width:87.1pt;border-top:1pt solid #000;border-left:1pt solid #000;border-bottom:1pt solid #000;border-right:1pt solid #000;padding:0pt 0pt 0pt 0pt;}\n.gd-doc .gd-p74{margin-left:23.2pt;margin-top:5pt;line-height:1.15;}\n.gd-doc .gd-td75{width:93.1pt;border-top:1pt solid #000;border-left:1pt solid #000;border-bottom:1pt solid #000;border-right:1pt solid #000;padding:0pt 0pt 0pt 0pt;}\n.gd-doc .gd-tr76{height:20.15pt;}\n.gd-doc .gd-p77{margin-left:5.2pt;margin-right:4.6pt;margin-top:7.35pt;line-height:1.49;}\n.gd-doc .gd-p78{margin-left:5.85pt;margin-top:7.35pt;line-height:1.15;}\n.gd-doc .gd-td79{width:87.1pt;border-top:1pt solid #000;border-left:1pt solid #000;border-bottom:1pt solid #000;border-right:1pt solid #000;vertical-align:middle;padding:0pt 0pt 0pt 0pt;}\n.gd-doc .gd-td80{width:93.1pt;border-top:1pt solid #000;border-left:1pt solid #000;border-bottom:1pt solid #000;border-right:1pt solid #000;vertical-align:middle;padding:0pt 0pt 0pt 0pt;}\n.gd-doc .gd-tr81{height:23.4pt;}\n.gd-doc .gd-p82{margin-left:5.8pt;margin-top:7.45pt;line-height:1.15;}\n.gd-doc .gd-tr83{height:20.25pt;}\n.gd-doc .gd-p84{margin-left:5.2pt;margin-top:7.35pt;line-height:1.15;}\n.gd-doc .gd-p85{margin-left:5.85pt;margin-top:4.45pt;line-height:12pt;}\n.gd-doc .gd-tr86{height:32.15pt;}\n.gd-doc .gd-p87{margin-left:5.85pt;margin-top:4.55pt;line-height:12pt;}\n.gd-doc .gd-p88{margin-left:5.2pt;margin-top:7.45pt;line-height:1.15;}\n.gd-doc .gd-t89{width:539.8pt;margin-left:17.95pt;}",
+ "model": {
+  "Policy": {
+   "PolicyNumber": "Policy Number"
+  },
+  "MOEPolicyDecInfo": {
+   "ItemFiveScheduleForNonOwnershipLiability": {
+    "TotalPremium": 25000,
+    "AutoServiceOperations": {
+     "NumberOfEmployees": {
+      "IsProvided": true,
+      "NumberWording": "Number Wording",
+      "Number_IsProvided": "Number Is Provided",
+      "PremiumWording": "Premium Wording",
+      "Premium_IsProvided": 25000
+     },
+     "NumberOfPartners": {
+      "IsProvided": true,
+      "NumberWording": "Number Wording",
+      "Number_IsProvided": "Number Is Provided",
+      "PremiumWording": "Premium Wording",
+      "Premium_IsProvided": 25000
+     },
+     "NumberOfVolunteers": {
+      "IsProvided": true,
+      "NumberWording": "Number Wording",
+      "Number_IsProvided": "Number Is Provided",
+      "PremiumWording": "Premium Wording",
+      "Premium_IsProvided": 25000
+     }
+    },
+    "OtherThankAutoServiceOperationsPartnershipsLLCs": {
+     "NumberOfEmployees": {
+      "IsProvided": true,
+      "NumberWording": "Number Wording",
+      "Number_IsProvided": "Number Is Provided",
+      "PremiumWording": "Premium Wording",
+      "Premium_IsProvided": 25000
+     },
+     "NumberOfVolunteers": {
+      "IsProvided": true,
+      "NumberWording": "Number Wording",
+      "Number_IsProvided": "Number Is Provided",
+      "PremiumWording": "Premium Wording",
+      "Premium_IsProvided": 25000
+     }
+    },
+    "PartnershipsOrLLCs": {
+     "NumberOfEmployees": {
+      "IsProvided": true,
+      "NumberWording": "Number Wording",
+      "Number_IsProvided": "Number Is Provided",
+      "PremiumWording": "Premium Wording",
+      "Premium_IsProvided": 25000
+     },
+     "NumberOfPartners": {
+      "IsProvided": true,
+      "NumberWording": "Number Wording",
+      "Number_IsProvided": "Number Is Provided",
+      "PremiumWording": "Premium Wording",
+      "Premium_IsProvided": 25000
+     },
+     "NumberOfVolunteers": {
+      "IsProvided": true,
+      "NumberWording": "Number Wording",
+      "Number_IsProvided": "Number Is Provided",
+      "PremiumWording": "Premium Wording",
+      "Premium_IsProvided": 25000
+     }
+    }
+   },
+   "ItemFourHiredOrBorrowedCoveredAutoCoverageAndPremiums": {
+    "LiabilityCoverage": {
+     "EstimatedCostofHire": 25000,
+     "Factor": 2,
+     "Premium": 25000,
+     "RatePerEachCostOfHire": 2,
+     "State": "State",
+     "TotalPremium": 25000
+    },
+    "PhysicalDamageCoverageRatingBasisCostOfHire": {
+     "TotalPremium": 25000,
+     "Collision": {
+      "Deductible": 25000,
+      "EstimatedAnnualCostOfHire": 25000,
+      "Limit": 25000,
+      "Premium": 25000,
+      "RatePerEachAnnualCostOfHire": 2
+     },
+     "Comprehensive": {
+      "Deductible": 25000,
+      "EstimatedAnnualCostOfHire": 25000,
+      "Limit": 25000,
+      "Premium": 25000,
+      "RatePerEachAnnualCostOfHire": 2
+     },
+     "SpecifiedCausesOfLoss": {
+      "EstimatedAnnualCostOfHire": 25000,
+      "Limit": 25000,
+      "Premium": 25000,
+      "RatePerEachAnnualCostOfHire": 2
+     }
+    }
+   }
+  }
+ },
+ "report": {
+  "counts": {
+   "choose": 37,
+   "conditionals": 37,
+   "fill points": 55,
+   "paragraphs": 94,
+   "tables": 4
+  },
+  "notes": [
+   "running footer repeats on every flowing page",
+   "running header repeats on every flowing page"
+  ]
+ }
+}

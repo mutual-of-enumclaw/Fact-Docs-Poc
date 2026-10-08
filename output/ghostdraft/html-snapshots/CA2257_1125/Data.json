@@ -1,0 +1,701 @@
+{
+  "Agency": {
+    "Address": {
+      "AddressLine1": "",
+      "AddressLine2": "",
+      "City": "",
+      "State": "",
+      "ZIP": ""
+    },
+    "ContactDetails": {
+      "EmailAddress": "",
+      "PhoneNumber": ""
+    },
+    "Name": "",
+    "Code": ""
+  },
+  "Policy": {
+    "PolicyNumber": "CPP 1000067 00",
+    "EffectiveDate": "2017-08-07T00:00:00",
+    "ExpirationDate": "2018-08-07T00:00:00",
+    "TransactionEffectiveDate": "2017-08-07T00:00:00",
+    "datashouldshow": true,
+    "TransactionEffectiveDateWording": "08/07/2017",
+    "TransactionType": "isNewBusiness",
+    "EffectiveDateWording": "08/07/2017",
+    "ExpirationDateWording": "08/07/2018",
+    "PolicyTerm": "12",
+    "Cancellation": {
+      "Reason": ""
+    },
+    "Non_Renewal": {
+      "Reason": ""
+    },
+    "ChangeNumber": "",
+    "Forms": {},
+    "usesoverflowscheduleforadditionalinsureds": true
+  },
+  "AdditionalInsureds": {
+    "AdditionalInsuredCount": {
+      "has2ormorelessorsORlongnames": false
+    }
+  },
+  "Insured": {
+    "PrimaryNamedInsured": "JAMES MARSH",
+    "MailingAddress": {
+      "AddressLine1": "",
+      "AddressLine2": "",
+      "City": "",
+      "State": "",
+      "ZIP": ""
+    },
+    "Business": {
+      "InsuredSite": {
+        "ZIP": "",
+        "State": "",
+        "City": "",
+        "AddressLine2": "",
+        "AddressLine1": ""
+      }
+    },
+    "ContactDetails": {
+      "PhoneNumber": "",
+      "EmailAddress": ""
+    },
+    "DBA": ""
+  },
+  "Agent": {
+    "Address": {
+      "AddressLine1": "",
+      "AddressLine2": "",
+      "City": "",
+      "State": "",
+      "ZIP": ""
+    },
+    "ContactDetails": {
+      "EmailAddress": "",
+      "PhoneNumber": ""
+    },
+    "Name": ""
+  },
+  "CAAutoLevelCoverages": {
+    "AutoCount": {
+      "has2ormoreautoswithFireFireAndTheftFireTheftAndWindstormAndLimitedSpecifiedCausesOfLossCoveragesORlongnames": false,
+      "has2ormoreautoswithFireSafetyGlassCoverageORlongnames": false,
+      "has2ormoreAutoswithFullSafetyGlassCoveragesORlongnames": false,
+      "has2ormoreautoswithMobileHomesContentsCoverageORlongnames": false,
+      "has2ormoreautoswithRentalReimbursementCoverageORlongnames": false,
+      "has2ormoreautoswithStatedAmountInsurance": false,
+      "has2ormoreautosforTransportationofSeasonalorMigrantAgriculturalWorkersORlongnames": false,
+      "has2ormoreHiredAutosSpecifiedasOwnedAutosORlongnames": false,
+      "has2ormoremobileequipmentsORlongnames": false,
+      "has2ormoreSnowmobilesORlongnames": false,
+      "has4ormoreautoswithAudioVisualandDataElectronicEquipmentCoverageORlongnames": false,
+      "has4ormoreautoswithAutoLeaseGapCoverage_Washington": false,
+      "has4ormoreautoswithAutoLoanCoverage_PrivatePassengerAutos_Washington": false,
+      "has4ormoreautoswithLoanorLeaseGAPCoverageORlongnames": false,
+      "has4ormoreautoswithStatedAmountInsuranceORlongnames": false,
+      "has4ormoreSnowmobilesORlongnames": true,
+      "has4ormoreSnowmobiles_Wyoming": false,
+      "has5ormoreautosandcoverageswithStatedAmountInsurance": false,
+      "has5ormoreautoswithStatedAmountInsurance": false,
+      "has6ormoreMobileEquipmentVehicles": false
+    },
+    "DesignationSymbols": {
+      "DescriptionofSymbol7": "",
+      "DescriptionofSymbol10": "",
+      "DescriptionofSymbol32": "",
+      "DescriptionofSymbol51": "",
+      "DescriptionofSymbol52": "",
+      "DescriptionofSymbol72": "",
+      "DescriptionofSymbol73": ""
+    },
+    "Autos": [
+      {
+        "AutoswithReinstatementofInsurance": false,
+        "AudioVisualandDataElectronicEquipmentCoverage": {
+          "AdditionalPremiumWording": "Additional Premium",
+          "LimitWording": ""
+        },
+        "AutoLeaseGapCoverage_Washington": {
+          "CollisionAdditionalPremiumWording": "",
+          "OtherandCollisionAdditionalPremiumWording": ""
+        },
+        "AutoLoanCoverage_PrivatePassengerAutos_Washington": {
+          "CollisionAdditionalPremiumWording": "",
+          "ComprehensiveAdditionalPremiumWording": ""
+        },
+        "CollisionAdditionalPremiumWording": "",
+        "OtherThanCollisionAdditionalPremiumWording": "",
+        "AutosforTransportationofSeasonalorMigrantAgriculturalWorkers": false,
+        "AutoswithAudioVisualandDataElectronicEquipmentCoverage": false,
+        "AutoswithAutoLeaseGapCoverage_Washington": false,
+        "AutoswithAutoLoanCoverage_PrivatePassengerAutos_Washington": false,
+        "AutoswithLoanorLeaseGAPCoverage": false,
+        "AutoswithFireFireAndTheftFireTheftAndWindstormAndLimitedSpecifiedCausesOfLossCoverages": false,
+        "AutoswithFullSafetyGlassCoverage": false,
+        "AutoswithMobileHomesContentsCoverage": false,
+        "AutoswithRentalReimbursementCoverage": false,
+        "AutoswithStatedAmountInsurance": true,
+        "AutoswithUnderinsuredMotoristsCoverage_Washington": true,
+        "AutoswithUninsuredMotoristsCoverage_PropertyDamagePrivatePassengerTypes_Oregon": false,
+        "Classification": {
+          "AgeGroup": "",
+          "BusinessUse": "",
+          "Code": "03199",
+          "OriginalCostNew": "0",
+          "OriginalCostNewWording": "0",
+          "RadiusofOperation": "",
+          "SecondaryRatingClassification": "",
+          "Size": ""
+        },
+        "Description": {
+          "Make": "",
+          "Model": "",
+          "Motor": "",
+          "MotorNumber": "",
+          "Number": "1",
+          "SerialNumber": "",
+          "TradeName": "",
+          "VIN": "3C6URVJG0GE103251",
+          "Year": "2016-01-01T00:00:00",
+          "YearWording": "2016"
+        },
+        "FireandOtherSpecifiedCausesofLossCoverage": {
+          "FireandTheftCoverage": {
+            "DescriptionofCoveredAutos": "",
+            "PremiumWording": ""
+          },
+          "FireCoverage": {
+            "DescriptionofCoveredAutos": "",
+            "PremiumWording": ""
+          },
+          "FireTheftandWindstormCoverage": {
+            "DescriptionofCoveredAutos": "",
+            "PremiumWording": ""
+          },
+          "LimitedSpecifiedCausesofLossCoverage": {
+            "DescriptionofCoveredAutos": "",
+            "PremiumWording": ""
+          }
+        },
+        "HiredAutosSpecifiedasOwnedAutos": false,
+        "MobileEquipment": {
+          "LiabilityCoverages": {
+            "AutoMedicalPayments": {
+              "CoveredVehicleNumbers": "",
+              "LimitWording": "",
+              "PremiumWording": ""
+            },
+            "CoveredAutosLiability": {
+              "CoveredVehicleNumbers": "1",
+              "Limit": "1000000",
+              "LimitWording": "",
+              "Premium": "953",
+              "PremiumWording": ""
+            },
+            "PersonalInjuryProtection": {
+              "CoveredVehicleNumbers": "1",
+              "Limit": "10000",
+              "LimitWording": "",
+              "Premium": "33",
+              "PremiumWording": ""
+            },
+            "UnderinsuredMotorists": {
+              "Limit": "1000000",
+              "LimitWording": "",
+              "Premium": "104",
+              "PremiumWording": ""
+            },
+            "UninsuredMotorists": {
+              "LimitWording": "",
+              "PremiumWording": ""
+            }
+          },
+          "PhysicalDamageCoverages": {
+            "Collision": {
+              "CoveredVehicleNumbers": "1",
+              "EachCoveredAutoDeductible": "1000",
+              "EachCoveredAutoDeductibleWording": "",
+              "Premium": "1246",
+              "PremiumWording": ""
+            },
+            "Comprehensive": {
+              "AllPerilsDeductibleWording": "",
+              "CoveredVehicleNumbers": "1",
+              "EachCoveredAutoDeductible": "1000",
+              "EachCoveredAutoDeductibleWording": "",
+              "MaximumDeductible": "1000",
+              "MaximumDeductibleWording": "",
+              "Premium": "223",
+              "PremiumWording": "",
+              "TheftMischieforVandalismDeductibleWording": ""
+            },
+            "SpecifiedCausesofLoss": {
+              "AllPerilsDeductibleWording": "",
+              "CoveredVehicleNumbers": "",
+              "PremiumWording": "",
+              "TheftMischieforVandalismDeductibleWording": ""
+            }
+          }
+        },
+        "MobileEquipmentVehicles": false,
+        "MobileHomesContentsCoverage": {
+          "FireCoverage": {
+            "DescriptionofCoveredAutos": "",
+            "LimitWording": "",
+            "PremiumWording": ""
+          },
+          "FireandTheftCoverage": {
+            "DescriptionofCoveredAutos": "",
+            "LimitWording": "",
+            "PremiumWording": ""
+          },
+          "LimitedSpecifiedCausesofLossexcludingTheft": {
+            "DescriptionofCoveredAutos": "",
+            "LimitWording": "",
+            "PremiumWording": ""
+          },
+          "LimitedSpecifiedCausesofLossincludingTheft": {
+            "DescriptionofCoveredAutos": "",
+            "LimitWording": "",
+            "PremiumWording": ""
+          },
+          "SpecifiedCausesofLossexcludingTheft": {
+            "DescriptionofCoveredAutos": "",
+            "LimitWording": "",
+            "PremiumWording": ""
+          },
+          "SpecifiedCausesofLossincludingTheft": {
+            "DescriptionofCoveredAutos": "",
+            "LimitWording": "",
+            "PremiumWording": ""
+          }
+        },
+        "RentalReimbursementCoverage": {
+          "CollisionCoverage": {
+            "DesignationorDescriptionofApplicableCoveredAutos": "",
+            "MaximumPayment": {
+              "AnyOneDayPaymentWording": "",
+              "AnyOnePeriodWording": "",
+              "NumberofDaysWording": ""
+            },
+            "PremiumWording": ""
+          },
+          "ComprehensiveCoverage": {
+            "DesignationorDescriptionofApplicableCoveredAutos": "",
+            "MaximumPayment": {
+              "AnyOneDayPaymentWording": "",
+              "AnyOnePeriodWording": "",
+              "NumberofDaysWording": ""
+            },
+            "PremiumWording": ""
+          },
+          "SpecifiedCausesofLossCoverage": {
+            "DesignationorDescriptionofApplicableCoveredAutos": "",
+            "MaximumPayment": {
+              "AnyOneDayPaymentWording": "",
+              "AnyOnePeriodWording": "",
+              "NumberofDaysWording": ""
+            },
+            "PremiumWording": ""
+          },
+          "TotalPremiumWording": ""
+        },
+        "Snowmobiles1": false,
+        "Snowmobiles2": {
+          "AdditionalPremiums": {
+            "Exclusion2PremiumWording": "",
+            "Exclusion3PremiumWording": "Included",
+            "Exclusion4PremiumWording": "Included"
+          },
+          "AutoMedicalPayments": {
+            "CoveredVehicleNumbers": "001",
+            "CoveredVehicleNumbersWording": "001",
+            "LimitWording": "",
+            "PremiumWording": ""
+          },
+          "Collision": {
+            "CoveredVehicleNumbers": "001",
+            "LimitWording": "",
+            "Premium": "1246",
+            "PremiumWording": ""
+          },
+          "Comprehensive": {
+            "CoveredVehicleNumbers": "001",
+            "LimitWording": "",
+            "Premium": "223",
+            "PremiumWording": ""
+          },
+          "CoveredAutosLiability": {
+            "CoveredVehicleNumbers": "001",
+            "CoveredVehicleNumbersWording": "001",
+            "Limit": "1000000",
+            "Premium": "953"
+          },
+          "Exclusions": {
+            "Exclusion1isdeleted": false,
+            "Exclusion2isdeleted": false,
+            "Exclusion3isdeleted": false
+          },
+          "OtherAutoCoverages": {
+            "has2ormoreotherautocoveragesofautosORlongnames": false,
+            "Coverages": [
+              {
+                "CoveredVehicleNumbersWording": "001",
+                "Description": "",
+                "LimitWording": "",
+                "PremiumWording": ""
+              }
+            ]
+          },
+          "TotalPremium": "0",
+          "UnderinsuredMotorists": {
+            "CoveredVehicleNumbers": "001",
+            "Limit": "1000000",
+            "LimitWording": "",
+            "Premium": "104",
+            "PremiumWording": ""
+          },
+          "UninsuredMotorists": {
+            "CoveredVehicleNumbers": "001",
+            "LimitWording": "",
+            "PremiumWording": ""
+          }
+        },
+        "Snowmobiles_Wyoming": false,
+        "StatedAmountCoverages": {
+          "Coverages": [
+            {
+              "Deductible": "1000",
+              "DeductibleWording": "",
+              "Description": "Comprehensive",
+              "LimitWording": "",
+              "Premium": "223",
+              "PremiumWording": ""
+            },
+            {
+              "Deductible": "1000",
+              "DeductibleWording": "",
+              "Description": "Collision",
+              "LimitWording": "",
+              "Premium": "1246",
+              "PremiumWording": ""
+            }
+          ]
+        },
+        "TransportationofSeasonalorMigrantAgriculturalWorkers": {
+          "DescriptionofCoveredAutos": "Veh# 001 2016 3C6URVJG0GE103251",
+          "LimitWording": ""
+        },
+        "UninsuredMotoristsCoverage_PropertyDamagePrivatePassengerTypes_Oregon": {
+          "DesignationorDescriptionofAuto": "3C6URVJG0GE103251 2016",
+          "LimitWording": ""
+        },
+        "VehicleDescription": "2016 3C6URVJG0GE103251",
+        "VehicleNumberWording": "001",
+        "AutoswithTruckersUniformIntermodalInterchangeCoverage": false
+      }
+    ]
+  },
+  "AdditionalInterests": {},
+  "CAPolicyLevelCoverages": {
+    "BusinessInterruptionCoverage": {
+      "BusinessActivitiesDependentonScheduledProperty": "",
+      "CoveredCausesofLoss": {
+        "includeCollision": false,
+        "includeComprehensive": false,
+        "includeSpecifiedCausesofLoss": false
+      },
+      "Descriptionhaslongnames": false,
+      "ExtendedCoverageDaysWording": "",
+      "includesExtraExpenseCoverage": false,
+      "PremiumWording": "",
+      "ScheduledPropertywithSameLimit": {
+        "has7ormoreORlongnames": false,
+        "LimitWording": ""
+      },
+      "ScheduledPropertywithSeparateLimits": {
+        "has7ormoreORlongnames": false,
+        "hasexactly6": false
+      },
+      "WaitingPeriodWording": "",
+      "withoutExtraExpenseCoverage": false
+    },
+    "DeductibleLiabilityCoverage": {
+      "LiabilityDeductibleWording": "",
+      "PropertyDamageOnlyLiabilityDeductibleWording": ""
+    },
+    "FullSafetyGlassCoverage": {
+      "appliestoallcoveredautos": false,
+      "appliestoallprivatepassengercoveredautos": false,
+      "appliestospecifiedcoveredautos": false
+    },
+    "LeasingorRentalContingentCoverage": {
+      "Limit": "1000000",
+      "LimitWording": "",
+      "CoverageLimits": {
+        "CoverageLimits": [
+          {
+            "Limit": "1000000",
+            "LimitWording": "",
+            "ScheduleNumber": ""
+          }
+        ]
+      }
+    },
+    "NamedLesseeasInsured": {
+      "Lessees": {}
+    },
+    "Non_OwnershipLiabilityCoverageforVolunteers": {
+      "CoveredVolunteerActivities": {
+        "has2ormoreCoveredVolunteerActivitiesORlongnames": false
+      }
+    },
+    "SplitUninsuredLimits": {
+      "BodilyInjuryLimitperAccidentWording": "",
+      "BodilyInjuryLimitperPersonWording": "",
+      "PropertyDamageLimitperAccidentWording": ""
+    },
+    "StatedAmountInsurance": {
+      "TotalPremium": "1469",
+      "TotalPremiumWording": "1469"
+    },
+    "TruckersUniformIntermodalInterchangeCoverage": {
+      "hassinglelimit": false,
+      "LimitWording": ""
+    },
+    "DeductibleLiability": {
+      "LiabilityDeductibleWording": "",
+      "PropertyDamageOnlyLiabilityDeductibleWording": ""
+    },
+    "SplitUnderinsuredLimits": {
+      "BodilyInjuryLimitperAccidentWording": "",
+      "BodilyInjuryLimitperPersonWording": "",
+      "PropertyDamageLimitperAccidentWording": ""
+    },
+    "TrailerInterchangeCoverages": {}
+  },
+  "CAState_specificPolicyLevelCoverages": {
+    "AddedPersonalInjuryProtection_Utah": {
+      "MaxLimitforMedicalExpenses": "10000",
+      "MaxLimitforMedicalExpensesWording": "",
+      "MaxLimitforWorkLossWording": ""
+    },
+    "BusinessInterruptionCoverage_Washington": {
+      "BusinessActivitiesDependentonScheduledProperty": "",
+      "CoveredCausesofLoss": {
+        "includeCollision": false,
+        "includeComprehensive": false,
+        "includeSpecifiedCausesofLoss": false
+      },
+      "ExtendedCoverageDaysWording": "",
+      "IncludesBusinessIncomeandExtraExpense": false,
+      "includesBusinessIncomewithoutExtraExpense": false,
+      "ScheduledPropertywithSameLimit": {
+        "has7ormore": false,
+        "LimitWording": ""
+      },
+      "ScheduledPropertywithSeparateLimits": {
+        "has7ormore": false,
+        "hasexactly6": false
+      },
+      "WaitingPeriodWording": ""
+    },
+    "BusinessInterruptionCoverage_Oregon": {
+      "BusinessActivitiesDependentonScheduledProperty": "",
+      "CoveredCausesofLoss": {
+        "includeCollision": false,
+        "includeComprehensive": false,
+        "includeSpecifiedCausesofLoss": false
+      },
+      "ExtendedCoverageDaysWording": "",
+      "IncludesBusinessIncomeandExtraExpense": false,
+      "includesBusinessIncomewithoutExtraExpense": false,
+      "PremiumWording": "",
+      "ScheduledPropertywithSameLimit": {
+        "has7ormore": false,
+        "LimitWording": ""
+      },
+      "ScheduledPropertywithSeparateLimits": {
+        "has7ormore": false,
+        "hasexactly6": false
+      },
+      "WaitingPeriodWording": ""
+    },
+    "BusinessInterruptionCoverage_Utah": {
+      "BusinessActivitiesDependentonScheduledProperty": "",
+      "CoveredCausesofLoss": {
+        "includeCollision": false,
+        "includeComprehensive": false,
+        "includeSpecifiedCausesofLoss": false
+      },
+      "ExtendedCoverageDaysWording": "",
+      "IncludesBusinessIncomeandExtraExpense": false,
+      "includesBusinessIncomewithoutExtraExpense": false,
+      "PremiumWording": "",
+      "ScheduledPropertywithSameLimit": {
+        "has7ormore": false,
+        "LimitWording": ""
+      },
+      "ScheduledPropertywithSeparateLimits": {
+        "has7ormore": false,
+        "hasexactly6": false
+      },
+      "WaitingPeriodWording": ""
+    },
+    "LeasingorRentalContingentCoverage_Oregon": {
+      "Limit": "1000000",
+      "LimitWording": ""
+    },
+    "MotorCarriers_NamedLesseeasInsured_Washington": {
+      "Lessees": {}
+    },
+    "PersonalInjuryProtection_NamedIndividuals_Washington": {
+      "includesBasicPersonalInjuryProtectionBenefits": true,
+      "includesIncreasedLimitsPersonalInjuryProtectionBenefits": false
+    },
+    "PersonalInjuryProtection_Oregon": {
+      "DesignatedCoveredMembers": {},
+      "includescoverageforyou": false,
+      "includescoverageforyouandeachfamilymember": false,
+      "includescoverageforyouorthenamedfamilymembers": false,
+      "MedicalExpenseDeductibleWording": ""
+    },
+    "Snowmobiles_Wyoming": {
+      "Coverages": {
+        "AutoMedicalPayments": {
+          "CoveredVehicleNumbers": "",
+          "LimitWording": "",
+          "PremiumWording": ""
+        },
+        "CoveredAutosLiability": {
+          "CoveredVehicleNumbers": "",
+          "LimitWording": "",
+          "PremiumWording": ""
+        },
+        "OtherAutoCoverage": {
+          "Description": "",
+          "LimitWording": "",
+          "CoveredVehicleNumbers": "",
+          "PremiumWording": ""
+        },
+        "UninsuredMotorists": {
+          "LimitWording": "",
+          "PremiumWording": ""
+        },
+        "TotalPremiumWording": ""
+      }
+    },
+    "SplitUnderinsuredMotoristsCoverageLimits_Non_Stacked_Montana": {
+      "BodilyInjuryLimitperAccidentWording": "",
+      "BodilyInjuryLimitperPersonWording": ""
+    },
+    "SplitUninsuredMotoristsCoverageLimits_Non_Stacked_Montana": {
+      "BodilyInjuryLimitperAccidentWording": "",
+      "BodilyInjuryLimitperPersonWording": ""
+    },
+    "SplitUninsuredMotoristsCoverageLimits_Wyoming": {
+      "BodilyInjuryLimitperAccidentWording": "",
+      "BodilyInjuryLimitperPersonWording": ""
+    },
+    "TruckersUniformIntermodalInterchangeEndorsementFormUIIE_1_Washington": {
+      "hassinglelimit": false,
+      "LimitWording": ""
+    },
+    "UnderinsuredMotoristsCoverage_Arizona": {
+      "Limit": "1000000",
+      "LimitWording": ""
+    },
+    "UnderinsuredMotoristsCoverage_Idaho": {
+      "Limit": "1000000",
+      "LimitWording": ""
+    },
+    "UnderinsuredMotoristsCoverage_Nonstacked_Montana": {
+      "Limit": "1000000",
+      "LimitWording": ""
+    },
+    "UnderinsuredMotoristsCoverage_Utah": {
+      "Limit": "1000000",
+      "LimitWording": ""
+    },
+    "UninsuredMotoristsCoverage_Arizona": {
+      "LimitWording": ""
+    },
+    "UninsuredMotoristsCoverage_BodilyInjury_Oregon": {
+      "LimitWording": ""
+    },
+    "UninsuredMotoristsCoverage_Idaho": {
+      "EachAccidentLimitWording": ""
+    },
+    "UninsuredMotoristsCoverage_Nonstacked_Montana": {
+      "LimitWording": ""
+    },
+    "UninsuredMotoristsCoverage_PropertyDamage_Utah": {
+      "LimitWording": ""
+    },
+    "UninsuredMotoristsCoverage_Utah": {
+      "LimitWording": ""
+    },
+    "UninsuredMotoristsCoverage_Wyoming": {
+      "LimitWording": ""
+    }
+  },
+  "CAJurisdictionLevelCoverages": {
+    "Jurisdictions": [
+      {
+        "JurisdictionswithSplitBodilyInjuryUnderinsuredMotoristsCoverage": true,
+        "UnderinsuredMotoristsCoverage": {
+          "SplitBodilyInjuryLimits": {
+            "LimitperAccident": "1000000",
+            "LimitperAccidentWording": "",
+            "LimitperPersonWording": ""
+          }
+        }
+      }
+    ]
+  },
+  "InsuranceCompany": {
+    "Name": "Mutual of Enumclaw Insurance Company",
+    "Address": {
+      "AddressLine1": "1460 Wells Street",
+      "City": "Enumclaw",
+      "State": "WA",
+      "ZIP": "98022"
+    },
+    "ContactDetails": {
+      "PhoneNumber": "800-366-5551"
+    },
+    "AuthorizedRepresentative": {
+      "Name": ""
+    }
+  },
+  "PolicyDeclarations": {
+    "Declarationses": [
+      {
+        "BusinessAutoDeclarations": true,
+        "CoveredAutosCoverages": {
+          "LiabilityCoverages": {},
+          "PhysicalDamageCoverages": {},
+          "Premiums": {
+            "EstimatedTotalPremium": "0",
+            "EstimatedTotalPremiumWording": "",
+            "PremiumforEndorsements": "0",
+            "PremiumforEndorsementsWording": ""
+          }
+        },
+        "EndorsementsAttached": {},
+        "HiredCoveredAutoStates": {},
+        "Non_ownedCoveredAutosCoverages": {
+          "TotalPremium": "0",
+          "TotalPremiumWording": ""
+        }
+      }
+    ]
+  },
+  "ResidentAgent": {
+    "LicensedStates": {
+      "has28ormore": false
+    }
+  }
+}

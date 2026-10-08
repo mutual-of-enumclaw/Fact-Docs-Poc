@@ -1,0 +1,59 @@
+EA9911_1224: DIFFERENT  score 99.5%
+pages   golden 13  html 14  (pages with text)
+words   golden 7658  html 7585  missing 75  extra 2
+
+MISSING (in the GhostDraft golden, not in the HTML render)
+  [CPP 1000127 COMMERCIAL]  <=  POLICY NUMBER:  CPP 1000127 00                                                             COMMERCIAL AUTO
+  [CHANGES PLEASE READ CAREFULLY]  <=  THIS ENDORSEMENT CHANGES THE POLICY.  PLEASE READ IT CAREFULLY.
+  [13]  <=  EA 99 11 12 24      Includes copyrighted material of Insurance Services Office, Inc., with its permission  Page 3 of 13
+  [13]  <=  EA 99 11 12 24      Includes copyrighted material of Insurance Services Office, Inc., with its permission  Page 4 of 13
+  [13]  <=  EA 99 11 12 24      Includes copyrighted material of Insurance Services Office, Inc., with its permission  Page 5 of 13
+  [13]  <=  EA 99 11 12 24      Includes copyrighted material of Insurance Services Office, Inc., with its permission  Page 6 of 13
+  [NUMBER]  <=  - Number Of Days.
+  [13]  <=  EA 99 11 12 24      Includes copyrighted material of Insurance Services Office, Inc., with its permission  Page 7 of 13
+  [13]  <=  EA 99 11 12 24      Includes copyrighted material of Insurance Services Office, Inc., with its permission  Page 8 of 13
+  [IT]  <=  the covered "auto" on which it is rated.
+  [13]  <=  EA 99 11 12 24      Includes copyrighted material of Insurance Services Office, Inc., with its permission  Page 9 of 13
+  [WHILE]  <=  (9) Equipment  or  accessories  while  your                      or stolen custom signs and decorations
+  [13]  <=  (13) Personal  property  that  is  missing               If hired "autos" are covered "autos" for Liability
+  [13]  <=  EA 99 11 12 24      Includes copyrighted material of Insurance Services Office, Inc., with its permission  Page 10 of 13
+  [0]  <=  c.  This   Hired   Auto   Physical   Damage                      (2)  A light truck (0 - 1,000 pounds GVWR);
+  [10]  <=  you lease, hire, rent or borrow from any of                  (3)  A  medium  truck  (10,001  -  20,000
+  [13]  <=  EA 99 11 12 24      Includes copyrighted material of Insurance Services Office, Inc., with its permission  Page 11 of 13
+  [13]  <=  13. Tapes, Records, And Discs Coverage
+  [7]  <=  (7) Personal  property  that  cannot  be
+  [8]  <=  (8) Personal  property  that  is  missing
+  [1 LIMIT]  <=  (1) The limit of insurance shown in the
+  [SCHEDULE]  <=  Schedule above for Personal Effects
+  [4]  <=  (4) The cost of replacing the damaged or
+  [ABOVE]  <=  paragraph 3.a. above, does not apply with respect
+  [9 1 12 13]  <=  EA 99 11 12 24      Includes copyrighted material of Insurance Services Office, Inc., with its permission  Page 12 of 13
+  [SHOWN]  <=  of  insurance  shown  in  the  Declarations  for                     or omission, to us as soon as practicable
+  [COVERAGE]  <=  Loss Coverage. This coverage is excess over any
+  [III PHYSICAL]  <=  Deductible as found in SECTION III - PHYSICAL                RECOVERY   AGAINST   OTHERS   TO   US
+  [DAMAGE COVERAGE]  <=  DAMAGE COVERAGE:                                             (WAIVER  OF  SUBROGATION)  -  AUTOMATIC
+  [3 COVERAGE]  <=  3.  If  Comprehensive  Coverage  or  Specified
+  [5]  <=  cost of repairing damaged safety glass on the            Others  To  Us  Loss  Condition  (subparagraph  5.
+  [2]  <=  subparagraph  2.  Duties  In  The  Event  Of                 subrogation is waived:
+  [AS]  <=  A. Loss Conditions as found in SECTION IV -
+  [ENDORSEMENT FOLLOWING]  <=  an  "insured",  other  than  an  officer  or             endorsement. the following definitions are added
+  [FOR]  <=  pickup truck to be used for casual travel or
+  [S]  <=  S. "Family member" means a person related to
+  [INSURANCE]  <=  insurance manager (if you are a corporation),
+  [FOLLOWING IS ADDED PARAGRAPH A]  <=  The following provision is added to paragraph A.
+  [AS FOUND SECTION]  <=  Loss  Conditions  as  found  in  SECTION  IV  -
+  [6]  <=  6.  Unintentional Failure To Disclose Hazards
+  [WE WILL]  <=  We will not deny coverage under this policy
+  [TO]  <=  because of an unintentional failure to disclose
+  [POLICY]  <=  effective date of the Business Auto Policy or
+  [IN]  <=  in any of the information provided by you and
+  [THIS]  <=  relied  upon  by  us  in  the  issuance  of  this
+  [EA 9 1 12 24 OF INSURANCE PAGE 13 13]  <=  EA 99 11 12 24      Includes copyrighted material of Insurance Services Office, Inc., with its permission  Page 13 of 13
+
+EXTRA (in the HTML render, not in the GhostDraft golden)
+  [THE]  <=  b.      Prior to the "accident" or the "loss".
+  [THE]  <=  AB.             With  respect  to  the provisions  of  this
+
+golden   C:\src\fact-docgen\src\Moe.Commercial.Documents.Generation.Integration.Tests\TestData\Snapshots\EA9911_1224\GoldenSnapshot.txt
+template C:\src\fact-poc\output\ghostdraft\batch\EA9911-1224.json
+serverxml C:\src\fact-poc\output\ghostdraft\serverxml\EA9911_1224\ServerXml.xml

@@ -1,0 +1,10 @@
+EA9940_0194: DIFFERENT  score 99.9%
+pages   golden 2  html 2  (pages with text)
+words   golden 698  html 699  missing 0  extra 1
+
+EXTRA (in the HTML render, not in the GhostDraft golden)
+  [PASSENGER]  <=  4.      When   the phrase "non-owned  auto" appears  in quotation marks it means any "private passenger
+
+golden   C:\src\fact-docgen\src\Moe.Commercial.Documents.Generation.Integration.Tests\TestData\Snapshots\EA9940_0194\GoldenSnapshot.txt
+template C:\src\fact-poc\output\ghostdraft\batch\EA9940-0194.json
+serverxml C:\src\fact-poc\output\ghostdraft\serverxml\EA9940_0194\ServerXml.xml

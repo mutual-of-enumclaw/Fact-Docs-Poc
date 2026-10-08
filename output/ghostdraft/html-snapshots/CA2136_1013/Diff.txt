@@ -1,0 +1,10 @@
+CA2136_1013: DIFFERENT  score 100.0%
+pages   golden 3  html 3  (pages with text)
+words   golden 1579  html 1578  missing 1  extra 0
+
+MISSING (in the GhostDraft golden, not in the HTML render)
+  [PROPERTY]  <=  "property damage" does not include loss of use
+
+golden   C:\src\fact-docgen\src\Moe.Commercial.Documents.Generation.Integration.Tests\TestData\Snapshots\CA2136_1013\GoldenSnapshot.txt
+template C:\src\fact-poc\output\ghostdraft\batch\CA-21-36-10-13-Utah-Uninsured-Motorists-Coverage---Property-Dama.json
+serverxml C:\src\fact-poc\output\ghostdraft\serverxml\CA2136_1013\ServerXml.xml

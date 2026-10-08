@@ -1,0 +1,12 @@
+file       C:\src\FaCT-DocProd-Documentation\1_From Docucorp_System\ImageResource.pdf
+format     pdf
+pages      20
+recall     98 % of 4581 original words appear in the render
+precision  98 % of 4583 rendered words come from the original
+visual     89 % page likeness (ink within ~4pt of the original) [99 %, 100 %, 99 %, 0 %, 98 %, 98 %, 97 %, 98 %, 98 %, 98 %, 97 %, 81 %, 55 %, 99 %, 97 %, 95 %, 90 %, 92 %, 90 %, 94 %]
+review     sent to review (score below 90 %)
+counts     1017 texts, 0 fields, 87 shapes, 2 images, 0 skipped
+fields     
+notes      3 font(s) embedded in the PDF are used for its text.
+           1 embedded font(s) can't be used in a browser (no Unicode character map, or characters missing) and were replaced by a standard family.
+missing    is and docucorp documaker documanage use as for system into setting up archive workstation files modifying dfd ini creating configuring mapping 7 10 testing migrating archives dpa page example sampco set note select sa see called since desc using enter

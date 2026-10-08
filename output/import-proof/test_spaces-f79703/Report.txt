@@ -1,0 +1,11 @@
+file       c:\src\fact-poc\samples\item10\docx\test_spaces.docx
+format     docx
+pages      1
+recall     100 % of 7 original words appear in the render
+precision  100 % of 14 rendered words come from the original
+visual     - page likeness (ink within ~4pt of the original)
+review     -
+counts     3 paragraphs, 0 headings, 0 listItems, 0 tables, 0 images, 3 fields, 0 links, 0 textBoxes, 0 pageBreaks, 0 headers, 0 footers, 0 pageNumbers, 0 placeholders
+fields     Singleword, Hello_world, More_than_one_space
+notes      
+missing    

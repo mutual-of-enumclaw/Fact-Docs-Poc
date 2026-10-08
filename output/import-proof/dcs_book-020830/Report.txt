@@ -1,0 +1,11 @@
+file       C:\src\FaCT-DocProd-Documentation\1_From Docucorp_System\dcs_book.pdf
+format     pdf
+pages      48
+recall     98 % of 11851 original words appear in the render
+precision  97 % of 11937 rendered words come from the original
+visual     97 % page likeness (ink within ~4pt of the original) [100 %, 100 %, 100 %, 100 %, 98 %, 94 %, 97 %, 98 %, 99 %, 98 %, 98 %, 97 %, 96 %, 98 %, 98 %, 97 %, 98 %, 98 %, 96 %, 98 %, 98 %, 98 %, 99 %, 98 %, 98 %, 98 %, 98 %, 98 %, 99 %, 98 %, 98 %, 98 %, 98 %, 99 %, 100 %, 98 %, 98 %, 98 %, 98 %, 77 %, 55 %, 94 %, 98 %, 98 %, 99 %, 100 %, 100 %, 99 %]
+review     -
+counts     2526 texts, 0 fields, 883 shapes, 7 images, 0 skipped
+fields     
+notes      4 font(s) embedded in the PDF are used for its text.
+missing    docucreate guide software 0 in the is its and docucorp printcommander with used as users to only no system form represents features changes from 1 overview editor field font 4 about fonts installing manually word converter using directory structure setting

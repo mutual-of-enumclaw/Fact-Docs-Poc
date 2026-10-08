@@ -1,0 +1,11 @@
+DA4093_1224_no_units_DOCUN: DIFFERENT  score 99.8%
+pages   golden 2  html 2  (pages with text)
+words   golden 424  html 426  missing 0  extra 2
+
+EXTRA (in the HTML render, not in the GhostDraft golden)
+  [N]  <=  N/A Deductible
+  [A]  <=  1=ANY  "AUTO."                                                 6=OWNED    "AUTOS"  SUBJECT   TO  A COMPULSORY
+
+golden   C:\src\fact-docgen\src\Moe.Commercial.Documents.Generation.Integration.Tests\TestData\Snapshots\DA4093_1224_no_units_DOCUN\GoldenSnapshot.txt
+template C:\src\fact-poc\output\ghostdraft\batch\DA4093-1224.json
+serverxml C:\src\fact-poc\output\ghostdraft\serverxml\DA4093_1224_no_units_DOCUN\ServerXml.xml

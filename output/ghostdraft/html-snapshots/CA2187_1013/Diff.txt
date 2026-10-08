@@ -1,0 +1,23 @@
+CA2187_1013: DIFFERENT  score 98.2%
+pages   golden 5  html 5  (pages with text)
+words   golden 1730  html 1786  missing 4  extra 60
+
+MISSING (in the GhostDraft golden, not in the HTML render)
+  [45]  <=  CA 21 87 10 13CA 21 87 10 13          © Insurance Services © Insurance Services Office, Inc., 2012Office, Inc., 2012   Page 1 of of 45
+  [45]  <=  Page Page 2 2 of of 45                © Insurance Services © Insurance Services Office, Inc., 2012Office, Inc., 2012   CA 21 87 10 13CA 21 87 10 13
+  [45]  <=  CA 21 87 10 13CA 21 87 10 13          © Insurance Services © Insurance Services Office, Inc., 2012Office, Inc., 2012   Page 3 of of 45
+  [45]  <=  Page Page 4 4 of of 45                © Insurance Services © Insurance Services Office, Inc., 2012Office, Inc., 2012   CA 21 87 10 13CA 21 87 10 13
+
+EXTRA (in the HTML render, not in the GhostDraft golden)
+  [2]  <=  2. "Family  member"   means   a person  related to
+  [4]  <=  4. The following condition is added:                             required by  the  applicable law  where   a
+  [SERVICES OFFICE INC 2012 4 CA 21 87 10 13 INSURANCE SERVICES OFFICE INC 2012 PAGE 3 5]  <=  CA  21 87 10 13                      © Insurance  Services Office, Inc., 2012                       Page  3of  4  CA 21 87 10 13 © Insurance Services Office, Inc., 2012 Page 3 of 5
+  [THE]  <=  such  government    unless  the  vehicle  is
+  [PAGE 4 4 INSURANCE SERVICES OFFICE INC 2012 CA 21 87 10 13 PAGE 4 OF 5 INSURANCE SERVICES OFFICE INC 2012 CA 21 87 10 13]  <=  Page  4 of 4                         © Insurance  Services Office, Inc., 2012                   CA  21 87 10 13  Page 4 of 5 © Insurance Services Office, Inc., 2012 CA 21 87 10 13
+  [OF OF INSURANCE]  <=  Designation  Or Description  Of Covered   "Auto"                       Limit Of Insurance
+  [1]  <=  1GCHG35R9Y1272866       2000                                               $20,000
+  [CA 21 87 10 13 PAGE 5 OF]  <=  CA  21 87 10 13                                                                                     Page  5 of 5
+
+golden   C:\src\fact-docgen\src\Moe.Commercial.Documents.Generation.Integration.Tests\TestData\Snapshots\CA2187_1013\GoldenSnapshot.txt
+template C:\src\fact-poc\output\ghostdraft\batch\CA-21-87-10-13-Oregon-Uninsured-Motorists-Coverage---Property-Da.json
+serverxml C:\src\fact-poc\output\ghostdraft\serverxml\CA2187_1013\ServerXml.xml

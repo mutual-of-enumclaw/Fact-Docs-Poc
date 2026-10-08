@@ -1,0 +1,11 @@
+file       C:\src\FaCT-DocProd-Documentation\2_From CSC\Technical_User_Guide_Exceed.pdf
+format     pdf
+pages      7
+recall     97 % of 1069 original words appear in the render
+precision  91 % of 1142 rendered words come from the original
+visual     96 % page likeness (ink within ~4pt of the original) [97 %, 98 %, 95 %, 97 %, 93 %, 94 %, 99 %]
+review     -
+counts     184 texts, 0 fields, 25 shapes, 1 images, 0 skipped
+fields     
+notes      35 character(s) of rotated or vertical text were skipped.
+missing    document exceed table contents cscoffs ddf file utility 3 5 change log 7

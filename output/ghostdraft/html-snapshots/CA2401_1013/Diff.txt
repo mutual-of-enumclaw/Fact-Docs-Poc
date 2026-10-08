@@ -1,0 +1,7 @@
+CA2401_1013: MATCH  score 100.0%
+pages   golden 2  html 2  (pages with text)
+words   golden 418  html 418  missing 0  extra 0
+
+golden   C:\src\fact-docgen\src\Moe.Commercial.Documents.Generation.Integration.Tests\TestData\Snapshots\CA2401_1013\GoldenSnapshot.txt
+template C:\src\fact-poc\output\ghostdraft\batch\CA-24-01-10-13-Transportation-Of-Seasonal-Or-Migrant-Agricultura.json
+serverxml C:\src\fact-poc\output\ghostdraft\serverxml\CA2401_1013\ServerXml.xml

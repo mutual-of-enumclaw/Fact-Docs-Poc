@@ -1,0 +1,11 @@
+file       C:\src\FaCT-DocProd-Documentation\Knowledge Transfer\How To\HowTo_Research_DOCPROD_Error.docx
+format     docx
+pages      1
+recall     100 % of 102 original words appear in the render
+precision  92 % of 121 rendered words come from the original
+visual     - page likeness (ink within ~4pt of the original)
+review     -
+counts     7 paragraphs, 0 headings, 12 listItems, 0 tables, 1 images, 0 fields, 0 links, 0 textBoxes, 0 pageBreaks, 0 headers, 0 footers, 0 pageNumbers, 0 placeholders
+fields     
+notes      
+missing    

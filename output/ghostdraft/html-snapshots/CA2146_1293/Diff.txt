@@ -1,0 +1,7 @@
+CA2146_1293: MATCH  score 100.0%
+pages   golden 1  html 1  (pages with text)
+words   golden 314  html 314  missing 0  extra 0
+
+golden   C:\src\fact-docgen\src\Moe.Commercial.Documents.Generation.Integration.Tests\TestData\Snapshots\CA2146_1293\GoldenSnapshot.txt
+template C:\src\fact-poc\output\ghostdraft\batch\CA-21-46-12-93-Split-Underinsured-Motorists-Coverage-Limits.json
+serverxml C:\src\fact-poc\output\ghostdraft\serverxml\CA2146_1293\ServerXml.xml

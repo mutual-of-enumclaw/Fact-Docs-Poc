@@ -1,0 +1,7 @@
+CA2105_0116: MATCH  score 100.0%
+pages   golden 5  html 5  (pages with text)
+words   golden 2605  html 2605  missing 0  extra 0
+
+golden   C:\src\fact-docgen\src\Moe.Commercial.Documents.Generation.Integration.Tests\TestData\Snapshots\CA2105_0116\GoldenSnapshot.txt
+template C:\src\fact-poc\output\ghostdraft\batch\CA-21-05-01-16-Oregon-Uninsured-Motorists-Coverage---Bodily-Inju.json
+serverxml C:\src\fact-poc\output\ghostdraft\serverxml\CA2105_0116\ServerXml.xml

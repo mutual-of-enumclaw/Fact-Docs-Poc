@@ -1,0 +1,13 @@
+file       C:\src\FaCT-DocProd-Documentation\2_From CSC\ODBC_Guide.pdf
+format     pdf
+pages      30
+recall     96 % of 3868 original words appear in the render
+precision  86 % of 4344 rendered words come from the original
+visual     97 % page likeness (ink within ~4pt of the original) [95 %, 97 %, 95 %, 81 %, 95 %, 98 %, 97 %, 98 %, 98 %, 99 %, 96 %, 98 %, 99 %, 98 %, 98 %, 96 %, 99 %, 100 %, 95 %, 95 %, 97 %, 99 %, 95 %, 95 %, 97 %, 99 %, 99 %, 99 %, 99 %, 99 %]
+review     -
+counts     1139 texts, 0 fields, 951 shapes, 9 images, 0 skipped
+fields     
+notes      1 font(s) embedded in the PDF are used for its text.
+           130 character(s) of rotated or vertical text were skipped.
+           65 curved or diagonal shape(s) (circles, logos drawn as vectors) were skipped.
+missing    document production guide the with database or table contents introduction 3 interface databases configuring ini files creating 11 mysql 15 5 test connection 19 migrating existing data 21 7 change log appendix migration utility 23 using 25 sample dfds for

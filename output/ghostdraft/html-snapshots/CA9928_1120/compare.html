@@ -1,0 +1,46 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>CA9928_1120</title><style>
+body{font-family:Segoe UI,Arial,sans-serif;margin:16px;background:#f4f4f4;color:#222}
+a{color:#0b5cad}
+table.list{border-collapse:collapse;background:#fff}
+table.list td,table.list th{border:1px solid #ccc;padding:3px 8px;text-align:left;font-size:13px}
+tr.ok td{background:#e6f4ea}
+.nav{margin:8px 0}
+.row{display:flex;gap:10px;align-items:flex-start;margin:6px 0 18px}
+.col{background:#fff;border:1px solid #bbb;padding:4px}
+.col h3{margin:0 0 4px;font-size:13px;font-weight:600}
+.col img{display:block;width:100%;height:auto;border:1px solid #ddd}
+.empty{width:100%;aspect-ratio:8.5/11;display:flex;align-items:center;justify-content:center;color:#999;border:1px dashed #bbb}
+pre{background:#fff;border:1px solid #ccc;padding:8px;font-size:12px;overflow:auto;max-height:420px}
+label{font-size:13px;margin-right:12px}
+body.no-overlay .ov{display:none}
+</style></head>
+<body><div class="nav"><a href="../index.html">&larr; all cases</a></div>
+<h2>CA9928_1120 &mdash; different (word score 0.999)</h2>
+<label><input type="checkbox" checked onchange="document.body.classList.toggle('no-overlay', !this.checked)"> overlay
+(black = both, <span style="color:#d00">red = GhostDraft only</span>, <span style="color:#0aa">cyan = HTML only</span>)</label>
+<details><summary>Text diff (Diff.txt)</summary><pre>CA9928_1120: DIFFERENT  score 99.9%
+pages   golden 2  html 2  (pages with text)
+words   golden 655  html 656  missing 0  extra 1
+
+EXTRA (in the HTML render, not in the GhostDraft golden)
+  [01]  &lt;=  008                              01/01/2007               POLARIS    RANGER    XP
+
+golden   C:\src\fact-docgen\src\Moe.Commercial.Documents.Generation.Integration.Tests\TestData\Snapshots\CA9928_1120\GoldenSnapshot.txt
+template C:\src\fact-poc\output\ghostdraft\batch\CA-99-28-11-20-Stated-Amount-Insurance.json
+serverxml C:\src\fact-poc\output\ghostdraft\serverxml\CA9928_1120\ServerXml.xml
+</pre></details>
+<div class="row"><div class="col" style="flex:1"><h3>GhostDraft (TST) &mdash; page 1</h3><img src="gd-p1.png" loading="lazy"></div><div class="col" style="flex:1"><h3>HTML designer &mdash; page 1</h3><img src="html-p1.png" loading="lazy"></div><div class="col ov" style="flex:1"><h3>Overlay &mdash; 7.2% pixels differ</h3><img src="overlay-p1.png" loading="lazy"></div></div><details><summary>Page 1 layout: 8 words moved, 0 resized, 0 rules missing, 6 extra</summary><pre>moved AMOUNT (-3.3, +0.6)pt
+moved INSURANCE (-3.3, +0.6)pt
+moved 008 (-2.2, -0.3)pt
+moved Comprehensive (-4.4, -0.3)pt
+moved 197.00 (+6.4, +0.3)pt
+moved POLARIS (-2.5, -0.3)pt
+moved RANGER (-2.5, -0.3)pt
+moved XP (-2.5, -0.3)pt
+extra h rule at 287.6 (53.2-558.0)
+extra h rule at 380.6 (54.0-557.2)
+extra h rule at 395.6 (54.0-557.2)
+extra h rule at 433.1 (54.0-557.2)
+extra h rule at 470.6 (54.0-557.2)
+extra v rule at 53.6 (288.0-333.0)</pre></details><div class="row"><div class="col" style="flex:1"><h3>GhostDraft (TST) &mdash; page 2</h3><img src="gd-p2.png" loading="lazy"></div><div class="col" style="flex:1"><h3>HTML designer &mdash; page 2</h3><img src="html-p2.png" loading="lazy"></div><div class="col ov" style="flex:1"><h3>Overlay &mdash; 3.4% pixels differ</h3><img src="overlay-p2.png" loading="lazy"></div></div>
+</body></html>

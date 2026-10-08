@@ -1,0 +1,14 @@
+file       C:\src\FaCT-DocProd-Documentation\2_From CSC\DocPrint\Document_Print_Technical_User_Guide.pdf
+format     pdf
+pages      100
+recall     97 % of 18863 original words appear in the render
+precision  86 % of 21234 rendered words come from the original
+visual     95 % page likeness (ink within ~4pt of the original) [97 %, 96 %, 95 %, 96 %, 96 %, 94 %, 95 %, 97 %, 96 %, 95 %, 94 %, 97 %, 88 %, 95 %, 95 %, 97 %, 94 %, 97 %, 97 %, 97 %, 96 %, 99 %, 96 %, 95 %, 95 %, 96 %, 96 %, 97 %, 98 %, 99 %, 95 %, 98 %, 98 %, 94 %, 96 %, 94 %, 94 %, 97 %, 94 %, 96 %, 97 %, 94 %, 95 %, 96 %, 94 %, 94 %, 97 %, 98 %, 98 %, 94 %, 94 %, 95 %, 94 %, 98 %, 97 %, 94 %, 95 %, 95 %, 95 %, 95 %, 95 %, 98 %, 95 %, 94 %, 93 %, 94 %, 95 %, 95 %, 94 %, 96 %, 94 %, 94 %, 94 %, 96 %, 94 %, 96 %, 95 %, 96 %, 96 %, 96 %, 93 %, 95 %, 96 %, 99 %, 97 %, 95 %, 94 %, 96 %, 93 %, 95 %, 93 %, 95 %, 95 %, 95 %, 94 %, 97 %, 95 %, 95 %, 95 %, 96 %]
+review     -
+counts     3635 texts, 0 fields, 2184 shapes, 16 images, 0 skipped
+fields     
+notes      Imported pages 1-100 of 109.
+           5 font(s) embedded in the PDF are used for its text.
+           310 character(s) of rotated or vertical text were skipped.
+           222 curved or diagonal shape(s) (circles, logos drawn as vectors) were skipped.
+missing    document print technical user guide pro overview of how web application table contents workflow 5 7 3 processing details 13 15 service 19 structure 21 methods used media management 23 wip forms for immediate transaction 31 other components ini 33

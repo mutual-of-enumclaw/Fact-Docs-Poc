@@ -1,0 +1,39 @@
+# Insurance and Mutual of Enumclaw terms the en_US dictionary doesn't know. One word per line; case matters
+# (a lower-case word also accepts its capitalized form). Words authors add in the designer go to
+# App_Data/spelling/custom-words.txt instead.
+Enumclaw
+MOE
+coinsurance
+coinsured
+deductibles
+endorsements
+policyholder
+policyholders
+policyholder's
+underwriter
+underwriters
+underwriting
+reinsurer
+reinsurers
+subrogation
+indemnitee
+indemnitees
+insurer's
+lienholder
+lienholders
+mortgagee
+mortgagees
+nonrenewal
+nonrenewals
+renewable
+declarations
+umbrella
+TIV
+ACORD
+ISO
+Documaker
+GhostDraft
+DocProd
+Liquid
+docgen
+workbench

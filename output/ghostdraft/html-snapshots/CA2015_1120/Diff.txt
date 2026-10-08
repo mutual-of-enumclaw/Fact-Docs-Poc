@@ -1,0 +1,10 @@
+CA2015_1120: DIFFERENT  score 99.9%
+pages   golden 2  html 2  (pages with text)
+words   golden 418  html 417  missing 1  extra 0
+
+MISSING (in the GhostDraft golden, not in the HTML render)
+  [4]  <=  4            $ 1,000                         Deductible
+
+golden   C:\src\fact-docgen\src\Moe.Commercial.Documents.Generation.Integration.Tests\TestData\Snapshots\CA2015_1120\GoldenSnapshot.txt
+template C:\src\fact-poc\output\ghostdraft\batch\CA-20-15-11-20-Mobile-Equipment.json
+serverxml C:\src\fact-poc\output\ghostdraft\serverxml\CA2015_1120\ServerXml.xml

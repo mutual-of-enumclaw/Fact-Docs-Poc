@@ -1,0 +1,10 @@
+CA9928_1120: DIFFERENT  score 99.9%
+pages   golden 2  html 2  (pages with text)
+words   golden 655  html 656  missing 0  extra 1
+
+EXTRA (in the HTML render, not in the GhostDraft golden)
+  [01]  <=  008                              01/01/2007               POLARIS    RANGER    XP
+
+golden   C:\src\fact-docgen\src\Moe.Commercial.Documents.Generation.Integration.Tests\TestData\Snapshots\CA9928_1120\GoldenSnapshot.txt
+template C:\src\fact-poc\output\ghostdraft\batch\CA-99-28-11-20-Stated-Amount-Insurance.json
+serverxml C:\src\fact-poc\output\ghostdraft\serverxml\CA9928_1120\ServerXml.xml

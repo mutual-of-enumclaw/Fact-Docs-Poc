@@ -1,0 +1,14 @@
+CA2016_1120: DIFFERENT  score 99.0%
+pages   golden 5  html 5  (pages with text)
+words   golden 1049  html 1071  missing 0  extra 22
+
+EXTRA (in the HTML render, not in the GhostDraft golden)
+  [SERVICES OFFICE INC 2019 SERVICES OFFICE INC 2019]  <=  Page  2 of 2                         © Insurance  Services Office, Inc., 2019                   CA  20 16 11 20  Page 2 of 5 © Insurance Services Office, Inc., 2019 CA 20 16 11 20
+  [CA 20 16 20]  <=  Page  4 of 5                                                                                    CA  20 16 11 20
+  [INSURANCE INSURANCE]  <=  Coverages                     Insurance  Applies           Limit Of Insurance          Premium
+  [1 2]  <=  (Includes  Theft)             Veh#  035 1XPFDB9X2LN285820         $60,000                $44.00
+  [CA 20 16 1 20 PAGE]  <=  CA  20 16 11 20                                                                                     Page  5 of 5
+
+golden   C:\src\fact-docgen\src\Moe.Commercial.Documents.Generation.Integration.Tests\TestData\Snapshots\CA2016_1120\GoldenSnapshot.txt
+template C:\src\fact-poc\output\ghostdraft\batch\CA-20-16-11-20-Mobile-Homes-Contents-Coverage.json
+serverxml C:\src\fact-poc\output\ghostdraft\serverxml\CA2016_1120\ServerXml.xml

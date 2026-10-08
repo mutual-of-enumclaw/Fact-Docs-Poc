@@ -1,0 +1,17 @@
+CA9923_1013: DIFFERENT  score 97.6%
+pages   golden 3  html 3  (pages with text)
+words   golden 578  html 606  missing 0  extra 28
+
+EXTRA (in the HTML render, not in the GhostDraft golden)
+  [SERVICES OFFICE INC 2011 PAGE SERVICES OFFICE INC 2011 CA 10 13]  <=  Page  2 of 2                         © Insurance  Services Office, Inc., 2011                   CA  99 23 10 13  Page 2 of 3 © Insurance Services Office, Inc., 2011 CA 99 23 10 13
+  [INSURANCE]  <=  Coverage           This Insurance  Applies           Day         Days       Period          Premium
+  [2]  <=  1XPFDB9X2LN285820
+  [2]  <=  Causes  Of  Loss   1XPFDB9X2LN285820
+  [INSURANCE]  <=  Coverage           This Insurance  Applies           Day         Days       Period          Premium
+  [1 9 2]  <=  1XPFDB9X2LN285820
+  [OF]  <=  Causes  Of  Loss
+  [CA 9 10 13 PAGE 3 OF 3]  <=  CA  99 23 10 13                                                                                     Page  3 of 3
+
+golden   C:\src\fact-docgen\src\Moe.Commercial.Documents.Generation.Integration.Tests\TestData\Snapshots\CA9923_1013\GoldenSnapshot.txt
+template C:\src\fact-poc\output\ghostdraft\batch\CA-99-23-10-13-Rental-Reimbursement-Coverage.json
+serverxml C:\src\fact-poc\output\ghostdraft\serverxml\CA9923_1013\ServerXml.xml

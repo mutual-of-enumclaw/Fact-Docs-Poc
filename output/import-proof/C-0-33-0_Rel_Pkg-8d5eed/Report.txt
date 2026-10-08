@@ -1,0 +1,12 @@
+file       C:\src\FaCT-DocProd-Documentation\2_From CSC\EZDATA\C.0.33.0_Rel_Pkg.pdf
+format     pdf
+pages      69
+recall     97 % of 13732 original words appear in the render
+precision  90 % of 14803 rendered words come from the original
+visual     98 % page likeness (ink within ~4pt of the original) [93 %, 94 %, 95 %, 97 %, 94 %, 95 %, 94 %, 95 %, 96 %, 94 %, 95 %, 94 %, 93 %, 96 %, 95 %, 98 %, 98 %, 98 %, 98 %, 99 %, 99 %, 99 %, 99 %, 99 %, 99 %, 98 %, 94 %, 95 %, 94 %, 95 %, 94 %, 94 %, 92 %, 93 %, 95 %, 98 %, 99 %, 99 %, 100 %, 100 %, 100 %, 99 %, 100 %, 99 %, 99 %, 99 %, 99 %, 100 %, 100 %, 100 %, 100 %, 100 %, 100 %, 100 %, 100 %, 99 %, 99 %, 100 %, 100 %, 100 %, 100 %, 100 %, 100 %, 100 %, 100 %, 100 %, 100 %, 99 %, 99 %]
+review     -
+counts     4553 texts, 0 fields, 1380 shapes, 0 images, 0 skipped
+fields     
+notes      1 font(s) embedded in the PDF are used for its text.
+           215 character(s) of rotated or vertical text were skipped.
+missing    point in 33 release package 1 overview description documentation changes installation instructions 5 11 13 impact 19 resolved issues for 27 29 screen names jsp document change log index 69 steps 7 9 15 business 17 21 23 25 advantage

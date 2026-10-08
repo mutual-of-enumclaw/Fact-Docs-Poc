@@ -1,0 +1,11 @@
+file       C:\src\FaCT-DocProd-Documentation\3_From MOE\POINT_Batch_Distribution_Definitions.docx
+format     docx
+pages      6
+recall     100 % of 1712 original words appear in the render
+precision  98 % of 1754 rendered words come from the original
+visual     - page likeness (ink within ~4pt of the original)
+review     -
+counts     297 paragraphs, 0 headings, 0 listItems, 1 tables, 0 images, 0 fields, 0 links, 0 textBoxes, 0 pageBreaks, 0 headers, 0 footers, 0 pageNumbers, 0 placeholders
+fields     
+notes      
+missing    

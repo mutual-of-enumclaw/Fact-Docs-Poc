@@ -1,0 +1,7 @@
+CA2151_1013: MATCH  score 100.0%
+pages   golden 1  html 1  (pages with text)
+words   golden 275  html 275  missing 0  extra 0
+
+golden   C:\src\fact-docgen\src\Moe.Commercial.Documents.Generation.Integration.Tests\TestData\Snapshots\CA2151_1013\GoldenSnapshot.txt
+template C:\src\fact-poc\output\ghostdraft\batch\CA-21-51-10-13-Split-Bodily-Injury-Underinsured-Motorists-Covera.json
+serverxml C:\src\fact-poc\output\ghostdraft\serverxml\CA2151_1013\ServerXml.xml

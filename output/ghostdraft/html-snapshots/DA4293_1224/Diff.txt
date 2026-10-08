@@ -1,0 +1,16 @@
+DA4293_1224: DIFFERENT  score 99.2%
+pages   golden 2  html 2  (pages with text)
+words   golden 315  html 318  missing 1  extra 4
+
+MISSING (in the GhostDraft golden, not in the HTML render)
+  [37600]  <=  WA                              $0                          1.37600                                                          $25
+
+EXTRA (in the HTML render, not in the GhostDraft golden)
+  [376]  <=  WA                      $0                      1.376                                           $25
+  [HIRE]  <=  HIRE
+  [COVERED]  <=  ITEM   FIVE:   SCHEDULE       FOR   NON-OWNERSHIP           COVERED       AUTOS     LIABILITY
+  [AUTOS]  <=  Duty Involves The Operation of Autos
+
+golden   C:\src\fact-docgen\src\Moe.Commercial.Documents.Generation.Integration.Tests\TestData\Snapshots\DA4293_1224\GoldenSnapshot.txt
+template C:\src\fact-poc\output\ghostdraft\batch\DA4293-1224.json
+serverxml C:\src\fact-poc\output\ghostdraft\serverxml\DA4293_1224\ServerXml.xml

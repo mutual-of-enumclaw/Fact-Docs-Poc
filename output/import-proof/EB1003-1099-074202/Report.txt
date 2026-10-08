@@ -1,0 +1,12 @@
+file       C:\src\FaCT-OMP-Comml\OMP-Comml\Commercial Lines Documents\forms\All Forms - All LOBs\EB1003 1099.pdf
+format     pdf
+pages      2
+recall     100 % of 581 original words appear in the render
+precision  100 % of 581 rendered words come from the original
+visual     99 % page likeness (ink within ~4pt of the original) [99 %, 99 %]
+review     -
+counts     135 texts, 0 fields, 0 shapes, 0 images, 0 skipped
+fields     
+notes      1 font(s) embedded in the PDF are used for its text.
+           2 embedded font(s) can't be used in a browser (no Unicode character map, or characters missing) and were replaced by a standard family.
+missing    

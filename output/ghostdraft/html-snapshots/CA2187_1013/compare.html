@@ -1,0 +1,53 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>CA2187_1013</title><style>
+body{font-family:Segoe UI,Arial,sans-serif;margin:16px;background:#f4f4f4;color:#222}
+a{color:#0b5cad}
+table.list{border-collapse:collapse;background:#fff}
+table.list td,table.list th{border:1px solid #ccc;padding:3px 8px;text-align:left;font-size:13px}
+tr.ok td{background:#e6f4ea}
+.nav{margin:8px 0}
+.row{display:flex;gap:10px;align-items:flex-start;margin:6px 0 18px}
+.col{background:#fff;border:1px solid #bbb;padding:4px}
+.col h3{margin:0 0 4px;font-size:13px;font-weight:600}
+.col img{display:block;width:100%;height:auto;border:1px solid #ddd}
+.empty{width:100%;aspect-ratio:8.5/11;display:flex;align-items:center;justify-content:center;color:#999;border:1px dashed #bbb}
+pre{background:#fff;border:1px solid #ccc;padding:8px;font-size:12px;overflow:auto;max-height:420px}
+label{font-size:13px;margin-right:12px}
+body.no-overlay .ov{display:none}
+</style></head>
+<body><div class="nav"><a href="../index.html">&larr; all cases</a></div>
+<h2>CA2187_1013 &mdash; different (word score 0.982)</h2>
+<label><input type="checkbox" checked onchange="document.body.classList.toggle('no-overlay', !this.checked)"> overlay
+(black = both, <span style="color:#d00">red = GhostDraft only</span>, <span style="color:#0aa">cyan = HTML only</span>)</label>
+<details><summary>Text diff (Diff.txt)</summary><pre>CA2187_1013: DIFFERENT  score 98.2%
+pages   golden 5  html 5  (pages with text)
+words   golden 1730  html 1786  missing 4  extra 60
+
+MISSING (in the GhostDraft golden, not in the HTML render)
+  [45]  &lt;=  CA 21 87 10 13CA 21 87 10 13          © Insurance Services © Insurance Services Office, Inc., 2012Office, Inc., 2012   Page 1 of of 45
+  [45]  &lt;=  Page Page 2 2 of of 45                © Insurance Services © Insurance Services Office, Inc., 2012Office, Inc., 2012   CA 21 87 10 13CA 21 87 10 13
+  [45]  &lt;=  CA 21 87 10 13CA 21 87 10 13          © Insurance Services © Insurance Services Office, Inc., 2012Office, Inc., 2012   Page 3 of of 45
+  [45]  &lt;=  Page Page 4 4 of of 45                © Insurance Services © Insurance Services Office, Inc., 2012Office, Inc., 2012   CA 21 87 10 13CA 21 87 10 13
+
+EXTRA (in the HTML render, not in the GhostDraft golden)
+  [2]  &lt;=  2. &quot;Family  member&quot;   means   a person  related to
+  [4]  &lt;=  4. The following condition is added:                             required by  the  applicable law  where   a
+  [SERVICES OFFICE INC 2012 4 CA 21 87 10 13 INSURANCE SERVICES OFFICE INC 2012 PAGE 3 5]  &lt;=  CA  21 87 10 13                      © Insurance  Services Office, Inc., 2012                       Page  3of  4  CA 21 87 10 13 © Insurance Services Office, Inc., 2012 Page 3 of 5
+  [THE]  &lt;=  such  government    unless  the  vehicle  is
+  [PAGE 4 4 INSURANCE SERVICES OFFICE INC 2012 CA 21 87 10 13 PAGE 4 OF 5 INSURANCE SERVICES OFFICE INC 2012 CA 21 87 10 13]  &lt;=  Page  4 of 4                         © Insurance  Services Office, Inc., 2012                   CA  21 87 10 13  Page 4 of 5 © Insurance Services Office, Inc., 2012 CA 21 87 10 13
+  [OF OF INSURANCE]  &lt;=  Designation  Or Description  Of Covered   &quot;Auto&quot;                       Limit Of Insurance
+  [1]  &lt;=  1GCHG35R9Y1272866       2000                                               $20,000
+  [CA 21 87 10 13 PAGE 5 OF]  &lt;=  CA  21 87 10 13                                                                                     Page  5 of 5
+
+golden   C:\src\fact-docgen\src\Moe.Commercial.Documents.Generation.Integration.Tests\TestData\Snapshots\CA2187_1013\GoldenSnapshot.txt
+template C:\src\fact-poc\output\ghostdraft\batch\CA-21-87-10-13-Oregon-Uninsured-Motorists-Coverage---Property-Da.json
+serverxml C:\src\fact-poc\output\ghostdraft\serverxml\CA2187_1013\ServerXml.xml
+</pre></details>
+<div class="row"><div class="col" style="flex:1"><h3>GhostDraft (TST) &mdash; page 1</h3><img src="gd-p1.png" loading="lazy"></div><div class="col" style="flex:1"><h3>HTML designer &mdash; page 1</h3><img src="html-p1.png" loading="lazy"></div><div class="col ov" style="flex:1"><h3>Overlay &mdash; 5.7% pixels differ</h3><img src="overlay-p1.png" loading="lazy"></div></div><details><summary>Page 1 layout: 2 words moved, 0 resized, 0 rules missing, 3 extra</summary><pre>moved PASSENGER (-2.9, +0.6)pt
+moved TYPES (-4.3, +0.6)pt
+extra h rule at 316.9 (53.2-558.0)
+extra h rule at 409.9 (54.0-558.8)
+extra v rule at 53.6 (317.2-361.5)</pre></details><div class="row"><div class="col" style="flex:1"><h3>GhostDraft (TST) &mdash; page 2</h3><img src="gd-p2.png" loading="lazy"></div><div class="col" style="flex:1"><h3>HTML designer &mdash; page 2</h3><img src="html-p2.png" loading="lazy"></div><div class="col ov" style="flex:1"><h3>Overlay &mdash; 4.2% pixels differ</h3><img src="overlay-p2.png" loading="lazy"></div></div><div class="row"><div class="col" style="flex:1"><h3>GhostDraft (TST) &mdash; page 3</h3><img src="gd-p3.png" loading="lazy"></div><div class="col" style="flex:1"><h3>HTML designer &mdash; page 3</h3><img src="html-p3.png" loading="lazy"></div><div class="col ov" style="flex:1"><h3>Overlay &mdash; 6.1% pixels differ</h3><img src="overlay-p3.png" loading="lazy"></div></div><details><summary>Page 3 layout: 1 words moved, 0 resized, 0 rules missing, 0 extra</summary><pre>moved the (-264.0, +2.2)pt</pre></details><div class="row"><div class="col" style="flex:1"><h3>GhostDraft (TST) &mdash; page 4</h3><img src="gd-p4.png" loading="lazy"></div><div class="col" style="flex:1"><h3>HTML designer &mdash; page 4</h3><img src="html-p4.png" loading="lazy"></div><div class="col ov" style="flex:1"><h3>Overlay &mdash; 1.0% pixels differ</h3><img src="overlay-p4.png" loading="lazy"></div></div><div class="row"><div class="col" style="flex:1"><h3>GhostDraft (TST) &mdash; page 5</h3><img src="gd-p5.png" loading="lazy"></div><div class="col" style="flex:1"><h3>HTML designer &mdash; page 5</h3><img src="html-p5.png" loading="lazy"></div><div class="col ov" style="flex:1"><h3>Overlay &mdash; 2.5% pixels differ</h3><img src="overlay-p5.png" loading="lazy"></div></div><details><summary>Page 5 layout: 4 words moved, 0 resized, 0 rules missing, 0 extra</summary><pre>moved PROPERTY (+2.2, +0.1)pt
+moved TYPES (-2.2, +0.1)pt
+moved $ (+2.7, +1.9)pt
+moved $ (+2.7, +1.8)pt</pre></details><div class="row"><div class="col" style="flex:1"><h3>GhostDraft (TST) &mdash; page 6</h3><img src="gd-p6.png" loading="lazy"></div><div class="col" style="flex:1"><h3>HTML designer &mdash; page 6</h3><div class="empty">no page</div></div><div class="col ov" style="flex:1"><h3>Overlay</h3><div class="empty">page count differs</div></div></div>
+</body></html>

@@ -1,0 +1,1036 @@
+{
+  "Agent": {
+    "AddressLine1": "",
+    "AddressLine2_Isthereaddressline2": "",
+    "AgencyCode": "",
+    "City": "",
+    "FullName": "",
+    "Isthereaddressline2": false,
+    "PhoneNumber": "",
+    "State": "",
+    "Zip": ""
+  },
+  "Insured": {
+    "AddressLine1": "1 Osgiliath Way",
+    "AddressLine2_Isthereaddressline2": "",
+    "City": "Medford",
+    "FullName": "ROGUE ELECTRIC SERVICE INC",
+    "Isthereaddressline2": false,
+    "NamedDriver": "",
+    "PhoneNumber": "",
+    "State": "OR",
+    "Zip": "97501"
+  },
+  "MOECAAutoLevelCoverages": {
+    "AutoCount": {
+      "has4ormoreautoswithLongFormLossPayableClauseWA": false,
+      "has4ormoreautoswithLossPayableClause": true,
+      "has4ormoreautoswithLossPayableClauseWA": false,
+      "has5ormoreautoswithAutoLoanLeaseGapCoverage": false,
+      "has5ormoreautoswithSupplementalRentalReimbursement": false,
+      "has8ormoreautoswithFarmAutoSeasonalLayUpCoverage": false
+    },
+    "AutosWithFarmAutoSeasonalLayUp": {},
+    "AutosWithLoanLeaseGap": {
+      "TotalPremiums": {
+        "CollisionPremium": "0",
+        "ComprehensivePremium": "0"
+      }
+    },
+    "AutosWithLossPayableClause": {
+      "Autos": [
+        {
+          "CollisionDeductible": 1000,
+          "ComprehensiveDeductible": 1000,
+          "Description": "1977 BOOM TRUCK T91LVX90058",
+          "LossPayee": {
+            "AddressLine1": "11 Bagshot Row",
+            "City": "Hobbiton",
+            "FullName": "",
+            "Isthereaddressline2": false,
+            "State": "OR",
+            "Zip": "97001"
+          },
+          "VehicleNumber": "1",
+          "VIN": ""
+        },
+        {
+          "CollisionDeductible": 500,
+          "ComprehensiveDeductible": 250,
+          "Description": "2006 FLTBED TRAILER 1ZCE29E25GZP12482",
+          "LossPayee": {
+            "AddressLine1": "1 Pony Lane",
+            "City": "Bree",
+            "FullName": "",
+            "Isthereaddressline2": false,
+            "State": "OR",
+            "Zip": "97002"
+          },
+          "VehicleNumber": "2",
+          "VIN": ""
+        },
+        {
+          "CollisionDeductible": 500,
+          "ComprehensiveDeductible": 500,
+          "Description": "1999 CHEVROLET 1GBGC34R4XF042957",
+          "LossPayee": {
+            "AddressLine1": "22 Last Homely House Rd",
+            "City": "Ashland",
+            "FullName": "",
+            "Isthereaddressline2": false,
+            "State": "OR",
+            "Zip": "97520"
+          },
+          "VehicleNumber": "3",
+          "VIN": ""
+        },
+        {
+          "CollisionDeductible": 1000,
+          "ComprehensiveDeductible": 750,
+          "Description": "2000 F550 BUCKET 1FDAF57F9YEE09909",
+          "LossPayee": {
+            "AddressLine1": "7 Khazad Dum Ave",
+            "City": "Klamath Falls",
+            "FullName": "",
+            "Isthereaddressline2": false,
+            "State": "OR",
+            "Zip": "97601"
+          },
+          "VehicleNumber": "5",
+          "VIN": ""
+        },
+        {
+          "CollisionDeductible": 500,
+          "ComprehensiveDeductible": 500,
+          "Description": "1998 RAM TRUCK 3B6KC26Z5WM269039",
+          "LossPayee": {
+            "AddressLine1": "8 Mallorn St",
+            "City": "Eugene",
+            "FullName": "",
+            "Isthereaddressline2": false,
+            "State": "OR",
+            "Zip": "97401"
+          },
+          "VehicleNumber": "6",
+          "VIN": ""
+        },
+        {
+          "CollisionDeductible": 500,
+          "ComprehensiveDeductible": 500,
+          "Description": "1998 G2500 1GCGG25R4W1042431",
+          "LossPayee": {
+            "AddressLine1": "9 Golden Hall Blvd",
+            "City": "Salem",
+            "FullName": "",
+            "Isthereaddressline2": false,
+            "State": "OR",
+            "Zip": "97301"
+          },
+          "VehicleNumber": "7",
+          "VIN": ""
+        },
+        {
+          "CollisionDeductible": 1000,
+          "ComprehensiveDeductible": 750,
+          "Description": "2001 F350 1FDSF34L51EA04218",
+          "LossPayee": {
+            "AddressLine1": "10 White Tree Plaza",
+            "City": "Portland",
+            "FullName": "",
+            "Isthereaddressline2": false,
+            "State": "OR",
+            "Zip": "97201"
+          },
+          "VehicleNumber": "8",
+          "VIN": ""
+        }
+      ]
+    },
+    "AutosWithSupplementalRentalReimbursement": {
+      "TotalPremiums": {
+        "CollisionPremium": "0",
+        "ComprehensivePremium": "0"
+      }
+    }
+  },
+  "MOECAPolicyLevelCoverages": {
+    "ExcludedDrivers": {
+      "NameofExcludedDriver": "",
+      "Relationship": ""
+    },
+    "FarmFamilyCorporationsorPartnerships": {
+      "has8OrMoreFarmFamilyCorpOrPartnerships": false
+    },
+    "FormFUniformMotorCarrierBodilyAndPropertyDamageLiabilityInsuranceEndorsement": {
+      "Day": "0",
+      "MCS90Text": "",
+      "Month": "",
+      "State": {
+        "Arizona": true,
+        "Idaho": true,
+        "Montana": true,
+        "Oregon": true,
+        "Utah": true,
+        "Washington": true,
+        "Wyoming": true
+      },
+      "Year": "0"
+    },
+    "LimitedPollutionLiabilityCoverageExtension": {
+      "forHiredAutos": false,
+      "forOwnedAutos": false,
+      "forSpeciallyDescribedAutos": false,
+      "Limit": "0",
+      "Premium": "0"
+    },
+    "MCS_90": {
+      "AmendingPolicyNumber": "CPP 1000125 00",
+      "ExcessAmount1": "0",
+      "ExcessAmount2": "0",
+      "InExcessOf": "0",
+      "IssuedDay": "0",
+      "IssuedMonth": "",
+      "IssuedYear": "",
+      "Limit": "0",
+      "MotorCarrierName": "",
+      "MotorCarrierStateOrProvince": "",
+      "USDOTNumber": "0"
+    },
+    "PersonalInjuryProtection_Idaho": {
+      "LossofServiceBenefits": "0",
+      "MedicalandHospitalBenefitsLimit": "0",
+      "TotalMaximumIncomeContinuationBenefits": "0",
+      "WeeklyMaximumIncomeContinuationBenefits": "0"
+    },
+    "PersonalInjuryProtection_Oregon": {
+      "MedicalandHopsitalExpensesLimit": "0"
+    },
+    "UtahPersonalInjuryProtection": "",
+    "UtahUnderinsuredMotoristsCoverage": {
+      "LimitOfInsurance": "0"
+    },
+    "UtahUninsuredMotoristsCoverage": {
+      "EndorsementEffectiveDate": "2021-06-08T00:00:00",
+      "LimitOfInsurance": "0"
+    },
+    "WashingtonPersonalInjuryProtection_NamedIndividuals": "",
+    "WashingtonTruckers_IntermodelInterchangeUniformEndorsementFormUIIE": ""
+  },
+  "MOEPolicyDecInfo": {
+    "ItemFiveScheduleForNonOwnershipLiability": {
+      "AutoServiceOperations": {
+        "NumberOfEmployees": {
+          "IsProvided": false,
+          "NumberWording": "",
+          "PremiumWording": ""
+        },
+        "NumberOfPartners": {
+          "IsProvided": false,
+          "NumberWording": "",
+          "PremiumWording": ""
+        },
+        "NumberOfVolunteers": {
+          "IsProvided": false,
+          "NumberWording": "",
+          "PremiumWording": ""
+        }
+      },
+      "OtherThanASocialServiceAgency": {
+        "NumberOfEmployees": {
+          "IsProvided": false,
+          "NumberWording": "",
+          "PremiumWording": ""
+        },
+        "NumberOfPartners": {
+          "IsProvided": false,
+          "NumberWording": "",
+          "PremiumWording": ""
+        }
+      },
+      "OtherThankAutoServiceOperationsPartnershipsLLCs": {
+        "NumberOfEmployees": {
+          "IsProvided": false,
+          "NumberWording": "",
+          "PremiumWording": ""
+        },
+        "NumberOfVolunteers": {
+          "IsProvided": false,
+          "NumberWording": "",
+          "PremiumWording": ""
+        }
+      },
+      "PartnershipsOrLLCs": {
+        "NumberOfEmployees": {
+          "IsProvided": false,
+          "NumberWording": "",
+          "PremiumWording": ""
+        },
+        "NumberOfPartners": {
+          "IsProvided": false,
+          "NumberWording": "",
+          "PremiumWording": ""
+        },
+        "NumberOfVolunteers": {
+          "IsProvided": false,
+          "NumberWording": "",
+          "PremiumWording": ""
+        }
+      },
+      "SocialServiceAgency": {
+        "NumberOfEmployees": {
+          "IsProvided": false,
+          "NumberWording": "",
+          "PremiumWording": ""
+        },
+        "NumberOfVolunteers": {
+          "IsProvided": false,
+          "NumberWording": "",
+          "PremiumWording": ""
+        }
+      },
+      "TotalPremium": "0"
+    },
+    "ItemFourHiredOrBorrowedCoveredAutoCoverageAndPremiums": {
+      "LiabilityCoverage": {
+        "EstimatedCostofHire": "0",
+        "Premium": "0",
+        "RatePerEachCostOfHire": "0",
+        "State": "",
+        "TotalPremium": "0"
+      }
+    },
+    "ItemSixScheduleOfDriversForPersonalUseAutos": {
+      "Drivers": {}
+    },
+    "ItemThreeScheduleOfOwnedAutos": {
+      "Vehicles": {
+        "Vehicles": [
+          {
+            "AgeGroup": {
+              "AgeGroup_IsProvided": "0",
+              "AgeGroupWording": "",
+              "IsProvided": false
+            },
+            "AutoMedicalPremium": {
+              "AutoMedicalPremium_IsProvided": "0",
+              "AutoMedicalPremiumWording": "",
+              "IsProvided": false
+            },
+            "ClassCode": "",
+            "CostNew": {
+              "CostNew_IsProvided": "0",
+              "CostNewWording": "",
+              "IsProvided": false
+            },
+            "CovAutoNo": "1",
+            "CovAutoTotalPremium": {
+              "CovAutoTotalPremium_IsProvided": "0",
+              "CovAutoTotalPremiumWording": "",
+              "IsProvided": true
+            },
+            "CoveredAutoVIN": "T91LVX90058",
+            "DecscriptionOfCoveredAuto": "BOOM TRUCK",
+            "GarageLocation": "",
+            "GVWGCWRadiusUseSeatingCapacityORPrivatePassengerUse": "",
+            "LiabilityPremium": {
+              "IsProvided": true,
+              "LiabilityPremium_IsProvided": "210",
+              "LiabilityPremiumWording": ""
+            },
+            "Make": "",
+            "Model": "",
+            "MTSpecific": {
+              "AutoMedicalPayments": "",
+              "Liability": "",
+              "PhysicalDamage": {
+                "Collision": {
+                  "Collision": "",
+                  "Deductible": "1000"
+                },
+                "Comprehensive": {
+                  "Comprehensive": "",
+                  "Deductible": "1000"
+                },
+                "LimitWording": "",
+                "SpecifiedCausesOfLossCoverage": "",
+                "TowingAndLabor": ""
+              },
+              "UnderinsuredMotorists": "",
+              "UninsuredMotorists": ""
+            },
+            "PhysicalDamageCoveragePremiums": {
+              "Collision": {
+                "Deductible_IsProvided": "1000",
+                "DeductibleWording": "1000",
+                "IsProvided": true,
+                "Premium_IsProvided": "120",
+                "PremiumWording": "120"
+              },
+              "Comprehensive": {
+                "Deductible_IsProvided": "1000",
+                "DeductibleWording": "1000",
+                "IsProvided": true,
+                "Premium_IsProvided": "80",
+                "PremiumWording": "80"
+              },
+              "Limit": {
+                "IsProvided": false,
+                "Limit_IsProvided": "0",
+                "LimitWording": "ACV"
+              },
+              "SpecifiedCause": {
+                "IsProvided": false,
+                "Premium_IsProvided": "0",
+                "PremiumWording": ""
+              },
+              "TowingAndLabor": {
+                "IsProvided": false,
+                "Premium_IsProvided": "0",
+                "PremiumWording": ""
+              }
+            },
+            "PIP": {
+              "IsProvided": false,
+              "Premium_IsProvided": "0",
+              "PremiumWording": ""
+            },
+            "Territory": "",
+            "UninsuredOrUnderinsuredMotorist": {
+              "IsProvided": false,
+              "Premium_IsProvided": "0",
+              "PremiumWording": ""
+            },
+            "Year": "1977"
+          },
+          {
+            "AgeGroup": {
+              "AgeGroup_IsProvided": "0",
+              "AgeGroupWording": "",
+              "IsProvided": false
+            },
+            "AutoMedicalPremium": {
+              "AutoMedicalPremium_IsProvided": "0",
+              "AutoMedicalPremiumWording": "",
+              "IsProvided": false
+            },
+            "ClassCode": "",
+            "CostNew": {
+              "CostNew_IsProvided": "0",
+              "CostNewWording": "",
+              "IsProvided": false
+            },
+            "CovAutoNo": "2",
+            "CovAutoTotalPremium": {
+              "CovAutoTotalPremium_IsProvided": "0",
+              "CovAutoTotalPremiumWording": "",
+              "IsProvided": true
+            },
+            "CoveredAutoVIN": "1ZCE29E25GZP12482",
+            "DecscriptionOfCoveredAuto": "FLTBED TRAILER",
+            "GarageLocation": "",
+            "GVWGCWRadiusUseSeatingCapacityORPrivatePassengerUse": "",
+            "LiabilityPremium": {
+              "IsProvided": true,
+              "LiabilityPremium_IsProvided": "135",
+              "LiabilityPremiumWording": ""
+            },
+            "Make": "",
+            "Model": "",
+            "MTSpecific": {
+              "AutoMedicalPayments": "",
+              "Liability": "",
+              "PhysicalDamage": {
+                "Collision": {
+                  "Collision": "",
+                  "Deductible": "500"
+                },
+                "Comprehensive": {
+                  "Comprehensive": "",
+                  "Deductible": "250"
+                },
+                "LimitWording": "",
+                "SpecifiedCausesOfLossCoverage": "",
+                "TowingAndLabor": ""
+              },
+              "UnderinsuredMotorists": "",
+              "UninsuredMotorists": ""
+            },
+            "PhysicalDamageCoveragePremiums": {
+              "Collision": {
+                "Deductible_IsProvided": "500",
+                "DeductibleWording": "500",
+                "IsProvided": true,
+                "Premium_IsProvided": "70",
+                "PremiumWording": "70"
+              },
+              "Comprehensive": {
+                "Deductible_IsProvided": "250",
+                "DeductibleWording": "250",
+                "IsProvided": true,
+                "Premium_IsProvided": "40",
+                "PremiumWording": "40"
+              },
+              "Limit": {
+                "IsProvided": false,
+                "Limit_IsProvided": "0",
+                "LimitWording": "ACV"
+              },
+              "SpecifiedCause": {
+                "IsProvided": false,
+                "Premium_IsProvided": "0",
+                "PremiumWording": ""
+              },
+              "TowingAndLabor": {
+                "IsProvided": false,
+                "Premium_IsProvided": "0",
+                "PremiumWording": ""
+              }
+            },
+            "PIP": {
+              "IsProvided": false,
+              "Premium_IsProvided": "0",
+              "PremiumWording": ""
+            },
+            "Territory": "",
+            "UninsuredOrUnderinsuredMotorist": {
+              "IsProvided": false,
+              "Premium_IsProvided": "0",
+              "PremiumWording": ""
+            },
+            "Year": "2006"
+          },
+          {
+            "AgeGroup": {
+              "AgeGroup_IsProvided": "0",
+              "AgeGroupWording": "",
+              "IsProvided": false
+            },
+            "AutoMedicalPremium": {
+              "AutoMedicalPremium_IsProvided": "0",
+              "AutoMedicalPremiumWording": "",
+              "IsProvided": false
+            },
+            "ClassCode": "",
+            "CostNew": {
+              "CostNew_IsProvided": "0",
+              "CostNewWording": "",
+              "IsProvided": false
+            },
+            "CovAutoNo": "3",
+            "CovAutoTotalPremium": {
+              "CovAutoTotalPremium_IsProvided": "0",
+              "CovAutoTotalPremiumWording": "",
+              "IsProvided": true
+            },
+            "CoveredAutoVIN": "1GBGC34R4XF042957",
+            "DecscriptionOfCoveredAuto": "CHEVROLET",
+            "GarageLocation": "",
+            "GVWGCWRadiusUseSeatingCapacityORPrivatePassengerUse": "",
+            "LiabilityPremium": {
+              "IsProvided": true,
+              "LiabilityPremium_IsProvided": "95",
+              "LiabilityPremiumWording": ""
+            },
+            "Make": "",
+            "Model": "",
+            "MTSpecific": {
+              "AutoMedicalPayments": "",
+              "Liability": "",
+              "PhysicalDamage": {
+                "Collision": {
+                  "Collision": "",
+                  "Deductible": "500"
+                },
+                "Comprehensive": {
+                  "Comprehensive": "",
+                  "Deductible": "500"
+                },
+                "LimitWording": "",
+                "SpecifiedCausesOfLossCoverage": "",
+                "TowingAndLabor": ""
+              },
+              "UnderinsuredMotorists": "",
+              "UninsuredMotorists": ""
+            },
+            "PhysicalDamageCoveragePremiums": {
+              "Collision": {
+                "Deductible_IsProvided": "500",
+                "DeductibleWording": "500",
+                "IsProvided": true,
+                "Premium_IsProvided": "44",
+                "PremiumWording": "44"
+              },
+              "Comprehensive": {
+                "Deductible_IsProvided": "500",
+                "DeductibleWording": "500",
+                "IsProvided": true,
+                "Premium_IsProvided": "28",
+                "PremiumWording": "28"
+              },
+              "Limit": {
+                "IsProvided": false,
+                "Limit_IsProvided": "0",
+                "LimitWording": "ACV"
+              },
+              "SpecifiedCause": {
+                "IsProvided": false,
+                "Premium_IsProvided": "0",
+                "PremiumWording": ""
+              },
+              "TowingAndLabor": {
+                "IsProvided": false,
+                "Premium_IsProvided": "0",
+                "PremiumWording": ""
+              }
+            },
+            "PIP": {
+              "IsProvided": false,
+              "Premium_IsProvided": "0",
+              "PremiumWording": ""
+            },
+            "Territory": "",
+            "UninsuredOrUnderinsuredMotorist": {
+              "IsProvided": false,
+              "Premium_IsProvided": "0",
+              "PremiumWording": ""
+            },
+            "Year": "1999"
+          },
+          {
+            "AgeGroup": {
+              "AgeGroup_IsProvided": "0",
+              "AgeGroupWording": "",
+              "IsProvided": false
+            },
+            "AutoMedicalPremium": {
+              "AutoMedicalPremium_IsProvided": "0",
+              "AutoMedicalPremiumWording": "",
+              "IsProvided": false
+            },
+            "ClassCode": "",
+            "CostNew": {
+              "CostNew_IsProvided": "0",
+              "CostNewWording": "",
+              "IsProvided": false
+            },
+            "CovAutoNo": "5",
+            "CovAutoTotalPremium": {
+              "CovAutoTotalPremium_IsProvided": "0",
+              "CovAutoTotalPremiumWording": "",
+              "IsProvided": true
+            },
+            "CoveredAutoVIN": "1FDAF57F9YEE09909",
+            "DecscriptionOfCoveredAuto": "F550 BUCKET",
+            "GarageLocation": "",
+            "GVWGCWRadiusUseSeatingCapacityORPrivatePassengerUse": "",
+            "LiabilityPremium": {
+              "IsProvided": true,
+              "LiabilityPremium_IsProvided": "110",
+              "LiabilityPremiumWording": ""
+            },
+            "Make": "",
+            "Model": "",
+            "MTSpecific": {
+              "AutoMedicalPayments": "",
+              "Liability": "",
+              "PhysicalDamage": {
+                "Collision": {
+                  "Collision": "",
+                  "Deductible": "1000"
+                },
+                "Comprehensive": {
+                  "Comprehensive": "",
+                  "Deductible": "750"
+                },
+                "LimitWording": "",
+                "SpecifiedCausesOfLossCoverage": "",
+                "TowingAndLabor": ""
+              },
+              "UnderinsuredMotorists": "",
+              "UninsuredMotorists": ""
+            },
+            "PhysicalDamageCoveragePremiums": {
+              "Collision": {
+                "Deductible_IsProvided": "1000",
+                "DeductibleWording": "1000",
+                "IsProvided": true,
+                "Premium_IsProvided": "57",
+                "PremiumWording": "57"
+              },
+              "Comprehensive": {
+                "Deductible_IsProvided": "750",
+                "DeductibleWording": "750",
+                "IsProvided": true,
+                "Premium_IsProvided": "33",
+                "PremiumWording": "33"
+              },
+              "Limit": {
+                "IsProvided": false,
+                "Limit_IsProvided": "0",
+                "LimitWording": "ACV"
+              },
+              "SpecifiedCause": {
+                "IsProvided": false,
+                "Premium_IsProvided": "0",
+                "PremiumWording": ""
+              },
+              "TowingAndLabor": {
+                "IsProvided": false,
+                "Premium_IsProvided": "0",
+                "PremiumWording": ""
+              }
+            },
+            "PIP": {
+              "IsProvided": false,
+              "Premium_IsProvided": "0",
+              "PremiumWording": ""
+            },
+            "Territory": "",
+            "UninsuredOrUnderinsuredMotorist": {
+              "IsProvided": false,
+              "Premium_IsProvided": "0",
+              "PremiumWording": ""
+            },
+            "Year": "2000"
+          },
+          {
+            "AgeGroup": {
+              "AgeGroup_IsProvided": "0",
+              "AgeGroupWording": "",
+              "IsProvided": false
+            },
+            "AutoMedicalPremium": {
+              "AutoMedicalPremium_IsProvided": "0",
+              "AutoMedicalPremiumWording": "",
+              "IsProvided": false
+            },
+            "ClassCode": "",
+            "CostNew": {
+              "CostNew_IsProvided": "0",
+              "CostNewWording": "",
+              "IsProvided": false
+            },
+            "CovAutoNo": "6",
+            "CovAutoTotalPremium": {
+              "CovAutoTotalPremium_IsProvided": "0",
+              "CovAutoTotalPremiumWording": "",
+              "IsProvided": true
+            },
+            "CoveredAutoVIN": "3B6KC26Z5WM269039",
+            "DecscriptionOfCoveredAuto": "RAM TRUCK",
+            "GarageLocation": "",
+            "GVWGCWRadiusUseSeatingCapacityORPrivatePassengerUse": "",
+            "LiabilityPremium": {
+              "IsProvided": true,
+              "LiabilityPremium_IsProvided": "90",
+              "LiabilityPremiumWording": ""
+            },
+            "Make": "",
+            "Model": "",
+            "MTSpecific": {
+              "AutoMedicalPayments": "",
+              "Liability": "",
+              "PhysicalDamage": {
+                "Collision": {
+                  "Collision": "",
+                  "Deductible": "500"
+                },
+                "Comprehensive": {
+                  "Comprehensive": "",
+                  "Deductible": "500"
+                },
+                "LimitWording": "",
+                "SpecifiedCausesOfLossCoverage": "",
+                "TowingAndLabor": ""
+              },
+              "UnderinsuredMotorists": "",
+              "UninsuredMotorists": ""
+            },
+            "PhysicalDamageCoveragePremiums": {
+              "Collision": {
+                "Deductible_IsProvided": "500",
+                "DeductibleWording": "500",
+                "IsProvided": true,
+                "Premium_IsProvided": "39",
+                "PremiumWording": "39"
+              },
+              "Comprehensive": {
+                "Deductible_IsProvided": "500",
+                "DeductibleWording": "500",
+                "IsProvided": true,
+                "Premium_IsProvided": "24",
+                "PremiumWording": "24"
+              },
+              "Limit": {
+                "IsProvided": false,
+                "Limit_IsProvided": "0",
+                "LimitWording": "ACV"
+              },
+              "SpecifiedCause": {
+                "IsProvided": false,
+                "Premium_IsProvided": "0",
+                "PremiumWording": ""
+              },
+              "TowingAndLabor": {
+                "IsProvided": false,
+                "Premium_IsProvided": "0",
+                "PremiumWording": ""
+              }
+            },
+            "PIP": {
+              "IsProvided": false,
+              "Premium_IsProvided": "0",
+              "PremiumWording": ""
+            },
+            "Territory": "",
+            "UninsuredOrUnderinsuredMotorist": {
+              "IsProvided": false,
+              "Premium_IsProvided": "0",
+              "PremiumWording": ""
+            },
+            "Year": "1998"
+          },
+          {
+            "AgeGroup": {
+              "AgeGroup_IsProvided": "0",
+              "AgeGroupWording": "",
+              "IsProvided": false
+            },
+            "AutoMedicalPremium": {
+              "AutoMedicalPremium_IsProvided": "0",
+              "AutoMedicalPremiumWording": "",
+              "IsProvided": false
+            },
+            "ClassCode": "",
+            "CostNew": {
+              "CostNew_IsProvided": "0",
+              "CostNewWording": "",
+              "IsProvided": false
+            },
+            "CovAutoNo": "7",
+            "CovAutoTotalPremium": {
+              "CovAutoTotalPremium_IsProvided": "0",
+              "CovAutoTotalPremiumWording": "",
+              "IsProvided": true
+            },
+            "CoveredAutoVIN": "1GCGG25R4W1042431",
+            "DecscriptionOfCoveredAuto": "G2500",
+            "GarageLocation": "",
+            "GVWGCWRadiusUseSeatingCapacityORPrivatePassengerUse": "",
+            "LiabilityPremium": {
+              "IsProvided": true,
+              "LiabilityPremium_IsProvided": "88",
+              "LiabilityPremiumWording": ""
+            },
+            "Make": "",
+            "Model": "",
+            "MTSpecific": {
+              "AutoMedicalPayments": "",
+              "Liability": "",
+              "PhysicalDamage": {
+                "Collision": {
+                  "Collision": "",
+                  "Deductible": "500"
+                },
+                "Comprehensive": {
+                  "Comprehensive": "",
+                  "Deductible": "500"
+                },
+                "LimitWording": "",
+                "SpecifiedCausesOfLossCoverage": "",
+                "TowingAndLabor": ""
+              },
+              "UnderinsuredMotorists": "",
+              "UninsuredMotorists": ""
+            },
+            "PhysicalDamageCoveragePremiums": {
+              "Collision": {
+                "Deductible_IsProvided": "500",
+                "DeductibleWording": "500",
+                "IsProvided": true,
+                "Premium_IsProvided": "35",
+                "PremiumWording": "35"
+              },
+              "Comprehensive": {
+                "Deductible_IsProvided": "500",
+                "DeductibleWording": "500",
+                "IsProvided": true,
+                "Premium_IsProvided": "22",
+                "PremiumWording": "22"
+              },
+              "Limit": {
+                "IsProvided": false,
+                "Limit_IsProvided": "0",
+                "LimitWording": "ACV"
+              },
+              "SpecifiedCause": {
+                "IsProvided": false,
+                "Premium_IsProvided": "0",
+                "PremiumWording": ""
+              },
+              "TowingAndLabor": {
+                "IsProvided": false,
+                "Premium_IsProvided": "0",
+                "PremiumWording": ""
+              }
+            },
+            "PIP": {
+              "IsProvided": false,
+              "Premium_IsProvided": "0",
+              "PremiumWording": ""
+            },
+            "Territory": "",
+            "UninsuredOrUnderinsuredMotorist": {
+              "IsProvided": false,
+              "Premium_IsProvided": "0",
+              "PremiumWording": ""
+            },
+            "Year": "1998"
+          },
+          {
+            "AgeGroup": {
+              "AgeGroup_IsProvided": "0",
+              "AgeGroupWording": "",
+              "IsProvided": false
+            },
+            "AutoMedicalPremium": {
+              "AutoMedicalPremium_IsProvided": "0",
+              "AutoMedicalPremiumWording": "",
+              "IsProvided": false
+            },
+            "ClassCode": "",
+            "CostNew": {
+              "CostNew_IsProvided": "0",
+              "CostNewWording": "",
+              "IsProvided": false
+            },
+            "CovAutoNo": "8",
+            "CovAutoTotalPremium": {
+              "CovAutoTotalPremium_IsProvided": "0",
+              "CovAutoTotalPremiumWording": "",
+              "IsProvided": true
+            },
+            "CoveredAutoVIN": "1FDSF34L51EA04218",
+            "DecscriptionOfCoveredAuto": "F350",
+            "GarageLocation": "",
+            "GVWGCWRadiusUseSeatingCapacityORPrivatePassengerUse": "",
+            "LiabilityPremium": {
+              "IsProvided": true,
+              "LiabilityPremium_IsProvided": "102",
+              "LiabilityPremiumWording": ""
+            },
+            "Make": "",
+            "Model": "",
+            "MTSpecific": {
+              "AutoMedicalPayments": "",
+              "Liability": "",
+              "PhysicalDamage": {
+                "Collision": {
+                  "Collision": "",
+                  "Deductible": "1000"
+                },
+                "Comprehensive": {
+                  "Comprehensive": "",
+                  "Deductible": "750"
+                },
+                "LimitWording": "",
+                "SpecifiedCausesOfLossCoverage": "",
+                "TowingAndLabor": ""
+              },
+              "UnderinsuredMotorists": "",
+              "UninsuredMotorists": ""
+            },
+            "PhysicalDamageCoveragePremiums": {
+              "Collision": {
+                "Deductible_IsProvided": "1000",
+                "DeductibleWording": "1000",
+                "IsProvided": true,
+                "Premium_IsProvided": "49",
+                "PremiumWording": "49"
+              },
+              "Comprehensive": {
+                "Deductible_IsProvided": "750",
+                "DeductibleWording": "750",
+                "IsProvided": true,
+                "Premium_IsProvided": "29",
+                "PremiumWording": "29"
+              },
+              "Limit": {
+                "IsProvided": false,
+                "Limit_IsProvided": "0",
+                "LimitWording": "ACV"
+              },
+              "SpecifiedCause": {
+                "IsProvided": false,
+                "Premium_IsProvided": "0",
+                "PremiumWording": ""
+              },
+              "TowingAndLabor": {
+                "IsProvided": false,
+                "Premium_IsProvided": "0",
+                "PremiumWording": ""
+              }
+            },
+            "PIP": {
+              "IsProvided": false,
+              "Premium_IsProvided": "0",
+              "PremiumWording": ""
+            },
+            "Territory": "",
+            "UninsuredOrUnderinsuredMotorist": {
+              "IsProvided": false,
+              "Premium_IsProvided": "0",
+              "PremiumWording": ""
+            },
+            "Year": "2001"
+          }
+        ]
+      }
+    },
+    "ItemTwoScheduleOfCoveragesAndCoveredAutos": {
+      "AdditionalAutoSymbols": {
+        "_10": "",
+        "_11": ""
+      },
+      "AdditionalCoverageEndorsements": {},
+      "AutoMedicalPayments": {
+        "ApplicableCoveredAutoSymbols": ""
+      },
+      "Liability": {
+        "ApplicableCoveredAutoSymbols": ""
+      },
+      "PersonalInjuryProtection": {
+        "ApplicableCoveredAutoSymbols": ""
+      },
+      "PhysicalDamageCollisionCoverage": {
+        "ApplicableCoveredAutoSymbols": ""
+      },
+      "PhysicalDamageComprehensiveCoverage": {
+        "ApplicableCoveredAutoSymbols": ""
+      },
+      "PhysicalDamageSpecifiedCausesOfLossCoverage": {
+        "ApplicableCoveredAutoSymbols": ""
+      },
+      "PhysicalDamageTowingAndLaborCoverage": {
+        "ApplicableCoveredAutoSymbols": ""
+      },
+      "TotalEstimatedPremium": "0",
+      "UnderinsuredMotoristCoverage": {
+        "ApplicableCoveredAutoSymbols": ""
+      },
+      "UninsuredMotoristCoverage": {
+        "ApplicableCoveredAutoSymbols": ""
+      }
+    }
+  },
+  "Policy": {
+    "FormOfBusiness": "",
+    "Isthisaneworrenewalpolicy": "NewBusiness",
+    "LOB": "",
+    "Module": "00",
+    "PolicyEffectiveDate": "2021-06-08T00:00:00",
+    "PolicyExpirationDate": "2022-06-08T00:00:00",
+    "PolicyNumber": "CPP 1000125 00",
+    "TypeofBusiness": ""
+  }
+}

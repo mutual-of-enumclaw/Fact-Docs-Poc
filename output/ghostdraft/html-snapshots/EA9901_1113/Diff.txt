@@ -1,0 +1,10 @@
+EA9901_1113: DIFFERENT  score 99.9%
+pages   golden 2  html 2  (pages with text)
+words   golden 577  html 578  missing 0  extra 1
+
+EXTRA (in the HTML render, not in the GhostDraft golden)
+  [THE]  <=  10 under  the changes  to SECTION   III -
+
+golden   C:\src\fact-docgen\src\Moe.Commercial.Documents.Generation.Integration.Tests\TestData\Snapshots\EA9901_1113\GoldenSnapshot.txt
+template C:\src\fact-poc\output\ghostdraft\batch\EA9901-1113.json
+serverxml C:\src\fact-poc\output\ghostdraft\serverxml\EA9901_1113\ServerXml.xml

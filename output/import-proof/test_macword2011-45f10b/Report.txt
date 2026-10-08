@@ -1,0 +1,11 @@
+file       c:\src\fact-poc\samples\item10\docx\test_macword2011.docx
+format     docx
+pages      1
+recall     100 % of 27 original words appear in the render
+precision  100 % of 34 rendered words come from the original
+visual     - page likeness (ink within ~4pt of the original)
+review     -
+counts     17 paragraphs, 0 headings, 0 listItems, 0 tables, 0 images, 9 fields, 0 links, 0 textBoxes, 0 pageBreaks, 0 headers, 0 footers, 0 pageNumbers, 0 placeholders
+fields     first_name, last_name, address_line, postal_code, city, state, country, date
+notes      
+missing    

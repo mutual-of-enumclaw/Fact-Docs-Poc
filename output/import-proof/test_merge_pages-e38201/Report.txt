@@ -1,0 +1,11 @@
+file       c:\src\fact-poc\samples\item10\docx\test_merge_pages.docx
+format     docx
+pages      1
+recall     100 % of 11 original words appear in the render
+precision  58 % of 19 rendered words come from the original
+visual     - page likeness (ink within ~4pt of the original)
+review     -
+counts     3 paragraphs, 0 headings, 0 listItems, 0 tables, 0 images, 1 fields, 0 links, 0 textBoxes, 0 pageBreaks, 1 headers, 1 footers, 0 pageNumbers, 0 placeholders
+fields     fieldname
+notes      
+missing    

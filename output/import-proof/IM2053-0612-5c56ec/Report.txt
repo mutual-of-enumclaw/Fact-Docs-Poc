@@ -1,0 +1,11 @@
+file       C:\src\FaCT-OMP-Comml\OMP-Comml\Commercial Lines Documents\forms\All Forms - All LOBs\IM2053 0612.pdf
+format     pdf
+pages      1
+recall     100 % of 183 original words appear in the render
+precision  100 % of 183 rendered words come from the original
+visual     100 % page likeness (ink within ~4pt of the original) [100 %]
+review     -
+counts     30 texts, 0 fields, 2 shapes, 0 images, 0 skipped
+fields     
+notes      
+missing    

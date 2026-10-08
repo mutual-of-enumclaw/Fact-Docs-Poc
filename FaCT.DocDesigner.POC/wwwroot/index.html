@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>MOE Document Designer POC</title>
+	<link rel="stylesheet" href="/brand/fonts/figtree.css">
+	<link rel="stylesheet" href="/lib/grapesjs/css/grapes.min.css">
+	<link rel="stylesheet" href="/designer.css">
+</head>
+<body>
+	<!-- Material 3 medium top app bar: brand + primary actions, then the template toolbar. -->
+	<header class="app-bar">
+		<div class="app-bar-row">
+			<img class="app-logo" src="/brand/logos/moe-logo-horizontal-moegreen.svg" alt="Mutual of Enumclaw">
+			<span class="app-divider"></span>
+			<h1 class="app-title">Document Designer</h1>
+			<span class="md-chip-poc">POC</span>
+			<span class="spacer"></span>
+			<span id="userChip" class="user-chip" hidden></span>
+			<button id="btnSignOut" type="button" class="md-btn text" hidden title="Sign out">Sign out</button>
+			<a id="btnHelp" class="md-icon-btn" href="/api/help/user-guide.pdf" target="_blank" rel="noopener" title="User Guide (PDF): features and how-tos"><span class="ui-icon" data-icon="info"></span></a>
+			<button id="btnPublish" type="button" class="md-btn outlined" data-requires="Publisher" title="Publish the open version; the currently published version is retired"><span class="ui-icon" data-icon="publish"></span>Publish</button>
+			<button id="btnSave" type="button" class="md-btn tonal" data-requires="Author" title="Save to the current draft, or start a new draft if the open version is Published/Retired"><span class="ui-icon" data-icon="save"></span>Save Draft</button>
+			<button id="btnPreview" type="button" class="md-btn filled" title="Render the canvas to PDF with the model data"><span class="ui-icon" data-icon="picture_as_pdf"></span>Preview PDF</button>
+			<div class="md-menu-anchor">
+				<button id="btnMore" type="button" class="md-icon-btn" title="More actions" aria-haspopup="menu" aria-expanded="false"><span class="ui-icon" data-icon="more_vert"></span></button>
+				<div id="moreMenu" class="md-menu" role="menu" hidden>
+					<button id="btnExportDocx" data-feature="Export" type="button" role="menuitem" title="Download the canvas as a Word template (.docx) that DocGen fills with data and renders to PDF"><span class="ui-icon" data-icon="description"></span>Export Word Template (.docx)</button>
+					<button id="btnExportHtml" data-feature="Export" type="button" role="menuitem" title="Download the canvas as one HTML file with its {{ data }} placeholders kept"><span class="ui-icon" data-icon="code"></span>Export HTML Template</button>
+					<button id="btnExportHtmlData" data-feature="Export" type="button" role="menuitem" title="Download the canvas as one HTML file filled with the example data"><span class="ui-icon" data-icon="code"></span>Export HTML with Example Data</button>
+					<button id="btnLiquid" data-feature="LiquidView" type="button" role="menuitem"><span class="ui-icon" data-icon="code"></span>Show Liquid</button>
+					<button id="btnDiff" data-feature="CompareWithPublished" type="button" role="menuitem" title="Compare the canvas with the published version: printed text, PDFs, HTML and CSS"><span class="ui-icon" data-icon="vertical_split"></span>Compare with Published</button>
+					<button id="btnHistory" data-feature="History" type="button" role="menuitem" title="Who saved, published and commented on this document, and when"><span class="ui-icon" data-icon="notes"></span>History</button>
+					<button id="btnLanguages" data-feature="Languages" type="button" role="menuitem" title="The languages of this document: versions per language and whether translations use the same data fields"><span class="ui-icon" data-icon="description"></span>Languages…</button>
+					<button id="btnDuplicate" data-feature="Duplicate" type="button" role="menuitem" data-requires="Author" title="Copy a saved version of this template into a new one"><span class="ui-icon" data-icon="content_copy"></span>Duplicate…</button>
+					<button id="btnPageSetup" data-feature="PageSetup" type="button" role="menuitem" data-requires="Author" title="Paper size, orientation, margins and the header and footer on every page"><span class="ui-icon" data-icon="description"></span>Page Setup…</button>
+					<button id="btnWatermark" data-feature="Watermarks" type="button" role="menuitem" data-requires="Author" title="Print DRAFT, SPECIMEN, VOID or your own word across every page"><span class="ui-icon" data-icon="campaign"></span>Watermark…</button>
+					<button id="btnTheme" data-feature="Themes" type="button" role="menuitem" data-requires="Author" title="Brand colors and fonts for this template (per brand or line of business)"><span class="ui-icon" data-icon="palette"></span>Theme…</button>
+					<button id="btnCondStyle" data-feature="ConditionalStyling" type="button" role="menuitem" data-requires="Author" title="Style the selected element differently when the data meets a condition"><span class="ui-icon" data-icon="tune"></span>Conditional Styling…</button>
+					<button id="btnFind" data-feature="FindReplace" type="button" role="menuitem" title="Find and replace text on the page (Ctrl+F)"><span class="ui-icon" data-icon="filter_alt"></span>Find and Replace</button>
+					<button id="btnSpelling" data-feature="Spelling" type="button" role="menuitem" title="Check the spelling of the text on the page"><span class="ui-icon" data-icon="check"></span>Check Spelling</button>
+					<button id="btnSaveBlock" data-feature="CustomBlocks" type="button" role="menuitem" data-requires="Author" title="Save the selected element (and everything in it) as a block you can reuse in any template"><span class="ui-icon" data-icon="widgets"></span>Save Selection as Block</button>
+					<button id="btnManageBlocks" data-feature="CustomBlocks" type="button" role="menuitem" title="See and delete your saved blocks"><span class="ui-icon" data-icon="view_agenda"></span>Manage Saved Blocks</button>
+					<button id="btnRenderPublished" type="button" role="menuitem" title="Render the PUBLISHED version on the server, the way docgen would"><span class="ui-icon" data-icon="print"></span>Render Published</button>
+					<button id="btnImportLegacy" data-feature="ImportLegacy" type="button" role="menuitem" data-requires="Author" title="Open a Documaker form converted to HTML by fact-pdf-tools (demo emit-html)"><span class="ui-icon" data-icon="description"></span>Import Legacy Form</button>
+					<button id="btnImportGhostDraft" data-feature="ImportGhostDraft" type="button" role="menuitem" data-requires="Author" title="Open a GhostDraft template converted by tools/gd2designer.py (layout, fill points, conditions, lists and sample model)"><span class="ui-icon" data-icon="description"></span>Import GhostDraft Form</button>
+					<button id="btnImportDocument" data-feature="ImportDocument" type="button" role="menuitem" data-requires="Author" title="Open a PDF (imported as fixed form pages) or a Word .docx (imported as flowing content; merge fields become data fields)"><span class="ui-icon" data-icon="description"></span>Import PDF / Word</button>
+					<hr>
+					<button id="btnDiscard" type="button" role="menuitem" class="danger" data-requires="Author" title="Delete the draft version"><span class="ui-icon" data-icon="delete"></span>Discard Draft</button>
+				</div>
+			</div>
+		</div>
+		<div class="app-bar-row app-toolbar">
+			<button id="btnGallery" data-feature="Gallery" type="button" class="md-btn text" title="Browse all templates and clauses: previews, versions, open or duplicate"><span class="ui-icon" data-icon="view_agenda"></span>Gallery</button>
+			<label class="md-field md-field--select" data-feature="Clauses">
+				<span class="md-field-label">Kind</span>
+				<select id="docKind" title="Templates are whole documents; clauses are shared pieces that templates include (Clause block)">
+					<option value="templates">Template</option>
+					<option value="clauses">Clause</option>
+				</select>
+			</label>
+			<label class="md-field">
+				<span class="md-field-label" id="templateNameLabel">Template</span>
+				<input id="templateName" value="workbench-results" maxlength="64">
+			</label>
+			<label class="md-field md-field--select" data-feature="Languages">
+				<span class="md-field-label">Language</span>
+				<select id="docLanguage" title="The language of the document on the canvas. Each language has its own versions; translations use the same data fields as English.">
+					<option value="">English</option>
+					<option value="es">Spanish</option>
+					<option value="fr">French (Canada)</option>
+				</select>
+			</label>
+			<label class="md-field md-field--select">
+				<span class="md-field-label">Version</span>
+				<select id="versionSelect" title="Saved versions"></select>
+			</label>
+			<button id="btnOpen" type="button" class="md-btn text" title="Open the selected version in the designer"><span class="ui-icon" data-icon="folder_open"></span>Open</button>
+			<span id="versionBadge" class="badge">New</span>
+			<span class="spacer"></span>
+			<label class="md-field md-field--select" data-feature="Scenarios">
+				<span class="md-field-label">Test data</span>
+				<select id="scenarioSelect" class="md-select--sm" title="Which data the canvas sample values and Preview PDF use: the model's example data or a saved test scenario">
+					<option value="">Model example</option>
+				</select>
+			</label>
+			<button id="btnScenarios" data-feature="Scenarios" type="button" class="md-btn text" title="Add, edit and preview all test-data scenarios"><span class="ui-icon" data-icon="data_object"></span>Scenarios</button>
+			<label class="md-field md-field--select">
+				<span class="md-field-label">Data fields show</span>
+				<select id="fieldMode" class="md-select--sm" title="How data fields look on the canvas. The template is the same in every mode; hover a field for its full expression.">
+					<option value="sample">Sample values</option>
+					<option value="name">Field names</option>
+					<option value="liquid" data-feature="LiquidView">Liquid</option>
+				</select>
+			</label>
+		</div>
+	</header>
+	<main class="layout">
+		<aside class="panel panel--left">
+			<h3 class="pane-head">
+				<span class="ui-icon" data-icon="account_tree"></span>Model
+				<span class="panel-tools">
+					<button id="btnImportModel" type="button" class="md-icon-btn" title="Import a JSON example payload or JSON Schema"><span class="ui-icon" data-icon="upload_file"></span></button>
+					<button id="btnAddProperty" type="button" class="md-icon-btn" title="Add a property to the top level of the model"><span class="ui-icon" data-icon="add"></span></button>
+					<button id="btnEditModel" type="button" class="md-icon-btn" title="Edit the model JSON"><span class="ui-icon" data-icon="edit"></span></button>
+					<button id="btnFieldUsage" data-feature="FieldUsage" type="button" class="md-icon-btn" title="Find the templates and clauses that use a field"><span class="ui-icon" data-icon="filter_alt"></span></button>
+				</span>
+			</h3>
+			<input id="modelFile" type="file" accept=".json,application/json" hidden>
+			<input id="legacyFile" type="file" accept=".html,.htm,text/html" hidden>
+			<input id="gdFile" type="file" accept=".json,application/json" hidden>
+			<input id="docFile" type="file" accept=".pdf,.docx,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document" hidden>
+			<div id="modelTree" class="model-tree"></div>
+			<div id="modelProblems" class="model-problems"></div>
+			<h3 class="pane-head"><span class="ui-icon" data-icon="widgets"></span>Blocks</h3>
+			<div id="blocks"></div>
+		</aside>
+		<section class="canvas">
+			<div id="gjs"></div>
+		</section>
+		<aside class="panel panel--right">
+			<nav class="md-tabs" role="tablist">
+				<button type="button" role="tab" class="md-tab" data-tab="tabSettings" aria-selected="true"><span class="ui-icon" data-icon="tune"></span>Settings</button>
+				<button type="button" role="tab" class="md-tab" data-tab="tabStyles" data-feature="StylePanels" aria-selected="false"><span class="ui-icon" data-icon="palette"></span>Styles</button>
+				<button type="button" role="tab" class="md-tab" data-tab="tabLayers" data-feature="StylePanels" aria-selected="false"><span class="ui-icon" data-icon="layers"></span>Layers</button>
+				<button type="button" role="tab" class="md-tab" data-tab="tabComments" data-feature="Comments" aria-selected="false" id="commentsTab"><span class="ui-icon" data-icon="notes"></span><span id="commentsTabLabel">Comments</span></button>
+			</nav>
+			<section id="tabSettings" class="tab-panel" role="tabpanel">
+				<section id="templateDetails" class="template-details" aria-label="Template details">
+					<div class="td-head">
+						<span class="ui-icon" data-icon="description"></span>
+						<div><div class="td-title">Template</div><div class="td-sub">Nothing selected &middot; editing the template's details</div></div>
+					</div>
+					<label class="td-field"><span>Name</span><input id="tdName" readonly tabindex="-1"></label>
+					<label class="td-field"><span>Title</span><input id="tdTitle" maxlength="120" placeholder="e.g. Business Auto Declarations"></label>
+					<div class="td-row">
+						<label class="td-field"><span>Form code</span><input id="tdFormCode" maxlength="24" placeholder="e.g. DA 00 93"></label>
+						<label class="td-field td-edition"><span>Edition</span><input id="tdEdition" maxlength="5" placeholder="MM/YY"></label>
+					</div>
+					<label class="td-field"><span>Type</span><select id="tdType"><option value="">(not set)</option></select></label>
+					<label class="td-field"><span>Category</span><select id="tdCategory"><option value="">(not set)</option></select></label>
+					<div id="tdError" class="model-error"></div>
+				</section>
+				<p class="pane-empty">Select an element on the page to edit its settings.</p>
+				<div id="tableTools" class="table-tools" hidden></div>
+				<div id="traits"></div>
+			</section>
+			<section id="tabStyles" class="tab-panel" role="tabpanel" hidden>
+				<div id="selectors"></div>
+				<div id="styles"></div>
+			</section>
+			<section id="tabLayers" class="tab-panel" role="tabpanel" hidden>
+				<div id="layers"></div>
+			</section>
+			<section id="tabComments" class="tab-panel comments-panel" role="tabpanel" hidden>
+				<label class="comments-field">Your name <input id="commentAuthor" maxlength="60" placeholder="Reviewer name"></label>
+				<textarea id="commentText" maxlength="2000" rows="3" placeholder="Select an element on the page, then write a comment"></textarea>
+				<div class="comments-actions">
+					<button id="btnAddComment" type="button" class="md-btn tonal" data-requires="any">Comment on selection</button>
+					<select id="commentFilter" title="Which comments to list">
+						<option value="open">Open</option>
+						<option value="all">All</option>
+					</select>
+				</div>
+				<div id="commentList" class="comment-list"></div>
+			</section>
+		</aside>
+	</main>
+	<div id="status" role="status" aria-live="polite"></div>
+	<script src="/lib/grapesjs/grapes.min.js"></script>
+	<script src="/designer.js"></script>
+</body>
+</html>

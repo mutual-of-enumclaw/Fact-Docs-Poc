@@ -1,0 +1,358 @@
+{
+  "Agent": {
+    "AddressLine1": "2102 N PEARL ST STE 102",
+    "AddressLine2_Isthereaddressline2": "",
+    "AgencyCode": "0001542",
+    "City": "TACOMA",
+    "FullName": "TAYLOR THOMASON INS BROKERS",
+    "Isthereaddressline2": false,
+    "PhoneNumber": "253-756-2000",
+    "State": "WA",
+    "Zip": "98406-2550"
+  },
+  "Insured": {
+    "AddressLine1": "315 39TH AVE SW #8",
+    "AddressLine2_Isthereaddressline2": "",
+    "City": "PUYALLUP",
+    "FullName": "BARRON FINANCIAL SERVICES INC",
+    "Isthereaddressline2": false,
+    "NamedDriver": "",
+    "PhoneNumber": "2064279845",
+    "State": "WA",
+    "Zip": "98373"
+  },
+  "MOECAAutoLevelCoverages": {
+    "AutoCount": {
+      "has4ormoreautoswithLongFormLossPayableClauseWA": false,
+      "has4ormoreautoswithLossPayableClause": false,
+      "has4ormoreautoswithLossPayableClauseWA": false,
+      "has5ormoreautoswithAutoLoanLeaseGapCoverage": false,
+      "has5ormoreautoswithSupplementalRentalReimbursement": false,
+      "has8ormoreautoswithFarmAutoSeasonalLayUpCoverage": false
+    },
+    "AutosWithFarmAutoSeasonalLayUp": {},
+    "AutosWithLoanLeaseGap": {
+      "TotalPremiums": {
+        "CollisionPremium": "552",
+        "ComprehensivePremium": "139"
+      }
+    },
+    "AutosWithLossPayableClause": {},
+    "AutosWithSupplementalRentalReimbursement": {
+      "TotalPremiums": {
+        "CollisionPremium": "0",
+        "ComprehensivePremium": "0"
+      }
+    }
+  },
+  "MOECAPolicyLevelCoverages": {
+    "ExcludedDrivers": {
+      "NameofExcludedDriver": "",
+      "Relationship": ""
+    },
+    "FarmFamilyCorporationsorPartnerships": {
+      "has8OrMoreFarmFamilyCorpOrPartnerships": false
+    },
+    "FormFUniformMotorCarrierBodilyAndPropertyDamageLiabilityInsuranceEndorsement": {
+      "Day": "0",
+      "MCS90Text": "",
+      "Month": "",
+      "State": {
+        "Arizona": true,
+        "Idaho": true,
+        "Montana": true,
+        "Oregon": true,
+        "Utah": true,
+        "Washington": true,
+        "Wyoming": true
+      },
+      "Year": "0"
+    },
+    "LimitedPollutionLiabilityCoverageExtension": {
+      "forHiredAutos": false,
+      "forOwnedAutos": false,
+      "forSpeciallyDescribedAutos": false,
+      "Limit": "0",
+      "Premium": "0"
+    },
+    "MCS_90": {
+      "AmendingPolicyNumber": "FPP 1039223 01",
+      "ExcessAmount1": "0",
+      "ExcessAmount2": "0",
+      "InExcessOf": "0",
+      "IssuedDay": "0",
+      "IssuedMonth": "",
+      "IssuedYear": "",
+      "Limit": "0",
+      "MotorCarrierName": "",
+      "MotorCarrierStateOrProvince": "",
+      "USDOTNumber": "0"
+    },
+    "PersonalInjuryProtection_Idaho": {
+      "LossofServiceBenefits": "0",
+      "MedicalandHospitalBenefitsLimit": "0",
+      "TotalMaximumIncomeContinuationBenefits": "0",
+      "WeeklyMaximumIncomeContinuationBenefits": "0"
+    },
+    "PersonalInjuryProtection_Oregon": {
+      "MedicalandHopsitalExpensesLimit": "0"
+    },
+    "UtahPersonalInjuryProtection": "",
+    "UtahUnderinsuredMotoristsCoverage": {
+      "LimitOfInsurance": "0"
+    },
+    "UtahUninsuredMotoristsCoverage": {
+      "EndorsementEffectiveDate": "2026-10-05T00:00:00",
+      "LimitOfInsurance": "0"
+    },
+    "WashingtonPersonalInjuryProtection_NamedIndividuals": "",
+    "WashingtonTruckers_IntermodelInterchangeUniformEndorsementFormUIIE": ""
+  },
+  "MOEPolicyDecInfo": {
+    "ItemFiveScheduleForNonOwnershipLiability": {
+      "AutoServiceOperations": {
+        "NumberOfEmployees": {
+          "IsProvided": false,
+          "NumberWording": "",
+          "PremiumWording": ""
+        },
+        "NumberOfPartners": {
+          "IsProvided": false,
+          "NumberWording": "",
+          "PremiumWording": ""
+        },
+        "NumberOfVolunteers": {
+          "IsProvided": false,
+          "NumberWording": "",
+          "PremiumWording": ""
+        }
+      },
+      "OtherThanASocialServiceAgency": {
+        "NumberOfEmployees": {
+          "IsProvided": false,
+          "NumberWording": "",
+          "PremiumWording": ""
+        },
+        "NumberOfPartners": {
+          "IsProvided": false,
+          "NumberWording": "",
+          "PremiumWording": ""
+        }
+      },
+      "OtherThankAutoServiceOperationsPartnershipsLLCs": {
+        "NumberOfEmployees": {
+          "IsProvided": false,
+          "NumberWording": "",
+          "PremiumWording": ""
+        },
+        "NumberOfVolunteers": {
+          "IsProvided": false,
+          "NumberWording": "",
+          "PremiumWording": ""
+        }
+      },
+      "PartnershipsOrLLCs": {
+        "NumberOfEmployees": {
+          "IsProvided": false,
+          "NumberWording": "",
+          "PremiumWording": ""
+        },
+        "NumberOfPartners": {
+          "IsProvided": false,
+          "NumberWording": "",
+          "PremiumWording": ""
+        },
+        "NumberOfVolunteers": {
+          "IsProvided": false,
+          "NumberWording": "",
+          "PremiumWording": ""
+        }
+      },
+      "SocialServiceAgency": {
+        "NumberOfEmployees": {
+          "IsProvided": false,
+          "NumberWording": "",
+          "PremiumWording": ""
+        },
+        "NumberOfVolunteers": {
+          "IsProvided": false,
+          "NumberWording": "",
+          "PremiumWording": ""
+        }
+      },
+      "TotalPremium": "125"
+    },
+    "ItemFourHiredOrBorrowedCoveredAutoCoverageAndPremiums": {
+      "LiabilityCoverage": {
+        "EstimatedCostofHire": "0",
+        "Premium": "25",
+        "RatePerEachCostOfHire": "1.37600",
+        "State": "WA",
+        "TotalPremium": "25"
+      }
+    },
+    "ItemSixScheduleOfDriversForPersonalUseAutos": {
+      "Drivers": {}
+    },
+    "ItemThreeScheduleOfOwnedAutos": {
+      "Vehicles": {
+        "Vehicles": [
+          {
+            "AgeGroup": {
+              "AgeGroup_IsProvided": "5",
+              "AgeGroupWording": "5",
+              "IsProvided": true
+            },
+            "AutoMedicalPremium": {
+              "AutoMedicalPremium_IsProvided": 27,
+              "AutoMedicalPremiumWording": "",
+              "IsProvided": true
+            },
+            "ClassCode": "7391",
+            "CostNew": {
+              "CostNew_IsProvided": 63000,
+              "CostNewWording": "63000",
+              "IsProvided": true
+            },
+            "CovAutoNo": "1",
+            "CovAutoTotalPremium": {
+              "CovAutoTotalPremium_IsProvided": 2169,
+              "CovAutoTotalPremiumWording": "",
+              "IsProvided": true
+            },
+            "CoveredAutoVIN": "1C4BJWFG0FL678350",
+            "DecscriptionOfCoveredAuto": "JEEP RUBICON",
+            "GarageLocation": "WA",
+            "GVWGCWRadiusUseSeatingCapacityORPrivatePassengerUse": "PPT/ALL OTHER",
+            "LiabilityPremium": {
+              "IsProvided": true,
+              "LiabilityPremium_IsProvided": 1267,
+              "LiabilityPremiumWording": ""
+            },
+            "Make": "",
+            "Model": "",
+            "MTSpecific": {
+              "AutoMedicalPayments": "",
+              "Liability": "",
+              "PhysicalDamage": {
+                "Collision": {
+                  "Collision": "",
+                  "Deductible": "1000"
+                },
+                "Comprehensive": {
+                  "Comprehensive": "",
+                  "Deductible": "1000"
+                },
+                "LimitWording": "",
+                "SpecifiedCausesOfLossCoverage": "",
+                "TowingAndLabor": ""
+              },
+              "UnderinsuredMotorists": "",
+              "UninsuredMotorists": ""
+            },
+            "PhysicalDamageCoveragePremiums": {
+              "Collision": {
+                "Deductible_IsProvided": 1000,
+                "DeductibleWording": "1000",
+                "IsProvided": true,
+                "Premium_IsProvided": 552,
+                "PremiumWording": "552"
+              },
+              "Comprehensive": {
+                "Deductible_IsProvided": 1000,
+                "DeductibleWording": "1000",
+                "IsProvided": true,
+                "Premium_IsProvided": 139,
+                "PremiumWording": "139"
+              },
+              "Limit": {
+                "IsProvided": false,
+                "Limit_IsProvided": 0,
+                "LimitWording": "ACV"
+              },
+              "SpecifiedCause": {
+                "IsProvided": false,
+                "Premium_IsProvided": 0,
+                "PremiumWording": ""
+              },
+              "TowingAndLabor": {
+                "IsProvided": true,
+                "Premium_IsProvided": 2,
+                "PremiumWording": "2"
+              }
+            },
+            "PIP": {
+              "IsProvided": false,
+              "Premium_IsProvided": 0,
+              "PremiumWording": ""
+            },
+            "Territory": "005",
+            "UninsuredOrUnderinsuredMotorist": {
+              "IsProvided": true,
+              "Premium_IsProvided": 182,
+              "PremiumWording": ""
+            },
+            "Year": "2015"
+          }
+        ]
+      }
+    },
+    "ItemTwoScheduleOfCoveragesAndCoveredAutos": {
+      "AdditionalAutoSymbols": {
+        "_10": "",
+        "_11": ""
+      },
+      "AdditionalCoverageEndorsements": {},
+      "AutoMedicalPayments": {
+        "ApplicableCoveredAutoSymbols": "7",
+        "Limit": "5000",
+        "Premium": "27"
+      },
+      "Liability": {
+        "ApplicableCoveredAutoSymbols": "7",
+        "Limit": "1000000",
+        "Premium": "1417"
+      },
+      "PersonalInjuryProtection": {
+        "ApplicableCoveredAutoSymbols": ""
+      },
+      "PhysicalDamageCollisionCoverage": {
+        "ApplicableCoveredAutoSymbols": "7",
+        "Limit": "0",
+        "Premium": "552"
+      },
+      "PhysicalDamageComprehensiveCoverage": {
+        "ApplicableCoveredAutoSymbols": "7",
+        "Limit": "0",
+        "Premium": "139"
+      },
+      "PhysicalDamageSpecifiedCausesOfLossCoverage": {
+        "ApplicableCoveredAutoSymbols": ""
+      },
+      "PhysicalDamageTowingAndLaborCoverage": {
+        "ApplicableCoveredAutoSymbols": "7",
+        "Limit": "0",
+        "Premium": "2"
+      },
+      "TotalEstimatedPremium": "2319",
+      "UnderinsuredMotoristCoverage": {
+        "ApplicableCoveredAutoSymbols": "2",
+        "Limit": "1000000",
+        "Premium": "182"
+      },
+      "UninsuredMotoristCoverage": {
+        "ApplicableCoveredAutoSymbols": ""
+      }
+    }
+  },
+  "Policy": {
+    "FormOfBusiness": "CORPORATION",
+    "Isthisaneworrenewalpolicy": "RenewalBusiness",
+    "LOB": "",
+    "Module": "01",
+    "PolicyEffectiveDate": "2026-10-05T00:00:00",
+    "PolicyExpirationDate": "2027-10-05T00:00:00",
+    "PolicyNumber": "FPP 1039223 01",
+    "TypeofBusiness": "ESTATE PLANNING AND MANAGMENT"
+  }
+}

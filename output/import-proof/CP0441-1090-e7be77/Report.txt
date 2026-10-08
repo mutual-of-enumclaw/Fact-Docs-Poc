@@ -1,0 +1,11 @@
+file       C:\src\FaCT-OMP-Comml\OMP-Comml\Commercial Lines Documents\forms\All Forms - All LOBs\CP0441 1090.pdf
+format     pdf
+pages      1
+recall     100 % of 429 original words appear in the render
+precision  100 % of 429 rendered words come from the original
+visual     99 % page likeness (ink within ~4pt of the original) [99 %]
+review     -
+counts     83 texts, 0 fields, 0 shapes, 0 images, 0 skipped
+fields     
+notes      1 embedded font(s) can't be used in a browser (no Unicode character map, or characters missing) and were replaced by a standard family.
+missing    

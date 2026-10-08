@@ -1,0 +1,12 @@
+file       c:\src\fact-poc\samples\item10\pdf\fw4.pdf
+format     pdf
+pages      5
+recall     100 % of 4955 original words appear in the render
+precision  100 % of 4953 rendered words come from the original
+visual     99 % page likeness (ink within ~4pt of the original) [99 %, 100 %, 99 %, 99 %, 97 %]
+review     -
+counts     879 texts, 48 fields, 897 shapes, 2 images, 0 skipped
+fields     f1_01[0], f1_02[0], f1_03[0], f1_04[0], f1_05[0], c1_1[0], c1_1[1], c1_1[2], c1_2[0], f1_06[0], f1_07[0], f1_08[0], f1_09[0], f1_10[0], f1_11[0], c1_3[0], f1_12[0], f1_13[0], f1_14[0], f3_01[0], f3_02[0], f3_03[0], f3_04[0], f3_05[0], f3_06[0], f4_01[0], f4_02[0], f4_03[0], f4_04[0], f4_05[0], f4_06[0], f4_07[0], f4_08[0], f4_09[0], f4_10[0], f4_11[0], f4_12[0], f4_13[0], f4_14[0], f4_15[0], f4_16[0], f4_17[0], f4_18[0], f4_19[0], f4_20[0], f4_21[0], f4_22[0], f4_23[0]
+notes      The PDF also carries an XFA (Adobe LiveCycle) form; its standard form fields were imported.
+           Form fields are not mapped yet: use Suggest mappings in the Model panel, or select each one and choose a property.
+missing    or qualifying be ing

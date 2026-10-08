@@ -1,0 +1,7 @@
+CA2257_1125: MATCH  score 100.0%
+pages   golden 4  html 4  (pages with text)
+words   golden 1675  html 1675  missing 0  extra 0
+
+golden   C:\src\fact-docgen\src\Moe.Commercial.Documents.Generation.Integration.Tests\TestData\Snapshots\CA2257_1125\GoldenSnapshot.txt
+template C:\src\fact-poc\output\ghostdraft\batch\CA-22-57-11-25-WASHINGTON-PERSONAL-INJURY-PROTECTION---NAMED-IND.json
+serverxml C:\src\fact-poc\output\ghostdraft\serverxml\CA2257_1125\ServerXml.xml

@@ -1,0 +1,7 @@
+CA3135_0617: MATCH  score 100.0%
+pages   golden 3  html 3  (pages with text)
+words   golden 1196  html 1196  missing 0  extra 0
+
+golden   C:\src\fact-docgen\src\Moe.Commercial.Documents.Generation.Integration.Tests\TestData\Snapshots\CA3135_0617\GoldenSnapshot.txt
+template C:\src\fact-poc\output\ghostdraft\batch\CA-31-35-06-17-Montana-Uninsured-Motorists-Coverage---Nonstacked.json
+serverxml C:\src\fact-poc\output\ghostdraft\serverxml\CA3135_0617\ServerXml.xml

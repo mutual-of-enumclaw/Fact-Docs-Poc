@@ -1,0 +1,15 @@
+CA3134_1013: DIFFERENT  score 98.9%
+pages   golden 1  html 1  (pages with text)
+words   golden 266  html 266  missing 3  extra 3
+
+MISSING (in the GhostDraft golden, not in the HTML render)
+  [STACKED]  <=  MONTANA UNDERINSURED MOTORISTS COVERAGE - NON-STACKED
+  [10 13]  <=  CA 31 34 10 13                        © Insurance Services Office, Inc., 2012                           Page 1 of 1
+
+EXTRA (in the HTML render, not in the GhostDraft golden)
+  [1013]  <=  CA31   34  1013
+  [ST ACKED]  <=  MONTANA     UNDERINSURED      MOTORISTS     COVERAGE     - NON-ST   ACKED
+
+golden   C:\src\fact-docgen\src\Moe.Commercial.Documents.Generation.Integration.Tests\TestData\Snapshots\CA3134_1013\GoldenSnapshot.txt
+template C:\src\fact-poc\output\ghostdraft\batch\CA-31-34-10-13-Montana-Split-Underinsured-Motorists-Coverage-Lim.json
+serverxml C:\src\fact-poc\output\ghostdraft\serverxml\CA3134_1013\ServerXml.xml

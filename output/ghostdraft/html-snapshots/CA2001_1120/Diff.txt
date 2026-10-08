@@ -1,0 +1,15 @@
+CA2001_1120: DIFFERENT  score 98.6%
+pages   golden 4  html 4  (pages with text)
+words   golden 758  html 780  missing 0  extra 22
+
+EXTRA (in the HTML render, not in the GhostDraft golden)
+  [SERVICES OFFICE INC 2019 2 SERVICES OFFICE INC 2019]  <=  Page  2 of 2                         © Insurance  Services Office, Inc., 2019                   CA  20 01 11 20  Page 2 of 4 © Insurance Services Office, Inc., 2019 CA 20 01 11 20
+  [CA 20 01 20]  <=  CA  20 01 11 20                                                                                     Page  3 of 4
+  [INSURANCE]  <=  Insurance   Company:    Mutual of Enumclaw   Insurance Company
+  [INSURANCE]  <=  Coverages                                           Limit Of Insurance
+  [1]  <=  Covered   Autos  Liability   $1,000,000                       Each  "Accident"
+  [PAGE CA 20 01 1 20]  <=  Page  4 of 4                                                                                    CA  20 01 11 20
+
+golden   C:\src\fact-docgen\src\Moe.Commercial.Documents.Generation.Integration.Tests\TestData\Snapshots\CA2001_1120\GoldenSnapshot.txt
+template C:\src\fact-poc\output\ghostdraft\batch\CA-20-01-11-20-Lessor---Additional-Insured-And-Loss-Payee.json
+serverxml C:\src\fact-poc\output\ghostdraft\serverxml\CA2001_1120\ServerXml.xml

@@ -1,0 +1,11 @@
+file       C:\src\FaCT-DocProd-Documentation\1_From Docucorp_System\PDFforPPS.pdf
+format     pdf
+pages      14
+recall     98 % of 2682 original words appear in the render
+precision  98 % of 2697 rendered words come from the original
+visual     97 % page likeness (ink within ~4pt of the original) [99 %, 100 %, 99 %, 100 %, 98 %, 93 %, 99 %, 97 %, 97 %, 95 %, 98 %, 96 %, 97 %, 85 %]
+review     -
+counts     569 texts, 0 fields, 152 shapes, 3 images, 0 skipped
+fields     
+notes      3 font(s) embedded in the PDF are used for its text.
+missing    the pdf print driver for of is documaker on as implementation steps setting up emailing files configuring outlook lotus notes cc mail printing output multiple recipients note see before page using making guide insured

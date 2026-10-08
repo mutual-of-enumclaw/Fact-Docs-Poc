@@ -1,0 +1,14 @@
+file       C:\src\FaCT-DocProd-Documentation\1_From Docucorp_System\rp_book.pdf
+format     pdf
+pages      100
+recall     98 % of 22483 original words appear in the render
+precision  98 % of 22581 rendered words come from the original
+visual     97 % page likeness (ink within ~4pt of the original) [99 %, 100 %, 100 %, 99 %, 99 %, 99 %, 99 %, 99 %, 99 %, 98 %, 99 %, 100 %, 100 %, 99 %, 99 %, 100 %, 99 %, 99 %, 99 %, 99 %, 99 %, 100 %, 99 %, 100 %, 98 %, 97 %, 98 %, 98 %, 78 %, 81 %, 98 %, 98 %, 98 %, 98 %, 98 %, 98 %, 98 %, 98 %, 97 %, 98 %, 93 %, 73 %, 97 %, 99 %, 98 %, 98 %, 98 %, 98 %, 97 %, 99 %, 97 %, 99 %, 96 %, 98 %, 98 %, 98 %, 98 %, 92 %, 99 %, 98 %, 98 %, 99 %, 97 %, 97 %, 98 %, 97 %, 98 %, 97 %, 95 %, 95 %, 98 %, 98 %, 98 %, 98 %, 93 %, 92 %, 88 %, 82 %, 98 %, 98 %, 98 %, 87 %, 71 %, 98 %, 96 %, 98 %, 98 %, 98 %, 97 %, 98 %, 98 %, 98 %, 98 %, 98 %, 98 %, 96 %, 98 %, 98 %, 97 %, 98 %]
+review     -
+counts     4732 texts, 0 fields, 10420 shapes, 3 images, 0 skipped
+fields     
+notes      Imported pages 1-100 of 478.
+           4 font(s) embedded in the PDF are used for its text.
+           1 embedded font(s) can't be used in a browser (no Unicode character map, or characters missing) and were replaced by a standard family.
+           1694 curved or diagonal shape(s) (circles, logos drawn as vectors) were skipped.
+missing    documaker do ake server system reference internet the of is under and registered are x document automation format with used as must writing an to additional for into means represents provide overview rules publishing solution evolution goals benefits 10 processing

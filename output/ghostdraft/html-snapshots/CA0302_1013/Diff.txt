@@ -1,0 +1,7 @@
+CA0302_1013: MATCH  score 100.0%
+pages   golden 1  html 1  (pages with text)
+words   golden 333  html 333  missing 0  extra 0
+
+golden   C:\src\fact-docgen\src\Moe.Commercial.Documents.Generation.Integration.Tests\TestData\Snapshots\CA0302_1013\GoldenSnapshot.txt
+template C:\src\fact-poc\output\ghostdraft\batch\CA-03-02-10-13-Deductible-Liability-Coverage.json
+serverxml C:\src\fact-poc\output\ghostdraft\serverxml\CA0302_1013\ServerXml.xml

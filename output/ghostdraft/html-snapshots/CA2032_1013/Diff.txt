@@ -1,0 +1,14 @@
+CA2032_1013: DIFFERENT  score 99.4%
+pages   golden 2  html 2  (pages with text)
+words   golden 435  html 436  missing 2  extra 3
+
+MISSING (in the GhostDraft golden, not in the HTML render)
+  [PPAGE AGE]  <=  CA 20 32 10 13CA 20 32 10 13               ©© Insurance Services Office, Inc., 2012Insurance Services Office, Inc., 2012     PPage age 1  of of 2
+
+EXTRA (in the HTML render, not in the GhostDraft golden)
+  [2024 TRUCK]  <=  001        2024 TRUCK
+  [PAGE]  <=  CA  20 32 10 13                      © Insurance  Services Office, Inc., 2012                       Page  1 of 2  CA 20 32 10 13 © Insurance Services Office, Inc., 2012 Page 1 of 2
+
+golden   C:\src\fact-docgen\src\Moe.Commercial.Documents.Generation.Integration.Tests\TestData\Snapshots\CA2032_1013\GoldenSnapshot.txt
+template C:\src\fact-poc\output\ghostdraft\batch\CA-20-32-10-13-Wyoming-Snowmobiles.json
+serverxml C:\src\fact-poc\output\ghostdraft\serverxml\CA2032_1013\ServerXml.xml

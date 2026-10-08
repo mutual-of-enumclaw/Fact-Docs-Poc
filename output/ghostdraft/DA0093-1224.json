@@ -1,0 +1,4174 @@
+{
+ "name": "DA0093-1224",
+ "title": "DA 00 93 12 24",
+ "source": "DA0093 1224.gd",
+ "package": "proprietary-ca-2607",
+ "components": [
+  {
+   "tagName": "div",
+   "classes": [
+    "gd-doc",
+    "gd-flow"
+   ],
+   "components": [
+    {
+     "tagName": "div",
+     "classes": [
+      "gd-header"
+     ],
+     "components": [
+      {
+       "type": "table",
+       "classes": [
+        "gd-table",
+        "gd-t7"
+       ],
+       "components": [
+        {
+         "type": "tbody",
+         "components": [
+          {
+           "type": "row",
+           "components": [
+            {
+             "type": "cell",
+             "components": [
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p2"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-c1"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "BUSINESS AUTO COVERAGE FORM DECLARATIONS (Continued)"
+                  }
+                 ]
+                }
+               ]
+              }
+             ],
+             "classes": [
+              "gd-td3"
+             ]
+            },
+            {
+             "type": "cell",
+             "components": [
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p4"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-c1"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "Policy No.:"
+                  }
+                 ]
+                }
+               ]
+              }
+             ],
+             "classes": [
+              "gd-td5"
+             ]
+            },
+            {
+             "type": "cell",
+             "components": [
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p2"
+               ],
+               "components": [
+                {
+                 "type": "data-field",
+                 "field": "Policy.PolicyNumber",
+                 "format": ""
+                }
+               ]
+              }
+             ],
+             "classes": [
+              "gd-td6"
+             ]
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "tagName": "p",
+       "classes": [
+        "gd-p",
+        "gd-p2"
+       ],
+       "components": []
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tagName": "p",
+     "classes": [
+      "gd-p",
+      "gd-p13"
+     ],
+     "components": [
+      {
+       "tagName": "span",
+       "classes": [
+        "gd-c12"
+       ],
+       "components": [
+        {
+         "type": "textnode",
+         "content": "Business Auto Coverage Form Declarations"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tagName": "p",
+     "classes": [
+      "gd-p",
+      "gd-p15"
+     ],
+     "components": [
+      {
+       "tagName": "span",
+       "classes": [
+        "gd-c14"
+       ],
+       "components": [
+        {
+         "type": "textnode",
+         "content": "ITEM ONE:"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tagName": "p",
+     "classes": [
+      "gd-p",
+      "gd-p16"
+     ],
+     "components": []
+    },
+    {
+     "type": "table",
+     "classes": [
+      "gd-table",
+      "gd-t7"
+     ],
+     "components": [
+      {
+       "type": "tbody",
+       "components": [
+        {
+         "type": "row",
+         "components": [
+          {
+           "type": "cell",
+           "components": [
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p18"
+             ],
+             "components": [
+              {
+               "tagName": "span",
+               "classes": [
+                "gd-c17"
+               ],
+               "components": [
+                {
+                 "type": "textnode",
+                 "content": "Named Insured:"
+                }
+               ]
+              }
+             ]
+            }
+           ],
+           "classes": [
+            "gd-td19"
+           ]
+          },
+          {
+           "type": "cell",
+           "components": [
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p18"
+             ],
+             "components": [
+              {
+               "type": "data-field",
+               "field": "Insured.FullName",
+               "format": ""
+              }
+             ]
+            }
+           ],
+           "classes": [
+            "gd-td20"
+           ]
+          },
+          {
+           "type": "cell",
+           "components": [
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p21"
+             ],
+             "components": [
+              {
+               "tagName": "span",
+               "classes": [
+                "gd-c17"
+               ],
+               "components": [
+                {
+                 "type": "textnode",
+                 "content": "Policy No."
+                }
+               ]
+              }
+             ]
+            }
+           ],
+           "classes": [
+            "gd-td22"
+           ]
+          },
+          {
+           "type": "cell",
+           "components": [
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p18"
+             ],
+             "components": [
+              {
+               "type": "data-field",
+               "field": "Policy.PolicyNumber",
+               "format": ""
+              }
+             ]
+            }
+           ],
+           "classes": [
+            "gd-td23"
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tagName": "p",
+     "classes": [
+      "gd-p",
+      "gd-p24"
+     ],
+     "components": []
+    },
+    {
+     "type": "text",
+     "tagName": "p",
+     "classes": [
+      "gd-p",
+      "gd-p26"
+     ],
+     "components": [
+      {
+       "tagName": "span",
+       "classes": [
+        "gd-c14"
+       ],
+       "components": [
+        {
+         "type": "textnode",
+         "content": "Form of Business:"
+        }
+       ]
+      },
+      {
+       "tagName": "span",
+       "classes": [
+        "gd-c25"
+       ],
+       "components": [
+        {
+         "type": "textnode",
+         "content": " "
+        }
+       ]
+      },
+      {
+       "type": "data-field",
+       "field": "Policy.FormOfBusiness",
+       "format": ""
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tagName": "p",
+     "classes": [
+      "gd-p",
+      "gd-p24"
+     ],
+     "components": []
+    },
+    {
+     "type": "text",
+     "tagName": "p",
+     "classes": [
+      "gd-p",
+      "gd-p26"
+     ],
+     "components": [
+      {
+       "tagName": "span",
+       "classes": [
+        "gd-c14"
+       ],
+       "components": [
+        {
+         "type": "textnode",
+         "content": "ITEM TWO: SCHEDULE OF COVERAGES AND COVERED AUTOS"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tagName": "p",
+     "classes": [
+      "gd-p",
+      "gd-p27"
+     ],
+     "components": [
+      {
+       "type": "textnode",
+       "content": "This policy provides only those coverages where a charge is shown in the premium column below. Each of these coverages applies only to those \"autos\" shown as covered \"autos\" in the COVERED AUTOS column below. \"Autos\" are shown as covered \"autos\" for a particular coverage by the entry of one or more of the symbols from the COVERED AUTO Section of the Business Auto Coverage Form next to the name of the coverage."
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tagName": "p",
+     "classes": [
+      "gd-p",
+      "gd-p28"
+     ],
+     "components": []
+    },
+    {
+     "type": "table",
+     "classes": [
+      "gd-table",
+      "gd-t76"
+     ],
+     "components": [
+      {
+       "type": "tbody",
+       "components": [
+        {
+         "type": "row",
+         "classes": [
+          "gd-grid"
+         ],
+         "components": [
+          {
+           "type": "cell",
+           "classes": [
+            "gd-col72"
+           ],
+           "components": []
+          },
+          {
+           "type": "cell",
+           "classes": [
+            "gd-col73"
+           ],
+           "components": []
+          },
+          {
+           "type": "cell",
+           "classes": [
+            "gd-col74"
+           ],
+           "components": []
+          },
+          {
+           "type": "cell",
+           "classes": [
+            "gd-col75"
+           ],
+           "components": []
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "type": "tbody",
+       "components": [
+        {
+         "type": "row",
+         "components": [
+          {
+           "type": "cell",
+           "components": [
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p30"
+             ],
+             "components": [
+              {
+               "tagName": "span",
+               "classes": [
+                "gd-c29"
+               ],
+               "components": [
+                {
+                 "type": "textnode",
+                 "content": "COVERAGES"
+                }
+               ]
+              }
+             ]
+            }
+           ],
+           "classes": [
+            "gd-td31"
+           ]
+          },
+          {
+           "type": "cell",
+           "components": [
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p32"
+             ],
+             "components": [
+              {
+               "tagName": "span",
+               "classes": [
+                "gd-c29"
+               ],
+               "components": [
+                {
+                 "type": "textnode",
+                 "content": "COVERED AUTOS"
+                }
+               ]
+              }
+             ]
+            }
+           ],
+           "classes": [
+            "gd-td31"
+           ]
+          },
+          {
+           "type": "cell",
+           "components": [
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p30"
+             ],
+             "components": [
+              {
+               "tagName": "span",
+               "classes": [
+                "gd-c29"
+               ],
+               "components": [
+                {
+                 "type": "textnode",
+                 "content": "LIMIT OR DEDUCTIBLE"
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p30"
+             ],
+             "components": [
+              {
+               "tagName": "span",
+               "classes": [
+                "gd-c29"
+               ],
+               "components": [
+                {
+                 "type": "textnode",
+                 "content": "THE MOST WE WILL PAY FOR ANY ONE ACCIDENT OR LOSS."
+                }
+               ]
+              }
+             ]
+            }
+           ],
+           "classes": [
+            "gd-td31"
+           ]
+          },
+          {
+           "type": "cell",
+           "components": [
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p30"
+             ],
+             "components": [
+              {
+               "tagName": "span",
+               "classes": [
+                "gd-c29"
+               ],
+               "components": [
+                {
+                 "type": "textnode",
+                 "content": "PREMIUM"
+                }
+               ]
+              }
+             ]
+            }
+           ],
+           "classes": [
+            "gd-td31"
+           ]
+          }
+         ],
+         "classes": [
+          "gd-tr33"
+         ]
+        },
+        {
+         "type": "row",
+         "components": [
+          {
+           "type": "cell",
+           "components": [
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p35"
+             ],
+             "components": [
+              {
+               "tagName": "span",
+               "classes": [
+                "gd-c34"
+               ],
+               "components": [
+                {
+                 "type": "textnode",
+                 "content": "LIABILITY"
+                }
+               ]
+              }
+             ]
+            }
+           ],
+           "classes": [
+            "gd-td31"
+           ]
+          },
+          {
+           "type": "cell",
+           "components": [
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p36"
+             ],
+             "components": [
+              {
+               "type": "choice",
+               "tagName": "span",
+               "components": [
+                {
+                 "type": "choice-branch",
+                 "tagName": "span",
+                 "components": [
+                  {
+                   "type": "data-field",
+                   "field": "MOEPolicyDecInfo.ItemTwoScheduleOfCoveragesAndCoveredAutos.Liability.ApplicableCoveredAutoSymbols",
+                   "format": ""
+                  }
+                 ],
+                 "field": "MOEPolicyDecInfo.ItemTwoScheduleOfCoveragesAndCoveredAutos.Liability.ApplicableCoveredAutoSymbols",
+                 "operator": "present",
+                 "value": "",
+                 "classes": [
+                  "gd-if"
+                 ]
+                },
+                {
+                 "type": "choice-branch",
+                 "tagName": "span",
+                 "components": [],
+                 "field": "",
+                 "operator": "else",
+                 "value": "",
+                 "classes": [
+                  "gd-if"
+                 ]
+                }
+               ],
+               "classes": [
+                "gd-if"
+               ]
+              }
+             ]
+            }
+           ],
+           "classes": [
+            "gd-td31"
+           ]
+          },
+          {
+           "type": "cell",
+           "components": [
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p35"
+             ],
+             "components": [
+              {
+               "type": "choice",
+               "tagName": "span",
+               "components": [
+                {
+                 "type": "choice-branch",
+                 "tagName": "span",
+                 "components": [
+                  {
+                   "type": "data-field",
+                   "field": "MOEPolicyDecInfo.ItemTwoScheduleOfCoveragesAndCoveredAutos.Liability.Limit",
+                   "format": "dollars"
+                  }
+                 ],
+                 "field": "MOEPolicyDecInfo.ItemTwoScheduleOfCoveragesAndCoveredAutos.Liability.Limit",
+                 "operator": "present",
+                 "value": "",
+                 "classes": [
+                  "gd-if"
+                 ]
+                },
+                {
+                 "type": "choice-branch",
+                 "tagName": "span",
+                 "components": [],
+                 "field": "",
+                 "operator": "else",
+                 "value": "",
+                 "classes": [
+                  "gd-if"
+                 ]
+                }
+               ],
+               "classes": [
+                "gd-if"
+               ]
+              },
+              {
+               "type": "textnode",
+               "content": " Per Accident"
+              }
+             ]
+            }
+           ],
+           "classes": [
+            "gd-td31"
+           ]
+          },
+          {
+           "type": "cell",
+           "components": [
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p37"
+             ],
+             "components": [
+              {
+               "type": "choice",
+               "tagName": "span",
+               "components": [
+                {
+                 "type": "choice-branch",
+                 "tagName": "span",
+                 "components": [
+                  {
+                   "type": "data-field",
+                   "field": "MOEPolicyDecInfo.ItemTwoScheduleOfCoveragesAndCoveredAutos.Liability.Premium",
+                   "format": "dollars"
+                  }
+                 ],
+                 "field": "MOEPolicyDecInfo.ItemTwoScheduleOfCoveragesAndCoveredAutos.Liability.Premium",
+                 "operator": "present",
+                 "value": "",
+                 "classes": [
+                  "gd-if"
+                 ]
+                },
+                {
+                 "type": "choice-branch",
+                 "tagName": "span",
+                 "components": [],
+                 "field": "",
+                 "operator": "else",
+                 "value": "",
+                 "classes": [
+                  "gd-if"
+                 ]
+                }
+               ],
+               "classes": [
+                "gd-if"
+               ]
+              }
+             ]
+            }
+           ],
+           "classes": [
+            "gd-td31"
+           ]
+          }
+         ],
+         "classes": [
+          "gd-tr38"
+         ]
+        },
+        {
+         "type": "row",
+         "components": [
+          {
+           "type": "cell",
+           "components": [
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p39"
+             ],
+             "components": [
+              {
+               "tagName": "span",
+               "classes": [
+                "gd-c34"
+               ],
+               "components": [
+                {
+                 "type": "textnode",
+                 "content": "PERSONAL INJURY PROTECTION"
+                }
+               ]
+              }
+             ]
+            }
+           ],
+           "classes": [
+            "gd-td31"
+           ]
+          },
+          {
+           "type": "cell",
+           "components": [
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p36"
+             ],
+             "components": [
+              {
+               "type": "choice",
+               "tagName": "span",
+               "components": [
+                {
+                 "type": "choice-branch",
+                 "tagName": "span",
+                 "components": [
+                  {
+                   "type": "data-field",
+                   "field": "MOEPolicyDecInfo.ItemTwoScheduleOfCoveragesAndCoveredAutos.PersonalInjuryProtection.ApplicableCoveredAutoSymbols",
+                   "format": ""
+                  }
+                 ],
+                 "field": "MOEPolicyDecInfo.ItemTwoScheduleOfCoveragesAndCoveredAutos.PersonalInjuryProtection.ApplicableCoveredAutoSymbols",
+                 "operator": "present",
+                 "value": "",
+                 "classes": [
+                  "gd-if"
+                 ]
+                },
+                {
+                 "type": "choice-branch",
+                 "tagName": "span",
+                 "components": [],
+                 "field": "",
+                 "operator": "else",
+                 "value": "",
+                 "classes": [
+                  "gd-if"
+                 ]
+                }
+               ],
+               "classes": [
+                "gd-if"
+               ]
+              }
+             ]
+            }
+           ],
+           "classes": [
+            "gd-td31"
+           ]
+          },
+          {
+           "type": "cell",
+           "components": [
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p40"
+             ],
+             "components": [
+              {
+               "type": "textnode",
+               "content": "Separately stated in each PIP endorsement minus "
+              },
+              {
+               "type": "choice",
+               "tagName": "span",
+               "components": [
+                {
+                 "type": "choice-branch",
+                 "tagName": "span",
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "Full Cov/ No"
+                  }
+                 ],
+                 "field": "MOEPolicyDecInfo.ItemTwoScheduleOfCoveragesAndCoveredAutos.PersonalInjuryProtection.ORPolicy",
+                 "operator": "eq",
+                 "value": "true",
+                 "classes": [
+                  "gd-if"
+                 ]
+                },
+                {
+                 "type": "choice-branch",
+                 "tagName": "span",
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "N/A"
+                  }
+                 ],
+                 "field": "",
+                 "operator": "else",
+                 "value": "",
+                 "classes": [
+                  "gd-if"
+                 ]
+                }
+               ],
+               "classes": [
+                "gd-if"
+               ]
+              },
+              {
+               "type": "textnode",
+               "content": " Deductible"
+              }
+             ]
+            }
+           ],
+           "classes": [
+            "gd-td31"
+           ]
+          },
+          {
+           "type": "cell",
+           "components": [
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p41"
+             ],
+             "components": [
+              {
+               "type": "choice",
+               "tagName": "span",
+               "components": [
+                {
+                 "type": "choice-branch",
+                 "tagName": "span",
+                 "components": [
+                  {
+                   "type": "data-field",
+                   "field": "MOEPolicyDecInfo.ItemTwoScheduleOfCoveragesAndCoveredAutos.PersonalInjuryProtection.Premium",
+                   "format": "dollars"
+                  }
+                 ],
+                 "field": "MOEPolicyDecInfo.ItemTwoScheduleOfCoveragesAndCoveredAutos.PersonalInjuryProtection.Premium",
+                 "operator": "present",
+                 "value": "",
+                 "classes": [
+                  "gd-if"
+                 ]
+                },
+                {
+                 "type": "choice-branch",
+                 "tagName": "span",
+                 "components": [],
+                 "field": "",
+                 "operator": "else",
+                 "value": "",
+                 "classes": [
+                  "gd-if"
+                 ]
+                }
+               ],
+               "classes": [
+                "gd-if"
+               ]
+              }
+             ]
+            }
+           ],
+           "classes": [
+            "gd-td31"
+           ]
+          }
+         ],
+         "classes": [
+          "gd-tr42"
+         ]
+        },
+        {
+         "type": "row",
+         "components": [
+          {
+           "type": "cell",
+           "components": [
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p35"
+             ],
+             "components": [
+              {
+               "tagName": "span",
+               "classes": [
+                "gd-c34"
+               ],
+               "components": [
+                {
+                 "type": "textnode",
+                 "content": "AUTO MEDICAL PAYMENTS"
+                }
+               ]
+              }
+             ]
+            }
+           ],
+           "classes": [
+            "gd-td31"
+           ]
+          },
+          {
+           "type": "cell",
+           "components": [
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p36"
+             ],
+             "components": [
+              {
+               "type": "choice",
+               "tagName": "span",
+               "components": [
+                {
+                 "type": "choice-branch",
+                 "tagName": "span",
+                 "components": [
+                  {
+                   "type": "data-field",
+                   "field": "MOEPolicyDecInfo.ItemTwoScheduleOfCoveragesAndCoveredAutos.AutoMedicalPayments.ApplicableCoveredAutoSymbols",
+                   "format": ""
+                  }
+                 ],
+                 "field": "MOEPolicyDecInfo.ItemTwoScheduleOfCoveragesAndCoveredAutos.AutoMedicalPayments.ApplicableCoveredAutoSymbols",
+                 "operator": "present",
+                 "value": "",
+                 "classes": [
+                  "gd-if"
+                 ]
+                },
+                {
+                 "type": "choice-branch",
+                 "tagName": "span",
+                 "components": [],
+                 "field": "",
+                 "operator": "else",
+                 "value": "",
+                 "classes": [
+                  "gd-if"
+                 ]
+                }
+               ],
+               "classes": [
+                "gd-if"
+               ]
+              }
+             ]
+            }
+           ],
+           "classes": [
+            "gd-td31"
+           ]
+          },
+          {
+           "type": "cell",
+           "components": [
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p35"
+             ],
+             "components": [
+              {
+               "type": "choice",
+               "tagName": "span",
+               "components": [
+                {
+                 "type": "choice-branch",
+                 "tagName": "span",
+                 "components": [
+                  {
+                   "type": "data-field",
+                   "field": "MOEPolicyDecInfo.ItemTwoScheduleOfCoveragesAndCoveredAutos.AutoMedicalPayments.Limit",
+                   "format": "dollars"
+                  }
+                 ],
+                 "field": "MOEPolicyDecInfo.ItemTwoScheduleOfCoveragesAndCoveredAutos.AutoMedicalPayments.Limit",
+                 "operator": "present",
+                 "value": "",
+                 "classes": [
+                  "gd-if"
+                 ]
+                },
+                {
+                 "type": "choice-branch",
+                 "tagName": "span",
+                 "components": [],
+                 "field": "",
+                 "operator": "else",
+                 "value": "",
+                 "classes": [
+                  "gd-if"
+                 ]
+                }
+               ],
+               "classes": [
+                "gd-if"
+               ]
+              },
+              {
+               "tagName": "span",
+               "classes": [
+                "gd-c34"
+               ],
+               "components": [
+                {
+                 "type": "textnode",
+                 "content": " "
+                }
+               ]
+              },
+              {
+               "type": "textnode",
+               "content": "Each \"Insured”"
+              }
+             ]
+            }
+           ],
+           "classes": [
+            "gd-td31"
+           ]
+          },
+          {
+           "type": "cell",
+           "components": [
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p37"
+             ],
+             "components": [
+              {
+               "type": "choice",
+               "tagName": "span",
+               "components": [
+                {
+                 "type": "choice-branch",
+                 "tagName": "span",
+                 "components": [
+                  {
+                   "type": "data-field",
+                   "field": "MOEPolicyDecInfo.ItemTwoScheduleOfCoveragesAndCoveredAutos.AutoMedicalPayments.Premium",
+                   "format": "dollars"
+                  }
+                 ],
+                 "field": "MOEPolicyDecInfo.ItemTwoScheduleOfCoveragesAndCoveredAutos.AutoMedicalPayments.Premium",
+                 "operator": "present",
+                 "value": "",
+                 "classes": [
+                  "gd-if"
+                 ]
+                },
+                {
+                 "type": "choice-branch",
+                 "tagName": "span",
+                 "components": [],
+                 "field": "",
+                 "operator": "else",
+                 "value": "",
+                 "classes": [
+                  "gd-if"
+                 ]
+                }
+               ],
+               "classes": [
+                "gd-if"
+               ]
+              }
+             ]
+            }
+           ],
+           "classes": [
+            "gd-td31"
+           ]
+          }
+         ],
+         "classes": [
+          "gd-tr38"
+         ]
+        },
+        {
+         "type": "row",
+         "components": [
+          {
+           "type": "cell",
+           "components": [
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p43"
+             ],
+             "components": [
+              {
+               "tagName": "span",
+               "classes": [
+                "gd-c34"
+               ],
+               "components": [
+                {
+                 "type": "textnode",
+                 "content": "UNINSURED MOTORIST COVERAGE"
+                }
+               ]
+              }
+             ]
+            }
+           ],
+           "classes": [
+            "gd-td31"
+           ]
+          },
+          {
+           "type": "cell",
+           "components": [
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p45"
+             ],
+             "components": [
+              {
+               "tagName": "span",
+               "classes": [
+                "gd-c44"
+               ],
+               "components": [
+                {
+                 "type": "textnode",
+                 "content": "*"
+                }
+               ]
+              },
+              {
+               "type": "choice",
+               "tagName": "span",
+               "components": [
+                {
+                 "type": "choice-branch",
+                 "tagName": "span",
+                 "components": [
+                  {
+                   "type": "data-field",
+                   "field": "MOEPolicyDecInfo.ItemTwoScheduleOfCoveragesAndCoveredAutos.UninsuredMotoristCoverage.ApplicableCoveredAutoSymbols",
+                   "format": ""
+                  }
+                 ],
+                 "field": "MOEPolicyDecInfo.ItemTwoScheduleOfCoveragesAndCoveredAutos.UninsuredMotoristCoverage.ApplicableCoveredAutoSymbols",
+                 "operator": "present",
+                 "value": "",
+                 "classes": [
+                  "gd-if"
+                 ]
+                },
+                {
+                 "type": "choice-branch",
+                 "tagName": "span",
+                 "components": [],
+                 "field": "",
+                 "operator": "else",
+                 "value": "",
+                 "classes": [
+                  "gd-if"
+                 ]
+                }
+               ],
+               "classes": [
+                "gd-if"
+               ]
+              }
+             ]
+            }
+           ],
+           "classes": [
+            "gd-td31"
+           ]
+          },
+          {
+           "type": "cell",
+           "components": [
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p46"
+             ],
+             "components": [
+              {
+               "type": "choice",
+               "tagName": "span",
+               "components": [
+                {
+                 "type": "choice-branch",
+                 "tagName": "span",
+                 "components": [
+                  {
+                   "type": "data-field",
+                   "field": "MOEPolicyDecInfo.ItemTwoScheduleOfCoveragesAndCoveredAutos.UninsuredMotoristCoverage.Limit",
+                   "format": "dollars"
+                  }
+                 ],
+                 "field": "MOEPolicyDecInfo.ItemTwoScheduleOfCoveragesAndCoveredAutos.UninsuredMotoristCoverage.Limit",
+                 "operator": "present",
+                 "value": "",
+                 "classes": [
+                  "gd-if"
+                 ]
+                },
+                {
+                 "type": "choice-branch",
+                 "tagName": "span",
+                 "components": [],
+                 "field": "",
+                 "operator": "else",
+                 "value": "",
+                 "classes": [
+                  "gd-if"
+                 ]
+                }
+               ],
+               "classes": [
+                "gd-if"
+               ]
+              },
+              {
+               "type": "textnode",
+               "content": " Each “Accident”"
+              }
+             ]
+            }
+           ],
+           "classes": [
+            "gd-td31"
+           ]
+          },
+          {
+           "type": "cell",
+           "components": [
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p37"
+             ],
+             "components": [
+              {
+               "type": "choice",
+               "tagName": "span",
+               "components": [
+                {
+                 "type": "choice-branch",
+                 "tagName": "span",
+                 "components": [
+                  {
+                   "type": "data-field",
+                   "field": "MOEPolicyDecInfo.ItemTwoScheduleOfCoveragesAndCoveredAutos.UninsuredMotoristCoverage.Premium",
+                   "format": "dollars"
+                  }
+                 ],
+                 "field": "MOEPolicyDecInfo.ItemTwoScheduleOfCoveragesAndCoveredAutos.UninsuredMotoristCoverage.Premium",
+                 "operator": "present",
+                 "value": "",
+                 "classes": [
+                  "gd-if"
+                 ]
+                },
+                {
+                 "type": "choice-branch",
+                 "tagName": "span",
+                 "components": [],
+                 "field": "",
+                 "operator": "else",
+                 "value": "",
+                 "classes": [
+                  "gd-if"
+                 ]
+                }
+               ],
+               "classes": [
+                "gd-if"
+               ]
+              }
+             ]
+            }
+           ],
+           "classes": [
+            "gd-td31"
+           ]
+          }
+         ],
+         "classes": [
+          "gd-tr47"
+         ]
+        },
+        {
+         "type": "row",
+         "components": [
+          {
+           "type": "cell",
+           "components": [
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p48"
+             ],
+             "components": [
+              {
+               "tagName": "span",
+               "classes": [
+                "gd-c34"
+               ],
+               "components": [
+                {
+                 "type": "textnode",
+                 "content": "UNDERINSURED MOTORIST COVERAGE"
+                }
+               ]
+              }
+             ]
+            }
+           ],
+           "classes": [
+            "gd-td31"
+           ]
+          },
+          {
+           "type": "cell",
+           "components": [
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p45"
+             ],
+             "components": [
+              {
+               "tagName": "span",
+               "classes": [
+                "gd-c44"
+               ],
+               "components": [
+                {
+                 "type": "textnode",
+                 "content": "*"
+                }
+               ]
+              },
+              {
+               "type": "choice",
+               "tagName": "span",
+               "components": [
+                {
+                 "type": "choice-branch",
+                 "tagName": "span",
+                 "components": [
+                  {
+                   "type": "data-field",
+                   "field": "MOEPolicyDecInfo.ItemTwoScheduleOfCoveragesAndCoveredAutos.UnderinsuredMotoristCoverage.ApplicableCoveredAutoSymbols",
+                   "format": ""
+                  }
+                 ],
+                 "field": "MOEPolicyDecInfo.ItemTwoScheduleOfCoveragesAndCoveredAutos.UnderinsuredMotoristCoverage.ApplicableCoveredAutoSymbols",
+                 "operator": "present",
+                 "value": "",
+                 "classes": [
+                  "gd-if"
+                 ]
+                },
+                {
+                 "type": "choice-branch",
+                 "tagName": "span",
+                 "components": [],
+                 "field": "",
+                 "operator": "else",
+                 "value": "",
+                 "classes": [
+                  "gd-if"
+                 ]
+                }
+               ],
+               "classes": [
+                "gd-if"
+               ]
+              }
+             ]
+            }
+           ],
+           "classes": [
+            "gd-td31"
+           ]
+          },
+          {
+           "type": "cell",
+           "components": [
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p46"
+             ],
+             "components": [
+              {
+               "type": "choice",
+               "tagName": "span",
+               "components": [
+                {
+                 "type": "choice-branch",
+                 "tagName": "span",
+                 "components": [
+                  {
+                   "type": "data-field",
+                   "field": "MOEPolicyDecInfo.ItemTwoScheduleOfCoveragesAndCoveredAutos.UnderinsuredMotoristCoverage.Limit",
+                   "format": "dollars"
+                  }
+                 ],
+                 "field": "MOEPolicyDecInfo.ItemTwoScheduleOfCoveragesAndCoveredAutos.UnderinsuredMotoristCoverage.Limit",
+                 "operator": "present",
+                 "value": "",
+                 "classes": [
+                  "gd-if"
+                 ]
+                },
+                {
+                 "type": "choice-branch",
+                 "tagName": "span",
+                 "components": [],
+                 "field": "",
+                 "operator": "else",
+                 "value": "",
+                 "classes": [
+                  "gd-if"
+                 ]
+                }
+               ],
+               "classes": [
+                "gd-if"
+               ]
+              },
+              {
+               "type": "textnode",
+               "content": " Each “Accident”"
+              }
+             ]
+            }
+           ],
+           "classes": [
+            "gd-td31"
+           ]
+          },
+          {
+           "type": "cell",
+           "components": [
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p37"
+             ],
+             "components": [
+              {
+               "type": "choice",
+               "tagName": "span",
+               "components": [
+                {
+                 "type": "choice-branch",
+                 "tagName": "span",
+                 "components": [
+                  {
+                   "type": "data-field",
+                   "field": "MOEPolicyDecInfo.ItemTwoScheduleOfCoveragesAndCoveredAutos.UnderinsuredMotoristCoverage.Premium",
+                   "format": "dollars"
+                  }
+                 ],
+                 "field": "MOEPolicyDecInfo.ItemTwoScheduleOfCoveragesAndCoveredAutos.UnderinsuredMotoristCoverage.Premium",
+                 "operator": "present",
+                 "value": "",
+                 "classes": [
+                  "gd-if"
+                 ]
+                },
+                {
+                 "type": "choice-branch",
+                 "tagName": "span",
+                 "components": [],
+                 "field": "",
+                 "operator": "else",
+                 "value": "",
+                 "classes": [
+                  "gd-if"
+                 ]
+                }
+               ],
+               "classes": [
+                "gd-if"
+               ]
+              }
+             ]
+            }
+           ],
+           "classes": [
+            "gd-td31"
+           ]
+          }
+         ],
+         "classes": [
+          "gd-tr47"
+         ]
+        },
+        {
+         "type": "row",
+         "components": [
+          {
+           "type": "cell",
+           "components": [
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p49"
+             ],
+             "components": [
+              {
+               "tagName": "span",
+               "classes": [
+                "gd-c34"
+               ],
+               "components": [
+                {
+                 "type": "textnode",
+                 "content": "PHYSICAL DAMAGE COMPREHENSIVE COVERAGE"
+                }
+               ]
+              }
+             ]
+            }
+           ],
+           "classes": [
+            "gd-td31"
+           ]
+          },
+          {
+           "type": "cell",
+           "components": [
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p36"
+             ],
+             "components": [
+              {
+               "type": "choice",
+               "tagName": "span",
+               "components": [
+                {
+                 "type": "choice-branch",
+                 "tagName": "span",
+                 "components": [
+                  {
+                   "type": "data-field",
+                   "field": "MOEPolicyDecInfo.ItemTwoScheduleOfCoveragesAndCoveredAutos.PhysicalDamageComprehensiveCoverage.ApplicableCoveredAutoSymbols",
+                   "format": ""
+                  }
+                 ],
+                 "field": "MOEPolicyDecInfo.ItemTwoScheduleOfCoveragesAndCoveredAutos.PhysicalDamageComprehensiveCoverage.ApplicableCoveredAutoSymbols",
+                 "operator": "present",
+                 "value": "",
+                 "classes": [
+                  "gd-if"
+                 ]
+                },
+                {
+                 "type": "choice-branch",
+                 "tagName": "span",
+                 "components": [],
+                 "field": "",
+                 "operator": "else",
+                 "value": "",
+                 "classes": [
+                  "gd-if"
+                 ]
+                }
+               ],
+               "classes": [
+                "gd-if"
+               ]
+              }
+             ]
+            }
+           ],
+           "classes": [
+            "gd-td31"
+           ]
+          },
+          {
+           "type": "cell",
+           "components": [
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p50"
+             ],
+             "components": [
+              {
+               "type": "textnode",
+               "content": "See ITEM THREE for Schedule of Owned \"Autos\" See ITEM FOUR for hired or borrowed \"autos.\""
+              }
+             ]
+            }
+           ],
+           "classes": [
+            "gd-td31"
+           ]
+          },
+          {
+           "type": "cell",
+           "components": [
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p36"
+             ],
+             "components": [
+              {
+               "type": "choice",
+               "tagName": "span",
+               "components": [
+                {
+                 "type": "choice-branch",
+                 "tagName": "span",
+                 "components": [
+                  {
+                   "type": "data-field",
+                   "field": "MOEPolicyDecInfo.ItemTwoScheduleOfCoveragesAndCoveredAutos.PhysicalDamageComprehensiveCoverage.Premium",
+                   "format": "dollars"
+                  }
+                 ],
+                 "field": "MOEPolicyDecInfo.ItemTwoScheduleOfCoveragesAndCoveredAutos.PhysicalDamageComprehensiveCoverage.Premium",
+                 "operator": "present",
+                 "value": "",
+                 "classes": [
+                  "gd-if"
+                 ]
+                },
+                {
+                 "type": "choice-branch",
+                 "tagName": "span",
+                 "components": [],
+                 "field": "",
+                 "operator": "else",
+                 "value": "",
+                 "classes": [
+                  "gd-if"
+                 ]
+                }
+               ],
+               "classes": [
+                "gd-if"
+               ]
+              }
+             ]
+            }
+           ],
+           "classes": [
+            "gd-td31"
+           ]
+          }
+         ],
+         "classes": [
+          "gd-tr51"
+         ]
+        },
+        {
+         "type": "row",
+         "components": [
+          {
+           "type": "cell",
+           "components": [
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p52"
+             ],
+             "components": [
+              {
+               "tagName": "span",
+               "classes": [
+                "gd-c34"
+               ],
+               "components": [
+                {
+                 "type": "textnode",
+                 "content": "PHYSICAL DAMAGE SPECIFIED CAUSES OF LOSS COVERAGE"
+                }
+               ]
+              }
+             ]
+            }
+           ],
+           "classes": [
+            "gd-td31"
+           ]
+          },
+          {
+           "type": "cell",
+           "components": [
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p36"
+             ],
+             "components": [
+              {
+               "type": "choice",
+               "tagName": "span",
+               "components": [
+                {
+                 "type": "choice-branch",
+                 "tagName": "span",
+                 "components": [
+                  {
+                   "type": "data-field",
+                   "field": "MOEPolicyDecInfo.ItemTwoScheduleOfCoveragesAndCoveredAutos.PhysicalDamageSpecifiedCausesOfLossCoverage.ApplicableCoveredAutoSymbols",
+                   "format": ""
+                  }
+                 ],
+                 "field": "MOEPolicyDecInfo.ItemTwoScheduleOfCoveragesAndCoveredAutos.PhysicalDamageSpecifiedCausesOfLossCoverage.ApplicableCoveredAutoSymbols",
+                 "operator": "present",
+                 "value": "",
+                 "classes": [
+                  "gd-if"
+                 ]
+                },
+                {
+                 "type": "choice-branch",
+                 "tagName": "span",
+                 "components": [],
+                 "field": "",
+                 "operator": "else",
+                 "value": "",
+                 "classes": [
+                  "gd-if"
+                 ]
+                }
+               ],
+               "classes": [
+                "gd-if"
+               ]
+              }
+             ]
+            }
+           ],
+           "classes": [
+            "gd-td31"
+           ]
+          },
+          {
+           "type": "cell",
+           "components": [
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p53"
+             ],
+             "components": [
+              {
+               "type": "textnode",
+               "content": "See ITEM THREE for Schedule of Owned \"Autos\" See ITEM FOUR for hired or borrowed \"autos.\""
+              }
+             ]
+            }
+           ],
+           "classes": [
+            "gd-td31"
+           ]
+          },
+          {
+           "type": "cell",
+           "components": [
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p36"
+             ],
+             "components": [
+              {
+               "type": "choice",
+               "tagName": "span",
+               "components": [
+                {
+                 "type": "choice-branch",
+                 "tagName": "span",
+                 "components": [
+                  {
+                   "type": "data-field",
+                   "field": "MOEPolicyDecInfo.ItemTwoScheduleOfCoveragesAndCoveredAutos.PhysicalDamageSpecifiedCausesOfLossCoverage.Premium",
+                   "format": "dollars"
+                  }
+                 ],
+                 "field": "MOEPolicyDecInfo.ItemTwoScheduleOfCoveragesAndCoveredAutos.PhysicalDamageSpecifiedCausesOfLossCoverage.Premium",
+                 "operator": "present",
+                 "value": "",
+                 "classes": [
+                  "gd-if"
+                 ]
+                },
+                {
+                 "type": "choice-branch",
+                 "tagName": "span",
+                 "components": [],
+                 "field": "",
+                 "operator": "else",
+                 "value": "",
+                 "classes": [
+                  "gd-if"
+                 ]
+                }
+               ],
+               "classes": [
+                "gd-if"
+               ]
+              }
+             ]
+            }
+           ],
+           "classes": [
+            "gd-td31"
+           ]
+          }
+         ],
+         "classes": [
+          "gd-tr54"
+         ]
+        },
+        {
+         "type": "row",
+         "components": [
+          {
+           "type": "cell",
+           "components": [
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p55"
+             ],
+             "components": [
+              {
+               "tagName": "span",
+               "classes": [
+                "gd-c34"
+               ],
+               "components": [
+                {
+                 "type": "textnode",
+                 "content": "PHYSICAL DAMAGE COLLISION COVERAGE"
+                }
+               ]
+              }
+             ]
+            }
+           ],
+           "classes": [
+            "gd-td31"
+           ]
+          },
+          {
+           "type": "cell",
+           "components": [
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p36"
+             ],
+             "components": [
+              {
+               "type": "choice",
+               "tagName": "span",
+               "components": [
+                {
+                 "type": "choice-branch",
+                 "tagName": "span",
+                 "components": [
+                  {
+                   "type": "data-field",
+                   "field": "MOEPolicyDecInfo.ItemTwoScheduleOfCoveragesAndCoveredAutos.PhysicalDamageCollisionCoverage.ApplicableCoveredAutoSymbols",
+                   "format": ""
+                  }
+                 ],
+                 "field": "MOEPolicyDecInfo.ItemTwoScheduleOfCoveragesAndCoveredAutos.PhysicalDamageCollisionCoverage.ApplicableCoveredAutoSymbols",
+                 "operator": "present",
+                 "value": "",
+                 "classes": [
+                  "gd-if"
+                 ]
+                },
+                {
+                 "type": "choice-branch",
+                 "tagName": "span",
+                 "components": [],
+                 "field": "",
+                 "operator": "else",
+                 "value": "",
+                 "classes": [
+                  "gd-if"
+                 ]
+                }
+               ],
+               "classes": [
+                "gd-if"
+               ]
+              }
+             ]
+            }
+           ],
+           "classes": [
+            "gd-td31"
+           ]
+          },
+          {
+           "type": "cell",
+           "components": [
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p56"
+             ],
+             "components": [
+              {
+               "type": "textnode",
+               "content": "See ITEM THREE for Schedule of Owned \"Autos\" See ITEM FOUR for hired or borrowed \"autos.\""
+              }
+             ]
+            }
+           ],
+           "classes": [
+            "gd-td31"
+           ]
+          },
+          {
+           "type": "cell",
+           "components": [
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p36"
+             ],
+             "components": [
+              {
+               "type": "choice",
+               "tagName": "span",
+               "components": [
+                {
+                 "type": "choice-branch",
+                 "tagName": "span",
+                 "components": [
+                  {
+                   "type": "data-field",
+                   "field": "MOEPolicyDecInfo.ItemTwoScheduleOfCoveragesAndCoveredAutos.PhysicalDamageCollisionCoverage.Premium",
+                   "format": "dollars"
+                  }
+                 ],
+                 "field": "MOEPolicyDecInfo.ItemTwoScheduleOfCoveragesAndCoveredAutos.PhysicalDamageCollisionCoverage.Premium",
+                 "operator": "present",
+                 "value": "",
+                 "classes": [
+                  "gd-if"
+                 ]
+                },
+                {
+                 "type": "choice-branch",
+                 "tagName": "span",
+                 "components": [],
+                 "field": "",
+                 "operator": "else",
+                 "value": "",
+                 "classes": [
+                  "gd-if"
+                 ]
+                }
+               ],
+               "classes": [
+                "gd-if"
+               ]
+              }
+             ]
+            }
+           ],
+           "classes": [
+            "gd-td31"
+           ]
+          }
+         ],
+         "classes": [
+          "gd-tr47"
+         ]
+        },
+        {
+         "type": "row",
+         "components": [
+          {
+           "type": "cell",
+           "components": [
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p43"
+             ],
+             "components": [
+              {
+               "tagName": "span",
+               "classes": [
+                "gd-c34"
+               ],
+               "components": [
+                {
+                 "type": "textnode",
+                 "content": "PHYSICAL DAMAGE TOWING AND LABOR COVERAGE"
+                }
+               ]
+              }
+             ]
+            }
+           ],
+           "classes": [
+            "gd-td31"
+           ]
+          },
+          {
+           "type": "cell",
+           "components": [
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p36"
+             ],
+             "components": [
+              {
+               "type": "choice",
+               "tagName": "span",
+               "components": [
+                {
+                 "type": "choice-branch",
+                 "tagName": "span",
+                 "components": [
+                  {
+                   "type": "data-field",
+                   "field": "MOEPolicyDecInfo.ItemTwoScheduleOfCoveragesAndCoveredAutos.PhysicalDamageTowingAndLaborCoverage.ApplicableCoveredAutoSymbols",
+                   "format": ""
+                  }
+                 ],
+                 "field": "MOEPolicyDecInfo.ItemTwoScheduleOfCoveragesAndCoveredAutos.PhysicalDamageTowingAndLaborCoverage.ApplicableCoveredAutoSymbols",
+                 "operator": "present",
+                 "value": "",
+                 "classes": [
+                  "gd-if"
+                 ]
+                },
+                {
+                 "type": "choice-branch",
+                 "tagName": "span",
+                 "components": [],
+                 "field": "",
+                 "operator": "else",
+                 "value": "",
+                 "classes": [
+                  "gd-if"
+                 ]
+                }
+               ],
+               "classes": [
+                "gd-if"
+               ]
+              }
+             ]
+            }
+           ],
+           "classes": [
+            "gd-td31"
+           ]
+          },
+          {
+           "type": "cell",
+           "components": [
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p57"
+             ],
+             "components": [
+              {
+               "type": "choice",
+               "tagName": "span",
+               "components": [
+                {
+                 "type": "choice-branch",
+                 "tagName": "span",
+                 "components": [
+                  {
+                   "type": "data-field",
+                   "field": "MOEPolicyDecInfo.ItemTwoScheduleOfCoveragesAndCoveredAutos.PhysicalDamageTowingAndLaborCoverage.Limit",
+                   "format": "dollars"
+                  }
+                 ],
+                 "field": "MOEPolicyDecInfo.ItemTwoScheduleOfCoveragesAndCoveredAutos.PhysicalDamageTowingAndLaborCoverage.Limit",
+                 "operator": "present",
+                 "value": "",
+                 "classes": [
+                  "gd-if"
+                 ]
+                },
+                {
+                 "type": "choice-branch",
+                 "tagName": "span",
+                 "components": [],
+                 "field": "",
+                 "operator": "else",
+                 "value": "",
+                 "classes": [
+                  "gd-if"
+                 ]
+                }
+               ],
+               "classes": [
+                "gd-if"
+               ]
+              },
+              {
+               "type": "textnode",
+               "content": " For Each Disablement Of A Private Passenger Auto, Light Truck, Or Medium Truck"
+              }
+             ]
+            }
+           ],
+           "classes": [
+            "gd-td31"
+           ]
+          },
+          {
+           "type": "cell",
+           "components": [
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p58"
+             ],
+             "components": [
+              {
+               "type": "choice",
+               "tagName": "span",
+               "components": [
+                {
+                 "type": "choice-branch",
+                 "tagName": "span",
+                 "components": [
+                  {
+                   "type": "data-field",
+                   "field": "MOEPolicyDecInfo.ItemTwoScheduleOfCoveragesAndCoveredAutos.PhysicalDamageTowingAndLaborCoverage.Premium",
+                   "format": "dollars"
+                  }
+                 ],
+                 "field": "MOEPolicyDecInfo.ItemTwoScheduleOfCoveragesAndCoveredAutos.PhysicalDamageTowingAndLaborCoverage.Premium",
+                 "operator": "present",
+                 "value": "",
+                 "classes": [
+                  "gd-if"
+                 ]
+                },
+                {
+                 "type": "choice-branch",
+                 "tagName": "span",
+                 "components": [],
+                 "field": "",
+                 "operator": "else",
+                 "value": "",
+                 "classes": [
+                  "gd-if"
+                 ]
+                }
+               ],
+               "classes": [
+                "gd-if"
+               ]
+              }
+             ]
+            }
+           ],
+           "classes": [
+            "gd-td31"
+           ]
+          }
+         ],
+         "classes": [
+          "gd-tr59"
+         ]
+        },
+        {
+         "type": "row",
+         "components": [
+          {
+           "type": "cell",
+           "components": [
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p61"
+             ],
+             "components": [
+              {
+               "tagName": "span",
+               "classes": [
+                "gd-c60"
+               ],
+               "components": [
+                {
+                 "type": "textnode",
+                 "content": "ADDITIONAL COVERAGE ENDORSEMENTS INCLUDED:"
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p61"
+             ],
+             "components": []
+            }
+           ],
+           "classes": [
+            "gd-td62"
+           ],
+           "attributes": {
+            "colspan": "3"
+           }
+          },
+          {
+           "type": "cell",
+           "components": [
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p30"
+             ],
+             "components": []
+            }
+           ],
+           "classes": [
+            "gd-td63"
+           ]
+          }
+         ],
+         "classes": [
+          "gd-tr64"
+         ]
+        },
+        {
+         "type": "row",
+         "components": [
+          {
+           "type": "cell",
+           "components": [
+            {
+             "type": "repeat",
+             "tagName": "div",
+             "listPath": "MOEPolicyDecInfo.ItemTwoScheduleOfCoveragesAndCoveredAutos.AdditionalCoverageEndorsements.AdditionalCoverageEndorsements",
+             "components": [
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p65"
+               ],
+               "components": [
+                {
+                 "type": "data-field",
+                 "field": "AdditionalCoverageEndorsement.EndorsementName",
+                 "format": ""
+                }
+               ]
+              }
+             ]
+            }
+           ],
+           "classes": [
+            "gd-td66"
+           ],
+           "attributes": {
+            "colspan": "3"
+           }
+          },
+          {
+           "type": "cell",
+           "components": [
+            {
+             "type": "repeat",
+             "tagName": "div",
+             "listPath": "MOEPolicyDecInfo.ItemTwoScheduleOfCoveragesAndCoveredAutos.AdditionalCoverageEndorsements.AdditionalCoverageEndorsements",
+             "components": [
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p67"
+               ],
+               "components": [
+                {
+                 "type": "data-field",
+                 "field": "AdditionalCoverageEndorsement.EndorsementPremium",
+                 "format": "dollars"
+                }
+               ]
+              }
+             ]
+            }
+           ],
+           "classes": [
+            "gd-td66"
+           ]
+          }
+         ],
+         "classes": [
+          "gd-tr68"
+         ]
+        },
+        {
+         "type": "row",
+         "components": [
+          {
+           "type": "cell",
+           "components": [
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p35"
+             ],
+             "components": [
+              {
+               "tagName": "span",
+               "classes": [
+                "gd-c34"
+               ],
+               "components": [
+                {
+                 "type": "textnode",
+                 "content": "ESTIMATED ADDITIONAL PREMIUM FOR ENDORSEMENTS - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"
+                }
+               ]
+              }
+             ]
+            }
+           ],
+           "classes": [
+            "gd-td31"
+           ],
+           "attributes": {
+            "colspan": "3"
+           }
+          },
+          {
+           "type": "cell",
+           "components": [
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p36"
+             ],
+             "components": [
+              {
+               "type": "choice",
+               "tagName": "span",
+               "components": [
+                {
+                 "type": "choice-branch",
+                 "tagName": "span",
+                 "components": [
+                  {
+                   "type": "data-field",
+                   "field": "MOEPolicyDecInfo.ItemTwoScheduleOfCoveragesAndCoveredAutos.EstimatedAdditionalPremiumForEndorsements",
+                   "format": "dollars"
+                  }
+                 ],
+                 "field": "MOEPolicyDecInfo.ItemTwoScheduleOfCoveragesAndCoveredAutos.EstimatedAdditionalPremiumForEndorsements",
+                 "operator": "present",
+                 "value": "",
+                 "classes": [
+                  "gd-if"
+                 ]
+                },
+                {
+                 "type": "choice-branch",
+                 "tagName": "span",
+                 "components": [],
+                 "field": "",
+                 "operator": "else",
+                 "value": "",
+                 "classes": [
+                  "gd-if"
+                 ]
+                }
+               ],
+               "classes": [
+                "gd-if"
+               ]
+              }
+             ]
+            }
+           ],
+           "classes": [
+            "gd-td31"
+           ]
+          }
+         ],
+         "classes": [
+          "gd-tr69"
+         ]
+        },
+        {
+         "type": "row",
+         "components": [
+          {
+           "type": "cell",
+           "components": [
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p70"
+             ],
+             "components": [
+              {
+               "tagName": "span",
+               "classes": [
+                "gd-c34"
+               ],
+               "components": [
+                {
+                 "type": "textnode",
+                 "content": "TOTAL ESTIMATED PREMIUM - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"
+                }
+               ]
+              }
+             ]
+            }
+           ],
+           "classes": [
+            "gd-td31"
+           ],
+           "attributes": {
+            "colspan": "3"
+           }
+          },
+          {
+           "type": "cell",
+           "components": [
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p36"
+             ],
+             "components": [
+              {
+               "type": "choice",
+               "tagName": "span",
+               "components": [
+                {
+                 "type": "choice-branch",
+                 "tagName": "span",
+                 "components": [
+                  {
+                   "type": "data-field",
+                   "field": "MOEPolicyDecInfo.ItemTwoScheduleOfCoveragesAndCoveredAutos.TotalEstimatedPremium",
+                   "format": "dollars"
+                  }
+                 ],
+                 "field": "MOEPolicyDecInfo.ItemTwoScheduleOfCoveragesAndCoveredAutos.TotalEstimatedPremium",
+                 "operator": "present",
+                 "value": "",
+                 "classes": [
+                  "gd-if"
+                 ]
+                },
+                {
+                 "type": "choice-branch",
+                 "tagName": "span",
+                 "components": [],
+                 "field": "",
+                 "operator": "else",
+                 "value": "",
+                 "classes": [
+                  "gd-if"
+                 ]
+                }
+               ],
+               "classes": [
+                "gd-if"
+               ]
+              }
+             ]
+            }
+           ],
+           "classes": [
+            "gd-td31"
+           ]
+          }
+         ],
+         "classes": [
+          "gd-tr71"
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "type": "page-break"
+    },
+    {
+     "type": "text",
+     "tagName": "p",
+     "classes": [
+      "gd-p",
+      "gd-p77"
+     ],
+     "components": []
+    },
+    {
+     "type": "table",
+     "classes": [
+      "gd-table",
+      "gd-t7"
+     ],
+     "components": [
+      {
+       "type": "tbody",
+       "components": [
+        {
+         "type": "row",
+         "components": [
+          {
+           "type": "cell",
+           "components": [
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p77"
+             ],
+             "components": []
+            }
+           ],
+           "classes": [
+            "gd-td78"
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tagName": "p",
+     "classes": [
+      "gd-p",
+      "gd-p77"
+     ],
+     "components": [
+      {
+       "tagName": "span",
+       "classes": [
+        "gd-c79"
+       ],
+       "components": [
+        {
+         "type": "textnode",
+         "content": "ITEM TWO (CONTINUED)"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tagName": "p",
+     "classes": [
+      "gd-p",
+      "gd-p81"
+     ],
+     "components": [
+      {
+       "tagName": "span",
+       "classes": [
+        "gd-c80"
+       ],
+       "components": [
+        {
+         "type": "textnode",
+         "content": "LIST OF ALL FORMS AND ENDORSEMENTS ATTACHED AND APPLICABLE AT POLICY INCEPTION:"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tagName": "p",
+     "classes": [
+      "gd-p",
+      "gd-p2"
+     ],
+     "components": []
+    },
+    {
+     "type": "text",
+     "tagName": "p",
+     "classes": [
+      "gd-p",
+      "gd-p2"
+     ],
+     "components": []
+    },
+    {
+     "type": "text",
+     "tagName": "p",
+     "classes": [
+      "gd-p",
+      "gd-p2"
+     ],
+     "components": []
+    },
+    {
+     "type": "text",
+     "tagName": "p",
+     "classes": [
+      "gd-p",
+      "gd-p82"
+     ],
+     "components": [
+      {
+       "tagName": "span",
+       "classes": [
+        "gd-c25"
+       ],
+       "components": [
+        {
+         "type": "textnode",
+         "content": "See Attached Schedule- DP 00 95 01 08"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tagName": "p",
+     "classes": [
+      "gd-p",
+      "gd-p2"
+     ],
+     "components": []
+    },
+    {
+     "type": "text",
+     "tagName": "p",
+     "classes": [
+      "gd-p",
+      "gd-p2"
+     ],
+     "components": []
+    },
+    {
+     "type": "text",
+     "tagName": "p",
+     "classes": [
+      "gd-p",
+      "gd-p2"
+     ],
+     "components": []
+    },
+    {
+     "type": "text",
+     "tagName": "p",
+     "classes": [
+      "gd-p",
+      "gd-p2"
+     ],
+     "components": []
+    },
+    {
+     "type": "text",
+     "tagName": "p",
+     "classes": [
+      "gd-p",
+      "gd-p2"
+     ],
+     "components": []
+    },
+    {
+     "type": "text",
+     "tagName": "p",
+     "classes": [
+      "gd-p",
+      "gd-p2"
+     ],
+     "components": []
+    },
+    {
+     "type": "text",
+     "tagName": "p",
+     "classes": [
+      "gd-p",
+      "gd-p2"
+     ],
+     "components": []
+    },
+    {
+     "type": "text",
+     "tagName": "p",
+     "classes": [
+      "gd-p",
+      "gd-p2"
+     ],
+     "components": []
+    },
+    {
+     "type": "text",
+     "tagName": "p",
+     "classes": [
+      "gd-p",
+      "gd-p2"
+     ],
+     "components": []
+    },
+    {
+     "type": "text",
+     "tagName": "p",
+     "classes": [
+      "gd-p",
+      "gd-p2"
+     ],
+     "components": []
+    },
+    {
+     "type": "text",
+     "tagName": "p",
+     "classes": [
+      "gd-p",
+      "gd-p2"
+     ],
+     "components": []
+    },
+    {
+     "type": "text",
+     "tagName": "p",
+     "classes": [
+      "gd-p",
+      "gd-p2"
+     ],
+     "components": []
+    },
+    {
+     "type": "text",
+     "tagName": "p",
+     "classes": [
+      "gd-p",
+      "gd-p2"
+     ],
+     "components": []
+    },
+    {
+     "type": "text",
+     "tagName": "p",
+     "classes": [
+      "gd-p",
+      "gd-p2"
+     ],
+     "components": []
+    },
+    {
+     "type": "text",
+     "tagName": "p",
+     "classes": [
+      "gd-p",
+      "gd-p2"
+     ],
+     "components": []
+    },
+    {
+     "type": "text",
+     "tagName": "p",
+     "classes": [
+      "gd-p",
+      "gd-p2"
+     ],
+     "components": []
+    },
+    {
+     "type": "table",
+     "classes": [
+      "gd-table",
+      "gd-t7"
+     ],
+     "components": [
+      {
+       "type": "tbody",
+       "components": [
+        {
+         "type": "row",
+         "components": [
+          {
+           "type": "cell",
+           "components": [
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p77"
+             ],
+             "components": []
+            }
+           ],
+           "classes": [
+            "gd-td78"
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tagName": "p",
+     "classes": [
+      "gd-p",
+      "gd-p83"
+     ],
+     "components": []
+    },
+    {
+     "type": "text",
+     "tagName": "p",
+     "classes": [
+      "gd-p",
+      "gd-p2"
+     ],
+     "components": []
+    },
+    {
+     "type": "text",
+     "tagName": "p",
+     "classes": [
+      "gd-p",
+      "gd-p84"
+     ],
+     "components": []
+    },
+    {
+     "type": "text",
+     "tagName": "p",
+     "classes": [
+      "gd-p",
+      "gd-p86"
+     ],
+     "components": [
+      {
+       "tagName": "span",
+       "classes": [
+        "gd-c85"
+       ],
+       "components": [
+        {
+         "type": "textnode",
+         "content": "Quick reference for Covered Auto Designation Symbols from the COVERED AUTOS section of the Business Auto Coverage Form."
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tagName": "p",
+     "classes": [
+      "gd-p",
+      "gd-p88"
+     ],
+     "components": [
+      {
+       "tagName": "span",
+       "classes": [
+        "gd-c79"
+       ],
+       "components": [
+        {
+         "type": "textnode",
+         "content": "Refer to the Business "
+        }
+       ]
+      },
+      {
+       "tagName": "span",
+       "classes": [
+        "gd-c87"
+       ],
+       "components": [
+        {
+         "type": "textnode",
+         "content": "Auto "
+        }
+       ]
+      },
+      {
+       "tagName": "span",
+       "classes": [
+        "gd-c79"
+       ],
+       "components": [
+        {
+         "type": "textnode",
+         "content": "Coverage Form CA 00 01 Section I for a complete description"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tagName": "p",
+     "classes": [
+      "gd-p",
+      "gd-p90"
+     ],
+     "components": [
+      {
+       "tagName": "span",
+       "classes": [
+        "gd-c89"
+       ],
+       "components": [
+        {
+         "type": "textnode",
+         "content": "of COVERED AUTOS and policy provisions that may apply."
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tagName": "p",
+     "classes": [
+      "gd-p",
+      "gd-p91"
+     ],
+     "components": []
+    },
+    {
+     "type": "page-break"
+    },
+    {
+     "type": "text",
+     "tagName": "p",
+     "classes": [
+      "gd-p",
+      "gd-p94"
+     ],
+     "components": [
+      {
+       "tagName": "span",
+       "classes": [
+        "gd-c92"
+       ],
+       "components": [
+        {
+         "type": "textnode",
+         "content": "1=ANY "
+        }
+       ]
+      },
+      {
+       "tagName": "span",
+       "classes": [
+        "gd-c93"
+       ],
+       "components": [
+        {
+         "type": "textnode",
+         "content": "\"AUTO.\""
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tagName": "p",
+     "classes": [
+      "gd-p",
+      "gd-p95"
+     ],
+     "components": []
+    },
+    {
+     "type": "text",
+     "tagName": "p",
+     "classes": [
+      "gd-p",
+      "gd-p97"
+     ],
+     "components": [
+      {
+       "tagName": "span",
+       "classes": [
+        "gd-c92"
+       ],
+       "components": [
+        {
+         "type": "textnode",
+         "content": "2=OWNED \"AUTOS\" "
+        }
+       ]
+      },
+      {
+       "tagName": "span",
+       "classes": [
+        "gd-c93"
+       ],
+       "components": [
+        {
+         "type": "textnode",
+         "content": "ONLY"
+        }
+       ]
+      },
+      {
+       "tagName": "span",
+       "classes": [
+        "gd-c96"
+       ],
+       "components": [
+        {
+         "type": "textnode",
+         "content": "."
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tagName": "p",
+     "classes": [
+      "gd-p",
+      "gd-p84"
+     ],
+     "components": []
+    },
+    {
+     "type": "text",
+     "tagName": "p",
+     "classes": [
+      "gd-p",
+      "gd-p98"
+     ],
+     "components": [
+      {
+       "tagName": "span",
+       "classes": [
+        "gd-c92"
+       ],
+       "components": [
+        {
+         "type": "textnode",
+         "content": "3=OWNED PRIVATE PASSENGER \"AUTOS\" "
+        }
+       ]
+      },
+      {
+       "tagName": "span",
+       "classes": [
+        "gd-c93"
+       ],
+       "components": [
+        {
+         "type": "textnode",
+         "content": "ONLY."
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tagName": "p",
+     "classes": [
+      "gd-p",
+      "gd-p99"
+     ],
+     "components": []
+    },
+    {
+     "type": "text",
+     "tagName": "p",
+     "classes": [
+      "gd-p",
+      "gd-p100"
+     ],
+     "components": [
+      {
+       "tagName": "span",
+       "classes": [
+        "gd-c92"
+       ],
+       "components": [
+        {
+         "type": "textnode",
+         "content": "4=OWNED "
+        }
+       ]
+      },
+      {
+       "tagName": "span",
+       "classes": [
+        "gd-c93"
+       ],
+       "components": [
+        {
+         "type": "textnode",
+         "content": "\"AUTOS\" OTHER "
+        }
+       ]
+      },
+      {
+       "tagName": "span",
+       "classes": [
+        "gd-c92"
+       ],
+       "components": [
+        {
+         "type": "textnode",
+         "content": "THAN PRIVATE "
+        }
+       ]
+      },
+      {
+       "tagName": "span",
+       "classes": [
+        "gd-c93"
+       ],
+       "components": [
+        {
+         "type": "textnode",
+         "content": "PASSENGER \"AUTOS\" ONLY"
+        }
+       ]
+      },
+      {
+       "tagName": "span",
+       "classes": [
+        "gd-c96"
+       ],
+       "components": [
+        {
+         "type": "textnode",
+         "content": "."
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tagName": "p",
+     "classes": [
+      "gd-p",
+      "gd-p101"
+     ],
+     "components": []
+    },
+    {
+     "type": "text",
+     "tagName": "p",
+     "classes": [
+      "gd-p",
+      "gd-p102"
+     ],
+     "components": [
+      {
+       "tagName": "span",
+       "classes": [
+        "gd-c92"
+       ],
+       "components": [
+        {
+         "type": "textnode",
+         "content": "5=OWNED "
+        }
+       ]
+      },
+      {
+       "tagName": "span",
+       "classes": [
+        "gd-c93"
+       ],
+       "components": [
+        {
+         "type": "textnode",
+         "content": "\"AUTOS\" SUBJECT "
+        }
+       ]
+      },
+      {
+       "tagName": "span",
+       "classes": [
+        "gd-c92"
+       ],
+       "components": [
+        {
+         "type": "textnode",
+         "content": "TO NO-FAULT"
+        }
+       ]
+      },
+      {
+       "tagName": "span",
+       "classes": [
+        "gd-c96"
+       ],
+       "components": [
+        {
+         "type": "textnode",
+         "content": "."
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tagName": "p",
+     "classes": [
+      "gd-p",
+      "gd-p103"
+     ],
+     "components": [
+      {
+       "tagName": "span",
+       "classes": [
+        "gd-c92"
+       ],
+       "components": [
+        {
+         "type": "textnode",
+         "content": "6=OWNED "
+        }
+       ]
+      },
+      {
+       "tagName": "span",
+       "classes": [
+        "gd-c93"
+       ],
+       "components": [
+        {
+         "type": "textnode",
+         "content": "\"AUTOS\" SUBJECT "
+        }
+       ]
+      },
+      {
+       "tagName": "span",
+       "classes": [
+        "gd-c92"
+       ],
+       "components": [
+        {
+         "type": "textnode",
+         "content": "TO "
+        }
+       ]
+      },
+      {
+       "tagName": "span",
+       "classes": [
+        "gd-c93"
+       ],
+       "components": [
+        {
+         "type": "textnode",
+         "content": "A COMPULSORY "
+        }
+       ]
+      },
+      {
+       "tagName": "span",
+       "classes": [
+        "gd-c92"
+       ],
+       "components": [
+        {
+         "type": "textnode",
+         "content": "UNINSURED "
+        }
+       ]
+      },
+      {
+       "tagName": "span",
+       "classes": [
+        "gd-c93"
+       ],
+       "components": [
+        {
+         "type": "textnode",
+         "content": "MOTORISTS "
+        }
+       ]
+      },
+      {
+       "tagName": "span",
+       "classes": [
+        "gd-c92"
+       ],
+       "components": [
+        {
+         "type": "textnode",
+         "content": "LAW"
+        }
+       ]
+      },
+      {
+       "tagName": "span",
+       "classes": [
+        "gd-c96"
+       ],
+       "components": [
+        {
+         "type": "textnode",
+         "content": "."
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tagName": "p",
+     "classes": [
+      "gd-p",
+      "gd-p104"
+     ],
+     "components": []
+    },
+    {
+     "type": "text",
+     "tagName": "p",
+     "classes": [
+      "gd-p",
+      "gd-p105"
+     ],
+     "components": [
+      {
+       "tagName": "span",
+       "classes": [
+        "gd-c92"
+       ],
+       "components": [
+        {
+         "type": "textnode",
+         "content": "7=SPECIFICALLY DES"
+        }
+       ]
+      },
+      {
+       "tagName": "span",
+       "classes": [
+        "gd-c93"
+       ],
+       "components": [
+        {
+         "type": "textnode",
+         "content": "CRIBED \"AUTOS.\""
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tagName": "p",
+     "classes": [
+      "gd-p",
+      "gd-p84"
+     ],
+     "components": []
+    },
+    {
+     "type": "text",
+     "tagName": "p",
+     "classes": [
+      "gd-p",
+      "gd-p106"
+     ],
+     "components": [
+      {
+       "tagName": "span",
+       "classes": [
+        "gd-c92"
+       ],
+       "components": [
+        {
+         "type": "textnode",
+         "content": "8=HIRED "
+        }
+       ]
+      },
+      {
+       "tagName": "span",
+       "classes": [
+        "gd-c93"
+       ],
+       "components": [
+        {
+         "type": "textnode",
+         "content": "\"AUTOS\" ONLY"
+        }
+       ]
+      },
+      {
+       "tagName": "span",
+       "classes": [
+        "gd-c96"
+       ],
+       "components": [
+        {
+         "type": "textnode",
+         "content": "."
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tagName": "p",
+     "classes": [
+      "gd-p",
+      "gd-p99"
+     ],
+     "components": []
+    },
+    {
+     "type": "text",
+     "tagName": "p",
+     "classes": [
+      "gd-p",
+      "gd-p107"
+     ],
+     "components": [
+      {
+       "tagName": "span",
+       "classes": [
+        "gd-c92"
+       ],
+       "components": [
+        {
+         "type": "textnode",
+         "content": "9=NONOWNED "
+        }
+       ]
+      },
+      {
+       "tagName": "span",
+       "classes": [
+        "gd-c93"
+       ],
+       "components": [
+        {
+         "type": "textnode",
+         "content": "\"AUTOS\" ONLY."
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tagName": "p",
+     "classes": [
+      "gd-p",
+      "gd-p108"
+     ],
+     "components": []
+    },
+    {
+     "type": "text",
+     "tagName": "p",
+     "classes": [
+      "gd-p",
+      "gd-p111"
+     ],
+     "components": [
+      {
+       "tagName": "span",
+       "classes": [
+        "gd-c109"
+       ],
+       "components": [
+        {
+         "type": "textnode",
+         "content": "10 "
+        }
+       ]
+      },
+      {
+       "tagName": "span",
+       "classes": [
+        "gd-c110"
+       ],
+       "components": [
+        {
+         "type": "textnode",
+         "content": "="
+        }
+       ]
+      },
+      {
+       "type": "choice",
+       "tagName": "span",
+       "components": [
+        {
+         "type": "choice-branch",
+         "tagName": "span",
+         "components": [
+          {
+           "type": "data-field",
+           "field": "MOEPolicyDecInfo.ItemTwoScheduleOfCoveragesAndCoveredAutos.AdditionalAutoSymbols._10",
+           "format": ""
+          }
+         ],
+         "field": "MOEPolicyDecInfo.ItemTwoScheduleOfCoveragesAndCoveredAutos.AdditionalAutoSymbols._10",
+         "operator": "present",
+         "value": "",
+         "classes": [
+          "gd-if"
+         ]
+        },
+        {
+         "type": "choice-branch",
+         "tagName": "span",
+         "components": [],
+         "field": "",
+         "operator": "else",
+         "value": "",
+         "classes": [
+          "gd-if"
+         ]
+        }
+       ],
+       "classes": [
+        "gd-if"
+       ]
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tagName": "p",
+     "classes": [
+      "gd-p",
+      "gd-p112"
+     ],
+     "components": []
+    },
+    {
+     "type": "text",
+     "tagName": "p",
+     "classes": [
+      "gd-p",
+      "gd-p111"
+     ],
+     "components": [
+      {
+       "tagName": "span",
+       "classes": [
+        "gd-c109"
+       ],
+       "components": [
+        {
+         "type": "textnode",
+         "content": "11 "
+        }
+       ]
+      },
+      {
+       "tagName": "span",
+       "classes": [
+        "gd-c113"
+       ],
+       "components": [
+        {
+         "type": "textnode",
+         "content": "="
+        }
+       ]
+      },
+      {
+       "type": "choice",
+       "tagName": "span",
+       "components": [
+        {
+         "type": "choice-branch",
+         "tagName": "span",
+         "components": [
+          {
+           "type": "data-field",
+           "field": "MOEPolicyDecInfo.ItemTwoScheduleOfCoveragesAndCoveredAutos.AdditionalAutoSymbols._11",
+           "format": ""
+          }
+         ],
+         "field": "MOEPolicyDecInfo.ItemTwoScheduleOfCoveragesAndCoveredAutos.AdditionalAutoSymbols._11",
+         "operator": "present",
+         "value": "",
+         "classes": [
+          "gd-if"
+         ]
+        },
+        {
+         "type": "choice-branch",
+         "tagName": "span",
+         "components": [],
+         "field": "",
+         "operator": "else",
+         "value": "",
+         "classes": [
+          "gd-if"
+         ]
+        }
+       ],
+       "classes": [
+        "gd-if"
+       ]
+      }
+     ]
+    },
+    {
+     "type": "page-break"
+    },
+    {
+     "type": "text",
+     "tagName": "p",
+     "classes": [
+      "gd-p",
+      "gd-p2"
+     ],
+     "components": []
+    },
+    {
+     "type": "text",
+     "tagName": "p",
+     "classes": [
+      "gd-p",
+      "gd-p114"
+     ],
+     "components": []
+    },
+    {
+     "type": "text",
+     "tagName": "p",
+     "classes": [
+      "gd-p",
+      "gd-p117"
+     ],
+     "components": [
+      {
+       "tagName": "span",
+       "classes": [
+        "gd-c115"
+       ],
+       "components": [
+        {
+         "type": "textnode",
+         "content": "* "
+        }
+       ]
+      },
+      {
+       "tagName": "span",
+       "classes": [
+        "gd-c116"
+       ],
+       "components": [
+        {
+         "type": "textnode",
+         "content": "For application of Covered Autos symbol with regard to UM/UIM coverage, refer to "
+        }
+       ]
+      },
+      {
+       "tagName": "span",
+       "classes": [
+        "gd-c115"
+       ],
+       "components": [
+        {
+         "type": "textnode",
+         "content": "applicable "
+        }
+       ]
+      },
+      {
+       "tagName": "span",
+       "classes": [
+        "gd-c116"
+       ],
+       "components": [
+        {
+         "type": "textnode",
+         "content": "UM/UIM "
+        }
+       ]
+      },
+      {
+       "tagName": "span",
+       "classes": [
+        "gd-c115"
+       ],
+       "components": [
+        {
+         "type": "textnode",
+         "content": "coverage "
+        }
+       ]
+      },
+      {
+       "tagName": "span",
+       "classes": [
+        "gd-c116"
+       ],
+       "components": [
+        {
+         "type": "textnode",
+         "content": "form(s)."
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "tagName": "div",
+     "classes": [
+      "gd-footer"
+     ],
+     "components": [
+      {
+       "type": "table",
+       "classes": [
+        "gd-table",
+        "gd-t7"
+       ],
+       "components": [
+        {
+         "type": "tbody",
+         "components": [
+          {
+           "type": "row",
+           "components": [
+            {
+             "type": "cell",
+             "components": [
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p2"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-c1"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "DA 00 93 12 24"
+                  }
+                 ]
+                }
+               ]
+              }
+             ],
+             "classes": [
+              "gd-td8"
+             ]
+            },
+            {
+             "type": "cell",
+             "components": [
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p9"
+               ],
+               "components": []
+              }
+             ],
+             "classes": [
+              "gd-td10"
+             ]
+            },
+            {
+             "type": "cell",
+             "components": [
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p4"
+               ],
+               "components": []
+              }
+             ],
+             "classes": [
+              "gd-td11"
+             ]
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "tagName": "p",
+       "classes": [
+        "gd-p",
+        "gd-p2"
+       ],
+       "components": []
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "css": ".form-page{position:relative;width:612pt;height:792pt;overflow:hidden;background:#fff;}\n.form-page + .form-page{page-break-before:always;}\n@page gdflow{margin:33pt 18pt 32pt 18pt;}\n.gd-flow{page:gdflow;}\n.gd-if:empty{display:none;}\n.gd-flow:not(:has(:not(.gd-if))){display:none;}\n.form-page .abs{position:absolute;white-space:pre;margin:0;padding:0;line-height:normal;}\n.form-page .gd-tb{white-space:normal;box-sizing:border-box;}\n.gd-doc{font-family:'Arial',sans-serif;font-size:8pt;color:#000;line-height:1.15;}\n.gd-doc p{margin:0;}\n.gd-doc p:empty::before{content:\"\\00a0\";}\n.gd-doc .gd-table{border-collapse:collapse;table-layout:fixed;}\n.gd-doc td{vertical-align:top;padding:0 5.4pt;}\n.gd-doc tr.gd-grid td{height:0;padding:0;border:0;}\n.gd-doc .gd-box{margin:0 0 6pt 0;}\n.gd-doc .gd-tab{display:inline-block;width:36pt;}\n.gd-doc .gd-hang{display:inline-block;}\n.gd-doc .gd-img-missing{display:inline-block;border:1px dashed #9ca3af;color:#6b7280;font-size:7pt;}\n.gd-doc .gd-header,.gd-doc .gd-footer{font-size:8pt;color:#374151;}\n.gd-doc .gd-footer{margin-top:12pt;border-top:0.5pt solid #9ca3af;padding-top:4pt;}\n.gd-doc .gd-c1{font-weight:bold;font-size:11pt;}\n.gd-doc .gd-p2{line-height:1.15;}\n.gd-doc .gd-td3{width:367.8pt;padding:0pt 5.4pt 0pt 5.4pt;}\n.gd-doc .gd-p4{text-align:right;line-height:1.15;}\n.gd-doc .gd-td5{width:81.55pt;padding:0pt 5.4pt 0pt 5.4pt;}\n.gd-doc .gd-td6{width:101.45pt;padding:0pt 5.4pt 0pt 5.4pt;}\n.gd-doc .gd-t7{width:550.8pt;}\n.gd-doc .gd-td8{width:95.75pt;padding:0pt 5.4pt 0pt 5.4pt;}\n.gd-doc .gd-p9{text-align:center;margin-left:1pt;margin-top:0.7pt;line-height:1.15;}\n.gd-doc .gd-td10{width:377.95pt;padding:0pt 5.4pt 0pt 5.4pt;}\n.gd-doc .gd-td11{width:77.1pt;padding:0pt 5.4pt 0pt 5.4pt;}\n.gd-doc .gd-c12{font-weight:bold;font-size:15pt;}\n.gd-doc .gd-p13{text-align:center;margin-left:0.1pt;line-height:1.15;}\n.gd-doc .gd-c14{font-weight:bold;font-size:10pt;}\n.gd-doc .gd-p15{margin-left:18pt;margin-top:12.4pt;line-height:1.15;}\n.gd-doc .gd-p16{margin-top:1pt;line-height:1.15;}\n.gd-doc .gd-c17{font-weight:bold;font-size:9.5pt;color:#080808;}\n.gd-doc .gd-p18{margin-left:12.7pt;line-height:1.15;}\n.gd-doc .gd-td19{width:104.05pt;padding:0pt 5.4pt 0pt 5.4pt;}\n.gd-doc .gd-td20{width:171.35pt;padding:0pt 5.4pt 0pt 5.4pt;}\n.gd-doc .gd-p21{text-align:right;margin-left:12.7pt;line-height:1.15;}\n.gd-doc .gd-td22{width:162.2pt;padding:0pt 5.4pt 0pt 5.4pt;}\n.gd-doc .gd-td23{width:113.2pt;padding:0pt 5.4pt 0pt 5.4pt;}\n.gd-doc .gd-p24{margin-top:1.5pt;line-height:1.15;}\n.gd-doc .gd-c25{font-size:10pt;}\n.gd-doc .gd-p26{margin-left:18pt;line-height:1.15;}\n.gd-doc .gd-p27{text-align:justify;margin-left:18pt;margin-right:17.65pt;line-height:1.49;}\n.gd-doc .gd-p28{margin-top:0.15pt;line-height:1.15;}\n.gd-doc .gd-c29{font-weight:bold;color:#080808;}\n.gd-doc .gd-p30{text-align:center;line-height:1.15;}\n.gd-doc .gd-td31{border-top:1pt solid #000;border-left:1pt solid #000;border-bottom:1pt solid #000;border-right:1pt solid #000;vertical-align:middle;padding:0pt 0pt 0pt 0pt;}\n.gd-doc .gd-p32{text-align:center;margin-top:0.05pt;line-height:1.15;}\n.gd-doc .gd-tr33{height:32pt;}\n.gd-doc .gd-c34{font-weight:bold;}\n.gd-doc .gd-p35{margin-left:5.95pt;margin-top:7.35pt;line-height:1.15;}\n.gd-doc .gd-p36{text-align:center;margin-left:5.75pt;line-height:1.15;}\n.gd-doc .gd-p37{text-align:center;margin-left:14.4pt;margin-top:7.35pt;line-height:1.15;}\n.gd-doc .gd-tr38{height:19.15pt;}\n.gd-doc .gd-p39{margin-left:5.95pt;margin-right:49.65pt;margin-top:7.35pt;line-height:1.49;}\n.gd-doc .gd-p40{margin-left:6pt;margin-top:7.35pt;line-height:1.49;}\n.gd-doc .gd-p41{text-align:center;margin-left:14.4pt;margin-top:7.45pt;line-height:1.15;}\n.gd-doc .gd-tr42{height:34.55pt;}\n.gd-doc .gd-p43{margin-left:5.95pt;margin-right:34pt;margin-top:4.55pt;line-height:12pt;}\n.gd-doc .gd-c44{font-weight:bold;font-size:16pt;}\n.gd-doc .gd-p45{text-align:center;margin-left:6pt;margin-top:4.15pt;line-height:1.15;}\n.gd-doc .gd-p46{margin-left:6pt;margin-top:7.35pt;line-height:1.15;}\n.gd-doc .gd-tr47{height:31.15pt;}\n.gd-doc .gd-p48{margin-left:5.95pt;margin-right:17.4pt;margin-top:4.55pt;line-height:12pt;}\n.gd-doc .gd-p49{margin-left:5.95pt;margin-right:8.15pt;margin-top:4.55pt;line-height:12pt;}\n.gd-doc .gd-p50{margin-left:6pt;margin-right:31.05pt;margin-top:4.55pt;line-height:12pt;}\n.gd-doc .gd-tr51{height:31.25pt;}\n.gd-doc .gd-p52{margin-left:5.95pt;margin-right:47.45pt;margin-top:7.25pt;line-height:1.49;}\n.gd-doc .gd-p53{margin-left:6pt;margin-right:31.05pt;margin-top:7.25pt;line-height:1.49;}\n.gd-doc .gd-tr54{height:38.6pt;}\n.gd-doc .gd-p55{margin-left:5.95pt;margin-right:34.4pt;margin-top:4.55pt;line-height:12pt;}\n.gd-doc .gd-p56{margin-left:6pt;margin-right:31.05pt;text-indent:-0.05pt;margin-top:4.55pt;line-height:12pt;}\n.gd-doc .gd-p57{margin-left:6pt;margin-top:2.8pt;line-height:1.15;}\n.gd-doc .gd-p58{text-align:center;margin-left:5.95pt;margin-top:7.35pt;line-height:1.15;}\n.gd-doc .gd-tr59{height:38.95pt;}\n.gd-doc .gd-c60{font-weight:bold;text-decoration:underline;}\n.gd-doc .gd-p61{margin-left:5.95pt;line-height:1.15;}\n.gd-doc .gd-td62{border-top:1pt solid #000;border-left:1pt solid #000;border-right:1pt solid #000;vertical-align:bottom;padding:0pt 0pt 0pt 0pt;}\n.gd-doc .gd-td63{border-top:1pt solid #000;border-left:1pt solid #000;border-right:1pt solid #000;vertical-align:middle;padding:0pt 0pt 0pt 0pt;}\n.gd-doc .gd-tr64{height:23.6pt;}\n.gd-doc .gd-p65{margin-left:36pt;margin-top:4pt;line-height:1.15;}\n.gd-doc .gd-td66{border-left:1pt solid #000;border-bottom:1pt solid #000;border-right:1pt solid #000;vertical-align:middle;padding:0pt 0pt 0pt 0pt;}\n.gd-doc .gd-p67{text-align:center;margin-left:4.65pt;margin-top:4pt;line-height:1.15;}\n.gd-doc .gd-tr68{height:50.45pt;}\n.gd-doc .gd-tr69{height:19.1pt;}\n.gd-doc .gd-p70{margin-left:5.95pt;margin-top:7.45pt;line-height:1.15;}\n.gd-doc .gd-tr71{height:19.3pt;}\n.gd-doc .gd-col72{width:139.45pt;}\n.gd-doc .gd-col73{width:105.55pt;}\n.gd-doc .gd-col74{width:225.4pt;}\n.gd-doc .gd-col75{width:69.6pt;}\n.gd-doc .gd-t76{width:540pt;margin-left:17.95pt;}\n.gd-doc .gd-p77{margin-left:12.35pt;margin-top:11.2pt;line-height:1.15;}\n.gd-doc .gd-td78{width:550.8pt;border-bottom:0.5pt solid #000000;padding:0pt 5.4pt 0pt 5.4pt;}\n.gd-doc .gd-c79{font-weight:bold;font-size:11.5pt;color:#050505;}\n.gd-doc .gd-c80{font-weight:bold;color:#050505;}\n.gd-doc .gd-p81{margin-left:12.35pt;margin-top:12.45pt;line-height:1.15;}\n.gd-doc .gd-p82{margin-left:50.4pt;line-height:1.15;}\n.gd-doc .gd-p83{margin-top:0.2pt;line-height:1.15;}\n.gd-doc .gd-p84{margin-top:1.6pt;line-height:1.15;}\n.gd-doc .gd-c85{font-weight:bold;font-size:15pt;color:#050505;}\n.gd-doc .gd-p86{text-align:center;margin-left:7.1pt;margin-right:10.4pt;line-height:1.19;}\n.gd-doc .gd-c87{font-weight:bold;font-size:11.5pt;color:#151515;}\n.gd-doc .gd-p88{text-align:center;margin-right:4.65pt;margin-top:12.9pt;line-height:1.15;}\n.gd-doc .gd-c89{font-weight:bold;font-size:11pt;color:#050505;}\n.gd-doc .gd-p90{text-align:center;margin-left:7.75pt;margin-right:10.4pt;margin-top:0.95pt;line-height:1.15;}\n.gd-doc .gd-p91{margin-top:6.8pt;line-height:1.15;}\n.gd-doc .gd-c92{color:#050505;}\n.gd-doc .gd-c93{color:#151515;}\n.gd-doc .gd-p94{margin-left:8.75pt;margin-top:4.7pt;line-height:1.15;}\n.gd-doc .gd-p95{margin-top:1.25pt;line-height:1.15;}\n.gd-doc .gd-c96{color:#4b4b4b;}\n.gd-doc .gd-p97{margin-left:9.15pt;line-height:1.15;}\n.gd-doc .gd-p98{margin-left:9.05pt;line-height:1.15;}\n.gd-doc .gd-p99{margin-top:1.2pt;line-height:1.15;}\n.gd-doc .gd-p100{margin-left:21.7pt;margin-right:1.9pt;text-indent:-13.1pt;margin-top:0.05pt;line-height:1.22;}\n.gd-doc .gd-p101{margin-top:0.5pt;line-height:1.15;}\n.gd-doc .gd-p102{margin-left:8.7pt;line-height:1.15;}\n.gd-doc .gd-p103{margin-left:21.9pt;margin-right:14.95pt;text-indent:-12.25pt;margin-top:5.8pt;line-height:1.17;}\n.gd-doc .gd-p104{margin-top:1.05pt;line-height:1.15;}\n.gd-doc .gd-p105{margin-left:8.85pt;line-height:1.15;}\n.gd-doc .gd-p106{margin-left:8.95pt;line-height:1.15;}\n.gd-doc .gd-p107{margin-left:8.9pt;margin-top:0.05pt;line-height:1.15;}\n.gd-doc .gd-p108{margin-top:0.85pt;line-height:1.15;}\n.gd-doc .gd-c109{font-size:9pt;color:#050505;}\n.gd-doc .gd-c110{font-size:9.5pt;color:#4b4b4b;}\n.gd-doc .gd-p111{margin-left:8.6pt;line-height:1.15;}\n.gd-doc .gd-p112{margin-top:1.8pt;line-height:1.15;}\n.gd-doc .gd-c113{font-size:9.5pt;color:#050505;}\n.gd-doc .gd-p114{margin-left:198.75pt;text-indent:-172.7pt;line-height:1.21;}\n.gd-doc .gd-c115{font-size:11pt;color:#212121;}\n.gd-doc .gd-c116{font-size:11pt;color:#0c0c0c;}\n.gd-doc .gd-p117{margin-left:217.3pt;text-indent:-180.5pt;line-height:1.17;}",
+ "model": {
+  "Insured": {
+   "FullName": "Full Name"
+  },
+  "Policy": {
+   "FormOfBusiness": "Form Of Business",
+   "PolicyNumber": "Policy Number"
+  },
+  "MOEPolicyDecInfo": {
+   "ItemTwoScheduleOfCoveragesAndCoveredAutos": {
+    "EstimatedAdditionalPremiumForEndorsements": 25000,
+    "TotalEstimatedPremium": 25000,
+    "AdditionalAutoSymbols": {
+     "_10": "10",
+     "_11": "11"
+    },
+    "AutoMedicalPayments": {
+     "ApplicableCoveredAutoSymbols": "Applicable Covered Auto Symbols",
+     "Limit": 25000,
+     "Premium": 25000
+    },
+    "Liability": {
+     "ApplicableCoveredAutoSymbols": "Applicable Covered Auto Symbols",
+     "Limit": 25000,
+     "Premium": 25000
+    },
+    "PersonalInjuryProtection": {
+     "ApplicableCoveredAutoSymbols": "Applicable Covered Auto Symbols",
+     "ORPolicy": true,
+     "Premium": 25000
+    },
+    "PhysicalDamageCollisionCoverage": {
+     "ApplicableCoveredAutoSymbols": "Applicable Covered Auto Symbols",
+     "Premium": 25000
+    },
+    "PhysicalDamageComprehensiveCoverage": {
+     "ApplicableCoveredAutoSymbols": "Applicable Covered Auto Symbols",
+     "Premium": 25000
+    },
+    "PhysicalDamageSpecifiedCausesOfLossCoverage": {
+     "ApplicableCoveredAutoSymbols": "Applicable Covered Auto Symbols",
+     "Premium": 25000
+    },
+    "PhysicalDamageTowingAndLaborCoverage": {
+     "ApplicableCoveredAutoSymbols": "Applicable Covered Auto Symbols",
+     "Limit": 25000,
+     "Premium": 25000
+    },
+    "UnderinsuredMotoristCoverage": {
+     "ApplicableCoveredAutoSymbols": "Applicable Covered Auto Symbols",
+     "Limit": 25000,
+     "Premium": 25000
+    },
+    "UninsuredMotoristCoverage": {
+     "ApplicableCoveredAutoSymbols": "Applicable Covered Auto Symbols",
+     "Limit": 25000,
+     "Premium": 25000
+    },
+    "AdditionalCoverageEndorsements": {
+     "AdditionalCoverageEndorsements": [
+      {
+       "EndorsementName": "Endorsement Name",
+       "EndorsementPremium": 25000
+      },
+      {
+       "EndorsementName": "Endorsement Name 2",
+       "EndorsementPremium": 30000
+      }
+     ]
+    }
+   }
+  }
+ },
+ "report": {
+  "counts": {
+   "choose": 28,
+   "conditionals": 28,
+   "fill points": 33,
+   "lists": 2,
+   "paragraphs": 126,
+   "repeat": 2,
+   "tables": 6
+  },
+  "notes": [
+   "running footer placed once at the end of the flowing pages",
+   "running header placed once at the top of the flowing pages"
+  ]
+ }
+}

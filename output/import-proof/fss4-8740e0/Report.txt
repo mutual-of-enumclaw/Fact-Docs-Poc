@@ -1,0 +1,14 @@
+file       c:\src\fact-poc\samples\item10\pdf\fss4.pdf
+format     pdf
+pages      2
+recall     98 % of 1648 original words appear in the render
+precision  100 % of 1628 rendered words come from the original
+visual     100 % page likeness (ink within ~4pt of the original) [99 %, 100 %]
+review     -
+counts     271 texts, 89 fields, 195 shapes, 0 images, 0 skipped
+fields     f1_1[0], f1_2[0], f1_3[0], f1_4[0], f1_5[0], f1_6[0], f1_7[0], f1_8[0], f1_9[0], f1_10[0], f1_11[0], c1_1[0], c1_1[1], f1_12[0], c1_2[0], c1_2[1], c1_3[0], f1_13[0], c1_3[1], f1_14[0], c1_3[2], c1_3[3], f1_15[0], c1_3[4], f1_16[0], c1_3[5], f1_17[0], c1_3[6], c1_3[7], c1_3[8], c1_3[9], c1_3[10], c1_3[11], c1_3[12], f1_18[0], c1_3[13], c1_3[14], c1_3[15], f1_19[0], f1_20[0], f1_21[0], f1_22[0], c1_4[0], f1_25[0], f1_26[0], c1_4[1], f1_27[0], c1_4[2], c1_4[3], c1_4[4], f1_28[0], c1_4[5], c1_4[6], f1_29[0], c1_4[7], c1_4[8], f1_24[0], f1_30[0], f1_31[0], f1_32[0], f1_33[0], f1_34[0], f1_35[0], c1_5[0], f1_36[0], c1_6[0], c1_6[1], c1_6[2], c1_6[3], c1_6[4], c1_6[5], c1_6[6], c1_6[7], c1_6[8], c1_6[9], c1_6[10], c1_6[11], f1_37[0], f1_38[0], c1_7[0], c1_7[1], f1_39[0], f1_40[0], f1_41[0], f1_42[0], f1_43[0], f1_44[0], f1_45[0], f1_46[0]
+notes      The PDF also carries an XFA (Adobe LiveCycle) form; its standard form fields were imported.
+           Page(s) 2 are larger than Letter and were scaled to fit.
+           19 character(s) of rotated or vertical text were skipped.
+           Form fields are not mapped yet: use Suggest mappings in the Model panel, or select each one and choose a property.
+missing    form and a y l r e p o t c n i only year 14 none section

@@ -1,0 +1,12 @@
+file       C:\src\FaCT-DocProd-Documentation\1_From Docucorp_System\PrgGuide.pdf
+format     pdf
+pages      100
+recall     100 % of 31588 original words appear in the render
+precision  100 % of 31588 rendered words come from the original
+visual     100 % page likeness (ink within ~4pt of the original) [100 %, 99 %, 100 %, 100 %, 100 %, 100 %, 100 %, 100 %, 100 %, 100 %, 100 %, 100 %, 100 %, 100 %, 100 %, 92 %, 97 %, 100 %, 99 %, 100 %, 100 %, 100 %, 100 %, 100 %, 100 %, 99 %, 100 %, 99 %, 100 %, 100 %, 100 %, 100 %, 100 %, 99 %, 100 %, 100 %, 100 %, 100 %, 100 %, 100 %, 100 %, 100 %, 100 %, 100 %, 100 %, 100 %, 100 %, 99 %, 100 %, 100 %, 100 %, 100 %, 100 %, 100 %, 100 %, 100 %, 100 %, 100 %, 100 %, 100 %, 100 %, 100 %, 100 %, 100 %, 100 %, 100 %, 100 %, 100 %, 100 %, 100 %, 100 %, 100 %, 100 %, 100 %, 100 %, 100 %, 100 %, 100 %, 100 %, 100 %, 100 %, 100 %, 100 %, 100 %, 100 %, 100 %, 100 %, 100 %, 100 %, 100 %, 100 %, 100 %, 100 %, 100 %, 100 %, 100 %, 100 %, 100 %, 100 %, 100 %]
+review     -
+counts     4502 texts, 0 fields, 2291 shapes, 1 images, 0 skipped
+fields     
+notes      Imported pages 1-100 of 146.
+           1 embedded font(s) can't be used in a browser (no Unicode character map, or characters missing) and were replaced by a standard family.
+missing    

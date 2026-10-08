@@ -1,0 +1,11 @@
+file       C:\src\FaCT-OMP-Comml\OMP-Comml\Commercial Lines Documents\forms\All Forms - All LOBs\DA0194 0118.pdf
+format     pdf
+pages      1
+recall     100 % of 194 original words appear in the render
+precision  100 % of 194 rendered words come from the original
+visual     100 % page likeness (ink within ~4pt of the original) [100 %]
+review     -
+counts     51 texts, 0 fields, 727 shapes, 0 images, 0 skipped
+fields     
+notes      Page(s) 1 are larger than Letter and were scaled to fit.
+missing    

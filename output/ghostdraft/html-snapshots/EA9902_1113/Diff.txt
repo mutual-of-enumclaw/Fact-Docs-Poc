@@ -1,0 +1,7 @@
+EA9902_1113: MATCH  score 100.0%
+pages   golden 1  html 1  (pages with text)
+words   golden 254  html 254  missing 0  extra 0
+
+golden   C:\src\fact-docgen\src\Moe.Commercial.Documents.Generation.Integration.Tests\TestData\Snapshots\EA9902_1113\GoldenSnapshot.txt
+template C:\src\fact-poc\output\ghostdraft\batch\EA9902-1113.json
+serverxml C:\src\fact-poc\output\ghostdraft\serverxml\EA9902_1113\ServerXml.xml

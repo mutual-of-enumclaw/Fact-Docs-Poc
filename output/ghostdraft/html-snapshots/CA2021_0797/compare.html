@@ -1,0 +1,60 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>CA2021_0797</title><style>
+body{font-family:Segoe UI,Arial,sans-serif;margin:16px;background:#f4f4f4;color:#222}
+a{color:#0b5cad}
+table.list{border-collapse:collapse;background:#fff}
+table.list td,table.list th{border:1px solid #ccc;padding:3px 8px;text-align:left;font-size:13px}
+tr.ok td{background:#e6f4ea}
+.nav{margin:8px 0}
+.row{display:flex;gap:10px;align-items:flex-start;margin:6px 0 18px}
+.col{background:#fff;border:1px solid #bbb;padding:4px}
+.col h3{margin:0 0 4px;font-size:13px;font-weight:600}
+.col img{display:block;width:100%;height:auto;border:1px solid #ddd}
+.empty{width:100%;aspect-ratio:8.5/11;display:flex;align-items:center;justify-content:center;color:#999;border:1px dashed #bbb}
+pre{background:#fff;border:1px solid #ccc;padding:8px;font-size:12px;overflow:auto;max-height:420px}
+label{font-size:13px;margin-right:12px}
+body.no-overlay .ov{display:none}
+</style></head>
+<body><div class="nav"><a href="../index.html">&larr; all cases</a></div>
+<h2>CA2021_0797 &mdash; different (word score 0.976)</h2>
+<label><input type="checkbox" checked onchange="document.body.classList.toggle('no-overlay', !this.checked)"> overlay
+(black = both, <span style="color:#d00">red = GhostDraft only</span>, <span style="color:#0aa">cyan = HTML only</span>)</label>
+<details><summary>Text diff (Diff.txt)</summary><pre>CA2021_0797: DIFFERENT  score 97.6%
+pages   golden 2  html 2  (pages with text)
+words   golden 507  html 511  missing 10  extra 14
+
+MISSING (in the GhostDraft golden, not in the HTML render)
+  [COCOPYRIGHT PYRIGHT]  &lt;=  CA 20 21 07 97CA 20 21 07 97         CoCopyright, Insurance Services Office, Inc., 1996pyright, Insurance Services Office, Inc.,  1996     Page 1 of of 2    o
+  [1]  &lt;=  1.  Designed for use on ice and snow, and mainly
+  [CCOPYRIGHT OPYRIGHT INSURANCE SERVICES OFFICE INC 1996]  &lt;=  Page Page 2 of of 2              CCopyright, Insurance Services Office, Inc., 1996opyright, Insurance Services Office, Inc.,  1996     CA 20 21 07 97CA 20 21 07 97
+
+EXTRA (in the HTML render, not in the GhostDraft golden)
+  [001]  &lt;=  Medical Payments          001                $500                Each  Person             $9.00
+  [001 01]  &lt;=  001                         01/01/2010 SKI  DOO  SUMMIT    EVEREST    5PSBS111581023776
+  [COPYRIGHT COPYRIGHT]  &lt;=  CA  20 21 07 97                 Copyright, Insurance Services Office, Inc., 1996                    Page  1 of 2     o  CA 20 21 07 97 Copyright, Insurance Services Office, Inc., 1996 Page 1 of 2
+  [PAGE OF 2 COPYRIGHT CA 20 21 07 97]  &lt;=  Page  2 of 2                    Copyright, Insurance Services Office, Inc., 1996                CA  20 21 07 97  Page 2 of 2 Copyright, Insurance Services Office, Inc., 1996 CA 20 21 07 97
+
+golden   C:\src\fact-docgen\src\Moe.Commercial.Documents.Generation.Integration.Tests\TestData\Snapshots\CA2021_0797\GoldenSnapshot.txt
+template C:\src\fact-poc\output\ghostdraft\batch\CA-20-21-07-97-Snowmobiles.json
+serverxml C:\src\fact-poc\output\ghostdraft\serverxml\CA2021_0797\ServerXml.xml
+</pre></details>
+<div class="row"><div class="col" style="flex:1"><h3>GhostDraft (TST) &mdash; page 1</h3><img src="gd-p1.png" loading="lazy"></div><div class="col" style="flex:1"><h3>HTML designer &mdash; page 1</h3><img src="html-p1.png" loading="lazy"></div><div class="col ov" style="flex:1"><h3>Overlay &mdash; 7.1% pixels differ</h3><img src="overlay-p1.png" loading="lazy"></div></div><details><summary>Page 1 layout: 7 words moved, 0 resized, 7 rules missing, 6 extra</summary><pre>moved Included (-0.0, +2.4)pt
+moved 312.00 (-214.3, +3.0)pt
+moved SKI (+27.4, -0.3)pt
+moved DOO (+27.4, -0.3)pt
+moved SUMMIT (+27.4, -0.3)pt
+moved EVEREST (+27.2, -0.3)pt
+moved 5PSBS111581023776 (+24.3, -0.3)pt
+missing h rule at 489.3 (172.0-253.1)
+missing h rule at 758.8 (578.8-585.7)
+missing h rule at 765.7 (578.8-585.7)
+missing v rule at 172.0 (460.6-489.3)
+missing v rule at 253.1 (460.6-489.3)
+missing v rule at 578.8 (758.8-765.7)
+missing v rule at 585.7 (758.8-765.7)
+extra h rule at 548.6 (54.0-558.0)
+extra h rule at 563.6 (54.0-558.0)
+extra h rule at 577.9 (54.0-558.0)
+extra h rule at 592.9 (54.0-558.0)
+extra h rule at 622.1 (387.8-558.0)
+extra v rule at 256.1 (416.2-592.5)</pre></details><div class="row"><div class="col" style="flex:1"><h3>GhostDraft (TST) &mdash; page 2</h3><img src="gd-p2.png" loading="lazy"></div><div class="col" style="flex:1"><h3>HTML designer &mdash; page 2</h3><img src="html-p2.png" loading="lazy"></div><div class="col ov" style="flex:1"><h3>Overlay &mdash; 0.6% pixels differ</h3><img src="overlay-p2.png" loading="lazy"></div></div>
+</body></html>

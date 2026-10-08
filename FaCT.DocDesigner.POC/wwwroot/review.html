@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>GhostDraft Conversion Review</title>
+	<link rel="stylesheet" href="/brand/fonts/figtree.css">
+	<link rel="stylesheet" href="/review.css">
+</head>
+<body>
+	<header class="bar">
+		<h1 id="reviewTitle">GhostDraft Conversion Review</h1>
+		<label>Show
+			<select id="filter">
+				<option value="todo">Needs review</option>
+				<option value="below">Below pass score</option>
+				<option value="approved">Approved</option>
+				<option value="rejected">Rejected</option>
+				<option value="all">All</option>
+			</select>
+		</label>
+		<span id="counts" class="counts"></span>
+		<span class="spacer"></span>
+		<label>Reviewer <input id="reviewer" type="text" maxlength="100" placeholder="your name"></label>
+		<a href="/" class="link">Designer</a>
+	</header>
+	<div class="layout">
+		<nav class="cases">
+			<table>
+				<thead><tr><th>Case</th><th>Score</th><th id="pagesHead" title="GhostDraft / HTML pages">Pages</th><th>Status</th></tr></thead>
+				<tbody id="caseRows"></tbody>
+			</table>
+		</nav>
+		<main id="detail" class="detail" hidden>
+			<div class="detail-head">
+				<h2 id="caseName"></h2>
+				<span id="caseScore" class="pill"></span>
+				<span id="caseStatus" class="pill"></span>
+				<span class="spacer"></span>
+				<input id="note" type="text" maxlength="2000" placeholder="Note (why rejected, known differences...)">
+				<button id="btnApprove" type="button" class="btn approve" title="Approve (A)">Approve</button>
+				<button id="btnReject" type="button" class="btn reject" title="Reject (R)">Reject</button>
+				<button id="btnClear" type="button" class="btn" title="Remove the decision">Clear</button>
+				<button id="btnAddToLibrary" type="button" class="btn library" hidden title="Open this form in the designer and save it as a draft template in the library">Add to Designer Library</button>
+			</div>
+			<p id="decisionInfo" class="info"></p>
+			<div class="pdfs">
+				<section><h3 id="goldenTitle">GhostDraft (golden)</h3><iframe id="goldenPdf" title="Reference PDF"></iframe></section>
+				<section><h3>HTML render</h3><iframe id="htmlPdf" title="HTML render PDF"></iframe></section>
+			</div>
+			<details id="overlaySection" open hidden>
+				<summary>Page overlays (original red, render blue, both black)</summary>
+				<div id="overlays" class="overlays"></div>
+			</details>
+			<details>
+				<summary>Text differences</summary>
+				<pre id="diff"></pre>
+			</details>
+		</main>
+		<main id="empty" class="detail empty">Select a case. Keys: J/K next/previous, A approve, R reject.</main>
+	</div>
+	<script src="/review.js"></script>
+</body>
+</html>

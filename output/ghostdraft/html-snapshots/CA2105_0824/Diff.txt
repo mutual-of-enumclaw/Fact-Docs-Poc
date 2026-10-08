@@ -1,0 +1,14 @@
+CA2105_0824: DIFFERENT  score 99.9%
+pages   golden 5  html 5  (pages with text)
+words   golden 2623  html 2622  missing 2  extra 1
+
+MISSING (in the GhostDraft golden, not in the HTML render)
+  [MEANS]  <=  resulting from the "accident";                              6. "Stolen vehicle" means:
+  [THE]  <=  b. At the time of the "accident", the operator
+
+EXTRA (in the HTML render, not in the GhostDraft golden)
+  [MEANSTHE]  <=  1. "Date of settlement" meansthe   date on which a
+
+golden   C:\src\fact-docgen\src\Moe.Commercial.Documents.Generation.Integration.Tests\TestData\Snapshots\CA2105_0824\GoldenSnapshot.txt
+template C:\src\fact-poc\output\ghostdraft\batch\CA-21-05-08-24-Oregon-Uninsured-Motorists-Coverage---Bodily-Inju.json
+serverxml C:\src\fact-poc\output\ghostdraft\serverxml\CA2105_0824\ServerXml.xml

@@ -1,0 +1,11 @@
+file       C:\src\FaCT-DocProd-Documentation\3_From MOE\MOE_DocProd_Tables_Usage_V1.docx
+format     docx
+pages      5
+recall     100 % of 1211 original words appear in the render
+precision  94 % of 1313 rendered words come from the original
+visual     - page likeness (ink within ~4pt of the original)
+review     -
+counts     579 paragraphs, 0 headings, 0 listItems, 1 tables, 0 images, 0 fields, 0 links, 0 textBoxes, 0 pageBreaks, 0 headers, 0 footers, 0 pageNumbers, 0 placeholders
+fields     
+notes      
+missing    

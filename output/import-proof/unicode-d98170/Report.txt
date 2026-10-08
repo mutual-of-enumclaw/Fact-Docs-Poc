@@ -1,0 +1,11 @@
+file       C:\src\FaCT-DocProd-Documentation\1_From Docucorp_System\unicode.pdf
+format     pdf
+pages      38
+recall     98 % of 6341 original words appear in the render
+precision  98 % of 6362 rendered words come from the original
+visual     98 % page likeness (ink within ~4pt of the original) [100 %, 100 %, 99 %, 99 %, 98 %, 97 %, 98 %, 93 %, 99 %, 99 %, 99 %, 98 %, 99 %, 99 %, 98 %, 99 %, 99 %, 99 %, 98 %, 100 %, 100 %, 100 %, 99 %, 99 %, 98 %, 98 %, 98 %, 97 %, 97 %, 97 %, 97 %, 99 %, 99 %, 62 %, 99 %, 100 %, 100 %, 100 %]
+review     -
+counts     1018 texts, 0 fields, 192 shapes, 40 images, 0 skipped
+fields     
+notes      4 font(s) embedded in the PDF are used for its text.
+missing    using unicode www com in the of this or and docucreate documaker on can use as to language overview enabling languages 8 selecting input setting up fonts monotype creating forms adding file text rules processor variable fields mapping data viewing

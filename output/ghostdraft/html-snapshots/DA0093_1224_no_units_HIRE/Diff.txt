@@ -1,0 +1,13 @@
+DA0093_1224_no_units_HIRE: DIFFERENT  score 99.5%
+pages   golden 2  html 2  (pages with text)
+words   golden 415  html 419  missing 0  extra 4
+
+EXTRA (in the HTML render, not in the GhostDraft golden)
+  [DEDUCTIBLE]  <=  PROTECTION                                             Deductible
+  [OR]  <=  Truck, Or Medium Truck
+  [ONLY]  <=  ONLY.                                                           9=NONOWNED   "AUTOS" ONLY.
+  [AUTOS]  <=  * For application  of Covered  Autos  symbol  with regard  to UM/UIM   coverage,   refer to applicable UM/UIM
+
+golden   C:\src\fact-docgen\src\Moe.Commercial.Documents.Generation.Integration.Tests\TestData\Snapshots\DA0093_1224_no_units_HIRE\GoldenSnapshot.txt
+template C:\src\fact-poc\output\ghostdraft\batch\DA0093-1224.json
+serverxml C:\src\fact-poc\output\ghostdraft\serverxml\DA0093_1224_no_units_HIRE\ServerXml.xml

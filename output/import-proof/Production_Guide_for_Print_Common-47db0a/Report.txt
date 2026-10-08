@@ -1,0 +1,13 @@
+file       C:\src\FaCT-DocProd-Documentation\2_From CSC\Production_Guide_for_Print_Common.pdf
+format     pdf
+pages      22
+recall     98 % of 4379 original words appear in the render
+precision  91 % of 4720 rendered words come from the original
+visual     95 % page likeness (ink within ~4pt of the original) [96 %, 97 %, 99 %, 96 %, 94 %, 95 %, 95 %, 96 %, 95 %, 94 %, 94 %, 95 %, 94 %, 95 %, 94 %, 95 %, 95 %, 97 %, 94 %, 96 %, 96 %, 97 %]
+review     -
+counts     817 texts, 0 fields, 3521 shapes, 3 images, 0 skipped
+fields     
+notes      1 font(s) embedded in the PDF are used for its text.
+           90 character(s) of rotated or vertical text were skipped.
+           141 curved or diagonal shape(s) (circles, logos drawn as vectors) were skipped.
+missing    document production print common and 19 table contents automated cycles 3 files 5 genwip 7 monitoring 9 error recovery handling 15 17 checklist 21 references log batch updated message 11 13

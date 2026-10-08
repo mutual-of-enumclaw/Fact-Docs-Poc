@@ -1,0 +1,11 @@
+file       C:\src\FaCT-DocProd-Documentation\Knowledge Transfer\Misc Info\HowTo_AddFormToDOCPROD_Checklist.docx
+format     docx
+pages      4
+recall     100 % of 871 original words appear in the render
+precision  98 % of 906 rendered words come from the original
+visual     - page likeness (ink within ~4pt of the original)
+review     -
+counts     199 paragraphs, 0 headings, 0 listItems, 4 tables, 0 images, 0 fields, 0 links, 0 textBoxes, 3 pageBreaks, 0 headers, 0 footers, 0 pageNumbers, 0 placeholders
+fields     
+notes      
+missing    

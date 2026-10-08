@@ -1,0 +1,12 @@
+file       C:\src\FaCT-DocProd-Documentation\1_From Docucorp_System\v113gen.pdf
+format     pdf
+pages      28
+recall     99 % of 5564 original words appear in the render
+precision  98 % of 5606 rendered words come from the original
+visual     98 % page likeness (ink within ~4pt of the original) [100 %, 100 %, 99 %, 100 %, 100 %, 100 %, 98 %, 98 %, 98 %, 99 %, 98 %, 98 %, 98 %, 98 %, 99 %, 96 %, 98 %, 99 %, 98 %, 98 %, 98 %, 98 %, 98 %, 98 %, 99 %, 98 %, 98 %, 88 %]
+review     -
+counts     1123 texts, 0 fields, 336 shapes, 2 images, 0 skipped
+fields     
+notes      6 font(s) embedded in the PDF are used for its text.
+           1 embedded font(s) can't be used in a browser (no Unicode character map, or characters missing) and were replaced by a standard family.
+missing    documaker ge e al release skywire software document and support called to product releases documentation you also www must be products documanage automation platform license agreement licenses system monotype font versions include delivery overview introduction currently supported schedule studio unsupported

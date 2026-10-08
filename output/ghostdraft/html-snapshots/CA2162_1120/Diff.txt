@@ -1,0 +1,7 @@
+CA2162_1120: MATCH  score 100.0%
+pages   golden 5  html 5  (pages with text)
+words   golden 2993  html 2993  missing 0  extra 0
+
+golden   C:\src\fact-docgen\src\Moe.Commercial.Documents.Generation.Integration.Tests\TestData\Snapshots\CA2162_1120\GoldenSnapshot.txt
+template C:\src\fact-poc\output\ghostdraft\batch\CA-21-62-11-20-Utah-Uninsured-Motorists-Coverage.json
+serverxml C:\src\fact-poc\output\ghostdraft\serverxml\CA2162_1120\ServerXml.xml

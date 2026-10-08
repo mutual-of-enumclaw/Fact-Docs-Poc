@@ -1,0 +1,1673 @@
+{
+ "name": "EA9948-1113",
+ "title": "EA 99 48 11 13",
+ "source": "EA9948 1113.gd",
+ "package": "proprietary-ca-2607",
+ "components": [
+  {
+   "tagName": "div",
+   "classes": [
+    "gd-doc",
+    "gd-flow",
+    "gd-run"
+   ],
+   "components": [
+    {
+     "tagName": "table",
+     "classes": [
+      "gd-runt"
+     ],
+     "components": [
+      {
+       "tagName": "thead",
+       "components": [
+        {
+         "tagName": "tr",
+         "components": [
+          {
+           "tagName": "td",
+           "components": [
+            {
+             "tagName": "div",
+             "classes": [
+              "gd-header"
+             ],
+             "components": [
+              {
+               "type": "table",
+               "classes": [
+                "gd-table",
+                "gd-t8"
+               ],
+               "components": [
+                {
+                 "type": "tbody",
+                 "components": [
+                  {
+                   "type": "row",
+                   "components": [
+                    {
+                     "type": "cell",
+                     "components": [
+                      {
+                       "type": "text",
+                       "tagName": "p",
+                       "classes": [
+                        "gd-p",
+                        "gd-p2"
+                       ],
+                       "components": [
+                        {
+                         "tagName": "span",
+                         "classes": [
+                          "gd-c1"
+                         ],
+                         "components": [
+                          {
+                           "type": "textnode",
+                           "content": "POLICY NUMBER:"
+                          }
+                         ]
+                        }
+                       ]
+                      }
+                     ],
+                     "classes": [
+                      "gd-td3"
+                     ]
+                    },
+                    {
+                     "type": "cell",
+                     "components": [
+                      {
+                       "type": "text",
+                       "tagName": "p",
+                       "classes": [
+                        "gd-p",
+                        "gd-p2"
+                       ],
+                       "components": [
+                        {
+                         "type": "data-field",
+                         "field": "Policy.PolicyNumber",
+                         "format": ""
+                        }
+                       ]
+                      }
+                     ],
+                     "classes": [
+                      "gd-td4"
+                     ]
+                    },
+                    {
+                     "type": "cell",
+                     "components": [
+                      {
+                       "type": "text",
+                       "tagName": "p",
+                       "classes": [
+                        "gd-p",
+                        "gd-p5"
+                       ],
+                       "components": [
+                        {
+                         "tagName": "span",
+                         "classes": [
+                          "gd-c1"
+                         ],
+                         "components": [
+                          {
+                           "type": "textnode",
+                           "content": "COMMERCIAL AUTO"
+                          }
+                         ]
+                        }
+                       ]
+                      }
+                     ],
+                     "classes": [
+                      "gd-td6"
+                     ]
+                    }
+                   ]
+                  },
+                  {
+                   "type": "row",
+                   "components": [
+                    {
+                     "type": "cell",
+                     "components": [
+                      {
+                       "type": "text",
+                       "tagName": "p",
+                       "classes": [
+                        "gd-p",
+                        "gd-p7"
+                       ],
+                       "components": []
+                      }
+                     ],
+                     "classes": [
+                      "gd-td3"
+                     ]
+                    },
+                    {
+                     "type": "cell",
+                     "components": [
+                      {
+                       "type": "text",
+                       "tagName": "p",
+                       "classes": [
+                        "gd-p",
+                        "gd-p7"
+                       ],
+                       "components": []
+                      }
+                     ],
+                     "classes": [
+                      "gd-td4"
+                     ]
+                    },
+                    {
+                     "type": "cell",
+                     "components": [
+                      {
+                       "type": "text",
+                       "tagName": "p",
+                       "classes": [
+                        "gd-p",
+                        "gd-p5"
+                       ],
+                       "components": [
+                        {
+                         "tagName": "span",
+                         "classes": [
+                          "gd-c1"
+                         ],
+                         "components": [
+                          {
+                           "type": "textnode",
+                           "content": "EA 99 48 11 13"
+                          }
+                         ]
+                        }
+                       ]
+                      }
+                     ],
+                     "classes": [
+                      "gd-td6"
+                     ]
+                    }
+                   ]
+                  }
+                 ]
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p2"
+               ],
+               "components": []
+              }
+             ]
+            },
+            {
+             "tagName": "span",
+             "classes": [
+              "gd-pgmark",
+              "gd-sec-0"
+             ]
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "tagName": "tfoot",
+       "components": [
+        {
+         "tagName": "tr",
+         "components": [
+          {
+           "tagName": "td",
+           "components": [
+            {
+             "tagName": "div",
+             "classes": [
+              "gd-footer",
+              "gd-foot-space",
+              "gd-pdffoot",
+              "gd-sec-0",
+              "gd-fy-36",
+              "gd-mb-72",
+              "gd-ml-54",
+              "gd-mr-54"
+             ],
+             "components": [
+              {
+               "type": "table",
+               "classes": [
+                "gd-table",
+                "gd-t15"
+               ],
+               "components": [
+                {
+                 "type": "tbody",
+                 "components": [
+                  {
+                   "type": "row",
+                   "components": [
+                    {
+                     "type": "cell",
+                     "components": [
+                      {
+                       "type": "text",
+                       "tagName": "p",
+                       "classes": [
+                        "gd-p",
+                        "gd-p2"
+                       ],
+                       "components": [
+                        {
+                         "tagName": "span",
+                         "classes": [
+                          "gd-c9"
+                         ],
+                         "components": [
+                          {
+                           "type": "textnode",
+                           "content": "EA 99 48 11 13"
+                          }
+                         ]
+                        }
+                       ]
+                      }
+                     ],
+                     "classes": [
+                      "gd-td10"
+                     ]
+                    },
+                    {
+                     "type": "cell",
+                     "components": [
+                      {
+                       "type": "text",
+                       "tagName": "p",
+                       "classes": [
+                        "gd-p",
+                        "gd-p12"
+                       ],
+                       "components": [
+                        {
+                         "tagName": "span",
+                         "classes": [
+                          "gd-c11"
+                         ],
+                         "components": [
+                          {
+                           "type": "textnode",
+                           "content": "Includes copyrighted material of Insurance Services Office, Inc. with its permission"
+                          }
+                         ]
+                        }
+                       ]
+                      }
+                     ],
+                     "classes": [
+                      "gd-td13"
+                     ]
+                    },
+                    {
+                     "type": "cell",
+                     "components": [
+                      {
+                       "type": "text",
+                       "tagName": "p",
+                       "classes": [
+                        "gd-p",
+                        "gd-p5"
+                       ],
+                       "components": [
+                        {
+                         "tagName": "span",
+                         "classes": [
+                          "gd-c9"
+                         ],
+                         "components": [
+                          {
+                           "type": "textnode",
+                           "content": "Page "
+                          }
+                         ]
+                        },
+                        {
+                         "tagName": "span",
+                         "classes": [
+                          "gd-c9",
+                          "gd-pageno"
+                         ],
+                         "components": [
+                          {
+                           "type": "textnode",
+                           "content": "#"
+                          }
+                         ]
+                        },
+                        {
+                         "tagName": "span",
+                         "classes": [
+                          "gd-c9"
+                         ],
+                         "components": [
+                          {
+                           "type": "textnode",
+                           "content": " of "
+                          }
+                         ]
+                        },
+                        {
+                         "tagName": "span",
+                         "classes": [
+                          "gd-c9",
+                          "gd-pagecount"
+                         ],
+                         "components": [
+                          {
+                           "type": "textnode",
+                           "content": "#"
+                          }
+                         ]
+                        }
+                       ]
+                      }
+                     ],
+                     "classes": [
+                      "gd-td14"
+                     ]
+                    }
+                   ]
+                  }
+                 ]
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p2"
+               ],
+               "components": []
+              }
+             ]
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "tagName": "tbody",
+       "components": [
+        {
+         "tagName": "tr",
+         "components": [
+          {
+           "tagName": "td",
+           "components": [
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p7"
+             ],
+             "components": [
+              {
+               "tagName": "span",
+               "classes": [
+                "gd-c16"
+               ],
+               "components": [
+                {
+                 "type": "textnode",
+                 "content": "THIS ENDORSEMENT CHANGES THE POLICY. PLEASE READ IT CAREFULLY."
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p2"
+             ],
+             "components": []
+            },
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p7"
+             ],
+             "components": [
+              {
+               "tagName": "span",
+               "classes": [
+                "gd-c17"
+               ],
+               "components": [
+                {
+                 "type": "textnode",
+                 "content": "LIMITED POLLUTION LIABILITY"
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p7"
+             ],
+             "components": [
+              {
+               "tagName": "span",
+               "classes": [
+                "gd-c17"
+               ],
+               "components": [
+                {
+                 "type": "textnode",
+                 "content": "COVERAGE EXTENSION "
+                }
+               ]
+              },
+              {
+               "tagName": "span",
+               "classes": [
+                "gd-c18"
+               ],
+               "components": [
+                {
+                 "type": "textnode",
+                 "content": " "
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p19"
+             ],
+             "components": [
+              {
+               "type": "textnode",
+               "content": "This endorsement modifies insurance provided under the following:"
+              }
+             ]
+            },
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p19"
+             ],
+             "components": []
+            },
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p20"
+             ],
+             "components": [
+              {
+               "type": "textnode",
+               "content": "BUSINESS AUTO COVERAGE FORM"
+              }
+             ]
+            },
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p20"
+             ],
+             "components": [
+              {
+               "type": "textnode",
+               "content": "MOTOR CARRIER COVERAGE FORM "
+              }
+             ]
+            },
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p19"
+             ],
+             "components": []
+            },
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p7"
+             ],
+             "components": [
+              {
+               "tagName": "span",
+               "classes": [
+                "gd-c9"
+               ],
+               "components": [
+                {
+                 "type": "textnode",
+                 "content": "SCHEDULE"
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p7"
+             ],
+             "components": []
+            },
+            {
+             "type": "table",
+             "classes": [
+              "gd-table",
+              "gd-t28"
+             ],
+             "components": [
+              {
+               "type": "tbody",
+               "components": [
+                {
+                 "type": "row",
+                 "components": [
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p2"
+                     ],
+                     "components": [
+                      {
+                       "tagName": "span",
+                       "classes": [
+                        "gd-c9"
+                       ],
+                       "components": [
+                        {
+                         "type": "textnode",
+                         "content": "COVERED AUTOS:"
+                        }
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td21"
+                   ]
+                  },
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p7",
+                      "gd-keepline"
+                     ],
+                     "components": [
+                      {
+                       "type": "conditional",
+                       "tagName": "span",
+                       "components": [
+                        {
+                         "tagName": "span",
+                         "classes": [
+                          "gd-c9"
+                         ],
+                         "components": [
+                          {
+                           "type": "textnode",
+                           "content": "x"
+                          }
+                         ]
+                        }
+                       ],
+                       "field": "MOECAPolicyLevelCoverages.LimitedPollutionLiabilityCoverageExtension.forOwnedAutos",
+                       "operator": "eq",
+                       "value": "true",
+                       "classes": [
+                        "gd-if"
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td22"
+                   ]
+                  },
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p2"
+                     ],
+                     "components": [
+                      {
+                       "tagName": "span",
+                       "classes": [
+                        "gd-c9"
+                       ],
+                       "components": [
+                        {
+                         "type": "textnode",
+                         "content": "Owned Autos"
+                        }
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td23"
+                   ]
+                  },
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p7",
+                      "gd-keepline"
+                     ],
+                     "components": [
+                      {
+                       "type": "conditional",
+                       "tagName": "span",
+                       "components": [
+                        {
+                         "tagName": "span",
+                         "classes": [
+                          "gd-c9"
+                         ],
+                         "components": [
+                          {
+                           "type": "textnode",
+                           "content": "x"
+                          }
+                         ]
+                        }
+                       ],
+                       "field": "MOECAPolicyLevelCoverages.LimitedPollutionLiabilityCoverageExtension.forSpeciallyDescribedAutos",
+                       "operator": "eq",
+                       "value": "true",
+                       "classes": [
+                        "gd-if"
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td24"
+                   ]
+                  },
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p2"
+                     ],
+                     "components": [
+                      {
+                       "tagName": "span",
+                       "classes": [
+                        "gd-c9"
+                       ],
+                       "components": [
+                        {
+                         "type": "textnode",
+                         "content": "Specifically Described"
+                        }
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td25"
+                   ]
+                  },
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p7",
+                      "gd-keepline"
+                     ],
+                     "components": [
+                      {
+                       "type": "conditional",
+                       "tagName": "span",
+                       "components": [
+                        {
+                         "tagName": "span",
+                         "classes": [
+                          "gd-c9"
+                         ],
+                         "components": [
+                          {
+                           "type": "textnode",
+                           "content": "x"
+                          }
+                         ]
+                        }
+                       ],
+                       "field": "MOECAPolicyLevelCoverages.LimitedPollutionLiabilityCoverageExtension.forHiredAutos",
+                       "operator": "eq",
+                       "value": "true",
+                       "classes": [
+                        "gd-if"
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td24"
+                   ]
+                  },
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p2"
+                     ],
+                     "components": [
+                      {
+                       "tagName": "span",
+                       "classes": [
+                        "gd-c9"
+                       ],
+                       "components": [
+                        {
+                         "type": "textnode",
+                         "content": "Hired Autos"
+                        }
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td26"
+                   ]
+                  }
+                 ],
+                 "classes": [
+                  "gd-tr27"
+                 ]
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p2"
+             ],
+             "components": []
+            },
+            {
+             "type": "table",
+             "classes": [
+              "gd-table",
+              "gd-t28"
+             ],
+             "components": [
+              {
+               "type": "tbody",
+               "components": [
+                {
+                 "type": "row",
+                 "components": [
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p19"
+                     ],
+                     "components": [
+                      {
+                       "tagName": "span",
+                       "classes": [
+                        "gd-c9"
+                       ],
+                       "components": [
+                        {
+                         "type": "textnode",
+                         "content": "LIMIT OF LIABILITY:"
+                        }
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td29"
+                   ]
+                  },
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p19"
+                     ],
+                     "components": [
+                      {
+                       "type": "data-field",
+                       "field": "MOECAPolicyLevelCoverages.LimitedPollutionLiabilityCoverageExtension.Limit",
+                       "format": "dollars"
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td30"
+                   ]
+                  },
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p19"
+                     ],
+                     "components": [
+                      {
+                       "tagName": "span",
+                       "classes": [
+                        "gd-c9"
+                       ],
+                       "components": [
+                        {
+                         "type": "textnode",
+                         "content": "PREMIUM:"
+                        }
+                       ]
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td31"
+                   ]
+                  },
+                  {
+                   "type": "cell",
+                   "components": [
+                    {
+                     "type": "text",
+                     "tagName": "p",
+                     "classes": [
+                      "gd-p",
+                      "gd-p19"
+                     ],
+                     "components": [
+                      {
+                       "type": "data-field",
+                       "field": "MOECAPolicyLevelCoverages.LimitedPollutionLiabilityCoverageExtension.Premium",
+                       "format": "dollars"
+                      }
+                     ]
+                    }
+                   ],
+                   "classes": [
+                    "gd-td32"
+                   ]
+                  }
+                 ]
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p19"
+             ],
+             "components": []
+            },
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p19"
+             ],
+             "components": [
+              {
+               "tagName": "span",
+               "classes": [
+                "gd-c9"
+               ],
+               "components": [
+                {
+                 "type": "textnode",
+                 "content": "Coverage afforded under the terms of this endorsement applies only to the COVERED AUTOS indicated in the SCHEDULE above which are also indicated to be COVERED AUTOS for Auto Liability Insurance in the Declarations. "
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p19"
+             ],
+             "components": []
+            },
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p19"
+             ],
+             "components": [
+              {
+               "tagName": "span",
+               "classes": [
+                "gd-c9"
+               ],
+               "components": [
+                {
+                 "type": "textnode",
+                 "content": "The LIMIT OF LIABILITY shown in the SCHEDULE above is the maximum amount that we will pay for any occurrence for coverage under this endorsement. "
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p19"
+             ],
+             "components": []
+            },
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p19"
+             ],
+             "components": [
+              {
+               "tagName": "span",
+               "classes": [
+                "gd-c9"
+               ],
+               "components": [
+                {
+                 "type": "textnode",
+                 "content": "The LIMIT OF LIABILITY shown in the SCHEDULE is not in addition to the Automobile Liability Limit of Liability shown in the Declarations. Coverage afforded under the terms of this endorsement is subject to the Automobile Liability Limit shown in the Declarations."
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "type": "text",
+             "tagName": "p",
+             "classes": [
+              "gd-p",
+              "gd-p2"
+             ],
+             "components": []
+            },
+            {
+             "tagName": "div",
+             "classes": [
+              "gd-cols44"
+             ],
+             "components": [
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p34"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h33"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "1."
+                  }
+                 ]
+                },
+                {
+                 "type": "textnode",
+                 "content": "LIABILITY COVERAGE is changed as follows:"
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p35"
+               ],
+               "components": [
+                {
+                 "type": "textnode",
+                 "content": "Paragraph "
+                },
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-c9"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "a. "
+                  }
+                 ]
+                },
+                {
+                 "type": "textnode",
+                 "content": "of the POLLUTION EXCLUSION applies only to liability assumed under a contract or agreement."
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p36"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h33"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "2."
+                  }
+                 ]
+                },
+                {
+                 "type": "textnode",
+                 "content": "DEFINITIONS"
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p35"
+               ],
+               "components": [
+                {
+                 "type": "textnode",
+                 "content": "The definition of \"covered pollution cost or expense\" is replaced by the following:"
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p38"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h37"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "D."
+                  }
+                 ]
+                },
+                {
+                 "type": "textnode",
+                 "content": "\"Covered pollution cost or expense\" means any cost or expense arising out of:"
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p39"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h33"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "1."
+                  }
+                 ]
+                },
+                {
+                 "type": "textnode",
+                 "content": "Any request, demand or order; or"
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p40"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h37"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "2."
+                  }
+                 ]
+                },
+                {
+                 "type": "textnode",
+                 "content": "Any claim or \"suit\" by or on behalf of a governmental authority demanding that the \"insured\" or others test for, monitor, clean up, remove, contain, treat, detoxify or neutralize, or in any way respond to, or assess the effects of \"pollutants\"."
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p41"
+               ],
+               "components": [
+                {
+                 "type": "textnode",
+                 "content": "\"Covered pollution cost or expense\" does not include any cost or expense arising out of the actual, alleged or threatened discharge, dispersal, seepage, migration, release or escape of \"pollutants\":"
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p42"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h37"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "a."
+                  }
+                 ]
+                },
+                {
+                 "type": "textnode",
+                 "content": "Before the \"pollutants\" or any property in which the \"pollutants\" are contained are moved from the place where they are accepted by \"insured\" for movement into or onto the covered \"auto\"; or"
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p42"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h37"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "b."
+                  }
+                 ]
+                },
+                {
+                 "type": "textnode",
+                 "content": "After the \"pollutants\" or any property in which the \"pollutants\" are contained are moved from the covered \" auto\" to the place where they are finally delivered, disposed of or abandoned by the \"insured\"."
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p43"
+               ],
+               "components": [
+                {
+                 "type": "textnode",
+                 "content": "Paragraphs "
+                },
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-c9"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "a. "
+                  }
+                 ]
+                },
+                {
+                 "type": "textnode",
+                 "content": "and "
+                },
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-c9"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "b. "
+                  }
+                 ]
+                },
+                {
+                 "type": "textnode",
+                 "content": "above do not apply to \"accidents\" that occur away from premises owned by or rented to an \"insured\" with respect to \"pollutants\" not in or upon a covered \"auto\" if:"
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p38"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h37"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "1."
+                  }
+                 ]
+                },
+                {
+                 "type": "textnode",
+                 "content": "The \"pollutants\" or any property in which the \"pollutants\" are contained are upset, overturned or damaged as a result of the maintenance or use of a covered \"auto\"; and"
+                }
+               ]
+              },
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p38"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-hang",
+                  "gd-h37"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "2."
+                  }
+                 ]
+                },
+                {
+                 "type": "textnode",
+                 "content": "The discharge, dispersal, seepage, migration, release or escape of the \"pollutants\" is caused directly by such upset, overturn or damage."
+                }
+               ]
+              }
+             ]
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "tagName": "div",
+     "classes": [
+      "gd-footer",
+      "gd-foot-fixed"
+     ],
+     "components": [
+      {
+       "type": "table",
+       "classes": [
+        "gd-table",
+        "gd-t15"
+       ],
+       "components": [
+        {
+         "type": "tbody",
+         "components": [
+          {
+           "type": "row",
+           "components": [
+            {
+             "type": "cell",
+             "components": [
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p2"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-c9"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "EA 99 48 11 13"
+                  }
+                 ]
+                }
+               ]
+              }
+             ],
+             "classes": [
+              "gd-td10"
+             ]
+            },
+            {
+             "type": "cell",
+             "components": [
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p12"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-c11"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "Includes copyrighted material of Insurance Services Office, Inc. with its permission"
+                  }
+                 ]
+                }
+               ]
+              }
+             ],
+             "classes": [
+              "gd-td13"
+             ]
+            },
+            {
+             "type": "cell",
+             "components": [
+              {
+               "type": "text",
+               "tagName": "p",
+               "classes": [
+                "gd-p",
+                "gd-p5"
+               ],
+               "components": [
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-c9"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "Page "
+                  }
+                 ]
+                },
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-c9",
+                  "gd-pageno"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "#"
+                  }
+                 ]
+                },
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-c9"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": " of "
+                  }
+                 ]
+                },
+                {
+                 "tagName": "span",
+                 "classes": [
+                  "gd-c9",
+                  "gd-pagecount"
+                 ],
+                 "components": [
+                  {
+                   "type": "textnode",
+                   "content": "#"
+                  }
+                 ]
+                }
+               ]
+              }
+             ],
+             "classes": [
+              "gd-td14"
+             ]
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "tagName": "p",
+       "classes": [
+        "gd-p",
+        "gd-p2"
+       ],
+       "components": []
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "css": ".form-page{position:relative;width:612pt;height:792pt;overflow:hidden;background:#fff;}\n.form-page + .form-page{page-break-before:always;}\n@page gdflow{margin:54pt 0 72pt 0;}\n.gd-flow{page:gdflow;padding:0 54pt 0 54pt;}\n@page gdrun{margin:36pt 0 36pt 0;}\n.gd-flow.gd-run{page:gdrun;}\n.gd-doc table.gd-runt{width:100%;border-collapse:collapse;table-layout:fixed;}\n.gd-doc table.gd-runt>*>tr>td{padding:0;}\n.gd-doc table.gd-runt>thead>tr>td{height:18pt;vertical-align:top;}\n.gd-doc table.gd-runt>tfoot>tr>td{height:36pt;vertical-align:bottom;position:relative;}\n.gd-pdffoot-even{position:absolute;visibility:hidden;left:0;right:0;bottom:0;}\n.gd-doc table.gd-runt>thead>tr>td{position:relative;}\n.gd-pgmark{position:absolute;left:0;top:0;font-size:2pt;line-height:1;color:#fff;white-space:nowrap;}\n.gd-sheetfoot{position:absolute;background:#fff;}\n.gd-sheetfoot.gd-side-even{display:none;}\n.gd-foot-fixed{display:none;}\n@media print{.gd-foot-space{visibility:hidden;}.gd-foot-fixed{display:block;position:fixed;left:0;right:0;bottom:0;padding:0 54pt 0 54pt;}}\n.gd-if:empty{display:none;}\n.gd-flow:not(:has(:not(.gd-if))){display:none;}\n.form-page:not(:has(:not(.gd-if))){display:none;}\n.form-page .abs{position:absolute;white-space:pre;margin:0;padding:0;line-height:normal;}\n.form-page .rule{position:absolute;background:#000;}\n.form-page .gd-tb{white-space:normal;box-sizing:border-box;}\n.gd-doc .gd-pagebg{position:absolute;width:0;height:0;}\n.gd-doc .gd-anchor{position:relative;}\n.gd-doc .gd-anchored{position:absolute;box-sizing:border-box;}\n.gd-doc .gd-header{position:relative;}\n.gd-pagebg .abs{position:absolute;white-space:pre;margin:0;padding:0;line-height:normal;}\n.gd-pagebg .rule{position:absolute;background:#000;}\n.gd-pagebg .gd-tb{white-space:normal;box-sizing:border-box;}\n.gd-doc{font-family:'Arial',sans-serif;font-size:10pt;color:#000;line-height:1.15;}\n:where(.gd-doc) p{margin:0;}\n.gd-doc p:empty::before{content:\"\\00a0\";}\n.gd-doc p.gd-keepline{min-height:1lh;}\n.gd-doc .gd-table{border-collapse:collapse;table-layout:fixed;}\n:where(.gd-doc) td{vertical-align:top;padding:0 5.4pt;}\n.gd-doc tr.gd-grid td{height:0;padding:0;border:0;}\n.gd-doc .gd-box{margin:0 0 6pt 0;}\n.gd-doc .gd-tab{display:inline-block;width:36pt;}\n.gd-doc .gd-hang{display:inline-block;}\n.gd-doc .gd-img-missing{display:inline-block;border:1px dashed #9ca3af;color:#6b7280;font-size:7pt;}\n.gd-doc .gd-c1{font-weight:bold;text-transform:uppercase;}\n.gd-doc .gd-p2{line-height:1.15;}\n.gd-doc .gd-td3{width:19.640%;padding:0pt 5.4pt 0pt 5.4pt;}\n.gd-doc .gd-td4{width:58.040%;padding:0pt 5.4pt 0pt 5.4pt;}\n.gd-doc .gd-p5{text-align:right;line-height:1.15;}\n.gd-doc .gd-td6{width:22.320%;padding:0pt 5.4pt 0pt 5.4pt;}\n.gd-doc .gd-p7{text-align:center;line-height:1.15;}\n.gd-doc .gd-t8{width:100.000%;}\n.gd-doc .gd-c9{font-weight:bold;}\n.gd-doc .gd-td10{width:16.630%;padding:0pt 5.4pt 0pt 5.4pt;}\n.gd-doc .gd-c11{font-size:9pt;}\n.gd-doc .gd-p12{margin-left:1pt;margin-top:0.7pt;line-height:1.15;}\n.gd-doc .gd-td13{width:69.400%;padding:0pt 5.4pt 0pt 5.4pt;}\n.gd-doc .gd-td14{width:13.970%;padding:0pt 5.4pt 0pt 5.4pt;}\n.gd-doc .gd-t15{width:100.000%;margin-left:-0.140%;}\n.gd-doc .gd-c16{font-weight:bold;text-transform:uppercase;font-size:12pt;}\n.gd-doc .gd-c17{font-weight:bold;font-size:18pt;}\n.gd-doc .gd-c18{font-size:18pt;font-family:serif;}\n.gd-doc .gd-p19{text-align:justify;line-height:1.15;}\n.gd-doc .gd-p20{text-align:justify;margin-left:18pt;line-height:1.15;}\n.gd-doc .gd-td21{width:122.4pt;border-right:0.5pt solid #000000;padding:0pt 5.15pt 0pt 5.4pt;}\n.gd-doc .gd-td22{width:10.95pt;border-top:0.5pt solid #000000;border-left:0.5pt solid #000000;border-bottom:0.5pt solid #000000;border-right:0.5pt solid #000000;padding:0pt 0pt 0pt 0pt;}\n.gd-doc .gd-td23{width:118.7pt;border-left:0.5pt solid #000000;border-right:0.5pt solid #000000;padding:0pt 5.15pt 0pt 5.15pt;}\n.gd-doc .gd-td24{width:10.9pt;border-top:0.5pt solid #000000;border-left:0.5pt solid #000000;border-bottom:0.5pt solid #000000;border-right:0.5pt solid #000000;padding:0pt 0pt 0pt 0pt;}\n.gd-doc .gd-td25{width:141.65pt;border-left:0.5pt solid #000000;border-right:0.5pt solid #000000;padding:0pt 5.15pt 0pt 5.15pt;}\n.gd-doc .gd-td26{width:88.5pt;border-left:0.5pt solid #000000;padding:0pt 5.4pt 0pt 5.15pt;}\n.gd-doc .gd-tr27{height:11.3pt;}\n.gd-doc .gd-t28{width:504pt;}\n.gd-doc .gd-td29{width:115pt;padding:0pt 5.4pt 0pt 5.4pt;}\n.gd-doc .gd-td30{width:112.5pt;padding:0pt 5.4pt 0pt 5.4pt;}\n.gd-doc .gd-td31{width:63.35pt;padding:0pt 5.4pt 0pt 5.4pt;}\n.gd-doc .gd-td32{width:213.15pt;padding:0pt 5.4pt 0pt 5.4pt;}\n.gd-doc .gd-h33{min-width:17.9pt;}\n.gd-doc .gd-p34{text-align:justify;margin-left:35.9pt;text-indent:-17.9pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-p35{text-align:justify;margin-left:35.95pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-p36{text-align:justify;margin-left:35.85pt;text-indent:-17.9pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-h37{min-width:18pt;}\n.gd-doc .gd-p38{text-align:justify;margin-left:53.95pt;text-indent:-18pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-p39{text-align:justify;margin-left:71.85pt;text-indent:-17.9pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-p40{text-align:justify;margin-left:71.95pt;text-indent:-18pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-p41{text-align:justify;margin-left:53.95pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-p42{text-align:justify;margin-left:72pt;text-indent:-18pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-p43{text-align:justify;margin-left:54pt;margin-top:4pt;line-height:11pt;}\n.gd-doc .gd-cols44{column-count:2;column-gap:0pt;column-fill:balance;}",
+ "model": {
+  "Policy": {
+   "PolicyNumber": "Policy Number"
+  },
+  "MOECAPolicyLevelCoverages": {
+   "LimitedPollutionLiabilityCoverageExtension": {
+    "Limit": 25000,
+    "Premium": 25000,
+    "forHiredAutos": true,
+    "forOwnedAutos": true,
+    "forSpeciallyDescribedAutos": true
+   }
+  }
+ },
+ "report": {
+  "counts": {
+   "conditionals": 3,
+   "fill points": 4,
+   "page-number fields": 2,
+   "paragraphs": 54,
+   "show if": 3,
+   "subscriptions": 1,
+   "subscriptions expanded": 1,
+   "tables": 4
+  },
+  "notes": [
+   "running footer repeats on every flowing page",
+   "running header repeats on every flowing page"
+  ]
+ }
+}

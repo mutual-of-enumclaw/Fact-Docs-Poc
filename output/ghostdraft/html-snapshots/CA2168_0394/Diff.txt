@@ -1,0 +1,7 @@
+CA2168_0394: MATCH  score 100.0%
+pages   golden 1  html 1  (pages with text)
+words   golden 279  html 279  missing 0  extra 0
+
+golden   C:\src\fact-docgen\src\Moe.Commercial.Documents.Generation.Integration.Tests\TestData\Snapshots\CA2168_0394\GoldenSnapshot.txt
+template C:\src\fact-poc\output\ghostdraft\batch\CA-21-68-03-94-Wyoming-Split-Uninsured-Motorists-Coverage-Limits.json
+serverxml C:\src\fact-poc\output\ghostdraft\serverxml\CA2168_0394\ServerXml.xml
