@@ -1,0 +1,9 @@
+﻿bin/
+obj/
+node_modules/
+output/
+dist/
+.vs/
+
+# Python
+__pycache__/
